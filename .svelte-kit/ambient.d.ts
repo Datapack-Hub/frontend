@@ -42,6 +42,7 @@ declare module '$env/static/private' {
 	export const ComSpec: string;
 	export const CONDA_PROMPT_MODIFIER: string;
 	export const DriverData: string;
+	export const EFC_13172: string;
 	export const FPS_BROWSER_APP_PROFILE_STRING: string;
 	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const FP_NO_HOST_CHECK: string;
@@ -70,7 +71,6 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
-	export const npm_package_dependencies__sveltejs_adapter_cloudflare: string;
 	export const npm_package_devDependencies_autoprefixer: string;
 	export const npm_package_devDependencies_eslint: string;
 	export const npm_package_devDependencies_eslint_plugin_svelte3: string;
@@ -85,6 +85,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_vite: string;
 	export const npm_package_devDependencies__playwright_test: string;
 	export const npm_package_devDependencies__sveltejs_adapter_auto: string;
+	export const npm_package_devDependencies__sveltejs_adapter_cloudflare: string;
 	export const npm_package_devDependencies__sveltejs_kit: string;
 	export const npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
 	export const npm_package_devDependencies__typescript_eslint_parser: string;
@@ -190,6 +191,7 @@ declare module '$env/dynamic/private' {
 		ComSpec: string;
 		CONDA_PROMPT_MODIFIER: string;
 		DriverData: string;
+		EFC_13172: string;
 		FPS_BROWSER_APP_PROFILE_STRING: string;
 		FPS_BROWSER_USER_PROFILE_STRING: string;
 		FP_NO_HOST_CHECK: string;
@@ -218,7 +220,6 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
-		npm_package_dependencies__sveltejs_adapter_cloudflare: string;
 		npm_package_devDependencies_autoprefixer: string;
 		npm_package_devDependencies_eslint: string;
 		npm_package_devDependencies_eslint_plugin_svelte3: string;
@@ -233,6 +234,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_vite: string;
 		npm_package_devDependencies__playwright_test: string;
 		npm_package_devDependencies__sveltejs_adapter_auto: string;
+		npm_package_devDependencies__sveltejs_adapter_cloudflare: string;
 		npm_package_devDependencies__sveltejs_kit: string;
 		npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
 		npm_package_devDependencies__typescript_eslint_parser: string;
