@@ -17,8 +17,8 @@
 		<h1 class="text-white text-[12rem] font-brand font-bold text-gradient from-pink-600 to-yellow-400 bg-gradient-to-br">Explore</h1>
 		<p class="text-white w-1/3 mt-8 text-center text-4xl">Over <span title="{rand.toString()}" class="font-bold text-gradient from-pink-600 to-yellow-400 bg-gradient-to-br">{formattedRand}</span> of the latest and best datapacks from creators across the globe</p>
 		<div class="flex w-1/2 items-center justify-evenly mt-16">
-			<button class="text-pink-400 bg-pink-400 bg-opacity-20 font-brand rounded-md px-3 py-2 text-3xl">Lorem</button>
-			<button class="px-3 py-2 bg-orange-400 rounded-md font-bold font-brand text-3xl">Discover</button>
+			<button class="text-pink-400 bg-pink-400 bg-opacity-20 font-brand rounded-md px-3 py-2 text-2xl">Lorem</button>
+			<button class="px-3 py-2 bg-orange-400 rounded-md font-bold font-brand text-2xl">Discover</button>
 		</div>
 	</div>
 </body>
