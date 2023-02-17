@@ -13,9 +13,22 @@
 }
 
 .thing {
+    animation-name: thing;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 
 }
 
 @keyframes thing {
-    
+    0% {
+        max-width: 0;
+    }
+
+    50% {
+        max-width: 100%;
+    }
+
+    100% {
+        max-width: 0;
+    }
 }

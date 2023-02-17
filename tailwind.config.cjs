@@ -6,6 +6,9 @@ const config = {
     extend: {
       fontFamily: {
         brand: ['Lexend', 'sans-serif']
+      },
+      colors: {
+        newWhite: ['#F5E8D0']
       }
     },
   },
