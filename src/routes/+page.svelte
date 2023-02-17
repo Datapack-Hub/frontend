@@ -19,7 +19,7 @@
 		visible = true;
 		addEventListener('animationiteration', e => {
 			if(e.animationName == "thing") {
-				if(counter > 1) counter = 0
+				if(counter > 2) counter = 0
 				activeText = texts[counter]
 				counter++
 			}
