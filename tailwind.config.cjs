@@ -8,7 +8,7 @@ const config = {
         brand: ['Lexend', 'sans-serif']
       },
       colors: {
-        newWhite: ['#F5E8D0']
+        newWhite: '#F5E8D0'
       }
     },
   },

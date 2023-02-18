@@ -12,14 +12,13 @@
     -webkit-text-fill-color: transparent;
 }
 
-.thing {
-    animation-name: thing;
+.shrink-anim {
+    animation-name: shrink;
     animation-duration: 3s;
     animation-iteration-count: infinite;
-
 }
 
-@keyframes thing {
+@keyframes shrink {
     0% {
         max-width: 0;
     }
