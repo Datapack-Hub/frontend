@@ -15,6 +15,7 @@
 .shrink-anim {
     animation-name: shrink;
     animation-duration: 3s;
+    animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
 
