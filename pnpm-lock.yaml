@@ -15,6 +15,7 @@ specifiers:
   svelte: ^3.55.1
   svelte-check: ^2.10.3
   svelte-preprocess: ^4.10.7
+  sveltejs-tippy: ^3.0.0
   tailwindcss: ^3.2.7
   tslib: ^2.5.0
   typescript: ^4.9.5
@@ -35,6 +36,7 @@ devDependencies:
   svelte: 3.55.1
   svelte-check: 2.10.3_gqx7lw3sljhsd4bstor5m2aa2u
   svelte-preprocess: 4.10.7_b25a55hc532q56kmuqlrolam2i
+  sveltejs-tippy: 3.0.0
   tailwindcss: 3.2.7_postcss@8.4.21
   tslib: 2.5.0
   typescript: 4.9.5
@@ -329,6 +331,10 @@ packages:
 
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
+    dev: true
+
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
     dev: true
 
   /@sveltejs/adapter-auto/1.0.3_@sveltejs+kit@1.7.1:
@@ -1866,6 +1872,12 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
+  /sveltejs-tippy/3.0.0:
+    resolution: {integrity: sha512-LAfQikm61AeqZW1hCFWUsmGEMmhMHDvrPV0JhbT38Ell9SqBjmFaY//+YKUxaJvx6nLMxGQdlcHA1rDg2Ml8tQ==}
+    dependencies:
+      tippy.js: 6.0.3
+    dev: true
+
   /tailwindcss/3.2.7_postcss@8.4.21:
     resolution: {integrity: sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ==}
     engines: {node: '>=12.13.0'}
@@ -1909,6 +1921,12 @@ packages:
     dependencies:
       globalyzer: 0.1.0
       globrex: 0.1.2
+    dev: true
+
+  /tippy.js/6.0.3:
+    resolution: {integrity: sha512-buQF6HugTA4YeSA/s9xBhu0ferEAx7sRSn45G+Juh3p+Dz3vEKfxtqdg6JUnHIWDCV/r0u8Lrobs9AB4dtYcUQ==}
+    dependencies:
+      '@popperjs/core': 2.11.6
     dev: true
 
   /to-regex-range/5.0.1:

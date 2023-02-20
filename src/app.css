@@ -19,6 +19,7 @@
     animation-iteration-count: infinite;
 }
 
+
 @keyframes shrink {
     0% {
         max-width: 0;

@@ -16,3 +16,5 @@ declare namespace App {
 		caches: CacheStorage & { default: Cache }
 	}
 }
+
+declare module 'sveltejs-tippy';
