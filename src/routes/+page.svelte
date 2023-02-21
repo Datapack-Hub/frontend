@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import ButtonPrimary from '../components/ButtonPrimary.svelte';
+	import ButtonPrimary from '../components/buttons/ButtonPrimary.svelte';
 	import ButtonSecondary from '../components/ButtonSecondary.svelte';
 	import Navbar from '../components/Navbar.svelte';
 	import { isDark, loadColorPref } from '../globals';
