@@ -17,9 +17,9 @@
 			: 'translate-y-4'} opacity-10 blur-md"
 	/>
 	<div
-		class="h-16 flex absolute top-0 items-center {!isSmallWidth
-			? 'justify-between'
-			: 'justify-center translate-y-4'} w-screen px-4"
+		class="h-16 flex absolute top-0 items-center justify-between {!isSmallWidth
+			? ''
+			: 'translate-y-4'} w-screen px-4"
 	>
 		<div class="flex items-center">
 			<a href="/" target="_self" class="flex items-center">

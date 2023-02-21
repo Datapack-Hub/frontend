@@ -69,6 +69,7 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
+	export const npm_package_dependencies_idb_keyval: string;
 	export const npm_package_devDependencies_autoprefixer: string;
 	export const npm_package_devDependencies_eslint: string;
 	export const npm_package_devDependencies_eslint_plugin_svelte3: string;
@@ -78,6 +79,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_sveltejs_tippy: string;
 	export const npm_package_devDependencies_svelte_check: string;
 	export const npm_package_devDependencies_svelte_preprocess: string;
+	export const npm_package_devDependencies_svelte_typewriter: string;
 	export const npm_package_devDependencies_tailwindcss: string;
 	export const npm_package_devDependencies_tslib: string;
 	export const npm_package_devDependencies_typescript: string;
@@ -217,6 +219,7 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
+		npm_package_dependencies_idb_keyval: string;
 		npm_package_devDependencies_autoprefixer: string;
 		npm_package_devDependencies_eslint: string;
 		npm_package_devDependencies_eslint_plugin_svelte3: string;
@@ -226,6 +229,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_sveltejs_tippy: string;
 		npm_package_devDependencies_svelte_check: string;
 		npm_package_devDependencies_svelte_preprocess: string;
+		npm_package_devDependencies_svelte_typewriter: string;
 		npm_package_devDependencies_tailwindcss: string;
 		npm_package_devDependencies_tslib: string;
 		npm_package_devDependencies_typescript: string;

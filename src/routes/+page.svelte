@@ -4,6 +4,8 @@
 	import ButtonSecondary from '../components/ButtonSecondary.svelte';
 	import Navbar from '../components/Navbar.svelte';
 	import { isDark, loadColorPref } from '../globals';
+	import Typewriter from 'svelte-typewriter'
+  import ReactionsBar from '../components/ReactionsBar.svelte';
 
 	let rand = Math.floor(Math.random() * 10_000_000);
 	let formattedRand = Intl.NumberFormat('en', {
@@ -13,19 +15,18 @@
 	let visible = false;
 	let texts = ['Explore', 'Create', 'Play'];
 	let activeText = 'Explore';
-	let counter = 1;
+	let counter = 0
 
 	onMount(() => {
 		visible = true;
-		addEventListener('animationiteration', (e) => {
-			if (e.animationName == 'shrink') {
-				if (counter > 2) counter = 0;
-				activeText = texts[counter];
-				counter++;
-			}
-		});
-		isDark.set(loadColorPref());
+		loadColorPref().then((v) => isDark.set(v));
 	});
+
+	let cycle = () => {
+		if (counter > 2) counter = 0;
+		activeText = texts[counter];
+		counter++;
+	}
 </script>
 
 <main class="{$isDark ? 'dark' : ''} h-screen">
@@ -33,11 +34,13 @@
 		<Navbar />
 		{#if visible}
 			<div class="flex flex-col items-center justify-center h-screen w-screen">
-				<h1
-					class="dark:text-newWhite text-black text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold text-gradient from-pink-600 to-yellow-400 bg-gradient-to-br relative overflow-clip shrink-anim"
-				>
-					{activeText}
-				</h1>
+				<Typewriter mode="loop" cursor={false} on:done={cycle}>
+					<h1
+						class="dark:text-newWhite text-black text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold text-gradient from-pink-600 to-yellow-400 bg-gradient-to-br relative overflow-clip"
+					>
+						{activeText}
+					</h1>
+				</Typewriter>
 				<p
 					class="dark:text-newWhite text-black w-2/3 md:w-1/2 lg:w-1/3 mt-12 text-center sm:text-2xl md:text-3xl lg:text-4xl"
 				>
@@ -57,5 +60,6 @@
 				</div>
 			</div>
 		{/if}
+		<ReactionsBar/>
 	</div>
 </main>

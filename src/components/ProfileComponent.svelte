@@ -2,8 +2,7 @@
     import tippy from "sveltejs-tippy";
 
     const props = {
-        content: "<span class='tooltip'>Styled tooltip text</span>",
-        allowHTML: true,
+        content: "Silabear",
         placement: "bottom"
     };
 </script>
@@ -19,6 +18,6 @@ use:tippy={props}
         <!-- <p class="text-right mr-3 w-18 text-yellow-500 font-brand text-xs">⬤ Developer</p> -->
     </div>
     <div>
-        <img src="sila.jpg" alt="user profile" height="32" width="32" class="rounded-full outline outline-2 outline-yellow-500 outline-offset-2">
+        <img src="sila_baby.jpg" alt="user profile" height="32" width="32" class="rounded-full outline outline-2 outline-yellow-500 outline-offset-2">
     </div>
 </a>
