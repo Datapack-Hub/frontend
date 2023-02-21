@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import ButtonPrimary from '../components/buttons/ButtonPrimary.svelte';
-	import ButtonSecondary from '../components/ButtonSecondary.svelte';
+	import ButtonSecondary from '../components/buttons/ButtonSecondary.svelte';
 	import Navbar from '../components/Navbar.svelte';
 	import { isDark, loadColorPref } from '../globals';
-	import Typewriter from 'svelte-typewriter'
-  import ReactionsBar from '../components/ReactionsBar.svelte';
+	import Typewriter from 'svelte-typewriter';
+	import ReactionsBar from '../components/ReactionsBar.svelte';
 
 	let rand = Math.floor(Math.random() * 10_000_000);
 	let formattedRand = Intl.NumberFormat('en', {
@@ -15,7 +15,7 @@
 	let visible = false;
 	let texts = ['Explore', 'Create', 'Play'];
 	let activeText = 'Explore';
-	let counter = 0
+	let counter = 0;
 
 	onMount(() => {
 		visible = true;
@@ -26,7 +26,7 @@
 		if (counter > 2) counter = 0;
 		activeText = texts[counter];
 		counter++;
-	}
+	};
 </script>
 
 <main class="{$isDark ? 'dark' : ''} h-screen">
@@ -60,6 +60,6 @@
 				</div>
 			</div>
 		{/if}
-		<ReactionsBar/>
+		<ReactionsBar />
 	</div>
 </main>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-  	import ColorSchemeSelector from './ColorSchemeSelector.svelte';
+  	import ColorSchemeSelector from './buttons/ColorSchemeSelector.svelte';
   import ProfileComponent from './ProfileComponent.svelte';
 	let isSmallWidth: boolean;
 
