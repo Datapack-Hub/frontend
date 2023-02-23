@@ -3,7 +3,7 @@
 	import ButtonPrimary from '../components/buttons/ButtonPrimary.svelte';
 	import ButtonSecondary from '../components/buttons/ButtonSecondary.svelte';
 	import Navbar from '../components/Navbar.svelte';
-	import { isDark, loadColorPref } from '../globals';
+	import { isDark, loadColorPref } from './globals';
 	import Typewriter from 'svelte-typewriter';
 	import ReactionsBar from '../components/ReactionsBar.svelte';
 

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onDestroy } from 'svelte';
     import { draw } from 'svelte/transition';
-	import { isDark } from '../globals';
+	import { isDark } from '../../routes/globals';
 	import { set } from 'idb-keyval';
 
 	let dark: boolean;
