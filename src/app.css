@@ -1,0 +1,35 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.v-center {
+    transform: translateY(-50%);
+}
+
+.text-gradient {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.shrink-anim {
+    animation-name: shrink;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes shrink {
+    0% {
+        max-width: 0;
+    }
+
+    50% {
+        max-width: 100%;
+    }
+
+    100% {
+        max-width: 0;
+    }
+}
