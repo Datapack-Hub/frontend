@@ -1,5 +1,17 @@
 <script lang="ts">
+<<<<<<< Updated upstream
 	let rand = Math.floor(Math.random() * 1_000_000_000)
+=======
+	import { onMount } from 'svelte';
+	import ButtonPrimary from '../components/buttons/ButtonPrimary.svelte';
+	import ButtonSecondary from '../components/buttons/ButtonSecondary.svelte';
+	import Navbar from '../components/Navbar.svelte';
+	import { isDark, loadColorPref } from './globals';
+	import Typewriter from 'svelte-typewriter';
+	import ReactionsBar from '../components/ReactionsBar.svelte';
+
+	let rand = Math.floor(Math.random() * 10_000_000);
+>>>>>>> Stashed changes
 	let formattedRand = Intl.NumberFormat('en', {
 		notation: "compact"
 	}).format(rand)
