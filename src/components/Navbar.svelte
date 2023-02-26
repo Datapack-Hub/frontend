@@ -14,7 +14,7 @@
 	<div
 		class="w-full bg-gradient-to-br from-pink-600 to-yellow-400 py-4 h-20 {!isSmallWidth
 			? '-translate-y-4'
-			: 'translate-y-4'} opacity-10 blur-md"
+			: 'translate-y-4'} opacity-10"
 	/>
 	<div
 		class="h-16 flex absolute top-0 items-center justify-between {!isSmallWidth
