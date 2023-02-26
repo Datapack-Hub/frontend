@@ -76,19 +76,19 @@
 					id="indexText1"
 					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0 left-1/2 w-1/2 -translate-x-1/2 text-center"
 				>
-					<span class="letters text-white inline-block">Explore</span>
+					<span class="letters text-dphOrange inline-block">Explore</span>
 				</h1>
 				<h1
 					id="indexText2"
 					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0 left-1/2 w-1/2 -translate-x-1/2 text-center"
 				>
-					<span class="letters text-white inline-block">Create</span>
+					<span class="letters text-dphOrange inline-block">Create</span>
 				</h1>
 				<h1
 					id="indexText3"
 					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0 left-1/2 w-1/2 -translate-x-1/2 text-center"
 				>
-					<span class="letters text-white inline-block">Play</span>
+					<span class="letters text-dphOrange inline-block">Play</span>
 				</h1>
 			</div>
 			<p
@@ -105,7 +105,7 @@
 			<div
 				class="flex w-2/3 md:w-1/2 lg:w-1/2 items-center justify-evenly mt-8 md:mt-16"
 			>
-				<ButtonSecondary>Lorem</ButtonSecondary>
+				<ButtonPrimary>Text Here</ButtonPrimary>
 				<ButtonPrimary>Discover</ButtonPrimary>
 			</div>
 		</div>
