@@ -1,36 +1,111 @@
 <script lang="ts">
-<<<<<<< Updated upstream
-	let rand = Math.floor(Math.random() * 1_000_000_000)
-=======
 	import { onMount } from 'svelte';
 	import ButtonPrimary from '../components/buttons/ButtonPrimary.svelte';
 	import ButtonSecondary from '../components/buttons/ButtonSecondary.svelte';
 	import Navbar from '../components/Navbar.svelte';
 	import { isDark, loadColorPref } from './globals';
-	import Typewriter from 'svelte-typewriter';
-	import ReactionsBar from '../components/ReactionsBar.svelte';
+	import anime from 'animejs/lib/anime.es';
 
 	let rand = Math.floor(Math.random() * 10_000_000);
->>>>>>> Stashed changes
 	let formattedRand = Intl.NumberFormat('en', {
-		notation: "compact"
-	}).format(rand)
+		notation: 'compact',
+	}).format(rand);
+
+	onMount(async () => {
+		var textWrapper = document.querySelectorAll('.split-text .letters');
+		textWrapper.forEach((el) => {
+			el.innerHTML = el?.textContent?.replace(
+				/\S/g,
+				"<span class='letter'>$&</span>"
+			);
+		});
+
+		anime
+			.timeline({ loop: true, autoplay: true })
+			.add({
+				targets: '#indexText1 .letter',
+				translateY: ['1.1em', 0],
+				duration: 750,
+				delay: (el, i) => 50 * i,
+			})
+			.add({
+				targets: '#indexText1',
+				opacity: 0,
+				duration: 1000,
+				easing: 'easeOutExpo',
+				delay: 1000,
+			})
+			.add({
+				targets: '#indexText2 .letter',
+				translateY: ['1.1em', 0],
+				duration: 750,
+				delay: (el, i) => 50 * i,
+			})
+			.add({
+				targets: '#indexText2',
+				opacity: 0,
+				duration: 1000,
+				easing: 'easeOutExpo',
+				delay: 1000,
+			})
+			.add({
+				targets: '#indexText3 .letter',
+				translateY: ['1.1em', 0],
+				duration: 750,
+				delay: (el, i) => 50 * i,
+			})
+			.add({
+				targets: '#indexText3',
+				opacity: 0,
+				duration: 1000,
+				easing: 'easeOutExpo',
+				delay: 1000,
+			});
+		loadColorPref().then((v) => isDark.set(v));
+	});
 </script>
 
-<body class="bg-black h-screen">
-	<nav class="w-screen fixed">
-		<div class="w-full bg-gradient-to-br from-pink-600 to-yellow-400 py-4 h-20 -translate-y-2 opacity-10 blur-md"></div>
-		<div class="h-16 flex absolute top-0 justify-center items-center px-4">
-			<img src="dph.png" alt="logo" class="h-8 rounded-full">
-			<p class="text-white ml-2 font-brand text-xl">Datapack Hub</p>
-		</div>
-	</nav>
-	<div class="flex flex-col items-center justify-center h-screen w-screen">
-		<h1 class="text-white text-[12rem] font-brand font-bold text-gradient from-pink-600 to-yellow-400 bg-gradient-to-br">Explore</h1>
-		<p class="text-white w-1/3 mt-8 text-center text-4xl">Over <span title="{rand.toString()}" class="font-bold text-gradient from-pink-600 to-yellow-400 bg-gradient-to-br">{formattedRand}</span> of the latest and best datapacks from creators across the globe</p>
-		<div class="flex w-1/2 items-center justify-evenly mt-16">
-			<button class="text-pink-400 bg-pink-400 bg-opacity-20 font-brand rounded-md px-3 py-2 text-3xl">Lorem</button>
-			<button class="px-3 py-2 bg-orange-400 rounded-md font-bold font-brand text-3xl">Discover</button>
+<main class="{$isDark ? 'dark' : ''} h-screen">
+	<div class="dark:bg-stone-900 bg-newWhite transition-all">
+		<Navbar />
+		<div class="flex flex-col items-center justify-center h-screen w-screen overflow-visible">
+			<div>
+				<h1
+					id="indexText1"
+					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold text-gradient inline-block overflow-y-hidden"
+				>
+					<span class="letters inline-block">Explore</span>
+				</h1>
+				<h1
+					id="indexText2"
+					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold text-gradient inline-block overflow-y-hidden"
+				>
+					<span class="letters inline-block">Create</span>
+				</h1>
+				<h1
+					id="indexText3"
+					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold text-gradient inline-block overflow-y-hidden"
+				>
+					<span class="letters inline-block">Play</span>
+				</h1>
+			</div>
+			<p
+				class="dark:text-newWhite text-black w-2/3 md:w-1/2 lg:w-1/3 mt-12 text-center sm:text-2xl md:text-3xl lg:text-4xl"
+			>
+				Over <span
+					title={rand.toString()}
+					class="font-bold text-gradient from-pink-600 to-yellow-400 bg-gradient-to-br"
+				>
+					{formattedRand}
+				</span>
+				of the latest and best datapacks from creators across the globe
+			</p>
+			<div
+				class="flex w-2/3 md:w-1/2 lg:w-1/2 items-center justify-evenly mt-8 md:mt-16"
+			>
+				<ButtonSecondary>Lorem</ButtonSecondary>
+				<ButtonPrimary>Discover</ButtonPrimary>
+			</div>
 		</div>
 	</div>
-</body>
+</main>

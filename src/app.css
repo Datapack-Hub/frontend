@@ -1,0 +1,40 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.v-center {
+    transform: translateY(-50%);
+}
+
+.text-gradient {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @apply from-pink-600 to-yellow-400 bg-gradient-to-br
+}
+
+.shrink-anim {
+    animation-name: shrink;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.letter {
+    display: inline-block;
+    line-height: 1em;
+}
+
+@keyframes shrink {
+    0% {
+        max-width: 0;
+    }
+
+    50% {
+        max-width: 100%;
+    }
+
+    100% {
+        max-width: 0;
+    }
+}
