@@ -10,6 +10,7 @@
 .text-gradient {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    @apply from-pink-600 to-yellow-400 bg-gradient-to-br
 }
 
 .shrink-anim {
@@ -19,6 +20,10 @@
     animation-iteration-count: infinite;
 }
 
+.letter {
+    display: inline-block;
+    line-height: 1em;
+}
 
 @keyframes shrink {
     0% {
