@@ -69,24 +69,24 @@
 	<div class="dark:bg-stone-900 bg-newWhite transition-all">
 		<Navbar />
 		<div class="flex flex-col items-center justify-center h-screen w-screen overflow-visible">
-			<div>
+			<div class="relative w-full h-[4.5rem] md:h-24 lg:h-32 xl:h-40">
 				<h1
 					id="indexText1"
-					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold text-gradient inline-block overflow-y-hidden"
+					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0 left-1/2 w-1/2 -translate-x-1/2 text-center"
 				>
-					<span class="letters inline-block">Explore</span>
+					<span class="letters text-gradient inline-block">Explore</span>
 				</h1>
 				<h1
 					id="indexText2"
-					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold text-gradient inline-block overflow-y-hidden"
+					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0 left-1/2 w-1/2 -translate-x-1/2 text-center"
 				>
-					<span class="letters inline-block">Create</span>
+					<span class="letters text-gradient inline-block">Create</span>
 				</h1>
 				<h1
 					id="indexText3"
-					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold text-gradient inline-block overflow-y-hidden"
+					class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0 left-1/2 w-1/2 -translate-x-1/2 text-center"
 				>
-					<span class="letters inline-block">Play</span>
+					<span class="letters text-gradient inline-block">Play</span>
 				</h1>
 			</div>
 			<p
