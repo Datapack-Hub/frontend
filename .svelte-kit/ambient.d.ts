@@ -42,7 +42,7 @@ declare module '$env/static/private' {
 	export const ComSpec: string;
 	export const CONDA_PROMPT_MODIFIER: string;
 	export const DriverData: string;
-	export const EFC_13640: string;
+	export const EFC_12204: string;
 	export const FP_NO_HOST_CHECK: string;
 	export const GIT_ASKPASS: string;
 	export const GIT_INSTALL_ROOT: string;
@@ -69,6 +69,7 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
+	export const npm_package_dependencies_animejs: string;
 	export const npm_package_dependencies_idb_keyval: string;
 	export const npm_package_devDependencies_autoprefixer: string;
 	export const npm_package_devDependencies_eslint: string;
@@ -79,7 +80,6 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_sveltejs_tippy: string;
 	export const npm_package_devDependencies_svelte_check: string;
 	export const npm_package_devDependencies_svelte_preprocess: string;
-	export const npm_package_devDependencies_svelte_typewriter: string;
 	export const npm_package_devDependencies_tailwindcss: string;
 	export const npm_package_devDependencies_tslib: string;
 	export const npm_package_devDependencies_typescript: string;
@@ -90,6 +90,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies__sveltejs_kit: string;
 	export const npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
 	export const npm_package_devDependencies__typescript_eslint_parser: string;
+	export const npm_package_devDependencies__types_animejs: string;
 	export const npm_package_name: string;
 	export const npm_package_private: string;
 	export const npm_package_scripts_build: string;
@@ -192,7 +193,7 @@ declare module '$env/dynamic/private' {
 		ComSpec: string;
 		CONDA_PROMPT_MODIFIER: string;
 		DriverData: string;
-		EFC_13640: string;
+		EFC_12204: string;
 		FP_NO_HOST_CHECK: string;
 		GIT_ASKPASS: string;
 		GIT_INSTALL_ROOT: string;
@@ -219,6 +220,7 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
+		npm_package_dependencies_animejs: string;
 		npm_package_dependencies_idb_keyval: string;
 		npm_package_devDependencies_autoprefixer: string;
 		npm_package_devDependencies_eslint: string;
@@ -229,7 +231,6 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_sveltejs_tippy: string;
 		npm_package_devDependencies_svelte_check: string;
 		npm_package_devDependencies_svelte_preprocess: string;
-		npm_package_devDependencies_svelte_typewriter: string;
 		npm_package_devDependencies_tailwindcss: string;
 		npm_package_devDependencies_tslib: string;
 		npm_package_devDependencies_typescript: string;
@@ -240,6 +241,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies__sveltejs_kit: string;
 		npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
 		npm_package_devDependencies__typescript_eslint_parser: string;
+		npm_package_devDependencies__types_animejs: string;
 		npm_package_name: string;
 		npm_package_private: string;
 		npm_package_scripts_build: string;

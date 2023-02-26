@@ -18,3 +18,4 @@ declare namespace App {
 }
 
 declare module 'sveltejs-tippy';
+declare module 'typewriter-effect'
