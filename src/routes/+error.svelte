@@ -2,5 +2,5 @@
   import { page } from '$app/stores';
 </script>
 
-<p>Oopsy woopsy uwu we made a fucky wucky</p>
+<p>You've encountered an error</p>
 <p>{$page.error?.message}</p>
