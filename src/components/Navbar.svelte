@@ -12,7 +12,7 @@
 	});
 </script>
 
-<nav class="w-screen fixed {!isSmallWidth ? '' : 'bottom-0'} transition-all">
+<nav class="w-screen fixed {!isSmallWidth ? '' : 'bottom-0'} transition-all drop-shadow-md">
 	<div
 		class="w-full bg-gradient-to-br from-pink-600 to-yellow-400 py-4 h-20 {!isSmallWidth
 			? '-translate-y-4'

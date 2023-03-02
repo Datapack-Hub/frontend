@@ -8,21 +8,19 @@
 
   	export let data: PageData;
 
-
 	let rand = Math.floor(Math.random() * 10_000_000);
 	let formattedRand = Intl.NumberFormat('en', {
 		notation: 'compact',
 	}).format(rand);
-
+	
 	onMount(async () => {
 		var textWrapper = document.querySelectorAll('.split-text .letters');
 		textWrapper.forEach((el) => {
 			el.innerHTML = el?.textContent?.replace(
 				/\S/g,
 				"<span class='letter'>$&</span>"
-			);
-		});
-
+				);
+			});
 		anime
 			.timeline({ loop: true, autoplay: true })
 			.add({
