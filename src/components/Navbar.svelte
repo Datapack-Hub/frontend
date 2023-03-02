@@ -4,6 +4,8 @@
   import ProfileComponent from './ProfileComponent.svelte';
 	let isSmallWidth: boolean;
 
+	export let profileData: any
+
 	onMount(() => {
 		isSmallWidth = window.innerWidth < 768;
 		addEventListener('resize', () => (isSmallWidth = window.innerWidth < 768));
@@ -46,7 +48,7 @@
 		<div class="flex items-center">
 			<ColorSchemeSelector/>
 			<img src="bell.svg" alt="" class="dark:invert ml-6">
-			<ProfileComponent/>
+			<ProfileComponent data={profileData}/>
 		</div>
 	</div>
 </nav>

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
 	import tippy from 'sveltejs-tippy';
 
 	const props = {
@@ -6,10 +7,23 @@
 		placement: 'bottom',
 	};
 
-	let authenticated = true;
+	let authenticated = false;
+    let rankColor;
+    export let data: any;
 
 	// TODO: implement
-	function checkSignIn() {}
+	async function checkSignIn() {
+        if(data.profile) {
+            console.log(data)
+        }
+    }
+
+    let goToAuthPage: Function;
+
+    onMount(() => {
+        checkSignIn()
+        goToAuthPage = () => window.location.href = "https://api.datapackhub.net/auth/login"
+    })
 </script>
 
 <a
@@ -32,6 +46,13 @@
                 class="rounded-full outline outline-2 outline-yellow-500 outline-offset-2"
             />
         </div>
+    {:else}
+        <button
+            on:click|preventDefault={goToAuthPage()}
+            class="dark:text-newWhite text-black px-4 py-1 bg-dphOrange rounded-md text-sm md:text-md lg:text-lg hover:scale-110 transition-all active:brightness-75"
+        >
+            Sign in
+        </button>
     {/if}
 
 </a>

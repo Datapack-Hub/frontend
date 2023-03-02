@@ -9,8 +9,9 @@
 
 .text-gradient {
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    @apply from-pink-600 to-yellow-400 bg-gradient-to-br
+    @apply bg-gradient-to-br from-pink-700 to-dphOrange
 }
 
 .shrink-anim {
