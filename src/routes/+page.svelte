@@ -5,6 +5,7 @@
 	import { isDark, loadColorPref } from './globals';
 	import anime from 'animejs/lib/anime.es';
 	import type { PageData } from './$types';
+  import { browser } from '$app/environment';
 
 	export let data: PageData;
 
@@ -63,18 +64,20 @@
 				delay: 1000,
 			});
 
-		const res = await fetch('https://api.datapackhub.net/user/me', {
-			method: 'get',
-			credentials: 'include',
-		});
-		let data;
-
-		if (res.ok) {
-			data = await res.json();
-			console.log(data);
-		}
 		loadColorPref().then((v) => isDark.set(v));
 	});
+
+	if(browser) {
+		fetch('https://api.datapackhub.net/user/me', {
+			method: 'get',
+			credentials: 'include',
+		}).then((res) => {
+			if(res.ok) {
+				data = res.json();
+				console.log(data);
+			}
+		})
+	}
 </script>
 
 <main class="{$isDark ? 'dark' : ''} h-screen">
