@@ -4,10 +4,6 @@
 	import Navbar from '../components/Navbar.svelte';
 	import { isDark, loadColorPref } from './globals';
 	import anime from 'animejs/lib/anime.es';
-	import type { PageData } from './$types';
-	import { browser } from '$app/environment';
-
-	let data: any;
 
 	let rand = Math.floor(Math.random() * 10_000_000);
 	let formattedRand = Intl.NumberFormat('en', {
@@ -70,7 +66,7 @@
 
 <main class="{$isDark ? 'dark' : ''} h-screen">
 	<div class="dark:bg-stone-900 bg-newWhite transition-all">
-		<Navbar profileData={data} />
+		<Navbar />
 		<div
 			class="flex flex-col items-center justify-center h-screen w-screen overflow-visible"
 		>
