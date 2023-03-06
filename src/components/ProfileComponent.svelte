@@ -9,20 +9,24 @@
 
 	let authenticated = false;
     let rankColor;
-    export let data: any;
+    let data;
 
 	// TODO: implement
 	async function checkSignIn() {
-        if(data.profile) {
+        const res = await fetch("https://api.datapackhub.net/user/me", {
+            method: 'GET',
+            credentials: 'include'
+        })
+
+        if(res.ok) {
+            data = await res.json()
+            authenticated = true
             console.log(data)
         }
     }
 
-    let goToAuthPage: Function;
-
     onMount(() => {
         checkSignIn()
-        goToAuthPage = () => window.location.href = "https://api.datapackhub.net/auth/login"
     })
 </script>
 
@@ -47,12 +51,12 @@
             />
         </div>
     {:else}
-        <button
-            on:click|preventDefault={goToAuthPage()}
+        <a
+            href="https://api.datapackhub.net/auth/login"
             class="dark:text-newWhite text-black px-4 py-1 bg-dphOrange rounded-md text-sm md:text-md lg:text-lg hover:scale-110 transition-all active:brightness-75"
         >
             Sign in
-        </button>
+        </a>
     {/if}
 
 </a>

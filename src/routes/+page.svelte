@@ -6,21 +6,21 @@
 	import anime from 'animejs/lib/anime.es';
 	import type { PageData } from './$types';
 
-  	export let data: PageData;
+	export let data: PageData;
 
 	let rand = Math.floor(Math.random() * 10_000_000);
 	let formattedRand = Intl.NumberFormat('en', {
 		notation: 'compact',
 	}).format(rand);
-	
+
 	onMount(async () => {
 		var textWrapper = document.querySelectorAll('.split-text .letters');
 		textWrapper.forEach((el) => {
 			el.innerHTML = el?.textContent?.replace(
 				/\S/g,
 				"<span class='letter'>$&</span>"
-				);
-			});
+			);
+		});
 		anime
 			.timeline({ loop: true, autoplay: true })
 			.add({
@@ -62,13 +62,24 @@
 				easing: 'easeOutExpo',
 				delay: 1000,
 			});
+
+		const res = await fetch('https://api.datapackhub.net/user/me', {
+			method: 'get',
+			credentials: 'include',
+		});
+		let data;
+
+		if (res.ok) {
+			data = await res.json();
+			console.log(data);
+		}
 		loadColorPref().then((v) => isDark.set(v));
 	});
 </script>
 
 <main class="{$isDark ? 'dark' : ''} h-screen">
 	<div class="dark:bg-stone-900 bg-newWhite transition-all">
-		<Navbar profileData={data}/>
+		<Navbar profileData={data} />
 		<div
 			class="flex flex-col items-center justify-center h-screen w-screen overflow-visible"
 		>
