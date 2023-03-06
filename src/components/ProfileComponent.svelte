@@ -11,7 +11,7 @@
 		fetch('https://api.datapackhub.net/user/me', {
 			method: 'get',
 			credentials: 'include',
-		}).then((res) => {
+		}).then((res) => async {
 			if (res.ok) {
 				data = (await res.json()) as User;
 				console.log(data);
