@@ -1,3 +1,6 @@
 {
-	"/": []
+	"/": [],
+	"/user/[slug]": [
+		"src/routes/user/[slug]/+page.ts"
+	]
 }

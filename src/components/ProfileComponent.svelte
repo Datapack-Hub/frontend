@@ -26,7 +26,7 @@
 	target="_self"
 	class="ml-6 flex items-center justify-center"
 	use:tippy={{
-		content: data.username,
+		content: data?.username ?? "Sign In",
 		placement: 'bottom',
 	}}
 >

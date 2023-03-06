@@ -18,6 +18,7 @@
 				"<span class='letter'>$&</span>"
 			);
 		});
+		
 		anime
 			.timeline({ loop: true, autoplay: true })
 			.add({
