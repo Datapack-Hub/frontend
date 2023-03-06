@@ -5,9 +5,9 @@
 	import { isDark, loadColorPref } from './globals';
 	import anime from 'animejs/lib/anime.es';
 	import type { PageData } from './$types';
-  import { browser } from '$app/environment';
+	import { browser } from '$app/environment';
 
-	export let data: PageData;
+	let data: any;
 
 	let rand = Math.floor(Math.random() * 10_000_000);
 	let formattedRand = Intl.NumberFormat('en', {
@@ -66,18 +66,6 @@
 
 		loadColorPref().then((v) => isDark.set(v));
 	});
-
-	if(browser) {
-		fetch('https://api.datapackhub.net/user/me', {
-			method: 'get',
-			credentials: 'include',
-		}).then((res) => {
-			if(res.ok) {
-				data = res.json();
-				console.log(data);
-			}
-		})
-	}
 </script>
 
 <main class="{$isDark ? 'dark' : ''} h-screen">

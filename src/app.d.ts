@@ -4,7 +4,7 @@
 declare namespace App {
 	// interface Error {}
 	// interface Locals {}
-	interface PageData {}
+	// interface PageData {}
 	// interface Platform {}
 	interface Platform {
 		env: {
@@ -19,3 +19,11 @@ declare namespace App {
 
 declare module 'sveltejs-tippy';
 declare module 'typewriter-effect'
+
+declare type User = {
+	id: number,
+	username: string,
+	bio: string,
+	role: string,
+	profile_icon: string
+}
