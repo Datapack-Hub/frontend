@@ -27,3 +27,13 @@ declare type User = {
 	role: string,
 	profile_icon: string
 }
+
+declare type Project = {
+	id: number,
+	image: string,
+	author: string,
+	name: string,
+	slug: string,
+	description: string?,
+	tags: string[]
+}

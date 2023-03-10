@@ -7,6 +7,11 @@
 	let rankColor;
 	let data: User;
 
+	let props = {
+		content: "Sign In",
+		placement: 'bottom',
+	}
+	
 	if (browser) {
 		fetch('https://api.datapackhub.net/user/me', {
 			method: 'get',
@@ -14,21 +19,19 @@
 		}).then(async (res) => {
 			if (res.ok) {
 				data = await res.json() as User;
+				props.content = data.username
 				authenticated = true
-				console.log(data);
 			}
 		});
 	}
+	
 </script>
 
 <a
 	href="/"
 	target="_self"
 	class="ml-6 flex items-center justify-center"
-	use:tippy={{
-		content: data?.username ?? "Sign In",
-		placement: 'bottom',
-	}}
+	use:tippy={props}
 >
 	{#if authenticated}
 		<div>

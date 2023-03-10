@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import ButtonPrimary from '../components/buttons/ButtonLink.svelte';
-	import Navbar from '../components/Navbar.svelte';
-	import { isDark, loadColorPref } from './globals';
+	import ButtonPrimary from '$components/buttons/ButtonLink.svelte';
 	import anime from 'animejs/lib/anime.es';
 
 	let rand = Math.floor(Math.random() * 10_000_000);
@@ -13,12 +11,12 @@
 	onMount(async () => {
 		var textWrapper = document.querySelectorAll('.split-text .letters');
 		textWrapper.forEach((el) => {
-			el.innerHTML = el?.textContent?.replace(
+			el.innerHTML = el.textContent!.replace(
 				/\S/g,
 				"<span class='letter'>$&</span>"
 			);
 		});
-		
+
 		anime
 			.timeline({ loop: true, autoplay: true })
 			.add({
@@ -60,14 +58,11 @@
 				easing: 'easeOutExpo',
 				delay: 1000,
 			});
-
-		loadColorPref().then((v) => isDark.set(v));
 	});
 </script>
 
-<main class="{$isDark ? 'dark' : ''} h-screen">
+<main class="h-screen">
 	<div class="dark:bg-stone-900 bg-newWhite transition-all">
-		<Navbar />
 		<div
 			class="flex flex-col items-center justify-center h-screen w-screen overflow-visible"
 		>

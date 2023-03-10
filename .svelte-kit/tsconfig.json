@@ -1,6 +1,16 @@
 {
 	"compilerOptions": {
-		"paths": {},
+		"paths": {
+			"$components": [
+				"../src/components"
+			],
+			"$components/*": [
+				"../src/components/*"
+			],
+			"$globals": [
+				"../src/routes/globals.ts"
+			]
+		},
 		"rootDirs": [
 			"..",
 			"./types"
