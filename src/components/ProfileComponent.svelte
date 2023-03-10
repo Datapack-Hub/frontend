@@ -8,23 +8,22 @@
 	let data: User;
 
 	let props = {
-		content: "Sign In",
+		content: 'Sign In',
 		placement: 'bottom',
-	}
-	
-	if (browser) {
-		fetch('https://api.datapackhub.net/user/me', {
+	};
+
+	onMount(async () => {
+		let res = await fetch('https://api.datapackhub.net/user/me', {
 			method: 'get',
 			credentials: 'include',
-		}).then(async (res) => {
-			if (res.ok) {
-				data = await res.json() as User;
-				props.content = data.username
-				authenticated = true
-			}
-		});
-	}
-	
+		})
+		
+		if (res.ok) {
+			data = (await res.json()) as User;
+			props.content = data.username;
+			authenticated = true;
+		}
+	});
 </script>
 
 <a
@@ -38,7 +37,7 @@
 			<!-- <p class="text-right mr-3 w-18 dark:text-white font-brand">Silabear</p> -->
 			<!-- <p class="text-right mr-3 w-18 text-yellow-500 font-brand text-xs">⬤ Developer</p> -->
 		</div>
-		<div>
+		<a href="https://datapackhub.net/user/{data.id}">
 			<img
 				src={data.profile_icon}
 				alt="{data.username}'s profile picture"
@@ -46,7 +45,7 @@
 				width="32"
 				class="rounded-full outline outline-2 outline-yellow-500 outline-offset-2"
 			/>
-		</div>
+		</a>
 	{:else}
 		<a
 			href="https://api.datapackhub.net/auth/login"

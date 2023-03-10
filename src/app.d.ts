@@ -30,10 +30,9 @@ declare type User = {
 
 declare type Project = {
 	id: number,
-	image: string,
-	author: string,
-	name: string,
+	author: number,
+	icon: string?,
+	title: string,
 	slug: string,
 	description: string?,
-	tags: string[]
 }

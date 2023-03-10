@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { exampleProjects } from '$globals';
+	import { browser } from '$app/environment';
+	import ProjectComponent from '$components/ProjectComponent.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 
-	function titleCase(str: string) {
+	function titleCase(str: string): string {
 		return str
 			.toLowerCase()
 			.split(' ')
@@ -35,34 +36,15 @@
 			</p>
 		</div>
 		<div class="w-full overflow-scroll mx-24 h-full overflow-y-scroll">
-			{#each exampleProjects as project}
-				<div class="bg-stone-800 text-white rounded-lg bg-cover flex my-1 items-center overflow-scroll">
-					<img
-						src={project.image}
-						alt="project icon"
-						class="aspect-square bg-cover h-24 rounded-lg ml-4"
-					/>
-					<div class="p-2">
-						<p class="ml-4 font-brand text-2xl">{project.name}</p>
-						<p class="ml-4 text-sm text-opacity-20">By {project.author}</p>
-						<p class="m-4">{project.description}</p>
-					</div>
-				</div>
-			{/each}
-			{#each exampleProjects as project}
-				<div class="bg-stone-800 text-white rounded-lg bg-cover flex my-1 items-center overflow-scroll">
-					<img
-						src={project.image}
-						alt="project icon"
-						class="aspect-square bg-cover h-24 rounded-lg ml-4"
-					/>
-					<div class="p-2">
-						<p class="ml-4 font-brand text-2xl">{project.name}</p>
-						<p class="ml-4 text-sm text-opacity-20">By {project.author}</p>
-						<p class="m-4">{project.description}</p>
-					</div>
-				</div>
-			{/each}
+			{#if data.projects.length == 0}
+				<p class="dark:text-white text-opacity-40 text-3xl text-center mt-48">
+					No projects!
+				</p>
+			{:else}
+				{#each data.projects as project}
+					<ProjectComponent {project} />
+				{/each}
+			{/if}
 		</div>
 	</div>
 </main>

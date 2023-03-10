@@ -43,8 +43,6 @@ declare module '$env/static/private' {
 	export const CONDA_PROMPT_MODIFIER: string;
 	export const DriverData: string;
 	export const EFC_12272: string;
-	export const FPS_BROWSER_APP_PROFILE_STRING: string;
-	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const FP_NO_HOST_CHECK: string;
 	export const GIT_ASKPASS: string;
 	export const GIT_INSTALL_ROOT: string;
@@ -153,6 +151,7 @@ declare module '$env/static/private' {
 	export const windir: string;
 	export const windows_tracing_flags: string;
 	export const windows_tracing_logfile: string;
+	export const __COMPAT_LAYER: string;
 }
 
 /**
@@ -199,8 +198,6 @@ declare module '$env/dynamic/private' {
 		CONDA_PROMPT_MODIFIER: string;
 		DriverData: string;
 		EFC_12272: string;
-		FPS_BROWSER_APP_PROFILE_STRING: string;
-		FPS_BROWSER_USER_PROFILE_STRING: string;
 		FP_NO_HOST_CHECK: string;
 		GIT_ASKPASS: string;
 		GIT_INSTALL_ROOT: string;
@@ -309,6 +306,7 @@ declare module '$env/dynamic/private' {
 		windir: string;
 		windows_tracing_flags: string;
 		windows_tracing_logfile: string;
+		__COMPAT_LAYER: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: string]: string | undefined;
 	}
