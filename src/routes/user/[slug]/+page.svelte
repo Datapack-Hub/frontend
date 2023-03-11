@@ -57,6 +57,7 @@
 			<span>
 			⬤ {titleCase(data.profile.role)}
 			</span>
+			
 			{/if}
 			</p>
 		</div>
