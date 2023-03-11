@@ -27,7 +27,7 @@
 	>
 		<div class="flex items-center">
 			<a href="/" target="_self" class="flex items-center">
-				<img src="/dph.png" alt="logo" class="h-8 rounded-full" />
+				<img src="/dph.svg" alt="logo" class="h-8 rounded-full" />
 				{#if !isSmallWidth}
 					<p class="dark:text-white text-black ml-2 font-brand font-bold text-2xl">
 						Datapack Hub
