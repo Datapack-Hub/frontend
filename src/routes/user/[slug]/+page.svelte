@@ -5,9 +5,11 @@
 
 	export let data: PageData;
 	
+	export let rolcol;
+	
 	switch(data.profile.role){
 	   case "admin": {
-	      const rolcol = "red-500"
+	      rolcol = "red-500"
 	   }
 	}
 
