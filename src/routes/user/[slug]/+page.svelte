@@ -4,6 +4,31 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+	
+	export let rolcol;
+	
+	switch(data.profile.role){
+	   case "admin": {
+	      rolcol = "text-red-500"
+	      break;
+	   }
+	   case "moderator":{
+	      rolcol = "text-orange-500"
+	      break;
+	   }
+	   case "developer": {
+	      rolcol = "text-lime-500";
+	      break;
+	   }
+	   case "helper": {
+	      rolcol = "text-blue-500"
+	      break;
+	   }
+	   default: {
+	      rolcol = "dark:text-white"
+	      break;
+	   }
+	}
 
 	function titleCase(str: string): string {
 		return str
@@ -28,11 +53,15 @@
 			<p class="dark:text-white text-5xl font-brand font-bold mt-8">
 				{data.profile.username}
 			</p>
+			<p class="dark:text-white text-lg font-brand font-bold">
+			{#if data.profile.role != "default"}
+			<span class={rolcol}>
+			⬤ {titleCase(data.profile.role)}
+			</span>
+			{/if}
+			</p>
 			<p class="dark:text-white text-lg mt-4 font-brand font-light">
 				{data.profile.bio}
-			</p>
-			<p class="dark:text-white text-lg font-brand font-light">
-				{titleCase(data.profile.role)}
 			</p>
 		</div>
 		<div class="w-full overflow-scroll mx-24 h-full overflow-y-scroll">
