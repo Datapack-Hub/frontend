@@ -2,7 +2,6 @@
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import tippy from 'sveltejs-tippy';
-	import { loadRoleColour } from '$globals';
 
 	let authenticated = false;
 	let rankColor;
@@ -45,7 +44,7 @@
 				alt="{data.username}'s profile picture"
 				height="32"
 				width="32"
-				class="rounded-full outline outline-2 outline-{loadRoleColour(data.role)} outline-offset-2"
+				class="rounded-full outline outline-2 {data.role}-outline outline-offset-2"
 			/>
 			{:else}
 			<img
@@ -66,3 +65,37 @@
 		</a>
 	{/if}
 </a>
+
+<style lang="postcss">
+	.admin-outline {
+		@apply outline-red-500
+	}
+
+	.admin-text {
+		@apply text-red-500
+	}
+
+	.moderator-outline {
+		@apply outline-orange-500
+	}
+
+	.moderator-text {
+		@apply text-orange-500
+	}
+
+	.developer-outline {
+		@apply outline-lime-500
+	}
+
+	.developer-text {
+		@apply text-lime-500
+	}
+
+	.helper-outline {
+		@apply outline-blue-500
+	}
+
+	.helper-text {
+		@apply text-blue-500
+	}
+</style>
