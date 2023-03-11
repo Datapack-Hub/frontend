@@ -46,12 +46,7 @@
 			</span>
 			
 			{:else if data.profile.role == "helper"}
-			<span class="text-teal-500">
-			⬤ {titleCase(data.profile.role)}
-			</span>
-			
-			{:else}
-			<span>
+			<span class="text-sky-600">
 			⬤ {titleCase(data.profile.role)}
 			</span>
 			
