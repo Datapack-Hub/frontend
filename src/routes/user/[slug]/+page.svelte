@@ -1,15 +1,33 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import ProjectComponent from '$components/ProjectComponent.svelte';
+	import ProjectComponent from '$components/ProjectComponent.svelte';i
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 	
 	export let rolcol;
 	
-	if(data.profile.role == "admin"){
-	   rolcol = "text-red-500"
-	}
+	switch(data.profile.role){
+	   case "admin": {
+	      rolcol = "text-red-500"
+	      break;
+	   }
+	   case "moderator":{
+	      rolcol = "text-orange-500"
+	      break;
+	   }
+	   case "developer": {
+	      rolcol = "text-lime-500";
+	      break;
+	   }
+	   case "helper": {
+	      rolcol = "text-blue-500"
+	      break;
+	   }
+	   default: {
+	      rolcol = "dark:text-white"
+	      break;
+	   }
 
 	function titleCase(str: string): string {
 		return str
@@ -35,9 +53,11 @@
 				{data.profile.username}
 			</p>
 			<p class="dark:text-white text-lg font-brand font-bold">
+			{#if data.profile.role != "default"}
 			<span class={rolcol}>
 			⬤ {titleCase(data.profile.role)}
 			</span>
+			{/if}
 			</p>
 			<p class="dark:text-white text-lg mt-4 font-brand font-light">
 				{data.profile.bio}
