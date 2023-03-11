@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import ProjectComponent from '$components/ProjectComponent.svelte';i
+	import ProjectComponent from '$components/ProjectComponent.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
