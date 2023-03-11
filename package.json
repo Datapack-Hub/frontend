@@ -24,7 +24,7 @@
     "eslint-plugin-svelte3": "^4.0.0",
     "postcss": "^8.4.21",
     "postcss-load-config": "^4.0.1",
-    "svelte": "^3.55.1",
+    "svelte": "^3.56.0",
     "svelte-check": "^2.10.3",
     "svelte-preprocess": "^4.10.7",
     "sveltejs-tippy": "^3.0.0",

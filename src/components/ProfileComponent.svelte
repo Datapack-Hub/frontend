@@ -37,7 +37,7 @@
 			<!-- <p class="text-right mr-3 w-18 dark:text-white font-brand">Silabear</p> -->
 			<!-- <p class="text-right mr-3 w-18 text-yellow-500 font-brand text-xs">⬤ Developer</p> -->
 		</div>
-		<a href="https://datapackhub.net/user/{data.id}">
+		<a href="/user/{data.id}">
 			<img
 				src={data.profile_icon}
 				alt="{data.username}'s profile picture"

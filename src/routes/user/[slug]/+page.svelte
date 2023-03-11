@@ -5,7 +5,7 @@
 
 	export let data: PageData;
 	
-	export let rolcol;
+	export let rolcol: string;
 	
 	switch(data.profile.role){
 	   case "admin": {
