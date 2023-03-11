@@ -46,7 +46,7 @@
 			</span>
 			
 			{:else if data.profile.role == "helper"}
-			<span class="text-sky-600">
+			<span class="text-blue-500">
 			⬤ {titleCase(data.profile.role)}
 			</span>
 			
