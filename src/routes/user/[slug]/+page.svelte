@@ -7,10 +7,8 @@
 	
 	export let rolcol;
 	
-	switch(data.profile.role){
-	   case "admin": {
-	      rolcol = "red-500"
-	   }
+	if(data.profile.role == "admin"){
+	   rolcol = "red-500"
 	}
 
 	function titleCase(str: string): string {
