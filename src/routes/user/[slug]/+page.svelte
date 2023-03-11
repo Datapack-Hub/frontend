@@ -28,6 +28,7 @@
 	      rolcol = "dark:text-white"
 	      break;
 	   }
+	}
 
 	function titleCase(str: string): string {
 		return str
