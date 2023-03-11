@@ -1,7 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
 
-
     export let project: Project
 
     let author = "";

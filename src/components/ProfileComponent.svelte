@@ -2,6 +2,7 @@
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import tippy from 'sveltejs-tippy';
+	import { loadRoleColour } from '$globals';
 
 	let authenticated = false;
 	let rankColor;
@@ -34,10 +35,19 @@
 >
 	{#if authenticated}
 		<div>
-			<!-- <p class="text-right mr-3 w-18 dark:text-white font-brand">Silabear</p> -->
-			<!-- <p class="text-right mr-3 w-18 text-yellow-500 font-brand text-xs">⬤ Developer</p> -->
+			<!-- <p class="text-right mr-3 w-18 dark:text-white font-brand">Silabear</p>
+			<p class="text-right mr-3 w-18 text-yellow-500 font-brand text-xs">⬤ Developer</p> -->
 		</div>
 		<a href="/user/{data.id}">
+			{#if data.role != "default"}
+			<img
+				src={data.profile_icon}
+				alt="{data.username}'s profile picture"
+				height="32"
+				width="32"
+				class="rounded-full outline outline-2 outline-{loadRoleColour(data.role)} outline-offset-2"
+			/>
+			{:else}
 			<img
 				src={data.profile_icon}
 				alt="{data.username}'s profile picture"
@@ -45,6 +55,7 @@
 				width="32"
 				class="rounded-full outline outline-2 outline-yellow-500 outline-offset-2"
 			/>
+			{/if}
 		</a>
 	{:else}
 		<a
