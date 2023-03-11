@@ -32,22 +32,27 @@
 				{data.profile.bio}
 			</p>
 			<p class="dark:text-white text-lg font-brand font-light">
+			
 			{#if data.profile.role == "admin"}
 			<span class="text-red-500">
 			⬤ {titleCase(data.profile.role)}
 			</span>
+			
 			{:else if data.profile.role == "developer"}
 			<span class="text-lime-500">
 			⬤ {titleCase(data.profile.role)}
 			</span>
+			
 			{:else if data.profile.role == "moderator"}
 			<span class="text-orange-400">
 			⬤ {titleCase(data.profile.role)}
 			</span>
+			
 			{:else if data.profile.role == "helper"}
 			<span class="text-teal-500>
 			⬤ {titleCase(data.profile.role)}
 			</span>
+			
 			{:else}
 			<span>
 			⬤ {titleCase(data.profile.role)}
