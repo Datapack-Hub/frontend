@@ -4,6 +4,11 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+	
+	switch(data.profile.role){
+	   case "admin": {
+	      const rolcol = "red-500"
+	   }
 
 	function titleCase(str: string): string {
 		return str
@@ -29,28 +34,9 @@
 				{data.profile.username}
 			</p>
 			<p class="dark:text-white text-lg font-brand font-bold">
-			
-			{#if data.profile.role == "admin"}
-			<span class="text-red-500">
+			<span class="text-{rolcol}">
 			⬤ {titleCase(data.profile.role)}
 			</span>
-			
-			{:else if data.profile.role == "developer"}
-			<span class="text-lime-500">
-			⬤ {titleCase(data.profile.role)}
-			</span>
-			
-			{:else if data.profile.role == "moderator"}
-			<span class="text-orange-400">
-			⬤ {titleCase(data.profile.role)}
-			</span>
-			
-			{:else if data.profile.role == "helper"}
-			<span class="text-blue-500">
-			⬤ {titleCase(data.profile.role)}
-			</span>
-			
-			{/if}
 			</p>
 			<p class="dark:text-white text-lg mt-4 font-brand font-light">
 				{data.profile.bio}
