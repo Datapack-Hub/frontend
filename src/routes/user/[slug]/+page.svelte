@@ -8,7 +8,7 @@
 	export let rolcol;
 	
 	if(data.profile.role == "admin"){
-	   rolcol = "red-500"
+	   rolcol = "text-red-500"
 	}
 
 	function titleCase(str: string): string {
@@ -35,7 +35,7 @@
 				{data.profile.username}
 			</p>
 			<p class="dark:text-white text-lg font-brand font-bold">
-			<span class="text-{rolcol}">
+			<span class={rolcol}>
 			⬤ {titleCase(data.profile.role)}
 			</span>
 			</p>
