@@ -9,6 +9,7 @@
 	   case "admin": {
 	      const rolcol = "red-500"
 	   }
+	}
 
 	function titleCase(str: string): string {
 		return str
