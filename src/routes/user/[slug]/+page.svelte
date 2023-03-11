@@ -53,7 +53,7 @@
 			⬤ {titleCase(data.profile.role)}
 			</span>
 			
-			{:else}
+			{:else if data.profile.role == "default"}
 			<span>
 			⬤ {titleCase(data.profile.role)}
 			</span>
