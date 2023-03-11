@@ -32,7 +32,19 @@
 				{data.profile.bio}
 			</p>
 			<p class="dark:text-white text-lg font-brand font-light">
-				{titleCase(data.profile.role)}
+			{#if data.profile.role == "admin"}
+			<span class="text-red-500">
+			{:else if data.profile.role == "developer"}
+			<span class="text-lime-500">
+			{:else if data.profile.role == "moderator"}
+			<span class="text-orange-400">
+			{:else if data.profile.role == "helper"}
+			<span class="text-teal-500>
+			{:else}
+			<span>
+			{/if}
+				⬤ {titleCase(data.profile.role)}
+			</span>
 			</p>
 		</div>
 		<div class="w-full overflow-scroll mx-24 h-full overflow-y-scroll">
