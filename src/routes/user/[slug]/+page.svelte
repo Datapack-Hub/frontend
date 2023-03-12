@@ -45,17 +45,23 @@
           </span>
         {/if}
       </p>
-      <p class="dark:text-white text-lg mt-4 font-brand font-light">
+      <p class="dark:bg-stone-800 mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light">
         "{data.profile.bio}"
       </p>
       {#if $isAuthenticated && $userData.id === data.profile.id}
+          <a
+          href="https://api.datapackhub.net/auth/login"
+          class="text-teal-400 bg-teal-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-1 md:py-2 text-md md:text-lg lg:text-xl hover:scale-105 transition-all border-2 border-teal-400 active:brightness-75"
+        >
         <img
-          src="../icons/settings.svg"
-          alt="settings"
-          width="24"
-          height="24"
-          class="invert"
-        />
+        src="../icons/settings.svg"
+        alt="settings"
+        width="24"
+        height="24"
+        class="float-left invert mr-2 max-w-sm"
+      />
+      Edit
+        </a>
       {/if}
     </div>
     <div
