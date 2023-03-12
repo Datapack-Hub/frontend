@@ -1,6 +1,31 @@
-<script>
+<script lang="ts">
   import { page } from '$app/stores';
+
+  let message = "";
+
+  switch($page.status) {
+    case 404:
+      message = "This link either stopped existing, no longer exists, or never existed in the first place, you may want to check if the link is correct!";
+      break;
+  
+    case 401:
+      message = "You are forbidden from accessing this part of the site! If you think this is an error, please authenticate and try again!";
+      break;
+  
+    case 500:
+      message = "Our servers are currently blowing up, look what you did!";
+      break;
+    
+    default:
+      message = "We haven't coded a message for this error yet! If you think we should, reach out to us, or, if you're a dev, make a pull request."
+  }
 </script>
 
-<p>Well, well, well. Looks like silly Cobblestone did an oopsie. Let's blame him and then make him fix the bug, even though it's very likely not their fault and more the fault of sillybear not adding cors to some dumb api route. Anyway, here is your probably undescriptive and useless error (it probably says Internal Error or smth dumb like that idfk):</p>
-<p>{$page.error?.message}</p>
+<main class="dark:bg-stone-900 bg-newWhite transition-colors h-screen w-full flex items-center">
+
+  <p class="font-brand text-[15rem] dark:text-white w-1/2 text-center">{$page.status}</p>
+  <div class="w-1/3">
+    <p class="font-brand text-9xl dark:text-white mb-6">{$page.error?.message}</p>
+    <p class="font-brand text-2xl dark:text-white opacity-40">{message}</p>
+  </div>
+</main>
