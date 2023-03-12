@@ -49,23 +49,13 @@
       use:tippy={notificiationHoverMsg}
     />
     <a href="/user/{$userData.id}" use:tippy={personHoverMsg}>
-      {#if $userData.role != "default"}
-        <img
-          src={$userData.profile_icon}
-          alt="{$userData.username}'s profile picture"
-          height="32"
-          width="32"
-          class="rounded-full outline outline-2 {$userData.role}-outline outline-offset-2 ml-6"
-        />
-      {:else}
-        <img
-          src={$userData.profile_icon}
-          alt="{$userData.username}'s profile picture"
-          height="32"
-          width="32"
-          class="rounded-full outline outline-2 outline-yellow-500 outline-offset-2 ml-6"
-        />
-      {/if}
+      <img
+        src={$userData.profile_icon}
+        alt="{$userData.username}'s profile picture"
+        height="32"
+        width="32"
+        class="rounded-full outline outline-2 {$userData.role}-outline outline-offset-2 ml-6"
+      />
     </a>
   {:else}
     <a
@@ -93,5 +83,9 @@
 
   .helper-outline {
     @apply outline-blue-500;
+  }
+
+  .default-outline {
+    @apply outline-yellow-500;
   }
 </style>

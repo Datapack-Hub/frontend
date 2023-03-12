@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { page } from "$app/stores";
   import ProjectComponent from "$components/ProjectComponent.svelte";
   import { isAuthenticated, userData } from "$globals";
   import type { PageData } from "./$types";
@@ -24,24 +23,14 @@
     class="flex flex-col items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-32"
   >
     <div class="flex flex-col items-center">
-      {#if data.profile.role != "default"}
-        <img
-          src={data.profile.profile_icon}
-          alt="{data.profile.username}'s profile picture"
-          height="128"
-          width="128"
-          class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 {data
-            .profile.role}-outline outline-offset-4 mr-6"
-        />
-      {:else}
-        <img
-          src={data.profile.profile_icon}
-          alt="{data.profile.username}'s profile picture"
-          height="128"
-          width="128"
-          class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 outline-white outline-offset-4 mr-6"
-        />
-      {/if}
+      <img
+        src={data.profile.profile_icon}
+        alt="{data.profile.username}'s profile picture"
+        height="128"
+        width="128"
+        class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 {data
+          .profile.role}-outline outline-offset-4 mr-6"
+      />
 
       <p
         class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-8"
@@ -65,6 +54,7 @@
           alt="settings"
           width="24"
           height="24"
+          class="invert"
         />
       {/if}
     </div>
@@ -115,5 +105,13 @@
 
   .helper-text {
     @apply text-blue-500;
+  }
+
+  .default-outline {
+    @apply outline-yellow-500;
+  }
+
+  .default-text {
+    @apply text-yellow-500;
   }
 </style>
