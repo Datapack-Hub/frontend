@@ -46,7 +46,6 @@
     </div>
     <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
       <ColorSchemeSelector />
-      <img src="/bell.svg" width="32" height="32" alt="wip" class="dark:invert ml-6 z-20" />
       <ProfileComponent />
     </div>
   </div>

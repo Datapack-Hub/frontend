@@ -109,7 +109,6 @@ declare module '$env/static/private' {
 	export const OS: string;
 	export const Path: string;
 	export const PATHEXT: string;
-	export const PNPM_HOME: string;
 	export const PNPM_SCRIPT_SRC_DIR: string;
 	export const POSH_AZURE_ENABLED: string;
 	export const POSH_CURSOR_COLUMN: string;
@@ -264,7 +263,6 @@ declare module '$env/dynamic/private' {
 		OS: string;
 		Path: string;
 		PATHEXT: string;
-		PNPM_HOME: string;
 		PNPM_SCRIPT_SRC_DIR: string;
 		POSH_AZURE_ENABLED: string;
 		POSH_CURSOR_COLUMN: string;
