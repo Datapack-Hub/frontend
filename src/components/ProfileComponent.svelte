@@ -36,10 +36,6 @@
 
 <a href="/" target="_self" class="ml-6 flex items-center justify-center z-20">
   {#if $isAuthenticated}
-    <div>
-      <!-- <p class="text-right mr-3 w-18 dark:text-white font-brand">Silabear</p>
-			<p class="text-right mr-3 w-18 text-yellow-500 font-brand text-xs">⬤ Developer</p> -->
-    </div>
     <img
       src="../icons/bell.svg"
       width="32"
@@ -48,7 +44,7 @@
       class="dark:invert z-20"
       use:tippy={notificiationHoverMsg}
     />
-    <a href="/user/{$userData.id}" use:tippy={personHoverMsg}>
+    <a href="/user/{$userData.username}" use:tippy={personHoverMsg}>
       <img
         src={$userData.profile_icon}
         alt="{$userData.username}'s profile picture"

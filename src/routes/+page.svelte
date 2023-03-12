@@ -65,7 +65,7 @@
 </script>
 
 <svelte:head>
-  <title>Datapack Hub</title>
+	<title>Datapack Hub</title>
 </svelte:head>
 
 <main class="h-screen">

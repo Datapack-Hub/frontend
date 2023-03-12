@@ -44,6 +44,13 @@
       >
         Create
       </a>
+      <a
+        href="https://discord.gg/aEXsdjjdu4"
+        target="_self"
+        class="pl-4 text-indigo-500 text-black text-lg font-brand font-light hover:text-indigo-400 active:text-neutral-400 z-20"
+      >
+        Discord
+      </a>
     </div>
     <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
       <ColorSchemeSelector />
