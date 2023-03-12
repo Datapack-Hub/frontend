@@ -11,25 +11,23 @@
   });
 </script>
 
-<nav
-  class="w-screen fixed {!isSmallWidth
-    ? ''
-    : 'bottom-0'} transition-all"
->
-  <div
-    class="funky-gradient w-screen px-4"
-  >
+<nav class="w-screen fixed {!isSmallWidth ? '' : 'bottom-0'} transition-all">
+  <div class="funky-gradient w-screen px-4">
     <div class="flex items-center mt-4 md:mt-0">
-      <a href="/" target="_self" on:click={() => goto("/")} class="flex items-center z-20">
+      <p
+        on:click={() => goto("/")}
+        on:keypress={(k) => goto("/")}
+        class="flex items-center z-20"
+      >
         <img src="/dph.svg" alt="logo" class="h-8 rounded-full" />
         {#if !isSmallWidth}
-          <p
+          <span
             class="dark:text-white text-black ml-2 font-brand font-bold text-2xl"
           >
             Datapack Hub
-          </p>
+          </span>
         {/if}
-      </a>
+      </p>
       <a
         href="/"
         target="_self"
@@ -52,7 +50,9 @@
         Discord
       </a>
     </div>
-    <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
+    <div
+      class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0"
+    >
       <ColorSchemeSelector />
       <ProfileComponent />
     </div>
