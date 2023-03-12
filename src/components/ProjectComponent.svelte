@@ -7,7 +7,7 @@
 
   (async () => {
     if (!browser) return;
-    let res = await fetch(`https://api.datapackhub.net/user/${project.author}`);
+    let res = await fetch(`https://api.datapackhub.net/user/id/${project.author}`);
     author = ((await res.json()) as User).username;
   })();
 </script>

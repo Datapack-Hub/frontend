@@ -64,6 +64,10 @@
   });
 </script>
 
+<svelte:head>
+	<title>Datapack Hub</title>
+</svelte:head>
+
 <main class="h-screen">
   <div class="dark:bg-stone-900 bg-newWhite transition-all">
     <div

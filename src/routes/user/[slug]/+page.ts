@@ -16,6 +16,7 @@ export const load = (async ({ params }) => {
       projects: projectJson
     };
   }
- 
+  const projectText = await projects.text() as string;
+  console.log(projects.status + ` | https://api.datapackhub.net/user/${params.slug}/projects` + ` | ${projectText}`)
   throw error(user.status, user.statusText);
 }) satisfies PageLoad;

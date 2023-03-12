@@ -44,7 +44,7 @@
       class="dark:invert z-20"
       use:tippy={notificiationHoverMsg}
     />
-    <a href="/user/{$userData.id}" use:tippy={personHoverMsg}>
+    <a href="/user/{$userData.username}" use:tippy={personHoverMsg}>
       <img
         src={$userData.profile_icon}
         alt="{$userData.username}'s profile picture"
