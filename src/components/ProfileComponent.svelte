@@ -31,7 +31,7 @@
 <a
 	href="/"
 	target="_self"
-	class="ml-6 flex items-center justify-center"
+	class="ml-6 flex items-center justify-center z-20"
 	use:tippy={props}
 >
 	{#if authenticated}
