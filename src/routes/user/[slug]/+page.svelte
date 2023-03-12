@@ -16,6 +16,10 @@
   }
 </script>
 
+<svelte:head>
+  <title>{$userData.username} - Datapack Hub</title>
+</svelte:head>
+
 <main
   class="dark:bg-stone-900 bg-newWhite transition-all px-4 lg:px-32 xl:px-64"
 >

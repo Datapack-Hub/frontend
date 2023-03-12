@@ -64,6 +64,10 @@
   });
 </script>
 
+<svelte:head>
+  <title>Datapack Hub</title>
+</svelte:head>
+
 <main class="h-screen">
   <div class="dark:bg-stone-900 bg-newWhite transition-all">
     <div
@@ -89,7 +93,7 @@
           <span class="letters text-dphOrange inline-block">Play</span>
         </h1>
       </div>
-      <p
+      <h2
         class="dark:text-newWhite text-black w-2/3 md:w-1/2 lg:w-1/3 mt-12 text-center sm:text-2xl md:text-3xl lg:text-4xl"
       >
         Over <span
@@ -99,7 +103,7 @@
           {formattedRand}
         </span>
         of the latest and best datapacks from creators across the globe
-      </p>
+      </h2>
       <div
         class="flex w-2/3 md:w-1/2 lg:w-1/2 items-center justify-evenly mt-8 md:mt-16"
       >
