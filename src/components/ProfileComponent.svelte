@@ -7,23 +7,25 @@
 	let rankColor;
 	let data: User;
 
-	let props = {
+	$: props = {
 		content: 'Sign In',
 		placement: 'bottom',
 	};
 
-	onMount(async () => {
-		let res = await fetch('https://api.datapackhub.net/user/me', {
-			method: 'get',
-			credentials: 'include',
-		})
-		
-		if (res.ok) {
-			data = (await res.json()) as User;
-			props.content = data.username;
-			authenticated = true;
+	(async () => {
+		if (browser) {
+			let res = await fetch('https://api.datapackhub.net/user/me', {
+				method: 'get',
+				credentials: 'include',
+			});
+
+			if (res.ok) {
+				data = (await res.json()) as User;
+				props.content = data.username;
+				authenticated = true;
+			}
 		}
-	});
+	})();
 </script>
 
 <a
@@ -38,22 +40,22 @@
 			<p class="text-right mr-3 w-18 text-yellow-500 font-brand text-xs">⬤ Developer</p> -->
 		</div>
 		<a href="/user/{data.id}">
-			{#if data.role != "default"}
-			<img
-				src={data.profile_icon}
-				alt="{data.username}'s profile picture"
-				height="32"
-				width="32"
-				class="rounded-full outline outline-2 {data.role}-outline outline-offset-2"
-			/>
+			{#if data.role != 'default'}
+				<img
+					src={data.profile_icon}
+					alt="{data.username}'s profile picture"
+					height="32"
+					width="32"
+					class="rounded-full outline outline-2 {data.role}-outline outline-offset-2"
+				/>
 			{:else}
-			<img
-				src={data.profile_icon}
-				alt="{data.username}'s profile picture"
-				height="32"
-				width="32"
-				class="rounded-full outline outline-2 outline-yellow-500 outline-offset-2"
-			/>
+				<img
+					src={data.profile_icon}
+					alt="{data.username}'s profile picture"
+					height="32"
+					width="32"
+					class="rounded-full outline outline-2 outline-yellow-500 outline-offset-2"
+				/>
 			{/if}
 		</a>
 	{:else}
@@ -68,34 +70,18 @@
 
 <style lang="postcss">
 	.admin-outline {
-		@apply outline-red-500
-	}
-
-	.admin-text {
-		@apply text-red-500
+		@apply outline-red-500;
 	}
 
 	.moderator-outline {
-		@apply outline-orange-500
-	}
-
-	.moderator-text {
-		@apply text-orange-500
+		@apply outline-orange-500;
 	}
 
 	.developer-outline {
-		@apply outline-lime-500
-	}
-
-	.developer-text {
-		@apply text-lime-500
+		@apply outline-lime-500;
 	}
 
 	.helper-outline {
-		@apply outline-blue-500
-	}
-
-	.helper-text {
-		@apply text-blue-500
+		@apply outline-blue-500;
 	}
 </style>
