@@ -52,6 +52,18 @@
   opacity: 1;
 }
 
+.styled-scrollbar::-webkit-scrollbar {
+  width: 0.15rem;
+}
+
+.styled-scrollbar::-webkit-scrollbar-track {
+  @apply bg-stone-800 rounded-full
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-stone-500 rounded-full
+}
+
 @keyframes shrink {
     0% {
         max-width: 0;

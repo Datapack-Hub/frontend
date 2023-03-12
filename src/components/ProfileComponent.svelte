@@ -1,14 +1,20 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { onMount } from "svelte";
+  import { isAuthenticated, userData } from "$globals";
   import tippy from "sveltejs-tippy";
 
-  let authenticated = false;
-  let rankColor;
-  let data: User;
-
-  $: props = {
+  let signInHoverMsg = {
     content: "Sign In",
+    placement: "bottom",
+  };
+
+  let personHoverMsg = {
+    content: "",
+    placement: "bottom",
+  };
+
+  let notificiationHoverMsg = {
+    content: "Notifications",
     placement: "bottom",
   };
 
@@ -20,55 +26,52 @@
       });
 
       if (res.ok) {
-        data = (await res.json()) as User;
-        props.content = data.username;
-        authenticated = true;
+        $userData = (await res.json()) as User;
+        personHoverMsg.content = $userData.username;
+        $isAuthenticated = true;
       }
     }
   })();
 </script>
 
-<a
-  href="/"
-  target="_self"
-  class="ml-6 flex items-center justify-center z-20"
-  use:tippy={props}
->
-  {#if authenticated}
+<a href="/" target="_self" class="ml-6 flex items-center justify-center z-20">
+  {#if $isAuthenticated}
     <div>
       <!-- <p class="text-right mr-3 w-18 dark:text-white font-brand">Silabear</p>
 			<p class="text-right mr-3 w-18 text-yellow-500 font-brand text-xs">⬤ Developer</p> -->
     </div>
-    <a href="/user/{data.id}">
-      {#if data.role != "default"}
+    <img
+      src="../icons/bell.svg"
+      width="32"
+      height="32"
+      alt="wip"
+      class="dark:invert ml-6 z-20"
+      use:tippy={notificiationHoverMsg}
+    />
+    <a href="/user/{$userData.id}" use:tippy={personHoverMsg}>
+      {#if $userData.role != "default"}
         <img
-          src={data.profile_icon}
-          alt="{data.username}'s profile picture"
+          src={$userData.profile_icon}
+          alt="{$userData.username}'s profile picture"
           height="32"
           width="32"
-          class="rounded-full outline outline-2 {data.role}-outline outline-offset-2"
+          class="rounded-full outline outline-2 {$userData.role}-outline outline-offset-2"
         />
       {:else}
         <img
-          src={data.profile_icon}
-          alt="{data.username}'s profile picture"
+          src={$userData.profile_icon}
+          alt="{$userData.username}'s profile picture"
           height="32"
           width="32"
           class="rounded-full outline outline-2 outline-yellow-500 outline-offset-2"
         />
       {/if}
     </a>
-    <img
-      src="/bell.svg"
-      width="32"
-      height="32"
-      alt="wip"
-      class="dark:invert ml-6 z-20"
-    />
   {:else}
     <a
       href="https://api.datapackhub.net/auth/login"
       class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-1 md:py-2 text-md md:text-lg lg:text-xl hover:scale-110 transition-all border-2 border-red-400 active:brightness-75"
+      use:tippy={signInHoverMsg}
     >
       Sign in
     </a>

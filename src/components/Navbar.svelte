@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
   import { onMount } from "svelte";
   import ColorSchemeSelector from "./buttons/ColorSchemeSelector.svelte";
   import ProfileComponent from "./ProfileComponent.svelte";
@@ -19,7 +20,7 @@
     class="funky-gradient w-screen px-4"
   >
     <div class="flex items-center mt-4 md:mt-0">
-      <a href="/" target="_self" class="flex items-center z-20">
+      <a href="/" target="_self" on:click={() => goto("/")} class="flex items-center z-20">
         <img src="/dph.svg" alt="logo" class="h-8 rounded-full" />
         {#if !isSmallWidth}
           <p

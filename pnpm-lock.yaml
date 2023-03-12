@@ -45,7 +45,7 @@ devDependencies:
   svelte-check: 3.1.2_w3wowcclux2zom2naamp3btumu
   svelte-preprocess: 5.0.1_myszeeawkmjjvrp5vs3t62owqy
   sveltejs-tippy: 3.0.0
-  tailwindcss: 3.2.7
+  tailwindcss: 3.2.7_postcss@8.4.21
   tslib: 2.5.0
   typescript: 4.9.5
   vite: 4.1.4
@@ -1934,10 +1934,12 @@ packages:
       tippy.js: 6.0.3
     dev: true
 
-  /tailwindcss/3.2.7:
+  /tailwindcss/3.2.7_postcss@8.4.21:
     resolution: {integrity: sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ==}
     engines: {node: '>=12.13.0'}
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3

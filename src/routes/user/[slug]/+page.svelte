@@ -1,5 +1,7 @@
 <script lang="ts">
+  import { page } from "$app/stores";
   import ProjectComponent from "$components/ProjectComponent.svelte";
+  import { isAuthenticated, userData } from "$globals";
   import type { PageData } from "./$types";
 
   export let data: PageData;
@@ -15,8 +17,12 @@
   }
 </script>
 
-<main class="dark:bg-stone-900 bg-newWhite transition-all px-4 lg:px-32 xl:px-64">
-  <div class="flex flex-col items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-32">
+<main
+  class="dark:bg-stone-900 bg-newWhite transition-all px-4 lg:px-32 xl:px-64"
+>
+  <div
+    class="flex flex-col items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-32"
+  >
     <div class="flex flex-col items-center">
       {#if data.profile.role != "default"}
         <img
@@ -24,8 +30,8 @@
           alt="{data.profile.username}'s profile picture"
           height="128"
           width="128"
-          class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 {data.profile
-            .role}-outline outline-offset-4"
+          class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 {data
+            .profile.role}-outline outline-offset-4"
         />
       {:else}
         <img
@@ -37,7 +43,9 @@
         />
       {/if}
 
-      <p class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-8">
+      <p
+        class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-8"
+      >
         {data.profile.username}
       </p>
 
@@ -51,8 +59,18 @@
       <p class="dark:text-white text-lg mt-4 font-brand font-light">
         "{data.profile.bio}"
       </p>
+      {#if $isAuthenticated && $userData.id === data.profile.id}
+        <img
+          src="../icons/settings.svg"
+          alt="settings"
+          width="24"
+          height="24"
+        />
+      {/if}
     </div>
-    <div class="w-full mx-24 h-full overflow-auto md:overflow-y-scroll mt-16 md:mt-0">
+    <div
+      class="w-full mx-24 h-full overflow-auto md:overflow-y-auto mt-16 md:mt-0 styled-scrollbar"
+    >
       {#if data.projects.length == 0}
         <p class="dark:text-white text-opacity-40 text-3xl text-center mt-48">
           No projects!
