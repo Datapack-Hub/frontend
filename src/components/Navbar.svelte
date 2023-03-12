@@ -17,12 +17,16 @@
       <p
         on:click={() => goto("/")}
         on:keypress={(k) => goto("/")}
-        class="flex items-center z-20"
+        class="flex items-center z-20 cursor-pointer"
       >
-        <img src="/dph.svg" alt="logo" class="h-8 rounded-full" />
+        <img
+          src="logos/dph.svg"
+          alt="logo"
+          class="h-8 rounded-full hover:brightness-75 transition-all"
+        />
         {#if !isSmallWidth}
           <span
-            class="dark:text-white text-black ml-2 font-brand font-bold text-2xl"
+            class="dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 hover:text-neutral-700 active:text-neutral-600 text-black ml-2 font-brand font-bold text-2xl transition-colors"
           >
             Datapack Hub
           </span>
@@ -31,21 +35,21 @@
       <a
         href="/"
         target="_self"
-        class="pl-8 dark:text-white text-black text-lg font-brand font-light hover:text-neutral-200 active:text-neutral-400 z-20"
+        class="pl-8 dark:text-white text-black text-lg font-brand font-light dark:hover:text-neutral-400 dark:active:text-neutral-500 hover:text-neutral-700 active:text-neutral-600 z-20 transition-colors"
       >
         Explore
       </a>
       <a
         href="/"
         target="_self"
-        class="pl-4 dark:text-white text-black text-lg font-brand font-light hover:text-neutral-200 active:text-neutral-400 z-20"
+        class="pl-4 dark:text-white text-black text-lg font-brand font-light dark:hover:text-neutral-400 dark:active:text-neutral-500 hover:text-neutral-700 active:text-neutral-600 z-20 transition-colors"
       >
         Create
       </a>
       <a
         href="https://discord.gg/aEXsdjjdu4"
         target="_self"
-        class="pl-4 text-indigo-500 text-black text-lg font-brand font-light hover:text-indigo-400 active:text-neutral-400 z-20"
+        class="pl-4 text-indigo-500 text-lg font-brand font-light hover:text-indigo-400 active:text-neutral-400 z-20 transition-colors"
       >
         Discord
       </a>

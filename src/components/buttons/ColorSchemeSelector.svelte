@@ -32,7 +32,7 @@
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="ml-6 w-12 md:w-12 cursor-pointer"
+        class="ml-6 w-12 md:w-12 cursor-pointer hover:brightness-75"
       >
         <path
           in:draw={{ duration: 500, speed: 5 }}
@@ -48,11 +48,11 @@
         height="32"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="currentColor"
+        stroke="black"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="ml-6 cursor-pointer"
+        class="ml-6 cursor-pointer hover: brightness-200"
       >
         <circle in:draw={{ duration: 500, speed: 5 }} cx="12" cy="12" r="5" />
         <line
