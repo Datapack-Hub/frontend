@@ -45,7 +45,7 @@
       width="32"
       height="32"
       alt="wip"
-      class="dark:invert ml-6 z-20"
+      class="dark:invert z-20"
       use:tippy={notificiationHoverMsg}
     />
     <a href="/user/{$userData.id}" use:tippy={personHoverMsg}>
@@ -55,7 +55,7 @@
           alt="{$userData.username}'s profile picture"
           height="32"
           width="32"
-          class="rounded-full outline outline-2 {$userData.role}-outline outline-offset-2"
+          class="rounded-full outline outline-2 {$userData.role}-outline outline-offset-2 ml-6"
         />
       {:else}
         <img
@@ -63,7 +63,7 @@
           alt="{$userData.username}'s profile picture"
           height="32"
           width="32"
-          class="rounded-full outline outline-2 outline-yellow-500 outline-offset-2"
+          class="rounded-full outline outline-2 outline-yellow-500 outline-offset-2 ml-6"
         />
       {/if}
     </a>
