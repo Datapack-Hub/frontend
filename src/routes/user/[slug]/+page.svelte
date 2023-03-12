@@ -31,7 +31,7 @@
           height="128"
           width="128"
           class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 {data
-            .profile.role}-outline outline-offset-4"
+            .profile.role}-outline outline-offset-4 mr-6"
         />
       {:else}
         <img
@@ -39,7 +39,7 @@
           alt="{data.profile.username}'s profile picture"
           height="128"
           width="128"
-          class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 outline-white outline-offset-4"
+          class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 outline-white outline-offset-4 mr-6"
         />
       {/if}
 
