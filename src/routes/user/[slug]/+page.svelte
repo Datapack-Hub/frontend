@@ -22,7 +22,7 @@
   <div
     class="flex flex-col items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-32"
   >
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center md:items-start">
       <img
         src={data.profile.profile_icon}
         alt="{data.profile.username}'s profile picture"
