@@ -8,7 +8,7 @@
     placement: "bottom",
   };
 
-  let personHoverMsg = {
+  $: personHoverMsg = {
     content: "",
     placement: "bottom",
   };
