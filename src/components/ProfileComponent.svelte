@@ -20,15 +20,20 @@
 
   (async () => {
     if (browser) {
-      let res = await fetch("https://api.datapackhub.net/user/me", {
-        method: "get",
-        credentials: "include",
-      });
+      let token = localStorage.getItem("dph_token");
+      if (token != null) {
+        let res = await fetch("https://api.datapackhub.net/user/me", {
+          method: "get",
+          headers: {
+            authentication: `Basic ${token}`,
+          },
+        });
 
-      if (res.ok) {
-        $userData = (await res.json()) as User;
-        personHoverMsg.content = $userData.username;
-        $isAuthenticated = true;
+        if (res.ok) {
+          $userData = (await res.json()) as User;
+          personHoverMsg.content = $userData.username;
+          $isAuthenticated = true;
+        }
       }
     }
   })();
