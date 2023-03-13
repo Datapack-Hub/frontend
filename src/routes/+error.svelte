@@ -9,7 +9,11 @@
       break;
   
     case 401:
-      message = "You are forbidden from accessing this part of the site! If you think this is an error, please authenticate and try again!";
+      message = "Please log in! This page contains data which needs you to be logged in!";
+      break;
+    
+    case 403:
+      message = "You don't have permission to visit this page! If you think this is an error, contact an admin!"
       break;
   
     case 500:

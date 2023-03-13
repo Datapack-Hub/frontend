@@ -37,7 +37,7 @@
 <a href="/" target="_self" class="ml-6 flex items-center justify-center z-20">
   {#if $isAuthenticated}
     <img
-      src="../icons/bell.svg"
+      src="/icons/bell.svg"
       width="32"
       height="32"
       alt="wip"
