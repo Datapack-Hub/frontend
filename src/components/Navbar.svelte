@@ -20,7 +20,7 @@
         class="flex items-center z-20 cursor-pointer"
       >
         <img
-          src="logos/dph.svg"
+          src="/logos/dph.svg"
           alt="logo"
           class="h-8 rounded-full hover:brightness-75 transition-all"
         />
