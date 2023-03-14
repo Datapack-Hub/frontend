@@ -2,7 +2,7 @@
   import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
-  import { isAuthenticated, fetchAuthed, userData, apiURL } from "$globals";
+  import { isAuthenticated, fetchAuthed, userData, apiURL, getCookie } from "$globals";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -22,7 +22,7 @@
 
   (async () => {
     if (browser) {
-      let token = localStorage.getItem("dph_token");
+      let token = await getCookie("dph_token");
       let query = $page.url.searchParams
 
       if (token != null) {
@@ -35,8 +35,23 @@
         }
       }
       if(query.has("login") && parseInt(query.get("login")!) == 1 && query.has("token")) {
-        let token = query.get("token")!
-        localStorage.setItem("dph_token", token)
+        let token = query.get("token")
+        const d = new Date();
+        d.setTime(d.getTime() + (30*24*60*60*1000));
+
+        let expires = d.toUTCString()
+
+        console.log(`dph_token=${token}; expires=${expires}`)
+        document.cookie = `dph_token=${token}; expires=${expires}`;
+        console.log("i am going to commit sad")
+
+        let res = await fetchAuthed("get", apiURL + "/user/me")
+
+        if (res.ok) {
+          $userData = (await res.json()) as User;
+          personHoverMsg.content = $userData.username;
+          $isAuthenticated = true;
+        }
         goto("/")
       }
     }
@@ -64,7 +79,7 @@
     </a>
   {:else}
     <a
-      href="https://api.datapackhub.net/auth/login"
+      href="{apiURL}/auth/login"
       class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-1 md:py-2 text-md md:text-lg lg:text-xl hover:scale-110 transition-all border-2 border-red-400 active:brightness-75"
       use:tippy={signInHoverMsg}
     >
