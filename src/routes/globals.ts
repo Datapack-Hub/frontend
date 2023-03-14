@@ -11,5 +11,10 @@ export async function loadColorPref(): Promise<boolean> {
 
 export async function fetchAuthed(method: string, url: string): Promise<Response> {
   const token = localStorage.getItem("dph_token")
-  return await fetch(url, { method: method, headers: { authentication: `Basic ${token}` }});
+  return await fetch(url, { method: method, headers: { Authorization: `Basic ${token}` }});
 }
+// Prod
+// export const apiURL = "https://api.datapackhub.net"
+
+// Dev:
+export const apiURL = "http://localhost:5000"

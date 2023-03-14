@@ -2,7 +2,7 @@
   import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
-  import { isAuthenticated, fetchAuthed, userData } from "$globals";
+  import { isAuthenticated, fetchAuthed, userData, apiURL } from "$globals";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -26,7 +26,7 @@
       let query = $page.url.searchParams
 
       if (token != null) {
-        let res = await fetchAuthed("get", "https://api.datapackhub.net/user/me")
+        let res = await fetchAuthed("get", apiURL + "/user/me")
 
         if (res.ok) {
           $userData = (await res.json()) as User;
