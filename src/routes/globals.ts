@@ -8,3 +8,8 @@ export const userData: Writable<User> = writable({id: -1, username: "", bio: "",
 export async function loadColorPref(): Promise<boolean> {
   return await get("dp_colorPref") ?? true
 }
+
+export async function fetchAuthed(method: string, url: string): Promise<Response> {
+  const token = localStorage.getItem("dph_token")
+  return await fetch(url, { method: method, headers: { authentication: `Basic ${token}` }});
+}

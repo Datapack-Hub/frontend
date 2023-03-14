@@ -1,6 +1,8 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { isAuthenticated, userData } from "$globals";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
+  import { isAuthenticated, fetchAuthed, userData } from "$globals";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -20,15 +22,22 @@
 
   (async () => {
     if (browser) {
-      let res = await fetch("https://api.datapackhub.net/user/me", {
-        method: "get",
-        credentials: "include",
-      });
+      let token = localStorage.getItem("dph_token");
+      let query = $page.url.searchParams
 
-      if (res.ok) {
-        $userData = (await res.json()) as User;
-        personHoverMsg.content = $userData.username;
-        $isAuthenticated = true;
+      if (token != null) {
+        let res = await fetchAuthed("get", "https://api.datapackhub.net/user/me")
+
+        if (res.ok) {
+          $userData = (await res.json()) as User;
+          personHoverMsg.content = $userData.username;
+          $isAuthenticated = true;
+        }
+      }
+      if(query.has("login") && parseInt(query.get("login")!) == 1 && query.has("token")) {
+        let token = query.get("token")!
+        localStorage.setItem("dph_token", token)
+        goto("/")
       }
     }
   })();
