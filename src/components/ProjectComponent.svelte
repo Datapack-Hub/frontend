@@ -1,5 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
+  import { apiURL, fetchAuthed} from "$globals";
 
   export let project: Project;
 
@@ -7,7 +8,7 @@
 
   (async () => {
     if (!browser) return;
-    let res = await fetch(`https://api.datapackhub.net/user/id/${project.author}`);
+    let res = await fetchAuthed("get", `${apiURL}/user/id/${project.author}`);
     author = ((await res.json()) as User).username;
   })();
 </script>
