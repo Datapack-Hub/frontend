@@ -11,7 +11,7 @@
   });
 </script>
 
-<nav class="dark:bg-stone-900 bg-newWhite w-screen {isSmallWidth ? '' : 'sticky'} {!isSmallWidth ? '' : 'fixed'} {!isSmallWidth ? '' : 'bottom-0'} transition-all">
+<nav class="w-screen fixed {!isSmallWidth ? '' : 'bottom-0'} transition-all">
   <div class="funky-gradient w-screen px-4">
     <div class="flex items-center mt-4 md:mt-0">
       <p
@@ -55,7 +55,7 @@
       </a>
     </div>
     <div
-      class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0 mr-4"
+      class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0"
     >
       <ColorSchemeSelector />
       <ProfileComponent />
