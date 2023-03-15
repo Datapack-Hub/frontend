@@ -52,7 +52,7 @@
       <p
         class="whitespace-pre-line dark:bg-stone-800 mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light"
       >
-        "{data.profile.bio.replaceAll("\\n", "\n")}"
+        {data.profile.bio.replaceAll("\\n", "\n")}
       </p>
       {#if $isAuthenticated && $userData.id === data.profile.id}
         <a
