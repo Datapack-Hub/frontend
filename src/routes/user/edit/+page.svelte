@@ -1,17 +1,5 @@
 <script lang="ts">
-    import { error } from '@sveltejs/kit';
-    import { isAuthenticated, userData } from "$globals";
-    import type { PageData } from "../edit/$types";
-  
-    function titleCase(str: string): string {
-      return str
-        .toLowerCase()
-        .split(" ")
-        .map((word) => {
-          return word.charAt(0).toUpperCase() + word.slice(1);
-        })
-        .join(" ");
-    }
+    import { userData } from "$globals";
   </script>
   
   <svelte:head>

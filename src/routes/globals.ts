@@ -1,5 +1,6 @@
 import { writable, type Writable } from "svelte/store"
 import { get } from 'idb-keyval';
+import { dev } from "$app/environment";
 
 export const isDark = writable(true)
 export const isAuthenticated = writable(false)
@@ -11,7 +12,7 @@ export async function loadColorPref(): Promise<boolean> {
 
 export async function fetchAuthed(method: string, url: string): Promise<Response> {
   console.log(await getCookie("dph_token"))
-  let resp = await fetch(url, { method: method, headers: { Authorization: `Basic ${await getCookie("dph_token")}` }});
+  const resp = await fetch(url, { method: method, headers: { Authorization: `Basic ${await getCookie("dph_token")}` }});
   if(resp.status == 498){
     removeCookie("dph_token")
   }
@@ -19,9 +20,9 @@ export async function fetchAuthed(method: string, url: string): Promise<Response
 }
 
 export async function getCookie(item: string) {
-  let name = item + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
+  const name = item + "=";
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const ca = decodedCookie.split(';');
   for(let i = 0; i <ca.length; i++) {
     let c = ca[i];
     while (c.charAt(0) == ' ') {
@@ -38,8 +39,8 @@ export async function removeCookie(name: string) {
   document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
-// Prod
-export const apiURL = "https://api.datapackhub.net"
-
-// Dev:
-// export const apiURL = "http://localhost:5000"
+// Fixed, Sila
+// replace with true or smth to force prod
+// it will show an error but should work
+// -Cobble
+export const apiURL = dev ? "http://localhost:5000" : "https://api.datapackhub.net"

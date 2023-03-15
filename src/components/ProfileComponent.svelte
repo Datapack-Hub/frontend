@@ -2,7 +2,13 @@
   import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
-  import { isAuthenticated, fetchAuthed, userData, apiURL, getCookie } from "$globals";
+  import {
+    isAuthenticated,
+    fetchAuthed,
+    userData,
+    apiURL,
+    getCookie,
+  } from "$globals";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -23,10 +29,10 @@
   (async () => {
     if (browser) {
       let token = await getCookie("dph_token");
-      let query = $page.url.searchParams
+      let query = $page.url.searchParams;
 
       if (token != null) {
-        let res = await fetchAuthed("get", apiURL + "/user/me")
+        let res = await fetchAuthed("get", apiURL + "/user/me");
 
         if (res.ok) {
           $userData = (await res.json()) as User;
@@ -34,25 +40,29 @@
           $isAuthenticated = true;
         }
       }
-      if(query.has("login") && parseInt(query.get("login")!) == 1 && query.has("token")) {
-        let token = query.get("token")
+      if (
+        query.has("login") &&
+        parseInt(query.get("login")!) == 1 &&
+        query.has("token")
+      ) {
+        let token = query.get("token");
         const d = new Date();
-        d.setTime(d.getTime() + (30*24*60*60*1000));
+        d.setTime(d.getTime() + 30 * 24 * 60 * 60 * 1000);
 
-        let expires = d.toUTCString()
+        let expires = d.toUTCString();
 
-        console.log(`dph_token=${token}; expires=${expires}`)
+        console.log(`dph_token=${token}; expires=${expires}`);
         document.cookie = `dph_token=${token}; expires=${expires}`;
-        console.log("i am going to commit sad")
+        console.log("i am going to commit sad");
 
-        let res = await fetchAuthed("get", apiURL + "/user/me")
+        let res = await fetchAuthed("get", apiURL + "/user/me");
 
         if (res.ok) {
           $userData = (await res.json()) as User;
           personHoverMsg.content = $userData.username;
           $isAuthenticated = true;
         }
-        goto("/")
+        goto("/");
       }
     }
   })();

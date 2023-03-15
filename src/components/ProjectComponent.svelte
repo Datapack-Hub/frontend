@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { apiURL, fetchAuthed} from "$globals";
+  import { apiURL, fetchAuthed } from "$globals";
 
   export let project: Project;
 

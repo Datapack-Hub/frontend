@@ -18,7 +18,7 @@ const config = {
     alias: {
       $components: "./src/components/",
       $globals: "./src/routes/globals.ts",
-    }
+    },
   },
 };
 
