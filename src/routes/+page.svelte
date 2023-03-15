@@ -68,7 +68,7 @@
 	<title>Datapack Hub</title>
 </svelte:head>
 
-<main class="h-screen">
+<main class="min-h-max">
   <div class="dark:bg-stone-900 bg-newWhite transition-all">
     <div
       class="flex flex-col items-center justify-center h-screen w-screen overflow-visible"

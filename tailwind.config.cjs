@@ -10,7 +10,8 @@ const config = {
       colors: {
         newWhite: '#F5E8D0',
         darkWhite: '#edd6ab',
-        dphOrange: '#ea580c'
+        dphOrange: '#ea580c',
+        footer: "#161312"
       }
     },
   },
