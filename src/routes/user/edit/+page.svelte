@@ -25,7 +25,7 @@
     <h1 class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-8 pb-10">
         Profile Settings for <span class="{$userData.role}-text">{$userData.username}</span>
     </h1>
-    <div class="align-middle">
+    <div class="align-middle text-center md:text-start">
       <p class="align-middle dark:text-newWhite font-brand">Username</p>
       <input class="dark:bg-stone-800 bg-darkWhite rounded-md dark:text-white h-10 text-lg p-2 font-brand" value={$userData.username}/>
       <br /><br />
