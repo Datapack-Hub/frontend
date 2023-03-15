@@ -10,6 +10,7 @@ export async function loadColorPref(): Promise<boolean> {
 }
 
 export async function fetchAuthed(method: string, url: string): Promise<Response> {
+  console.log(await getCookie("dph_token"))
   let resp = await fetch(url, { method: method, headers: { Authorization: `Basic ${await getCookie("dph_token")}` }});
   if(resp.status == 498){
     removeCookie("dph_token")
@@ -38,7 +39,7 @@ export async function removeCookie(name: string) {
 }
 
 // Prod
-// export const apiURL = "https://api.datapackhub.net"
+export const apiURL = "https://api.datapackhub.net"
 
 // Dev:
-export const apiURL = "http://localhost:5000"
+// export const apiURL = "http://localhost:5000"
