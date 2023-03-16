@@ -19,9 +19,9 @@ export async function fetchAuthed(method: string, url: string): Promise<Response
   return resp;
 }
 
-export async function postAuthed(method: string, url: string, body: object): Promise<Response> {
+export async function postAuthed(url: string, data: object): Promise<Response> {
   console.log(await getCookie("dph_token"))
-  const resp = await fetch(url, { method: method, headers: { Authorization: `Basic ${await getCookie("dph_token")}` }});
+  const resp = await fetch(url, { method: "post", body:JSON.stringify(data), headers: { Authorization: `Basic ${await getCookie("dph_token")}` }});
   if(resp.status == 498){
     removeCookie("dph_token")
   }
