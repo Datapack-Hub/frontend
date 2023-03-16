@@ -3,14 +3,14 @@
   import { page } from "$app/stores";
   import ProjectComponent from "$components/ProjectComponent.svelte";
   import { fetchAuthed, isAuthenticated, userData } from "$globals";
-  import { error } from "@sveltejs/kit";
 
-  let data: { profile: any; projects: any } = {
+  let data: { profile: User | null; projects: Project[] | null } = {
     profile: null,
     projects: null,
   };
 
-  function titleCase(str: string): string {
+  function titleCase(str: string | undefined): string {
+    if (str == undefined) return "null";
     return str
       .toLowerCase()
       .split(" ")
@@ -20,15 +20,13 @@
       .join(" ");
   }
 
-  (async () => {
+  async function load() {
     if (browser) {
       const [user, projects] = await Promise.all([
-        fetchAuthed(
-          "get",
+        fetch(
           `https://api.datapackhub.net/user/${$page.params.slug}`
         ),
-        fetchAuthed(
-          "get",
+        fetch(
           `https://api.datapackhub.net/user/${$page.params.slug}/projects`
         ),
       ]);
@@ -41,19 +39,14 @@
         };
         return;
       }
-      const projectText = (await projects.text()) as string;
-      console.log(
-        projects.status +
-          ` | https://api.datapackhub.net/user/${$page.params.slug}/projects` +
-          ` | ${projectText}`
-      );
-      throw error(user.status, user.statusText);
     }
-  })();
+  }
 </script>
 
 <svelte:head>
-  <title>{data.profile.username} | Datapack Hub</title>
+  {#await load() then}
+    <title>{data.profile?.username} | Datapack Hub</title>
+  {/await}
 </svelte:head>
 
 <main
@@ -63,58 +56,61 @@
     class="flex flex-col items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-32"
   >
     <div class="flex flex-col items-center md:items-start">
-      <img
-        src={data.profile.profile_icon}
-        alt="{data.profile.username}'s profile picture"
-        height="128"
-        width="128"
-        class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 {data
-          .profile.role}-outline outline-offset-4 mr-6"
-      />
+      {#await load()}
+        <p>Loading</p>
+      {:then}
+        <img
+          src={data.profile?.profile_icon}
+          alt="{data.profile?.username}'s profile picture"
+          height="128"
+          width="128"
+          class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 {data.profile?.role}-outline outline-offset-4 mr-6"
+        />
 
-      <p
-        class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-8"
-      >
-        {data.profile.username}
-      </p>
-
-      <p class="dark:text-white sm:text-base md:text-lg font-brand font-bold">
-        {#if data.profile.role != "default"}
-          <span class="{data.profile.role}-text">
-            ⬤ {titleCase(data.profile.role)}
-          </span>
-        {/if}
-      </p>
-      <p
-        class="whitespace-pre-line dark:bg-stone-800 mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light"
-      >
-        {data.profile.bio.replaceAll("\\n", "\n")}
-      </p>
-      {#if $isAuthenticated && $userData.id === data.profile.id}
-        <a
-          href="edit"
-          class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-2 md:py-2 text-md md:text-lg lg:text-xl hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 mt-2"
+        <p
+          class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-8"
         >
-          <img
-            src="../icons/settings.svg"
-            alt="settings"
-            width="24"
-            height="24"
-            class="float-left invert mr-2 max-w-sm stroke-red-400"
-          />
-          Profile Settings
-        </a>
-      {/if}
+          {data.profile?.username}
+        </p>
+
+        <p class="dark:text-white sm:text-base md:text-lg font-brand font-bold">
+          {#if data.profile?.role != "default"}
+            <span class="{data.profile?.role}-text">
+              ⬤ {titleCase(data.profile?.role)}
+            </span>
+          {/if}
+        </p>
+        <p
+          class="whitespace-pre-line dark:bg-stone-800 mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light"
+        >
+          {data.profile?.bio.replaceAll("\\n", "\n")}
+        </p>
+        {#if $isAuthenticated && $userData.id === data.profile?.id}
+          <a
+            href="edit"
+            class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-2 md:py-2 text-md md:text-lg lg:text-xl hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 mt-2"
+          >
+            <img
+              src="../icons/settings.svg"
+              alt="settings"
+              width="24"
+              height="24"
+              class="float-left invert mr-2 max-w-sm stroke-red-400"
+            />
+            Profile Settings
+          </a>
+        {/if}
+      {/await}
     </div>
     <div
       class="w-full mx-24 h-full overflow-auto md:overflow-y-auto mt-16 md:mt-0 styled-scrollbar"
     >
-      {#if data.projects.length == 0}
+      {#if data.projects?.length == 0}
         <p class="dark:text-white text-opacity-40 text-3xl text-center mt-48">
           No projects!
         </p>
       {:else}
-        {#each data.projects as project}
+        {#each data.projects ?? [] as project}
           <ProjectComponent {project} />
         {/each}
       {/if}

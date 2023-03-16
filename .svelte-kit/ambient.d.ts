@@ -26,11 +26,14 @@
  * ```
  */
 declare module '$env/static/private' {
+	export const ACSvcPort: string;
 	export const ALLUSERSPROFILE: string;
+	export const AMDRMPATH: string;
 	export const ANDROID_HOME: string;
 	export const APPDATA: string;
 	export const ChocolateyInstall: string;
 	export const ChocolateyLastPathUpdate: string;
+	export const ChocolateyToolsLocation: string;
 	export const CHROME_CRASHPAD_PIPE_NAME: string;
 	export const COLORTERM: string;
 	export const CommonProgramFiles: string;
@@ -38,10 +41,12 @@ declare module '$env/static/private' {
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
 	export const CONDA_PROMPT_MODIFIER: string;
-	export const COREPACK_ROOT: string;
 	export const DriverData: string;
-	export const EFC_7172: string;
+	export const EFC_8128: string;
+	export const FP_NO_HOST_CHECK: string;
 	export const GIT_ASKPASS: string;
+	export const GIT_INSTALL_ROOT: string;
+	export const GRADLE_USER_HOME: string;
 	export const HOME: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
@@ -50,13 +55,14 @@ declare module '$env/static/private' {
 	export const LANG: string;
 	export const LOCALAPPDATA: string;
 	export const LOGONSERVER: string;
-	export const NIEXTCCOMPILERSUPP: string;
+	export const MinGW: string;
 	export const NODE: string;
 	export const NODE_ENV: string;
 	export const NODE_PATH: string;
 	export const npm_command: string;
 	export const npm_config_engine_strict: string;
 	export const npm_config_node_gyp: string;
+	export const npm_config_python: string;
 	export const npm_config_registry: string;
 	export const npm_config_user_agent: string;
 	export const npm_execpath: string;
@@ -98,15 +104,12 @@ declare module '$env/static/private' {
 	export const npm_package_type: string;
 	export const npm_package_version: string;
 	export const NUMBER_OF_PROCESSORS: string;
+	export const OculusBase: string;
 	export const OneDrive: string;
-	export const OPENSSL_CONF: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const OS: string;
-	export const OV_NI_PLUGIN_DIR: string;
 	export const Path: string;
 	export const PATHEXT: string;
-	export const platform_tools: string;
-	export const PNPM_HOME: string;
 	export const PNPM_SCRIPT_SRC_DIR: string;
 	export const POSH_AZURE_ENABLED: string;
 	export const POSH_CURSOR_COLUMN: string;
@@ -116,7 +119,6 @@ declare module '$env/static/private' {
 	export const POSH_THEME: string;
 	export const POSH_THEMES_PATH: string;
 	export const POWERLINE_COMMAND: string;
-	export const POWERSHELL_DISTRIBUTION_CHANNEL: string;
 	export const PROCESSOR_ARCHITECTURE: string;
 	export const PROCESSOR_IDENTIFIER: string;
 	export const PROCESSOR_LEVEL: string;
@@ -127,6 +129,7 @@ declare module '$env/static/private' {
 	export const PROMPT: string;
 	export const PSModulePath: string;
 	export const PUBLIC: string;
+	export const PYTHONIOENCODING: string;
 	export const SESSIONNAME: string;
 	export const SystemDrive: string;
 	export const SystemRoot: string;
@@ -138,13 +141,18 @@ declare module '$env/static/private' {
 	export const USERDOMAIN_ROAMINGPROFILE: string;
 	export const USERNAME: string;
 	export const USERPROFILE: string;
+	export const VBOX_HWVIRTEX_IGNORE_SVM_IN_USE: string;
+	export const VBOX_MSI_INSTALL_PATH: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const VSCODE_INJECTION: string;
+	export const VXIPNPPATH: string;
 	export const windir: string;
-	export const ZES_ENABLE_SYSMAN: string;
+	export const windows_tracing_flags: string;
+	export const windows_tracing_logfile: string;
+	export const __COMPAT_LAYER: string;
 }
 
 /**
@@ -174,11 +182,14 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
+		ACSvcPort: string;
 		ALLUSERSPROFILE: string;
+		AMDRMPATH: string;
 		ANDROID_HOME: string;
 		APPDATA: string;
 		ChocolateyInstall: string;
 		ChocolateyLastPathUpdate: string;
+		ChocolateyToolsLocation: string;
 		CHROME_CRASHPAD_PIPE_NAME: string;
 		COLORTERM: string;
 		CommonProgramFiles: string;
@@ -186,10 +197,12 @@ declare module '$env/dynamic/private' {
 		COMPUTERNAME: string;
 		ComSpec: string;
 		CONDA_PROMPT_MODIFIER: string;
-		COREPACK_ROOT: string;
 		DriverData: string;
-		EFC_7172: string;
+		EFC_8128: string;
+		FP_NO_HOST_CHECK: string;
 		GIT_ASKPASS: string;
+		GIT_INSTALL_ROOT: string;
+		GRADLE_USER_HOME: string;
 		HOME: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
@@ -198,13 +211,14 @@ declare module '$env/dynamic/private' {
 		LANG: string;
 		LOCALAPPDATA: string;
 		LOGONSERVER: string;
-		NIEXTCCOMPILERSUPP: string;
+		MinGW: string;
 		NODE: string;
 		NODE_ENV: string;
 		NODE_PATH: string;
 		npm_command: string;
 		npm_config_engine_strict: string;
 		npm_config_node_gyp: string;
+		npm_config_python: string;
 		npm_config_registry: string;
 		npm_config_user_agent: string;
 		npm_execpath: string;
@@ -246,15 +260,12 @@ declare module '$env/dynamic/private' {
 		npm_package_type: string;
 		npm_package_version: string;
 		NUMBER_OF_PROCESSORS: string;
+		OculusBase: string;
 		OneDrive: string;
-		OPENSSL_CONF: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		OS: string;
-		OV_NI_PLUGIN_DIR: string;
 		Path: string;
 		PATHEXT: string;
-		platform_tools: string;
-		PNPM_HOME: string;
 		PNPM_SCRIPT_SRC_DIR: string;
 		POSH_AZURE_ENABLED: string;
 		POSH_CURSOR_COLUMN: string;
@@ -264,7 +275,6 @@ declare module '$env/dynamic/private' {
 		POSH_THEME: string;
 		POSH_THEMES_PATH: string;
 		POWERLINE_COMMAND: string;
-		POWERSHELL_DISTRIBUTION_CHANNEL: string;
 		PROCESSOR_ARCHITECTURE: string;
 		PROCESSOR_IDENTIFIER: string;
 		PROCESSOR_LEVEL: string;
@@ -275,6 +285,7 @@ declare module '$env/dynamic/private' {
 		PROMPT: string;
 		PSModulePath: string;
 		PUBLIC: string;
+		PYTHONIOENCODING: string;
 		SESSIONNAME: string;
 		SystemDrive: string;
 		SystemRoot: string;
@@ -286,13 +297,18 @@ declare module '$env/dynamic/private' {
 		USERDOMAIN_ROAMINGPROFILE: string;
 		USERNAME: string;
 		USERPROFILE: string;
+		VBOX_HWVIRTEX_IGNORE_SVM_IN_USE: string;
+		VBOX_MSI_INSTALL_PATH: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		VSCODE_GIT_ASKPASS_NODE: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		VSCODE_INJECTION: string;
+		VXIPNPPATH: string;
 		windir: string;
-		ZES_ENABLE_SYSMAN: string;
+		windows_tracing_flags: string;
+		windows_tracing_logfile: string;
+		__COMPAT_LAYER: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: string]: string | undefined;
 	}
