@@ -2,7 +2,7 @@
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
   import ColorSchemeSelector from "./buttons/ColorSchemeSelector.svelte";
-  import ProfileComponent from "./ProfileComponent.svelte";
+  import ProfileNavComponent from "./ProfileNavComponent.svelte";
   let isSmallWidth: boolean;
 
   onMount(() => {
@@ -58,7 +58,7 @@
       class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0"
     >
       <ColorSchemeSelector />
-      <ProfileComponent />
+      <ProfileNavComponent />
     </div>
   </div>
 </nav>
