@@ -1,23 +1,29 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { isAuthenticated, userData, apiURL, postAuthed } from "$globals";
+  import { error } from "@sveltejs/kit";
 
   let isSmallWidth: boolean;
 
   onMount(() => {
+    if(!$isAuthenticated) throw error(401)
+
     console.log("User is " + $userData.username);
     // if($userData.role == "default"){
     //     window.location.replace("/")
     // }
     isSmallWidth = window.innerWidth < 768;
     addEventListener("resize", () => (isSmallWidth = window.innerWidth < 768));
+
+
     let inpu: HTMLInputElement = document.getElementById(
       "inpt"
     )! as HTMLInputElement;
     alert(inpu);
+    
     inpu.value = "your mother";
-    inpu.addEventListener("keypress", async (e) => {
-      var keyCode = e.code || e.key;
+    inpu.addEventListener("keydown", async (e) => {
+      let keyCode = e.key;
       if (keyCode == "Enter") {
         if (inpu.value != "") {
           const cons = document.getElementById("cons")!;
@@ -46,7 +52,7 @@
               cons.innerHTML + `<li class='resp err'>${err}</li>`;
             inpu.value = "";
           }
-          var objDiv = document.getElementById("big")!;
+          let objDiv = document.getElementById("big")!;
           objDiv.scrollTop = objDiv.scrollHeight;
         }
       }
@@ -73,7 +79,7 @@
           class="bottom-0 right-0 absolute bg-black p-3 w-full flex justify-around"
         >
           <p class="float-left">/</p>
-          <input id="inpt" class="w-full outline-none border-0 ml-1 bg-black" />
+          <input on:submit|preventDefault id="inpt" class="w-full outline-none border-0 ml-1 bg-black" />
         </div>
       </div>
     {:else}

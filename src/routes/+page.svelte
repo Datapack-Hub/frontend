@@ -4,9 +4,8 @@
   import anime from "animejs/lib/anime.es";
 
   let rand = Math.floor(Math.random() * 10_000_000);
-  let formattedRand = Intl.NumberFormat("en", {
-    notation: "compact",
-  }).format(rand);
+  
+  let formattedRand = Intl.NumberFormat("en", { notation: "compact" }).format(rand);
 
   let visible = false;
 
