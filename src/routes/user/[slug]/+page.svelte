@@ -1,9 +1,14 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
+  import { page } from "$app/stores";
   import ProjectComponent from "$components/ProjectComponent.svelte";
-  import { isAuthenticated, userData } from "$globals";
-  import type { PageData } from "./$types";
+  import { fetchAuthed, isAuthenticated, userData } from "$globals";
+  import { error } from "@sveltejs/kit";
 
-  export let data: PageData;
+  let data: { profile: any; projects: any } = {
+    profile: null,
+    projects: null,
+  };
 
   function titleCase(str: string): string {
     return str
@@ -14,6 +19,37 @@
       })
       .join(" ");
   }
+
+  (async () => {
+    if (browser) {
+      const [user, projects] = await Promise.all([
+        fetchAuthed(
+          "get",
+          `https://api.datapackhub.net/user/${$page.params.slug}`
+        ),
+        fetchAuthed(
+          "get",
+          `https://api.datapackhub.net/user/${$page.params.slug}/projects`
+        ),
+      ]);
+      if (user.ok && projects.ok) {
+        const profileJson = (await user.json()) as User;
+        const projectJson = (await projects.json()).result as Project[];
+        data = {
+          profile: profileJson,
+          projects: projectJson,
+        };
+        return;
+      }
+      const projectText = (await projects.text()) as string;
+      console.log(
+        projects.status +
+          ` | https://api.datapackhub.net/user/${$page.params.slug}/projects` +
+          ` | ${projectText}`
+      );
+      throw error(user.status, user.statusText);
+    }
+  })();
 </script>
 
 <svelte:head>
