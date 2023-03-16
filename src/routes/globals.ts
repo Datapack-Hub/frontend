@@ -19,6 +19,15 @@ export async function fetchAuthed(method: string, url: string): Promise<Response
   return resp;
 }
 
+export async function postAuthed(method: string, url: string, body: object): Promise<Response> {
+  console.log(await getCookie("dph_token"))
+  const resp = await fetch(url, { method: method, headers: { Authorization: `Basic ${await getCookie("dph_token")}` }});
+  if(resp.status == 498){
+    removeCookie("dph_token")
+  }
+  return resp;
+}
+
 export async function getCookie(item: string) {
   const name = item + "=";
   const decodedCookie = decodeURIComponent(document.cookie);
@@ -43,4 +52,4 @@ export async function removeCookie(name: string) {
 // replace with true or smth to force prod
 // it will show an error but should work
 // -Cobble
-export const apiURL = dev ? "http://localhost:5000" : "https://api.datapackhub.net"
+export const apiURL = "https://api.datapackhub.net"
