@@ -1,11 +1,12 @@
+import { fetchAuthed } from '$globals';
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
 export const load = (async ({ params }) => {
   const [user, projects] = await Promise.all(
     [
-      fetch(`https://api.datapackhub.net/user/${params.slug}`),
-      fetch(`https://api.datapackhub.net/user/${params.slug}/projects`)
+      fetchAuthed("get", `https://api.datapackhub.net/user/${params.slug}`),
+      fetchAuthed("get", `https://api.datapackhub.net/user/${params.slug}/projects`)
     ]
   ) 
   if (user.ok && projects.ok) {
