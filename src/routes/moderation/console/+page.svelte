@@ -4,9 +4,9 @@
   import { goto } from "$app/navigation";
 
   let isSmallWidth: boolean;
-  let cmd: string = "";
   let submitCmd = () => {};
   let cmdInput: HTMLInputElement;
+  let cmd: string = "";
 
   onMount(() => {
     console.log("User is " + $userData.username);
@@ -17,7 +17,7 @@
     addEventListener("resize", () => (isSmallWidth = window.innerWidth < 768));
     // alert(cmdInput);
 
-    cmdInput.value = "your mother";
+    // cmd = "your mother";
     submitCmd = async () => {
       if (cmd != "") {
         const cons = document.getElementById("cons")!;
