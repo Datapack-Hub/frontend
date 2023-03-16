@@ -7,6 +7,7 @@ const config = {
     extend: {
       fontFamily: {
         brand: ["Lexend", "sans-serif"],
+        console: ["Roboto Mono"]
       },
       colors: {
         newWhite: "#F5E8D0",
