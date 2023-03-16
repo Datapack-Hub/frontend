@@ -1,29 +1,28 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { isAuthenticated, userData, apiURL, postAuthed } from "$globals";
+  import { goto } from "$app/navigation";
 
   let isSmallWidth: boolean;
   let cmd: string = "";
   let submitCmd = () => {};
+  let cmdInput: HTMLInputElement;
 
   onMount(() => {
     console.log("User is " + $userData.username);
     // if($userData.role == "default"){
-    //     window.location.replace("/")
+    //     goto("/")
     // }
     isSmallWidth = window.innerWidth < 768;
     addEventListener("resize", () => (isSmallWidth = window.innerWidth < 768));
-    let inpu: HTMLInputElement = document.getElementById(
-      "inpt"
-    )! as HTMLInputElement;
-    alert(inpu);
+    // alert(cmdInput);
 
-    inpu.value = "your mother";
+    cmdInput.value = "your mother";
     submitCmd = async () => {
-      if (inpu.value != "") {
+      if (cmd != "") {
         const cons = document.getElementById("cons")!;
         cons.innerHTML = cons.innerHTML + `<li>⫻ ${cmd}</li>`;
-        inpu.value = "Loading...";
+        cmdInput.value = "Loading...";
         try {
           await postAuthed(apiURL + "/moderation/console", {
             command: cmd,
@@ -32,17 +31,17 @@
               if (response.status == 200) {
                 cons.innerHTML =
                   cons.innerHTML + `<pre class='resp'>${text}</pre>`;
-                inpu.value = "";
+                cmd = "";
               } else {
                 cons.innerHTML =
                   cons.innerHTML + `<li class='pb-4 text-red-500'>${text}</li>`;
-                inpu.value = "";
+                cmd = "";
               }
             });
           });
         } catch (err) {
           cons.innerHTML = cons.innerHTML + `<li class='resp err'>${err}</li>`;
-          inpu.value = "";
+          cmd = "";
         }
         let objDiv = document.getElementById("big")!;
         objDiv.scrollTop = objDiv.scrollHeight;
@@ -70,12 +69,19 @@
           class="bottom-0 right-0 absolute bg-black p-3 w-full flex justify-around"
         >
           <p class="float-left">/</p>
-          <input
+          <form
+            action="get"
             on:submit|preventDefault={submitCmd}
-            bind:value={cmd}
-            id="inpt"
             class="w-full outline-none border-0 ml-1 bg-black"
-          />
+          >
+            <input
+              on:submit|preventDefault={submitCmd}
+              bind:value={cmd}
+              bind:this={cmdInput}
+              id="inpt"
+              class="w-full bg-black"
+            />
+          </form>
         </div>
       </div>
     {:else}
