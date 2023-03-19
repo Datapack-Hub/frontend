@@ -114,7 +114,7 @@
       </div>
     </div>
     <div class="w-1/3" />
-    <div class="w-1/3 bg-stone-800 h-2/3">
+    <div class="w-1/3 bg-stone-800 h-2/3 rounded-xl">
       <h2>Content here</h2>
     </div>
   </div>
