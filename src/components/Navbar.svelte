@@ -11,12 +11,11 @@
   });
 </script>
 
-<nav class="w-screen fixed {!isSmallWidth ? '' : 'bottom-0'} transition-all">
-  <div class="funky-gradient w-screen px-4">
+<nav class="w-full fixed {!isSmallWidth ? '' : 'bottom-0'} transition-all px-24 z-50">
+  <div class="funky-gradient w-full">
     <div class="flex items-center mt-4 md:mt-0">
-      <p
-        on:click={() => goto("/")}
-        on:keypress={(k) => goto("/")}
+      <a
+        href="/"
         class="flex items-center z-20 cursor-pointer"
       >
         <img
@@ -26,12 +25,12 @@
         />
         {#if !isSmallWidth}
           <span
-            class="dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 hover:text-neutral-700 active:text-neutral-600 text-black ml-2 font-brand font-bold text-2xl transition-colors"
+            class="dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 hover:text-neutral-700 active:text-neutral-600 text-black font-brand font-bold text-2xl transition-colors"
           >
             Datapack Hub
           </span>
         {/if}
-      </p>
+      </a>
       <a
         href="/"
         target="_self"

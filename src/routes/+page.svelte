@@ -4,8 +4,10 @@
   import anime from "animejs/lib/anime.es";
 
   let rand = Math.floor(Math.random() * 10_000_000);
-  
-  let formattedRand = Intl.NumberFormat("en", { notation: "compact" }).format(rand);
+
+  let formattedRand = Intl.NumberFormat("en", { notation: "compact" }).format(
+    rand
+  );
 
   let visible = false;
 
@@ -64,36 +66,38 @@
 </script>
 
 <svelte:head>
-	<title>Datapack Hub</title>
+  <title>Datapack Hub</title>
 </svelte:head>
 
-<main class="h-screen">
-  <div class="dark:bg-stone-900 bg-newWhite transition-all">
-    <div
-      class="flex flex-col items-center justify-center h-screen w-screen overflow-visible"
-    >
-      <div class="relative w-full h-[4.5rem] md:h-24 lg:h-32 xl:h-40 {visible ? "visible" : "invisible"}">
+<main class="dark:bg-stone-900 bg-newWhite transition-all">
+  <div class="flex items-center w-screen overflow-visible px-24 h-[66.666vh]">
+    <div class="w-1/3">
+      <div
+        class="relative w-full h-[4.5rem] md:h-24 lg:h-32 xl:h-40 {visible
+          ? 'visible'
+          : 'invisible'}"
+      >
         <h1
           id="indexText1"
-          class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0 left-1/2 w-1/2 -translate-x-1/2 text-center"
+          class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0"
         >
           <span class="letters text-dphOrange inline-block">Explore</span>
         </h1>
         <h1
           id="indexText2"
-          class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0 left-1/2 w-1/2 -translate-x-1/2 text-center"
+          class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0"
         >
           <span class="letters text-dphOrange inline-block">Create</span>
         </h1>
         <h1
           id="indexText3"
-          class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0 left-1/2 w-1/2 -translate-x-1/2 text-center"
+          class="split-text text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-brand font-bold inline-block overflow-y-hidden absolute top-0"
         >
           <span class="letters text-dphOrange inline-block">Play</span>
         </h1>
       </div>
       <h2
-        class="dark:text-newWhite text-black w-2/3 md:w-1/2 lg:w-1/3 mt-12 text-center sm:text-2xl md:text-3xl lg:text-4xl"
+        class="dark:text-newWhite text-black mt-12 sm:text-2xl md:text-3xl lg:text-4xl"
       >
         Over <span
           title={rand.toString()}
@@ -103,12 +107,18 @@
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>
-      <div
-        class="flex w-2/3 md:w-1/2 lg:w-1/2 items-center justify-evenly mt-8 md:mt-16"
-      >
+      <div class="flex w-2/3 md:w-1/2 lg:w-1/2 items-center mt-8 md:mt-16">
         <ButtonPrimary>Text Here</ButtonPrimary>
+        <div class="px-4" />
         <ButtonPrimary>Discover</ButtonPrimary>
       </div>
     </div>
+    <div class="w-1/3" />
+    <div class="w-1/3 bg-stone-800 h-2/3">
+      <h2>Content here</h2>
+    </div>
+  </div>
+  <div class="bg-stone-800 h-[33.333vh] w-screen">
+    <h2>Content here</h2>
   </div>
 </main>

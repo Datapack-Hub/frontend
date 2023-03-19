@@ -14,13 +14,6 @@
   @apply bg-gradient-to-br from-pink-700 to-dphOrange;
 }
 
-.shrink-anim {
-  animation-name: shrink;
-  animation-duration: 3s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
 .letter {
   display: inline-block;
   line-height: 1em;
@@ -38,7 +31,7 @@
 /* before:bg-gradient-to-br before:from-orange-500 before:to-red-800 */
 .funky-gradient::before {
   content: "";
-  @apply bg-gradient-to-br from-orange-500 to-red-800;
+  /* @apply bg-gradient-to-br from-orange-500 to-red-800; */
   position: absolute;
   top: 0px;
   right: 0px;
@@ -62,18 +55,4 @@
 
 .styled-scrollbar::-webkit-scrollbar-thumb {
   @apply bg-stone-500 rounded-full;
-}
-
-@keyframes shrink {
-  0% {
-    max-width: 0;
-  }
-
-  50% {
-    max-width: 100%;
-  }
-
-  100% {
-    max-width: 0;
-  }
 }

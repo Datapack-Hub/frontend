@@ -68,7 +68,7 @@
   })();
 </script>
 
-<a href="/" target="_self" class="ml-6 flex items-center justify-center z-20">
+<a href="/" target="_self" class="flex items-center justify-center ml-6">
   {#if $isAuthenticated}
     <img
       src="/icons/bell.svg"
@@ -84,7 +84,7 @@
         alt="{$userData.username}'s profile picture"
         height="32"
         width="32"
-        class="rounded-full outline outline-2 {$userData.role}-outline outline-offset-2 ml-6"
+        class="rounded-full outline outline-2 {$userData.role}-outline outline-offset-2"
       />
     </a>
   {:else}
