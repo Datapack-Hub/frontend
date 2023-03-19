@@ -2,7 +2,7 @@
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
   import ProjectComponent from "$components/ProjectComponent.svelte";
-  import { fetchAuthed, isAuthenticated, userData } from "$globals";
+  import { isAuthenticated, userData } from "$globals";
 
   let data: { profile: User | null; projects: Project[] | null } = {
     profile: null,
@@ -81,7 +81,7 @@
           {/if}
         </p>
         <p
-          class="whitespace-pre-line dark:bg-stone-800 mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light"
+          class="whitespace-pre-line dark:bg-stone-700 dark:bg-opacity-40 bg-opacity-40 bg-white mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light"
         >
           {data.profile?.bio.replaceAll("\\n", "\n")}
         </p>

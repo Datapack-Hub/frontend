@@ -1,13 +1,13 @@
 <script>
-	import Navbar from '$components/Navbar.svelte';
-    import { isDark, loadColorPref } from '$globals';
-    import { onMount } from 'svelte';
-    import "../app.postcss";
+  import Navbar from "$components/Navbar.svelte";
+  import { isDark, loadColorPref } from "$globals";
+  import { onMount } from "svelte";
+  import "../app.postcss";
 
-    onMount(async () => loadColorPref().then((v) => isDark.set(v)))
+  onMount(async () => ($isDark = loadColorPref()));
 </script>
 
-<div class="{isDark ? " dark" : ""}">
-    <Navbar></Navbar>
-    <slot></slot>
+<div class={$isDark ? " dark" : ""}>
+  <Navbar />
+  <slot />
 </div>

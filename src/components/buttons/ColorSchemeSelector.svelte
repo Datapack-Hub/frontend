@@ -2,7 +2,6 @@
   import { onDestroy } from "svelte";
   import { draw } from "svelte/transition";
   import { isDark } from "../../routes/globals";
-  import { set } from "idb-keyval";
 
   let dark: boolean;
   let unsubscribeDark = isDark.subscribe((v) => {
@@ -11,7 +10,7 @@
 
   let thing = () => {
     isDark.set(!dark);
-    set("dp_colorPref", $isDark);
+    localStorage.setItem("dp_colorPref", dark.toString());
   };
 
   onDestroy(unsubscribeDark);
