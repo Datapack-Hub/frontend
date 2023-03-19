@@ -84,7 +84,7 @@
         alt="{$userData.username}'s profile picture"
         height="32"
         width="32"
-        class="rounded-full outline outline-2 {$userData.role}-outline outline-offset-2"
+        class="rounded-full outline outline-2 {$userData.role}-outline outline-offset-2 ml-6"
       />
     </a>
   {:else}
