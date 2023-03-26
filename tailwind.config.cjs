@@ -10,9 +10,9 @@ const config = {
         console: ["Roboto Mono", "monospace"]
       },
       colors: {
-        newWhite: "#F5E8D0",
-        darkWhite: "#edd6ab",
-        dphOrange: "#ea580c",
+        "new-white": "#F5E8D0",
+        "dark-white": "#edd6ab",
+        "dph-orange": "#ea580c",
       },
     },
   },

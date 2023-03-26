@@ -68,7 +68,7 @@
   })();
 </script>
 
-<a href="/" target="_self" class="flex items-center justify-center ml-6">
+<a href="/" target="_self" class="flex items-center justify-center ml-6 z-50">
   {#if $isAuthenticated}
     <img
       src="/icons/bell.svg"
@@ -90,7 +90,7 @@
   {:else}
     <a
       href="{apiURL}/auth/login"
-      class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-1 md:py-2 text-md md:text-lg lg:text-xl hover:scale-110 transition-all border-2 border-red-400 active:brightness-75"
+      class="dark:text-red-400 text-red-500 dark:bg-red-400 bg-red-500 bg-opacity-30 dark:bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-1 md:py-2 text-md md:text-lg lg:text-xl hover:scale-110 transition-all border-2 dark:border-red-400 border-red-500 active:brightness-75"
       use:tippy={signInHoverMsg}
     >
       Sign in

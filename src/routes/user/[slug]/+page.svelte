@@ -23,12 +23,8 @@
   async function load() {
     if (browser) {
       const [user, projects] = await Promise.all([
-        fetch(
-          `https://api.datapackhub.net/user/${$page.params.slug}`
-        ),
-        fetch(
-          `https://api.datapackhub.net/user/${$page.params.slug}/projects`
-        ),
+        fetch(`https://api.datapackhub.net/user/${$page.params.slug}`),
+        fetch(`https://api.datapackhub.net/user/${$page.params.slug}/projects`),
       ]);
       if (user.ok && projects.ok) {
         const profileJson = (await user.json()) as User;
@@ -50,7 +46,7 @@
 </svelte:head>
 
 <main
-  class="dark:bg-stone-900 bg-newWhite transition-all px-4 lg:px-32 xl:px-64"
+  class="dark:bg-stone-900 bg-new-white transition-all px-4 lg:px-32 xl:px-64"
 >
   <div
     class="flex flex-col items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-32"
@@ -64,7 +60,8 @@
           alt="{data.profile?.username}'s profile picture"
           height="128"
           width="128"
-          class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 {data.profile?.role}-outline outline-offset-4 mr-6"
+          class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 {data
+            .profile?.role}-outline outline-offset-4 mr-6"
         />
 
         <p

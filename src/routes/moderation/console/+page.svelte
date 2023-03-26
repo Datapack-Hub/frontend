@@ -54,7 +54,7 @@
   <title>Datapack Hub Console</title>
 </svelte:head>
 
-<main class="dark:bg-stone-900 bg-newWhite transition-all px-4">
+<main class="dark:bg-stone-900 bg-new-white transition-all px-4">
   {#if $userData.role != "default" && $isAuthenticated == true}
     {#if !isSmallWidth}
       <div
