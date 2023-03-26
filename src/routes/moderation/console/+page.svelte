@@ -10,9 +10,9 @@
 
   onMount(() => {
     console.log("User is " + $userData.username);
-    //if($userData.role == "default"){
-    //    goto("/")
-    //}
+    if($userData.role == "default"){
+       goto("/")
+    }
     isSmallWidth = window.innerWidth < 768;
     addEventListener("resize", () => (isSmallWidth = window.innerWidth < 768));
     // alert(cmdInput);
