@@ -32,7 +32,9 @@ declare type Project = {
 	id: number,
 	author: number,
 	icon: string?,
+	tags: string[]
 	title: string,
-	slug: string,
+	url: string,
+	type: "datapack" | "url"
 	description: string?,
 }

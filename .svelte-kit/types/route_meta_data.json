@@ -2,6 +2,9 @@
 	"/": [],
 	"/moderation/console": [],
 	"/projects": [],
+	"/project/[slug]": [
+		"src/routes/project/[slug]/+page.ts"
+	],
 	"/user/edit": [],
 	"/user/[slug]": []
 }

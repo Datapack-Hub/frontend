@@ -26,6 +26,11 @@
     placement: "bottom",
   };
 
+  let moderationHoverMsg = {
+    content: "Moderation",
+    placement: "bottom",
+  };
+
   (async () => {
     if (browser) {
       let token = await getCookie("dph_token");
@@ -70,6 +75,19 @@
 
 <a href="/" target="_self" class="flex items-center justify-center ml-6 z-50">
   {#if $isAuthenticated}
+    {#if $userData.role != "default"}
+    <a href="/moderation/console">
+      <img
+      src="/icons/moderation.svg"
+      width="32"
+      height="32"
+      alt="wip"
+      class="dark:invert z-20 mr-7"
+      use:tippy={moderationHoverMsg}
+    />
+    </a>
+    
+    {/if}
     <img
       src="/icons/bell.svg"
       width="32"
