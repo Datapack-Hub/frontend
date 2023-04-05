@@ -37,7 +37,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@esbuild/win32-x64": "^0.17.15",
     "animejs": "^3.2.1",
     "idb-keyval": "^6.2.0"
   }
