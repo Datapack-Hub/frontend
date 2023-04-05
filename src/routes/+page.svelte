@@ -68,6 +68,7 @@
 
 <svelte:head>
   <title>Datapack Hub</title>
+  <meta name="description" content="DatapackHub is a website designed for publishing datapacks">
 </svelte:head>
 
 <svelte:window bind:innerWidth={width} />

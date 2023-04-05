@@ -21,6 +21,7 @@
           src="/logos/dph.svg"
           alt="logo"
           class="h-8 rounded-full hover:brightness-75 transition-all"
+          height="32"
         />
         {#if !isSmallWidth}
           <span
