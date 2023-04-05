@@ -112,7 +112,7 @@
         {/each}
       {/if}
     </div>
-  </div>
+  </>
 </main>
 
 <style lang="postcss">
