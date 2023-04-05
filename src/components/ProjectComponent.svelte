@@ -15,13 +15,13 @@
 </script>
 
 <div
-  class="dark:bg-stone-800 bg-white dark:text-white rounded-xl bg-cover flex my-1 items-center mx-2 w-full"
+  class="dark:bg-stone-800 bg-dark-white dark:text-white rounded-xl bg-cover flex my-1 items-center mx-2 w-full"
 >
   <a href="/project/{project.url}">
     <img
       src={project.icon}
       alt="project icon"
-      class="aspect-square bg-cover h-16 md:h-24 rounded-xl ml-4"
+      class="aspect-square bg-cover h-16 md:h-24 rounded-xl ml-4 mr-8"
     />
   </a>
   <div class="p-1 md:p-2">

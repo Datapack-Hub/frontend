@@ -6,7 +6,7 @@
   let isSmallWidth: boolean;
   let submitCmd = () => {};
   let cmdInput: HTMLInputElement;
-  let cmd: string = "";
+  let cmd = "";
 
   onMount(() => {
     console.log("User is " + $userData.username);

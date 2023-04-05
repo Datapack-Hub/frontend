@@ -17,7 +17,7 @@
 </script>
 
 <main
-  class="dark:bg-stone-900 bg-new-white transition-all px-4 lg:px-32 xl:px-64"
+  class="dark:bg-stone-900 bg-new-white transition-all px-8 md:px-16 lg:px-24"
 >
   <div
     class="items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-16 overflow-auto"

@@ -7,7 +7,7 @@
   export let data: PageData;
   let visible = false;
 
-  let author: string = "Loading...";
+  let author = "Loading...";
 
   (async () => {
     if (browser)
@@ -20,7 +20,7 @@
   class="dark:bg-stone-900 bg-new-white transition-all px-0 sm:px-8 md:px-16 lg:px-24 h-screen"
 >
   <div class="pt-16" />
-  <div class="flex w-full dark:bg-new-white bg-black dark:bg-opacity-10 bg-opacity-10 p-4 rounded-xl mt-12">
+  <div class="flex w-full dark:bg-new-white bg-dark-white dark:bg-opacity-10 p-4 rounded-xl mt-12">
     <img
       src={data.project?.icon}
       alt="Icon for {data.project?.title}"
@@ -34,7 +34,7 @@
       {/if}
     </div>
   </div>
-  <div class="dark:bg-new-white bg-black dark:bg-opacity-10 bg-opacity-10 p-4 rounded-xl mt-8">
+  <div class="dark:bg-new-white bg-dark-white dark:bg-opacity-10 p-4 rounded-xl mt-8">
       <p class="dark:text-white text-lg font-brand font-light">{data.project?.description}</p>
   </div>
 </main>
