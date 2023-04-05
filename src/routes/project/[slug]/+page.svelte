@@ -1,26 +1,13 @@
 <script lang="ts">
-    import { browser } from "$app/environment";
-    import { page } from "$app/stores";
-    import { fetchAuthed, apiURL } from "$globals";
-    let url = $page.params.slug
+  import type { PageData } from "./$types";
+    export let data: PageData
 
-    let project: Project;
-
-    async function load() {
-        if (browser) {
-            let proj = await fetchAuthed("get",apiURL + "/projects/get/" + url)
-            if(proj.ok){
-                const projectJson = (await proj.json()) as Project;
-                project = projectJson
-            }
-        }
-    }
 </script>
 
-<main class="dark:bg-stone-900 bg-new-white transition-all px-4 lg:px-32 xl:px-64">
-    {#if project != undefined}
-    <p>yes!</p>
-    {:else}
-    <p>no!</p>
-    {/if}
+<main class="dark:bg-stone-900 bg-new-white transition-all px-0 sm:px-8 md:px-16 lg:px-24">
+    <div class="pt-16"></div>
+    <div class="bg-new-white bg-opacity-10 p-4 rounded-xl">
+        <h1 class="dark:text-white text-5xl font-brand">{data.project?.title}</h1>
+        <h2>By {data.project?.author}</h2>
+    </div>
 </main>

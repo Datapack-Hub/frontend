@@ -1,9 +1,6 @@
 <script lang="ts">
     import { browser } from "$app/environment";
-    import { page } from "$app/stores";
     import ProjectComponent from "$components/ProjectComponent.svelte";
-    import { isAuthenticated, userData } from "$globals";
-    import ButtonPrimary from "$components/buttons/ButtonLink.svelte";
 
     let data: Project[] = [];
 

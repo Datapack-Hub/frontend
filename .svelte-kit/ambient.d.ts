@@ -40,7 +40,7 @@ declare module '$env/static/private' {
 	export const CONDA_PROMPT_MODIFIER: string;
 	export const COREPACK_ROOT: string;
 	export const DriverData: string;
-	export const EFC_1292: string;
+	export const EFC_8312: string;
 	export const FPS_BROWSER_APP_PROFILE_STRING: string;
 	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GIT_ASKPASS: string;
@@ -67,7 +67,6 @@ declare module '$env/static/private' {
 	export const npm_node_execpath: string;
 	export const npm_package_dependencies_animejs: string;
 	export const npm_package_dependencies_idb_keyval: string;
-	export const npm_package_dependencies__esbuild_win32_x64: string;
 	export const npm_package_devDependencies_autoprefixer: string;
 	export const npm_package_devDependencies_esbuild: string;
 	export const npm_package_devDependencies_eslint: string;
@@ -192,7 +191,7 @@ declare module '$env/dynamic/private' {
 		CONDA_PROMPT_MODIFIER: string;
 		COREPACK_ROOT: string;
 		DriverData: string;
-		EFC_1292: string;
+		EFC_8312: string;
 		FPS_BROWSER_APP_PROFILE_STRING: string;
 		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GIT_ASKPASS: string;
@@ -219,7 +218,6 @@ declare module '$env/dynamic/private' {
 		npm_node_execpath: string;
 		npm_package_dependencies_animejs: string;
 		npm_package_dependencies_idb_keyval: string;
-		npm_package_dependencies__esbuild_win32_x64: string;
 		npm_package_devDependencies_autoprefixer: string;
 		npm_package_devDependencies_esbuild: string;
 		npm_package_devDependencies_eslint: string;

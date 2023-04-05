@@ -8,6 +8,11 @@ export function loadColorPref() {
   return localStorage.getItem("dp_colorPref") == "true"
 }
 
+export async function getAuthorNameFromID(authorID: number): Promise<string> {
+  const data = await fetch(`${apiURL}/user/id/${authorID}`)
+  return (await data.json() as User).username
+}
+
 export async function fetchAuthed(method: string, url: string): Promise<Response> {
   console.log(await getCookie("dph_token"))
   const resp = await fetch(url, { method: method, headers: { Authorization: `Basic ${await getCookie("dph_token")}` }});
@@ -46,8 +51,4 @@ export async function removeCookie(name: string) {
   document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
-// Fixed, Sila
-// replace with true or smth to force prod
-// it will show an error but should work
-// -Cobble
 export const apiURL = "https://api.datapackhub.net"
