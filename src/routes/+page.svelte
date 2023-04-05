@@ -84,25 +84,25 @@
       >
         <h1
           id="indexText1"
-          class="split-text text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-9xl font-brand font-bold inline-block overflow-y-hidden absolute md:text-left md:left-0 md:translate-x-0 left-1/2 -translate-x-1/2 text-center w-full md:w-auto"
+          class="split-text text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-brand font-bold inline-block overflow-y-hidden absolute md:text-left md:left-0 md:translate-x-0 left-1/2 -translate-x-1/2 text-center w-full md:w-auto"
         >
           <span class="letters text-dph-orange inline-block">Explore</span>
         </h1>
         <h1
           id="indexText2"
-          class="split-text text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-9xl font-brand font-bold inline-block overflow-y-hidden absolute md:text-left md:left-0 md:translate-x-0 left-1/2 -translate-x-1/2 text-center w-full md:w-auto"
+          class="split-text text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-brand font-bold inline-block overflow-y-hidden absolute md:text-left md:left-0 md:translate-x-0 left-1/2 -translate-x-1/2 text-center w-full md:w-auto"
         >
           <span class="letters text-dph-orange inline-block">Create</span>
         </h1>
         <h1
           id="indexText3"
-          class="split-text text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-9xl font-brand font-bold inline-block overflow-y-hidden absolute md:text-left md:left-0 md:translate-x-0 left-1/2 -translate-x-1/2 text-center w-full md:w-auto"
+          class="split-text text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-brand font-bold inline-block overflow-y-hidden absolute md:text-left md:left-0 md:translate-x-0 left-1/2 -translate-x-1/2 text-center w-full md:w-auto"
         >
           <span class="letters text-dph-orange inline-block">Play</span>
         </h1>
       </div>
       <h2
-        class="dark:text-new-white text-black mt-0 text-xl sm:text-2xl md:text-3xl xl:text-4xl md:text-left text-center w-full md:w-auto"
+        class="dark:text-new-white text-black mt-0 text-xl sm:text-xl md:text-2xl xl:text-3xl md:text-left text-center w-full md:w-auto"
       >
         Over <span
           title={rand.toString()}
