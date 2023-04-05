@@ -79,7 +79,7 @@
               bind:value={cmd}
               bind:this={cmdInput}
               id="inpt"
-              class="w-full bg-black"
+              class="w-full bg-black border-none"
             />
           </form>
         </div>

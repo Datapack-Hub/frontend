@@ -31,7 +31,7 @@
         {/if}
       </a>
       <a
-        href="/"
+        href="/projects"
         target="_self"
         class="pl-8 dark:text-white text-black text-lg font-brand font-light dark:hover:text-neutral-400 dark:active:text-neutral-500 hover:text-neutral-700 active:text-neutral-600 z-20 transition-colors"
       >

@@ -14,7 +14,7 @@
 </script>
 
 <div
-  class="dark:bg-stone-800 bg-white dark:text-white rounded-xl bg-cover flex my-1 items-center mx-2"
+  class="dark:bg-stone-800 bg-white dark:text-white rounded-xl bg-cover flex my-1 items-center mx-2 w-full"
 >
   <img
     src={project.icon}
@@ -28,6 +28,6 @@
     <p class="ml-4 text-xs md:text-sm text-opacity-20">
       By {author}
     </p>
-    <p class="m-4 text-sm md:text-base">{project.description}</p>
+    <p class="m-4 text-sm md:text-base font-medium">{project.description}</p>
   </div>
 </div>
