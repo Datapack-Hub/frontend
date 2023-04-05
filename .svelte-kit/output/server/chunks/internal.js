@@ -1,22 +1,23 @@
-import { c as create_ssr_component, a as setContext, v as validate_component, m as missing_component } from "./index.js";
-const base = "";
+import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from "./index2.js";
+let base = "";
 let assets = base;
+const initial = { base, assets };
+function reset() {
+  base = initial.base;
+  assets = initial.assets;
+}
 function set_assets(path) {
-  assets = path;
+  assets = initial.assets = path;
 }
-let version = "";
 let public_env = {};
-function set_building(value) {
-}
 function set_private_env(environment) {
 }
 function set_public_env(environment) {
   public_env = environment;
 }
-function set_version(value) {
-  version = value;
-}
 function afterUpdate() {
+}
+function set_building() {
 }
 const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { stores } = $$props;
@@ -94,22 +95,28 @@ ${``}`;
   } while (!$$settled);
   return $$rendered;
 });
-set_version("1676643656278");
 const options = {
+  app_template_contains_nonce: false,
   csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
   csrf_check_origin: true,
   embedded: false,
   env_public_prefix: "PUBLIC_",
   hooks: null,
   // added lazily, via `get_hooks`
+  preload_strategy: "modulepreload",
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width" />\n<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&display=swap" rel="stylesheet">\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>\n",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\r\n<html lang="en">\r\n\r\n<head>\r\n  <meta charset="utf-8" />\r\n  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">\r\n  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">\r\n  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">\r\n  <link rel="manifest" href="/site.webmanifest">\r\n  <meta name="viewport" content="width=device-width" />\r\n  <link rel="preconnect" href="https://fonts.googleapis.com">\r\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\r\n  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&display=swap" rel="stylesheet">\r\n  <link href="https://fonts.googleapis.com/css2?family=Lexend+Exa&family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">\r\n  ' + head + '\r\n</head>\r\n\r\n<body data-sveltekit-preload-data="hover">\r\n  <div style="display: contents">' + body + "</div>\r\n</body>\r\n\r\n</html>\r\n",
     error: ({ status, message }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
 			body {
+				--bg: white;
+				--fg: #222;
+				--divider: #ccc;
+				background: var(--bg);
+				color: var(--fg);
 				font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
 					Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 				display: flex;
@@ -134,7 +141,7 @@ const options = {
 			}
 
 			.message {
-				border-left: 1px solid #ccc;
+				border-left: 1px solid var(--divider);
 				padding: 0 0 0 1rem;
 				margin: 0 0 0 1rem;
 				min-height: 2.5rem;
@@ -147,12 +154,21 @@ const options = {
 				font-size: 1em;
 				margin: 0;
 			}
+
+			@media (prefers-color-scheme: dark) {
+				body {
+					--bg: #222;
+					--fg: #ddd;
+					--divider: #666;
+				}
+			}
 		</style>
 	</head>
 	<body>
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
-  }
+  },
+  version_hash: "1w0rnna"
 };
 function get_hooks() {
   return {};
@@ -166,6 +182,6 @@ export {
   get_hooks as g,
   options as o,
   public_env as p,
-  set_public_env as s,
-  version as v
+  reset as r,
+  set_public_env as s
 };
