@@ -1,6 +1,7 @@
 {
 	"/": [],
 	"/moderation/console": [],
+	"/projects": [],
 	"/user/edit": [],
 	"/user/[slug]": []
 }

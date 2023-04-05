@@ -24,21 +24,21 @@
         cons.innerHTML = cons.innerHTML + `<li>⫻ ${cmd}</li>`;
         cmdInput.value = "Loading...";
         try {
-          await postAuthed(apiURL + "/moderation/console", {
+          let res = await postAuthed(apiURL + "/moderation/console", {
             command: cmd,
-          }).then((response) => {
-            response.text().then((text) => {
-              if (response.status == 200) {
-                cons.innerHTML =
-                  cons.innerHTML + `<pre class='resp'>${text}</pre>`;
-                cmd = "";
-              } else {
-                cons.innerHTML =
-                  cons.innerHTML + `<li class='pb-4 text-red-500'>${text}</li>`;
-                cmd = "";
-              }
-            });
-          });
+          })
+          let text = await res.text()
+
+          if (res.status == 200) {
+            cons.innerHTML =
+              cons.innerHTML + `<pre class='resp'>${text}</pre>`;
+            cmd = "";
+          } else {
+            cons.innerHTML =
+              cons.innerHTML + `<li class='pb-4 text-red-500'>${text}</li>`;
+            cmd = "";
+          }
+          
         } catch (err) {
           cons.innerHTML = cons.innerHTML + `<li class='resp err'>${err}</li>`;
           cmd = "";

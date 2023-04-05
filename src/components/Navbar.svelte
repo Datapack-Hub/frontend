@@ -10,7 +10,7 @@
   });
 </script>
 
-<nav class="w-full fixed {!isSmallWidth ? '' : 'bottom-0'} transition-all px-0 sm:px-8 md:px-16 lg:px-24 z-50">
+<nav class="w-full fixed {!isSmallWidth ? '' : 'bottom-0'} transition-all px-8 md:px-16 lg:px-24 z-50">
   <div class="funky-gradient w-full">
     <div class="flex items-center mt-4 md:mt-0">
       <a
