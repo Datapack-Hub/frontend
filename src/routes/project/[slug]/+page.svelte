@@ -16,6 +16,10 @@
   })();
 </script>
 
+<svelte:head>
+    <title>{data.project?.title} | Datapack Hub</title>
+</svelte:head>
+
 <main
   class="dark:bg-stone-900 bg-new-white transition-all px-0 sm:px-8 md:px-16 lg:px-24 h-screen"
 >
@@ -28,13 +32,13 @@
       class="rounded-lg mr-6"
     />
     <div>
-      <h1 class="dark:text-white text-5xl font-brand">{data.project?.title}</h1>
+      <h1 class="dark:text-white text-5xl font-brand font-black">{data.project?.title}</h1>
       {#if visible}
       <h2 class="dark:text-white text-xl mt-4 transition-all" in:fade={{duration: 250}}>{author}</h2>
       {/if}
     </div>
   </div>
   <div class="dark:bg-new-white bg-dark-white dark:bg-opacity-10 p-4 rounded-xl mt-8">
-      <p class="dark:text-white text-lg font-brand font-light">{data.project?.description}</p>
+      <p class="dark:text-white text-lg font-brand font-light">{data.project?.body}</p>
   </div>
 </main>

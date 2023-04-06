@@ -37,4 +37,5 @@ declare type Project = {
 	url: string,
 	type: "datapack" | "url"
 	description: string?,
+	body: string
 }
