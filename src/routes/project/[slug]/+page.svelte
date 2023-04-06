@@ -32,10 +32,11 @@
       class="rounded-lg mr-6"
     />
     <div>
-      <h1 class="dark:text-white text-5xl font-brand font-black">{data.project?.title}</h1>
+      <h1 class="dark:text-white text-5xl font-brand font-black float-left">{data.project?.title}</h1>
       {#if visible}
-      <h2 class="dark:text-white text-xl mt-4 transition-all" in:fade={{duration: 250}}>{author}</h2>
+      <h2 class="dark:text-white text-xl mt-4 transition-all font-brand font-bold" in:fade={{duration: 250}}>{author}</h2>
       {/if}
+      <h2 class="dark:text-white text-md transition-all font-brand" in:fade={{duration: 250}}>{data.project?.description}</h2>
     </div>
   </div>
   <div class="dark:bg-new-white bg-dark-white dark:bg-opacity-10 p-4 rounded-xl mt-8">
