@@ -73,7 +73,7 @@
         <p class="dark:text-white sm:text-base md:text-lg font-brand font-bold">
           {#if data.profile?.role != "default"}
             <span class="{data.profile?.role}-text">
-              ⬤ {titleCase(data.profile?.role)}
+              {#if data.profile?.role != "nerd"}⬤{:else}🤓{/if} {titleCase(data.profile?.role)}
             </span>
           {/if}
         </p>
@@ -147,6 +147,14 @@
   .helper-text {
     @apply text-blue-500;
   }
+  
+  .nerd-text {
+    @apply text-yellow-500;
+  }
+  
+  .nerd-outline {
+    @apply outline-yellow-500
+  } 
 
   .default-outline {
     @apply outline-yellow-500;
