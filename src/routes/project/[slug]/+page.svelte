@@ -28,11 +28,10 @@
     <img
       src={data.project?.icon}
       alt="Icon for {data.project?.title}"
-      width="96"
-      class="rounded-lg mr-6"
+      class="rounded-lg mr-6 w-24 h-24"
     />
     <div>
-      <h1 class="dark:text-white text-5xl font-brand font-black float-left">{data.project?.title}</h1>
+      <h1 class="dark:text-white text-5xl font-brand font-black">{data.project?.title}</h1>
       {#if visible}
       <h2 class="dark:text-white text-xl mt-4 transition-all font-brand font-bold" in:fade={{duration: 250}}>{author}</h2>
       {/if}
