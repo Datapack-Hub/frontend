@@ -3,7 +3,6 @@
   import { getAuthorNameFromID } from "$globals";
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
-  import marked from 'marked';
 
   export let data: PageData;
   let visible = false;
@@ -40,6 +39,6 @@
     </div>
   </div>
   <div class="dark:bg-new-white bg-dark-white dark:bg-opacity-10 p-4 rounded-xl mt-8">
-      <p class="dark:text-white text-lg font-brand font-light">{@html marked.parse(data.project?.body)}</p>
+      <p class="dark:text-white text-lg font-brand font-light">{data.project?.body}</p>
   </div>
 </main>
