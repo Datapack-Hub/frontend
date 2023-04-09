@@ -170,6 +170,7 @@ declare module '$env/static/private' {
 	export const RAILS_DEVELOPMENT_HOSTS: string;
 	export const CODESPACE_VSCODE_FOLDER: string;
 	export const npm_package_scripts_preview: string;
+	export const npm_package_devDependencies_marked: string;
 	export const MAVEN_ROOT: string;
 	export const RUBY_HOME: string;
 	export const rvm_path: string;
@@ -349,6 +350,7 @@ declare module '$env/dynamic/private' {
 		RAILS_DEVELOPMENT_HOSTS: string;
 		CODESPACE_VSCODE_FOLDER: string;
 		npm_package_scripts_preview: string;
+		npm_package_devDependencies_marked: string;
 		MAVEN_ROOT: string;
 		RUBY_HOME: string;
 		rvm_path: string;
