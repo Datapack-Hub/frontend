@@ -71,11 +71,6 @@
           Profile Settings
         </a>
       {/if}
-      <p
-        class="whitespace-pre-line dark:bg-stone-700 dark:bg-opacity-40 bg-opacity-40 bg-white mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light"
-      >
-        {data.profile?.bio.replaceAll("\\n", "\n")}
-      </p>
     </div>
     <div
       class="w-full mx-24 h-full overflow-auto md:overflow-y-auto mt-16 md:mt-0 styled-scrollbar"
