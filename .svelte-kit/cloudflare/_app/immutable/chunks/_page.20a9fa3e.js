@@ -1,0 +1,1 @@
+import{b as o}from"./globals.39000825.js";const r=async({params:t})=>{const e=await fetch(o+"/projects/get/"+t.slug);return e.ok?{project:await e.json()}:{}},c=Object.freeze(Object.defineProperty({__proto__:null,load:r},Symbol.toStringTag,{value:"Module"}));export{c as _,r as l};
