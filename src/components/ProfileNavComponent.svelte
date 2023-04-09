@@ -51,14 +51,13 @@
         query.has("token")
       ) {
         let token = query.get("token");
-        const d = new Date();
-        d.setTime(d.getTime() + 30 * 24 * 60 * 60 * 1000);
+        
+        const date = new Date();
+        date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
 
-        let expires = d.toUTCString();
+        let expires = date.toUTCString();
 
-        console.log(`dph_token=${token}; expires=${expires}`);
         document.cookie = `dph_token=${token}; expires=${expires}`;
-        console.log("i am going to commit sad");
 
         let res = await fetchAuthed("get", apiURL + "/user/me");
 

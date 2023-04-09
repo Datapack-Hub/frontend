@@ -1,13 +1,9 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
-  import { page } from "$app/stores";
   import ProjectComponent from "$components/ProjectComponent.svelte";
   import { isAuthenticated, userData } from "$globals";
+  import type { PageData } from "./$types";
 
-  let data: { profile: User | null; projects: Project[] | null } = {
-    profile: null,
-    projects: null,
-  };
+  export let data: PageData;
 
   function titleCase(str: string | undefined): string {
     if (str == undefined) return "null";
@@ -19,30 +15,10 @@
       })
       .join(" ");
   }
-
-  async function load() {
-    if (browser) {
-      const [user, projects] = await Promise.all([
-        fetch(`https://api.datapackhub.net/user/${$page.params.slug}`),
-        fetch(`https://api.datapackhub.net/user/${$page.params.slug}/projects`),
-      ]);
-      if (user.ok && projects.ok) {
-        const profileJson = (await user.json()) as User;
-        const projectJson = (await projects.json()).result as Project[];
-        data = {
-          profile: profileJson,
-          projects: projectJson,
-        };
-        return;
-      }
-    }
-  }
 </script>
 
 <svelte:head>
-  {#await load() then}
-    <title>{data.profile?.username} | Datapack Hub</title>
-  {/await}
+  <title>{data.profile?.username} | Datapack Hub</title>
 </svelte:head>
 
 <main
@@ -52,52 +28,48 @@
     class="flex flex-col items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-32"
   >
     <div class="flex flex-col items-center md:items-start">
-      {#await load()}
-        <p>Loading</p>
-      {:then}
-        <img
-          src={data.profile?.profile_icon}
-          alt="{data.profile?.username}'s profile picture"
-          height="128"
-          width="128"
-          class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 {data
-            .profile?.role}-outline outline-offset-4 mr-6"
-        />
+      <img
+        src={data.profile?.profile_icon}
+        alt="{data.profile?.username}'s profile picture"
+        height="128"
+        width="128"
+        class="md:h-24 md:w-24 lg:h-32 lg:w-32 rounded-full outline outline-2 {data
+          .profile?.role}-outline outline-offset-4 mr-0 md:mr-6"
+      />
 
-        <p
-          class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-8"
-        >
-          {data.profile?.username}
-        </p>
+      <p
+        class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-8"
+      >
+        {data.profile?.username}
+      </p>
 
-        <p class="dark:text-white sm:text-base md:text-lg font-brand font-bold">
-          {#if data.profile?.role != "default"}
-            <span class="{data.profile?.role}-text">
-              ⬤ {titleCase(data.profile?.role)}
-            </span>
-          {/if}
-        </p>
-        <p
-          class="whitespace-pre-line dark:bg-stone-700 dark:bg-opacity-40 bg-opacity-40 bg-white mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light"
-        >
-          {data.profile?.bio.replaceAll("\\n", "\n")}
-        </p>
-        {#if $isAuthenticated && $userData.id === data.profile?.id}
-          <a
-            href="edit"
-            class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-2 md:py-2 text-md md:text-lg lg:text-xl hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 mt-2"
-          >
-            <img
-              src="../icons/settings.svg"
-              alt="settings"
-              width="24"
-              height="24"
-              class="float-left invert mr-2 max-w-sm stroke-red-400"
-            />
-            Profile Settings
-          </a>
+      <p class="dark:text-white sm:text-base md:text-lg font-brand font-bold">
+        {#if data.profile?.role != "default"}
+          <span class="{data.profile?.role}-text">
+            ⬤ {titleCase(data.profile?.role)}
+          </span>
         {/if}
-      {/await}
+      </p>
+      <p
+        class="whitespace-pre-line dark:bg-stone-700 dark:bg-opacity-40 bg-opacity-40 bg-white mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light"
+      >
+        {data.profile?.bio.replaceAll("\\n", "\n")}
+      </p>
+      {#if $isAuthenticated && $userData.id === data.profile?.id}
+        <a
+          href="edit"
+          class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-2 md:py-2 text-md md:text-lg lg:text-xl hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 mt-2"
+        >
+          <img
+            src="../icons/settings.svg"
+            alt="settings"
+            width="24"
+            height="24"
+            class="float-left invert mr-2 max-w-sm stroke-red-400"
+          />
+          Profile Settings
+        </a>
+      {/if}
     </div>
     <div
       class="w-full mx-24 h-full overflow-auto md:overflow-y-auto mt-16 md:mt-0 styled-scrollbar"

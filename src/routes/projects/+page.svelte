@@ -1,19 +1,10 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
   import ProjectComponent from "$components/ProjectComponent.svelte";
+  import type { PageData } from "./$types";
 
-  let data: Project[] = [];
+  export let data: PageData;
 
-  async function load() {
-    if (browser) {
-      const proj = await fetch(`https://api.datapackhub.net/projects/`);
-      if (proj.ok) {
-        const projectJson = (await proj.json()).result as Project[];
-        data = projectJson;
-        return;
-      }
-    }
-  }
+  
 </script>
 
 <main
@@ -22,11 +13,6 @@
   <div
     class="items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-16 overflow-auto"
   >
-    {#await load()}
-      <p class="dark:text-white font-black">
-        hi we r loading plz be patient the cat is being a jerk...
-      </p>
-    {:then}
       <h1
         class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-8 pb-2"
       >
@@ -37,20 +23,21 @@
         <p class="dark:text-white font-bold">Sort:</p>
         <a
           href="?sort=updated"
-          class="ml-2 mr-2 bg-orange-600 rounded-lg p-1 font-semibold"
+          class="btn-sm-start {data.sortMode == "updated" ? "bg-orange-500" : "bg-opacity-0 text-orange-500 bg-orange-500 hover:bg-opacity-20 transition-all"}"
           >Updated</a
         >
         <a
           href="?sort=trending"
-          class="mr-2 text-orange-500 rounded-lg p-1 font-semibold bg-opacity-0 bg-orange-500 hover:bg-opacity-20"
+          class="btn-sm-start {data.sortMode == "trending" ? "bg-orange-500" : "bg-opacity-0 text-orange-500 bg-orange-500 hover:bg-opacity-20 transition-all"}"
           >Trending</a
         >
       </div>
       <div class="flex flex-col items-center w-full pt-5">
-        {#each data ?? [] as project}
-          <ProjectComponent {project} />
-        {/each}
+        {#if data.projects}          
+          {#each data.projects as project}
+            <ProjectComponent {project} />
+          {/each}
+        {/if}
       </div>
-    {/await}
   </div>
 </main>

@@ -1,22 +1,14 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import ColorSchemeSelector from "./buttons/ColorSchemeSelector.svelte";
   import ProfileNavComponent from "./ProfileNavComponent.svelte";
-  let isSmallWidth: boolean;
-
-  onMount(() => {
-    isSmallWidth = window.innerWidth < 768;
-    addEventListener("resize", () => (isSmallWidth = window.innerWidth < 768));
-  });
 </script>
 
-<nav class="w-full fixed {!isSmallWidth ? '' : 'bottom-0'} transition-all px-8 md:px-16 lg:px-24 z-50">
+<nav
+  class="w-full fixed bottom-0 md:top-0 transition-all px-8 md:px-16 lg:px-24 z-50"
+>
   <div class="funky-gradient w-full">
     <div class="flex items-center mt-4 md:mt-0">
-      <a
-        href="/"
-        class="flex items-center z-20 cursor-pointer"
-      >
+      <a href="/" class="flex items-center z-20 cursor-pointer">
         <img
           src="/logos/dph.svg"
           alt="logo"
@@ -24,13 +16,11 @@
           height="32"
           width="32"
         />
-        {#if !isSmallWidth}
-          <span
-            class="dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 hover:text-neutral-700 active:text-neutral-600 text-black font-brand font-bold text-2xl transition-colors"
-          >
-            Datapack Hub
-          </span>
-        {/if}
+        <span
+          class="dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 hover:text-neutral-700 active:text-neutral-600 text-black font-brand font-bold text-2xl transition-colors hidden md:block"
+        >
+          Datapack Hub
+        </span>
       </a>
       <a
         href="/projects"

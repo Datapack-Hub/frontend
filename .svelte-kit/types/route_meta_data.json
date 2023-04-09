@@ -1,10 +1,14 @@
 {
 	"/": [],
 	"/moderation/console": [],
-	"/projects": [],
+	"/projects": [
+		"src/routes/projects/+page.ts"
+	],
 	"/project/[slug]": [
 		"src/routes/project/[slug]/+page.ts"
 	],
 	"/user/edit": [],
-	"/user/[slug]": []
+	"/user/[slug]": [
+		"src/routes/user/[slug]/+page.ts"
+	]
 }
