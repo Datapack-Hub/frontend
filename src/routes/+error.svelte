@@ -1,44 +1,46 @@
 <script lang="ts">
   import { page } from "$app/stores";
 
-  let message = "";
+  let message = $page.error?.description;
 
-  switch ($page.status) {
-    case 404:
-      message =
-        "This link either stopped existing, no longer exists, or never existed in the first place, you may want to check if the link is correct!";
-      break;
+  if (!message) {
+    switch ($page.status) {
+      case 404:
+        message =
+          "This link either stopped existing, no longer exists, or never existed in the first place, you may want to check if the link is correct!";
+        break;
 
-    case 401:
-      message =
-        "Please log in! This page contains data which needs you to be logged in!";
-      break;
+      case 401:
+        message =
+          "Please log in! This page contains data which needs you to be logged in!";
+        break;
 
-    case 403:
-      message =
-        "You don't have permission to visit this page! If you think this is an error, contact an admin!";
-      break;
+      case 403:
+        message =
+          "You don't have permission to visit this page! If you think this is an error, contact an admin!";
+        break;
 
-    case 500:
-      message = "Our servers are currently blowing up, look what you did!";
-      break;
+      case 500:
+        message = "Our servers are currently blowing up, look what you did!";
+        break;
 
-    default:
-      message =
-        "We haven't coded a message for this error yet! If you think we should, reach out to us, or, if you're a dev, make a pull request.";
+      default:
+        message =
+          "We haven't coded a message for this error yet! If you think we should, reach out to us, or, if you're a dev, make a pull request.";
+    }
   }
 </script>
 
 <main
-  class="dark:bg-stone-900 bg-new-white transition-colors h-screen w-full flex items-center"
+  class="dark:bg-stone-900 bg-new-white transition-colors h-screen w-full flex flex-col md:flex-row items-center px-8 md:px-16 lg:px-24"
 >
-  <p class="font-brand text-[15rem] dark:text-white w-1/2 text-center">
+  <p class="font-crafty text-9xl md:text-[10rem] lg:text-[12rem] xl:text-[15rem] dark:text-white w-full mb-8 md:mb-0 md:w-1/2 text-left md:text-center">
     {$page.status}
   </p>
-  <div class="w-1/3">
-    <p class="font-brand text-9xl dark:text-white mb-6">
+  <div class="w-full md:w-1/3">
+    <p class="font-brand text-5xl md:text-6xl lg:text-8xl xl:text-9xl dark:text-white mb-6">
       {$page.error?.message}
     </p>
-    <p class="font-brand text-2xl dark:text-white opacity-40">{message}</p>
+    <p class="font-brand text-lg md:text-xl lg:text-2xl dark:text-white opacity-40">{message}</p>
   </div>
 </main>
