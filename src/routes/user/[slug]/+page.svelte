@@ -46,10 +46,31 @@
       <p class="dark:text-white sm:text-base md:text-lg font-brand font-bold">
         {#if data.profile?.role != "default"}
           <span class="{data.profile?.role}-text">
-            ⬤ {titleCase(data.profile?.role)}
+            {#if data.profile?.role != "nerd"}⬤{:else}🤓{/if}
+            {titleCase(data.profile?.role)}
           </span>
         {/if}
       </p>
+      <p
+        class="whitespace-pre-line dark:bg-stone-700 dark:bg-opacity-40 bg-opacity-40 bg-white mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light"
+      >
+        {data.profile?.bio.replaceAll("\\n", "\n")}
+      </p>
+      {#if $isAuthenticated && $userData.id === data.profile?.id}
+        <a
+          href="edit"
+          class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-2 md:py-2 text-md md:text-lg lg:text-xl hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 mt-2"
+        >
+          <img
+            src="../icons/settings.svg"
+            alt="settings"
+            width="24"
+            height="24"
+            class="float-left invert mr-2 max-w-sm stroke-red-400"
+          />
+          Profile Settings
+        </a>
+      {/if}
       <p
         class="whitespace-pre-line dark:bg-stone-700 dark:bg-opacity-40 bg-opacity-40 bg-white mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light"
       >
@@ -118,6 +139,14 @@
 
   .helper-text {
     @apply text-blue-500;
+  }
+
+  .nerd-text {
+    @apply text-yellow-500;
+  }
+
+  .nerd-outline {
+    @apply outline-yellow-500;
   }
 
   .default-outline {
