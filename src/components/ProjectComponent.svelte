@@ -40,6 +40,6 @@
       By {author}
     </a>
     {/if}
-    <p class="m-4 text-sm md:text-base font-medium">{project.description}</p>
+    <p class="m-4 text-sm md:text-base font-medium two-lines">{project.description}</p>
   </div>
 </div>
