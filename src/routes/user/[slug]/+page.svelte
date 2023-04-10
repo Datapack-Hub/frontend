@@ -13,7 +13,7 @@
 </svelte:head>
 
 <main
-  class="dark:bg-stone-900 bg-new-white transition-all px-8 md:px-16 lg:px-24"
+  class="dark:bg-stone-900 bg-new-white transition-all px-8 md:px-16 lg:px-24 overflow-y-scroll h-screen styled-scrollbar"
 >
   <div
     class="flex flex-col items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-32"
