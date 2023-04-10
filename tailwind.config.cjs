@@ -14,6 +14,9 @@ const config = {
         "dark-white": "#edd6ab",
         "dph-orange": "#ea580c",
       },
+      scale: {
+        '102': '1.02',
+      }
     },
   },
 

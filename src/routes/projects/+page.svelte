@@ -1,5 +1,6 @@
 <script lang="ts">
-  import ProjectComponent from "$components/interactable/ProjectComponent.svelte";
+  import CasualLine from "$components/CasualLine.svelte";
+import ProjectComponent from "$components/interactable/ProjectComponent.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;
@@ -36,7 +37,7 @@
           >Trending</a
         >
       </div>
-      <div class=" border-b-[1px] border-stone-700 mt-4"></div>
+      <CasualLine />
       <div class="flex flex-col items-center w-full mt-4">
         {#if data.projects}          
           {#each data.projects as project}

@@ -1,6 +1,8 @@
 <script lang="ts">
   import ProfileCard from "$components/ProfileCard.svelte";
   import ProjectComponent from "$components/interactable/ProjectComponent.svelte";
+  import UserModeration from "$components/interactable/UserModeration.svelte";
+  import { userData } from "$globals";
   import type { PageData } from "./$types";
 
   export let data: PageData;
@@ -11,12 +13,17 @@
 </svelte:head>
 
 <main
-  class="dark:bg-stone-900 bg-new-white transition-all px-8 md:px-16 lg:px-24"
+  class="dark:bg-stone-900 bg-new-white h-full transition-all px-8 md:px-16 lg:px-24"
 >
   <div
     class="flex flex-col items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-32"
   >
+  <div>
     <ProfileCard profileData={data.profile} />
+    {#if (['moderator','developer','admin'].includes($userData?.role))}
+    <UserModeration />
+    {/if}
+  </div>
     <div
       class="w-full mx-24 h-full overflow-y-auto mt-16 md:mt-0 styled-scrollbar"
     >
