@@ -1,6 +1,6 @@
 <script lang="ts">
   import { marked } from "marked";
-  import { sanitize } from "isomorphic-dompurify";
+  import DOMPurify from "isomorphic-dompurify";
   import { browser } from "$app/environment";
 
   export let placeholder: string | undefined;
@@ -9,15 +9,7 @@
   $: output = "";
 
   if (browser) {
-    output = marked.parse(
-      sanitize(
-        text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""),
-        {
-          FORBID_ATTR: ["style", "class"],
-          FORBID_TAGS: ["style", "script", "iframe", "svg", "canvas"],
-        }
-      )
-    );
+    output = marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""));
   }
 </script>
 
@@ -29,5 +21,10 @@
     spellcheck="false"
     {placeholder}
   />
-  <p class="text-white prose dark:prose-invert">{@html output}</p>
+  <p class="text-white prose dark:prose-invert">
+    {@html DOMPurify.sanitize(output, {
+      FORBID_ATTR: ["style", "class"],
+      FORBID_TAGS: ["style", "script", "iframe", "svg", "canvas"],
+    })}
+  </p>
 </div>
