@@ -1,6 +1,6 @@
 <script lang="ts">
   import { marked } from "marked";
-  import DOMPurify from "isomorphic-dompurify";
+  import { sanitize } from "isomorphic-dompurify";
   import { browser } from "$app/environment";
 
   export let placeholder: string | undefined;
@@ -10,7 +10,7 @@
 
   if (browser) {
     output = marked.parse(
-      DOMPurify.sanitize(
+      sanitize(
         text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""),
         {
           FORBID_ATTR: ["style", "class"],
