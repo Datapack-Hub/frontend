@@ -18,8 +18,8 @@ export const dictionary = {
 		"/moderation/console": [3],
 		"/projects": [5],
 		"/project/[slug]": [4],
-		"/user/edit": [7],
-		"/user/[slug]": [6]
+		"/user/edit": [6],
+		"/user/[slug]": [7]
 	};
 
 export const hooks = {
