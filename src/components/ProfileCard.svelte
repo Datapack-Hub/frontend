@@ -33,11 +33,11 @@
   </p>
 
   <p
-    class="dark:text-white sm:text-base md:text-lg font-brand font-semibold align-middle mt-4 text-center w-full"
+    class="dark:text-white sm:text-base md:text-lg font-brand font-semibold align-middle mt-1 text-center w-full"
   >
     {#if profileData?.role != "default"}
       <span class="{profileData?.role}-text">
-        {titleCase(profileData?.role)}
+        {#if profileData?.role == "nerd"}🤓 {/if}{titleCase(profileData?.role)}
       </span>
     {/if}
   </p>
