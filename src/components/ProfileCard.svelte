@@ -15,7 +15,7 @@
   }
 </script>
 
-<div class="flex flex-col items-center md:items-start max-w-lg">
+<div class="flex flex-col items-center md:items-start max-w-full ms:max-w-lg">
   <div class="self-center">
     <img
       src={profileData?.profile_icon}
@@ -27,30 +27,30 @@
   </div>
 
   <p
-    class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-4"
+    class="dark:text-white text-5xl text-center md:text-4xl lg:text-5xl font-brand font-bold mt-4 w-full"
   >
     {profileData?.username}
   </p>
 
   <p
-    class="dark:text-white sm:text-base md:text-lg font-brand font-semibold align-middle"
+    class="dark:text-white sm:text-base md:text-lg font-brand font-semibold align-middle mt-4 text-center w-full"
   >
     {#if profileData?.role != "default"}
       <span class="{profileData?.role}-text">
-        {#if profileData?.role != "nerd"}•{:else}🤓{/if}
+        {#if profileData?.role != "nerd"}⬤{:else}🤓{/if}
         {titleCase(profileData?.role)}
       </span>
     {/if}
   </p>
   <p
-    class="whitespace-pre-line dark:bg-stone-700 dark:bg-opacity-40 bg-opacity-40 bg-white mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light h-36 overflow-y-scroll"
+    class="whitespace-pre-line dark:bg-stone-700/40 bg-white/40 rounded-xl p-2 dark:text-white text-sm md:text-lg my-4 font-brand font-light max-h-64 overflow-y-scroll w-full styled-scrollbar"
   >
     {profileData?.bio.replaceAll("\\n", "\n")}
   </p>
   {#if $isAuthenticated && $userData.id === profileData?.id}
     <a
       href="edit"
-      class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-2 text-md md:text-lg lg:text-lg w-full hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 mt-2"
+      class="text-red-400 bg-red-400/10 font-brand rounded-md px-2 md:px-3 py-2 text-md md:text-lg lg:text-lg w-full hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 mt-2"
     >
       <img
         src="/icons/settings.svg"

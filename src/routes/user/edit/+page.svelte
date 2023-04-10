@@ -29,6 +29,7 @@
       <p class="align-middle dark:text-new-white font-brand">Bio</p>
       <textarea
         class="dark:bg-stone-800 bg-dark-white rounded-md dark:text-white h-40 w-80 text-lg p-2 font-brand resize-none"
+        maxlength="500"
         value={$userData.bio.replaceAll("\\n", "\n")}
       />
       <br /><br />
