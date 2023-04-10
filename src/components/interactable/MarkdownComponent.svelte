@@ -22,9 +22,6 @@
     {placeholder}
   />
   <p class="text-white prose dark:prose-invert">
-    {@html DOMPurify.sanitize(output, {
-      FORBID_ATTR: ["style", "class"],
-      FORBID_TAGS: ["style", "script", "iframe", "svg", "canvas"],
-    })}
+    {@html DOMPurify.sanitize(output)}
   </p>
 </div>
