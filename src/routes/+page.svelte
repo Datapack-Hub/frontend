@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import ButtonPrimary from "$components/buttons/ButtonLink.svelte";
+  import ButtonPrimary from "$components/interactable/buttons/ButtonLink.svelte";
   import anime from "animejs";
+  import MarkdownComponent from "$components/interactable/MarkdownComponent.svelte";
 
   let rand = Math.floor(Math.random() * 10_000_000);
 
@@ -68,7 +69,10 @@
 
 <svelte:head>
   <title>Datapack Hub</title>
-  <meta name="description" content="DatapackHub is a website designed for publishing datapacks">
+  <meta
+    name="description"
+    content="DatapackHub is a website designed for publishing datapacks"
+  />
 </svelte:head>
 
 <svelte:window bind:innerWidth={width} />

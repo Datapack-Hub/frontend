@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onDestroy } from "svelte";
   import { draw } from "svelte/transition";
-  import { isDark } from "../../routes/globals";
+  import { isDark } from "../../../routes/globals";
 
   let dark: boolean;
   let unsubscribeDark = isDark.subscribe((v) => {

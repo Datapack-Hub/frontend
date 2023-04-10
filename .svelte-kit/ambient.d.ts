@@ -72,7 +72,9 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
 	export const npm_package_dependencies_animejs: string;
-	export const npm_package_dependencies_idb_keyval: string;
+	export const npm_package_dependencies_isomorphic_dompurify: string;
+	export const npm_package_dependencies_marked: string;
+	export const npm_package_dependencies__tailwindcss_typography: string;
 	export const npm_package_devDependencies_autoprefixer: string;
 	export const npm_package_devDependencies_esbuild: string;
 	export const npm_package_devDependencies_eslint: string;
@@ -91,10 +93,11 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies__sveltejs_adapter_auto: string;
 	export const npm_package_devDependencies__sveltejs_adapter_cloudflare: string;
 	export const npm_package_devDependencies__sveltejs_kit: string;
-	export const npm_package_devDependencies__tailwindcss_forms: string;
 	export const npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
 	export const npm_package_devDependencies__typescript_eslint_parser: string;
 	export const npm_package_devDependencies__types_animejs: string;
+	export const npm_package_devDependencies__types_dompurify: string;
+	export const npm_package_devDependencies__types_marked: string;
 	export const npm_package_name: string;
 	export const npm_package_private: string;
 	export const npm_package_scripts_build: string;
@@ -231,7 +234,9 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
 		npm_package_dependencies_animejs: string;
-		npm_package_dependencies_idb_keyval: string;
+		npm_package_dependencies_isomorphic_dompurify: string;
+		npm_package_dependencies_marked: string;
+		npm_package_dependencies__tailwindcss_typography: string;
 		npm_package_devDependencies_autoprefixer: string;
 		npm_package_devDependencies_esbuild: string;
 		npm_package_devDependencies_eslint: string;
@@ -250,10 +255,11 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies__sveltejs_adapter_auto: string;
 		npm_package_devDependencies__sveltejs_adapter_cloudflare: string;
 		npm_package_devDependencies__sveltejs_kit: string;
-		npm_package_devDependencies__tailwindcss_forms: string;
 		npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
 		npm_package_devDependencies__typescript_eslint_parser: string;
 		npm_package_devDependencies__types_animejs: string;
+		npm_package_devDependencies__types_dompurify: string;
+		npm_package_devDependencies__types_marked: string;
 		npm_package_name: string;
 		npm_package_private: string;
 		npm_package_scripts_build: string;

@@ -32,13 +32,13 @@
 </script>
 
 <main
-  class="dark:bg-stone-900 bg-new-white transition-colors h-screen w-full flex flex-col md:flex-row items-center px-8 md:px-16 lg:px-24"
+  class="dark:bg-stone-900 bg-new-white transition-colors h-screen w-full flex flex-col md:flex-row items-center justify-center md:justify-start px-8 md:px-16 lg:px-24"
 >
-  <p class="font-crafty text-9xl md:text-[10rem] lg:text-[12rem] xl:text-[15rem] dark:text-white w-full mb-8 md:mb-0 md:w-1/2 text-left md:text-center">
+  <p class="font-mono text-9xl md:text-[10rem] lg:text-[12rem] xl:text-[15rem] dark:text-white w-full mb-8 md:mb-0 md:w-1/2 text-center">
     {$page.status}
   </p>
   <div class="w-full md:w-1/3">
-    <p class="font-brand text-5xl md:text-6xl lg:text-8xl xl:text-9xl dark:text-white mb-6">
+    <p class="font-brand text-5xl md:text-6xl lg:text-8xl xl:text-9xl dark:text-white mb-6 text-center md:text-left">
       {$page.error?.message}
     </p>
     <p class="font-brand text-lg md:text-xl lg:text-2xl dark:text-white opacity-40">{message}</p>
