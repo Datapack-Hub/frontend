@@ -37,6 +37,7 @@
       {/if}
       <h2 class="dark:text-white text-md transition-all font-brand" in:fade={{duration: 250}}>{data.project?.description}</h2>
     </div>
+    <a href="/download" class="float-right h-min text-new-white p-2 bg-dph-orange rounded-md font-bold text-md md:text-lg lg:text-xl font-brand hover:scale-110 transition-all active:brightness-75">Download</a>
   </div>
   <div class="dark:bg-new-white bg-dark-white dark:bg-opacity-10 p-4 rounded-xl mt-8">
       <p class="dark:text-white text-lg font-brand font-light">{data.project?.body}</p>

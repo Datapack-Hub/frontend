@@ -1,5 +1,7 @@
 import { c as create_ssr_component, e as escape, b as add_attribute, v as validate_component } from "../../chunks/index3.js";
 import "animejs";
+import "marked";
+import "isomorphic-dompurify";
 const ButtonLink = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { clickEvent = void 0 } = $$props;
   if ($$props.clickEvent === void 0 && $$bindings.clickEvent && clickEvent !== void 0)
@@ -9,7 +11,7 @@ const ButtonLink = create_ssr_component(($$result, $$props, $$bindings, slots) =
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let rand = Math.floor(Math.random() * 1e7);
   let formattedRand = Intl.NumberFormat("en", { notation: "compact" }).format(rand);
-  return `${$$result.head += `<!-- HEAD_svelte-1nj0ucz_START -->${$$result.title = `<title>Datapack Hub</title>`, ""}<meta name="description" content="DatapackHub is a website designed for publishing datapacks"><!-- HEAD_svelte-1nj0ucz_END -->`, ""}
+  return `${$$result.head += `<!-- HEAD_svelte-1o42pse_START -->${$$result.title = `<title>Datapack Hub</title>`, ""}<meta name="description" content="DatapackHub is a website designed for publishing datapacks"><!-- HEAD_svelte-1o42pse_END -->`, ""}
 
 
 

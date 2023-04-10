@@ -7,6 +7,10 @@
   
 </script>
 
+<svelte:head>
+  <title>Projects | Datapack Hub</title>
+</svelte:head>
+
 <main
   class="dark:bg-stone-900 bg-new-white transition-all px-8 md:px-16 lg:px-24"
 >

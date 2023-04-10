@@ -12,7 +12,7 @@ const ColorSchemeSelector = create_ssr_component(($$result, $$props, $$bindings,
 const tippy = "";
 const ProfileNavComponent_svelte_svelte_type_style_lang = "";
 const css = {
-  code: ".admin-outline.svelte-iyvpby{outline-color:#ef4444\n}.moderator-outline.svelte-iyvpby{outline-color:#f97316\n}.developer-outline.svelte-iyvpby{outline-color:#84cc16\n}.helper-outline.svelte-iyvpby{outline-color:#3b82f6\n}.default-outline.svelte-iyvpby{outline-color:#eab308\n}",
+  code: ".admin-outline.svelte-1yjb8pi{outline-color:#ef4444\n}.admin-text.svelte-1yjb8pi{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity))\n}.moderator-outline.svelte-1yjb8pi{outline-color:#f97316\n}.moderator-text.svelte-1yjb8pi{--tw-text-opacity:1;color:rgb(249 115 22 / var(--tw-text-opacity))\n}.developer-outline.svelte-1yjb8pi{outline-color:#84cc16\n}.developer-text.svelte-1yjb8pi{--tw-text-opacity:1;color:rgb(132 204 22 / var(--tw-text-opacity))\n}.helper-outline.svelte-1yjb8pi{outline-color:#3b82f6\n}.helper-text.svelte-1yjb8pi{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity))\n}.nerd-text.svelte-1yjb8pi{--tw-text-opacity:1;color:rgb(234 179 8 / var(--tw-text-opacity))\n}.nerd-outline.svelte-1yjb8pi{outline-color:#eab308\n}.default-outline.svelte-1yjb8pi{outline-color:#eab308\n}.default-text.svelte-1yjb8pi{--tw-text-opacity:1;color:rgb(234 179 8 / var(--tw-text-opacity))\n}",
   map: null
 };
 const ProfileNavComponent = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -30,7 +30,7 @@ const ProfileNavComponent = create_ssr_component(($$result, $$props, $$bindings,
   $$unsubscribe_page();
   return `<a href="/" target="_self" class="flex items-center justify-center ml-6 z-50">${$isAuthenticated ? `${$userData.role != "default" ? `<a href="/moderation/console"><img src="/icons/moderation.svg" width="32" height="32" alt="wip" class="dark:invert z-20 mr-7"></a>` : ``}
     <img src="/icons/bell.svg" width="32" height="32" alt="wip" class="dark:invert z-20">
-    <a href="${"/user/" + escape($userData.username, true)}"><img${add_attribute("src", $userData.profile_icon, 0)} alt="${escape($userData.username, true) + "'s profile picture"}" height="32" width="32" class="${"rounded-full outline outline-2 " + escape($userData.role, true) + "-outline outline-offset-2 ml-6 svelte-iyvpby"}"></a>` : `<a id="sign_in" href="${escape(apiURL, true) + "/auth/login"}" class="dark:text-red-400 text-red-500 dark:bg-red-400 bg-red-500 bg-opacity-30 dark:bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-1 md:py-2 text-md md:text-lg lg:text-xl hover:scale-110 transition-all border-2 dark:border-red-400 border-red-500 active:brightness-75">Sign in
+    <a href="${"/user/" + escape($userData.username, true)}"><img${add_attribute("src", $userData.profile_icon, 0)} alt="${escape($userData.username, true) + "'s profile picture"}" height="32" width="32" class="${"rounded-full outline outline-2 " + escape($userData.role, true) + "-outline outline-offset-2 ml-6 svelte-1yjb8pi"}"></a>` : `<a id="sign_in" href="${escape(apiURL, true) + "/auth/login"}" class="dark:text-red-400 text-red-500 dark:bg-red-400 bg-red-500 bg-opacity-30 dark:bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-1 md:py-2 text-md md:text-lg lg:text-xl hover:scale-110 transition-all border-2 dark:border-red-400 border-red-500 active:brightness-75">Sign in
     </a>`}
 </a>`;
 });

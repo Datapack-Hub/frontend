@@ -16,7 +16,8 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     data.sortMode == "trending" ? "bg-orange-500" : "bg-opacity-0 text-orange-500 bg-orange-500 hover:bg-opacity-20 transition-all",
     true
   )}">Trending</a></div>
-      <div class="flex flex-col items-center w-full pt-5">${data.projects ? `${each(data.projects, (project) => {
+      <div class="border-b-[1px] border-stone-700 mt-4"></div>
+      <div class="flex flex-col items-center w-full mt-4">${data.projects ? `${each(data.projects, (project) => {
     return `${validate_component(ProjectComponent, "ProjectComponent").$$render($$result, { project }, {}, {})}`;
   })}` : ``}</div></div></main>`;
 });

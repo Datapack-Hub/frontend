@@ -47,6 +47,7 @@ declare module '$env/static/private' {
 	export const GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN: string;
 	export const SHLVL: string;
 	export const BROWSER: string;
+	export const npm_package_dependencies_isomorphic_dompurify: string;
 	export const HUGO_ROOT: string;
 	export const HOME: string;
 	export const OLDPWD: string;
@@ -73,13 +74,14 @@ declare module '$env/static/private' {
 	export const npm_package_scripts_check: string;
 	export const GOROOT: string;
 	export const NODE_ROOT: string;
+	export const npm_package_devDependencies__types_marked: string;
 	export const npm_config_engine_strict: string;
 	export const COLORTERM: string;
 	export const GITHUB_USER: string;
 	export const GITHUB_GRAPHQL_URL: string;
-	export const npm_package_devDependencies__tailwindcss_forms: string;
 	export const npm_package_devDependencies_tailwindcss: string;
 	export const npm_package_devDependencies_typescript: string;
+	export const npm_package_dependencies__tailwindcss_typography: string;
 	export const PYTHON_PATH: string;
 	export const NVM_DIR: string;
 	export const npm_package_devDependencies_sveltejs_tippy: string;
@@ -90,7 +92,6 @@ declare module '$env/static/private' {
 	export const GITHUB_API_URL: string;
 	export const NVS_HOME: string;
 	export const npm_package_type: string;
-	export const npm_package_dependencies_idb_keyval: string;
 	export const rvm_bin_path: string;
 	export const SDKMAN_CANDIDATES_API: string;
 	export const _: string;
@@ -119,7 +120,9 @@ declare module '$env/static/private' {
 	export const NPM_GLOBAL: string;
 	export const HUGO_DIR: string;
 	export const SHELL_LOGGED_IN: string;
+	export const npm_package_dependencies_marked: string;
 	export const MY_RUBY_HOME: string;
+	export const npm_package_devDependencies__types_dompurify: string;
 	export const npm_package_devDependencies_postcss_load_config: string;
 	export const LANG: string;
 	export const npm_package_devDependencies_eslint: string;
@@ -226,6 +229,7 @@ declare module '$env/dynamic/private' {
 		GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN: string;
 		SHLVL: string;
 		BROWSER: string;
+		npm_package_dependencies_isomorphic_dompurify: string;
 		HUGO_ROOT: string;
 		HOME: string;
 		OLDPWD: string;
@@ -252,13 +256,14 @@ declare module '$env/dynamic/private' {
 		npm_package_scripts_check: string;
 		GOROOT: string;
 		NODE_ROOT: string;
+		npm_package_devDependencies__types_marked: string;
 		npm_config_engine_strict: string;
 		COLORTERM: string;
 		GITHUB_USER: string;
 		GITHUB_GRAPHQL_URL: string;
-		npm_package_devDependencies__tailwindcss_forms: string;
 		npm_package_devDependencies_tailwindcss: string;
 		npm_package_devDependencies_typescript: string;
+		npm_package_dependencies__tailwindcss_typography: string;
 		PYTHON_PATH: string;
 		NVM_DIR: string;
 		npm_package_devDependencies_sveltejs_tippy: string;
@@ -269,7 +274,6 @@ declare module '$env/dynamic/private' {
 		GITHUB_API_URL: string;
 		NVS_HOME: string;
 		npm_package_type: string;
-		npm_package_dependencies_idb_keyval: string;
 		rvm_bin_path: string;
 		SDKMAN_CANDIDATES_API: string;
 		_: string;
@@ -298,7 +302,9 @@ declare module '$env/dynamic/private' {
 		NPM_GLOBAL: string;
 		HUGO_DIR: string;
 		SHELL_LOGGED_IN: string;
+		npm_package_dependencies_marked: string;
 		MY_RUBY_HOME: string;
+		npm_package_devDependencies__types_dompurify: string;
 		npm_package_devDependencies_postcss_load_config: string;
 		LANG: string;
 		npm_package_devDependencies_eslint: string;
