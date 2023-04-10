@@ -37,7 +37,6 @@
   >
     {#if profileData?.role != "default"}
       <span class="{profileData?.role}-text">
-        {#if profileData?.role != "nerd"}⬤{:else}🤓{/if}
         {titleCase(profileData?.role)}
       </span>
     {/if}
