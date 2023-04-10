@@ -15,7 +15,7 @@
   }
 </script>
 
-<div class="flex flex-col items-center md:items-start">
+<div class="flex flex-col items-center md:items-start max-w-lg">
   <div class="self-center">
     <img
       src={profileData?.profile_icon}
