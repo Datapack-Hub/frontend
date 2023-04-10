@@ -33,11 +33,11 @@
   </p>
 
   <p
-    class="dark:text-white sm:text-base md:text-lg font-brand font-semibold mt-4"
+    class="dark:text-white sm:text-base md:text-lg font-brand font-semibold align-middle"
   >
     {#if profileData?.role != "default"}
       <span class="{profileData?.role}-text">
-        {#if profileData?.role != "nerd"}⬤{:else}🤓{/if}
+        {#if profileData?.role != "nerd"}•{:else}🤓{/if}
         {titleCase(profileData?.role)}
       </span>
     {/if}
@@ -50,7 +50,7 @@
   {#if $isAuthenticated && $userData.id === profileData?.id}
     <a
       href="edit"
-      class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-2 text-md md:text-lg lg:text-xl hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 mt-2"
+      class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-2 text-md md:text-lg lg:text-lg w-full hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 mt-2"
     >
       <img
         src="/icons/settings.svg"

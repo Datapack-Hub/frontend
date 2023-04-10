@@ -20,6 +20,7 @@
     <div
       class="w-full mx-24 h-full overflow-y-auto mt-16 md:mt-0 styled-scrollbar"
     >
+    <h1 class="dark:text-white text-xl font-bold">{data.profile?.username}'s projects</h1>
       {#if data.projects?.length == 0}
         <p class="dark:text-white text-opacity-40 text-3xl text-center mt-48">
           No projects!
