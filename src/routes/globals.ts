@@ -2,7 +2,7 @@ import { writable, type Writable } from "svelte/store"
 
 export const isDark = writable(true)
 export const isAuthenticated = writable(false)
-export const userData: Writable<User> = writable({id: -1, username: "", bio: "", profile_icon: "", role: "default"})
+export const userData: Writable<User> = writable({id: -1, username: "", bio: "", profile_icon: "", role: "admin"})
 export const apiURL = "https://api.datapackhub.net"
 
 export function loadColorPref() {
