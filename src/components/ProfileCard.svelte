@@ -42,14 +42,14 @@
     {/if}
   </p>
   <p
-    class="whitespace-pre-line dark:bg-stone-700/40 bg-white/40 rounded-xl p-2 dark:text-white text-sm md:text-lg my-4 font-brand font-light max-h-64 overflow-y-scroll w-full styled-scrollbar"
+    class="whitespace-pre-line dark:bg-stone-700/40 bg-white/40 rounded-xl p-2 dark:text-white text-sm md:text-lg my-3 font-brand font-light max-h-64 overflow-y-scroll w-full styled-scrollbar"
   >
     {profileData?.bio.replaceAll("\\n", "\n")}
   </p>
   {#if $isAuthenticated && $userData.id === profileData?.id}
     <a
       href="edit"
-      class="text-red-400 bg-red-400/10 font-brand rounded-md px-2 md:px-3 py-2 text-md md:text-lg lg:text-lg w-full hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 mt-2"
+      class="text-red-400 bg-red-400/10 font-brand rounded-md px-2 md:px-3 py-2 text-md md:text-lg lg:text-lg w-full hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 mt-1"
     >
       <img
         src="/icons/settings.svg"
