@@ -43,7 +43,7 @@
     {/if}
   </p>
   <p
-    class="whitespace-pre-line dark:bg-stone-700 dark:bg-opacity-40 bg-opacity-40 bg-white mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light"
+    class="whitespace-pre-line dark:bg-stone-700 dark:bg-opacity-40 bg-opacity-40 bg-white mb-2 rounded-xl p-2 dark:text-white text-lg mt-4 font-brand font-light h-36 overflow-y-scroll"
   >
     {profileData?.bio.replaceAll("\\n", "\n")}
   </p>

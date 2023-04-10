@@ -7,7 +7,7 @@
   onMount(async () => ($isDark = loadColorPref()));
 </script>
 
-<div class='{$isDark ? " dark" : ""} h-full'>
+<div class='{$isDark ? " dark" : ""}'>
     <Navbar />
     <slot />
 </div>
