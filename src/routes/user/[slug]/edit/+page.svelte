@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
-  import { userData, apiURL, patchAuthed, fetchAuthed } from "$globals";
+  import { userData, apiURL, patchAuthed, fetchAuthed, isAuthenticated } from "$globals";
   import type { PageData } from "./$types";
 
   export let data: PageData;
@@ -11,7 +11,11 @@
     const bio = document.getElementById("bio") as HTMLTextAreaElement;
     let send = {
       username: uname.value,
-      bio: bio.value
+      bio: bio.value,
+      role: data.profile?.role
+    }
+    if($userData.role == "admin"){
+      send.role = (document.getElementById("role") as HTMLInputElement).value;
     }
     patchAuthed(`${apiURL}/user/id/${data.profile?.id}`,send).then(resp => {
       if (resp.ok) {} else return resp.text().then(txt => alert(txt));
@@ -57,6 +61,14 @@
         id="bio"
       />
       <br /><br />
+      {#if $isAuthenticated && $userData.role == "admin"}
+      <p class="align-middle dark:text-new-white font-brand">Site Role</p>
+      <input
+        class="dark:bg-stone-800 bg-dark-white rounded-md dark:text-white h-10 text-lg p-2 font-brand"
+        value={data.profile?.role}
+        id="role"
+      /><br /><br />
+      {/if}
       <button
         on:click={save}
         class="text-red-400 bg-red-400 bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-2 md:py-2 text-md md:text-lg lg:text-xl hover:scale-105 transition-all border-2 border-red-400 active:brightness-75 my-2"
