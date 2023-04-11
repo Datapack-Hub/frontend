@@ -7,8 +7,10 @@
 	"/project/[slug]": [
 		"src/routes/project/[slug]/+page.ts"
 	],
-	"/user/edit": [],
 	"/user/[slug]": [
 		"src/routes/user/[slug]/+page.ts"
+	],
+	"/user/[slug]/edit": [
+		"src/routes/user/[slug]/edit/+page.ts"
 	]
 }

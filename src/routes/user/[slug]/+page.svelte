@@ -2,10 +2,12 @@
   import ProfileCard from "$components/ProfileCard.svelte";
   import ProjectComponent from "$components/interactable/ProjectComponent.svelte";
   import UserModeration from "$components/interactable/UserModeration.svelte";
-  import { userData } from "$globals";
+  import { isAuthenticated, userData } from "$globals";
   import type { PageData } from "./$types";
 
   export let data: PageData;
+
+  const usr = data.profile
 </script>
 
 <svelte:head>
@@ -20,8 +22,8 @@
   >
     <div class="w-full md:w-[calc(39ch*2.25)] lg:w-[calc(39ch*3)]">
       <ProfileCard profileData={data.profile} />
-      {#if ["moderator", "developer", "admin"].includes($userData?.role)}
-        <UserModeration />
+      {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($userData.role)}
+        <UserModeration user={data.profile} />
       {/if}
     </div>
     <div
