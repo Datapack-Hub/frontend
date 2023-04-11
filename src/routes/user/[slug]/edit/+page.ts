@@ -16,7 +16,7 @@ export const load = (async ({ params, fetch }) => {
             }
 
             return {
-                profile: userJSON
+                profile: userJSON as User
             }
         }
     }

@@ -32,6 +32,15 @@
   -webkit-box-orient: vertical;
 }
 
+.one-lines {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 /* before:bg-gradient-to-br before:from-orange-500 before:to-red-800 */
 .funky-gradient::before {
   content: "";
