@@ -30,6 +30,14 @@ export async function postAuthed(url: string, data: object): Promise<Response> {
   return resp;
 }
 
+export async function patchAuthed(url: string, data: object): Promise<Response> {
+  const resp = await fetch(url, { method: "PATCH", body:JSON.stringify(data), headers: { Authorization: `Basic ${await getCookie("dph_token")}` }});
+  if(resp.status == 498){
+    removeCookie("dph_token")
+  }
+  return resp;
+}
+
 export async function getCookie(item: string) {
   const name = item + "=";
   const decodedCookie = decodeURIComponent(document.cookie);
