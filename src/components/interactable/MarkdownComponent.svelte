@@ -1,27 +1,20 @@
 <script lang="ts">
-  import { marked } from "marked";
-  import DOMPurify from "isomorphic-dompurify";
-  import { browser } from "$app/environment";
+  import SvelteMarkdown from 'svelte-markdown'
 
   export let placeholder: string | undefined;
 
-  let text: string = "";
-  $: output = "";
-
-  if (browser) {
-    output = marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""));
-  }
+  let source: string = "";
 </script>
 
-<div class="">
+<div class="flex w-full justify-between">
   <textarea
     cols="30"
     rows="10"
-    bind:value={text}
+    bind:value={source}
     spellcheck="false"
     {placeholder}
   />
-  <p class="text-white prose dark:prose-invert">
-    {@html DOMPurify.sanitize(output)}
-  </p>
+  <div class="prose dark:prose-invert">
+    <SvelteMarkdown {source}/>
+  </div>
 </div>
