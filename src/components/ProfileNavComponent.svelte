@@ -82,7 +82,10 @@
       height="32"
       alt="wip"
       class="dark:invert z-20 mr-7"
-      use:tippy={moderationHoverMsg}
+      use:tippy={{
+        content: $userData.username,
+        placement: "bottom",
+      }}
     />
     </a>
     

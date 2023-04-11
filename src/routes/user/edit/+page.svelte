@@ -1,6 +1,7 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
-  import { userData, apiURL, patchAuthed } from "$globals";
+  import { userData, apiURL, patchAuthed, fetchAuthed } from "$globals";
 
   function save(){
     const uname = document.getElementById("username") as HTMLInputElement;
@@ -11,13 +12,9 @@
       bio: bio.value
     }
     patchAuthed(`${apiURL}/user/id/${$userData.id}`,data).then(resp => {
-      if(resp.ok) {
-        goto("/user/"+uname.value)
-      }else{
-        resp.text().then(res => {
-          alert(res)
-        })
-      }
+      $userData.username = uname.value
+      $userData.bio = bio.value
+      goto("/user/"+uname.value)
     })
   }
 </script>
