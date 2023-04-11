@@ -7,6 +7,7 @@
 	"/project/[slug]": [
 		"src/routes/project/[slug]/+page.ts"
 	],
+	"/project/[slug]/edit": [],
 	"/staff": [
 		"src/routes/staff/+page.ts"
 	],

@@ -1,6 +1,6 @@
 <script>
   import Navbar from "$components/Navbar.svelte";
-  import { isDark, loadColorPref } from "$globals";
+  import { isAuthenticated, isDark, loadColorPref } from "$globals";
   import { onMount } from "svelte";
   import "../app.postcss";
 
