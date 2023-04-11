@@ -19,12 +19,10 @@
           <img src="/icons/warn.svg" alt="ban" class="p-1 h-8 dark:invert"/>
           Warn
       </button>
-      {#if $userData.role == "admin"}
       <a href="/user/{user?.username}/edit" class="flex mt-1 w-full rounded-md bg-blue-500 text-left p-1 dark:text-white items-center font-brand hover:scale-102">
         <img src="/icons/settings.svg" alt="ban" class="p-1 h-8 dark:invert"/>
         Edit Profile Details
       </a>
-      {/if}
   </div>
 </div><br />
 {/if}
