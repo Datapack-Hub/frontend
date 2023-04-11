@@ -137,6 +137,6 @@
     </div>
   </div>
   <div class="dark:bg-stone-800 bg-dark-white h-[33.333vh] w-screen">
-    <h2>Content here</h2>
+    <MarkdownComponent placeholder="thing"/>
   </div>
 </main>

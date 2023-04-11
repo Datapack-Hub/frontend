@@ -1,9 +1,14 @@
 <script lang="ts">
-  import SvelteMarkdown from 'svelte-markdown'
+  import SvelteMarkdown from "svelte-markdown";
+  import DOMPurify from 'isomorphic-dompurify'
 
   export let placeholder: string | undefined;
 
   let source: string = "";
+  $: cleanedSource = DOMPurify.sanitize(source, {
+    FORBID_ATTR: ['style', 'class', 'placeholder', 'src'],
+    FORBID_TAGS: ['canvas', 'svg', 'iframe', 'img']
+  })
 </script>
 
 <div class="flex w-full justify-between">
@@ -15,6 +20,6 @@
     {placeholder}
   />
   <div class="prose dark:prose-invert">
-    <SvelteMarkdown {source}/>
+    <SvelteMarkdown source={cleanedSource} />
   </div>
 </div>
