@@ -11,7 +11,7 @@ export const load = (async ({ params, fetch }) => {
         const userJSON = await user.json() as User
         const meJSON = await me.json() as User
         if(user.ok && me.ok){
-            if (userJSON.username != meJSON.username && ["admin","moderator"].includes(meJSON.role)) {
+            if (userJSON.username != meJSON.username && !["admin","moderator"].includes(meJSON.role)) {
                 throw error(403, {message: 'Not allowed!',description: "This is not you, you can't edit their profile."}) 
             }
 
