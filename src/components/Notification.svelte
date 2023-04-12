@@ -48,6 +48,13 @@
         @apply bg-red-500/20
     }
 
+    .announcement-text {
+        @apply text-yellow-500;
+    }
+    .announcement-background {
+        @apply bg-yellow-500/20
+    }
+
     .rainbow-text {
         @apply text-white;
     }
