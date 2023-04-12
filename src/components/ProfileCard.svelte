@@ -30,7 +30,7 @@
     class="dark:text-white text-5xl text-center md:text-4xl lg:text-5xl font-brand font-bold mt-4 w-full"
   >
     {profileData?.username}
-    {#if ["moderator","developer","admin"].includes(profileData?.role)}<span class="material-icons text-md align-middle text-orange-500">verified</span>{:else if profileData?.role == "helper"}<span class="material-icons text-md align-middle text-blue-500">verified</span>{/if}
+    {#if ["moderator","developer","admin"].includes(profileData?.role)}<span class="material-icons text-md align-middle text-orange-500">verified</span>{:else if profileData?.role == "helper"}<span class="material-icons text-md align-middle text-blue-500">verified</span>{:else if profileData?.role == "verified"}<span class="material-icons text-md align-middle text-emerald-500">verified</span>{/if}
   </p>
 
   <p
@@ -63,53 +63,3 @@
     </a>
   {/if}
 </div>
-
-<style lang="postcss">
-  .admin-outline {
-    @apply outline-red-500;
-  }
-
-  .admin-text {
-    @apply text-red-500;
-  }
-
-  .moderator-outline {
-    @apply outline-orange-500;
-  }
-
-  .moderator-text {
-    @apply text-orange-500;
-  }
-
-  .developer-outline {
-    @apply outline-lime-500;
-  }
-
-  .developer-text {
-    @apply text-lime-500;
-  }
-
-  .helper-outline {
-    @apply outline-blue-500;
-  }
-
-  .helper-text {
-    @apply text-blue-500;
-  }
-
-  .nerd-text {
-    @apply text-yellow-500;
-  }
-
-  .nerd-outline {
-    @apply outline-yellow-500;
-  }
-
-  .default-outline {
-    @apply outline-yellow-500;
-  }
-
-  .default-text {
-    @apply text-yellow-500;
-  }
-</style>
