@@ -1,6 +1,9 @@
 {
 	"/": [],
 	"/moderation/console": [],
+	"/notifications": [
+		"src/routes/notifications/+page.ts"
+	],
 	"/projects": [
 		"src/routes/projects/+page.ts"
 	],

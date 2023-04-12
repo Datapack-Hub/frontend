@@ -90,14 +90,14 @@
     </a>
     
     {/if}
-    <img
+    <a href="/notifications"><img
       src="/icons/bell.svg"
       width="32"
       height="32"
       alt="wip"
       class="dark:invert z-20"
       use:tippy={notificiationHoverMsg}
-    />
+    /></a>
     <a href="/user/{$userData.username}" use:tippy={personHoverMsg}>
       <img
         src={$userData.profile_icon}

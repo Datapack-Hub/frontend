@@ -42,3 +42,11 @@ declare type Project = {
 	description: string?,
 	body: string
 }
+
+declare type Notif = {
+	id: number,
+	message: string,
+	description: string?,
+	read: boolean,
+	type: string
+}

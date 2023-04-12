@@ -21,7 +21,17 @@
         Datapack Hub Staff
       </h1>
       <p class="dark:text-white font-brand">The people listed below help keep Datapack Hub running smoothly and safe! You will be able to recognise them by their coloured name or outline.</p>
-      {#each data.staff ?? [] as person}
+      {if not request.headers.get("Authorization"):
+        return "Authorization required", 401
+    
+    usr = util.authenticate(request.headers.get("Authorization"))
+    
+    if usr == 32:
+        return "Please make sure authorization type = Basic"
+    
+    if usr == 33:
+        return "Token Expired", 498
+    }
         <UserCard person={person} />
       {/each}
       <p class="dark:text-white"><b>Want to become staff?</b> We don't take applications for staff, so don't ask. However, the admins will notice you if you're active and helpful around the site, the Discord, and the community.</p>
