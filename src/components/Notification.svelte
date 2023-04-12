@@ -52,7 +52,7 @@
         @apply text-white;
     }
     .rainbow-background {
-        @apply bg-gradient-to-r from-red-500/50 via-orange-500/50 via-yellow-500/50 via-green-500/50 to-blue-500/50;
+        @apply bg-gradient-to-r from-red-500/75 via-orange-500/75 via-yellow-500/75 via-green-500/75 to-blue-500/75;
     }
   </style>
   
