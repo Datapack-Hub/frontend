@@ -2,7 +2,6 @@
 import type { PageData } from "./$types";
 import UserCard from "$components/UserCard.svelte";
   import { userData } from "$globals";
-  import NotificationComponent from "$components/NotificationComponent.svelte";
   import Modal from "$components/modals/Modal.svelte";
   import Notification from "$components/Notification.svelte";
   
