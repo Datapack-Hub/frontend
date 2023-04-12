@@ -22,6 +22,9 @@ export let data: PageData;
             >
             Notifications
             </h1>
+            {#if data.notifications?.length == 0}
+                <h1 class="dark:text-white font-brand"><b>No notifications!</b> It's lonely in here</h1>
+            {/if}
             {#each data.notifications ?? [] as notif}
             <Notification notification={notif} />
             {/each}

@@ -15,11 +15,14 @@
     }
   </script>
 
-<div class="w-full {notification?.type}-background rounded-xl my-2 p-4">
+<div class="flex w-full {notification?.type}-background rounded-xl my-2 p-4">
+    <div class="flex-auto">
     <h1 class="font-brand font-bold text-xl {notification?.type}-text">
         {#if notification?.read == false}• {/if}{notification?.message}
     </h1>
     <p class="dark:text-white font-brand">{notification?.description}</p>
+    </div>
+    <!-- <button class="float-right font-brand dark:text-white dark:bg-stone-700 h-1 my-10">Dismiss</button> -->
 </div>
   
   <style lang="postcss">
