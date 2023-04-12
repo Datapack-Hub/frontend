@@ -1,20 +1,19 @@
 <script lang="ts">
   import CasualLine from "$components/CasualLine.svelte";
   import Modal from "$components/modals/Modal.svelte";
-  import { apiURL, fetchAuthed, postAuthed, userData } from "$globals";
-  import ButtonLink from "./buttons/ButtonLink.svelte";
+  import { apiURL, postAuthed } from "$globals";
 
   export let user: User | undefined;
+  let msgTxt: string;
 
   let warnDialog: Modal;
 
   async function warn() {
-    const msgTxt = document.getElementById("message") as HTMLTextAreaElement;
-    alert(msgTxt.value)
+    alert(msgTxt)
     let warnt = await postAuthed(`${apiURL}/notifs/send/${user?.id}`,{
-      'type': "warn",
-      'message':"Warning",
-      'description': msgTxt.value
+      type: "warn",
+      message:"Warning",
+      description: msgTxt
     })
     if(warnt.ok){
       warnDialog.close()
@@ -31,6 +30,7 @@
   <p class="font-brand dark:text-white">This message is sent to the user as a notification. Always be professional, even when they are not.</p>
   <p class="align-middle dark:text-new-white font-brand mt-3">Warn Message</p>
   <textarea
+  bind:value={msgTxt}
     class="dark:bg-stone-700 bg-dark-white rounded-md dark:text-white h-24 text-lg p-2 font-brand w-full resize-none mb-4"
     placeholder="..."
     id="message"

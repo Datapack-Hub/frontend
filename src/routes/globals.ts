@@ -2,7 +2,7 @@ import { writable, type Writable } from "svelte/store"
 
 export const isDark = writable(true)
 export const isAuthenticated = writable(false)
-export const userData: Writable<User> = writable({id: -1, username: "", bio: "", profile_icon: "", role: "admin"})
+export const userData: Writable<User> = writable({id: -1, username: "", bio: "", profile_icon: "", role: "default"})
 export const apiURL = "https://api.datapackhub.net"
 
 export function loadColorPref() {
@@ -23,7 +23,14 @@ export async function fetchAuthed(method: string, url: string): Promise<Response
 }
 
 export async function postAuthed(url: string, data: object): Promise<Response> {
-  const resp = await fetch(url, { method: "post", body:JSON.stringify(data), headers: { Authorization: `Basic ${await getCookie("dph_token")}` }});
+  const resp = await fetch(url, {
+    method: "post",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Basic ${await getCookie("dph_token")}`
+    }
+  });
   if(resp.status == 498){
     removeCookie("dph_token")
   }
@@ -31,7 +38,13 @@ export async function postAuthed(url: string, data: object): Promise<Response> {
 }
 
 export async function patchAuthed(url: string, data: object): Promise<Response> {
-  const resp = await fetch(url, { method: "PATCH", body:JSON.stringify(data), headers: { Authorization: `Basic ${await getCookie("dph_token")}` }});
+  const resp = await fetch(url, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+    headers: {
+      Authorization: `Basic ${await getCookie("dph_token")}`
+    }
+  });
   if(resp.status == 498){
     removeCookie("dph_token")
   }

@@ -43,10 +43,11 @@ declare type Project = {
 	body: string
 }
 
-declare type Notif = {
+declare type DPHNotification = {
 	id: number,
 	message: string,
 	description: string?,
-	read: boolean,
+  read: boolean,
+  pinned: boolean?,
 	type: "announcement"|"ban"|"warn"|"default"|"rainbow"
 }
