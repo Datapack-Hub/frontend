@@ -2,7 +2,7 @@
 import type { PageData } from "./$types";
 import UserCard from "$components/UserCard.svelte";
   import { userData } from "$globals";
-  import Notification from "$components/Notification.svelte";
+  import NotificationComponent from "$components/NotificationComponent.svelte";
   import Modal from "$components/modals/Modal.svelte";
   
 export let data: PageData;
@@ -27,7 +27,7 @@ export let data: PageData;
                 <h1 class="dark:text-white font-brand"><b>No notifications!</b> It's lonely in here</h1>
             {/if}
             {#each data.notifications ?? [] as notif}
-            <Notification notification={notif} />
+            <NotificationComponent notification={notif} />
             {/each}
         </div>
     </main>
