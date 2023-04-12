@@ -13,7 +13,7 @@
     const msgTxt = document.getElementById("warn-message") as HTMLTextAreaElement;
     
     let warnt = await postAuthed(`${apiURL}/notifs/send/${user?.id}`,{
-      'type': "warn",
+      'type': "important",
       'message':"Warning",
       'description': msgTxt.value
     })

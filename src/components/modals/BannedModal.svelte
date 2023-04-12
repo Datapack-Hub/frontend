@@ -38,7 +38,7 @@
         <p class="font-brand dark:text-white text-lg"><b>You are banned from Datapack Hub.</b> The reason is displayed below:</p>
         <p class="p-2 bg-stone-700 rounded-xl font-brand dark:text-stone-300 my-2"><SvelteMarkdown source={banReason}/></p>
         <p class="font-brand dark:text-white"><b>Your ban will expire:</b> {new Date(expiry).toLocaleString()}. <br /> Until then, wait for the ban to expire, and read <a href="" class="text-cyan-500 underline">our rules</a>.</p>
-  
+        <button class="text-new-white p-1 justify-center items-center bg-dph-orange rounded-md font-bold text-md md:text-lg lg:text-xl font-brand hover:scale-110 transition-all active:brightness-75">Log Out</button>
     </div>
 </div>
 {/if}

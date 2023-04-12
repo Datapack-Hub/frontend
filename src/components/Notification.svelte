@@ -34,17 +34,10 @@
         @apply bg-stone-800
     }
 
-    .warn-text {
-        @apply text-orange-500;
-    }
-    .warn-background {
-        @apply bg-orange-500/20
-    }
-
-    .ban-text {
+    .important-text {
         @apply text-red-500;
     }
-    .ban-background {
+    .important-background {
         @apply bg-red-500/20
     }
 

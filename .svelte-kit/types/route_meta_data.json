@@ -11,6 +11,9 @@
 		"src/routes/project/[slug]/+page.ts"
 	],
 	"/project/[slug]/edit": [],
+	"/rules": [
+		"src/routes/rules/+page.ts"
+	],
 	"/staff": [
 		"src/routes/staff/+page.ts"
 	],
