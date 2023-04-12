@@ -48,5 +48,5 @@ declare type Notif = {
 	message: string,
 	description: string?,
 	read: boolean,
-	type: string
+	type: "announcement"|"ban"|"warn"|"default"|"rainbow"
 }
