@@ -47,5 +47,12 @@
     .ban-background {
         @apply bg-red-500/20
     }
+
+    .rainbow-text {
+        @apply text-white;
+    }
+    .rainbow-background {
+        @apply bg-gradient-to-r from-red-500/50 via-orange-500/50 via-yellow-500/50 via-green-500/50 to-blue-500/50;
+    }
   </style>
   
