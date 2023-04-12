@@ -1,7 +1,7 @@
 <script lang="ts">
   import { isAuthenticated, userData } from "$globals";
 
-  export let profileData: User | undefined;
+  export let profileData: User;
 
   function titleCase(str: string | undefined): string {
     if (str == undefined) return "null";
@@ -30,6 +30,7 @@
     class="dark:text-white text-5xl text-center md:text-4xl lg:text-5xl font-brand font-bold mt-4 w-full"
   >
     {profileData?.username}
+    {#if ["moderator","developer","admin"].includes(profileData?.role)}<span class="material-icons text-md align-middle text-orange-500">verified</span>{:else if profileData?.role == "helper"}<span class="material-icons text-md align-middle text-blue-500">verified</span>{/if}
   </p>
 
   <p
@@ -37,7 +38,7 @@
   >
     {#if profileData?.role != "default"}
       <span class="{profileData?.role}-text">
-        {#if profileData?.role == "nerd"}🤓 {/if}{titleCase(profileData?.role)}
+        {#if profileData?.role == "nerd"}🤓 <!-- {:else if ["helper","moderator","developer","admin"].includes(profileData?.role)}<span class="material-icons text-md align-middle">verified</span> --> {/if}{titleCase(profileData?.role)}
       </span>
     {/if}
   </p>
