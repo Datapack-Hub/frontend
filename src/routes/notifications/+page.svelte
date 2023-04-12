@@ -4,6 +4,7 @@ import UserCard from "$components/UserCard.svelte";
   import { userData } from "$globals";
   import NotificationComponent from "$components/NotificationComponent.svelte";
   import Modal from "$components/modals/Modal.svelte";
+  import Notification from "$components/Notification.svelte";
   
 export let data: PageData;
 </script>
@@ -27,7 +28,7 @@ export let data: PageData;
                 <h1 class="dark:text-white font-brand"><b>No notifications!</b> It's lonely in here</h1>
             {/if}
             {#each data.notifications ?? [] as notif}
-            <NotificationComponent notification={notif} />
+            <Notification notification={notif} />
             {/each}
         </div>
     </main>
