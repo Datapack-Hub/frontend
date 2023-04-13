@@ -128,7 +128,7 @@
   }
 
   async function logOutUser() {
-    let logout = await fetchAuthed("post",`${apiURL}/moderation/log_out/${user?.id}`);
+    let logout = await postAuthed(`${apiURL}/moderation/log_out/${user?.id}`,{});
     if (logout.ok) {
       logOutDialog.close();
       toasts.success(`${user?.username} is now logged out of their account.`)
@@ -321,9 +321,8 @@
             <p class="font-brand text-xl font-extrabold dark:text-white">
               User Info
             </p>
-            <CasualLine />
+            {#if modJson["banned"]}<p class="font-brand dark:text-white"><b>User is banned</b></p>{/if}
             <p class="font-brand dark:text-white"><b>User ID: </b> {user.id}</p>
-            insert more here
           </div>
         </div>
       </div>
