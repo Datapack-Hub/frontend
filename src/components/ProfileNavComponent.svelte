@@ -26,38 +26,6 @@
     content: "Moderation",
     placement: "bottom",
   };
-
-  (async () => {
-    if (browser) {
-      let query = $page.url.searchParams;
-      let token = await getCookie("dph_token");
-
-      if(token) {
-        $userData = getContext('user')
-      }
-
-      let loginExist = query.has("login") && parseInt(query.get("login")!) == 1;
-
-      if (loginExist && query.has("token")) {
-        let token = query.get("token");
-
-        const date = new Date();
-        date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
-
-        let expires = date.toUTCString();
-
-        document.cookie = `dph_token=${token}; expires=${expires}`
-
-        let res = await fetchAuthed("get", apiURL + "/user/me");
-
-        if (res.ok) {
-          $userData = (await res.json()) as User;
-          $isAuthenticated = true;
-        }
-        goto("/");
-      }
-    }
-  })();
 </script>
 
 <a href="/" target="_self" class="z-50 ml-6 flex items-center justify-center">
