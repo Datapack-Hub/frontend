@@ -1,21 +1,24 @@
 <script lang="ts">
   import CasualLine from "$components/CasualLine.svelte";
+  import { apiURL, fetchAuthed } from "$globals";
   import SvelteMarkdown from "svelte-markdown";
 
   let visible = false;
-  export function open() {
-    visible = true;
+  let banReason: string;
+  let expiry: number;
+
+  async function loadBan() {
+    let me = await fetchAuthed("get",`${apiURL}/user/me`)
+    let meJson = await me.json() as {banned: boolean, banData: {message: string, expires: number}}
+    if(meJson.banned == true){
+      banReason = meJson.banData.message
+      expiry = meJson.banData.expires
+      visible = true
+    }
   }
 
-  export function close() {
-    visible = false;
-  }
-
-  let expiry = 210938192379812 as number;
-  let banReason =
-    "_Repeatedly_ uploading stolen content and claiming it as your own after being told multiple times to stop. We do not tolerate theft of datapacks on Datapack Hub.";
-</script>
-
+  </script>
+{#await loadBan() then }
 {#if visible}
   <div class="fixed left-0 top-0 flex h-screen w-screen backdrop-blur-lg">
     <div
@@ -53,3 +56,4 @@
     </div>
   </div>
 {/if}
+{/await}
