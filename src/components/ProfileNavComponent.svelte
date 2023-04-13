@@ -26,7 +26,7 @@
           src="/icons/moderation.svg"
           width="32"
           height="32"
-          alt="moderation menu"
+          alt="Moderation Menu"
           class="z-20 mr-7 dark:invert"
           use:tippy="{moderationHoverMsg}" />
       </a>
@@ -36,7 +36,7 @@
         src="/icons/bell.svg"
         width="32"
         height="32"
-        alt="wip"
+        alt="Notifications"
         class="z-20 dark:invert"
         use:tippy="{notificationHoverMsg}" /></a>
     <a
@@ -47,7 +47,7 @@
       }}">
       <img
         src="{$userData.profile_icon}"
-        alt="{$userData.username}'s profile picture"
+        alt="{$userData.username}'s Profile"
         height="32"
         width="32"
         class="rounded-full outline outline-2 {$userData.role}-outline ml-6 outline-offset-2" />

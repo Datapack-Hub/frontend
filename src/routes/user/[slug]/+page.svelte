@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ProfileCard from "$components/ProfileCard.svelte";
+  import ProfileCard from "$components/FullProfileCard.svelte";
   import ProjectComponent from "$components/interactable/ProjectComponent.svelte";
   import UserModeration from "$components/interactable/UserModeration.svelte";
   import { isAuthenticated, userData } from "$globals";

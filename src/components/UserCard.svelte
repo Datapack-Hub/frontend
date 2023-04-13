@@ -19,7 +19,7 @@
   <div class="my-2 flex w-full rounded-xl bg-dark-white p-2 dark:bg-stone-800">
     <img
       src="{person?.profile_icon}"
-      alt="person"
+      alt="{person?.username}'s profile picture"
       class="float-left mr-2 h-16 w-16 rounded-full" />
     <div>
       <a href="/user/{person?.username.toLowerCase()}"

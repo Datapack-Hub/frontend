@@ -1,5 +1,6 @@
 <script lang="ts">
   import { isAuthenticated, userData } from "$globals";
+  import tippy from 'sveltejs-tippy'
 
   export let profileData: User;
 
@@ -12,6 +13,11 @@
         return word.charAt(0).toUpperCase() + word.slice(1);
       })
       .join(" ");
+  }
+
+  let verifiedHover = {
+    content: "This person is verified because they are a loyal Twitt- I mean Datapack hub Orange subscriber",
+    placement: "bottom"
   }
 </script>
 
@@ -30,11 +36,14 @@
     {profileData?.username}
     {#if ["moderator", "developer", "admin"].includes(profileData?.role)}<span
         class="material-icons text-md align-middle text-orange-500"
+        use:tippy={verifiedHover}
         >verified</span
       >{:else if profileData?.role == "helper"}<span
-        class="material-icons text-md align-middle text-blue-500">verified</span
+        class="material-icons text-md align-middle text-blue-500"
+        use:tippy={verifiedHover}>verified</span
       >{:else if profileData?.role == "verified"}<span
         class="material-icons text-md align-middle text-emerald-500"
+        use:tippy={verifiedHover}
         >verified</span
       >{/if}
   </p>

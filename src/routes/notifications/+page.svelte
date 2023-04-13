@@ -22,8 +22,8 @@
         <b>No notifications!</b> It's lonely in here
       </h1>
     {/if}
-    {#each data.notifications ?? [] as notif}
-      <Notification notification="{notif}" />
+    {#each data.notifications ?? [] as notification}
+      <Notification {notification} />
     {/each}
   </div>
 </main>
