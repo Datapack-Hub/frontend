@@ -5,10 +5,10 @@
   import BannedModal from "$components/modals/BannedModal.svelte";
   import { browser } from "$app/environment";
 
-  if(browser) $isDark = loadColorPref();
+  if (browser) $isDark = loadColorPref();
 </script>
 
-<div class={$isDark ? " dark" : ""}>
+<div class="{$isDark ? ' dark' : ''}">
   <BannedModal />
   <Navbar />
   <slot />

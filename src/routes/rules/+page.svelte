@@ -10,14 +10,11 @@
 </svelte:head>
 
 <main
-  class="dark:bg-stone-900 bg-new-white transition-all px-4 lg:px-32 xl:px-64 overflow-y-scroll"
->
+  class="overflow-y-scroll bg-new-white px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
-    class="flex-col items-center md:items-start md:flex-row w-full h-screen md:pt-20 pt-10"
-  >
+    class="h-screen w-full flex-col items-center pt-10 md:flex-row md:items-start md:pt-20">
     <h1
-      class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-8 pb-2"
-    >
+      class="mt-8 pb-2 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Datapack Hub Rules
     </h1>
     <CasualLine />
@@ -62,14 +59,14 @@
 
 <style lang="postcss">
   p {
-    @apply dark:text-white font-brand;
+    @apply font-brand dark:text-white;
   }
 
   li {
-    @apply dark:text-white font-brand;
+    @apply font-brand dark:text-white;
   }
 
   h2 {
-    @apply text-xl pt-2 font-brand dark:text-white font-bold;
+    @apply pt-2 font-brand text-xl font-bold dark:text-white;
   }
 </style>

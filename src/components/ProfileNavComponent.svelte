@@ -65,7 +65,7 @@
   })();
 </script>
 
-<a href="/" target="_self" class="flex items-center justify-center ml-6 z-50">
+<a href="/" target="_self" class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
     {#if $userData.role != "default"}
       <a href="/moderation/console">
@@ -74,9 +74,8 @@
           width="32"
           height="32"
           alt="moderation menu"
-          class="dark:invert z-20 mr-7"
-          use:tippy={moderationHoverMsg}
-        />
+          class="z-20 mr-7 dark:invert"
+          use:tippy="{moderationHoverMsg}" />
       </a>
     {/if}
     <a href="/notifications"
@@ -85,32 +84,27 @@
         width="32"
         height="32"
         alt="wip"
-        class="dark:invert z-20"
-        use:tippy={notificationHoverMsg}
-      /></a
-    >
+        class="z-20 dark:invert"
+        use:tippy="{notificationHoverMsg}" /></a>
     <a
       href="/user/{$userData.username}"
-      use:tippy={{
+      use:tippy="{{
         content: $userData.username,
-        placement: "bottom",
-      }}
-    >
+        placement: 'bottom',
+      }}">
       <img
-        src={$userData.profile_icon}
+        src="{$userData.profile_icon}"
         alt="{$userData.username}'s profile picture"
         height="32"
         width="32"
-        class="rounded-full outline outline-2 {$userData.role}-outline outline-offset-2 ml-6"
-      />
+        class="rounded-full outline outline-2 {$userData.role}-outline ml-6 outline-offset-2" />
     </a>
   {:else}
     <a
       id="sign_in"
       href="{apiURL}/auth/login"
-      class="dark:text-red-400 text-red-500 dark:bg-red-400 bg-red-500 bg-opacity-30 dark:bg-opacity-10 font-brand rounded-md px-2 md:px-3 py-1 md:py-2 text-md md:text-lg lg:text-xl hover:scale-110 transition-all border-2 dark:border-red-400 border-red-500 active:brightness-75"
-      use:tippy={signInHoverMsg}
-    >
+      class="text-md rounded-md border-2 border-red-500 bg-red-500 bg-opacity-30 px-2 py-1 font-brand text-red-500 transition-all hover:scale-110 active:brightness-75 dark:border-red-400 dark:bg-red-400 dark:bg-opacity-10 dark:text-red-400 md:px-3 md:py-2 md:text-lg lg:text-xl"
+      use:tippy="{signInHoverMsg}">
       Sign in
     </a>
   {/if}

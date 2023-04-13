@@ -2,43 +2,54 @@
   import CasualLine from "$components/CasualLine.svelte";
   import SvelteMarkdown from "svelte-markdown";
 
-    let visible = false
-    export function open(){
-        visible = true;
-    }
+  let visible = false;
+  export function open() {
+    visible = true;
+  }
 
-    export function close(){
-        visible = false;
-    }
+  export function close() {
+    visible = false;
+  }
 
-    let expiry = 210938192379812 as number;
-    let banReason = "_Repeatedly_ uploading stolen content and claiming it as your own after being told multiple times to stop. We do not tolerate theft of datapacks on Datapack Hub."
-
+  let expiry = 210938192379812 as number;
+  let banReason =
+    "_Repeatedly_ uploading stolen content and claiming it as your own after being told multiple times to stop. We do not tolerate theft of datapacks on Datapack Hub.";
 </script>
 
 {#if visible}
-<div class="fixed top-0 left-0 flex backdrop-blur-lg w-screen h-screen">
-    <div class="relative m-auto align-middle justify-self-center p-3 dark:bg-stone-800 rounded-xl w-1/2">
-        <a href="/" class="flex justify-center items-center z-20 cursor-pointer">
-            <img
-              src="/logos/dph.svg"
-              alt="logo"
-              class="h-8 rounded-full hover:brightness-75 transition-all mr-1"
-              height="32"
-              width="32"
-            />
-            <span
-              class="dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 hover:text-neutral-700 active:text-neutral-600 text-black font-brand font-bold text-2xl transition-colors hidden md:block"
-            >
-              Datapack Hub
-            </span>
-          </a>
-        <!-- <h1 class="font-brand text-2xl dark:text-white font-regular">You are temporarily banned from Datapack Hub</h1> -->
-        <CasualLine />
-        <p class="font-brand dark:text-white text-lg"><b>You are banned from Datapack Hub.</b> The reason is displayed below:</p>
-        <p class="p-2 bg-stone-700 rounded-xl font-brand dark:text-stone-300 my-2"><SvelteMarkdown source={banReason}/></p>
-        <p class="font-brand dark:text-white"><b>Your ban will expire:</b> {new Date(expiry).toLocaleString()}. <br /> Until then, wait for the ban to expire, and read <a href="/rules" class="text-cyan-500 underline">our rules</a>.</p>
-        <button class="text-new-white p-1 justify-center items-center bg-dph-orange rounded-md font-bold text-md md:text-lg lg:text-xl font-brand hover:scale-110 transition-all active:brightness-75">Log Out</button>
+  <div class="fixed left-0 top-0 flex h-screen w-screen backdrop-blur-lg">
+    <div
+      class="relative m-auto w-1/2 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
+      <a href="/" class="z-20 flex cursor-pointer items-center justify-center">
+        <img
+          src="/logos/dph.svg"
+          alt="logo"
+          class="mr-1 h-8 rounded-full transition-all hover:brightness-75"
+          height="32"
+          width="32" />
+        <span
+          class="hidden font-brand text-2xl font-bold text-black transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
+          Datapack Hub
+        </span>
+      </a>
+      <!-- <h1 class="font-brand text-2xl dark:text-white font-regular">You are temporarily banned from Datapack Hub</h1> -->
+      <CasualLine />
+      <p class="font-brand text-lg dark:text-white">
+        <b>You are banned from Datapack Hub.</b> The reason is displayed below:
+      </p>
+      <p
+        class="my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300">
+        <SvelteMarkdown source="{banReason}" />
+      </p>
+      <p class="font-brand dark:text-white">
+        <b>Your ban will expire:</b>
+        {new Date(expiry).toLocaleString()}. <br /> Until then, wait for the ban
+        to expire, and read
+        <a href="/rules" class="text-cyan-500 underline">our rules</a>.
+      </p>
+      <button
+        class="text-md items-center justify-center rounded-md bg-dph-orange p-1 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+        >Log Out</button>
     </div>
-</div>
+  </div>
 {/if}

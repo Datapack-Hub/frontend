@@ -1,0 +1,11 @@
+{
+  "endOfLine": "lf",
+  "bracketSameLine": true,
+  "svelteStrictMode": true,
+  "svelteIndentScriptAndStyle": true,
+  "plugins": [
+    "prettier-plugin-svelte",
+    "prettier-plugin-tailwindcss"
+  ],
+  "pluginSearchDirs": false
+}

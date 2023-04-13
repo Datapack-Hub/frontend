@@ -1,11 +1,9 @@
 <script lang="ts">
   import CasualLine from "$components/CasualLine.svelte";
-import ProjectComponent from "$components/interactable/ProjectComponent.svelte";
+  import ProjectComponent from "$components/interactable/ProjectComponent.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;
-
-  
 </script>
 
 <svelte:head>
@@ -13,37 +11,36 @@ import ProjectComponent from "$components/interactable/ProjectComponent.svelte";
 </svelte:head>
 
 <main
-  class="dark:bg-stone-900 bg-new-white transition-all px-8 md:px-16 lg:px-24"
->
+  class="bg-new-white px-8 transition-all dark:bg-stone-900 md:px-16 lg:px-24">
   <div
-    class="items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-16 overflow-auto"
-  >
-      <h1
-        class="dark:text-white text-5xl text-center md:text-start md:text-4xl lg:text-5xl font-brand font-bold mt-8 pb-2"
-      >
-        Browse Datapacks
-      </h1>
-      <br />
-      <div class="flex items-center md-5">
-        <p class="dark:text-white font-bold">Sort:</p>
-        <a
-          href="?sort=updated"
-          class="btn-sm-start {data.sortMode == "updated" ? "bg-orange-500" : "bg-opacity-0 text-orange-500 bg-orange-500 hover:bg-opacity-20 transition-all"}"
-          >Updated</a
-        >
-        <a
-          href="?sort=trending"
-          class="btn-sm-start {data.sortMode == "trending" ? "bg-orange-500" : "bg-opacity-0 text-orange-500 bg-orange-500 hover:bg-opacity-20 transition-all"}"
-          >Trending</a
-        >
-      </div>
-      <CasualLine />
-      <div class="flex flex-col items-center w-full mt-4">
-        {#if data.projects}          
-          {#each data.projects as project}
-            <ProjectComponent {project} />
-          {/each}
-        {/if}
-      </div>
+    class="h-screen w-full items-center overflow-auto pt-16 md:flex-row md:items-start md:pt-16">
+    <h1
+      class="mt-8 pb-2 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      Browse Datapacks
+    </h1>
+    <br />
+    <div class="md-5 flex items-center">
+      <p class="font-bold dark:text-white">Sort:</p>
+      <a
+        href="?sort=updated"
+        class="btn-sm-start {data.sortMode == 'updated'
+          ? 'bg-orange-500'
+          : 'bg-orange-500 bg-opacity-0 text-orange-500 transition-all hover:bg-opacity-20'}"
+        >Updated</a>
+      <a
+        href="?sort=trending"
+        class="btn-sm-start {data.sortMode == 'trending'
+          ? 'bg-orange-500'
+          : 'bg-orange-500 bg-opacity-0 text-orange-500 transition-all hover:bg-opacity-20'}"
+        >Trending</a>
+    </div>
+    <CasualLine />
+    <div class="mt-4 flex w-full flex-col items-center">
+      {#if data.projects}
+        {#each data.projects as project}
+          <ProjectComponent project="{project}" />
+        {/each}
+      {/if}
+    </div>
   </div>
 </main>

@@ -15,33 +15,30 @@
 </script>
 
 <div
-  class="dark:bg-stone-800 bg-dark-white dark:text-white flex items-center rounded-xl my-1 w-full p-2"
->
-    <a href="/project/{project.url}" class="">
-      <img
-        src={project.icon}
-        alt="{project.title} icon"
-        class="aspect-square bg-cover rounded-lg w-24"
-      />
+  class="my-1 flex w-full items-center rounded-xl bg-dark-white p-2 dark:bg-stone-800 dark:text-white">
+  <a href="/project/{project.url}" class="">
+    <img
+      src="{project.icon}"
+      alt="{project.title} icon"
+      class="aspect-square w-24 rounded-lg bg-cover" />
+  </a>
+  <div class="ml-4 w-2/3">
+    <a
+      href="/project/{project.url}"
+      class="font-brand text-lg hover:underline md:text-xl lg:text-2xl">
+      {project.title}
     </a>
-    <div class="w-2/3 ml-4">
+    {#if visible}
       <a
-        href="/project/{project.url}"
-        class="font-brand text-lg md:text-xl lg:text-2xl hover:underline"
-      >
-        {project.title}
+        href="/user/{author.toLowerCase()}"
+        class="text-xs text-white text-opacity-40 hover:underline md:text-sm"
+        in:fade="{{ duration: 250 }}">
+        By {author}
       </a>
-      {#if visible}
-        <a
-          href="/user/{author.toLowerCase()}"
-          class="text-xs md:text-sm text-white text-opacity-40 hover:underline"
-          in:fade={{ duration: 250 }}
-        >
-          By {author}
-        </a>
-      {/if}
-      <p class="mt-2 text-sm md:text-base font-medium two-lines text-opacity-70 text-white">
-        {project.description}
-      </p>
-    </div>
+    {/if}
+    <p
+      class="two-lines mt-2 text-sm font-medium text-white text-opacity-70 md:text-base">
+      {project.description}
+    </p>
+  </div>
 </div>

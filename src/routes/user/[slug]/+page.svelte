@@ -13,30 +13,27 @@
 </svelte:head>
 
 <main
-  class="dark:bg-stone-900 bg-new-white transition-all px-8 md:px-16 lg:px-24 overflow-y-scroll h-screen styled-scrollbar"
->
+  class="styled-scrollbar h-screen overflow-y-scroll bg-new-white px-8 transition-all dark:bg-stone-900 md:px-16 lg:px-24">
   <div
-    class="flex flex-col items-center md:items-start md:flex-row w-full h-screen pt-16 md:pt-32"
-  >
+    class="flex h-screen w-full flex-col items-center pt-16 md:flex-row md:items-start md:pt-32">
     <div class="w-full md:w-[calc(39ch*2.25)] lg:w-[calc(39ch*3)]">
-      <ProfileCard profileData={data.profile} />
+      <ProfileCard profileData="{data.profile}" />
       {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($userData.role)}
-        <UserModeration user={data.profile} />
+        <UserModeration user="{data.profile}" />
       {/if}
     </div>
     <div
-      class="w-full mx-24 h-full overflow-y-auto mt-16 md:mt-0 styled-scrollbar"
-    >
-      <h1 class="dark:text-white text-xl font-bold text-center md:text-left">
+      class="styled-scrollbar mx-24 mt-16 h-full w-full overflow-y-auto md:mt-0">
+      <h1 class="text-center text-xl font-bold dark:text-white md:text-left">
         {data.profile?.username}'s projects
       </h1>
       {#if data.projects?.length == 0}
-        <p class="dark:text-white text-opacity-40 text-3xl text-center mt-48">
+        <p class="mt-48 text-center text-3xl text-opacity-40 dark:text-white">
           No projects!
         </p>
       {:else}
         {#each data.projects ?? [] as project}
-          <ProjectComponent {project} />
+          <ProjectComponent project="{project}" />
         {/each}
       {/if}
     </div>

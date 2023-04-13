@@ -12,34 +12,49 @@
   (async () => {
     if (browser)
       author = "By " + (await getAuthorNameFromID(data.project?.author!));
-    visible = true
+    visible = true;
   })();
 </script>
 
 <svelte:head>
-    <title>{data.project?.title} | Datapack Hub</title>
+  <title>{data.project?.title} | Datapack Hub</title>
 </svelte:head>
 
 <main
-  class="dark:bg-stone-900 bg-new-white transition-all px-0 sm:px-8 md:px-16 lg:px-24 h-screen"
->
-  <div class="pt-16" />
-  <div class="flex w-full dark:bg-new-white bg-dark-white dark:bg-opacity-10 p-4 rounded-xl mt-12">
+  class="h-screen bg-new-white px-0 transition-all dark:bg-stone-900 sm:px-8 md:px-16 lg:px-24">
+  <div class="pt-16"></div>
+  <div
+    class="mt-12 flex w-full rounded-xl bg-dark-white p-4 dark:bg-new-white dark:bg-opacity-10">
     <img
-      src={data.project?.icon}
+      src="{data.project?.icon}"
       alt="Icon for {data.project?.title}"
-      class="rounded-lg mr-6 w-24 h-24"
-    />
+      class="mr-6 h-24 w-24 rounded-lg" />
     <div>
-      <h1 class="dark:text-white text-5xl font-brand font-black">{data.project?.title}</h1>
+      <h1 class="font-brand text-5xl font-black dark:text-white">
+        {data.project?.title}
+      </h1>
       {#if visible}
-      <h2 class="dark:text-white text-xl mt-4 transition-all font-brand font-bold" in:fade={{duration: 250}}>{author}</h2>
+        <h2
+          class="mt-4 font-brand text-xl font-bold transition-all dark:text-white"
+          in:fade="{{ duration: 250 }}">
+          {author}
+        </h2>
       {/if}
-      <h2 class="dark:text-white text-md transition-all font-brand" in:fade={{duration: 250}}>{data.project?.description}</h2>
+      <h2
+        class="text-md font-brand transition-all dark:text-white"
+        in:fade="{{ duration: 250 }}">
+        {data.project?.description}
+      </h2>
     </div>
-    <a href="/download" class="float-right h-min text-new-white p-2 bg-dph-orange rounded-md font-bold text-md md:text-lg lg:text-xl font-brand hover:scale-110 transition-all active:brightness-75">Download</a>
+    <a
+      href="/download"
+      class="text-md float-right h-min rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+      >Download</a>
   </div>
-  <div class="dark:bg-new-white bg-dark-white dark:bg-opacity-10 p-4 rounded-xl mt-8">
-      <p class="dark:text-white text-lg font-brand font-light">{data.project?.body}</p>
+  <div
+    class="mt-8 rounded-xl bg-dark-white p-4 dark:bg-new-white dark:bg-opacity-10">
+    <p class="font-brand text-lg font-light dark:text-white">
+      {data.project?.body}
+    </p>
   </div>
 </main>
