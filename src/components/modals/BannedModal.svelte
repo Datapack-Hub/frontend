@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
   import CasualLine from "$components/CasualLine.svelte";
   import { apiURL, fetchAuthed } from "$globals";
   import SvelteMarkdown from "svelte-markdown";
@@ -8,13 +9,15 @@
   let expiry: number;
 
   async function loadBan() {
-    let me = await fetchAuthed("get",`${apiURL}/user/me`)
-    if(me.ok){
-      let meJson = await me.json() as {banned: boolean, banData: {message: string, expires: number}}
-      if(meJson.banned == true){
-        banReason = meJson.banData.message
-        expiry = meJson.banData.expires
-        visible = true
+    if(browser){
+      let me = await fetchAuthed("get",`${apiURL}/user/me`)
+      if(me.ok){
+        let meJson = await me.json() as {banned: boolean, banData: {message: string, expires: number}}
+        if(meJson.banned == true){
+          banReason = meJson.banData.message
+          expiry = meJson.banData.expires
+          visible = true
+        }
       }
     }
   }
