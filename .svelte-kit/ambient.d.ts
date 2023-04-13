@@ -180,6 +180,7 @@ declare module '$env/static/private' {
 	export const RUBY_HOME: string;
 	export const rvm_path: string;
 	export const NUGET_XMLDOC_MODE: string;
+	export const npm_package_dependencies_svelte_toasts: string;
 	export const INIT_CWD: string;
 	export const NODE_ENV: string;
 }
@@ -365,6 +366,7 @@ declare module '$env/dynamic/private' {
 		RUBY_HOME: string;
 		rvm_path: string;
 		NUGET_XMLDOC_MODE: string;
+		npm_package_dependencies_svelte_toasts: string;
 		INIT_CWD: string;
 		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;

@@ -44,6 +44,7 @@
     "@types/dompurify": "^3.0.1",
     "animejs": "^3.2.1",
     "isomorphic-dompurify": "^1.2.0",
-    "svelte-markdown": "^0.2.3"
+    "svelte-markdown": "^0.2.3",
+    "svelte-toasts": "^1.1.2"
   }
 }

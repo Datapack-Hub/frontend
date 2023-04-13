@@ -2,18 +2,37 @@
   import CasualLine from "$components/CasualLine.svelte";
   import Modal from "$components/modals/Modal.svelte";
   import { apiURL, fetchAuthed, postAuthed, userData } from "$globals";
-  import ButtonLink from "./buttons/ButtonLink.svelte";
+  import { browser } from "$app/environment";
+  import SvelteMarkdown from "svelte-markdown";
+  import { toasts, ToastContainer, FlatToast }  from "svelte-toasts";
 
   export let user: User | undefined;
 
   let warnDialog: Modal;
   let notifDialog: Modal;
   let banDialog: Modal;
+  let unbanDialog: Modal;
+  let logOutDialog: Modal;
+
+  let modJson: { banned: boolean; banExpiry: number; banMessage: string };
+
+  async function loadData() {
+    if (browser) {
+      let modData = await fetchAuthed(
+        "get",
+        `${apiURL}/moderation/user/${user?.id}`
+      );
+      modJson = await modData.json();
+    }
+  }
 
   function open(me: Modal) {
     warnDialog.close();
     notifDialog.close();
     banDialog.close();
+    unbanDialog.close();
+    logOutDialog.close()
+
     me.open();
   }
 
@@ -29,6 +48,7 @@
     });
     if (warnt.ok) {
       warnDialog.close();
+      toasts.success(`Warned ${user?.username}!`)
     } else {
       alert(await warnt.text());
     }
@@ -57,6 +77,7 @@
     });
     if (sent.ok) {
       notifDialog.close();
+      toasts.success(`Sent a notification to ${user?.username}!`)
     } else {
       alert(await sent.text());
     }
@@ -89,8 +110,30 @@
     });
     if (ban.ok) {
       banDialog.close();
+      toasts.success(`${user?.username} is now banned!`)
     } else {
       alert(await ban.text());
+    }
+  }
+
+  async function unbanUser() {
+    let unban = await fetchAuthed("delete",`${apiURL}/moderation/ban/${user?.id}`);
+    if (unban.ok) {
+      unbanDialog.close();
+      modJson["banned"] == false
+      toasts.success(`${user?.username} is now unbanned.`)
+    } else {
+      alert(await unban.text());
+    }
+  }
+
+  async function logOutUser() {
+    let logout = await fetchAuthed("post",`${apiURL}/moderation/log_out/${user?.id}`);
+    if (logout.ok) {
+      logOutDialog.close();
+      toasts.success(`${user?.username} is now logged out of their account.`)
+    } else {
+      alert(await logout.text());
     }
   }
 </script>
@@ -182,56 +225,113 @@
     >Ban {user?.username}</button>
 </Modal>
 
+<Modal bind:this="{unbanDialog}">
+  <h1 class="font-brand text-xl font-bold dark:text-white">
+    Unban {user?.username}
+  </h1>
+  <CasualLine />
+  <p class="font-brand dark:text-white">
+    {user?.username} has been banned for the following reason:
+  </p>
+  <p class="my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300">
+    <SvelteMarkdown source="{modJson['banMessage']}" />
+  </p>
+  <p class="font-brand dark:text-white">Unban them to end their ban early.</p>
+  <button
+    on:click="{async () => await unbanUser()}"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    >Unban {user?.username}</button>
+</Modal>
+
+<Modal bind:this="{logOutDialog}">
+  <h1 class="font-brand text-xl font-bold dark:text-white">
+    Log {user?.username} out
+  </h1>
+  <CasualLine />
+  <p class="font-brand dark:text-white">
+    This will log {user?.username} out of all their signed-in devices, and generate them a new token. They will need to sign in again.
+  </p>
+  <button
+    on:click="{async () => await logOutUser()}"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    >Log them out!</button>
+</Modal>
+
 {#if user}
-  <div class="ms:max-w-lg flex max-w-full justify-center md:justify-start">
-    <div class="mt-4 w-full rounded-xl bg-red-500/25 p-2">
-      <h1 class="font-brand text-lg font-medium dark:text-white">
-        Moderation Actions
-      </h1>
-      <CasualLine />
-      <div class="xs:flex-col md:flex">
-        <div class="md:w-2/3">
-          <button
-            class="mt-1 flex w-full items-center rounded-md bg-red-500 p-1 text-left font-brand transition-all hover:scale-102 dark:text-white"
-            on:click="{() => open(banDialog)}">
-            <img src="/icons/ban.svg" alt="ban" class="h-8 p-1 dark:invert" />
-            Ban
-          </button>
-          <button
-            class="mt-1 flex w-full items-center rounded-md bg-orange-500 p-1 text-left font-brand transition-all hover:scale-102 dark:text-white"
-            on:click="{() => open(warnDialog)}">
-            <img src="/icons/warn.svg" alt="warn" class="h-8 p-1 dark:invert" />
-            Warn
-          </button>
-          <button
-            class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand transition-all hover:scale-102 dark:text-white"
-            on:click="{() => open(notifDialog)}">
-            <img
-              src="/icons/message.svg"
-              alt="msg"
-              class="h-8 p-1 dark:invert" />
-            Send a Notification
-          </button>
-          <a
-            href="/user/{user?.username}/edit"
-            class="mt-1 flex w-full items-center rounded-md bg-blue-500 p-1 text-left font-brand transition-all hover:scale-102 dark:text-white">
-            <img
-              src="/icons/settings.svg"
-              alt="ban"
-              class="h-8 p-1 dark:invert" />
-            Edit Profile Details
-          </a>
-        </div>
-        <div class="w-1/3 pl-2">
-          <p class="font-brand text-xl font-extrabold dark:text-white">
-            User Info
-          </p>
-          <CasualLine />
-          <p class="font-brand dark:text-white"><b>User ID: </b> {user.id}</p>
-          insert more here
+  {#await loadData()}
+    Loading...
+  {:then}
+    <div class="ms:max-w-lg flex max-w-full justify-center md:justify-start">
+      <div class="mt-4 w-full rounded-xl bg-red-500/25 p-2">
+        <h1 class="font-brand text-lg font-medium dark:text-white">
+          Moderation Actions
+        </h1>
+        <CasualLine />
+        <div class="xs:flex-col md:flex">
+          <div class="md:w-2/3">
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-red-500 p-1 text-left font-brand transition-all hover:scale-102 dark:text-white"
+              on:click="{() => {
+                if (modJson['banned']) open(unbanDialog);
+                else open(banDialog);
+              }}">
+              <img src="/icons/ban.svg" alt="ban" class="h-8 p-1 dark:invert" />
+              {#if modJson["banned"]}Unban (expires {new Date(
+                  modJson["banExpiry"]
+                ).toDateString()}){:else}Ban{/if}
+            </button>
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-orange-500 p-1 text-left font-brand transition-all hover:scale-102 dark:text-white"
+              on:click="{() => open(warnDialog)}">
+              <img
+                src="/icons/warn.svg"
+                alt="warn"
+                class="h-8 p-1 dark:invert" />
+              Warn
+            </button>
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand transition-all hover:scale-102 dark:text-white"
+              on:click="{() => open(notifDialog)}">
+              <img
+                src="/icons/message.svg"
+                alt="msg"
+                class="h-8 p-1 dark:invert" />
+              Send a Notification
+            </button>
+            <a
+              href="/user/{user?.username}/edit"
+              class="mt-1 flex w-full items-center rounded-md bg-blue-500 p-1 text-left font-brand transition-all hover:scale-102 dark:text-white">
+              <img
+                src="/icons/settings.svg"
+                alt="ban"
+                class="h-8 p-1 dark:invert" />
+              Edit Profile Details
+            </a>
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-indigo-600 p-1 text-left font-brand transition-all hover:scale-102 dark:text-white"
+              on:click="{() => open(logOutDialog)}">
+              <img
+                src="/icons/log-out.svg"
+                alt="warn"
+                class="h-8 p-1 dark:invert" />
+              Log User Out
+            </button>
+          </div>
+          <div class="w-1/3 pl-2">
+            <p class="font-brand text-xl font-extrabold dark:text-white">
+              User Info
+            </p>
+            <CasualLine />
+            <p class="font-brand dark:text-white"><b>User ID: </b> {user.id}</p>
+            insert more here
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <br />
+    <br />
+  {/await}
 {/if}
+
+<ToastContainer placement="bottom-right" let:data={data}>
+  <FlatToast {data} /> <!-- Provider template for your toasts -->
+</ToastContainer>
