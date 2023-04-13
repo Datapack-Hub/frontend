@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
-  import { userData, apiURL, patchAuthed, fetchAuthed, isAuthenticated } from "$globals";
+  import { userData, apiURL, patchAuthed, isAuthenticated } from "$globals";
   import type { PageData } from "./$types";
 
   export let data: PageData;
@@ -78,45 +77,3 @@
     </div>
   </div>
 </main>
-
-<style lang="postcss">
-  .admin-outline {
-    @apply outline-red-500;
-  }
-
-  .admin-text {
-    @apply text-red-500;
-  }
-
-  .moderator-outline {
-    @apply outline-orange-500;
-  }
-
-  .moderator-text {
-    @apply text-orange-500;
-  }
-
-  .developer-outline {
-    @apply outline-lime-500;
-  }
-
-  .developer-text {
-    @apply text-lime-500;
-  }
-
-  .helper-outline {
-    @apply outline-blue-500;
-  }
-
-  .helper-text {
-    @apply text-blue-500;
-  }
-
-  .default-outline {
-    @apply outline-yellow-500;
-  }
-
-  .default-text {
-    @apply text-yellow-500;
-  }
-</style>

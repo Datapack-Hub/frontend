@@ -6,8 +6,6 @@
   import type { PageData } from "./$types";
 
   export let data: PageData;
-
-  const usr = data.profile
 </script>
 
 <svelte:head>

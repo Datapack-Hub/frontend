@@ -16,11 +16,6 @@
     placement: "bottom",
   };
 
-  let personHoverMsg = {
-    content: "",
-    placement: "bottom",
-  };
-
   let notificiationHoverMsg = {
     content: "Notifications",
     placement: "bottom",
@@ -41,17 +36,15 @@
 
         if (res.ok) {
           $userData = (await res.json()) as User;
-          personHoverMsg.content = $userData.username;
           $isAuthenticated = true;
         }
+        return
       }
-      if (
-        query.has("login") &&
-        parseInt(query.get("login")!) == 1 &&
-        query.has("token")
-      ) {
+      let loginIsPresent = query.has("login") && parseInt(query.get("login")!) == 1
+      
+      if (loginIsPresent && query.has("token")) {
         let token = query.get("token");
-        
+
         const date = new Date();
         date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
 
@@ -63,7 +56,6 @@
 
         if (res.ok) {
           $userData = (await res.json()) as User;
-          personHoverMsg.content = $userData.username;
           $isAuthenticated = true;
         }
         goto("/");
@@ -75,30 +67,34 @@
 <a href="/" target="_self" class="flex items-center justify-center ml-6 z-50">
   {#if $isAuthenticated}
     {#if $userData.role != "default"}
-    <a href="/moderation/console">
-      <img
-      src="/icons/moderation.svg"
-      width="32"
-      height="32"
-      alt="wip"
-      class="dark:invert z-20 mr-7"
+      <a href="/moderation/console">
+        <img
+          src="/icons/moderation.svg"
+          width="32"
+          height="32"
+          alt="wip"
+          class="dark:invert z-20 mr-7"
+          use:tippy={moderationHoverMsg}
+        />
+      </a>
+    {/if}
+    <a href="/notifications"
+      ><img
+        src="/icons/bell.svg"
+        width="32"
+        height="32"
+        alt="wip"
+        class="dark:invert z-20"
+        use:tippy={notificiationHoverMsg}
+      /></a
+    >
+    <a
+      href="/user/{$userData.username}"
       use:tippy={{
         content: $userData.username,
         placement: "bottom",
       }}
-    />
-    </a>
-    
-    {/if}
-    <a href="/notifications"><img
-      src="/icons/bell.svg"
-      width="32"
-      height="32"
-      alt="wip"
-      class="dark:invert z-20"
-      use:tippy={notificiationHoverMsg}
-    /></a>
-    <a href="/user/{$userData.username}" use:tippy={personHoverMsg}>
+    >
       <img
         src={$userData.profile_icon}
         alt="{$userData.username}'s profile picture"
@@ -118,53 +114,3 @@
     </a>
   {/if}
 </a>
-
-<style lang="postcss">
-  .admin-outline {
-    @apply outline-red-500;
-  }
-
-  .admin-text {
-    @apply text-red-500;
-  }
-
-  .moderator-outline {
-    @apply outline-orange-500;
-  }
-
-  .moderator-text {
-    @apply text-orange-500;
-  }
-
-  .developer-outline {
-    @apply outline-lime-500;
-  }
-
-  .developer-text {
-    @apply text-lime-500;
-  }
-
-  .helper-outline {
-    @apply outline-blue-500;
-  }
-
-  .helper-text {
-    @apply text-blue-500;
-  }
-
-  .nerd-text {
-    @apply text-yellow-500;
-  }
-
-  .nerd-outline {
-    @apply outline-yellow-500;
-  }
-
-  .default-outline {
-    @apply outline-yellow-500;
-  }
-
-  .default-text {
-    @apply text-yellow-500;
-  }
-</style>

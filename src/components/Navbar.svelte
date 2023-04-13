@@ -51,3 +51,22 @@
     </div>
   </div>
 </nav>
+
+<style lang="postcss">
+  /* before:bg-gradient-to-br before:from-orange-500 before:to-red-800 */
+.funky-gradient::before {
+  content: "";
+  /* @apply bg-gradient-to-br from-orange-500 to-red-800; */
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.1;
+}
+
+.funky-gradient {
+  @apply h-32 md:h-16 flex flex-col md:flex-row items-center drop-shadow-md justify-between;
+  opacity: 1;
+}
+</style>

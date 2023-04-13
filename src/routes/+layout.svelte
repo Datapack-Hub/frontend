@@ -1,15 +1,15 @@
 <script>
   import Navbar from "$components/Navbar.svelte";
-  import { isAuthenticated, isDark, loadColorPref } from "$globals";
-  import { onMount } from "svelte";
+  import { isDark, loadColorPref } from "$globals";
   import "../app.postcss";
   import BannedModal from "$components/modals/BannedModal.svelte";
+  import { browser } from "$app/environment";
 
-  onMount(async () => ($isDark = loadColorPref()));
+  if(browser) $isDark = loadColorPref();
 </script>
 
-<div class='{$isDark ? " dark" : ""}'>
+<div class={$isDark ? " dark" : ""}>
   <BannedModal />
-    <Navbar />
-    <slot />
+  <Navbar />
+  <slot />
 </div>

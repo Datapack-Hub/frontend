@@ -2,13 +2,9 @@
   import { onMount } from "svelte";
   import ButtonPrimary from "$components/interactable/buttons/ButtonLink.svelte";
   import anime from "animejs";
-  import MarkdownComponent from "$components/interactable/MarkdownComponent.svelte";
 
-  let rand = Math.floor(Math.random() * 10_000_000);
-
-  let formattedRand = Intl.NumberFormat("en", { notation: "compact" }).format(
-    rand
-  );
+  let rawRand = Math.floor(Math.random() * 10_000_000);
+  let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
 
   let visible = false;
   let width: number;
@@ -110,10 +106,10 @@
         class="dark:text-new-white text-black text-xl sm:text-xl md:text-2xl xl:text-3xl md:text-left text-center w-full md:w-auto"
       >
         Over <span
-          title={rand.toString()}
+          title={rawRand.toString()}
           class="font-bold text-gradient from-pink-600 to-yellow-400 bg-gradient-to-br"
         >
-          {formattedRand}
+          {rand}
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>
@@ -137,6 +133,15 @@
     </div>
   </div>
   <div class="dark:bg-stone-800 bg-dark-white h-[33.333vh] w-screen">
-    <MarkdownComponent placeholder="thing"/>
+    <h2>Content here</h2>
   </div>
 </main>
+
+<style lang="postcss">
+  .text-gradient {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @apply bg-gradient-to-br from-pink-700 to-dph-orange;
+  }
+</style>

@@ -7,13 +7,6 @@
   transform: translateY(-50%);
 }
 
-.text-gradient {
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  @apply bg-gradient-to-br from-pink-700 to-dph-orange;
-}
-
 .btn-sm-start {
   @apply ml-2 mr-2 rounded-lg p-1 font-semibold
 }
@@ -41,23 +34,6 @@
   -webkit-box-orient: vertical;
 }
 
-/* before:bg-gradient-to-br before:from-orange-500 before:to-red-800 */
-.funky-gradient::before {
-  content: "";
-  /* @apply bg-gradient-to-br from-orange-500 to-red-800; */
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.1;
-}
-
-.funky-gradient {
-  @apply h-32 md:h-16 flex flex-col md:flex-row items-center drop-shadow-md justify-between;
-  opacity: 1;
-}
-
 .styled-scrollbar::-webkit-scrollbar {
   width: 0.15rem;
 }
@@ -68,15 +44,6 @@
 
 .styled-scrollbar::-webkit-scrollbar-thumb {
   @apply bg-stone-500 rounded-full;
-}
-
-.font-crafty {
-  font-family: Minecraft, monospace;
-}
-
-@font-face {
-  font-family: Minecraft;
-  src: url('minecraft_font.ttf');
 }
 
 .admin-outline {
