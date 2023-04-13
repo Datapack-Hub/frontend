@@ -16,7 +16,7 @@
   }
 
   let orangeVerifiedHover = {
-    content: "Staff Member",
+    content: "Staff",
     placement: "right"
   }
 
