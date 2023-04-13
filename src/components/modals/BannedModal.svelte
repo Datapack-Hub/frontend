@@ -17,7 +17,7 @@
 </script>
 
 {#if visible}
-  <div class="fixed left-0 top-0 flex h-screen w-screen backdrop-blur-lg">
+  <div class="fixed left-0 top-0 flex h-screen w-screen backdrop-blur-lg z-50">
     <div
       class="relative m-auto w-1/2 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
       <a href="/" class="z-20 flex cursor-pointer items-center justify-center">

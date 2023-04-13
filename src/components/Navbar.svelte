@@ -4,7 +4,7 @@
 </script>
 
 <nav
-  class="fixed top-full z-50 w-full -translate-y-full px-8 transition-all md:top-0 md:translate-y-0 md:px-16 lg:px-24">
+  class="fixed top-full z-40 w-full -translate-y-full px-8 transition-all md:top-0 md:translate-y-0 md:px-16 lg:px-24">
   <div class="funky-gradient w-full">
     <div class="mt-4 flex items-center md:mt-0">
       <a href="/" class="z-20 flex cursor-pointer items-center">
