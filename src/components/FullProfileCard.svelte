@@ -45,15 +45,15 @@
     class="mt-4 w-full text-center font-brand text-5xl font-bold dark:text-white md:text-4xl lg:text-5xl">
     {profileData?.username}
     {#if ["moderator", "developer", "admin"].includes(profileData?.role)}<span
-        class="material-icons text-md align-middle text-orange-500"
-        use:tippy={verifiedHover}
+        class="material-icons text-md align-middle text-orange-500 hover:scale-105 transition-all"
+        use:tippy={orangeVerifiedHover}
         >verified</span
       >{:else if profileData?.role == "helper"}<span
-        class="material-icons text-md align-middle text-blue-500"
-        use:tippy={verifiedHover}>verified</span
+        class="material-icons text-md align-middle text-blue-500 hover:scale-105 transition-all"
+        use:tippy={blueVerifiedHover}>verified</span
       >{:else if profileData?.role == "verified"}<span
-        class="material-icons text-md align-middle text-emerald-500"
-        use:tippy={verifiedHover}
+        class="material-icons text-md align-middle text-emerald-500 hover:scale-105 transition-all"
+        use:tippy={emeraldVerifiedHover}
         >verified</span
       >{/if}
   </p>
