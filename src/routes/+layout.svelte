@@ -16,7 +16,7 @@
   import { goto } from "$app/navigation";
   import Footer from "$components/interactable/Footer.svelte";
 
-  (async () => {
+  (async function onMount() {
     if (browser) {
       $isDark = loadColorPref();
 
