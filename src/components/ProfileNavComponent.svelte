@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isAuthenticated, userData, apiURL } from "$globals";
+  import { isAuthenticated, userData, apiURL, removeCookie } from "$globals";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -16,9 +16,14 @@
     content: "Moderation",
     placement: "bottom",
   };
+
+  function signOut(){
+    removeCookie("dph_token")
+    window.location.replace("/")
+  }
 </script>
 
-<a href="/" target="_self" class="z-50 ml-6 flex items-center justify-center">
+<div class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
     {#if $userData.role != "default"}
       <a href="/moderation/console">
@@ -26,7 +31,7 @@
           src="/icons/moderation.svg"
           width="32"
           height="32"
-          alt="Moderation Menu"
+          alt="moderation menu"
           class="z-20 mr-7 dark:invert"
           use:tippy="{moderationHoverMsg}" />
       </a>
@@ -36,18 +41,20 @@
         src="/icons/bell.svg"
         width="32"
         height="32"
-        alt="Notifications"
+        alt="wip"
         class="z-20 dark:invert"
         use:tippy="{notificationHoverMsg}" /></a>
     <a
       href="/user/{$userData.username}"
       use:tippy="{{
-        content: $userData.username,
+        content: $userData.username + "<span class='items-center'><br /><button onclick=\"document.cookie = 'dph_token' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; window.location.replace('/')\" class='text-sky-500'>Sign Out</a></span>",
         placement: 'bottom',
+        interactive: true,
+        allowHTML: true
       }}">
       <img
         src="{$userData.profile_icon}"
-        alt="{$userData.username}'s Profile"
+        alt="{$userData.username}'s profile picture"
         height="32"
         width="32"
         class="rounded-full outline outline-2 {$userData.role}-outline ml-6 outline-offset-2" />
@@ -61,4 +68,4 @@
       Sign in
     </a>
   {/if}
-</a>
+  </div>
