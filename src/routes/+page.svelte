@@ -77,7 +77,7 @@
     class="flex h-[66.666vh] w-screen flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:px-16 lg:px-24">
     <div class="mt-16 w-2/3 md:mt-0 md:w-3/5 lg:w-2/5">
       <div
-        class="relative mb-4 h-[4.5rem] w-full md:mb-0 lg:h-28 xl:h-36 {visible
+        class="relative mb-4 w-full md:mb-0 h-36 {visible
           ? 'visible'
           : 'invisible'}">
         <h1

@@ -1,10 +1,17 @@
 <script lang="ts">
   import ColorSchemeSelector from "./buttons/ColorSchemeSelector.svelte";
   import ProfileNavComponent from "../ProfileNavComponent.svelte";
+
+  let scrollY: number
+  let innerWidth: number
+
+  $: showNavBG = scrollY > 50 || innerWidth < 768
 </script>
 
+<svelte:window bind:scrollY bind:innerWidth/>
+
 <nav
-  class="fixed top-full z-40 w-full -translate-y-full px-8 transition-all md:top-0 md:translate-y-0 md:px-16 lg:px-24">
+  class="fixed top-full z-40 w-full -translate-y-full px-8 transition-all md:top-0 md:translate-y-0 md:px-16 lg:px-24 {showNavBG ? "bg-stone-800" : ""} bg-opacity-70">
   <div class="funky-gradient w-full">
     <div class="mt-4 flex items-center md:mt-0">
       <a href="/" class="z-20 flex cursor-pointer items-center">

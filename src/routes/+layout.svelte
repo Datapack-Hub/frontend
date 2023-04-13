@@ -14,6 +14,7 @@
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
+  import Footer from "$components/interactable/Footer.svelte";
 
   (async () => {
     if (browser) {
@@ -45,5 +46,6 @@
   <BannedModal />
   <Navbar />
   <slot />
+  <Footer />
 </div>
 <!-- {/await} -->
