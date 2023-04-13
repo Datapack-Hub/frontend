@@ -1,7 +1,12 @@
 <script lang="ts">
-  import { isAuthenticated, userData } from "$globals";
+  import { isAuthenticated, userData, fetchAuthed, apiURL } from "$globals";
+  import type Notification from "./NotificationComponent.svelte";
+  import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
+
+  let moi: HTMLDivElement;
 
   export let notification: Notif | undefined;
+  let visible = true;
 
   function titleCase(str: string | undefined): string {
     if (str == undefined) return "null";
@@ -13,17 +18,43 @@
       })
       .join(" ");
   }
+
+  async function removeThis() {
+    visible = false;
+    let de = await fetchAuthed(
+      "DELETE",
+      `${apiURL}/notifs/delete/${notification?.id}`
+    );
+    if (de.ok) {
+      toasts.success("Removed the notification!");
+      moi.parentNode.removeChild(moi);
+    } else {
+      visible = true;
+      toasts.error("Failed to remove the notification.");
+    }
+  }
 </script>
 
-<div class="flex w-full {notification?.type}-background my-2 rounded-xl p-4">
-  <div class="flex-auto">
-    <h1 class="font-brand text-xl font-bold {notification?.type}-text">
-      {#if notification?.read == false}• {/if}{notification?.message}
-    </h1>
-    <p class="font-brand dark:text-white">{notification?.description}</p>
+{#if visible}
+  <div
+    class="flex w-full {notification?.type}-background my-2 rounded-xl p-4"
+    bind:this="{moi}">
+    <div class="flex-auto">
+      <h1 class="font-brand text-xl font-bold {notification?.type}-text">
+        {#if notification?.read == false}• {/if}{notification?.message}
+      </h1>
+      <p class="font-brand dark:text-white">{notification?.description}</p>
+    </div>
+    <button
+      class="right-0 top-0 h-1 font-brand dark:text-white"
+      on:click="{removeThis}">X</button>
   </div>
-  <!-- <button class="float-right font-brand dark:text-white dark:bg-stone-700 h-1 my-10">Dismiss</button> -->
-</div>
+{/if}
+
+<ToastContainer placement="bottom-right" let:data>
+  <FlatToast data="{data}" />
+  <!-- Provider template for your toasts -->
+</ToastContainer>
 
 <style lang="postcss">
   /* @HoodieRocks can you fix this so it works on light mode too */
