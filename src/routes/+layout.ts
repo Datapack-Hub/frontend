@@ -15,7 +15,7 @@ export const load = (async () => {
         isAuthenticated.set(true);
         setContext("user", (await res.json()) as User);
       }
-      return;
+      return {};
     }
   }
 }) satisfies LayoutLoad;
