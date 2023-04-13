@@ -16,7 +16,7 @@
     placement: "bottom",
   };
 
-  let notificiationHoverMsg = {
+  let notificationHoverMsg = {
     content: "Notifications",
     placement: "bottom",
   };
@@ -31,18 +31,19 @@
       let token = await getCookie("dph_token");
       let query = $page.url.searchParams;
 
-      if (token != null) {
+      if (token != "") {
         let res = await fetchAuthed("get", apiURL + "/user/me");
 
         if (res.ok) {
           $userData = (await res.json()) as User;
           $isAuthenticated = true;
         }
-        return
+        return;
       }
-      let loginIsPresent = query.has("login") && parseInt(query.get("login")!) == 1
-      
-      if (loginIsPresent && query.has("token")) {
+
+      let loginExist = query.has("login") && parseInt(query.get("login")!) == 1;
+
+      if (loginExist && query.has("token")) {
         let token = query.get("token");
 
         const date = new Date();
@@ -72,7 +73,7 @@
           src="/icons/moderation.svg"
           width="32"
           height="32"
-          alt="wip"
+          alt="moderation menu"
           class="dark:invert z-20 mr-7"
           use:tippy={moderationHoverMsg}
         />
@@ -85,7 +86,7 @@
         height="32"
         alt="wip"
         class="dark:invert z-20"
-        use:tippy={notificiationHoverMsg}
+        use:tippy={notificationHoverMsg}
       /></a
     >
     <a

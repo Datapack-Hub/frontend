@@ -15,9 +15,7 @@
     }
     isSmallWidth = window.innerWidth < 768;
     addEventListener("resize", () => (isSmallWidth = window.innerWidth < 768));
-    // alert(cmdInput);
 
-    // cmd = "your mother";
     submitCmd = async () => {
       if (cmd != "") {
         const cons = document.getElementById("cons")!;
