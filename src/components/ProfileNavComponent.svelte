@@ -1,15 +1,5 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
-  import { goto } from "$app/navigation";
-  import { page } from "$app/stores";
-  import {
-    isAuthenticated,
-    fetchAuthed,
-    userData,
-    apiURL,
-    getCookie,
-  } from "$globals";
-  import { getContext } from "svelte";
+  import { isAuthenticated, userData, apiURL } from "$globals";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {

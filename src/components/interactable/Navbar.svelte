@@ -1,6 +1,6 @@
 <script lang="ts">
-  import ColorSchemeSelector from "./interactable/buttons/ColorSchemeSelector.svelte";
-  import ProfileNavComponent from "./ProfileNavComponent.svelte";
+  import ColorSchemeSelector from "./buttons/ColorSchemeSelector.svelte";
+  import ProfileNavComponent from "../ProfileNavComponent.svelte";
 </script>
 
 <nav
