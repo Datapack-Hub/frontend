@@ -15,9 +15,19 @@
       .join(" ");
   }
 
-  let verifiedHover = {
-    content: "This person is verified because they are a loyal Twitt- I mean Datapack hub Orange subscriber",
-    placement: "bottom"
+  let orangeVerifiedHover = {
+    content: "Verified Admin",
+    placement: "right"
+  }
+
+  let blueVerifiedHover = {
+    content: "Verified Helper",
+    placement: "right"
+  }
+
+  let emeraldVerifiedHover = {
+    content: "Verified",
+    placement: "right"
   }
 </script>
 
