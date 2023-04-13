@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import CasualLine from "$components/CasualLine.svelte";
-  import { apiURL, fetchAuthed } from "$globals";
+  import { apiURL, fetchAuthed, isAuthenticated } from "$globals";
   import SvelteMarkdown from "svelte-markdown";
 
   let visible = false;
@@ -23,6 +23,7 @@
   }
 
   </script>
+{#if $isAuthenticated}
 {#await loadBan() then }
 {#if visible}
   <div class="fixed left-0 top-0 flex h-screen w-screen backdrop-blur-lg z-50">
@@ -61,4 +62,5 @@
     </div>
   </div>
 {/if}
-{/await}
+{/await}  
+{/if}
