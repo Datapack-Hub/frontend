@@ -9,6 +9,7 @@
     apiURL,
     getCookie,
   } from "$globals";
+  import { getContext } from "svelte";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -29,6 +30,11 @@
   (async () => {
     if (browser) {
       let query = $page.url.searchParams;
+      let token = await getCookie("dph_token");
+
+      if(token) {
+        $userData = getContext('user')
+      }
 
       let loginExist = query.has("login") && parseInt(query.get("login")!) == 1;
 

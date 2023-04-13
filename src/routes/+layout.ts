@@ -11,9 +11,13 @@ export const load = (async () => {
       const res = await fetchAuthed("get", apiURL + "/user/me");
 
       if (res.ok) {
-        userData.set((await res.json()) as User);
+        const data = (await res.json()) as User
+        userData.set(data);
         isAuthenticated.set(true);
-        setContext("user", (await res.json()) as User);
+        setContext("user", data);
+        return {
+          data: data
+        }
       }
       return;
     }
