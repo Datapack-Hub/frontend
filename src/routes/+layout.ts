@@ -7,7 +7,7 @@ export const load = (async () => {
   if (browser) {
     const token = await getCookie("dph_token");
 
-    if (!token) {
+    if (token) {
       const res = await fetchAuthed("get", apiURL + "/user/me");
 
       if (res.ok) {
