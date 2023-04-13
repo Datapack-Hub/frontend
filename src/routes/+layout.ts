@@ -9,15 +9,12 @@ export const load = (async () => {
 
     if (token != "") {
       const res = await fetchAuthed("get", apiURL + "/user/me");
-      let user: User | null = null;
-      const unsubscribeUserStore = userData.subscribe((value) => user = value)
 
       if (res.ok) {
         userData.set((await res.json()) as User);
         isAuthenticated.set(true);
-        setContext('user', user)
+        setContext("user", (await res.json()) as User);
       }
-      unsubscribeUserStore()
       return;
     }
   }

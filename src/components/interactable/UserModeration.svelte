@@ -4,7 +4,7 @@
   import { apiURL, fetchAuthed, postAuthed, userData } from "$globals";
   import { browser } from "$app/environment";
   import SvelteMarkdown from "svelte-markdown";
-  import { toasts, ToastContainer, FlatToast }  from "svelte-toasts";
+  import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
 
   export let user: User | undefined;
 
@@ -31,7 +31,7 @@
     notifDialog.close();
     banDialog.close();
     unbanDialog.close();
-    logOutDialog.close()
+    logOutDialog.close();
 
     me.open();
   }
@@ -48,7 +48,7 @@
     });
     if (warnt.ok) {
       warnDialog.close();
-      toasts.success(`Warned ${user?.username}!`)
+      toasts.success(`Warned ${user?.username}!`);
     } else {
       alert(await warnt.text());
     }
@@ -77,7 +77,7 @@
     });
     if (sent.ok) {
       notifDialog.close();
-      toasts.success(`Sent a notification to ${user?.username}!`)
+      toasts.success(`Sent a notification to ${user?.username}!`);
     } else {
       alert(await sent.text());
     }
@@ -110,28 +110,34 @@
     });
     if (ban.ok) {
       banDialog.close();
-      toasts.success(`${user?.username} is now banned!`)
+      toasts.success(`${user?.username} is now banned!`);
     } else {
       alert(await ban.text());
     }
   }
 
   async function unbanUser() {
-    let unban = await fetchAuthed("delete",`${apiURL}/moderation/ban/${user?.id}`);
+    let unban = await fetchAuthed(
+      "delete",
+      `${apiURL}/moderation/ban/${user?.id}`
+    );
     if (unban.ok) {
       unbanDialog.close();
-      modJson["banned"] == false
-      toasts.success(`${user?.username} is now unbanned.`)
+      modJson["banned"] == false;
+      toasts.success(`${user?.username} is now unbanned.`);
     } else {
       alert(await unban.text());
     }
   }
 
   async function logOutUser() {
-    let logout = await postAuthed(`${apiURL}/moderation/log_out/${user?.id}`,{});
+    let logout = await postAuthed(
+      `${apiURL}/moderation/log_out/${user?.id}`,
+      {}
+    );
     if (logout.ok) {
       logOutDialog.close();
-      toasts.success(`${user?.username} is now logged out of their account.`)
+      toasts.success(`${user?.username} is now logged out of their account.`);
     } else {
       alert(await logout.text());
     }
@@ -249,7 +255,8 @@
   </h1>
   <CasualLine />
   <p class="font-brand dark:text-white">
-    This will log {user?.username} out of all their signed-in devices, and generate them a new token. They will need to sign in again.
+    This will log {user?.username} out of all their signed-in devices, and generate
+    them a new token. They will need to sign in again.
   </p>
   <button
     on:click="{async () => await logOutUser()}"
@@ -321,7 +328,9 @@
             <p class="font-brand text-xl font-extrabold dark:text-white">
               User Info
             </p>
-            {#if modJson["banned"]}<p class="font-brand dark:text-white"><b>User is banned</b></p>{/if}
+            {#if modJson["banned"]}<p class="font-brand dark:text-white">
+                <b>User is banned</b>
+              </p>{/if}
             <p class="font-brand dark:text-white"><b>User ID: </b> {user.id}</p>
           </div>
         </div>
@@ -331,6 +340,7 @@
   {/await}
 {/if}
 
-<ToastContainer placement="bottom-right" let:data={data}>
-  <FlatToast {data} /> <!-- Provider template for your toasts -->
+<ToastContainer placement="bottom-right" let:data>
+  <FlatToast data="{data}" />
+  <!-- Provider template for your toasts -->
 </ToastContainer>

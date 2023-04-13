@@ -28,7 +28,7 @@
 
   (async () => {
     if (browser) {
-      let query = $page.url.searchParams
+      let query = $page.url.searchParams;
 
       let loginExist = query.has("login") && parseInt(query.get("login")!) == 1;
 

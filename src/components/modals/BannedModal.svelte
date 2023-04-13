@@ -8,52 +8,58 @@
   let expiry: number;
 
   async function loadBan() {
-    let me = await fetchAuthed("get",`${apiURL}/user/me`)
-    let meJson = await me.json() as {banned: boolean, banData: {message: string, expires: number}}
-    if(meJson.banned == true){
-      banReason = meJson.banData.message
-      expiry = meJson.banData.expires
-      visible = true
+    let me = await fetchAuthed("get", `${apiURL}/user/me`);
+    let meJson = (await me.json()) as {
+      banned: boolean;
+      banData: { message: string; expires: number };
+    };
+    if (meJson.banned == true) {
+      banReason = meJson.banData.message;
+      expiry = meJson.banData.expires;
+      visible = true;
     }
   }
+</script>
 
-  </script>
-{#await loadBan() then }
-{#if visible}
-  <div class="fixed left-0 top-0 flex h-screen w-screen backdrop-blur-lg z-50">
+{#await loadBan() then}
+  {#if visible}
     <div
-      class="relative m-auto w-1/2 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
-      <a href="/" class="z-20 flex cursor-pointer items-center justify-center">
-        <img
-          src="/logos/dph.svg"
-          alt="logo"
-          class="mr-1 h-8 rounded-full transition-all hover:brightness-75"
-          height="32"
-          width="32" />
-        <span
-          class="hidden font-brand text-2xl font-bold text-black transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
-          Datapack Hub
-        </span>
-      </a>
-      <!-- <h1 class="font-brand text-2xl dark:text-white font-regular">You are temporarily banned from Datapack Hub</h1> -->
-      <CasualLine />
-      <p class="font-brand text-lg dark:text-white">
-        <b>You are banned from Datapack Hub.</b> The reason is displayed below:
-      </p>
-      <p
-        class="my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300">
-        <SvelteMarkdown source="{banReason}" />
-      </p>
-      <p class="font-brand dark:text-white">
-        <b>Your ban will expire:</b>
-        {new Date(expiry).toLocaleString()}. <br /> Until then, wait for the ban
-        to expire, and read
-        <a href="/rules" class="text-cyan-500 underline">our rules</a>.
-      </p>
-      <button
-        class="text-md items-center justify-center rounded-md bg-dph-orange p-1 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
-        >Log Out</button>
+      class="fixed left-0 top-0 z-50 flex h-screen w-screen backdrop-blur-lg">
+      <div
+        class="relative m-auto w-1/2 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
+        <a
+          href="/"
+          class="z-20 flex cursor-pointer items-center justify-center">
+          <img
+            src="/logos/dph.svg"
+            alt="logo"
+            class="mr-1 h-8 rounded-full transition-all hover:brightness-75"
+            height="32"
+            width="32" />
+          <span
+            class="hidden font-brand text-2xl font-bold text-black transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
+            Datapack Hub
+          </span>
+        </a>
+        <!-- <h1 class="font-brand text-2xl dark:text-white font-regular">You are temporarily banned from Datapack Hub</h1> -->
+        <CasualLine />
+        <p class="font-brand text-lg dark:text-white">
+          <b>You are banned from Datapack Hub.</b> The reason is displayed below:
+        </p>
+        <p
+          class="my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300">
+          <SvelteMarkdown source="{banReason}" />
+        </p>
+        <p class="font-brand dark:text-white">
+          <b>Your ban will expire:</b>
+          {new Date(expiry).toLocaleString()}. <br /> Until then, wait for the
+          ban to expire, and read
+          <a href="/rules" class="text-cyan-500 underline">our rules</a>.
+        </p>
+        <button
+          class="text-md items-center justify-center rounded-md bg-dph-orange p-1 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+          >Log Out</button>
+      </div>
     </div>
-  </div>
-{/if}
+  {/if}
 {/await}
