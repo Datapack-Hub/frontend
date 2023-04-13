@@ -46,7 +46,7 @@
 
         let expires = date.toUTCString();
 
-        document.cookie = `dph_token=${token}; expires=${expires}`;
+        document.cookie = `dph_token=${token}; expires=${expires}`
 
         let res = await fetchAuthed("get", apiURL + "/user/me");
 
