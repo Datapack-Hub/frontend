@@ -28,18 +28,7 @@
 
   (async () => {
     if (browser) {
-      let token = await getCookie("dph_token");
-      let query = $page.url.searchParams;
-
-      if (token != "") {
-        let res = await fetchAuthed("get", apiURL + "/user/me");
-
-        if (res.ok) {
-          $userData = (await res.json()) as User;
-          $isAuthenticated = true;
-        }
-        return;
-      }
+      let query = $page.url.searchParams
 
       let loginExist = query.has("login") && parseInt(query.get("login")!) == 1;
 

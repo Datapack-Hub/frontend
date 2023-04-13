@@ -1,8 +1,5 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import UserCard from "$components/UserCard.svelte";
-  import { userData } from "$globals";
-  import Modal from "$components/modals/Modal.svelte";
   import Notification from "$components/Notification.svelte";
 
   export let data: PageData;
