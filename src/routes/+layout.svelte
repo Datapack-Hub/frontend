@@ -16,9 +16,10 @@
   import { goto } from "$app/navigation";
   import Footer from "$components/interactable/Footer.svelte";
 
-  (async function onMount() {
+  (async () => {
     if (browser) {
       $isDark = loadColorPref();
+      $userData = JSON.parse(localStorage.getItem('userData')!) as User
 
       if ($page.url.searchParams.has("token")) {
         let newToken = $page.url.searchParams.get("token");
@@ -35,6 +36,7 @@
         let usr = await fetchAuthed("get", `${apiURL}/user/me`);
         let usrJson = (await usr.json()) as User;
         $userData = usrJson;
+        localStorage.setItem('userData', JSON.stringify($userData))
         $isAuthenticated = true;
       }
     }
