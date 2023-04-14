@@ -29,7 +29,7 @@
       src="{data.project?.icon}"
       alt="Icon for {data.project?.title}"
       class="mr-6 h-24 w-24 rounded-lg" />
-    <div>
+    <div class="flex-grow">
       <h1 class="font-brand text-5xl font-black dark:text-white">
         {data.project?.title}
       </h1>
@@ -48,7 +48,7 @@
     </div>
     <a
       href="/download"
-      class="text-md float-right h-min rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+      class="text-md m-0 float-right h-min rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
       >Download</a>
   </div>
   <div
