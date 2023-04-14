@@ -16,7 +16,6 @@
   import { goto } from "$app/navigation";
   import Footer from "$components/interactable/Footer.svelte";
 
-  debugger;
   (async () => {
     if (browser) {
       $userData = JSON.parse(localStorage.getItem('userData')!) as User
