@@ -16,31 +16,31 @@
   import { goto } from "$app/navigation";
   import Footer from "$components/interactable/Footer.svelte";
 
-  (async () => {
-    if (browser) {
-      $isDark = loadColorPref();
-      $userData = JSON.parse(localStorage.getItem('userData')!) as User
+  // (async () => {
+  //   if (browser) {
+  //     $isDark = loadColorPref();
+  //     $userData = JSON.parse(localStorage.getItem('userData')!) as User
 
-      if ($page.url.searchParams.has("token")) {
-        let newToken = $page.url.searchParams.get("token");
-        let date = new Date();
-        date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
-        let expires = date.toUTCString();
-        document.cookie = `dph_token=${newToken}; expires=${expires}`;
+  //     if ($page.url.searchParams.has("token")) {
+  //       let newToken = $page.url.searchParams.get("token");
+  //       let date = new Date();
+  //       date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
+  //       let expires = date.toUTCString();
+  //       document.cookie = `dph_token=${newToken}; expires=${expires}`;
 
-        goto("/");
-      }
+  //       goto("/");
+  //     }
 
-      let token = await getCookie("dph_token");
-      if (token) {
-        let usr = await fetchAuthed("get", `${apiURL}/user/me`);
-        let usrJson = (await usr.json()) as User;
-        $userData = usrJson;
-        localStorage.setItem('userData', JSON.stringify($userData))
-        $isAuthenticated = true;
-      }
-    }
-  })();
+  //     let token = await getCookie("dph_token");
+  //     if (token) {
+  //       let usr = await fetchAuthed("get", `${apiURL}/user/me`);
+  //       let usrJson = (await usr.json()) as User;
+  //       $userData = usrJson;
+  //       localStorage.setItem('userData', JSON.stringify($userData))
+  //       $isAuthenticated = true;
+  //     }
+  //   }
+  // })();
 </script>
 
 <!-- {#await pageLoad() then} -->

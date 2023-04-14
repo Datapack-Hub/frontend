@@ -29,6 +29,7 @@ declare type User = {
   bio: string;
   role: string;
   profile_icon: string;
+  banned: boolean;
 };
 
 declare type Project = {
