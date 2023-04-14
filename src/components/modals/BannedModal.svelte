@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import CasualLine from "$components/CasualLine.svelte";
-  import { apiURL, fetchAuthed, isAuthenticated } from "$globals";
+  import { apiURL, fetchAuthed, isAuthenticated, removeCookie } from "$globals";
   import SvelteMarkdown from "svelte-markdown";
 
   let visible = false;
@@ -23,6 +23,11 @@
         }
       }
     }
+  }
+
+  function signOut(){
+    removeCookie("dph_token")
+    window.location.replace("/")
   }
 </script>
 
@@ -64,6 +69,7 @@
           </p>
           <button
             class="text-md items-center justify-center rounded-md bg-dph-orange p-1 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+            on:click={signOut}
             >Log Out</button>
         </div>
       </div>

@@ -16,11 +16,6 @@
     content: "Moderation",
     placement: "bottom",
   };
-
-  function signOut(){
-    removeCookie("dph_token")
-    window.location.replace("/")
-  }
 </script>
 
 <div class="z-50 ml-6 flex items-center justify-center">
