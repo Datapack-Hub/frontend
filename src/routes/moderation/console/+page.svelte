@@ -9,7 +9,6 @@
   let cmd = "";
 
   onMount(() => {
-    console.log("User is " + $userData.username);
     if ($userData.role == "default") {
       goto("/");
     }
