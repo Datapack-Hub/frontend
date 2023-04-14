@@ -17,8 +17,9 @@
       send.role = (document.getElementById("role") as HTMLInputElement).value;
     }
     patchAuthed(`${apiURL}/user/id/${data.profile?.id}`, send).then((resp) => {
-      if (resp.ok) {
-      } else return resp.text().then((txt) => alert(txt));
+      if (!resp.ok) {
+        return resp.text().then((txt) => alert(txt));
+      }
       if (data.profile?.id == $userData.id) {
         $userData.username = uname.value;
         $userData.bio = bio.value;

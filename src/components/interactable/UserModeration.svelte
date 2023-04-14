@@ -1,7 +1,7 @@
 <script lang="ts">
   import CasualLine from "$components/CasualLine.svelte";
   import Modal from "$components/modals/Modal.svelte";
-  import { apiURL, fetchAuthed, postAuthed, userData } from "$globals";
+  import { apiURL, fetchAuthed, postAuthed } from "$globals";
   import { browser } from "$app/environment";
   import SvelteMarkdown from "svelte-markdown";
   import { toasts, ToastContainer, FlatToast } from "svelte-toasts";

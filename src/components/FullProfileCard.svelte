@@ -1,8 +1,8 @@
 <script lang="ts">
   import { isAuthenticated, userData } from "$globals";
-  import tippy from 'sveltejs-tippy'
+  import tippy from "sveltejs-tippy";
 
-  export let profileData: User;
+  export let profileData: User | undefined;
 
   function titleCase(str: string | undefined): string {
     if (str == undefined) return "null";
@@ -16,19 +16,22 @@
   }
 
   let orangeVerifiedHover = {
-    content: "This user is verified because they are a member of Datapack Hub Staff.",
-    placement: "right"
-  }
+    content:
+      "This user is verified because they are a member of Datapack Hub Staff.",
+    placement: "right",
+  };
 
   let blueVerifiedHover = {
-    content: "This person is verified because they help in the Discord and know a lot about datapacks.",
-    placement: "right"
-  }
+    content:
+      "This person is verified because they help in the Discord and know a lot about datapacks.",
+    placement: "right",
+  };
 
   let emeraldVerifiedHover = {
-    content: "This user is verified because they are well-known in the datapack community and make high quality datapacks.",
-    placement: "right"
-  }
+    content:
+      "This user is verified because they are well-known in the datapack community and make high quality datapacks.",
+    placement: "right",
+  };
 </script>
 
 <div class="ms:max-w-lg flex max-w-full flex-col items-center md:items-start">
@@ -45,16 +48,14 @@
     class="mt-4 w-full text-center font-brand text-5xl font-bold dark:text-white md:text-4xl lg:text-5xl">
     {profileData?.username}
     {#if ["moderator", "developer", "admin"].includes(profileData?.role)}<span
-        class="material-icons text-md align-middle text-orange-500 hover:scale-125 transition-all"
-        use:tippy={orangeVerifiedHover}
-        >verified</span
+        class="material-icons text-md align-middle text-orange-500 transition-all hover:scale-125"
+        use:tippy="{orangeVerifiedHover}">verified</span
       >{:else if profileData?.role == "helper"}<span
-        class="material-icons text-md align-middle text-blue-500 hover:scale-125 transition-all"
-        use:tippy={blueVerifiedHover}>verified</span
+        class="material-icons text-md align-middle text-blue-500 transition-all hover:scale-125"
+        use:tippy="{blueVerifiedHover}">verified</span
       >{:else if profileData?.role == "verified"}<span
-        class="material-icons text-md align-middle text-emerald-500 hover:scale-125 transition-all"
-        use:tippy={emeraldVerifiedHover}
-        >verified</span
+        class="material-icons text-md align-middle text-emerald-500 transition-all hover:scale-125"
+        use:tippy="{emeraldVerifiedHover}">verified</span
       >{/if}
   </p>
 

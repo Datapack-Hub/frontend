@@ -1,6 +1,7 @@
 {
   "endOfLine": "lf",
   "bracketSameLine": true,
+  "semi": true,
   "svelteStrictMode": true,
   "svelteIndentScriptAndStyle": true,
   "plugins": [

@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { isAuthenticated, userData } from "$globals";
-
   export let person: User | undefined;
 
   function titleCase(str: string | undefined): string {

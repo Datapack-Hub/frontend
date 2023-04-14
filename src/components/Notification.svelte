@@ -1,23 +1,11 @@
 <script lang="ts">
-  import { isAuthenticated, userData, fetchAuthed, apiURL } from "$globals";
-  import type Notification from "./NotificationComponent.svelte";
-  import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
+  import { fetchAuthed, apiURL } from "$globals";
+  import { toasts, ToastContainer, FlatToast} from "svelte-toasts";
 
   let moi: HTMLDivElement;
 
   export let notification: Notif | undefined;
   let visible = true;
-
-  function titleCase(str: string | undefined): string {
-    if (str == undefined) return "null";
-    return str
-      .toLowerCase()
-      .split(" ")
-      .map((word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(" ");
-  }
 
   async function removeThis() {
     visible = false;
@@ -27,7 +15,7 @@
     );
     if (de.ok) {
       toasts.success("Removed the notification!");
-      moi.parentNode.removeChild(moi);
+      moi!.parentNode.removeChild(moi);
     } else {
       visible = true;
       toasts.error("Failed to remove the notification.");

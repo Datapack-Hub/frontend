@@ -23,7 +23,7 @@
       </h1>
     {/if}
     {#each data.notifications ?? [] as notification}
-      <Notification {notification} />
+      <Notification notification="{notification}" />
     {/each}
   </div>
 </main>

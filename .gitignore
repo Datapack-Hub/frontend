@@ -9,5 +9,5 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .svelte-kit/generated
 .svelte-kit/cloudflare
-.svelte-kit/cloreflare-tmp
+.svelte-kit/cloudflare-tmp
 .svelte-kit/output

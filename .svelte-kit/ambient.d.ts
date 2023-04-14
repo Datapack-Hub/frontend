@@ -40,9 +40,7 @@ declare module '$env/static/private' {
 	export const CONDA_PROMPT_MODIFIER: string;
 	export const COREPACK_ROOT: string;
 	export const DriverData: string;
-	export const EFC_7988: string;
-	export const FPS_BROWSER_APP_PROFILE_STRING: string;
-	export const FPS_BROWSER_USER_PROFILE_STRING: string;
+	export const EFC_9796: string;
 	export const GIT_ASKPASS: string;
 	export const HOME: string;
 	export const HOMEDRIVE: string;
@@ -54,7 +52,6 @@ declare module '$env/static/private' {
 	export const LOGONSERVER: string;
 	export const NIEXTCCOMPILERSUPP: string;
 	export const NODE: string;
-	export const NODE_ENV: string;
 	export const NODE_PATH: string;
 	export const npm_command: string;
 	export const npm_config_engine_strict: string;
@@ -199,9 +196,7 @@ declare module '$env/dynamic/private' {
 		CONDA_PROMPT_MODIFIER: string;
 		COREPACK_ROOT: string;
 		DriverData: string;
-		EFC_7988: string;
-		FPS_BROWSER_APP_PROFILE_STRING: string;
-		FPS_BROWSER_USER_PROFILE_STRING: string;
+		EFC_9796: string;
 		GIT_ASKPASS: string;
 		HOME: string;
 		HOMEDRIVE: string;
@@ -213,7 +208,6 @@ declare module '$env/dynamic/private' {
 		LOGONSERVER: string;
 		NIEXTCCOMPILERSUPP: string;
 		NODE: string;
-		NODE_ENV: string;
 		NODE_PATH: string;
 		npm_command: string;
 		npm_config_engine_strict: string;

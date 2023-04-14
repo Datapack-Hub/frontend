@@ -25,9 +25,9 @@
     }
   }
 
-  function signOut(){
-    removeCookie("dph_token")
-    window.location.replace("/")
+  function signOut() {
+    removeCookie("dph_token");
+    window.location.replace("/");
   }
 </script>
 
@@ -69,8 +69,7 @@
           </p>
           <button
             class="text-md items-center justify-center rounded-md bg-dph-orange p-1 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
-            on:click={signOut}
-            >Log Out</button>
+            on:click="{signOut}">Log Out</button>
         </div>
       </div>
     {/if}
