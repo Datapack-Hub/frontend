@@ -43,9 +43,11 @@
 
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? ' dark' : ''}">
-  <BannedModal />
-  <Navbar />
-  <slot />
+  <div class="dark:bg-stone-900 bg-new-white">
+    <BannedModal />
+    <Navbar />
+    <slot />
+  </div>
   <Footer />
 </div>
 <!-- {/await} -->
