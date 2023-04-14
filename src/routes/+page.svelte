@@ -122,7 +122,7 @@
       <h2>Content here</h2>
     </div>
   </div>
-  <div class="h-[33.333vh] w-screen bg-dark-white dark:bg-stone-800">
+  <div class="h-[33.333vh] w-full bg-dark-white dark:bg-stone-800">
     <h2>Content here</h2>
   </div>
 </main>

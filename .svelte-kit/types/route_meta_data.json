@@ -1,43 +1,27 @@
 {
-	"/": [
-		"src/routes/+layout.ts",
-		"src/routes/+layout.ts"
-	],
-	"/moderation/console": [
-		"src/routes/+layout.ts"
-	],
+	"/": [],
+	"/moderation/console": [],
 	"/notifications": [
-		"src/routes/notifications/+page.ts",
-		"src/routes/+layout.ts"
+		"src/routes/notifications/+page.ts"
 	],
 	"/projects": [
-		"src/routes/projects/+page.ts",
-		"src/routes/+layout.ts"
+		"src/routes/projects/+page.ts"
 	],
-	"/projects/new": [
-		"src/routes/+layout.ts"
-	],
+	"/projects/new": [],
 	"/project/[slug]": [
-		"src/routes/project/[slug]/+page.ts",
-		"src/routes/+layout.ts"
+		"src/routes/project/[slug]/+page.ts"
 	],
-	"/project/[slug]/edit": [
-		"src/routes/+layout.ts"
-	],
+	"/project/[slug]/edit": [],
 	"/rules": [
-		"src/routes/rules/+page.ts",
-		"src/routes/+layout.ts"
+		"src/routes/rules/+page.ts"
 	],
 	"/staff": [
-		"src/routes/staff/+page.ts",
-		"src/routes/+layout.ts"
+		"src/routes/staff/+page.ts"
 	],
 	"/user/[slug]": [
-		"src/routes/user/[slug]/+page.ts",
-		"src/routes/+layout.ts"
+		"src/routes/user/[slug]/+page.ts"
 	],
 	"/user/[slug]/edit": [
-		"src/routes/user/[slug]/edit/+page.ts",
-		"src/routes/+layout.ts"
+		"src/routes/user/[slug]/edit/+page.ts"
 	]
 }

@@ -13,7 +13,7 @@ export const userData: Writable<User> = writable({
 export const apiURL = "https://api.datapackhub.net";
 
 export function loadColorPref() {
-  return localStorage.getItem("dp_colorPref") == "true";
+  isDark.set(localStorage.getItem("dp_colorPref") == "true");
 }
 
 export async function getAuthorNameFromID(authorID: number): Promise<string> {
