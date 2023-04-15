@@ -48,7 +48,7 @@
     </div>
     <a
       href="/download"
-      class="text-md m-0 float-right h-min rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+      class="text-md float-right m-0 h-min rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
       >Download</a>
   </div>
   <div

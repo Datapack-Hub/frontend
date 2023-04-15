@@ -1,5 +1,6 @@
 <script lang="ts">
   import { isAuthenticated, userData, apiURL } from "$globals";
+  import { IconBell } from '@tabler/icons-svelte'
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -32,13 +33,7 @@
       </a>
     {/if}
     <a href="/notifications"
-      ><img
-        src="/icons/bell.svg"
-        width="32"
-        height="32"
-        alt="wip"
-        class="z-20 dark:invert"
-        use:tippy="{notificationHoverMsg}" /></a>
+      ><IconBell /></a>
     <a
       href="/user/{$userData.username}"
       use:tippy="{{

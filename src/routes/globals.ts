@@ -8,7 +8,7 @@ export const userData: Writable<User> = writable({
   bio: "",
   profile_icon: "",
   role: "admin",
-  banned: false
+  banned: false,
 });
 export const apiURL = "https://api.datapackhub.net";
 

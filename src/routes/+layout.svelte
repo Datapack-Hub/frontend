@@ -18,8 +18,8 @@
 
   (async () => {
     if (browser) {
-      $userData = JSON.parse(localStorage.getItem('userData')!) as User
-      
+      $userData = JSON.parse(localStorage.getItem("userData")!) as User;
+
       loadColorPref();
 
       if ($page.url.searchParams.has("token")) {
@@ -37,7 +37,7 @@
         let usr = await fetchAuthed("get", `${apiURL}/user/me`);
         let usrJson = (await usr.json()) as User;
         $userData = usrJson;
-        localStorage.setItem('userData', JSON.stringify($userData))
+        localStorage.setItem("userData", JSON.stringify($userData));
         $isAuthenticated = true;
       }
     }

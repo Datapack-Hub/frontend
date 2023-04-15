@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fetchAuthed, apiURL } from "$globals";
-  import { toasts, ToastContainer, FlatToast} from "svelte-toasts";
+  import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
 
   let moi: HTMLDivElement;
 
@@ -15,7 +15,7 @@
     );
     if (de.ok) {
       toasts.success("Removed the notification!");
-      moi!.parentNode.removeChild(moi);
+      moi.parentNode!.removeChild(moi);
     } else {
       visible = true;
       toasts.error("Failed to remove the notification.");
