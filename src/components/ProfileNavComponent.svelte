@@ -1,6 +1,6 @@
 <script lang="ts">
   import { isAuthenticated, userData, apiURL } from "$globals";
-  import { IconBell } from '@tabler/icons-svelte'
+  import { IconBell, IconShield } from "@tabler/icons-svelte";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -22,18 +22,12 @@
 <div class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
     {#if $userData.role != "default"}
-      <a href="/moderation/console">
-        <img
-          src="/icons/moderation.svg"
-          width="32"
-          height="32"
-          alt="moderation menu"
-          class="z-20 mr-7 dark:invert"
-          use:tippy="{moderationHoverMsg}" />
+      <a href="/moderation/console" use:tippy={moderationHoverMsg}>
+        <IconShield color="white" size="{32}" />
       </a>
     {/if}
-    <a href="/notifications"
-      ><IconBell color="white" size={32}/></a>
+    <a href="/notifications" use:tippy="{notificationHoverMsg}"
+      ><IconBell color="white" size="{32}" /></a>
     <a
       href="/user/{$userData.username}"
       use:tippy="{{
