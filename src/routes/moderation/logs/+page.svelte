@@ -1,10 +1,7 @@
 <script lang="ts">
-    import type { PageData } from "./$types";
-    import UserCard from "$components/UserCard.svelte";
+
   import { apiURL, fetchAuthed, userData } from "$globals";
-  import { onMount } from "svelte";
   import { goto } from "$app/navigation";
-  import { json } from "@sveltejs/kit";
 
   let logsJson: [{username: string, action: string, time: number}]
     
@@ -43,7 +40,7 @@
         <tr>
             <td>{i.username}</td>
             <td>{i.action}</td>
-            <td>{i.time}</td>
+            <td>{new Date(i.time).toTimeString()}</td>
         </tr><h1>hello</h1>
         {/each}
       </table>
