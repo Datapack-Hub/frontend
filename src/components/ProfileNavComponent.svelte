@@ -33,7 +33,7 @@
       </a>
     {/if}
     <a href="/notifications"
-      ><IconBell /></a>
+      ><IconBell color="white" size={32}/></a>
     <a
       href="/user/{$userData.username}"
       use:tippy="{{
