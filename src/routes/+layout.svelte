@@ -35,7 +35,7 @@
       let token = await getCookie("dph_token");
       if (token) {
         let [usr, notifs] = await Promise.all([
-          await fetchAuthed("get", `${apiURL}/user/me`)
+          await fetchAuthed("get", `${apiURL}/user/me`),
           await fetchAuthed("get", `${apiURL}/notifs`)
         ]);
         let usrJson = (await usr.json()) as User;
