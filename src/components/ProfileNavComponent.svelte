@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { isAuthenticated, userData, apiURL } from "$globals";
-  import { IconBell, IconShield } from "@tabler/icons-svelte";
+  import { isAuthenticated, userData, apiURL, fetchAuthed } from "$globals";
+  import { IconBell, IconBellExclamation, IconShield } from "@tabler/icons-svelte";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -17,6 +17,14 @@
     content: "Moderation",
     placement: "bottom",
   };
+
+  let notifsAvailable = false;
+
+  (async () => {
+    let notif = await fetchAuthed("get", `${apiURL}/notifs`)
+    let notifJson = await notif.json()
+    if(notifJson.count != 0) notifsAvailable = true
+  })();
 </script>
 
 <div class="z-50 ml-6 flex items-center justify-center">
@@ -26,8 +34,13 @@
         <IconShield color="white" size="{32}" />
       </a>
     {/if}
-    <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}"
-      ><IconBell color="white" size="{32}" /></a>
+    <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}">
+      {#if notifsAvailable}
+         <IconBellExclamation color="white" size="{32}" />
+      {:else}
+        <IconBell color="white" size="{32}" />
+      {/if}
+    </a>
     <a
       href="/user/{$userData.username}"
       use:tippy="{{
