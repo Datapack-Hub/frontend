@@ -44,7 +44,7 @@
             <td>{i.username}</td>
             <td>{i.action}</td>
             <td>{i.time}</td>
-        </tr><h1>hello</h1>
+        </tr>
         {/each}
       </table>
       {/await}
