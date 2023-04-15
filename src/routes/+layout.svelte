@@ -35,7 +35,7 @@
       let token = await getCookie("dph_token");
       if (token) {
         let usr = await fetchAuthed("get", `${apiURL}/user/me`)
-        let notif = await fetchAuthed("get", `${apiURL}/notifs`)
+        // let notif = await fetchAuthed("get", `${apiURL}/notifs`)
         let usrJson = (await usr.json()) as User;
         $userData = usrJson;
         localStorage.setItem("userData", JSON.stringify($userData));
