@@ -40,7 +40,7 @@
         <tr>
             <td>{i.username}</td>
             <td>{i.action}</td>
-            <td>{new Date(i.time).toTimeString()}</td>
+            <td>{new Date(i.time).toLocaleTimeString()}</td>
         </tr><h1>hello</h1>
         {/each}
       </table>
