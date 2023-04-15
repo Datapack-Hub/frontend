@@ -22,11 +22,11 @@
 <div class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
     {#if $userData.role != "default"}
-      <a href="/moderation/console" use:tippy={moderationHoverMsg}>
+      <a href="/moderation/console" class="z-20 mr-7" use:tippy={moderationHoverMsg}>
         <IconShield color="white" size="{32}" />
       </a>
     {/if}
-    <a href="/notifications" use:tippy="{notificationHoverMsg}"
+    <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}"
       ><IconBell color="white" size="{32}" /></a>
     <a
       href="/user/{$userData.username}"
