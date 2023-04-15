@@ -14,7 +14,7 @@
         }
 
         let logs = await fetchAuthed("get",`${apiURL}/moderation/logs?page=1`)
-        let logsJson = (await logs.json())["result"]
+        logsJson = (await logs.json())["result"]
     }
 
   </script>

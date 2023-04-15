@@ -18,19 +18,19 @@
   let orangeVerifiedHover = {
     content:
       "This user is verified because they are a member of Datapack Hub Staff.",
-    placement: "right",
+    placement: "left",
   };
 
   let blueVerifiedHover = {
     content:
       "This person is verified because they help in the Discord and know a lot about datapacks.",
-    placement: "right",
+    placement: "left",
   };
 
   let emeraldVerifiedHover = {
     content:
       "This user is verified because they are well-known in the datapack community and make high quality datapacks.",
-    placement: "right",
+    placement: "left",
   };
 </script>
 
