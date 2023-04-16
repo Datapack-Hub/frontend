@@ -1,6 +1,6 @@
 <script lang="ts">
   import ColorSchemeSelector from "./buttons/ColorSchemeSelector.svelte";
-  import ProfileNavComponent from "../ProfileNavComponent.svelte";
+  import ProfileNavComponent from "./ProfileNavComponent.svelte";
 
   let scrollY: number;
   let innerWidth: number;
@@ -15,8 +15,8 @@
   class="sticky top-[calc(100%-128px)] z-40 w-full px-8 transition-all md:top-0 md:translate-y-0 md:px-16 lg:px-24 {showNavBG
     ? 'bg-stone-800'
     : ''} bg-opacity-70">
-  <div class="funky-gradient w-full">
-    <div class="mt-4 flex items-center md:mt-0">
+  <div class="flex h-32 items-center justify-between drop-shadow-md md:h-16 flex-row w-full">
+    <div class="flex items-center">
       <a href="/" class="z-20 flex cursor-pointer items-center">
         <img
           src="/logos/dph.svg"
@@ -48,28 +48,9 @@
       </a>
     </div>
     <div
-      class="mb-4 flex w-full items-center justify-between md:mb-0 md:w-auto">
+      class="flex items-center justify-between mb-0">
       <ColorSchemeSelector />
       <ProfileNavComponent />
     </div>
   </div>
 </nav>
-
-<style lang="postcss">
-  /* before:bg-gradient-to-br before:from-orange-500 before:to-red-800 */
-  .funky-gradient::before {
-    content: "";
-    /* @apply bg-gradient-to-br from-orange-500 to-red-800; */
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.1;
-  }
-
-  .funky-gradient {
-    @apply flex h-32 flex-col items-center justify-between drop-shadow-md md:h-16 md:flex-row;
-    opacity: 1;
-  }
-</style>

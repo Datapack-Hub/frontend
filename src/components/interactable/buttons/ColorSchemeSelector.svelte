@@ -31,7 +31,7 @@
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="ml-0 w-12 cursor-pointer hover:brightness-75 md:ml-6 md:w-12">
+        class="ml-0 w-12 cursor-pointer hover:brightness-75 md:ml-6">
         <path
           in:draw="{{ duration: 500, speed: 5 }}"
           d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
