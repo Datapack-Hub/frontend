@@ -43,14 +43,14 @@
         href="/moderation/console"
         class="z-20 mr-7"
         use:tippy="{moderationHoverMsg}">
-        <IconShield color="white" size="{32}" />
+        <IconShield color="white" size="{24}" />
       </a>
     {/if}
     <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}">
       {#if notifsAvailable}
-        <IconBellExclamation color="white" size="{32}" />
+        <IconBellExclamation color="white" size="{24}" />
       {:else}
-        <IconBell color="white" size="{32}" />
+        <IconBell color="white" size="{24}" />
       {/if}
     </a>
     <a
