@@ -32,7 +32,7 @@
 </script>
 
 <main
-  class="flex h-screen w-full flex-col items-center justify-center bg-new-white px-8 transition-colors dark:bg-stone-900 md:flex-row md:justify-start md:px-16 lg:px-24">
+  class="flex h-screen w-full flex-col items-center justify-center bg-new-white-200 px-8 transition-colors dark:bg-stone-900 md:flex-row md:justify-start md:px-16 lg:px-24">
   <p
     class="mb-8 w-full text-center font-mono text-9xl dark:text-white md:mb-0 md:w-1/2 md:text-[10rem] lg:text-[12rem] xl:text-[15rem]">
     {$page.status}

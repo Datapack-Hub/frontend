@@ -49,11 +49,11 @@
   <title>Datapack Hub Console</title>
 </svelte:head>
 
-<main class="bg-new-white px-4 transition-all dark:bg-stone-900">
+<main class="bg-new-white-200 px-4 transition-all dark:bg-stone-900">
   {#if $userData.role != "default" && $isAuthenticated == true}
     {#if !isSmallWidth}
       <div
-        class="h-screen w-full flex-col pt-10 font-console text-lime-400 md:items-start md:pt-20">
+        class="h-screen w-full flex-col font-console text-lime-400 md:items-start md:pt-20">
         <div id="big" class="overflow-y-scroll" style="height: 92%;">
           <span class="text-lg font-bold">Datapack Hub Console</span><br />
           <span class="text-lg font-normal">Welcome!</span>

@@ -21,10 +21,10 @@
 </svelte:head>
 
 <main
-  class="h-screen bg-new-white px-0 transition-all dark:bg-stone-900 sm:px-8 md:px-16 lg:px-24">
+  class="h-screen bg-new-white-200 px-0 transition-all dark:bg-stone-900 sm:px-8 md:px-16 lg:px-24">
   <div class="pt-16"></div>
   <div
-    class="mt-12 flex w-full rounded-xl bg-dark-white p-4 dark:bg-new-white dark:bg-opacity-10">
+    class="flex w-full rounded-xl bg-new-white-300 p-4 dark:bg-new-white-200 dark:bg-opacity-10">
     <img
       src="{data.project?.icon}"
       alt="Icon for {data.project?.title}"
@@ -48,11 +48,11 @@
     </div>
     <a
       href="/download"
-      class="text-md float-right m-0 h-min rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+      class="text-md float-right m-0 h-min rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
       >Download</a>
   </div>
   <div
-    class="mt-8 rounded-xl bg-dark-white p-4 dark:bg-new-white dark:bg-opacity-10">
+    class="mt-8 rounded-xl bg-new-white-300 p-4 dark:bg-new-white-200 dark:bg-opacity-10">
     <p class="font-brand text-lg font-light dark:text-white">
       {data.project?.body}
     </p>

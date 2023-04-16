@@ -15,7 +15,7 @@
 </script>
 
 <div
-  class="my-1 flex w-full items-center rounded-xl bg-dark-white p-2 dark:bg-stone-800 dark:text-white">
+  class="my-1 flex w-full items-center rounded-xl bg-new-white-300 p-2 dark:bg-stone-800 dark:text-white">
   <a href="/project/{project.url}" class="">
     <img
       src="{project.icon}"
@@ -37,7 +37,7 @@
       </a>
     {/if}
     <p
-      class="two-lines mt-2 text-sm font-medium text-white text-opacity-70 md:text-base">
+      class=" line-clamp-2 mt-2 text-sm font-medium text-white text-opacity-70 md:text-base">
       {project.description}
     </p>
   </div>

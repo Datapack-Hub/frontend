@@ -72,10 +72,10 @@
 
 <svelte:window bind:innerWidth="{width}" />
 
-<main class="bg-new-white transition-all dark:bg-stone-900">
+<main class="bg-new-white-200 transition-all dark:bg-stone-900">
   <div
     class="flex h-[66.666vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:px-16 lg:px-24">
-    <div class="mt-16 w-2/3 md:w-3/5 lg:w-2/5">
+    <div class="w-2/3 md:w-3/5 lg:w-2/5">
       <div
         class="relative mb-4 h-36 w-full md:mb-0 {visible
           ? 'visible'
@@ -97,7 +97,7 @@
         </h1>
       </div>
       <h2
-        class="w-full text-center text-xl text-black dark:text-new-white sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
+        class="w-full text-center text-xl text-black dark:text-new-white-200 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{rawRand.toString()}"
           class="text-gradient bg-gradient-to-br from-pink-600 to-yellow-400 font-bold">
@@ -118,11 +118,11 @@
       <div class="w-1/5"></div>
     {/if}
     <div
-      class=" my-8 h-full w-4/5 rounded-xl bg-dark-white dark:bg-stone-800 sm:my-16 md:mt-0 md:h-2/3 md:w-2/5">
+      class=" my-8 h-full w-4/5 rounded-xl bg-new-white-300 dark:bg-stone-800 sm:my-16 md:mt-0 md:h-2/3 md:w-2/5">
       <h2>Content here</h2>
     </div>
   </div>
-  <div class="h-[33.333vh] w-full bg-dark-white dark:bg-stone-800">
+  <div class="h-[33.333vh] w-full bg-new-white-300 dark:bg-stone-800">
     <h2>Content here</h2>
   </div>
 </main>

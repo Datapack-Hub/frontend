@@ -10,16 +10,17 @@
 </svelte:head>
 
 <main
-  class="overflow-y-scroll bg-new-white px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class="overflow-y-scroll bg-new-white-200 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
-    class="h-screen w-full flex-col items-center pt-10 md:flex-row md:items-start md:pt-20">
+    class="h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
       class="mt-8 pb-2 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Datapack Hub Staff
     </h1>
     <p class="font-brand dark:text-white">
       The people listed below help keep Datapack Hub running smoothly and safe!
-      You will be able to recognise them by their orange or blue verification checkmarks.
+      You will be able to recognise them by their orange or blue verification
+      checkmarks.
     </p>
     {#each data.staff ?? [] as person}
       <UserCard person="{person}" />

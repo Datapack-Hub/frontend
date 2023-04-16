@@ -68,7 +68,7 @@
             <a href="/rules" class="text-cyan-500 underline">our rules</a>.
           </p>
           <button
-            class="text-md items-center justify-center rounded-md bg-dph-orange p-1 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+            class="text-md items-center justify-center rounded-md bg-dph-orange p-1 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
             on:click="{signOut}">Log Out</button>
         </div>
       </div>
