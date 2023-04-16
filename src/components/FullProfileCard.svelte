@@ -63,8 +63,12 @@
     class="mt-1 w-full text-center align-middle font-brand font-semibold dark:text-white sm:text-base md:text-lg">
     {#if profileData?.role != "default"}
       <span class="{profileData?.role}-text">
-        {#if profileData?.role == "nerd"}🤓 <!-- {:else if ["helper","moderator","developer","admin"].includes(profileData?.role)}<span class="material-icons text-md align-middle">verified</span> -->
-        {/if}{titleCase(profileData?.role)}
+        {#if profileData?.role == "nerd"}🤓 Nerd {:else if profileData?.role == "admin"}<img
+        src="/logos/dph.svg"
+        alt="logo"
+        class="min-h-8 transition-all hover:brightness-75 float-left"
+        height="8"
+        width="8" /> Datapack Hub Team{:else}{titleCase(profileData?.role)}{/if}
       </span>
     {/if}
   </p>
