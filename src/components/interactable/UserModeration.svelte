@@ -332,7 +332,7 @@
             {#if modJson["banned"]}<p class="font-brand">
               <b>Banned: True</b>
             </p> 
-            {:else}<p class="font-brand"></p>
+            {:else}<p class="font-brand dark:text-white"></p>
               <b>Banned: False</b>
             {/if}
           </div>
