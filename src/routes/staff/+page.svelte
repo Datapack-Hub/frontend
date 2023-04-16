@@ -19,7 +19,8 @@
     </h1>
     <p class="font-brand dark:text-white">
       The people listed below help keep Datapack Hub running smoothly and safe!
-      You will be able to recognise them by their orange or blue verification checkmarks.
+      You will be able to recognise them by their orange or blue verification
+      checkmarks.
     </p>
     {#each data.staff ?? [] as person}
       <UserCard person="{person}" />

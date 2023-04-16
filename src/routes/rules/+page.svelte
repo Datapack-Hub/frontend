@@ -27,8 +27,8 @@
     </p>
     <ul class=" list-disc">
       <li>
-        Posting malware. This is self explanatory - if you post malware instead of
-        an actual datapack, then you will be blocked from visiting the site.
+        Posting malware. This is self explanatory - if you post malware instead
+        of an actual datapack, then you will be blocked from visiting the site.
       </li>
       <li>
         Take work from others. Please only post content that you made yourself,
@@ -56,7 +56,7 @@
   }
 
   li {
-    @apply font-brand dark:text-white mb-3;
+    @apply mb-3 font-brand dark:text-white;
   }
 
   h2 {
