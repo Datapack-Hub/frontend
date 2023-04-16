@@ -21,6 +21,8 @@
 
   let notifsAvailable = false;
 
+  let iconColor = getContext('icon_color') as string
+
   (async () => {
     if (browser) {
       let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`);
@@ -41,7 +43,7 @@
         use:tippy="{moderationHoverMsg}">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          color="{getContext('icon_color')}"
+          color="{iconColor}"
           class="icon icon-tabler icon-tabler-shield"
           width="24"
           height="24"
@@ -62,7 +64,7 @@
       {#if notifsAvailable}
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          color="{getContext('icon_color')}"
+          color="{iconColor}"
           class="icon icon-tabler icon-tabler-bell-exclamation"
           width="24"
           height="24"
@@ -83,7 +85,7 @@
       {:else}
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          color="{getContext('icon_color')}"
+          color="{iconColor}"
           class="icon icon-tabler icon-tabler-bell"
           width="24"
           height="24"

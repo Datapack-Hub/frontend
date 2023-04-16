@@ -42,7 +42,7 @@
         $isAuthenticated = true;
       }
 
-      setContext("icon_color", $isDark ? "white" : "")
+      setContext("icon_color", $isDark ? "white" : "black")
     }
   })();
 </script>
