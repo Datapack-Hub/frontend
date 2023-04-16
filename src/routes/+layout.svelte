@@ -10,7 +10,6 @@
     isAuthenticated,
   } from "$globals";
   import "../app.postcss";
-  import "@material-design-icons/font/two-tone.css"
   import BannedModal from "$components/modals/BannedModal.svelte";
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
