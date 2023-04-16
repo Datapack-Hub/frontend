@@ -328,13 +328,13 @@
             <p class="font-brand text-xl font-extrabold dark:text-white">
               User Info
             </p>
-            {#if modJson["banned"]}<p class="font-brand text-red-500">
-                <b>User is banned</b>
+            <p class="font-brand dark:text-white"><b>ID: </b> {user.id}</p>
+            {#if modJson["banned"]}<p class="font-brand text-red">
+              <b>Banned: True</b>
             </p> 
-            {:else}<p class="font-brand text-red-500"></p>
-                <b>User is not banned</b>
+            {:else}<p class="font-brand text-red"></p>
+              <b>Banned: False</b>
             {/if}
-            <p class="font-brand dark:text-white"><b>User ID: </b> {user.id}</p>
           </div>
         </div>
       </div>
