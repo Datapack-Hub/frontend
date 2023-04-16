@@ -24,7 +24,7 @@
   class="h-screen bg-new-white px-0 transition-all dark:bg-stone-900 sm:px-8 md:px-16 lg:px-24">
   <div class="pt-16"></div>
   <div
-    class="mt-12 flex w-full rounded-xl bg-dark-white p-4 dark:bg-new-white dark:bg-opacity-10">
+    class="flex w-full rounded-xl bg-dark-white p-4 dark:bg-new-white dark:bg-opacity-10">
     <img
       src="{data.project?.icon}"
       alt="Icon for {data.project?.title}"

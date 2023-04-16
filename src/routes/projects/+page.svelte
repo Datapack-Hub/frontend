@@ -13,7 +13,7 @@
 <main
   class="bg-new-white px-8 transition-all dark:bg-stone-900 md:px-16 lg:px-24">
   <div
-    class="h-screen w-full items-center overflow-auto pt-16 md:flex-row md:items-start md:pt-16">
+    class="h-screen w-full items-center overflow-auto md:flex-row md:items-start">
     <h1
       class="mt-8 pb-2 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Browse Datapacks
