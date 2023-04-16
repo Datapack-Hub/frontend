@@ -41,7 +41,7 @@
         <a
           href="/projects"
           class="z-20 pl-6 font-brand text-lg font-light text-black transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
-          <IconCompass size="{32}" color="white" />
+          <IconCompass size="{24}" color="white" />
         </a>
       {/if}
       {#if innerWidth > 768}
