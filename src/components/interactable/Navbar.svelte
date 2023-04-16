@@ -15,7 +15,8 @@
   class="sticky top-[calc(100%-128px)] z-40 w-full px-8 transition-all md:top-0 md:translate-y-0 md:px-16 lg:px-24 {showNavBG
     ? 'bg-stone-800'
     : ''} bg-opacity-70">
-  <div class="flex h-32 items-center justify-between drop-shadow-md md:h-16 flex-row w-full">
+  <div
+    class="flex h-32 w-full flex-row items-center justify-between drop-shadow-md md:h-16">
     <div class="flex items-center">
       <a href="/" class="z-20 flex cursor-pointer items-center">
         <img
@@ -41,8 +42,7 @@
         Create
       </a>
     </div>
-    <div
-      class="flex items-center justify-between mb-0">
+    <div class="mb-0 flex items-center justify-between">
       <ColorSchemeSelector />
       <ProfileNavComponent />
     </div>

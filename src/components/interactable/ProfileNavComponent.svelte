@@ -26,9 +26,9 @@
   let notifsAvailable = false;
 
   (async () => {
-    if(browser) {
+    if (browser) {
       let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`);
-      if(notif.ok) {
+      if (notif.ok) {
         let notifJson = await notif.json();
         if (notifJson.count != 0) notifsAvailable = true;
       }
