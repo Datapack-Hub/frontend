@@ -22,7 +22,7 @@
   <div class="mx-0 mt-8 flex flex-col items-center justify-center md:mx-12">
     <h3 class="mb-3 font-brand text-2xl text-dph-orange">Other?</h3>
     <ul class="list-disc">
-      <li><a href="/" class="list-item">Thing</a></li>
+      <li><a href="/staff" class="list-item">Site Staff</a></li>
       <li><a href="/" class="list-item">Thing</a></li>
       <li><a href="/" class="list-item">Thing</a></li>
     </ul>
