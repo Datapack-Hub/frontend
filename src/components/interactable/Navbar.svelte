@@ -1,11 +1,11 @@
 <script lang="ts">
+  import { isDark } from "$globals";
   import ColorSchemeSelector from "./buttons/ColorSchemeSelector.svelte";
   import ProfileNavComponent from "./ProfileNavComponent.svelte";
-  import { getContext } from "svelte";
 
   let scrollY: number;
   let innerWidth: number;
-  let iconColor = getContext('icon_color') as string
+  let iconColor = $isDark ? "white" : "black"
 
   $: showNavBG = scrollY > 50 || innerWidth < 768;
 </script>

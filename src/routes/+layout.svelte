@@ -42,9 +42,9 @@
         $isAuthenticated = true;
       }
 
-      setContext("icon_color", $isDark ? "white" : "black")
     }
   })();
+  setContext("icon_color", $isDark ? "white" : "black")
 </script>
 
 <!-- {#await pageLoad() then} -->

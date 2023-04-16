@@ -1,7 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { isAuthenticated, userData, apiURL, fetchAuthed } from "$globals";
-  import { getContext } from "svelte";
+  import { isAuthenticated, userData, apiURL, fetchAuthed, isDark } from "$globals";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -21,7 +20,7 @@
 
   let notifsAvailable = false;
 
-  let iconColor = getContext('icon_color') as string
+  let iconColor = $isDark ? "white" : "black";
 
   (async () => {
     if (browser) {
