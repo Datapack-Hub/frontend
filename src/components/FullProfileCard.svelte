@@ -67,8 +67,8 @@
         src="/logos/dph.svg"
         alt="logo"
         class="min-h-8 transition-all hover:brightness-75 float-left"
-        height="8"
-        width="8" /> Datapack Hub Team{:else}{titleCase(profileData?.role)}{/if}
+        height="24"
+        width="24" /> Datapack Hub Team{:else}{titleCase(profileData?.role)}{/if}
       </span>
     {/if}
   </p>

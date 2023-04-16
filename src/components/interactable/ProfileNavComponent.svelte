@@ -49,8 +49,7 @@
           use:tippy="{moderationHoverMsg}">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            color="{iconColor}"
-            class="icon icon-tabler icon-tabler-shield"
+            class="icon icon-tabler icon-tabler-shield dark:stroke-white stroke-black"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -71,12 +70,11 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             color="{iconColor}"
-            class="icon icon-tabler icon-tabler-bell-exclamation"
+            class="icon icon-tabler icon-tabler-bell-exclamation dark:stroke-white stroke-black"
             width="24"
             height="24"
             viewBox="0 0 24 24"
             stroke-width="2"
-            stroke="currentColor"
             fill="none"
             stroke-linecap="round"
             stroke-linejoin="round">
@@ -92,12 +90,11 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             color="{iconColor}"
-            class="icon icon-tabler icon-tabler-bell"
+            class="icon icon-tabler icon-tabler-bell dark:stroke-white stroke-black"
             width="24"
             height="24"
             viewBox="0 0 24 24"
             stroke-width="2"
-            stroke="currentColor"
             fill="none"
             stroke-linecap="round"
             stroke-linejoin="round">

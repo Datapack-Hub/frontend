@@ -16,7 +16,7 @@
   class="styled-scrollbar h-screen overflow-y-scroll bg-new-white-200 px-8 transition-all dark:bg-stone-900 md:px-16 lg:px-24">
   <div
     class="flex h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-32">
-    <div class="w-full md:w-[calc(39ch*2.25)] lg:w-[calc(39ch*3)]">
+    <div class="w-full">
       <ProfileCard profileData="{data.profile}" />
       {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($userData.role)}
         <UserModeration user="{data.profile}" />
