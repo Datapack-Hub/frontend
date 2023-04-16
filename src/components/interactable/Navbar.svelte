@@ -40,12 +40,6 @@
         class="z-20 pl-4 font-brand text-lg font-light text-black transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
         Create
       </a>
-      <a
-        href="https://discord.gg/aEXsdjjdu4"
-        target="_self"
-        class="z-20 pl-4 font-brand text-lg font-light text-indigo-500 transition-colors hover:text-indigo-400 active:text-neutral-400">
-        Discord
-      </a>
     </div>
     <div
       class="flex items-center justify-between mb-0">
