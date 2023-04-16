@@ -1,5 +1,5 @@
 <footer
-  class="flex h-64 justify-center border-t-2 border-stone-700 bg-stone-900 px-8 md:px-16 lg:px-24"
+  class="flex h-64 justify-center border-t-2 border-new-white-100 dark:border-stone-700 bg-new-white-200 dark:bg-stone-900 px-8 md:px-16 lg:px-24"
   id="footer">
   <div class="mx-0 mt-8 flex flex-col items-center justify-center md:mx-12">
     <h3 class="mb-3 font-brand text-2xl text-dph-orange">Socials</h3>

@@ -2,6 +2,7 @@
   import { IconCompass } from "@tabler/icons-svelte";
   import ColorSchemeSelector from "./buttons/ColorSchemeSelector.svelte";
   import ProfileNavComponent from "./ProfileNavComponent.svelte";
+  import { getContext } from "svelte";
 
   let scrollY: number;
   let innerWidth: number;
@@ -14,7 +15,7 @@
 <nav
   id="nav"
   class="sticky top-[calc(100%-128px)] z-40 w-full px-8 transition-all md:top-0 md:translate-y-0 md:px-16 lg:px-24 {showNavBG
-    ? 'bg-stone-800'
+    ? 'bg-new-white-100 dark:bg-stone-800'
     : ''} bg-opacity-70">
   <div
     class="flex h-32 w-full flex-row items-center justify-between drop-shadow-md md:h-16">
@@ -41,7 +42,7 @@
         <a
           href="/projects"
           class="z-20 pl-6 font-brand text-lg font-light text-black transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
-          <IconCompass size="{24}" color="white" />
+          <IconCompass size="{24}" color="{getContext("icon_color")}" />
         </a>
       {/if}
       {#if innerWidth > 768}

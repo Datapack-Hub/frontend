@@ -153,14 +153,14 @@
     This message is sent to the user as a notification. Always be professional,
     even when they are not.
   </p>
-  <p class="mt-3 align-middle font-brand dark:text-new-white">Warn Message</p>
+  <p class="mt-3 align-middle font-brand dark:text-new-white-200">Warn Message</p>
   <textarea
-    class="mb-4 h-24 w-full resize-none rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="mb-4 h-24 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="..."
     id="warn-message"></textarea>
   <button
     on:click="{async () => await warn()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Warn {user?.username}</button>
 </Modal>
 
@@ -173,30 +173,30 @@
     Send an anonymous notification (unless you put your name down) to the user.
     For warnings, use the Warn button.
   </p>
-  <p class="mt-3 align-middle font-brand dark:text-new-white">
+  <p class="mt-3 align-middle font-brand dark:text-new-white-200">
     Notification Message
   </p>
   <input
-    class="h-8 w-full resize-none rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Your cake is burning!"
     id="notif-message" />
-  <p class="mt-3 align-middle font-brand dark:text-new-white">
+  <p class="mt-3 align-middle font-brand dark:text-new-white-200">
     Notification Body
   </p>
   <textarea
-    class="h-24 w-full resize-none rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="h-24 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Just a quick reiminder that your cake which you forgot about has been in the oven for 10 minutes too long."
     id="notif-content"></textarea>
-  <p class="mt-2 align-middle font-brand dark:text-new-white">
+  <p class="mt-2 align-middle font-brand dark:text-new-white-200">
     Notification Type
   </p>
   <input
-    class="mb-4 h-8 w-full resize-none rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="mb-4 h-8 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     value="default"
     id="notif-type" />
   <button
     on:click="{async () => await sendNotif()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Send</button>
 </Modal>
 
@@ -209,25 +209,25 @@
     Banning a user prevents them from interacting with the website. You can
     write a message or ban reason to be displayed when they try to log in.
   </p>
-  <p class="mt-3 align-middle font-brand dark:text-new-white">Ban Expiry</p>
+  <p class="mt-3 align-middle font-brand dark:text-new-white-200">Ban Expiry</p>
   <input
     type="date"
-    class="h-8 w-full resize-none rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     id="ban-expiry" />
-  <label class="font-brand dark:text-new-white">
+  <label class="font-brand dark:text-new-white-200">
     <input type="checkbox" id="ban-permanent" />
     Permanent?
   </label>
-  <p class="mt-3 align-middle font-brand dark:text-new-white">
+  <p class="mt-3 align-middle font-brand dark:text-new-white-200">
     Ban Message (supports markdown)
   </p>
   <textarea
-    class="h-24 w-full resize-none rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="h-24 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Burning cake after being **repeatedly told** to stop"
     id="ban-message"></textarea>
   <button
     on:click="{async () => await banUser()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Ban {user?.username}</button>
 </Modal>
 
@@ -245,7 +245,7 @@
   <p class="font-brand dark:text-white">Unban them to end their ban early.</p>
   <button
     on:click="{async () => await unbanUser()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Unban {user?.username}</button>
 </Modal>
 
@@ -260,7 +260,7 @@
   </p>
   <button
     on:click="{async () => await logOutUser()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Log them out!</button>
 </Modal>
 

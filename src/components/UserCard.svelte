@@ -14,7 +14,7 @@
 </script>
 
 <a href="/user/{person?.username.toLowerCase()}">
-  <div class="my-2 flex w-full rounded-xl bg-dark-white p-2 dark:bg-stone-800">
+  <div class="my-2 flex w-full rounded-xl bg-new-white-300 p-2 dark:bg-stone-800">
     <img
       src="{person?.profile_icon}"
       alt="{person?.username}'s profile picture"
@@ -26,7 +26,7 @@
         </h1></a>
       <span class="{person?.role}-text font-brand font-bold"
         >{titleCase(person?.role)}</span>
-      <p class="one-lines font-brand dark:text-stone-300">{person?.bio}</p>
+      <p class="line-clamp-1 font-brand dark:text-stone-300">{person?.bio}</p>
     </div>
   </div>
 </a>

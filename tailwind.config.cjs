@@ -11,7 +11,11 @@ const config = {
       },
       colors: {
         "new-white": "#F5E8D0",
-        "dark-white": "#edd6ab",
+        "new-white": {
+          100: "#fcf2de",
+          200: "#F5E8D0",
+          300: "#edd6ab"
+        },
         "dph-orange": "#ea580c",
       },
       scale: {

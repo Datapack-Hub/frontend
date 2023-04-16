@@ -24,7 +24,7 @@
 </svelte:head>
 
 <main
-  class="overflow-y-scroll bg-new-white px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class="overflow-y-scroll bg-new-white-200 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
     class="h-screen w-full flex-col items-center md:flex-row md:items-start">
     <h1
@@ -38,44 +38,44 @@
           distribute.</b>
       </p>
       <!-- Title -->
-      <p class="align-middle font-brand dark:text-new-white">Title</p>
+      <p class="align-middle font-brand dark:text-new-white-200">Title</p>
       <input
-        class="h-10 w-1/2 rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
+        class="h-10 w-1/2 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
         placeholder="Title"
         id="title" /><br /><br />
 
       <!-- Short Description -->
-      <p class="align-middle font-brand dark:text-new-white">
+      <p class="align-middle font-brand dark:text-new-white-200">
         Short Description
       </p>
       <textarea
-        class="h-24 w-3/4 resize-none rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
+        class="h-24 w-3/4 resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
         placeholder="This short description is used for social media embeds and the listing page."
         id="desc"></textarea
       ><br /><br />
 
       <!-- Long Description -->
-      <p class="align-middle font-brand dark:text-new-white">
+      <p class="align-middle font-brand dark:text-new-white-200">
         Long Description (supports markdown)
       </p>
       <textarea
-        class="h-96 w-full resize-none rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
+        class="h-96 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
         placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
         id="body"></textarea
       ><br /><br />
 
       <!-- Downloadable File -->
-      <p class="align-middle font-brand dark:text-new-white">
+      <p class="align-middle font-brand dark:text-new-white-200">
         Datapack File Upload
       </p>
       <input
         type="file"
-        class="rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
+        class="rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
         id="file" /><br /><br />
       <!-- Category -->
-      <p class="align-middle font-brand dark:text-new-white">Category</p>
+      <p class="align-middle font-brand dark:text-new-white-200">Category</p>
       <select
-        class="w-1/4 rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
+        class="w-1/4 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
         value="{selected}">
         {#each categories as cat}
           <option value="{cat}">

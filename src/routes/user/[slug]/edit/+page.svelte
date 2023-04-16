@@ -34,7 +34,7 @@
 </svelte:head>
 
 <main
-  class="overflow-y-scroll bg-new-white px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class="overflow-y-scroll bg-new-white-200 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
     class="h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -43,23 +43,23 @@
         >{data.profile?.username || "<loading>"}</span>
     </h1>
     <div class="text-center align-middle md:text-start">
-      <p class="align-middle font-brand dark:text-new-white">Username</p>
+      <p class="align-middle font-brand dark:text-new-white-200">Username</p>
       <input
-        class="h-10 rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
+        class="h-10 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
         value="{data.profile?.username}"
         id="username" />
       <br /><br />
-      <p class="align-middle font-brand dark:text-new-white">Bio</p>
+      <p class="align-middle font-brand dark:text-new-white-200">Bio</p>
       <textarea
-        class="h-40 w-80 resize-none rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
+        class="h-40 w-80 resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
         maxlength="500"
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
         id="bio"></textarea>
       <br /><br />
       {#if $isAuthenticated && $userData.role == "admin"}
-        <p class="align-middle font-brand dark:text-new-white">Site Role</p>
+        <p class="align-middle font-brand dark:text-new-white-200">Site Role</p>
         <input
-          class="h-10 rounded-md bg-dark-white p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
+          class="h-10 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
           value="{data.profile?.role}"
           id="role" /><br /><br />
       {/if}

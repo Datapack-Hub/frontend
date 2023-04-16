@@ -6,6 +6,7 @@
     IconBellExclamation,
     IconShield,
   } from "@tabler/icons-svelte";
+  import { getContext } from "svelte";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -43,14 +44,14 @@
         href="/moderation/console"
         class="z-20 mr-6"
         use:tippy="{moderationHoverMsg}">
-        <IconShield color="white" size="{24}" />
+        <IconShield color="{getContext("icon_color")}" size="{24}" />
       </a>
     {/if}
     <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}">
       {#if notifsAvailable}
-        <IconBellExclamation color="white" size="{24}" />
+        <IconBellExclamation color="{getContext("icon_color")}" size="{24}" />
       {:else}
-        <IconBell color="white" size="{24}" />
+        <IconBell color="{getContext("icon_color")}" size="{24}" />
       {/if}
     </a>
     <a
