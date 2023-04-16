@@ -1,8 +1,5 @@
 <script lang="ts">
-  // import type { PageData } from "./$types";
   import CasualLine from "$components/CasualLine.svelte";
-
-  // export let data: PageData;
 </script>
 
 <svelte:head>
@@ -24,13 +21,13 @@
       these simple rules!
     </p>
     <h2>Submission Rules</h2>
-    <p>
+    <p class="mb-4">
       When you post a submission, it will be reviewed by our moderators to make
       sure it follows these rules.
     </p>
-    <ul>
+    <ul class=" list-disc">
       <li>
-        Post malware. This is self explanatory - if you post malware instead of
+        Posting malware. This is self explanatory - if you post malware instead of
         an actual datapack, then you will be blocked from visiting the site.
       </li>
       <li>
@@ -38,11 +35,7 @@
         or you have permission to upload.
       </li>
       <li>
-        Post inappropriate submissions. All datapacks on Datapack Hub must be
-        appropriate for all ages. NSFW content will not be tolerated.
-      </li>
-      <li>
-        Post inappropriate submissions. All datapacks on Datapack Hub must be
+        Posting inappropriate submissions. All datapacks on Datapack Hub must be
         appropriate for all ages. NSFW content will not be tolerated.
       </li>
       <li>
@@ -50,7 +43,7 @@
         description/images so people know what your datapack does.
       </li>
       <li>
-        Post solely to advertise a commercial product. You are allowed to
+        Posting solely to advertise a commercial product. You are allowed to
         promote, however it shouldn't distract users from your project.
       </li>
     </ul>
@@ -63,10 +56,10 @@
   }
 
   li {
-    @apply font-brand dark:text-white;
+    @apply font-brand dark:text-white mb-3;
   }
 
   h2 {
-    @apply pt-2 font-brand text-xl font-bold dark:text-white;
+    @apply pt-2 font-brand text-3xl font-bold dark:text-white;
   }
 </style>

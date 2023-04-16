@@ -5,7 +5,7 @@ const config = {
 	plugins: [sveltekit()],
 	server:{
 		host:"0.0.0.0"
-	}
+  }
 };
 
 export default config;

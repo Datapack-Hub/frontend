@@ -42,7 +42,7 @@ declare module '$env/static/private' {
 	export const ComSpec: string;
 	export const CONDA_PROMPT_MODIFIER: string;
 	export const DriverData: string;
-	export const EFC_14024: string;
+	export const EFC_22228: string;
 	export const FPS_BROWSER_APP_PROFILE_STRING: string;
 	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const FP_NO_HOST_CHECK: string;
@@ -75,7 +75,7 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies_isomorphic_dompurify: string;
 	export const npm_package_dependencies_svelte_markdown: string;
 	export const npm_package_dependencies_svelte_toasts: string;
-	export const npm_package_dependencies__tabler_icons_svelte: string;
+	export const npm_package_dependencies__material_design_icons_font: string;
 	export const npm_package_dependencies__tailwindcss_typography: string;
 	export const npm_package_dependencies__types_dompurify: string;
 	export const npm_package_devDependencies_autoprefixer: string;
@@ -209,7 +209,7 @@ declare module '$env/dynamic/private' {
 		ComSpec: string;
 		CONDA_PROMPT_MODIFIER: string;
 		DriverData: string;
-		EFC_14024: string;
+		EFC_22228: string;
 		FPS_BROWSER_APP_PROFILE_STRING: string;
 		FPS_BROWSER_USER_PROFILE_STRING: string;
 		FP_NO_HOST_CHECK: string;
@@ -242,7 +242,7 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies_isomorphic_dompurify: string;
 		npm_package_dependencies_svelte_markdown: string;
 		npm_package_dependencies_svelte_toasts: string;
-		npm_package_dependencies__tabler_icons_svelte: string;
+		npm_package_dependencies__material_design_icons_font: string;
 		npm_package_dependencies__tailwindcss_typography: string;
 		npm_package_dependencies__types_dompurify: string;
 		npm_package_devDependencies_autoprefixer: string;

@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
   import { isAuthenticated, userData, apiURL, fetchAuthed } from "$globals";
-  import { IconBell, IconBellExclamation, IconShield } from "@tabler/icons-svelte";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -21,24 +21,31 @@
   let notifsAvailable = false;
 
   (async () => {
-    let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`)
-    let notifJson = await notif.json()
-    if(notifJson.count != 0) notifsAvailable = true
+    if(browser) {
+      let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`);
+      if(notif.ok) {
+        let notifJson = await notif.json();
+        if (notifJson.count != 0) notifsAvailable = true;
+      }
+    }
   })();
 </script>
 
 <div class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
     {#if $userData.role != "default"}
-      <a href="/moderation/console" class="z-20 mr-7" use:tippy={moderationHoverMsg}>
-        <IconShield color="white" size="{32}" />
+      <a
+        href="/moderation/console"
+        class="z-20 mr-7"
+        use:tippy="{moderationHoverMsg}">
+        <span class="material-icons-two-tone">shield-account</span>
       </a>
     {/if}
     <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}">
       {#if notifsAvailable}
-         <IconBellExclamation color="white" size="{32}" />
-      {:else}
-        <IconBell color="white" size="{32}" />
+        <span class="material-icons-two-tone">bell</span>
+        {:else}
+        <span class="material-icons-two-tone">bell-badge</span>
       {/if}
     </a>
     <a

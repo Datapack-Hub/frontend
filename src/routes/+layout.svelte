@@ -10,6 +10,7 @@
     isAuthenticated,
   } from "$globals";
   import "../app.postcss";
+  import "@material-design-icons/font/two-tone.css"
   import BannedModal from "$components/modals/BannedModal.svelte";
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
@@ -34,8 +35,7 @@
 
       let token = await getCookie("dph_token");
       if (token) {
-        let usr = await fetchAuthed("get", `${apiURL}/user/me`)
-        // let notif = await fetchAuthed("get", `${apiURL}/notifs`)
+        let usr = await fetchAuthed("get", `${apiURL}/user/me`);
         let usrJson = (await usr.json()) as User;
         $userData = usrJson;
         localStorage.setItem("userData", JSON.stringify($userData));
