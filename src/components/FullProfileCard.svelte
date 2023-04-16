@@ -23,7 +23,7 @@
 
   let blueVerifiedHover = {
     content:
-      "This person is verified because they are known for helping other's with their datapacks.",
+      "This person is verified because they are known for helping others with their datapacks.",
     placement: "bottom",
   };
 
