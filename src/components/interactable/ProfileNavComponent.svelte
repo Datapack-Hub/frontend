@@ -41,7 +41,7 @@
     {#if $userData.role != "default"}
       <a
         href="/moderation/console"
-        class="z-20 mr-7"
+        class="z-20 mr-6"
         use:tippy="{moderationHoverMsg}">
         <IconShield color="white" size="{24}" />
       </a>
