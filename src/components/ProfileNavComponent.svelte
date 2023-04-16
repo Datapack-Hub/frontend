@@ -43,9 +43,9 @@
     {/if}
     <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}">
       {#if notifsAvailable}
-        <span class="material-icons-two-tone">bell</span>
+        <span class="material-icons-two-tone w-8">bell</span>
         {:else}
-        <span class="material-icons-two-tone">bell-badge</span>
+        <span class="material-icons-two-tone w-8">bell-badge</span>
       {/if}
     </a>
     <a
