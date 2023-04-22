@@ -42,7 +42,7 @@
 <div class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
     {#key $isDark}
-      {#if $userData.role != "default"}
+      {#if ["moderator","developer","admin"].includes($userData.role)}
         <a
           href="/moderation/console"
           class="z-20 mr-6"
