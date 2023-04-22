@@ -11,6 +11,9 @@
 <svelte:head>
   <title>{data.profile?.username} | Datapack Hub</title>
 
+  <meta property="title" content="Silabear | Datapack Hub" />
+  <meta property="description" content={data.profile?.bio} />
+
   <meta property="og:title" content="{data.profile?.username} | Datapack Hub" />
   <meta property="og:description" content={data.profile?.bio} />
   <meta property="og:type" content="profile" />
