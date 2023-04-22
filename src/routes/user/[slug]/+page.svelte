@@ -9,7 +9,11 @@
 </script>
 
 <svelte:head>
-  <title>{data.profile?.username} | Datapack Hub</title>
+  <title>{data.profile?.username} | Datapack Hub</title>]
+
+  <meta property="title" content="{data.profile?.username} on Datapack Hub">
+  <meta property="description" content={data.profile?.bio}>
+  <meta property="image" content={data.profile?.profile_icon}>
 </svelte:head>
 
 <main

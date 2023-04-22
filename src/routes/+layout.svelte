@@ -49,7 +49,7 @@
 
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? ' dark' : ''}">
-  <div class="bg-new-white-200 dark:bg-stone-900">
+  <div class="bg-new-white-200 dark:bg-stone-900 h-full overflow-y-auto">
     <BannedModal />
     <Navbar />
     <slot />

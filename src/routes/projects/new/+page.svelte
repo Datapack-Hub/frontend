@@ -24,12 +24,12 @@
 </svelte:head>
 
 <main
-  class="overflow-y-scroll bg-new-white-200 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class="relative bg-new-white-200 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
     class="h-screen w-full flex-col items-center md:flex-row md:items-start">
     <h1
       class="mt-8 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-4xl">
-      Create New <span class="text-orange-500">Datapack</span>
+      Create New <span class="text-dph-orange">Datapack</span>
     </h1>
     <div class="text-center align-middle md:text-start">
       <p class="pb-4 font-brand dark:text-white">
