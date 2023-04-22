@@ -11,8 +11,8 @@
 <svelte:head>
   <title>{data.profile?.username} | Datapack Hub</title>
 
-  <meta property="og:title" content="{data.profile?.username} on Datapack Hub" />
-  <meta property="og:description" content="Banner by Sp3nc3r About Me Welcome to my page! I&amp;#039;m a Planet Minecraft Site Moderator and avid datapack creator. I moderate the community and make..." />
+  <meta property="og:title" content="{data.profile?.username} | Datapack Hub" />
+  <meta property="og:description" content={data.profile?.bio} />
   <meta property="og:type" content="profile" />
 
   <meta name="og:profile:username" content="Silabear" />
