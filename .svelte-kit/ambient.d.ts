@@ -73,11 +73,10 @@ declare module '$env/static/private' {
 	export const npm_node_execpath: string;
 	export const npm_package_dependencies_animejs: string;
 	export const npm_package_dependencies_isomorphic_dompurify: string;
-	export const npm_package_dependencies_svelte_markdown: string;
-	export const npm_package_dependencies_svelte_toasts: string;
 	export const npm_package_dependencies__tailwindcss_typography: string;
 	export const npm_package_dependencies__types_dompurify: string;
 	export const npm_package_devDependencies_autoprefixer: string;
+	export const npm_package_devDependencies_cssnano: string;
 	export const npm_package_devDependencies_esbuild: string;
 	export const npm_package_devDependencies_eslint: string;
 	export const npm_package_devDependencies_eslint_plugin_svelte3: string;
@@ -89,7 +88,9 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_svelte: string;
 	export const npm_package_devDependencies_sveltejs_tippy: string;
 	export const npm_package_devDependencies_svelte_check: string;
+	export const npm_package_devDependencies_svelte_markdown: string;
 	export const npm_package_devDependencies_svelte_preprocess: string;
+	export const npm_package_devDependencies_svelte_toasts: string;
 	export const npm_package_devDependencies_tailwindcss: string;
 	export const npm_package_devDependencies_tslib: string;
 	export const npm_package_devDependencies_typescript: string;
@@ -239,11 +240,10 @@ declare module '$env/dynamic/private' {
 		npm_node_execpath: string;
 		npm_package_dependencies_animejs: string;
 		npm_package_dependencies_isomorphic_dompurify: string;
-		npm_package_dependencies_svelte_markdown: string;
-		npm_package_dependencies_svelte_toasts: string;
 		npm_package_dependencies__tailwindcss_typography: string;
 		npm_package_dependencies__types_dompurify: string;
 		npm_package_devDependencies_autoprefixer: string;
+		npm_package_devDependencies_cssnano: string;
 		npm_package_devDependencies_esbuild: string;
 		npm_package_devDependencies_eslint: string;
 		npm_package_devDependencies_eslint_plugin_svelte3: string;
@@ -255,7 +255,9 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_svelte: string;
 		npm_package_devDependencies_sveltejs_tippy: string;
 		npm_package_devDependencies_svelte_check: string;
+		npm_package_devDependencies_svelte_markdown: string;
 		npm_package_devDependencies_svelte_preprocess: string;
+		npm_package_devDependencies_svelte_toasts: string;
 		npm_package_devDependencies_tailwindcss: string;
 		npm_package_devDependencies_tslib: string;
 		npm_package_devDependencies_typescript: string;
