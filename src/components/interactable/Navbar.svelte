@@ -14,9 +14,9 @@
 
 <nav
   id="nav"
-  class="sticky top-[calc(100%-128px)] z-40 w-full px-8 transition-all md:top-0 md:translate-y-0 md:px-16 lg:px-24 {showNavBG
+  class="sticky top-[calc(100%-8rem)] z-40 w-full px-8 transition-all md:top-0 md:translate-y-0 md:px-16 lg:px-24 {showNavBG
     ? 'bg-new-white-100 dark:bg-stone-800'
-    : ''} bg-opacity-70">
+    : ''} bg-opacity-70 dark:bg-opacity-70">
   <div
     class="flex h-32 w-full flex-row items-center justify-between drop-shadow-md md:h-16">
     <div class="flex items-center">
@@ -41,6 +41,7 @@
       {:else}
         <a
           href="/projects"
+          aria-label="Link to the Datapack Hub projects page"
           class="z-20 pl-6 font-brand text-lg font-light text-black transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
           <svg
             xmlns="http://www.w3.org/2000/svg"

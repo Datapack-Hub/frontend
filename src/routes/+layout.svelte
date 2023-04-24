@@ -15,7 +15,6 @@
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
   import Footer from "$components/interactable/Footer.svelte";
-  import { setContext } from "svelte";
 
   (async () => {
     if (browser) {
@@ -44,14 +43,13 @@
 
     }
   })();
-  setContext("icon_color", $isDark ? "white" : "black")
 </script>
 
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? ' dark' : ''}">
-  <div class="bg-new-white-200 dark:bg-stone-900 h-full overflow-y-auto">
-    <BannedModal />
+  <div class="bg-new-white-200 dark:bg-stone-900">
     <Navbar />
+    <BannedModal />
     <slot />
   </div>
   <Footer />
