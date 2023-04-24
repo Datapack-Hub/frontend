@@ -47,6 +47,9 @@
 
 <svelte:head>
   <title>Datapack Hub Console</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 </svelte:head>
 
 <main class="bg-new-white-200 px-4 transition-all dark:bg-stone-900">
