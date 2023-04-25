@@ -77,6 +77,7 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies__types_dompurify: string;
 	export const npm_package_devDependencies_autoprefixer: string;
 	export const npm_package_devDependencies_cssnano: string;
+	export const npm_package_devDependencies_cssnano_preset_advanced: string;
 	export const npm_package_devDependencies_esbuild: string;
 	export const npm_package_devDependencies_eslint: string;
 	export const npm_package_devDependencies_eslint_plugin_svelte3: string;
@@ -244,6 +245,7 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies__types_dompurify: string;
 		npm_package_devDependencies_autoprefixer: string;
 		npm_package_devDependencies_cssnano: string;
+		npm_package_devDependencies_cssnano_preset_advanced: string;
 		npm_package_devDependencies_esbuild: string;
 		npm_package_devDependencies_eslint: string;
 		npm_package_devDependencies_eslint_plugin_svelte3: string;
