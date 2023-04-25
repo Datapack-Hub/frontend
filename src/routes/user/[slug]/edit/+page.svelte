@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { userData, apiURL, patchAuthed, isAuthenticated } from "$globals";
+  import { userData, apiURL, isAuthenticated, fetchAuthed } from "$globals";
   import type { PageData } from "./$types";
 
   export let data: PageData;
@@ -8,24 +8,29 @@
   function save() {
     const uname = document.getElementById("username") as HTMLInputElement;
     const bio = document.getElementById("bio") as HTMLTextAreaElement;
-    let send = {
+
+    let req = {
       username: uname.value,
       bio: bio.value,
       role: data.profile?.role,
     };
+
     if ($userData.role == "admin") {
-      send.role = (document.getElementById("role") as HTMLInputElement).value;
+      req.role = (document.getElementById("role") as HTMLInputElement).value;
     }
-    patchAuthed(`${apiURL}/user/id/${data.profile?.id}`, send).then((resp) => {
-      if (!resp.ok) {
-        return resp.text().then((txt) => alert(txt));
+
+    fetchAuthed("patch", `${apiURL}/user/id/${data.profile?.id}`, req).then(
+      (res) => {
+        if (!res.ok) {
+          return res.text().then((txt) => alert(txt));
+        }
+        if (data.profile?.id == $userData.id) {
+          $userData.username = uname.value;
+          $userData.bio = bio.value;
+        }
+        goto("/user/" + uname.value);
       }
-      if (data.profile?.id == $userData.id) {
-        $userData.username = uname.value;
-        $userData.bio = bio.value;
-      }
-      goto("/user/" + uname.value);
-    });
+    );
   }
 </script>
 

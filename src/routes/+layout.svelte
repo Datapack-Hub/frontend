@@ -16,6 +16,10 @@
   import { goto } from "$app/navigation";
   import Footer from "$components/interactable/Footer.svelte";
 
+  let banData:
+    | { banned: boolean; banData: { message: string; expires: number } }
+    | undefined;
+
   (async () => {
     if (browser) {
       $userData = JSON.parse(localStorage.getItem("userData")!) as User;
@@ -25,8 +29,11 @@
       if ($page.url.searchParams.has("token")) {
         let newToken = $page.url.searchParams.get("token");
         let date = new Date();
+
         date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
+
         let expires = date.toUTCString();
+
         document.cookie = `dph_token=${newToken}; expires=${expires}`;
 
         goto("/");
@@ -34,13 +41,17 @@
 
       let token = await getCookie("dph_token");
       if (token) {
-        let usr = await fetchAuthed("get", `${apiURL}/user/me`);
-        let usrJson = (await usr.json()) as User;
-        $userData = usrJson;
+        let userRes = await fetchAuthed("get", `${apiURL}/user/me`);
+        let fullUser = await userRes.json();
+        let user = fullUser as User;
+
+        $userData = user;
+
+        banData = { banned: fullUser.banned, banData: fullUser.banData };
         localStorage.setItem("userData", JSON.stringify($userData));
+
         $isAuthenticated = true;
       }
-
     }
   })();
 </script>
@@ -49,7 +60,7 @@
 <div class="{$isDark ? ' dark' : ''}">
   <div class="bg-new-white-200 dark:bg-stone-900">
     <Navbar />
-    <BannedModal />
+    <BannedModal bannedUser="{banData}" />
     <slot />
   </div>
   <Footer />

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { isAuthenticated, userData, apiURL, postAuthed } from "$globals";
+  import { isAuthenticated, userData, apiURL, fetchAuthed } from "$globals";
   import { goto } from "$app/navigation";
 
   let isSmallWidth: boolean;
@@ -21,7 +21,7 @@
         cons.innerHTML = cons.innerHTML + `<li>⫻ ${cmd}</li>`;
         cmdInput.value = "Loading...";
         try {
-          let res = await postAuthed(apiURL + "/moderation/console", {
+          let res = await fetchAuthed("post", `${apiURL}/moderation/console`, {
             command: cmd,
           });
           let text = await res.text();

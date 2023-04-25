@@ -5,7 +5,7 @@
 
   let scrollY: number;
   let innerWidth: number;
-  let iconColor = $isDark ? "white" : "black"
+  let iconColor = $isDark ? "white" : "black";
 
   $: showNavBG = scrollY > 50 || innerWidth < 768;
 </script>

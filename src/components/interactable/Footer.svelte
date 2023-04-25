@@ -1,7 +1,7 @@
 <footer
-  class="flex h-64 justify-center border-t-2 border-new-white-100 dark:border-stone-700 bg-new-white-200 dark:bg-stone-900 px-8 md:px-16 lg:px-24"
+  class="flex h-64 justify-center border-t-2 border-new-white-100 bg-new-white-200 px-8 dark:border-stone-700 dark:bg-stone-900 md:px-16 lg:px-24"
   id="footer">
-  <div class="w-96 flex justify-between">
+  <div class="flex w-96 justify-between">
     <div class="mx-0 mt-8 flex flex-col items-center justify-center">
       <h3 class="mb-3 font-brand text-2xl text-dph-orange">Socials</h3>
       <ul class="list-disc">

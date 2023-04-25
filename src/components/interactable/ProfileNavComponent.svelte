@@ -42,14 +42,14 @@
 <div class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
     {#key $isDark}
-      {#if ["moderator","developer","admin"].includes($userData.role)}
+      {#if ["moderator", "developer", "admin"].includes($userData.role)}
         <a
           href="/moderation/console"
           class="z-20 mr-6"
           use:tippy="{moderationHoverMsg}">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-shield dark:stroke-white stroke-black"
+            class="icon icon-tabler icon-tabler-shield stroke-black dark:stroke-white"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -70,7 +70,7 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             color="{iconColor}"
-            class="icon icon-tabler icon-tabler-bell-exclamation dark:stroke-white stroke-black"
+            class="icon icon-tabler icon-tabler-bell-exclamation stroke-black dark:stroke-white"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -90,7 +90,7 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             color="{iconColor}"
-            class="icon icon-tabler icon-tabler-bell dark:stroke-white stroke-black"
+            class="icon icon-tabler icon-tabler-bell stroke-black dark:stroke-white"
             width="24"
             height="24"
             viewBox="0 0 24 24"

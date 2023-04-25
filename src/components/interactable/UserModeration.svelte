@@ -1,7 +1,7 @@
 <script lang="ts">
   import CasualLine from "$components/CasualLine.svelte";
   import Modal from "$components/modals/Modal.svelte";
-  import { apiURL, fetchAuthed, postAuthed } from "$globals";
+  import { apiURL, fetchAuthed } from "$globals";
   import { browser } from "$app/environment";
   import SvelteMarkdown from "svelte-markdown";
   import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
@@ -41,7 +41,7 @@
       "warn-message"
     ) as HTMLTextAreaElement;
 
-    let warnt = await postAuthed(`${apiURL}/notifs/send/${user?.id}`, {
+    let warnt = await fetchAuthed("post", `${apiURL}/notifs/send/${user?.id}`, {
       type: "important",
       message: "Warning",
       description: msgTxt.value,
@@ -70,7 +70,7 @@
     )
       return alert("Make sure all fields are filled in!");
 
-    let sent = await postAuthed(`${apiURL}/notifs/send/${user?.id}`, {
+    let sent = await fetchAuthed("post", `${apiURL}/notifs/send/${user?.id}`, {
       type: type.value,
       message: message.value,
       description: content.value,
@@ -103,11 +103,15 @@
       exp = new Date(expiry.value).getTime();
     }
 
-    let ban = await postAuthed(`${apiURL}/moderation/ban/${user?.id}`, {
-      id: user?.id,
-      expires: exp,
-      message: message.value,
-    });
+    let ban = await fetchAuthed(
+      "post",
+      `${apiURL}/moderation/ban/${user?.id}`,
+      {
+        id: user?.id,
+        expires: exp,
+        message: message.value,
+      }
+    );
     if (ban.ok) {
       banDialog.close();
       toasts.success(`${user?.username} is now banned!`);
@@ -131,9 +135,9 @@
   }
 
   async function logOutUser() {
-    let logout = await postAuthed(
-      `${apiURL}/moderation/log_out/${user?.id}`,
-      {}
+    let logout = await fetchAuthed(
+      "post",
+      `${apiURL}/moderation/log_out/${user?.id}`
     );
     if (logout.ok) {
       logOutDialog.close();
@@ -153,7 +157,9 @@
     This message is sent to the user as a notification. Always be professional,
     even when they are not.
   </p>
-  <p class="mt-3 align-middle font-brand dark:text-new-white-200">Warn Message</p>
+  <p class="mt-3 align-middle font-brand dark:text-new-white-200">
+    Warn Message
+  </p>
   <textarea
     class="mb-4 h-24 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="..."

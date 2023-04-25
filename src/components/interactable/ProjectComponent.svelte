@@ -37,7 +37,7 @@
       </a>
     {/if}
     <p
-      class=" line-clamp-2 mt-2 text-sm font-medium text-white text-opacity-70 md:text-base">
+      class=" mt-2 line-clamp-2 text-sm font-medium text-white text-opacity-70 md:text-base">
       {project.description}
     </p>
   </div>

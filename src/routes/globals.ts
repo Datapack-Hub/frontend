@@ -23,42 +23,18 @@ export async function getAuthorNameFromID(authorID: number): Promise<string> {
 
 export async function fetchAuthed(
   method: string,
-  url: string
+  url: string,
+  data: object | undefined = undefined
 ): Promise<Response> {
+  // what is going on here
   const resp = await fetch(url, {
     method: method,
+    ...(data ? { body: JSON.stringify(data) } : {}), // ah yes ternary grossness
     headers: { Authorization: `Basic ${await getCookie("dph_token")}` },
   });
-  if (resp.status == 498) {
-    removeCookie("dph_token");
-  }
-  return resp;
-}
 
-export async function postAuthed(url: string, data: object): Promise<Response> {
-  const resp = await fetch(url, {
-    method: "post",
-    body: JSON.stringify(data),
-    headers: { Authorization: `Basic ${await getCookie("dph_token")}` },
-  });
-  if (resp.status == 498) {
-    removeCookie("dph_token");
-  }
-  return resp;
-}
+  if (resp.status == 498) removeCookie("dph_token");
 
-export async function patchAuthed(
-  url: string,
-  data: object
-): Promise<Response> {
-  const resp = await fetch(url, {
-    method: "PATCH",
-    body: JSON.stringify(data),
-    headers: { Authorization: `Basic ${await getCookie("dph_token")}` },
-  });
-  if (resp.status == 498) {
-    removeCookie("dph_token");
-  }
   return resp;
 }
 

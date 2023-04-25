@@ -63,12 +63,15 @@
     class="mt-1 w-full text-center align-middle font-brand font-semibold dark:text-white sm:text-base md:text-lg">
     {#if profileData?.role != "default"}
       <span class="{profileData?.role}-text">
-        {#if profileData?.role == "nerd"}🤓 Nerd {:else if profileData?.role == "admin"}<img
-        src="/logos/dph.svg"
-        alt="logo"
-        class="min-h-8 transition-all hover:brightness-75 float-left"
-        height="24"
-        width="24" /> Datapack Hub Team{:else}{titleCase(profileData?.role)}{/if}
+        {#if profileData?.role == "nerd"}🤓 Nerd
+        {:else if profileData?.role == "admin"}<img
+            src="/logos/dph.svg"
+            alt="logo"
+            class="min-h-8 float-left transition-all hover:brightness-75"
+            height="24"
+            width="24" /> Datapack Hub Team{:else}{titleCase(
+            profileData?.role
+          )}{/if}
       </span>
     {/if}
   </p>
