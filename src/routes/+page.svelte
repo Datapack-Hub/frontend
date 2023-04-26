@@ -72,7 +72,7 @@
 
 <svelte:window bind:innerWidth="{width}" />
 
-<main class="bg-new-white-200 transition-all dark:bg-stone-900">
+<main class="bg-dph-orange transition-all dark:bg-stone-900">
   <div
     class="flex h-[66.666vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
@@ -83,21 +83,21 @@
         <h1
           id="indexText1"
           class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center font-brand text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
-          <span class="letters inline-block text-dph-orange">Explore</span>
+          <span class="letters inline-block text-white dark:text-dph-orange">Explore</span>
         </h1>
         <h1
           id="indexText2"
           class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center font-brand text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
-          <span class="letters inline-block text-dph-orange">Create</span>
+          <span class="letters inline-block text-white dark:text-dph-orange">Create</span>
         </h1>
         <h1
           id="indexText3"
           class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center font-brand text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
-          <span class="letters inline-block text-dph-orange">Play</span>
+          <span class="letters inline-block text-white dark:text-dph-orange">Play</span>
         </h1>
       </div>
       <h2
-        class="w-full text-center text-xl text-black dark:text-new-white-200 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
+        class="w-full text-center text-xl text-new-white-200 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{rawRand.toString()}"
           class="text-gradient bg-gradient-to-br from-pink-600 to-yellow-400 font-bold">
@@ -132,6 +132,6 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    @apply bg-gradient-to-br from-pink-700 to-dph-orange;
+    @apply bg-gradient-to-br dark:from-pink-700 dark:to-dph-orange from-orange-300 to-orange-400;
   }
 </style>
