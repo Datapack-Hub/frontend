@@ -58,7 +58,7 @@
 
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? ' dark' : ''}">
-  <div class="bg-dph-orange dark:bg-stone-900">
+  <div class="bg-new-white-200 dark:bg-stone-900">
     <Navbar />
     <BannedModal bannedUser="{banData}" />
     <slot />
