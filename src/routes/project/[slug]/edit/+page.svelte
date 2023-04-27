@@ -32,20 +32,29 @@
     <h1
       class="mt-8 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-4xl">
       Edit <span class="text-dph-orange">{data.project?.title}</span>
-    </h1><br>
-    <div class="flex mb-2 space-x-2">
-      <span class="bg-stone-600 p-1 px-3 font-brand dark:text-white rounded-xl">Details</span>
-      <span class="bg-stone-800 p-1 px-3 font-brand dark:text-white rounded-xl">Versions</span>
+    </h1>
+    <br />
+    <div class="mb-2 flex space-x-2">
+      <span class="rounded-xl bg-stone-600 p-1 px-3 font-brand dark:text-white"
+        >Details</span>
+      <span class="rounded-xl bg-stone-800 p-1 px-3 font-brand dark:text-white"
+        >Versions</span>
     </div>
     <div class="text-center align-middle md:text-start">
-      <div class=" bg-stone-800 p-2 rounded-xl pb-2">
+      <div class=" rounded-xl bg-stone-800 p-2 pb-2">
         <!-- Icon -->
         <p class="align-middle font-brand dark:text-new-white-200">Icon</p>
-        <img src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg" height=100 width=100 class="rounded-2xl mr-3 inline-block" />
-          <label for="icon" class="group max-w-100 inline-block">
-            <span class="bg-stone-700 align-middle p-2 font-brand dark:text-white rounded-xl cursor-pointer">Upload icon</span>
-          </label>
-          <input id="icon" type="file" class="hidden">
+        <img
+          src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          height="100"
+          width="100"
+          class="mr-3 inline-block rounded-2xl" />
+        <label for="icon" class="max-w-100 group inline-block">
+          <span
+            class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle font-brand dark:text-white"
+            >Upload icon</span>
+        </label>
+        <input id="icon" type="file" class="hidden" />
         <br /><br />
 
         <!-- Title -->
@@ -53,7 +62,7 @@
         <input
           class="h-10 w-1/2 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
           placeholder="Title"
-          value={data.project?.title}
+          value="{data.project?.title}"
           id="title" /><br /><br />
 
         <!-- Short Description -->
@@ -64,7 +73,7 @@
           class="h-24 w-3/4 resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
           placeholder="This short description is used for social media embeds and the listing page."
           id="desc"
-          value={data.project?.description}></textarea
+          value="{data.project?.description}"></textarea
         ><br /><br />
 
         <!-- Long Description -->
@@ -75,7 +84,7 @@
           class="h-96 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
           placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
           id="body"
-          value={data.project?.body}></textarea
+          value="{data.project?.body}"></textarea
         ><br /><br />
 
         <!-- Downloadable File -->
@@ -98,10 +107,11 @@
           {/each}
         </select><br /><br />
         <button
-          class="text-md my-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 pu-2 pb-1 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl">
+          class="text-md pu-2 my-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 pb-1 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl">
           Update Project
         </button>
       </div>
     </div>
   </div>
-</main><br />
+</main>
+<br />

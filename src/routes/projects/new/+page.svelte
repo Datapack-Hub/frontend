@@ -37,14 +37,20 @@
           distribute.</b>
       </p>
 
-      <div class=" bg-stone-800 p-2 rounded-xl pb-2">
+      <div class=" rounded-xl bg-stone-800 p-2 pb-2">
         <!-- Icon -->
         <p class="align-middle font-brand dark:text-new-white-200">Icon</p>
-        <img src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg" height=100 width=100 class="rounded-2xl mr-3 inline-block" />
-          <label for="icon" class="group max-w-100 inline-block">
-            <span class="bg-stone-700 align-middle p-2 font-brand dark:text-white rounded-xl cursor-pointer">Upload icon</span>
-          </label>
-          <input id="icon" type="file" class="hidden">
+        <img
+          src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          height="100"
+          width="100"
+          class="mr-3 inline-block rounded-2xl" />
+        <label for="icon" class="max-w-100 group inline-block">
+          <span
+            class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle font-brand dark:text-white"
+            >Upload icon</span>
+        </label>
+        <input id="icon" type="file" class="hidden" />
         <br /><br />
 
         <!-- Title -->
@@ -100,4 +106,5 @@
       </div>
     </div>
   </div>
-</main><br />
+</main>
+<br />

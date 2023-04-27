@@ -8,11 +8,11 @@ export const load = (async ({ params }) => {
     return {
       project: (await projectReq.json()) as Project,
     };
-  }else if(projectReq.status == 404) {
+  } else if (projectReq.status == 404) {
     throw error(404, {
-        message: "Project not found",
-        description: "Why not go ahead and turn the idea into a reality?",
-      });
+      message: "Project not found",
+      description: "Why not go ahead and turn the idea into a reality?",
+    });
   }
   return {};
 }) satisfies PageLoad;

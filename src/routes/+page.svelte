@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import ButtonPrimary from "$components/interactable/buttons/ButtonLink.svelte";
   import anime from "animejs";
+  import { goto } from "$app/navigation";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
@@ -107,7 +108,7 @@
       </h2>
       <div
         class="mt-8 flex w-full items-center justify-evenly md:mt-16 md:justify-start">
-        <ButtonPrimary>Play Now</ButtonPrimary>
+        <ButtonPrimary clickEvent="{goto('/projects')}">Play Now</ButtonPrimary>
         {#if width > 768}
           <div class="px-4"></div>
         {/if}
