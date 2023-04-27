@@ -13,7 +13,9 @@
 	"/project/[slug]": [
 		"src/routes/project/[slug]/+page.ts"
 	],
-	"/project/[slug]/edit": [],
+	"/project/[slug]/edit": [
+		"src/routes/project/[slug]/edit/+page.ts"
+	],
 	"/rules": [
 		"src/routes/rules/+page.ts"
 	],
