@@ -108,7 +108,7 @@
       </h2>
       <div
         class="mt-8 flex w-full items-center justify-evenly md:mt-16 md:justify-start">
-        <ButtonPrimary clickEvent="{goto('/projects')}">Play Now</ButtonPrimary>
+        <a href="/projects" class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl">Play Now</a>
         {#if width > 768}
           <div class="px-4"></div>
         {/if}
