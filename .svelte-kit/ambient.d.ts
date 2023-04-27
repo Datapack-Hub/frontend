@@ -40,7 +40,7 @@ declare module '$env/static/private' {
 	export const CONDA_PROMPT_MODIFIER: string;
 	export const COREPACK_ROOT: string;
 	export const DriverData: string;
-	export const EFC_9968: string;
+	export const EFC_9688: string;
 	export const GIT_ASKPASS: string;
 	export const HOME: string;
 	export const HOMEDRIVE: string;
@@ -219,7 +219,7 @@ declare module '$env/dynamic/private' {
 		CONDA_PROMPT_MODIFIER: string;
 		COREPACK_ROOT: string;
 		DriverData: string;
-		EFC_9968: string;
+		EFC_9688: string;
 		GIT_ASKPASS: string;
 		HOME: string;
 		HOMEDRIVE: string;

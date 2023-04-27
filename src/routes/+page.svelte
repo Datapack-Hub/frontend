@@ -1,8 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import ButtonPrimary from "$components/interactable/buttons/ButtonLink.svelte";
   import anime from "animejs";
-  import { goto } from "$app/navigation";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
@@ -108,11 +106,11 @@
       </h2>
       <div
         class="mt-8 flex w-full items-center justify-evenly md:mt-16 md:justify-start">
-        <a href="/projects" class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl">Play Now</a>
+        <a href="/projects" class="button-style">Play Now</a>
         {#if width > 768}
           <div class="px-4"></div>
         {/if}
-        <ButtonPrimary>Discover</ButtonPrimary>
+        <a href="/projects" class="button-style">Discover</a>
       </div>
     </div>
     {#if width > 768}
