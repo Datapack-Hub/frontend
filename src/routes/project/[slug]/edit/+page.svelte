@@ -98,8 +98,8 @@
           {/each}
         </select><br /><br />
         <button
-          class="text-md my-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 py-2 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl">
-          Create
+          class="text-md my-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 pu-2 pb-1 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl">
+          Update Project
         </button>
       </div>
     </div>
