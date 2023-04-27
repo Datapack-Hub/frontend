@@ -41,8 +41,12 @@
 
       let token = await getCookie("dph_token");
       if (token) {
-        let userRes = await fetchAuthed("get", `${apiURL}/user/me`);
+        let [userRes, roleRes] = await Promise.all([
+          await fetchAuthed("get", `${apiURL}/user/me`),
+          await fetch(`${apiURL}/user/staff/roles`),
+        ]);
         let fullUser = await userRes.json();
+        let role = roleRes.json();
         let user = fullUser as User;
 
         $userData = user;

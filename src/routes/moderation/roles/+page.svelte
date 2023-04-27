@@ -2,15 +2,7 @@
   import { apiURL, fetchAuthed, userData } from "$globals";
   import { goto } from "$app/navigation";
 
-  let rolesJson: [
-    {
-      name: string;
-      color: string;
-      time: number;
-      verified: boolean;
-      permissions: string[];
-    }
-  ];
+  let rolesJson: Role[];
 
   function titleCase(str: string | undefined): string {
     if (str == undefined) return "null";

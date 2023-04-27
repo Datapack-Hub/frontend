@@ -51,3 +51,10 @@ declare type Notif = {
   read: boolean;
   type: "announcement" | "ban" | "warn" | "default" | "rainbow";
 };
+
+declare type Role = {
+  name: string;
+  color: string?;
+  verified: boolean;
+  permissions: string[];
+};

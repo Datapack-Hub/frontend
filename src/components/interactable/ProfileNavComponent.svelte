@@ -28,10 +28,25 @@
 
   let iconColor = $isDark ? "white" : "black";
 
+  let role: Role;
+
   (async () => {
     if (browser) {
-      let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`);
+      let [notif, roleRes] = await Promise.all([
+        await fetchAuthed("get", `${apiURL}/notifs/unread`),
+        await fetch(`${apiURL}/user/staff/roles`),
+      ]);
       if (notif.ok) {
+        // esoteric af?
+        role = ((await roleRes.json()) as Role[]).find(
+          (v) => v.name == $userData.role
+        ) ?? {
+          name: "default",
+          color: null,
+          verified: false,
+          permissions: [] as string[],
+        };
+
         let notifJson = await notif.json();
         if (notifJson.count != 0) notifsAvailable = true;
       }
@@ -42,7 +57,7 @@
 <div class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
     {#key $isDark}
-      {#if ["moderator", "developer", "admin"].includes($userData.role)}
+      {#if ["moderator", "developer", "admin"].includes(role?.name)}
         <a
           href="/moderation/console"
           class="z-20 mr-6"
@@ -121,7 +136,8 @@
           alt="{$userData.username}'s profile picture"
           height="32"
           width="32"
-          class="rounded-full outline outline-2 {$userData.role}-outline ml-6 outline-offset-2" />
+          class="ml-6 rounded-full outline outline-2 outline-offset-2"
+          style="outline-color:{role.color ?? '#eab308'};" />
       </a>
     {/key}
   {:else}
