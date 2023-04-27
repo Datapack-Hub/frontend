@@ -1,5 +1,10 @@
 <script lang="ts">
+  import { apiURL, fetchAuthed } from "$globals";
+  import { error } from "@sveltejs/kit";
   import type { PageData } from "./$types";
+  import Error from "../../../+error.svelte";
+  import { append } from "svelte/internal";
+  import { browser } from "$app/environment";
 
   let categories = [
     { id: 1, text: `Adventure` },
