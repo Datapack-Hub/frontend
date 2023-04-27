@@ -2,6 +2,7 @@
 	"/": [],
 	"/moderation/console": [],
 	"/moderation/logs": [],
+	"/moderation/roles": [],
 	"/notifications": [
 		"src/routes/notifications/+page.ts"
 	],
@@ -19,6 +20,7 @@
 	"/staff": [
 		"src/routes/staff/+page.ts"
 	],
+	"/test": [],
 	"/user/[slug]": [
 		"src/routes/user/[slug]/+page.ts"
 	],

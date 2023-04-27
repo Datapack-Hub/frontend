@@ -47,7 +47,7 @@
           {#each rolesJson ?? [] as i}
             <tr>
               <td><p class="text-[{i.color}]">{titleCase(i.name)}</p></td>
-              <td>{i.permissions}</td>
+              <td>{i.permissions[0]}</td>
             </tr>
           {/each}
         </table>
