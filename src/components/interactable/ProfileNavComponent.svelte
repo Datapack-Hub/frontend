@@ -28,6 +28,7 @@
 
   let notifsAvailable = false;
   let iconColor = $isDark ? "white" : "black";
+  let userRole = $role.roles
 
   onMount(async () => {
     if (browser) {
@@ -38,8 +39,8 @@
         if (notifJson.count != 0) notifsAvailable = true;
       }
 
-      console.log($role);
-      setTimeout(() => console.log($role), 2000)
+      console.log(userRole);
+      setTimeout(() => console.log(userRole), 2000)
     }
   });
 </script>
@@ -127,7 +128,7 @@
           height="32"
           width="32"
           class="ml-6 rounded-full outline outline-2 outline-offset-2"
-          style="outline-color:{$role.color ?? '#eab308'};" />
+          style="outline-color:{userRole.color ?? '#eab308'};" />
       </a>
     {/key}
   {:else}
