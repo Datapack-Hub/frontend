@@ -8,8 +8,7 @@
     isDark,
     role,
   } from "$globals";
-  import { getContext, onMount } from "svelte";
-  import type { Writable } from "svelte/store";
+  import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -40,6 +39,7 @@
       }
 
       console.log($role);
+      setTimeout(() => console.log($role), 2000)
     }
   });
 </script>
