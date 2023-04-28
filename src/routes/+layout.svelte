@@ -54,6 +54,7 @@
         let fullUser = await userRes.json();
         let user = fullUser as User;
         role = await roleRes.json();
+        setContext("roleData", role);
 
         $userData = user;
 

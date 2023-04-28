@@ -30,12 +30,6 @@
   let iconColor = $isDark ? "white" : "black";
 
   let role: Role = getContext('roleData')
-  // {
-  //   name: "default",
-  //   color: null,
-  //   verified: false,
-  //   permissions: [] as string[],
-  // };
 
   onMount(async () => {
     if (browser) {
