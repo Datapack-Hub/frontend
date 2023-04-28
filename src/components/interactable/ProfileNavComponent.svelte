@@ -38,7 +38,7 @@
       ]);
       if (notif.ok) {
         // esoteric af?
-        role = (await roleRes.json() as Role[]).find(
+        role = (await roleRes.json().roles as Role[]).find(
           (v) => v.name == $userData.role
         ) ?? {
           name: "default",
