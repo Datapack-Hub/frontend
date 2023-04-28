@@ -127,7 +127,7 @@
           height="32"
           width="32"
           class="ml-6 rounded-full outline outline-2 outline-offset-2"
-          style="outline-color:{userRole.color ?? '#eab308'};" />
+          style="outline-color:{$role.color ?? '#eab308'};" />
       </a>
     {/key}
   {:else}
