@@ -21,7 +21,7 @@
   let banData:
     | { banned: boolean; banData: { message: string; expires: number } }
     | undefined;
-  
+
   (async () => {
     if (browser) {
       $userData = JSON.parse(localStorage.getItem("userData")!) as User;
@@ -48,7 +48,9 @@
         let fullUser = await userRes.json();
         let user = fullUser as User;
 
-        $role = (await roleRes.json()).roles.find(v => v.name = user.role);
+        $role = (await roleRes.json()).roles.find(
+          (v: Role) => (v.name = user.role)
+        );
         $userData = user;
 
         banData = { banned: fullUser.banned, banData: fullUser.banData };

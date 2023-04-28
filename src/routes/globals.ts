@@ -25,7 +25,9 @@ export function loadColorPref() {
   isDark.set(localStorage.getItem("dp_colorPref") == "true");
 }
 
-export async function getAuthorNameFromID(authorID: number): Promise<string> {
+export async function getAuthorNameFromID(authorID: number | undefined): Promise<string> {
+  if(!authorID) return "Unknown"
+
   const data = await fetch(`${apiURL}/user/id/${authorID}`);
   return ((await data.json()) as User).username;
 }

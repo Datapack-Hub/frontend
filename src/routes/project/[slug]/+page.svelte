@@ -11,7 +11,7 @@
 
   (async () => {
     if (browser)
-      author = "By " + (await getAuthorNameFromID(data.project?.author!));
+      author = "By " + (await getAuthorNameFromID(data.project?.author));
     visible = true;
   })();
 </script>

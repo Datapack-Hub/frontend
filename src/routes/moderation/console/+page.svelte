@@ -4,7 +4,7 @@
   import { goto } from "$app/navigation";
 
   let isSmallWidth: boolean;
-  let submitCmd = () => {};
+  let submitCmd: () => Promise<void> | undefined;
   let cmdInput: HTMLInputElement;
   let cmd = "";
 

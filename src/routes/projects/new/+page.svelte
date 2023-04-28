@@ -42,6 +42,7 @@
         <p class="align-middle font-brand dark:text-new-white-200">Icon</p>
         <img
           src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          alt="Your logo here"
           height="100"
           width="100"
           class="mr-3 inline-block rounded-2xl" />

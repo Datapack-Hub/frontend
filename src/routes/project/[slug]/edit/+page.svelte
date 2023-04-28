@@ -1,10 +1,5 @@
 <script lang="ts">
-  import { apiURL, fetchAuthed } from "$globals";
-  import { error } from "@sveltejs/kit";
   import type { PageData } from "./$types";
-  import Error from "../../../+error.svelte";
-  import { append } from "svelte/internal";
-  import { browser } from "$app/environment";
 
   let categories = [
     { id: 1, text: `Adventure` },
@@ -51,6 +46,7 @@
         <p class="align-middle font-brand dark:text-new-white-200">Icon</p>
         <img
           src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+          alt="Your logo"
           height="100"
           width="100"
           class="mr-3 inline-block rounded-2xl" />
