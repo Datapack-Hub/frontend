@@ -1,5 +1,4 @@
 {
-  "endOfLine": "lf",
   "bracketSameLine": true,
   "semi": true,
   "svelteStrictMode": true,

@@ -11,7 +11,7 @@ export const userData: Writable<User> = writable({
   username: "",
   bio: "",
   profile_icon: "",
-  role: "admin", /** For role info, use the `roleInfo` store */
+  role: "admin" /** For role info, use the `roleInfo` store */,
   banned: false,
 });
 
@@ -36,12 +36,14 @@ export function loadColorPref() {
 
 /**
  * Gets a username from ID
- * 
+ *
  * @param authorID ID of the author
  * @returns username of the author
  */
-export async function getAuthorNameFromID(authorID: number | undefined): Promise<string> {
-  if(!authorID) return "Unknown"
+export async function getAuthorNameFromID(
+  authorID: number | undefined
+): Promise<string> {
+  if (!authorID) return "Unknown";
 
   const data = await fetch(`${apiURL}/user/id/${authorID}`);
   return ((await data.json()) as User).username;
@@ -49,7 +51,7 @@ export async function getAuthorNameFromID(authorID: number | undefined): Promise
 
 /**
  * Fetches data with the user's token
- * 
+ *
  * @param method HTTP method to use
  * @param url The URL
  * @param data Data to send

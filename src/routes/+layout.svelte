@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Navbar from "$components/interactable/Navbar.svelte";
+  import Navbar from "$components/interactable/nav/Navbar.svelte";
   import {
     apiURL,
     fetchAuthed,
@@ -15,7 +15,7 @@
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
-  import Footer from "$components/interactable/Footer.svelte";
+  import Footer from "$components/interactable/nav/Footer.svelte";
   import { setContext } from "svelte";
 
   let banData:

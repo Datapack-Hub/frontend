@@ -47,6 +47,7 @@
       {#if ["moderator", "developer", "admin"].includes($roleInfo.name)}
         <a
           href="/moderation/console"
+          aria-label="Moderation console"
           class="z-20 mr-6"
           use:tippy="{moderationHoverMsg}">
           <svg
@@ -72,6 +73,7 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             color="{iconColor}"
+            aria-label="Notifications: Unread"
             class="icon icon-tabler icon-tabler-bell-exclamation stroke-black dark:stroke-white"
             width="24"
             height="24"
@@ -92,6 +94,7 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             color="{iconColor}"
+            aria-label="Notifications: No unread"
             class="icon icon-tabler icon-tabler-bell stroke-black dark:stroke-white"
             width="24"
             height="24"
@@ -119,7 +122,7 @@
           allowHTML: true,
         }}">
         <img
-          src="{$userData.profile_icon}&size=32"
+          src="{$userData.profile_icon}&size=48"
           alt="{$userData.username}'s profile picture"
           height="32"
           width="32"

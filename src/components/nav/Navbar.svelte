@@ -1,6 +1,6 @@
 <script lang="ts">
   import { isDark } from "$globals";
-  import ColorSchemeSelector from "./buttons/ColorSchemeSelector.svelte";
+  import ColorSchemeSelector from "../buttons/ColorSchemeSelector.svelte";
   import ProfileNavComponent from "./ProfileNavComponent.svelte";
 
   let scrollY: number;
