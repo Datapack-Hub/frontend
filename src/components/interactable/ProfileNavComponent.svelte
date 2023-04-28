@@ -6,6 +6,7 @@
     apiURL,
     fetchAuthed,
     isDark,
+    role,
   } from "$globals";
   import { getContext, onMount } from "svelte";
   import type { Writable } from "svelte/store";
@@ -27,10 +28,7 @@
   };
 
   let notifsAvailable = false;
-
   let iconColor = $isDark ? "white" : "black";
-
-  let role: Writable<Role> = getContext('roleData')
 
   onMount(async () => {
     if (browser) {

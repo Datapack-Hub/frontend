@@ -8,6 +8,7 @@
     loadColorPref,
     userData,
     isAuthenticated,
+    role,
   } from "$globals";
   import "../app.postcss";
   import BannedModal from "$components/modals/BannedModal.svelte";
@@ -16,19 +17,11 @@
   import { goto } from "$app/navigation";
   import Footer from "$components/interactable/Footer.svelte";
   import { setContext } from "svelte";
-  import { writable, type Writable } from "svelte/store";
 
   let banData:
     | { banned: boolean; banData: { message: string; expires: number } }
     | undefined;
-
-  let role: Writable<Role> = writable({
-    name: "default",
-    color: null,
-    verified: false,
-    permissions: [] as string[],
-  });
-
+  
   (async () => {
     if (browser) {
       $userData = JSON.parse(localStorage.getItem("userData")!) as User;
@@ -66,10 +59,9 @@
 
       loadColorPref();
     }
-  })().then(() => {
-    setContext("roleData", role);
-  });
+  })();
 
+  setContext("roleData", role);
 </script>
 
 <!-- {#await pageLoad() then} -->
