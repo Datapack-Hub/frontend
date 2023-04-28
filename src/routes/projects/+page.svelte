@@ -1,6 +1,6 @@
 <script lang="ts">
   import CasualLine from "$components/CasualLine.svelte";
-  import ProjectComponent from "$components/interactable/ProjectComponent.svelte";
+  import ProjectComponent from "$components/ProjectComponent.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;
