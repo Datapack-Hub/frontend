@@ -1,4 +1,5 @@
 <script lang="ts">
+  import "../app.postcss";
   import Navbar from "$components/nav/Navbar.svelte";
   import {
     apiURL,
@@ -10,7 +11,6 @@
     isAuthenticated,
     roleInfo,
   } from "$globals";
-  import "../app.postcss";
   import BannedModal from "$components/modals/BannedModal.svelte";
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
