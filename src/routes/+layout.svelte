@@ -15,23 +15,22 @@
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
   import Footer from "$components/interactable/Footer.svelte";
-  import { onMount } from "svelte";
+  import { onMount, setContext } from "svelte";
 
   let banData:
     | { banned: boolean; banData: { message: string; expires: number } }
     | undefined;
 
-    onMount(async () => {
-      if (browser) {
-        $userData = JSON.parse(localStorage.getItem("userData")!) as User;
-      }
-    });
+  let role: Role = {
+    name: "default",
+    color: null,
+    verified: false,
+    permissions: [] as string[],
+  };
 
-  (async () => {
+  onMount(async () => {
     if (browser) {
       $userData = JSON.parse(localStorage.getItem("userData")!) as User;
-
-      loadColorPref();
 
       if ($page.url.searchParams.has("token")) {
         let newToken = $page.url.searchParams.get("token");
@@ -53,8 +52,8 @@
           await fetch(`${apiURL}/user/staff/roles`),
         ]);
         let fullUser = await userRes.json();
-        let role = roleRes.json();
         let user = fullUser as User;
+        role = await roleRes.json();
 
         $userData = user;
 
@@ -63,8 +62,12 @@
 
         $isAuthenticated = true;
       }
+
+      loadColorPref();
     }
-  })();
+  });
+
+  setContext("roleData", role);
 </script>
 
 <!-- {#await pageLoad() then} -->

@@ -7,6 +7,7 @@
     fetchAuthed,
     isDark,
   } from "$globals";
+  import { getContext, onMount } from "svelte";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -28,30 +29,26 @@
 
   let iconColor = $isDark ? "white" : "black";
 
-  let role: Role;
+  let role: Role = getContext('roleData')
+  // {
+  //   name: "default",
+  //   color: null,
+  //   verified: false,
+  //   permissions: [] as string[],
+  // };
 
-  (async () => {
+  onMount(async () => {
     if (browser) {
-      let [notif, roleRes] = await Promise.all([
-        await fetchAuthed("get", `${apiURL}/notifs/unread`),
-        await fetch(`${apiURL}/user/staff/roles`),
-      ]);
-      if (notif.ok) {
-        // esoteric af?
-        role = (await roleRes.json().roles as Role[]).find(
-          (v) => v.name == $userData.role
-        ) ?? {
-          name: "default",
-          color: null,
-          verified: false,
-          permissions: [] as string[],
-        };
+      let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`);
 
+      if (notif.ok) {
         let notifJson = await notif.json();
         if (notifJson.count != 0) notifsAvailable = true;
       }
+
+      console.log(role);
     }
-  })();
+  });
 </script>
 
 <div class="z-50 ml-6 flex items-center justify-center">
