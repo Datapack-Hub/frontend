@@ -3,16 +3,22 @@ import { writable, type Writable } from "svelte/store";
 export const isDark = writable(true);
 export const isAuthenticated = writable(false);
 
+/**
+ * Store for User Data, this contains all the user's data
+ */
 export const userData: Writable<User> = writable({
   id: -1,
   username: "",
   bio: "",
   profile_icon: "",
-  role: "admin",
+  role: "admin", /** For role info, use the `roleInfo` store */
   banned: false,
 });
 
-export const role = writable({
+/**
+ * Contains all information about a role
+ */
+export const roleInfo = writable({
   name: "default",
   color: null,
   verified: false,
@@ -21,10 +27,19 @@ export const role = writable({
 
 export const apiURL = "https://api.datapackhub.net";
 
+/**
+ * Loads the user's preferred color scheme
+ */
 export function loadColorPref() {
   isDark.set(localStorage.getItem("dp_colorPref") == "true");
 }
 
+/**
+ * Gets a username from ID
+ * 
+ * @param authorID ID of the author
+ * @returns username of the author
+ */
 export async function getAuthorNameFromID(authorID: number | undefined): Promise<string> {
   if(!authorID) return "Unknown"
 
@@ -32,6 +47,14 @@ export async function getAuthorNameFromID(authorID: number | undefined): Promise
   return ((await data.json()) as User).username;
 }
 
+/**
+ * Fetches data with the user's token
+ * 
+ * @param method HTTP method to use
+ * @param url The URL
+ * @param data Data to send
+ * @returns an HTTP response
+ */
 export async function fetchAuthed(
   method: string,
   url: string,
