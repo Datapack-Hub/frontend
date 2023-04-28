@@ -28,7 +28,6 @@
 
   let notifsAvailable = false;
   let iconColor = $isDark ? "white" : "black";
-  let userRole = $role.roles
 
   onMount(async () => {
     if (browser) {
@@ -39,8 +38,8 @@
         if (notifJson.count != 0) notifsAvailable = true;
       }
 
-      console.log(userRole);
-      setTimeout(() => console.log(userRole), 2000)
+      console.log($role);
+      setTimeout(() => console.log($role), 2000)
     }
   });
 </script>

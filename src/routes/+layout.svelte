@@ -48,7 +48,7 @@
         let fullUser = await userRes.json();
         let user = fullUser as User;
 
-        $role = await roleRes.json();
+        $role = (await roleRes.json()).roles.find(v => v.name = user.role);
         $userData = user;
 
         banData = { banned: fullUser.banned, banData: fullUser.banData };
