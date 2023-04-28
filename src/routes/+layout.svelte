@@ -66,9 +66,10 @@
 
       loadColorPref();
     }
-  })();
+  })().then(() => {
+    setContext("roleData", role);
+  });
 
-  setContext("roleData", role);
 </script>
 
 <!-- {#await pageLoad() then} -->
