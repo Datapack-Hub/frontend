@@ -16,17 +16,18 @@
   import { goto } from "$app/navigation";
   import Footer from "$components/interactable/Footer.svelte";
   import { onMount, setContext } from "svelte";
+  import { writable, type Writable } from "svelte/store";
 
   let banData:
     | { banned: boolean; banData: { message: string; expires: number } }
     | undefined;
 
-  let role: Role = {
+  let role: Writable<Role> = writable({
     name: "default",
     color: null,
     verified: false,
     permissions: [] as string[],
-  };
+  });
 
   onMount(async () => {
     if (browser) {
@@ -53,9 +54,8 @@
         ]);
         let fullUser = await userRes.json();
         let user = fullUser as User;
-        role = await roleRes.json();
-        setContext("roleData", role);
 
+        $role = await roleRes.json();
         $userData = user;
 
         banData = { banned: fullUser.banned, banData: fullUser.banData };
