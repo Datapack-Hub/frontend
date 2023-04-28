@@ -15,7 +15,7 @@
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
   import Footer from "$components/interactable/Footer.svelte";
-  import { onMount, setContext } from "svelte";
+  import { setContext } from "svelte";
   import { writable, type Writable } from "svelte/store";
 
   let banData:
@@ -29,7 +29,7 @@
     permissions: [] as string[],
   });
 
-  onMount(async () => {
+  (async () => {
     if (browser) {
       $userData = JSON.parse(localStorage.getItem("userData")!) as User;
 
@@ -66,7 +66,7 @@
 
       loadColorPref();
     }
-  });
+  })();
 
   setContext("roleData", role);
 </script>
