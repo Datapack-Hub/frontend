@@ -8,7 +8,7 @@
     loadColorPref,
     userData,
     isAuthenticated,
-    role,
+    roleInfo,
   } from "$globals";
   import "../app.postcss";
   import BannedModal from "$components/modals/BannedModal.svelte";
@@ -48,7 +48,7 @@
         let fullUser = await userRes.json();
         let user = fullUser as User;
 
-        $role = (await roleRes.json()).roles.find(
+        $roleInfo = (await roleRes.json()).roles.find(
           (v: Role) => (v.name = user.role)
         );
         $userData = user;
@@ -63,7 +63,7 @@
     }
   })();
 
-  setContext("roleData", role);
+  setContext("roleData", roleInfo);
 </script>
 
 <!-- {#await pageLoad() then} -->

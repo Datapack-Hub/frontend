@@ -6,7 +6,7 @@
     apiURL,
     fetchAuthed,
     isDark,
-    role,
+    roleInfo,
   } from "$globals";
   import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
@@ -44,7 +44,7 @@
 <div class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
     {#key $isDark}
-      {#if ["moderator", "developer", "admin"].includes($role.name)}
+      {#if ["moderator", "developer", "admin"].includes($roleInfo.name)}
         <a
           href="/moderation/console"
           class="z-20 mr-6"
@@ -124,7 +124,7 @@
           height="32"
           width="32"
           class="ml-6 rounded-full outline outline-2 outline-offset-2"
-          style="outline-color:{$role.color ?? '#eab308'};" />
+          style="outline-color:{$roleInfo.color ?? '#eab308'};" />
       </a>
     {/key}
   {:else}
