@@ -37,9 +37,6 @@
         let notifJson = await notif.json();
         if (notifJson.count != 0) notifsAvailable = true;
       }
-
-      console.log($role);
-      setTimeout(() => console.log($role), 2000)
     }
   });
 </script>
