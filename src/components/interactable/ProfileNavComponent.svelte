@@ -8,6 +8,7 @@
     isDark,
   } from "$globals";
   import { getContext, onMount } from "svelte";
+  import type { Writable } from "svelte/store";
   import tippy from "sveltejs-tippy";
 
   let signInHoverMsg = {
@@ -29,7 +30,7 @@
 
   let iconColor = $isDark ? "white" : "black";
 
-  let role: Role = getContext('roleData')
+  let role: Writable<Role> = getContext('roleData')
 
   onMount(async () => {
     if (browser) {
@@ -40,7 +41,7 @@
         if (notifJson.count != 0) notifsAvailable = true;
       }
 
-      console.log(role);
+      console.log($role);
     }
   });
 </script>
@@ -48,7 +49,7 @@
 <div class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
     {#key $isDark}
-      {#if ["moderator", "developer", "admin"].includes(role?.name)}
+      {#if ["moderator", "developer", "admin"].includes($role.name)}
         <a
           href="/moderation/console"
           class="z-20 mr-6"
@@ -128,7 +129,7 @@
           height="32"
           width="32"
           class="ml-6 rounded-full outline outline-2 outline-offset-2"
-          style="outline-color:{role.color ?? '#eab308'};" />
+          style="outline-color:{$role.color ?? '#eab308'};" />
       </a>
     {/key}
   {:else}
