@@ -15,10 +15,17 @@
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
   import Footer from "$components/interactable/Footer.svelte";
+  import { onMount } from "svelte";
 
   let banData:
     | { banned: boolean; banData: { message: string; expires: number } }
     | undefined;
+
+    onMount(async () => {
+      if (browser) {
+        $userData = JSON.parse(localStorage.getItem("userData")!) as User;
+      }
+    });
 
   (async () => {
     if (browser) {
