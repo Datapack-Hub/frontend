@@ -6,13 +6,6 @@
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
 
-  if (profile || profileRole) {
-    throw error(500, {
-      message: "Whoops!",
-      description: "Expected the profile and role to exist",
-    });
-  }
-
   let userProfile = profile!;
   let role = profileRole!;
 
