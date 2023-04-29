@@ -31,13 +31,13 @@
     {#if visible}
       <a
         href="/user/{author.toLowerCase()}"
-        class="text-xs text-white text-opacity-40 hover:underline md:text-sm"
+        class="text-xs text-opacity-40 hover:underline dark:text-white md:text-sm"
         in:fade="{{ duration: 250 }}">
         By {author}
       </a>
     {/if}
     <p
-      class=" mt-2 line-clamp-2 text-sm font-medium text-white text-opacity-70 md:text-base">
+      class=" mt-2 line-clamp-2 text-sm font-medium text-opacity-70 dark:text-white md:text-base">
       {project.description}
     </p>
   </div>

@@ -1,8 +1,7 @@
 <script lang="ts">
-  import { apiURL, isAuthenticated, userData } from "$globals";
-  import { onMount } from "svelte";
+  import { isAuthenticated, userData } from "$globals";
   import tippy from "sveltejs-tippy";
-  
+
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
 
@@ -43,7 +42,7 @@
       alt="{profile?.username}'s profile picture"
       height="128"
       width="128"
-      class="rounded-full outline outline-2 md:h-24 md:w-24 lg:h-32 lg:w-32 outline-offset-4"
+      class="rounded-full outline outline-2 outline-offset-4 md:h-24 md:w-24 lg:h-32 lg:w-32"
       style="outline-color:{profileRole?.color};" />
   </div>
 
@@ -70,7 +69,7 @@
         {:else if profileRole?.name == "admin"}<img
             src="/logos/dph.svg"
             alt="logo"
-            class="transition-all hover:brightness-75 inline-block"
+            class="inline-block"
             height="24"
             width="24" /> Datapack Hub Team{:else}{titleCase(
             profileRole?.name

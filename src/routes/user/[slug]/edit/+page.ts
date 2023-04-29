@@ -5,11 +5,16 @@ import { browser } from "$app/environment";
 
 export const load = (async ({ params }) => {
   if (browser) {
-    const user = await fetchAuthed("get", apiURL + "/user/" + params.slug);
-    const me = await fetchAuthed("get", apiURL + "/user/me");
+    const [user, me] = await Promise.all([
+      fetchAuthed("get", apiURL + "/user/" + params.slug),
+      fetchAuthed("get", apiURL + "/user/me"),
+    ]);
 
-    const userJSON = (await user.json()) as User;
-    const meJSON = (await me.json()) as User;
+    const [userJSON, meJSON] = await Promise.all([
+      (await user.json()) as User,
+      (await me.json()) as User,
+    ]);
+
     if (user.ok && me.ok) {
       if (
         userJSON.username != meJSON.username &&

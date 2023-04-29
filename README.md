@@ -9,5 +9,5 @@ Once you've cloned the project and installed dependencies with `npm install` (or
 pnpm dev
 
 # or start the server and open the app in a new browser tab
-pnpm dev -- --open
+pnpm dev --open
 ```

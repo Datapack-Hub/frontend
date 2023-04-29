@@ -22,7 +22,6 @@
 	"/staff": [
 		"src/routes/staff/+page.ts"
 	],
-	"/test": [],
 	"/user/[slug]": [
 		"src/routes/user/[slug]/+page.ts"
 	],

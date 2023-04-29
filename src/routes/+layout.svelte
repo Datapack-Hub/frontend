@@ -49,7 +49,7 @@
         let user = fullUser as User;
 
         $roleInfo = (await roleRes.json()).roles.find(
-          (v: Role) => (v.name == user.role)
+          (v: Role) => v.name == user.role
         );
         $userData = user;
 

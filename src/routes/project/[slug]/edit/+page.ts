@@ -33,7 +33,7 @@ export const load = (async ({ params }) => {
     } else {
       throw error(404, {
         message: "Silly boy!",
-        description: "Doesnt exist, nerd",
+        description: "Doesn't exist, nerd!",
       });
     }
     return {};

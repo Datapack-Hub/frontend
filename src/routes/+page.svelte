@@ -73,7 +73,7 @@
 
 <main class="bg-new-white-200 transition-all dark:bg-stone-900">
   <div
-    class="flex h-[66.666vh] w-full flex-col items-center justify-start md:justify-between overflow-visible px-0 sm:px-8 md:flex-row md:px-16 lg:px-24">
+    class="flex h-[66.666vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
       <div
         class="relative mb-4 h-36 w-full md:mb-0 {visible
@@ -105,11 +105,8 @@
         of the latest and best datapacks from creators across the globe
       </h2>
       <div
-        class="mt-8 flex w-full items-center justify-evenly md:mt-16 md:justify-start">
+        class="mt-8 flex w-full items-center justify-evenly md:mt-16 md:w-64 md:justify-between">
         <a href="/projects" class="button-style">Play Now</a>
-        {#if width > 768}
-          <div class="px-4"></div>
-        {/if}
         <a href="/projects" class="button-style">Discover</a>
       </div>
     </div>

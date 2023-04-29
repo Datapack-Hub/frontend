@@ -1,6 +1,6 @@
 <script lang="ts">
   export let person: User | undefined;
-  export let role: Role | undefined
+  export let role: Role | undefined;
 
   function titleCase(str: string | undefined): string {
     if (str == undefined) return "null";

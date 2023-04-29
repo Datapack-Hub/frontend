@@ -1,8 +1,13 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import UserCard from "$components/MiniProfileCard.svelte";
+  import { fly } from "svelte/transition";
+  import { onMount } from "svelte";
 
   export let data: PageData;
+
+  let visible = false;
+  onMount(() => (visible = true));
 </script>
 
 <svelte:head>
@@ -22,9 +27,15 @@
       You will be able to recognise them by their orange or blue verification
       checkmarks.
     </p>
-    {#each data.staff ?? [] as person}
-      <UserCard person="{person}" role="{data.roleData?.find(v => person.role == v.name)}" />
-    {/each}
+    {#if visible}
+      {#each data.staff ?? [] as person, i}
+        <div in:fly="{{ x: -200, duration: 500, delay: i * 75 }}">
+          <UserCard
+            person="{person}"
+            role="{data.roleData?.find((v) => person.role == v.name)}" />
+        </div>
+      {/each}
+    {/if}
     <p class="dark:text-white">
       <b>Want to become staff?</b> We don't take applications for staff, so don't
       ask. However, the admins will notice you if you're active and helpful around
