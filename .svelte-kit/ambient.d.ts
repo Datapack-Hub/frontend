@@ -43,8 +43,6 @@ declare module '$env/static/private' {
 	export const CONDA_PROMPT_MODIFIER: string;
 	export const DriverData: string;
 	export const EFC_12356: string;
-	export const FPS_BROWSER_APP_PROFILE_STRING: string;
-	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const FP_NO_HOST_CHECK: string;
 	export const GIT_ASKPASS: string;
 	export const GIT_INSTALL_ROOT: string;
@@ -210,8 +208,6 @@ declare module '$env/dynamic/private' {
 		CONDA_PROMPT_MODIFIER: string;
 		DriverData: string;
 		EFC_12356: string;
-		FPS_BROWSER_APP_PROFILE_STRING: string;
-		FPS_BROWSER_USER_PROFILE_STRING: string;
 		FP_NO_HOST_CHECK: string;
 		GIT_ASKPASS: string;
 		GIT_INSTALL_ROOT: string;

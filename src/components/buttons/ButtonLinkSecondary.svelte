@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let clickEvent: any = undefined;
+  export let clickEvent: any;
 </script>
 
 <button

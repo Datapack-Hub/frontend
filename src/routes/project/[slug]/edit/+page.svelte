@@ -17,8 +17,6 @@
     { id: 13, text: `Utility` },
     { id: 24, text: `Vanilla+` },
   ];
-
-  let selected: { id: number; text: string };
   export let data: PageData;
 </script>
 

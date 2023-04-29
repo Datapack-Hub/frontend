@@ -1,43 +1,53 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { isAuthenticated, userData, apiURL, fetchAuthed } from "$globals";
+  import {
+    isAuthenticated,
+    userData,
+    apiURL,
+    fetchAuthed,
+    roleInfo,
+  } from "$globals";
   import { goto } from "$app/navigation";
 
   let isSmallWidth: boolean;
   let submitCmd: () => Promise<void> | undefined;
-  let cmdInput: HTMLInputElement;
-  let cmd = "";
+  let commandInput: HTMLInputElement;
+  let command = "";
 
   onMount(() => {
-    if ($userData.role == "default") {
+    if (!$roleInfo.permissions.includes("USE_CONSOLE")) {
       goto("/");
     }
     isSmallWidth = window.innerWidth < 768;
     addEventListener("resize", () => (isSmallWidth = window.innerWidth < 768));
 
     submitCmd = async () => {
-      if (cmd != "") {
-        const cons = document.getElementById("cons")!;
-        cons.innerHTML = cons.innerHTML + `<li>⫻ ${cmd}</li>`;
-        cmdInput.value = "Loading...";
+      if (command) {
+        let consoleIn = document.getElementById("cons")?.innerHTML;
+
+        consoleIn = consoleIn + `<li>⫻ ${command}</li>`;
+        commandInput.value = "Loading...";
+
         try {
           let res = await fetchAuthed("post", `${apiURL}/moderation/console`, {
-            command: cmd,
+            command: command,
           });
+
           let text = await res.text();
 
-          if (res.status == 200) {
-            cons.innerHTML = cons.innerHTML + `<pre class='resp'>${text}</pre>`;
-            cmd = "";
-          } else {
-            cons.innerHTML =
-              cons.innerHTML + `<li class='pb-4 text-red-500'>${text}</li>`;
-            cmd = "";
+          if (res.ok) {
+            consoleIn = consoleIn + `<pre class='resp'>${text}</pre>`;
+            command = "";
+            return;
           }
+
+          consoleIn = consoleIn + `<li class='pb-4 text-red-500'>${text}</li>`;
+          command = "";
         } catch (err) {
-          cons.innerHTML = cons.innerHTML + `<li class='resp err'>${err}</li>`;
-          cmd = "";
+          consoleIn = consoleIn + `<li class='resp err'>${err}</li>`;
+          command = "";
         }
+
         let objDiv = document.getElementById("big")!;
         objDiv.scrollTop = objDiv.scrollHeight;
       }
@@ -71,8 +81,8 @@
             class="ml-1 w-full border-0 bg-black outline-none">
             <input
               on:submit|preventDefault="{submitCmd}"
-              bind:value="{cmd}"
-              bind:this="{cmdInput}"
+              bind:value="{command}"
+              bind:this="{commandInput}"
               id="inpt"
               class="w-full border-none bg-black" />
           </form>

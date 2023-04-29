@@ -1,10 +1,19 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import { apiURL, fetchAuthed } from "$globals";
+import { apiURL, fetchAuthed, roleInfo } from "$globals";
 import { browser } from "$app/environment";
 
 export const load = (async ({ params }) => {
   if (browser) {
+    let role: Role = {
+      name: "default",
+      color: null,
+      verified: false,
+      permissions: [] as string[],
+    };
+
+    const unsubscribeFromRole = roleInfo.subscribe((r) => (role = r));
+
     const [user, me] = await Promise.all([
       fetchAuthed("get", apiURL + "/user/" + params.slug),
       fetchAuthed("get", apiURL + "/user/me"),
@@ -18,14 +27,16 @@ export const load = (async ({ params }) => {
     if (user.ok && me.ok) {
       if (
         userJSON.username != meJSON.username &&
-        !["admin", "moderator"].includes(meJSON.role)
+        !role.permissions.includes("EDIT_USER")
       ) {
+        unsubscribeFromRole();
         throw error(403, {
           message: "Not allowed!",
           description: "This is not you, you can't edit their profile.",
         });
       }
 
+      unsubscribeFromRole();
       return {
         profile: userJSON as User,
       };

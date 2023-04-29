@@ -52,7 +52,7 @@
           use:tippy="{moderationHoverMsg}">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-shield stroke-black dark:stroke-white transition-all hover:brightness-75"
+            class="icon icon-tabler icon-tabler-shield stroke-black transition-all hover:brightness-75 dark:stroke-white"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -74,7 +74,7 @@
             xmlns="http://www.w3.org/2000/svg"
             color="{iconColor}"
             aria-label="Notifications: Unread"
-            class="icon icon-tabler icon-tabler-bell-exclamation stroke-black dark:stroke-white transition-all hover:brightness-75"
+            class="icon icon-tabler icon-tabler-bell-exclamation stroke-black transition-all hover:brightness-75 dark:stroke-white"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -95,7 +95,7 @@
             xmlns="http://www.w3.org/2000/svg"
             color="{iconColor}"
             aria-label="Notifications: No unread"
-            class="icon icon-tabler icon-tabler-bell stroke-black dark:stroke-white transition-all hover:brightness-75"
+            class="icon icon-tabler icon-tabler-bell stroke-black transition-all hover:brightness-75 dark:stroke-white"
             width="24"
             height="24"
             viewBox="0 0 24 24"
