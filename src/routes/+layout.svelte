@@ -42,14 +42,14 @@
       let token = await getCookie("dph_token");
       if (token) {
         let [userRes, roleRes] = await Promise.all([
-          await fetchAuthed("get", `${apiURL}/user/me`),
-          await fetch(`${apiURL}/user/staff/roles`),
+          fetchAuthed("get", `${apiURL}/user/me`),
+          fetch(`${apiURL}/user/staff/roles`),
         ]);
         let fullUser = await userRes.json();
         let user = fullUser as User;
 
         $roleInfo = (await roleRes.json()).roles.find(
-          (v: Role) => (v.name = user.role)
+          (v: Role) => (v.name == user.role)
         );
         $userData = user;
 

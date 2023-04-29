@@ -30,7 +30,7 @@
   <div
     class="flex h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-32">
     <div class="w-full">
-      <ProfileCard profileData="{data.profile}" />
+      <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
       {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($userData.role)}
         <UserModeration user="{data.profile}" />
       {/if}

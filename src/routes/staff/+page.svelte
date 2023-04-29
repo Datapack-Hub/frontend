@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import UserCard from "$components/UserCard.svelte";
+  import UserCard from "$components/MiniProfileCard.svelte";
 
   export let data: PageData;
 </script>
@@ -23,7 +23,7 @@
       checkmarks.
     </p>
     {#each data.staff ?? [] as person}
-      <UserCard person="{person}" />
+      <UserCard person="{person}" role="{data.roleData?.find(v => person.role == v.name)}" />
     {/each}
     <p class="dark:text-white">
       <b>Want to become staff?</b> We don't take applications for staff, so don't

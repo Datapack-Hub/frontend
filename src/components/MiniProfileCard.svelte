@@ -1,5 +1,6 @@
 <script lang="ts">
   export let person: User | undefined;
+  export let role: Role | undefined
 
   function titleCase(str: string | undefined): string {
     if (str == undefined) return "null";
@@ -25,7 +26,7 @@
         ><h1 class="mr-2 font-brand text-xl font-bold dark:text-white">
           {person?.username}
         </h1></a>
-      <span class="{person?.role}-text font-brand font-bold"
+      <span class="font-brand font-bold" style="color:{role?.color};"
         >{titleCase(person?.role)}</span>
       <p class="line-clamp-1 font-brand dark:text-stone-300">{person?.bio}</p>
     </div>

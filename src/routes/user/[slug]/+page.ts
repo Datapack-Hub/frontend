@@ -1,10 +1,12 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
+import { apiURL } from "$globals";
 
 export const load = (async ({ params, fetch }) => {
-  const [user, projects] = await Promise.all([
-    fetch(`https://api.datapackhub.net/user/${params.slug}`),
-    fetch(`https://api.datapackhub.net/user/${params.slug}/projects`),
+  const [user, projects, role] = await Promise.all([
+    fetch(`${apiURL}/user/${params.slug}`),
+    fetch(`${apiURL}/user/${params.slug}/projects`),
+    fetch(`${apiURL}/user/staff/roles`),
   ]);
 
   if (user.status == 404) {
@@ -14,12 +16,18 @@ export const load = (async ({ params, fetch }) => {
     });
   }
 
-  if (user.ok && projects.ok) {
-    const profileJson = (await user.json()) as User;
-    const projectJson = (await projects.json()).result as Project[];
+  if (user.ok && projects.ok && role.ok) {
+    const [profileJson, projectJson] = await Promise.all([
+      (await user.json()) as User,
+      (await projects.json()).result as Project[],
+    ]);
+    const profileRole = (await role.json()).roles.find(
+      (v: Role) => v.name == profileJson?.role
+    );
     return {
       profile: profileJson,
       projects: projectJson,
+      role: profileRole,
     };
   }
   return {};

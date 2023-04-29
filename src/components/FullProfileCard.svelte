@@ -1,8 +1,10 @@
 <script lang="ts">
-  import { isAuthenticated, userData } from "$globals";
+  import { apiURL, isAuthenticated, userData } from "$globals";
+  import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
-
-  export let profileData: User | undefined;
+  
+  export let profile: User | undefined;
+  export let profileRole: Role | undefined;
 
   function titleCase(str: string | undefined): string {
     if (str == undefined) return "null";
@@ -37,23 +39,24 @@
 <div class="ms:max-w-lg flex max-w-full flex-col items-center md:items-start">
   <div class="self-center">
     <img
-      src="{profileData?.profile_icon}"
-      alt="{profileData?.username}'s profile picture"
+      src="{profile?.profile_icon}"
+      alt="{profile?.username}'s profile picture"
       height="128"
       width="128"
-      class="rounded-full outline outline-2 md:h-24 md:w-24 lg:h-32 lg:w-32 {profileData?.role}-outline outline-offset-4" />
+      class="rounded-full outline outline-2 md:h-24 md:w-24 lg:h-32 lg:w-32 outline-offset-4"
+      style="outline-color:{profileRole?.color};" />
   </div>
 
   <p
     class="mt-4 w-full text-center font-brand text-5xl font-bold dark:text-white md:text-4xl lg:text-5xl">
-    {profileData?.username}
-    {#if ["moderator", "developer", "admin"].includes(profileData?.role)}<span
+    {profile?.username}
+    {#if ["moderator", "developer", "admin"].includes(profileRole?.name)}<span
         class="material-icons text-md align-middle text-orange-500 transition-all hover:scale-125"
         use:tippy="{orangeVerifiedHover}">verified</span
-      >{:else if profileData?.role == "helper"}<span
+      >{:else if profile?.role == "helper"}<span
         class="material-icons text-md align-middle text-blue-500 transition-all hover:scale-125"
         use:tippy="{blueVerifiedHover}">verified</span
-      >{:else if profileData?.role == "verified"}<span
+      >{:else if profile?.role == "verified"}<span
         class="material-icons text-md align-middle text-emerald-500 transition-all hover:scale-125"
         use:tippy="{emeraldVerifiedHover}">verified</span
       >{/if}
@@ -61,25 +64,25 @@
 
   <p
     class="mt-1 w-full text-center align-middle font-brand font-semibold dark:text-white sm:text-base md:text-lg">
-    {#if profileData?.role != "default"}
-      <span class="{profileData?.role}-text">
-        {#if profileData?.role == "nerd"}🤓 Nerd
-        {:else if profileData?.role == "admin"}<img
+    {#if profileRole?.name != "default"}
+      <span style="color:{profileRole?.color};">
+        {#if profileRole?.name == "nerd"}🤓 Nerd
+        {:else if profileRole?.name == "admin"}<img
             src="/logos/dph.svg"
             alt="logo"
-            class="min-h-8 float-left transition-all hover:brightness-75"
+            class="transition-all hover:brightness-75 inline-block"
             height="24"
             width="24" /> Datapack Hub Team{:else}{titleCase(
-            profileData?.role
+            profileRole?.name
           )}{/if}
       </span>
     {/if}
   </p>
   <p
     class="styled-scrollbar my-3 max-h-64 w-full overflow-y-scroll whitespace-pre-line rounded-xl bg-white/40 p-2 font-brand text-sm font-light dark:bg-stone-700/40 dark:text-white md:text-lg">
-    {profileData?.bio.replaceAll("\\n", "\n")}
+    {profile?.bio.replaceAll("\\n", "\n")}
   </p>
-  {#if $isAuthenticated && $userData.id === profileData?.id}
+  {#if $isAuthenticated && $userData.id === profile?.id}
     <a
       href="/user/{$userData.username}/edit"
       class="text-md mt-1 w-full rounded-md border-2 border-red-400 bg-red-400/10 px-2 py-2 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:text-lg lg:text-lg">
