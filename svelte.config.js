@@ -19,6 +19,7 @@ const config = {
       $components: "./src/components/",
       $globals: "./src/routes/globals.ts",
     },
+    
   },
 };
 
