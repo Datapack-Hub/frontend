@@ -35,7 +35,7 @@
         </tr>
         {#each logsJson ?? [] as i}
           <tr>
-            <td>{i.username}</td>
+            <td><a href="/user/{i.username}" aria-label="Link to {i.username}'s profile" class="hover:text-blue-500 hover:underline">{i.username}</a></td>
             <td>{i.action}</td>
             <td>{new Date(i.time).toLocaleString()}</td>
           </tr>
