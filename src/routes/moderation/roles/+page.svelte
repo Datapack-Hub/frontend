@@ -30,7 +30,7 @@
 </svelte:head>
 
 <main
-  class="overflow-y-scroll bg-new-white-200 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class=" bg-new-white-200 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div class="h-screen w-full flex-col md:flex-row md:items-start md:pt-5">
     <h1
       class="mt-8 pb-2 text-center font-brand text-3xl font-bold dark:text-white md:text-start md:text-4xl lg:text-5xl">
@@ -47,9 +47,9 @@
           <th class="p-2 dark:text-white">Permissions</th>
         </tr>
         {#each rolesJson ?? [] as i}
-          <tr>
-            <td><p style="color: {i.color};">{titleCase(i.name)}</p></td>
-            <td style="color: {i.color};">{i.permissions[0]}</td>
+          <tr class="odd:bg-stone-700/5">
+            <td><p style="color: {i.color};" class="dark:text-white">⬤ {titleCase(i.name)}</p></td>
+            <td class="dark:text-white">{#if i.permissions.length != 0}{i.permissions.join(" | ")}{:else}None{/if}</td>
           </tr>
         {/each}
       </table>
