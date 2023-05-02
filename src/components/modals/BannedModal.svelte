@@ -2,6 +2,7 @@
   import CasualLine from "$components/CasualLine.svelte";
   import { isAuthenticated, removeCookie } from "$globals";
   import SvelteMarkdown from "svelte-markdown";
+  import { onMount } from "svelte";
 
   let visible = false;
   let banReason: string;
@@ -13,13 +14,13 @@
       }
     | undefined;
 
-  (() => {
+  onMount(() => {
     if (bannedUser && bannedUser.banned == true) {
       banReason = bannedUser.banData.message;
       expiry = bannedUser.banData.expires;
       visible = true;
     }
-  })();
+  })
 
   function signOut() {
     removeCookie("dph_token");

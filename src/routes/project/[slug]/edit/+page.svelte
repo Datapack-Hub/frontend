@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
+  let activePage = "versions"
 
   let categories = [
     { id: 1, text: `Adventure` },
@@ -33,11 +34,14 @@
     </h1>
     <br />
     <div class="mb-2 flex space-x-2">
-      <span class="rounded-xl bg-stone-600 p-1 px-3 font-brand dark:text-white"
-        >Details</span>
-      <span class="rounded-xl bg-stone-800 p-1 px-3 font-brand dark:text-white"
-        >Versions</span>
+      <button class="rounded-xl {activePage === 'details' ? 'bg-stone-600' : 'bg-stone-800'} hover:scale-102 p-1 px-3 font-brand dark:text-white cursor-pointer" on:click={() => activePage = 'details'}
+        >Details</button>
+      <button class="rounded-xl {activePage === 'versions' ? 'bg-stone-600' : 'bg-stone-800'} hover:scale-102 p-1 px-3 font-brand dark:text-white cursor-pointer" on:click={() => activePage = 'versions'}
+        >Versions</button>
     </div>
+
+    <!-- DETAILS-->
+    {#if activePage == "details"}
     <div class="text-center align-middle md:text-start">
       <div class=" rounded-xl bg-stone-800 p-2 pb-2">
         <!-- Icon -->
@@ -111,6 +115,18 @@
         </button>
       </div>
     </div>
+
+    <!-- VERSIONS-->
+    {:else if activePage == "versions"}
+    <div class="text-center align-middle md:text-start">
+      <div class=" rounded-xl bg-stone-800 p-2 pb-2">
+        <button class="px-2 py-1 bg-green-600 font-brand font-bold rounded-xl dark:text-white">Create a version</button>
+        <!-- <p class="align-middle font-brand dark:text-new-white-200">No versions yet!</p> -->
+        
+      </div>
+    </div>
+
+    {/if}
   </div>
 </main>
 <br />
