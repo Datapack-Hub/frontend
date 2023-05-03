@@ -54,6 +54,7 @@
         $userData = user;
 
         banData = { banned: fullUser.banned, banData: fullUser.banData };
+        
         localStorage.setItem("userData", JSON.stringify($userData));
 
         $isAuthenticated = true;

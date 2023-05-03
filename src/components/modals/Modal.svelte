@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fly } from "svelte/transition";
+
   let visible = false;
   export function open() {
     visible = true;
@@ -10,7 +12,7 @@
 </script>
 
 {#if visible}
-  <div class="fixed left-0 top-0 flex h-screen w-screen backdrop-blur-lg">
+  <div in:fly={{y: 300}} class="fixed left-0 top-0 flex h-screen w-screen backdrop-blur-lg">
     <div
       class="relative m-auto w-1/3 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
       <button

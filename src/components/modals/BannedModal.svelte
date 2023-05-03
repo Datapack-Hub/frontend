@@ -14,12 +14,15 @@
       }
     | undefined;
 
+    console.log(bannedUser)
   onMount(() => {
     if (bannedUser && bannedUser.banned == true) {
       banReason = bannedUser.banData.message;
       expiry = bannedUser.banData.expires;
       visible = true;
+      console.log("banned")
     }
+    console.log("banned")
   });
 
   function signOut() {
