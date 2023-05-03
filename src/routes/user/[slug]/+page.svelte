@@ -26,26 +26,26 @@
 </svelte:head>
 
 <main
-  class="bg-new-white-200 px-8 transition-all dark:bg-stone-900 md:px-16 lg:px-24 flex w-full flex-col items-center md:flex-row md:items-start md:pt-32">
-    <div class="w-full">
-      <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
-      {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($userData.role)}
-        <UserModeration user="{data.profile}" />
-      {/if}
-    </div>
-    <div
-      class="styled-scrollbar mx-24 mt-16 h-full w-full overflow-y-auto md:mt-0">
-      <h1 class="text-center text-xl font-bold dark:text-white md:text-left">
-        {data.profile?.username}'s projects
-      </h1>
-      {#if data.projects?.length == 0}
-        <p class="mt-48 text-center text-3xl text-opacity-40 dark:text-white">
-          No projects!
-        </p>
-      {:else}
-        {#each data.projects ?? [] as project}
-          <ProjectComponent project="{project}" />
-        {/each}
-      {/if}
-    </div>
+  class="flex w-full flex-col items-center bg-new-white-200 px-8 transition-all dark:bg-stone-900 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
+  <div class="w-full">
+    <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
+    {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($userData.role)}
+      <UserModeration user="{data.profile}" />
+    {/if}
+  </div>
+  <div
+    class="styled-scrollbar mx-24 mt-16 h-full w-full overflow-y-auto md:mt-0">
+    <h1 class="text-center text-xl font-bold dark:text-white md:text-left">
+      {data.profile?.username}'s projects
+    </h1>
+    {#if data.projects?.length == 0}
+      <p class="mt-48 text-center text-3xl text-opacity-40 dark:text-white">
+        No projects!
+      </p>
+    {:else}
+      {#each data.projects ?? [] as project}
+        <ProjectComponent project="{project}" />
+      {/each}
+    {/if}
+  </div>
 </main>

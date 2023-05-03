@@ -27,7 +27,12 @@
           {person?.username}
         </h1></a>
       <span class="font-brand font-bold" style="color:{role?.color};"
-        >{titleCase(person?.role)}</span>
+        >{#if person?.role != "admin"}{titleCase(person?.role)}{:else}<img
+            src="/logos/dph.svg"
+            alt="logo"
+            class="inline-block"
+            height="18"
+            width="18" /> DH Team{/if}</span>
       <p class="line-clamp-1 font-brand dark:text-stone-300">{person?.bio}</p>
     </div>
   </div>

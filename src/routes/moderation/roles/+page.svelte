@@ -48,8 +48,14 @@
         </tr>
         {#each rolesJson ?? [] as i}
           <tr class="odd:bg-stone-700/5">
-            <td><p style="color: {i.color};" class="dark:text-white">⬤ {titleCase(i.name)}</p></td>
-            <td class="dark:text-white">{#if i.permissions.length != 0}{i.permissions.join(" | ")}{:else}None{/if}</td>
+            <td
+              ><p style="color: {i.color};" class="dark:text-white">
+                ⬤ {titleCase(i.name)}
+              </p></td>
+            <td class="dark:text-white"
+              >{#if i.permissions.length != 0}{i.permissions.join(
+                  " | "
+                )}{:else}None{/if}</td>
           </tr>
         {/each}
       </table>

@@ -20,7 +20,7 @@
       expiry = bannedUser.banData.expires;
       visible = true;
     }
-  })
+  });
 
   function signOut() {
     removeCookie("dph_token");
