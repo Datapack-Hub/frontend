@@ -17,11 +17,7 @@
   import { goto } from "$app/navigation";
   import Footer from "$components/nav/Footer.svelte";
   import { setContext } from "svelte";
-
-  let banData:
-    | { banned: boolean; banData: { message: string; expires: number } }
-    | undefined;
-
+  
   (async () => {
     if (browser) {
       $userData = JSON.parse(localStorage.getItem("userData")!) as User;
@@ -53,8 +49,6 @@
         );
         $userData = user;
 
-        banData = { banned: fullUser.banned, banData: fullUser.banData };
-        
         localStorage.setItem("userData", JSON.stringify($userData));
 
         $isAuthenticated = true;
@@ -71,7 +65,7 @@
 <div class="{$isDark ? ' dark' : ''}">
   <div class="min-h-screen bg-new-white-200 dark:bg-stone-900">
     <Navbar />
-    <BannedModal bannedUser="{banData}" />
+    <BannedModal />
     <slot />
   </div>
   <Footer />

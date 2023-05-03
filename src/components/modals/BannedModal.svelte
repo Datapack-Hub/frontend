@@ -1,26 +1,28 @@
 <script lang="ts">
   import CasualLine from "$components/CasualLine.svelte";
-  import { isAuthenticated, removeCookie } from "$globals";
+  import { apiURL, fetchAuthed, isAuthenticated, removeCookie } from "$globals";
   import SvelteMarkdown from "svelte-markdown";
   import { onMount } from "svelte";
+  import { browser } from "$app/environment";
 
   let visible = false;
   let banReason: string;
   let expiry: number;
-  export let bannedUser:
-    | {
-        banned: boolean;
-        banData: { message: string; expires: number };
-      }
-    | undefined;
 
-  onMount(() => {
-    console.log(bannedUser);
-    if (bannedUser && bannedUser.banned == true) {
-      banReason = bannedUser.banData.message;
-      expiry = bannedUser.banData.expires;
-      visible = true;
-      console.log("banned");
+  onMount(async () => {
+    if (browser) {
+      let me = await fetchAuthed("get", `${apiURL}/user/me`);
+      if (me.ok) {
+        let meJson = (await me.json()) as {
+          banned: boolean;
+          banData: { message: string; expires: number };
+        };
+        if (meJson.banned == true) {
+          banReason = meJson.banData.message;
+          expiry = meJson.banData.expires;
+          visible = true;
+        }
+      }
     }
   });
 
