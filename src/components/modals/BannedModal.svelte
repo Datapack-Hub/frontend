@@ -57,14 +57,14 @@
         class="my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300">
         <SvelteMarkdown source="{banReason}" />
       </p>
-      <p class="font-brand dark:text-white mt-2">
+      <p class="font-brand dark:text-white mt-6">
         <b>Your ban will expire:</b>
-        {new Date(expiry).toLocaleString()}. <br><br> Until then, wait for the ban
+        {new Date(expiry).toLocaleString()}. <br> Until then, wait for the ban
         to expire, and read
         <a href="/rules" class="text-cyan-500 underline">our rules</a>.
       </p>
       <button
-        class="button-style mt-2"
+        class="button-style mt-4"
         on:click="{signOut}">Log Out</button>
     </div>
   </div>
