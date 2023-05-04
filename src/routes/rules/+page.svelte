@@ -1,5 +1,7 @@
 <script lang="ts">
   import CasualLine from "$components/CasualLine.svelte";
+
+  export const prerender = true;
 </script>
 
 <svelte:head>
