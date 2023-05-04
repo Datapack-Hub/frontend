@@ -1,5 +1,5 @@
 <script>
-  import CasualLine from "$components/CasualLine.svelte";
+  export const prerender = false;
 </script>
 
 <footer
