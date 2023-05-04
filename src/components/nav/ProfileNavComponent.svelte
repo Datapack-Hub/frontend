@@ -58,9 +58,9 @@
     {/if}
     <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}">
       {#if notifsAvailable}
-        <IconUnread height="24" width="24" color="{iconColor}" />
+        <IconUnread height="24" width="24" style={{color: iconColor}} />
       {:else}
-        <IconRead height="24" width="24" color="{iconColor}" />
+        <IconRead height="24" width="24" style={{color: iconColor}} />
       {/if}
     </a>
     <a
