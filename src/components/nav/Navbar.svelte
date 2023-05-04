@@ -3,15 +3,15 @@
   import { onMount } from "svelte";
   import ColorSchemeSelector from "../buttons/ColorSchemeSelector.svelte";
   import ProfileNavComponent from "./ProfileNavComponent.svelte";
-  import IconCompass from '~icons/tabler/Compass.svelte'
+  import IconCompass from "~icons/tabler/Compass.svelte";
 
   let scrollY: number;
   let innerWidth: number;
   let showNavItems = false;
   let showNavBG: boolean;
-  
+
   onMount(() => (showNavItems = true));
-  
+
   $: iconColor = $isDark ? "white" : "black";
   $: showNavBG = scrollY > 50 || innerWidth < 768;
 </script>
@@ -50,7 +50,10 @@
             href="/projects"
             aria-label="Link to the Datapack Hub projects page"
             class="z-20 pl-6 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
-            <IconCompass height="24" width="24" style={{color: iconColor}}/>
+            <IconCompass
+              height="24"
+              width="24"
+              style="{{ color: iconColor }}" />
           </a>
         {/if}
         {#if innerWidth > 768}

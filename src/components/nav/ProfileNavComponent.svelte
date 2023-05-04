@@ -10,10 +10,10 @@
   } from "$globals";
   import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
-  import IconShield from '~icons/tabler/Shield.svelte'
-  import IconUnread from '~icons/tabler/BellExclamation.svelte'
-  import IconRead from '~icons/tabler/Bell.svelte'
-  
+  import IconShield from "~icons/tabler/Shield.svelte";
+  import IconUnread from "~icons/tabler/BellExclamation.svelte";
+  import IconRead from "~icons/tabler/Bell.svelte";
+
   let signInHoverMsg = {
     content: "Sign In",
     placement: "bottom",
@@ -30,7 +30,6 @@
   };
 
   let notifsAvailable = false;
-  $: iconColor = $isDark ? "white" : "black";
 
   onMount(async () => {
     if (browser) {
@@ -42,46 +41,46 @@
       }
     }
   });
+
+  $: iconColor = $isDark ? "white" : "black";
 </script>
 
 <div class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
-    {#key $isDark}
-      {#if ["moderator", "developer", "admin"].includes($roleInfo.name)}
-        <a
-          href="/moderation/console"
-          aria-label="Moderation console"
-          class="z-20 mr-6"
-          use:tippy="{moderationHoverMsg}">
-          <IconShield height="24" width="24" style={{color: iconColor}}/>
-        </a>
-      {/if}
-      <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}">
-        {#if notifsAvailable}
-          <IconUnread height="24" width="24" style={{color: iconColor}} />
-        {:else}
-          <IconRead height="24" width="24" style={{color: iconColor}} />
-        {/if}
-      </a>
+    {#if ["moderator", "developer", "admin"].includes($roleInfo.name)}
       <a
-        href="/user/{$userData.username}"
-        use:tippy="{{
-          content:
-            $userData.username +
-            "<span class='items-center'><br /><button onclick=\"document.cookie = 'dph_token' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; window.location.replace('/')\" class='text-sky-500'>Sign Out</a></span>",
-          placement: 'bottom',
-          interactive: true,
-          allowHTML: true,
-        }}">
-        <img
-          src="{$userData.profile_icon}&size=48"
-          alt="{$userData.username}'s profile picture"
-          height="32"
-          width="32"
-          class="ml-6 rounded-full outline outline-2 outline-offset-2"
-          style="outline-color:{$roleInfo.color ?? '#eab308'};" />
+        href="/moderation/console"
+        aria-label="Moderation console"
+        class="z-20 mr-6"
+        use:tippy="{moderationHoverMsg}">
+        <IconShield height="24" width="24" style="{{ color: iconColor }}" />
       </a>
-    {/key}
+    {/if}
+    <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}">
+      {#if notifsAvailable}
+        <IconUnread height="24" width="24" style="{{ color: iconColor }}" />
+      {:else}
+        <IconRead height="24" width="24" style="{{ color: iconColor }}" />
+      {/if}
+    </a>
+    <a
+      href="/user/{$userData.username}"
+      use:tippy="{{
+        content:
+          $userData.username +
+          "<span class='items-center'><br /><button onclick=\"document.cookie = 'dph_token' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; window.location.replace('/')\" class='text-sky-500'>Sign Out</a></span>",
+        placement: 'bottom',
+        interactive: true,
+        allowHTML: true,
+      }}">
+      <img
+        src="{$userData.profile_icon}&size=48"
+        alt="{$userData.username}'s profile picture"
+        height="32"
+        width="32"
+        class="ml-6 rounded-full outline outline-2 outline-offset-2"
+        style="outline-color:{$roleInfo.color ?? '#eab308'};" />
+    </a>
   {:else}
     <a
       id="sign_in"
