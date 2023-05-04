@@ -21,7 +21,6 @@ declare namespace App {
 }
 
 declare module "sveltejs-tippy";
-declare module "typewriter-effect";
 
 declare type User = {
   id: number;
@@ -58,3 +57,6 @@ declare type Role = {
   verified: boolean;
   permissions: string[];
 };
+
+/// <reference types="@sveltejs/kit" />
+/// <reference types="unplugin-icons/types/svelte" />

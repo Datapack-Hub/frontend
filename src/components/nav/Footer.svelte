@@ -12,7 +12,7 @@
         alt="logo"
         class="h-12 w-full transition-all hover:brightness-75 md:w-auto" />
       <p
-        class="w-full text-center font-brand text-2xl font-bold transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:text-left">
+        class="hidden w-full text-center font-brand text-2xl font-bold transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:text-left md:block">
         Datapack Hub
       </p>
     </div>

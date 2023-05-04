@@ -10,7 +10,10 @@
   } from "$globals";
   import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
-
+  import IconShield from '~icons/tabler/Shield.svelte'
+  import IconUnread from '~icons/tabler/BellExclamation.svelte'
+  import IconRead from '~icons/tabler/Bell.svelte'
+  
   let signInHoverMsg = {
     content: "Sign In",
     placement: "bottom",
@@ -27,7 +30,7 @@
   };
 
   let notifsAvailable = false;
-  let iconColor = $isDark ? "white" : "black";
+  $: iconColor = $isDark ? "white" : "black";
 
   onMount(async () => {
     if (browser) {
@@ -50,65 +53,14 @@
           aria-label="Moderation console"
           class="z-20 mr-6"
           use:tippy="{moderationHoverMsg}">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-shield stroke-black transition-all hover:brightness-75 dark:stroke-white"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path
-              d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"
-            ></path>
-          </svg>
+          <IconShield height="24" width="24" style={{color: iconColor}}/>
         </a>
       {/if}
       <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}">
         {#if notifsAvailable}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            color="{iconColor}"
-            aria-label="Notifications: Unread"
-            class="icon icon-tabler icon-tabler-bell-exclamation stroke-black transition-all hover:brightness-75 dark:stroke-white"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path
-              d="M15 17h-11a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6a2 2 0 1 1 4 0a7 7 0 0 1 4 6v1.5"
-            ></path>
-            <path d="M9 17v1a3 3 0 0 0 6 0v-1"></path>
-            <path d="M19 16v3"></path>
-            <path d="M19 22v.01"></path>
-          </svg>
+          <IconUnread height="24" width="24" style={{color: iconColor}}>
         {:else}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            color="{iconColor}"
-            aria-label="Notifications: No unread"
-            class="icon icon-tabler icon-tabler-bell stroke-black transition-all hover:brightness-75 dark:stroke-white"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path
-              d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"
-            ></path>
-            <path d="M9 17v1a3 3 0 0 0 6 0v-1"></path>
-          </svg>
+          <IconRead height="24" width="24" style={{color: iconColor}}>
         {/if}
       </a>
       <a
