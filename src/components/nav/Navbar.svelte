@@ -10,12 +10,12 @@
   let showNavItems = false;
   let showNavBG: boolean;
 
-  onMount(() => showNavItems = true);
+  onMount(() => (showNavItems = true));
 
   $: showNavBG = scrollY > 50 || innerWidth < 768;
 </script>
 
-<svelte:window bind:scrollY bind:innerWidth />
+<svelte:window bind:scrollY="{scrollY}" bind:innerWidth="{innerWidth}" />
 
 <nav
   id="nav"

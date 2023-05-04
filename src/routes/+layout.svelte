@@ -17,7 +17,7 @@
   import { goto } from "$app/navigation";
   import Footer from "$components/nav/Footer.svelte";
   import { setContext } from "svelte";
-  
+
   (async () => {
     if (browser) {
       $userData = JSON.parse(localStorage.getItem("userData")!) as User;
