@@ -34,7 +34,7 @@
       </h3>
       <h3
         class="w-1/3 text-center font-brand text-xl font-bold text-orange-500 md:text-right">
-        Information
+        Legal & info
       </h3>
     </div>
     <!-- put header content here -->
@@ -46,7 +46,7 @@
       <ul class="w-1/3 text-center font-brand dark:text-white md:text-right">
         <li><a href="https://discord.gg/aEXsdjjdu4">Discord</a></li>
         <li><a href="https://twitter.com/DatapackHub">Twitter</a></li>
-        <li><a href="https://github.com/Datapack-Hub">Community Discord</a></li>
+        <li><a href="https://github.com/Datapack-Hub">GitHub</a></li>
       </ul>
       <ul class="w-1/3 text-center font-brand dark:text-white md:text-right">
         <li><a href="/rules">Site Rules</a></li>
