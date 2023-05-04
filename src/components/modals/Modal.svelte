@@ -12,9 +12,8 @@
 </script>
 
 {#if visible}
-  <div
-    class="fixed left-0 top-0 flex h-screen w-screen backdrop-blur-lg">
-    <div 
+  <div class="fixed left-0 top-0 flex h-screen w-screen backdrop-blur-lg">
+    <div
       in:fly="{{ y: 300 }}"
       class="relative m-auto w-1/3 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
       <button
