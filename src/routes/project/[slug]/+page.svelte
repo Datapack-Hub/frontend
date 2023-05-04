@@ -24,7 +24,7 @@
 </svelte:head>
 
 <main
-  class="h-screen bg-new-white-200 px-0 transition-all dark:bg-stone-900 sm:px-8 md:px-16 lg:px-24">
+  class="h-screen bg-new-white-200 px-0 transition-all dark:bg-stone-900 sm:px-8 md:px-16 lg:px-24 -translate-y-20 md:translate-y-0">
   <div class="pt-16"></div>
   <div
     class="flex w-full rounded-xl bg-new-white-300 p-4 dark:bg-new-white-200 dark:bg-opacity-10">

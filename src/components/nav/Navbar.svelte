@@ -20,7 +20,7 @@
 
 <nav
   id="nav"
-  class="sticky top-[calc(100%-8rem)] z-40 w-full px-8 transition-all md:top-0 md:translate-y-0 md:px-16 lg:px-24 {showNavBG
+  class="sticky md:fixed top-[calc(100%-8rem)] z-40 w-full px-8 transition-all md:top-0 md:translate-y-0 md:px-16 lg:px-24 {showNavBG
     ? 'bg-new-white-100 dark:bg-stone-800'
     : ''} bg-opacity-70 dark:bg-opacity-70">
   <div

@@ -11,7 +11,7 @@
 </svelte:head>
 
 <main
-  class="bg-new-white-200 px-8 transition-all dark:bg-stone-900 md:px-16 lg:px-24">
+  class="bg-new-white-200 px-8 transition-all dark:bg-stone-900 md:px-16 lg:px-24 -translate-y-20 md:translate-y-0">
   <div
     class="h-screen w-full items-center overflow-auto md:flex-row md:items-start">
     <h1

@@ -26,7 +26,7 @@
 </svelte:head>
 
 <main
-  class="flex w-full flex-col items-center bg-new-white-200 px-8 transition-all dark:bg-stone-900 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
+  class="flex w-full flex-col items-center bg-new-white-200 px-8 transition-all dark:bg-stone-900 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24 -translate-y-20 md:translate-y-0">
   <div class="w-full">
     <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
     {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($userData.role)}
