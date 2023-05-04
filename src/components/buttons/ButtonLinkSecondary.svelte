@@ -1,5 +1,6 @@
 <script lang="ts">
   export let clickEvent: any;
+  export const prerender = true;
 </script>
 
 <button
