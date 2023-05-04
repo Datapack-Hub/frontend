@@ -63,7 +63,7 @@
 
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? 'dark' : ''}">
-  <div class="min-h-screen bg-new-white-200 dark:bg-stone-900">
+  <div class="min-h-screen bg-new-white-200 dark:bg-stone-900 transition-all">
     <Navbar />
     <BannedModal />
     <slot />

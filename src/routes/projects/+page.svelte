@@ -3,6 +3,12 @@
   import ProjectComponent from "$components/ProjectComponent.svelte";
   import type { PageData } from "./$types";
 
+  import IconSearch from '~icons/tabler/Search.svelte'
+
+  function search() {
+    alert("this will search when search is implemented ;)")
+  }
+
   export let data: PageData;
 </script>
 
@@ -11,36 +17,42 @@
 </svelte:head>
 
 <main
-  class="bg-new-white-200 px-8 transition-all dark:bg-stone-900 md:px-16 lg:px-24 -translate-y-20 md:translate-y-0">
+  class="px-8 md:px-16 lg:px-24">
   <div
-    class="h-screen w-full items-center overflow-auto md:flex-row md:items-start">
+    class="items-center pt-0 md:pt-20 -translate-y-20 md:translate-y-0 md:flex-row md:items-start">
     <h1
       class="mt-8 pb-2 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Browse Datapacks
     </h1>
-    <br />
-    <div class="md-5 flex items-center">
-      <p class="font-bold dark:text-white">Sort:</p>
-      <a
-        href="?sort=updated"
-        class="btn-sm-start {data.sortMode == 'updated'
-          ? 'bg-orange-500'
-          : 'bg-orange-500 bg-opacity-0 text-orange-500 transition-all hover:bg-opacity-20'}"
-        >Updated</a>
-      <a
-        href="?sort=trending"
-        class="btn-sm-start {data.sortMode == 'trending'
-          ? 'bg-orange-500'
-          : 'bg-orange-500 bg-opacity-0 text-orange-500 transition-all hover:bg-opacity-20'}"
-        >Trending</a>
+    <div class="flex my-4">
+      <div class="bg-new-white-300 dark:bg-stone-600 rounded-full px-2 py-1 w-64 flex items-center focus-within:outline focus-within:outline-2 focus-within:outline-orange-500">
+        <IconSearch color="white"/>
+        <form action="get" on:submit|preventDefault="{search}">
+          <input placeholder="Search Datapacks" type="text" class="bg-new-white-300 dark:bg-stone-600 ml-2 dark:text-white focus:outline-none placeholder:text-stone-400" on:submit|preventDefault="{search}">
+        </form>
+      </div>
+      <div class="px-2"></div>
+      <div class="flex items-center">
+        <a href="/projects" class="px-1 dark:text-white bg-orange-600 mx-1 rounded-full w-6 h-6 text-center">1</a>
+        <a href="/projects" class="px-1 dark:text-white bg-orange-600 mx-1 rounded-full w-6 h-6 text-center">2</a>
+        <a href="/projects" class="px-1 dark:text-white bg-orange-600 mx-1 rounded-full w-6 h-6 text-center">3</a>
+        <a href="/projects" class="px-1 dark:text-white bg-orange-600 mx-1 rounded-full w-6 h-6 text-center">4</a>
+        <a href="/projects" class="px-1 dark:text-white bg-orange-600 mx-1 rounded-full w-6 h-6 text-center">5</a>
+      </div>
     </div>
     <CasualLine />
-    <div class="mt-4 flex w-full flex-col items-center">
-      {#if data.projects}
-        {#each data.projects as project}
-          <ProjectComponent project="{project}" />
-        {/each}
-      {/if}
+    <div class="mt-4 flex">
+      <div class="w-1/3 bg-stone-600 rounded-xl">
+        
+      </div>
+      <div class="mx-auto"></div>
+      <div class="w-1/2">
+        {#if data.projects}
+          {#each data.projects as project}
+            <ProjectComponent project="{project}" />
+          {/each}
+        {/if}
+      </div>
     </div>
   </div>
 </main>

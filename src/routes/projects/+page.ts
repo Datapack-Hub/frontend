@@ -7,9 +7,6 @@ export const load = (async ({ fetch, url }) => {
     const data = (await proj.json()).result as Project[];
     return {
       projects: data,
-      sortMode: url.searchParams.has("sort")
-        ? url.searchParams.get("sort")
-        : "trending",
     };
   }
 
