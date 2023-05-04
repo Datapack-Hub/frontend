@@ -13,9 +13,9 @@
 
 {#if visible}
   <div
-    in:fly="{{ y: 300 }}"
     class="fixed left-0 top-0 flex h-screen w-screen backdrop-blur-lg">
-    <div
+    <div 
+      in:fly="{{ y: 300 }}"
       class="relative m-auto w-1/3 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
       <button
         class="float-right cursor-pointer select-none font-black dark:text-white"
