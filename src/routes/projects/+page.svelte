@@ -44,16 +44,19 @@
     </div>
     <CasualLine />
     <div class="mt-4 flex">
-      <div class="w-1/5 bg-stone-800 rounded-xl">
-        
-      </div>
+      <div class="w-1/5 bg-stone-800 rounded-xl"> </div>
       <div class="w-full mx-3">
         {#if data.projects}
+        {#if data.projects.length >= 1}
           {#each data.projects as project}
             <ProjectComponent project="{project}" />
           {/each}
+        {:else}
+        <h2 class="dark:text-white font-brand">No results found</h2>
         {/if}
-      </div>
+        {:else}
+          <h2 class="dark:text-white font-brand">No results found</h2>
+        {/if}
     </div>
   </div>
 </main>
