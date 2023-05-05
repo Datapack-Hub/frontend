@@ -6,9 +6,11 @@
 
   import IconSearch from '~icons/tabler/Search.svelte'
 
+  let query: string
+
   async function search() {
-    let x = await fetch(apiURL + "/projects/search?query=" + encodeURI((document.getElementById("query") as HTMLInputElement).value))
-    data.projects = (await x.json()).result as Project[]
+    let searchResult = await fetch(apiURL + `/projects/search?query=${query}`)
+    data.projects = (await searchResult.json()).result as Project[]
   }
 
   export let data: PageData;
@@ -28,10 +30,8 @@
     </h1>
     <div class="flex my-4">
       <div class="bg-new-white-300 dark:bg-stone-600 rounded-full px-2 py-1 w-64 flex items-center focus-within:outline focus-within:outline-2 focus-within:outline-orange-500">
-        <button on:click={search}><IconSearch color="white"/></button>
-        <form action="get" on:submit|preventDefault="{search}">
-          <input placeholder="Search Datapacks" type="text" id="query" class="bg-new-white-300 dark:bg-stone-600 ml-2 dark:text-white focus:outline-none placeholder:text-stone-400 font-brand" on:submit|preventDefault="{search}">
-        </form>
+        <IconSearch color="white" on:click={search}/>
+        <input placeholder="Search Datapacks" type="text" bind:value="{query}" id="query" class="bg-new-white-300 dark:bg-stone-600 ml-2 dark:text-white focus:outline-none placeholder:text-stone-400 font-brand" on:change="{search}">
       </div>
       <div class="px-2"></div>
       <div class="flex items-center">
