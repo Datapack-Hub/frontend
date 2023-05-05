@@ -3,6 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: theme("colors.dph-orange");
+}
+
 .v-center {
   transform: translateY(-50%);
 }

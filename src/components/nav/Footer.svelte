@@ -1,7 +1,3 @@
-<script>
-  export const prerender = true;
-</script>
-
 <footer
   class="flex h-96 flex-col items-center justify-evenly border-t-2 border-new-white-100 bg-new-white-200 px-8 dark:border-stone-700 dark:bg-stone-900 md:h-64 md:flex-row md:justify-between md:px-16 lg:px-24"
   id="footer">
@@ -18,7 +14,7 @@
     </div>
     <p
       class="mt-4 font-brand text-sm font-light text-opacity-25 dark:text-white dark:text-opacity-25">
-      Copyright © 2023 Datapack Hub
+      Copyright © 2023 Datapack Hub<br>Not an official Minecraft product. Not approved by or associated with Mojang Studios
     </p>
   </div>
   <div></div>
