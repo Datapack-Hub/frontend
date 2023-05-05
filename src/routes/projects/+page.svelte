@@ -1,12 +1,14 @@
 <script lang="ts">
   import CasualLine from "$components/CasualLine.svelte";
   import ProjectComponent from "$components/ProjectComponent.svelte";
+  import { apiURL } from "$globals";
   import type { PageData } from "./$types";
 
   import IconSearch from '~icons/tabler/Search.svelte'
 
-  function search() {
-    alert("this will search when search is implemented ;)")
+  async function search() {
+    let x = await fetch(apiURL + "/projects/search?query=" + encodeURI((document.getElementById("query") as HTMLInputElement).value))
+    data.projects = (await x.json()).result as Project[]
   }
 
   export let data: PageData;
@@ -28,7 +30,7 @@
       <div class="bg-new-white-300 dark:bg-stone-600 rounded-full px-2 py-1 w-64 flex items-center focus-within:outline focus-within:outline-2 focus-within:outline-orange-500">
         <IconSearch color="white"/>
         <form action="get" on:submit|preventDefault="{search}">
-          <input placeholder="Search Datapacks" type="text" class="bg-new-white-300 dark:bg-stone-600 ml-2 dark:text-white focus:outline-none placeholder:text-stone-400" on:submit|preventDefault="{search}">
+          <input placeholder="Search Datapacks" type="text" id="query" class="bg-new-white-300 dark:bg-stone-600 ml-2 dark:text-white focus:outline-none placeholder:text-stone-400 font-brand" on:submit|preventDefault="{search}">
         </form>
       </div>
       <div class="px-2"></div>
@@ -42,11 +44,10 @@
     </div>
     <CasualLine />
     <div class="mt-4 flex">
-      <div class="w-1/3 bg-stone-600 rounded-xl">
+      <div class="w-1/5 bg-stone-800 rounded-xl">
         
       </div>
-      <div class="mx-auto"></div>
-      <div class="w-1/2">
+      <div class="w-full mx-3">
         {#if data.projects}
           {#each data.projects as project}
             <ProjectComponent project="{project}" />
