@@ -31,7 +31,7 @@
     <div class="flex my-4">
       <div class="bg-new-white-300 dark:bg-stone-600 rounded-full px-2 py-1 w-64 flex items-center focus-within:outline focus-within:outline-2 focus-within:outline-orange-500">
         <IconSearch color="white" on:click={search}/>
-        <input placeholder="Search Datapacks" type="text" bind:value="{query}" id="query" class="bg-new-white-300 dark:bg-stone-600 ml-2 dark:text-white focus:outline-none placeholder:text-stone-400 font-brand" on:change="{search}">
+        <input placeholder="Search Datapacks" type="text" bind:value="{query}" id="query" class="bg-new-white-300 dark:bg-stone-600 ml-2 dark:text-white focus:outline-none placeholder:text-stone-400 font-brand" on:input="{search}">
       </div>
       <div class="px-2"></div>
       <div class="flex items-center">
