@@ -2,7 +2,6 @@
   import { apiURL, fetchAuthed, userData } from "$globals";
   import { goto } from "$app/navigation";
   import { browser } from "$app/environment";
-  import { load } from "../notifications/+page";
 
   let rolesJson: Role[];
   let activePage = "dashboard";
@@ -18,18 +17,16 @@
       .join(" ");
   }
 
-  async function loadRoles() {
-    if ($userData.role == "default") {
-      goto("/");
+  (async () => {
+    if (browser) {
+      if ($userData.role == "default") {
+        goto("/");
+      }
+
+      let logs = await fetchAuthed("get", `${apiURL}/user/staff/roles`);
+      rolesJson = (await logs.json())["roles"];
     }
-
-    let logs = await fetchAuthed("get", `${apiURL}/user/staff/roles`);
-    rolesJson = (await logs.json())["roles"];
-  }
-
-  if (browser) {
-    loadRoles();
-  }
+  })();
 </script>
 
 <svelte:head>
