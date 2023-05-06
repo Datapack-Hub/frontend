@@ -28,11 +28,12 @@
   // modals
   let newVersion: Modal;
 
-  let zipFile = (
-    document.getElementById("zip") as HTMLInputElement
-  ).files?.item(0);
-
+  
   async function upload() {
+    let zipFile = (
+      document.getElementById("zip") as HTMLInputElement
+    ).files?.item(0);
+    
     if (zipFile) {
       let zipReader = new ZipReader(new BlobReader(zipFile));
       let uploadedFile = await zipReader.getEntries();
