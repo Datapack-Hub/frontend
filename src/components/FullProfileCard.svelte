@@ -1,6 +1,5 @@
 <script lang="ts">
   import { isAuthenticated, userData } from "$globals";
-  import { error } from "@sveltejs/kit";
   import tippy from "sveltejs-tippy";
 
   export let profile: User | undefined;

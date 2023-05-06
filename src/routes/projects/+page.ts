@@ -1,6 +1,6 @@
 import type { PageLoad } from "./$types";
 
-export const load = (async ({ fetch, url }) => {
+export const load = (async ({ fetch }) => {
   const proj = await fetch(`https://api.datapackhub.net/projects/`);
 
   if (proj.ok) {
