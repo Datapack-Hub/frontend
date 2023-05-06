@@ -1,7 +1,3 @@
-<script>
-  export const prerender = true;
-</script>
-
 <footer
   class="flex h-96 flex-col items-center justify-evenly border-t-2 border-new-white-100 bg-new-white-200 px-8 dark:border-stone-700 dark:bg-stone-900 md:h-64 md:flex-row md:justify-between md:px-16 lg:px-24"
   id="footer">
@@ -17,11 +13,12 @@
       </p>
     </div>
     <p
-      class="mt-4 font-brand text-sm font-light text-opacity-25 dark:text-white dark:text-opacity-25">
-      Copyright © 2023 Datapack Hub
+      class="mt-4 text-center font-brand text-sm font-light text-opacity-25 dark:text-white dark:text-opacity-25 md:text-left">
+      Copyright © 2023 Datapack Hub<br />Not an official Minecraft product. Not
+      approved by or associated with Mojang Studios
     </p>
   </div>
-  <div></div>
+  <div class="hidden lg:block"></div>
   <div class="w-full md:w-2/3">
     <div class="flex w-full">
       <h3
@@ -34,7 +31,7 @@
       </h3>
       <h3
         class="mb-4 w-1/3 text-center font-brand text-xl font-bold text-orange-500 md:text-right">
-        Legal & info
+        Legal
       </h3>
     </div>
     <!-- put header content here -->
@@ -50,8 +47,8 @@
       </ul>
       <ul class="w-1/3 text-center font-brand dark:text-white md:text-right">
         <li><a href="/rules">Site Rules</a></li>
-        <li><a href="/privacy">Privacy Policy</a></li>
-        <li><a href="/terms">Terms and Conditions</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
       </ul>
     </div>
   </div>

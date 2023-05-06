@@ -7,21 +7,21 @@
     switch ($page.status) {
       case 404:
         message =
-          "This link either stopped existing, no longer exists, or never existed in the first place, you may want to check if the link is correct!";
+          "Looks like you hit a block in your Minecraft adventure, but don't worry, we've got plenty of datapacks to help you break through. Unfortunately, this page isn't one of them.";
         break;
 
       case 401:
-        message =
-          "Please log in! This page contains data which needs you to be logged in!";
+        message = "No cracked accounts allowed! Please sign in and try again!";
         break;
 
       case 403:
         message =
-          "You don't have permission to visit this page! If you think this is an error, contact an admin!";
+          "Forbidden fruit! This page is tempting, but unfortunately, it's off-limits for now. Don't worry, we have plenty of other juicy datapacks for you to enjoy!";
         break;
 
       case 500:
-        message = "Our servers are currently blowing up, look what you did!";
+        message =
+          "Oops, a creeper exploded in our server room. Our redstone engineers are on the case rewiring the server to get it working as soon as possible!";
         break;
 
       default:
@@ -34,16 +34,16 @@
 <main
   class="flex h-screen w-full flex-col items-center justify-center bg-new-white-200 px-8 transition-colors dark:bg-stone-900 md:flex-row md:justify-start md:px-16 lg:px-24">
   <p
-    class="mb-8 w-full text-center font-mono text-9xl dark:text-white md:mb-0 md:w-1/2 md:text-[10rem] lg:text-[12rem] xl:text-[15rem]">
+    class="mb-8 w-full text-center font-console text-9xl font-bold dark:text-white md:mb-0 md:w-1/2 md:text-[10rem] lg:text-[12rem] xl:text-[15rem]">
     {$page.status}
   </p>
   <div class="w-full md:w-1/3">
     <p
-      class="mb-6 text-center font-brand text-5xl dark:text-white md:text-left md:text-6xl lg:text-8xl xl:text-9xl">
+      class="mb-6 text-center font-console text-5xl font-bold dark:text-white md:text-left md:text-6xl lg:text-8xl xl:text-9xl">
       {$page.error?.message}
     </p>
     <p
-      class="font-brand text-lg opacity-40 dark:text-white md:text-xl lg:text-2xl">
+      class="font-brand text-lg text-opacity-40 dark:text-white dark:text-opacity-40 md:text-xl lg:text-2xl">
       {message}
     </p>
   </div>

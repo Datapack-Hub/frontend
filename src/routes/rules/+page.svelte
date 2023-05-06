@@ -1,7 +1,5 @@
 <script lang="ts">
   import CasualLine from "$components/CasualLine.svelte";
-
-  export const prerender = true;
 </script>
 
 <svelte:head>
@@ -9,7 +7,7 @@
 </svelte:head>
 
 <main
-  class="overflow-y-scroll bg-new-white-200 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64 -translate-y-20 md:translate-y-0">
+  class="-translate-y-20 overflow-y-scroll bg-new-white-200 px-4 transition-all dark:bg-stone-900 md:translate-y-0 lg:px-32 xl:px-64">
   <div
     class="h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1

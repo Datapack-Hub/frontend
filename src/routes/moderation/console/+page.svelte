@@ -9,22 +9,22 @@
   } from "$globals";
   import { goto } from "$app/navigation";
 
-  let isSmallWidth: boolean;
   let submitCmd: () => Promise<void> | undefined;
   let commandInput: HTMLInputElement;
   let command = "";
+  let consoleIn = "";
+  let innerWidth = 0;
+  $: isSmallWidth = innerWidth < 768;
 
   onMount(() => {
     if (!$roleInfo.permissions.includes("USE_CONSOLE")) {
       goto("/");
     }
-    isSmallWidth = window.innerWidth < 768;
-    addEventListener("resize", () => (isSmallWidth = window.innerWidth < 768));
+
+    consoleIn = document.getElementById("cons")?.innerHTML!;
 
     submitCmd = async () => {
       if (command) {
-        let consoleIn = document.getElementById("cons")?.innerHTML;
-
         consoleIn = consoleIn + `<li>⫻ ${command}</li>`;
         commandInput.value = "Loading...";
 
@@ -57,10 +57,9 @@
 
 <svelte:head>
   <title>Datapack Hub Console</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
 </svelte:head>
+
+<svelte:window bind:innerWidth="{innerWidth}" />
 
 <main class="bg-new-white-200 px-4 transition-all dark:bg-stone-900">
   {#if $userData.role != "default" && $isAuthenticated == true}
@@ -70,7 +69,7 @@
         <div id="big" class="overflow-y-scroll" style="height: 92%;">
           <span class="text-lg font-bold">Datapack Hub Console</span><br />
           <span class="text-lg font-normal">Welcome!</span>
-          <ul class="list-none" id="cons"></ul>
+          <ul class="list-none" id="cons">{@html consoleIn}</ul>
         </div>
         <div
           class="absolute bottom-0 right-0 flex w-full justify-around bg-black p-3">
