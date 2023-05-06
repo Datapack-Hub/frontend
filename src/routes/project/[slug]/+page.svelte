@@ -67,14 +67,14 @@
   </div>
   <div class="my-2 mt-4 flex space-x-2">
     <button
-      class="rounded-xl {activePage === 'description'
+      class="button-no-bg {activePage === 'description'
         ? 'bg-stone-600'
-        : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand hover:scale-102 dark:text-white"
+        : 'bg-stone-800'}"
       on:click="{() => (activePage = 'description')}">Description</button>
     <button
-      class="rounded-xl {activePage === 'versions'
+      class="button-no-bg {activePage === 'versions'
         ? 'bg-stone-600'
-        : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand hover:scale-102 dark:text-white"
+        : 'bg-stone-800'}"
       on:click="{() => (activePage = 'versions')}">Versions</button>
   </div>
   {#if activePage == "description"}

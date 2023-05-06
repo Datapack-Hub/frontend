@@ -106,12 +106,12 @@
       </h2>
       <div
         class="mt-8 flex w-full items-center justify-evenly md:mt-16 md:w-64 md:justify-between">
-        <a href="/projects" class="button-style">Play Now</a>
         <a href="/projects" class="button-style">Discover</a>
+        <a href="/projects" class="button-style">Explore</a>
       </div>
     </div>
     <div
-      class=" my-8 h-full w-4/5 rounded-xl bg-new-white-300 dark:bg-stone-800 sm:my-16 md:mt-0 md:h-2/3 md:w-2/5">
+      class="my-8 h-full w-4/5 rounded-xl bg-new-white-300 dark:bg-stone-800 sm:my-16 md:mt-0 md:h-2/3 md:w-2/5">
       <h2>Content here</h2>
     </div>
   </div>
