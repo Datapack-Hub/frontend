@@ -22,6 +22,12 @@
 
   <meta property="og:title" content="{data.project?.title} | Datapack Hub" />
   <meta property="og:description" content="{data.project?.description}" />
+
+  <meta name="og:profile:username" content="Silabear" />
+  <meta name="og:image" content="{data.project?.icon}" />
+  <meta name="og:image:secure_url" content="{data.project?.icon}" />
+  <meta name="og:image:width" content="120" />
+  <meta name="og:image:height" content="120" />
 </svelte:head>
 
 <main
