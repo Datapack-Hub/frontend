@@ -25,7 +25,7 @@
 
     let logs = await fetchAuthed("get", `${apiURL}/user/staff/roles`);
     rolesJson = (await logs.json())["roles"];
-  }
+    }
   })();
 </script>
 
