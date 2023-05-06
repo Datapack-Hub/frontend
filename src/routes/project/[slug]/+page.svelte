@@ -62,7 +62,7 @@
     </div>
     <a
       href="/download"
-      class="button-style"
+      class="button-style h-fit"
       >Download Latest</a>
   </div>
   <div class="my-2 mt-4 flex space-x-2">
