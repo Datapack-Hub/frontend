@@ -6,6 +6,7 @@
 
   export let data: PageData;
   let visible = false;
+  let activePage = "description";
 
   let author = "Loading...";
 
@@ -26,6 +27,7 @@
 <main
   class="h-screen -translate-y-20 bg-new-white-200 px-0 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
   <div class="pt-16"></div>
+  <div class="mb-2 font-brand text-sky-300" ><a href="/projects">&lt; Explore other projects</a></div>
   <div
     class="flex w-full rounded-xl bg-new-white-300 p-4 dark:bg-new-white-200 dark:bg-opacity-10">
     <img
@@ -51,13 +53,48 @@
     </div>
     <a
       href="/download"
-      class="text-md float-right m-0 h-min rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
-      >Download</a>
+      class="text-md float-right m-0 h-min rounded-md bg-dph-orange p-1 font-brand font-bold text-new-white-200 transition-all hover:scale-105 active:brightness-75 md:text-md lg:text-md"
+      >Download Latest</a>
   </div>
+  <div class="my-2 mt-4 flex space-x-2">
+    <button
+      class="rounded-xl {activePage === 'description'
+        ? 'bg-stone-600'
+        : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand hover:scale-102 dark:text-white"
+      on:click="{() => (activePage = 'description')}">Description</button>
+    <button
+      class="rounded-xl {activePage === 'versions'
+        ? 'bg-stone-600'
+        : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand hover:scale-102 dark:text-white"
+      on:click="{() => (activePage = 'versions')}">Versions</button>
+  </div>
+  {#if activePage == "description"}
   <div
-    class="mt-8 rounded-xl bg-new-white-300 p-4 dark:bg-new-white-200 dark:bg-opacity-10">
+    class="rounded-xl bg-new-white-300 p-4 dark:bg-new-white-200 dark:bg-opacity-5">
     <p class="font-brand text-lg font-light dark:text-white">
       {data.project?.body}
     </p>
   </div>
+  {:else if activePage == "versions"}
+    <div class="rounded-xl bg-new-white-300 p-3 dark:bg-new-white-200 dark:bg-opacity-5 items-center mb-2">
+      {#if data.versions?.length != 0}
+        <div class="mx-3 flex space-x-3">
+          <h2 class="w-1/3 font-brand dark:text-white text-xl font-black">Name</h2>
+          <h2 class="w-1/3 font-brand dark:text-white text-xl font-black">Minecraft versions</h2>
+        </div>
+        {#each data.versions ?? [] as version}
+        <div class="rounded-xl bg-new-white-300 p-2 dark:bg-new-white-200 dark:bg-opacity-10 flex space-x-3 items-center mb-2 last:mb-0">
+          <div class="w-1/3 flex items-center space-x-2">
+            <h2 class="font-brand dark:text-white text-xl font-bold">{version.name}</h2>
+            <h2 class="font-brand dark:text-white text-md font-thin italic">{version.version_code}</h2>
+          </div>
+          <h2 class="font-brand dark:text-white">{version.minecraft_versions}</h2>
+        </div>
+        {/each}
+        <p class="font-brand dark:text-white mt-2 mx-1">(Showing {data.versions?.length} versions)</p>
+      {:else}
+        <h2 class="font-brand dark:text-white text-xl"><b>No versions yet!</b> Why not <a href="/project/{data.project?.url}/edit">create one</a>?</h2>
+      {/if}
+    </div>
+  {/if}
 </main>

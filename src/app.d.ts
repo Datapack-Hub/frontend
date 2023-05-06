@@ -58,5 +58,14 @@ declare type Role = {
   permissions: string[];
 };
 
+declare type Version = {
+  name: string
+  description: string
+  version_code: string
+  minecraft_versions: Array<string>
+  primary_download: string
+  rp_download: string?
+}
+
 /// <reference types="@sveltejs/kit" />
 /// <reference types="unplugin-icons/types/svelte" />

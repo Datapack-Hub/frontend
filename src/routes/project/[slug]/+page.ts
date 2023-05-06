@@ -5,9 +5,21 @@ import type { PageLoad } from "./$types";
 export const load = (async ({ params }) => {
   const projectReq = await fetch(apiURL + "/projects/get/" + params.slug);
   if (projectReq.ok) {
-    return {
-      project: (await projectReq.json()) as Project,
-    };
+    let project = (await projectReq.json()) as Project
+    console.log(JSON.stringify(project))
+    console.log(apiURL + "/versions/project/" + project.ID)
+    const versionsReq = await fetch(apiURL + "/versions/project/" + project.ID)
+    if(versionsReq.ok){
+      return {
+        project: project,
+        versions: (await versionsReq.json()).result as Version[]
+      }
+    } else if (!versionsReq.ok){
+      throw error(500, {
+        message: "Idfk what went wrong",
+        description: await versionsReq.text(),
+      });
+    }
   } else if (projectReq.status == 404) {
     throw error(404, {
       message: "Project not found",
