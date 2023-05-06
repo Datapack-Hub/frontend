@@ -14,7 +14,8 @@
     </div>
     <p
       class="mt-4 font-brand text-sm font-light text-opacity-25 dark:text-white dark:text-opacity-25">
-      Copyright © 2023 Datapack Hub<br>Not an official Minecraft product. Not approved by or associated with Mojang Studios
+      Copyright © 2023 Datapack Hub<br />Not an official Minecraft product. Not
+      approved by or associated with Mojang Studios
     </p>
   </div>
   <div></div>

@@ -28,12 +28,14 @@
   // modals
   let newVersion: Modal;
 
-  let zipFile = (document.getElementById("zip") as HTMLInputElement).files?.item(0)
+  let zipFile = (
+    document.getElementById("zip") as HTMLInputElement
+  ).files?.item(0);
 
   async function upload() {
     let jszip = new JSZip();
 
-    if(zipFile) {
+    if (zipFile) {
       let uploadedFile = await jszip.loadAsync(zipFile);
       if (!uploadedFile.file("pack.mcmeta")) {
         alert("not datapack!");
@@ -41,9 +43,8 @@
         alert("is datapack!");
       }
     } else {
-      alert("undefined file")
+      alert("undefined file");
     }
-
   }
 </script>
 
@@ -64,12 +65,12 @@
       <button
         class="rounded-xl {activePage === 'details'
           ? 'bg-stone-600'
-          : 'bg-stone-800'} hover:scale-102 p-1 px-3 font-brand dark:text-white cursor-pointer"
+          : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand hover:scale-102 dark:text-white"
         on:click="{() => (activePage = 'details')}">Details</button>
       <button
         class="rounded-xl {activePage === 'versions'
           ? 'bg-stone-600'
-          : 'bg-stone-800'} hover:scale-102 p-1 px-3 font-brand dark:text-white cursor-pointer"
+          : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand hover:scale-102 dark:text-white"
         on:click="{() => (activePage = 'versions')}">Versions</button>
     </div>
 
@@ -154,10 +155,10 @@
       <!-- VERSIONS-->
     {:else if activePage == "versions"}
       <div class="text-center align-middle md:text-start">
-        <div class="flex rounded-xl bg-stone-800 p-2 py-3 space-x-2">
+        <div class="flex space-x-2 rounded-xl bg-stone-800 p-2 py-3">
           <label for="icon" class="max-w-100">
             <span
-              class="p-2 bg-green-600 font-brand font-bold rounded-xl dark:text-white cursor-pointer"
+              class="cursor-pointer rounded-xl bg-green-600 p-2 font-brand font-bold dark:text-white"
               >Upload datapack ZIP</span>
           </label>
           <input
@@ -166,7 +167,7 @@
             class="hidden"
             accept=".zip"
             on:input="{upload}" />
-          <span class="align-center dark:text-white font-brand"
+          <span class="align-center font-brand dark:text-white"
             >(Supported: *.zip)</span>
           <!-- <p class="align-middle font-brand dark:text-new-white-200">No versions yet!</p> -->
         </div>
@@ -184,7 +185,7 @@
   <!-- <p class="dark:text-white font-brand">Upload a file here, and give your version a name. You'll be able to change more details later.</p> -->
   <p class="align-middle font-brand dark:text-new-white-200">Version Name</p>
   <input
-    class="h-10 w-full rounded-md bg-new-white-300 p-2 mb-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="mb-2 h-10 w-full rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Burnt Cake Update"
     id="title" />
   <p class="align-middle font-brand dark:text-new-white-200">
@@ -192,11 +193,11 @@
   </p>
   <label for="zip" class="max-w-100">
     <span
-      class="cursor-pointer rounded-xl bg-stone-700 p-2 mb-2 align-middle font-brand dark:text-white hover:bg-stone-600"
+      class="mb-2 cursor-pointer rounded-xl bg-stone-700 p-2 align-middle font-brand hover:bg-stone-600 dark:text-white"
       >Upload datapack ZIP</span>
   </label>
   <input id="zip" type="file" class="hidden" accept=".zip" />
-  <p class="dark:text-white font-brand">
+  <p class="font-brand dark:text-white">
     Your file will be automatically compressed to reduce file size.
   </p>
 </Modal>
