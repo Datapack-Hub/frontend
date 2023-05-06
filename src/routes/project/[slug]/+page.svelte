@@ -67,12 +67,12 @@
   </div>
   <div class="my-2 mt-4 flex space-x-2">
     <button
-      class="button-no-bg {activePage === 'description'
+      class="button-base {activePage === 'description'
         ? 'bg-stone-600'
         : 'bg-stone-800'}"
       on:click="{() => (activePage = 'description')}">Description</button>
     <button
-      class="button-no-bg {activePage === 'versions'
+      class="button-base {activePage === 'versions'
         ? 'bg-stone-600'
         : 'bg-stone-800'}"
       on:click="{() => (activePage = 'versions')}">Versions</button>
