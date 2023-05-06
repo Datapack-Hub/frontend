@@ -65,19 +65,20 @@
     </div>
     <CasualLine />
     <div class="mt-4 flex">
-      <div class="w-1/5 bg-stone-800 rounded-xl"> </div>
-      <div class="w-full mx-3">
+      <div class="w-1/5 rounded-xl bg-stone-800"></div>
+      <div class="mx-3 w-full">
         {#if data.projects}
-        {#if data.projects.length >= 1}
-          {#each data.projects as project}
-            <ProjectComponent project="{project}" />
-          {/each}
+          {#if data.projects.length >= 1}
+            {#each data.projects as project}
+              <ProjectComponent project="{project}" />
+            {/each}
+          {:else}
+            <h2 class="font-brand dark:text-white">No results found</h2>
+          {/if}
         {:else}
-        <h2 class="dark:text-white font-brand">No results found</h2>
+          <h2 class="font-brand dark:text-white">No results found</h2>
         {/if}
-        {:else}
-          <h2 class="dark:text-white font-brand">No results found</h2>
-        {/if}
+      </div>
     </div>
   </div>
 </main>
