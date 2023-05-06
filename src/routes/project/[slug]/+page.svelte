@@ -62,7 +62,7 @@
     </div>
     <a
       href="/download"
-      class="text-md float-right m-0 h-min rounded-md bg-dph-orange p-1 font-brand font-bold text-new-white-200 transition-all hover:scale-105 active:brightness-75 md:text-md lg:text-md"
+      class="button-style"
       >Download Latest</a>
   </div>
   <div class="my-2 mt-4 flex space-x-2">
