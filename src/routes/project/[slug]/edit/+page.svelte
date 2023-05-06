@@ -2,6 +2,7 @@
   import CasualLine from "$components/CasualLine.svelte";
   import Modal from "$components/modals/Modal.svelte";
   import type { PageData } from "./$types";
+  import { BlobReader, ZipReader } from "@zip.js/zip.js"
 
   let activePage = "versions";
 
@@ -32,18 +33,17 @@
   ).files?.item(0);
 
   async function upload() {
-  //   let jszip = new JSZip();
-
-  //   if (zipFile) {
-  //     let uploadedFile = await jszip.loadAsync(zipFile);
-  //     if (!uploadedFile.file("pack.mcmeta")) {
-  //       alert("not datapack!");
-  //     } else {
-  //       alert("is datapack!");
-  //     }
-  //   } else {
-  //     alert("undefined file");
-  //   }
+    if (zipFile) {
+      let zipReader = new ZipReader(new BlobReader(zipFile));
+      let uploadedFile = await zipReader.getEntries();
+      if (uploadedFile.at(0)?.filename.toLowerCase() != "pack.mcmeta") {
+        alert("not datapack!");
+      } else {
+        alert("is datapack!");
+      }
+    } else {
+      alert("undefined file");
+    }
   }
 </script>
 
