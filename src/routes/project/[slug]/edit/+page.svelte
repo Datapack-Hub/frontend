@@ -161,10 +161,10 @@
               >Upload datapack ZIP</span>
           </label>
           <input
-            id="icon"
             type="file"
             class="hidden"
             accept=".zip"
+            id="zip"
             on:input="{upload}" />
           <span class="align-center font-brand dark:text-white"
             >(Supported: *.zip)</span>
