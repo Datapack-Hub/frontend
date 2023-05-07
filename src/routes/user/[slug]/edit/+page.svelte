@@ -1,12 +1,10 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { useUser, apiURL, isAuthenticated, fetchAuthed } from "$globals";
+  import { userData, apiURL, isAuthenticated, fetchAuthed } from "$globals";
   import type { PageData } from "./$types";
 
   export let data: PageData;
 
-  let user = useUser()
-  
   function save() {
     const uname = document.getElementById("username") as HTMLInputElement;
     const bio = document.getElementById("bio") as HTMLTextAreaElement;
@@ -17,8 +15,7 @@
       role: data.profile?.role,
     };
 
-
-    if (user.role == "admin") {
+    if ($userData.role == "admin") {
       req.role = (document.getElementById("role") as HTMLInputElement).value;
     }
 
@@ -27,9 +24,9 @@
         if (!res.ok) {
           return res.text().then((txt) => alert(txt));
         }
-        if (data.profile?.id == user.id) {
-          user.username = uname.value;
-          user.bio = bio.value;
+        if (data.profile?.id == $userData.id) {
+          $userData.username = uname.value;
+          $userData.bio = bio.value;
         }
         goto("/user/" + uname.value);
       }
@@ -64,7 +61,7 @@
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
         id="bio"></textarea>
       <br /><br />
-      {#if $isAuthenticated && user.role == "admin"}
+      {#if $isAuthenticated && $userData.role == "admin"}
         <p class="align-middle font-brand dark:text-new-white-200">Site Role</p>
         <input
           class="h-10 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"

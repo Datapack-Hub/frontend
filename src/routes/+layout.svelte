@@ -7,7 +7,9 @@
     getCookie,
     isDark,
     loadColorPref,
+    userData,
     isAuthenticated,
+    roleInfo,
   } from "$globals";
   import BannedModal from "$components/modals/BannedModal.svelte";
   import { browser } from "$app/environment";
@@ -15,36 +17,10 @@
   import { goto } from "$app/navigation";
   import Footer from "$components/nav/Footer.svelte";
   import { setContext } from "svelte";
-  import { writable, type Writable } from "svelte/store";
-
-  /**
-   * Store for User Data, this contains all the user's data
-   */
-
-  const user: Writable<User> = writable();
-  $: user.set({
-    id: -1,
-    bio: "",
-    profile_icon: "",
-    role: "default",
-    username: "",
-    banned: false,
-  });
-
-  /**
-   * Contains all information about a role
-   */
-  const role: Writable<Role> = writable();
-  $: role.set({
-    name: "default",
-    color: null,
-    verified: false,
-    permissions: [] as string[],
-  });
 
   (async () => {
     if (browser) {
-      $user = JSON.parse(localStorage.getItem("userData")!) as User;
+      $userData = JSON.parse(localStorage.getItem("userData")!) as User;
 
       if ($page.url.searchParams.has("token")) {
         let newToken = $page.url.searchParams.get("token");
@@ -65,17 +41,15 @@
           fetchAuthed("get", `${apiURL}/user/me`),
           fetch(`${apiURL}/user/staff/roles`),
         ]);
-        let userJson = (await userRes.json()) as User;
+        let fullUser = await userRes.json();
+        let user = fullUser as User;
 
-        role.set(
-          (await roleRes.json()).roles.find(
-            (v: Role) => v.name == userJson.role
-          )
+        $roleInfo = (await roleRes.json()).roles.find(
+          (v: Role) => v.name == user.role
         );
+        $userData = user;
 
-        user.set(userJson);
-
-        localStorage.setItem("userData", JSON.stringify($user));
+        localStorage.setItem("userData", JSON.stringify($userData));
 
         $isAuthenticated = true;
       }
@@ -84,8 +58,7 @@
     }
   })();
 
-  setContext("role", role);
-  setContext("user", user);
+  setContext("roleData", roleInfo);
 </script>
 
 <!-- {#await pageLoad() then} -->

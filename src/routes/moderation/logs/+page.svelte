@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { apiURL, fetchAuthed, useUser } from "$globals";
+  import { apiURL, fetchAuthed, userData } from "$globals";
   import { goto } from "$app/navigation";
 
   let logsJson: [{ username: string; action: string; time: number }];
 
   async function loadStuff() {
-    if (useUser().role == "default") {
+    if ($userData.role == "default") {
       goto("/");
     }
 

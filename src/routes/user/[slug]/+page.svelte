@@ -2,12 +2,10 @@
   import ProfileCard from "$components/FullProfileCard.svelte";
   import ProjectComponent from "$components/ProjectComponent.svelte";
   import UserModeration from "$components/UserModeration.svelte";
-  import { isAuthenticated, useUser } from "$globals";
+  import { isAuthenticated, userData } from "$globals";
   import type { PageData } from "./$types";
 
   export let data: PageData;
-
-  let user = useUser()
 </script>
 
 <svelte:head>
@@ -31,7 +29,7 @@
   class="flex w-full -translate-y-20 flex-col items-center bg-new-white-200 px-8 transition-all dark:bg-stone-900 md:translate-y-0 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
   <div class="w-full">
     <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
-    {#if $isAuthenticated && ["moderator", "developer", "admin"].includes(user.role)}
+    {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($userData.role)}
       <UserModeration user="{data.profile}" />
     {/if}
   </div>

@@ -36,5 +36,6 @@ export const load = (async ({ params }) => {
         description: "Doesn't exist, nerd!",
       });
     }
+    return {};
   }
 }) satisfies PageLoad;

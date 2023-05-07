@@ -2,11 +2,11 @@
   import { browser } from "$app/environment";
   import {
     isAuthenticated,
-    useUser,
+    userData,
     apiURL,
     fetchAuthed,
     isDark,
-    useRole,
+    roleInfo,
   } from "$globals";
   import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
@@ -30,8 +30,6 @@
   };
 
   let notifsAvailable = false;
-  let user = useUser()
-  let role = useRole()
 
   onMount(async () => {
     if (browser) {
@@ -49,7 +47,7 @@
 
 <div class="z-50 ml-6 flex items-center justify-center">
   {#if $isAuthenticated}
-    {#if ["moderator", "developer", "admin"].includes(role.name)}
+    {#if ["moderator", "developer", "admin"].includes($roleInfo.name)}
       <a
         href="/moderation/console"
         aria-label="Moderation console"
@@ -66,22 +64,22 @@
       {/if}
     </a>
     <a
-      href="/user/{user.username}"
+      href="/user/{$userData.username}"
       use:tippy="{{
         content:
-          user.username +
+          $userData.username +
           "<span class='items-center'><br /><button onclick=\"document.cookie = 'dph_token' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; window.location.replace('/')\" class='text-sky-500'>Sign Out</a></span>",
         placement: 'bottom',
         interactive: true,
         allowHTML: true,
       }}">
       <img
-        src="{user.profile_icon}&size=48"
-        alt="{user.username}'s profile picture"
+        src="{$userData.profile_icon}&size=48"
+        alt="{$userData.username}'s profile picture"
         height="32"
         width="32"
         class="ml-6 rounded-full outline outline-2 outline-offset-2"
-        style="outline-color:{role.color ?? '#eab308'};" />
+        style="outline-color:{$roleInfo.color ?? '#eab308'};" />
     </a>
   {:else}
     <a

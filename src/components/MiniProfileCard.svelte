@@ -1,8 +1,17 @@
 <script lang="ts">
-  import { titleCase } from "$globals";
-
   export let person: User | undefined;
   export let role: Role | undefined;
+
+  function titleCase(str: string | undefined): string {
+    if (str == undefined) return "null";
+    return str
+      .toLowerCase()
+      .split(" ")
+      .map((word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join(" ");
+  }
 </script>
 
 <a href="/user/{person?.username.toLowerCase()}">

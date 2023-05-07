@@ -2,10 +2,10 @@
   import { onMount } from "svelte";
   import {
     isAuthenticated,
+    userData,
     apiURL,
     fetchAuthed,
-    useUser,
-    useRole,
+    roleInfo,
   } from "$globals";
   import { goto } from "$app/navigation";
 
@@ -14,13 +14,10 @@
   let command = "";
   let consoleIn = "";
   let innerWidth = 0;
-  let user = useUser()
-  let role = useRole()
-  
   $: isSmallWidth = innerWidth < 768;
 
   onMount(() => {
-    if (!role.permissions.includes("USE_CONSOLE")) {
+    if (!$roleInfo.permissions.includes("USE_CONSOLE")) {
       goto("/");
     }
 
@@ -65,7 +62,7 @@
 <svelte:window bind:innerWidth="{innerWidth}" />
 
 <main class="bg-new-white-200 px-4 transition-all dark:bg-stone-900">
-  {#if user.role != "default" && $isAuthenticated == true}
+  {#if $userData.role != "default" && $isAuthenticated == true}
     {#if !isSmallWidth}
       <div
         class="h-screen w-full flex-col font-console text-lime-400 md:items-start md:pt-20">
