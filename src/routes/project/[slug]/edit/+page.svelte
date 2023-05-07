@@ -155,7 +155,7 @@
     {:else if activePage == "versions"}
       <div class="text-center align-middle md:text-start">
         <div class="flex space-x-2 rounded-xl bg-stone-800 p-2 py-3">
-          <label for="icon" class="max-w-100">
+          <label for="zip" class="max-w-100">
             <span
               class="cursor-pointer rounded-xl bg-green-600 p-2 font-brand font-bold dark:text-white"
               >Upload datapack ZIP</span>
