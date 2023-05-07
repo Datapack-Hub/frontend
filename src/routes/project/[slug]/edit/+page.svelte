@@ -3,6 +3,11 @@
   import Modal from "$components/modals/Modal.svelte";
   import type { PageData } from "./$types";
   import JSZip from 'jszip'
+  import MultiSelect from 'svelte-multiselect'
+
+  const ui_libs = [`Svelte`, `React`, `Vue`, `Angular`, `...`]
+
+  let selected: string[] = []
 
   let activePage = "versions";
 
@@ -195,6 +200,8 @@
             class="h-36 w-3/4 resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
             placeholder="This update changes..."
             id="v_changelog"></textarea>
+
+            <MultiSelect bind:selected options={ui_libs} liSelectedClass="text-green-600"/>
           </div>
         {/if}
       </div>
