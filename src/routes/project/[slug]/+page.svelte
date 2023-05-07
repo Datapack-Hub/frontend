@@ -1,8 +1,10 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { getAuthorNameFromID } from "$globals";
+  import { getAuthorNameFromID, user } from "$globals";
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
+
+  import IconPencil from "~icons/tabler/Pencil.svelte";
 
   export let data: PageData;
   let visible = false;
@@ -76,6 +78,12 @@
         ? 'bg-stone-600'
         : 'bg-stone-800'}"
       on:click="{() => (activePage = 'versions')}">Versions</button>
+      {#if $user.id == data.project?.author}
+      <a class="button-base bg-stone-900 flex items-center space-x-1" href="/project/{data.project?.url}/edit">
+        <IconPencil /><span>Edit</span>
+      </a>
+      {/if}
+    
   </div>
   {#if activePage == "description"}
     <div
