@@ -69,8 +69,8 @@
               style="{{ color: iconColor }}" />
           </a>
           <a
-            href="/projects"
-            aria-label="Link to the Datapack Hub projects page"
+            href="/"
+            aria-label="Link to the Datapack Hub developer wiki"
             class="z-20 pl-6 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
             <IconSchool
               height="24"
