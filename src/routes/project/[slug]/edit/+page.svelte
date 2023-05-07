@@ -2,7 +2,7 @@
   import CasualLine from "$components/CasualLine.svelte";
   import Modal from "$components/modals/Modal.svelte";
   import type { PageData } from "./$types";
-  import JSZip from 'jszip'
+  import JSZip from "jszip";
 
   let activePage = "versions";
 
@@ -33,10 +33,10 @@
       document.getElementById("zip") as HTMLInputElement
     ).files?.item(0);
 
-    let jsZip = new JSZip()
+    let jsZip = new JSZip();
 
     if (zipFile) {
-      let zip = await jsZip.loadAsync(zipFile)
+      let zip = await jsZip.loadAsync(zipFile);
 
       if (zip.file("pack.mcmeta") == null) {
         alert("not datapack!");

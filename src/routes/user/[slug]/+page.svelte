@@ -35,7 +35,7 @@
   </div>
   <div
     class="styled-scrollbar mx-24 mt-16 h-full w-full overflow-y-auto md:mt-0">
-    <h1 class="text-center text-xl font-bold dark:text-white md:text-left ">
+    <h1 class="text-center text-xl font-bold dark:text-white md:text-left">
       {data.profile?.username}'s projects
     </h1>
     {#if data.projects?.length == 0}

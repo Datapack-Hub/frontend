@@ -5,6 +5,7 @@
   import ProfileNavComponent from "./ProfileNavComponent.svelte";
   import IconCompass from "~icons/tabler/Compass.svelte";
   import IconSchool from "~icons/tabler/School.svelte";
+  import IconSwords from "~icons/tabler/Swords.svelte";
 
   let scrollY: number;
   let innerWidth: number;
@@ -50,20 +51,14 @@
             href="/"
             target="_self"
             class="z-20 pl-4 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
-            Create
+            Learn
           </a>
           <a
             href="/"
             target="_self"
             class="z-20 pl-4 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
-            Learn
+            Compete
           </a>
-          <a
-          href="/"
-          target="_self"
-          class="z-20 pl-4 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
-          Compete
-        </a>
         {:else}
           <a
             href="/projects"
@@ -78,10 +73,13 @@
             href="/"
             aria-label="Link to the Datapack Hub developer wiki"
             class="z-20 pl-6 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
-            <IconSchool
-              height="24"
-              width="24"
-              style="{{ color: iconColor }}" />
+            <IconSchool height="24" width="24" style="{{ color: iconColor }}" />
+          </a>
+          <a
+            href="/"
+            aria-label="Link to the Datapack Hub competitions page"
+            class="z-20 pl-6 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
+            <IconSwords height="24" width="24" style="{{ color: iconColor }}" />
           </a>
         {/if}
       {/if}
