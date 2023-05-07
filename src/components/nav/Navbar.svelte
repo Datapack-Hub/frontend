@@ -4,6 +4,7 @@
   import ColorSchemeSelector from "../buttons/ColorSchemeSelector.svelte";
   import ProfileNavComponent from "./ProfileNavComponent.svelte";
   import IconCompass from "~icons/tabler/Compass.svelte";
+  import IconSchool from "~icons/tabler/School.svelte";
 
   let scrollY: number;
   let innerWidth: number;
@@ -45,18 +46,6 @@
             class="z-20 pl-6 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
             Explore
           </a>
-        {:else}
-          <a
-            href="/projects"
-            aria-label="Link to the Datapack Hub projects page"
-            class="z-20 pl-6 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
-            <IconCompass
-              height="24"
-              width="24"
-              style="{{ color: iconColor }}" />
-          </a>
-        {/if}
-        {#if innerWidth > 768}
           <a
             href="/"
             target="_self"
@@ -75,6 +64,25 @@
           class="z-20 pl-4 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
           Compete
         </a>
+        {:else}
+          <a
+            href="/projects"
+            aria-label="Link to the Datapack Hub projects page"
+            class="z-20 pl-6 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
+            <IconCompass
+              height="24"
+              width="24"
+              style="{{ color: iconColor }}" />
+          </a>
+          <a
+            href="/"
+            aria-label="Link to the Datapack Hub developer wiki"
+            class="z-20 pl-6 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
+            <IconSchool
+              height="24"
+              width="24"
+              style="{{ color: iconColor }}" />
+          </a>
         {/if}
       {/if}
     </div>

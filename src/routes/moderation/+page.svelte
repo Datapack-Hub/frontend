@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { apiURL, fetchAuthed, userData } from "$globals";
+  import { apiURL, fetchAuthed, user } from "$globals";
   import { goto } from "$app/navigation";
   import { browser } from "$app/environment";
 
@@ -19,7 +19,7 @@
 
   (async () => {
     if (browser) {
-      if ($userData.role == "default") {
+      if ($user.role == "default") {
         goto("/");
       }
 

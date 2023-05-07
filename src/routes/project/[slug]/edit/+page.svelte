@@ -2,7 +2,7 @@
   import CasualLine from "$components/CasualLine.svelte";
   import Modal from "$components/modals/Modal.svelte";
   import type { PageData } from "./$types";
-  import { BlobReader, ZipReader } from "@zip.js/zip.js";
+  import JSZip from 'jszip'
 
   let activePage = "versions";
 
@@ -33,10 +33,12 @@
       document.getElementById("zip") as HTMLInputElement
     ).files?.item(0);
 
+    let jsZip = new JSZip()
+
     if (zipFile) {
-      let zipReader = new ZipReader(new BlobReader(zipFile));
-      let uploadedFile = await zipReader.getEntries();
-      if (uploadedFile.at(0)?.filename.toLowerCase() != "pack.mcmeta") {
+      let zip = await jsZip.loadAsync(zipFile)
+      
+      if (zip.file("pack.mcmeta") == null) {
         alert("not datapack!");
       } else {
         alert("is datapack!");
@@ -155,16 +157,16 @@
     {:else if activePage == "versions"}
       <div class="text-center align-middle md:text-start">
         <div class="flex space-x-2 rounded-xl bg-stone-800 p-2 py-3">
-          <label for="icon" class="max-w-100">
+          <label for="zip" class="max-w-100">
             <span
               class="cursor-pointer rounded-xl bg-green-600 p-2 font-brand font-bold dark:text-white"
               >Upload datapack ZIP</span>
           </label>
           <input
-            id="icon"
             type="file"
             class="hidden"
             accept=".zip"
+            id="zip"
             on:input="{upload}" />
           <span class="align-center font-brand dark:text-white"
             >(Supported: *.zip)</span>
