@@ -38,6 +38,7 @@
     if (zipFile) {
       let zip = await jsZip.loadAsync(zipFile)
       
+      console.log(zip)
       if (zip.file("pack.mcmeta") == null) {
         alert("not datapack!");
       } else {
