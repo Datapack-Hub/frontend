@@ -1,31 +1,18 @@
-import { writable, type Writable } from "svelte/store";
+import { getContext } from "svelte";
+import { writable } from "svelte/store";
 
 export const isDark = writable(true);
 export const isAuthenticated = writable(false);
 
-/**
- * Store for User Data, this contains all the user's data
- */
-export const userData: Writable<User> = writable({
-  id: -1,
-  username: "",
-  bio: "",
-  profile_icon: "",
-  role: "admin" /** For role info, use the `roleInfo` store */,
-  banned: false,
-});
-
-/**
- * Contains all information about a role
- */
-export const roleInfo = writable({
-  name: "default",
-  color: null,
-  verified: false,
-  permissions: [] as string[],
-});
-
 export const apiURL = "https://api.datapackhub.net";
+
+export function useUser(): User {
+  return getContext('user') as User
+}
+
+export function useRole(): Role {
+  return getContext('role') as Role
+}
 
 /**
  * Loads the user's preferred color scheme
@@ -62,10 +49,9 @@ export async function fetchAuthed(
   url: string,
   data: object | undefined = undefined
 ): Promise<Response> {
-  // what is going on here
   const resp = await fetch(url, {
     method: method,
-    ...(data ? { body: JSON.stringify(data) } : {}), // ah yes ternary grossness
+    ...(data ? { body: JSON.stringify(data) } : {}),
     headers: { Authorization: `Basic ${await getCookie("dph_token")}` },
   });
 
@@ -74,22 +60,34 @@ export async function fetchAuthed(
   return resp;
 }
 
-export async function getCookie(item: string) {
+export async function getCookie(item: string): Promise<string> {
   const name = item + "=";
   const decodedCookie = decodeURIComponent(document.cookie);
-  const ca = decodedCookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == " ") {
-      c = c.substring(1);
+  const cookieArr = decodedCookie.split(";");
+  for (let i = 0; i < cookieArr.length; i++) {
+    let cookie = cookieArr[i];
+    while (cookie.charAt(0) == " ") {
+      cookie = cookie.substring(1);
     }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
+    if (cookie.indexOf(name) == 0) {
+      return cookie.substring(name.length, cookie.length);
     }
   }
   return "";
 }
 
 export async function removeCookie(name: string) {
-  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
+
+export function titleCase(str: string | undefined): string {
+  if (!str) return "null";
+  
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
 }

@@ -5,10 +5,11 @@ import type { PageLoad } from "./$types";
 export const load = (async ({ params }) => {
   const projectReq = await fetch(apiURL + "/projects/get/" + params.slug);
   if (projectReq.ok) {
-    let project = (await projectReq.json()) as Project;
+    const project = (await projectReq.json()) as Project;
     console.log(JSON.stringify(project));
-    console.log(apiURL + "/versions/project/" + project.ID);
-    const versionsReq = await fetch(apiURL + "/versions/project/" + project.ID);
+    console.log(apiURL + "/versions/project/" + project.id);
+    const versionsReq = await fetch(apiURL + "/versions/project/" + project.id);
+    
     if (versionsReq.ok) {
       return {
         project: project,

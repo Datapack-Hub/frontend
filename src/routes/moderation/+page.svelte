@@ -1,25 +1,14 @@
 <script lang="ts">
-  import { apiURL, fetchAuthed, userData } from "$globals";
+  import { apiURL, fetchAuthed, titleCase, useUser } from "$globals";
   import { goto } from "$app/navigation";
   import { browser } from "$app/environment";
 
   let rolesJson: Role[];
   let activePage = "dashboard";
 
-  function titleCase(str: string | undefined): string {
-    if (!str) return "null";
-    return str
-      .toLowerCase()
-      .split(" ")
-      .map((word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(" ");
-  }
-
   (async () => {
     if (browser) {
-      if ($userData.role == "default") {
+      if (useUser().role == "default") {
         goto("/");
       }
 

@@ -1,23 +1,13 @@
 <script lang="ts">
-  import { isAuthenticated, userData } from "$globals";
+  import { isAuthenticated, titleCase, useUser } from "$globals";
   import tippy from "sveltejs-tippy";
 
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
 
+  let viewerData = useUser()
   let userProfile = profile!;
   let role = profileRole!;
-
-  function titleCase(str: string | undefined): string {
-    if (str == undefined) return "null";
-    return str
-      .toLowerCase()
-      .split(" ")
-      .map((word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(" ");
-  }
 
   let orangeVerifiedHover = {
     content:
@@ -87,9 +77,9 @@
     class="styled-scrollbar my-3 max-h-64 w-full overflow-y-scroll whitespace-pre-line rounded-xl bg-white/40 p-2 font-brand text-sm font-light dark:bg-stone-700/40 dark:text-white md:text-lg">
     {userProfile.bio.replaceAll("\\n", "\n")}
   </p>
-  {#if $isAuthenticated && $userData.id === userProfile.id}
+  {#if $isAuthenticated && viewerData.id === userProfile.id}
     <a
-      href="/user/{$userData.username}/edit"
+      href="/user/{viewerData.username}/edit"
       class="text-md mt-1 w-full rounded-md border-2 border-red-400 bg-red-400/10 px-2 py-2 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:text-lg lg:text-lg">
       <img
         src="/icons/settings.svg"

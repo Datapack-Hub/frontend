@@ -1,22 +1,12 @@
 <script lang="ts">
-  import { apiURL, fetchAuthed, userData } from "$globals";
+  import { apiURL, fetchAuthed, titleCase, useUser } from "$globals";
   import { goto } from "$app/navigation";
 
   let rolesJson: Role[];
-
-  function titleCase(str: string | undefined): string {
-    if (str == undefined) return "null";
-    return str
-      .toLowerCase()
-      .split(" ")
-      .map((word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(" ");
-  }
+  let user = useUser()
 
   async function loadStuff() {
-    if ($userData.role == "default") {
+    if (user.role == "default") {
       goto("/");
     }
 
