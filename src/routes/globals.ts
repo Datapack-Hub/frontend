@@ -6,19 +6,19 @@ export const isAuthenticated = writable(false);
 /**
  * Store for User Data, this contains all the user's data
  */
-export const userData: Writable<User> = writable({
+export const user: Writable<User> = writable({
   id: -1,
   username: "",
   bio: "",
   profile_icon: "",
-  role: "admin" /** For role info, use the `roleInfo` store */,
+  role: "admin" /** For role info, use the `role` store */,
   banned: false,
 });
 
 /**
  * Contains all information about a role
  */
-export const roleInfo = writable({
+export const role = writable({
   name: "default",
   color: null,
   verified: false,

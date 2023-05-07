@@ -1,6 +1,6 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import { apiURL, fetchAuthed, roleInfo } from "$globals";
+import { apiURL, fetchAuthed, role } from "$globals";
 import { browser } from "$app/environment";
 
 export const load = (async ({ params }) => {
@@ -12,7 +12,7 @@ export const load = (async ({ params }) => {
       permissions: [] as string[],
     };
 
-    const unsubscribeFromRole = roleInfo.subscribe((r) => (role = r));
+    const unsubscribeFromRole = role.subscribe((r) => (role = r));
 
     const [user, me] = await Promise.all([
       fetchAuthed("get", apiURL + "/user/" + params.slug),

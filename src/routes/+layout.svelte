@@ -7,9 +7,9 @@
     getCookie,
     isDark,
     loadColorPref,
-    userData,
+    user,
     isAuthenticated,
-    roleInfo,
+    role,
   } from "$globals";
   import BannedModal from "$components/modals/BannedModal.svelte";
   import { browser } from "$app/environment";
@@ -20,36 +20,28 @@
 
   (async () => {
     if (browser) {
-      $userData = JSON.parse(localStorage.getItem("userData")!) as User;
-
       if ($page.url.searchParams.has("token")) {
         let newToken = $page.url.searchParams.get("token");
-        let date = new Date();
+        let expires = new Date();
 
-        date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
-
-        let expires = date.toUTCString();
-
-        document.cookie = `dph_token=${newToken}; expires=${expires}`;
+        expires.setTime(Date.now() + 30 * 24 * 60 * 60 * 1000);
+        document.cookie = `dph_token=${newToken}; expires=${expires.toUTCString()}`;
 
         goto("/");
       }
 
       let token = await getCookie("dph_token");
+
       if (token) {
         let [userRes, roleRes] = await Promise.all([
           fetchAuthed("get", `${apiURL}/user/me`),
           fetch(`${apiURL}/user/staff/roles`),
         ]);
-        let fullUser = await userRes.json();
-        let user = fullUser as User;
 
-        $roleInfo = (await roleRes.json()).roles.find(
-          (v: Role) => v.name == user.role
+        $user = (await userRes.json()) as User;
+        $role = (await roleRes.json()).roles.find(
+          (v: Role) => v.name == $user.role
         );
-        $userData = user;
-
-        localStorage.setItem("userData", JSON.stringify($userData));
 
         $isAuthenticated = true;
       }
@@ -58,7 +50,8 @@
     }
   })();
 
-  setContext("roleData", roleInfo);
+  setContext("user", user);
+  setContext("roleData", role);
 </script>
 
 <!-- {#await pageLoad() then} -->
