@@ -58,6 +58,12 @@
             class="z-20 pl-4 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
             Learn
           </a>
+          <a
+          href="/"
+          target="_self"
+          class="z-20 pl-4 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
+          Compete
+        </a>
         {:else}
           <a
             href="/projects"
