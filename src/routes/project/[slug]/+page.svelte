@@ -1,8 +1,10 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { getAuthorNameFromID } from "$globals";
+  import { getAuthorNameFromID, user } from "$globals";
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
+
+  import IconPencil from "~icons/tabler/Pencil.svelte";
 
   export let data: PageData;
   let visible = false;
@@ -66,16 +68,24 @@
       >Download Latest</a>
   </div>
   <div class="my-2 mt-4 flex space-x-2">
-    <button
-      class="button-base {activePage === 'description'
-        ? 'bg-stone-600'
-        : 'bg-stone-800'}"
-      on:click="{() => (activePage = 'description')}">Description</button>
-    <button
-      class="button-base {activePage === 'versions'
-        ? 'bg-stone-600'
-        : 'bg-stone-800'}"
-      on:click="{() => (activePage = 'versions')}">Versions</button>
+    <div class="min-w-fit flex-grow">
+      <button
+        class="button-base {activePage === 'description'
+          ? 'bg-stone-600'
+          : 'bg-stone-800'}"
+        on:click="{() => (activePage = 'description')}">Description</button>
+      <button
+        class="button-base {activePage === 'versions'
+          ? 'bg-stone-600'
+          : 'bg-stone-800'}"
+        on:click="{() => (activePage = 'versions')}">Versions</button>
+    </div>
+    {#if $user.id == data.project?.author}
+    <a class="button-base ml-auto flex items-center space-x-1" href="/project/{data.project?.url}/edit">
+      <IconPencil /><span>Edit</span>
+    </a>
+      {/if}
+    
   </div>
   {#if activePage == "description"}
     <div

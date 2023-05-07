@@ -2,7 +2,12 @@
   import CasualLine from "$components/CasualLine.svelte";
   import Modal from "$components/modals/Modal.svelte";
   import type { PageData } from "./$types";
-  import JSZip from "jszip";
+  import JSZip from 'jszip'
+  import MultiSelect from 'svelte-multiselect'
+
+  const ui_libs = [`Svelte`, `React`, `Vue`, `Angular`, `...`]
+
+  let selected: string[] = []
 
   let activePage = "versions";
 
@@ -25,6 +30,8 @@
 
   export let data: PageData;
 
+  let createVersion: boolean = true;
+
   // modals
   let newVersion: Modal;
 
@@ -33,16 +40,13 @@
       document.getElementById("zip") as HTMLInputElement
     ).files?.item(0);
 
-    let jsZip = new JSZip();
+    let jsZip = new JSZip()
 
     if (zipFile) {
-      let zip = await jsZip.loadAsync(zipFile);
-
-      if (zip.file("pack.mcmeta") == null) {
-        alert("not datapack!");
-      } else {
-        alert("is datapack!");
-      }
+      let zip = await jsZip.loadAsync(zipFile)
+      if (zip.file("pack.mcmeta") == null) return alert("Missing pack.mcmeta");
+      
+      createVersion = true
     } else {
       alert("undefined file");
     }
@@ -64,14 +68,14 @@
     <br />
     <div class="mb-2 flex space-x-2">
       <button
-        class="rounded-xl {activePage === 'details'
+        class="{activePage === 'details'
           ? 'bg-stone-600'
-          : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand hover:scale-102 dark:text-white"
+          : 'bg-stone-800'} button-base"
         on:click="{() => (activePage = 'details')}">Details</button>
       <button
-        class="rounded-xl {activePage === 'versions'
+        class="{activePage === 'versions'
           ? 'bg-stone-600'
-          : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand hover:scale-102 dark:text-white"
+          : 'bg-stone-800'} button-base"
         on:click="{() => (activePage = 'versions')}">Versions</button>
     </div>
 
@@ -153,10 +157,10 @@
         </div>
       </div>
 
-      <!-- VERSIONS-->
+    <!-- VERSIONS-->
     {:else if activePage == "versions"}
       <div class="text-center align-middle md:text-start">
-        <div class="flex space-x-2 rounded-xl bg-stone-800 p-2 py-3">
+        <div class="flex space-x-2 rounded-xl bg-stone-800 p-2 py-3 my-2">
           <label for="zip" class="max-w-100">
             <span
               class="cursor-pointer rounded-xl bg-green-600 p-2 font-brand font-bold dark:text-white"
@@ -172,6 +176,34 @@
             >(Supported: *.zip)</span>
           <!-- <p class="align-middle font-brand dark:text-new-white-200">No versions yet!</p> -->
         </div>
+        {#if createVersion == true}
+          <div class="rounded-xl bg-stone-800 p-2">
+            <h2 class="font-brand dark:text-white text-xl mb-2 font-bold">Creating new Version</h2>
+
+            <div class="flex space-x-4">
+              <p class="align-middle font-brand dark:text-new-white-200 w-1/2">Version Name</p>
+              <p class="align-middle font-brand dark:text-new-white-200 w-1/2">Version Number</p>
+            </div>
+            <div class="flex space-x-2">
+              <input
+              class="h-10 w-1/2 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white mb-4"
+              placeholder="{data.project?.title} v4.5"
+              id="v_name" />
+              <input
+              class="h-10 w-1/6 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white mb-4"
+              placeholder="4.5"
+              id="v_name" />
+            </div>
+            
+            <p class="align-middle font-brand dark:text-new-white-200">Changelog (supports markdown!)</p>
+            <textarea
+            class="h-36 w-3/4 resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+            placeholder="This update changes..."
+            id="v_changelog"></textarea>
+
+            <MultiSelect bind:selected options={ui_libs} liSelectedClass="text-green-600"/>
+          </div>
+        {/if}
       </div>
     {/if}
   </div>
