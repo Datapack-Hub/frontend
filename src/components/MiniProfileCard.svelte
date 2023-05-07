@@ -32,7 +32,7 @@
             alt="logo"
             class="inline-block"
             height="18"
-            width="18" /> DH Team{/if}</span>
+            width="18" /> Datapack Hub Team{/if}</span>
       <p class="line-clamp-1 font-brand dark:text-stone-300">{person?.bio}</p>
     </div>
   </div>
