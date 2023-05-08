@@ -251,9 +251,8 @@
             </p>
             <MultiSelect
               bind:selected="{selected}"
-              options="{ui_libs}">
-              <p let:option slot="option"></p>
-            </MultiSelect>
+              outerDivClass="bg-orange-500"
+              options="{ui_libs}" />
             <p class="mb-4"></p>
 
             <p class="align-middle font-brand dark:text-new-white-200">
@@ -305,11 +304,12 @@
 </ToastContainer>
 
 <style lang="postcss">
-  .selected {
-    @apply bg-orange-500;
-  }
-
-  .active {
-    @apply bg-orange-500;
+  :root {
+    --sms-bg: theme(colors.stone.800);
+    --sms-border: 1px solid theme(colors.stone.700);
+    --sms-selected-bg: theme(colors.stone.700);
+    --sms-remove-btn-hover-bg: theme(colors.orange.500);
+    --sms-options-bg: theme(colors.stone.700);
+    --sms-text-color: theme(colors.white);
   }
 </style>

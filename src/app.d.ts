@@ -32,7 +32,7 @@ declare type User = {
 };
 
 declare type Project = {
-  id: number;
+  ID: number;
   author: number;
   icon: string?;
   tags: string[];

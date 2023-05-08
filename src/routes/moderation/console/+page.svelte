@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { isAuthenticated, role, user} from "$lib/globals/stores";
+  import { isAuthenticated, role, user } from "$lib/globals/stores";
   import { goto } from "$app/navigation";
   import { apiURL, fetchAuthed } from "$lib/globals/functions";
 

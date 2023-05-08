@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { apiURL, fetchAuthed } from "$lib/globals/functions";
-  import { isAuthenticated, user } from "$lib/globals/stores"
+  import { isAuthenticated, user } from "$lib/globals/stores";
   import type { PageData } from "./$types";
 
   export let data: PageData;

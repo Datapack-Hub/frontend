@@ -8,7 +8,12 @@
   import Footer from "$lib/components/nav/Footer.svelte";
   import { setContext } from "svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
-  import { apiURL, fetchAuthed, getCookie, loadColorPref } from "$lib/globals/functions";
+  import {
+    apiURL,
+    fetchAuthed,
+    getCookie,
+    loadColorPref,
+  } from "$lib/globals/functions";
   import { isAuthenticated, isDark, role, user } from "$lib/globals/stores";
 
   (async () => {

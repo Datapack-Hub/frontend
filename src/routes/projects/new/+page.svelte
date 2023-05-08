@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { categories } from "$lib/globals/functions"
+  import { categories } from "$lib/globals/functions";
 
   let selected: { id: number; text: string };
 </script>

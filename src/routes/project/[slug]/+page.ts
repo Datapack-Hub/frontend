@@ -7,8 +7,8 @@ export const load = (async ({ params }) => {
   if (projectReq.ok) {
     const project = (await projectReq.json()) as Project;
     console.log(JSON.stringify(project));
-    console.log(apiURL + "/versions/project/" + project.id);
-    const versionsReq = await fetch(apiURL + "/versions/project/" + project.id);
+    console.log(apiURL + "/versions/project/" + project.ID);
+    const versionsReq = await fetch(apiURL + "/versions/project/" + project.ID);
     if (versionsReq.ok) {
       return {
         project: project,

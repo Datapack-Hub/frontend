@@ -1,10 +1,6 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
-  import {
-    apiURL,
-    fetchAuthed,
-    removeCookie,
-  } from "$lib/globals/functions";
+  import { apiURL, fetchAuthed, removeCookie } from "$lib/globals/functions";
   import SvelteMarkdown from "svelte-markdown";
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
