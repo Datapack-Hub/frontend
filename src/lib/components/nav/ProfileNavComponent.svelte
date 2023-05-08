@@ -1,18 +1,15 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import {
-    isAuthenticated,
-    user,
     apiURL,
     fetchAuthed,
-    isDark,
-    role,
-  } from "$globals";
+  } from "$lib/globals/functions";
   import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconUnread from "~icons/tabler/BellExclamation.svelte";
   import IconRead from "~icons/tabler/Bell.svelte";
+  import { isAuthenticated, isDark, role, user } from "$lib/globals/stores";
 
   let signInHoverMsg = {
     content: "Sign In",

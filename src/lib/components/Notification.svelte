@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fetchAuthed, apiURL } from "$globals";
+  import { fetchAuthed, apiURL } from "$lib/globals/functions";
   import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
 
   let moi: HTMLDivElement;

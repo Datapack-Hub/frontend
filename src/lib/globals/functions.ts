@@ -1,31 +1,23 @@
-import { writable, type Writable } from "svelte/store";
-
-export const isDark = writable(true);
-export const isAuthenticated = writable(false);
-
-/**
- * Store for User Data, this contains all the user's data
- */
-export const user: Writable<User> = writable({
-  id: -1,
-  username: "",
-  bio: "",
-  profile_icon: "",
-  role: "admin" /** For role info, use the `role` store */,
-  banned: false,
-});
-
-/**
- * Contains all information about a role
- */
-export const role = writable({
-  name: "default",
-  color: null,
-  verified: false,
-  permissions: [] as string[],
-});
+import { isDark } from "./stores";
 
 export const apiURL = "https://api.datapackhub.net";
+
+export const categories = [
+  { id: 1, text: `Adventure` },
+  { id: 2, text: `Magic` },
+  { id: 3, text: `Minecraft, but` },
+  { id: 4, text: `Cursed` },
+  { id: 5, text: `World Generation` },
+  { id: 6, text: `Tools and Equipment` },
+  { id: 7, text: `German` },
+  { id: 8, text: `Recipe` },
+  { id: 9, text: `Quality of Life` },
+  { id: 10, text: `Items and Blocks` },
+  { id: 11, text: `Cosmetics` },
+  { id: 12, text: `Miscellaneous` },
+  { id: 13, text: `Utility` },
+  { id: 24, text: `Vanilla+` },
+];
 
 /**
  * Loads the user's preferred color scheme

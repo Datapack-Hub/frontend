@@ -1,10 +1,11 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { getAuthorNameFromID, user } from "$globals";
+  import { getAuthorNameFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
 
   import IconPencil from "~icons/tabler/Pencil.svelte";
+  import { user } from "$lib/globals/stores";
 
   export let data: PageData;
   let visible = false;
@@ -81,11 +82,12 @@
         on:click="{() => (activePage = 'versions')}">Versions</button>
     </div>
     {#if $user.id == data.project?.author}
-    <a class="button-base ml-auto flex items-center space-x-1" href="/project/{data.project?.url}/edit">
-      <IconPencil /><span>Edit</span>
-    </a>
-      {/if}
-    
+      <a
+        class="button-base ml-auto flex items-center space-x-1"
+        href="/project/{data.project?.url}/edit">
+        <IconPencil /><span>Edit</span>
+      </a>
+    {/if}
   </div>
   {#if activePage == "description"}
     <div

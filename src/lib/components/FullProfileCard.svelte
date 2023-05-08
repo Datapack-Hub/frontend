@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isAuthenticated, user } from "$globals";
+  import { isAuthenticated, user } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
 
   export let profile: User | undefined;

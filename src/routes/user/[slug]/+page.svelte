@@ -1,8 +1,8 @@
 <script lang="ts">
-  import ProfileCard from "$components/FullProfileCard.svelte";
-  import ProjectComponent from "$components/ProjectComponent.svelte";
-  import UserModeration from "$components/UserModeration.svelte";
-  import { isAuthenticated, user } from "$globals";
+  import ProfileCard from "$lib/components/FullProfileCard.svelte";
+  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
+  import UserModeration from "$lib/components/UserModeration.svelte";
+  import { isAuthenticated, user } from "$lib/globals/stores";
   import type { PageData } from "./$types";
 
   export let data: PageData;

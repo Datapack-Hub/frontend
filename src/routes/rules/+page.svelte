@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CasualLine from "$components/CasualLine.svelte";
+  import CasualLine from "$lib/components/CasualLine.svelte";
 </script>
 
 <svelte:head>

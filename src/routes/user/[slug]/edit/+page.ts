@@ -1,18 +1,19 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import { apiURL, fetchAuthed, role } from "$globals";
+import { apiURL, fetchAuthed } from "$lib/globals/functions";
 import { browser } from "$app/environment";
+import { role } from "$lib/globals/stores";
 
 export const load = (async ({ params }) => {
   if (browser) {
-    let role: Role = {
+    let defaultRole: Role = {
       name: "default",
       color: null,
       verified: false,
       permissions: [] as string[],
     };
 
-    const unsubscribeFromRole = role.subscribe((r) => (role = r));
+    const unsubscribeFromRole = role.subscribe((r) => (defaultRole = r));
 
     const [user, me] = await Promise.all([
       fetchAuthed("get", apiURL + "/user/" + params.slug),
@@ -27,7 +28,7 @@ export const load = (async ({ params }) => {
     if (user.ok && me.ok) {
       if (
         userJSON.username != meJSON.username &&
-        !role.permissions.includes("EDIT_USER")
+        !defaultRole.permissions.includes("EDIT_USER")
       ) {
         unsubscribeFromRole();
         throw error(403, {

@@ -14,12 +14,7 @@ const config = {
   ],
 
   kit: {
-    adapter: adapter(),
-    alias: {
-      $components: "./src/components/",
-      $globals: "./src/routes/globals.ts",
-    },
-    
+    adapter: adapter(),    
   },
 };
 

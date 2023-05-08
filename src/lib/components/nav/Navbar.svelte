@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isDark } from "$globals";
+  import { isDark } from "$lib/globals/stores";
   import { onMount } from "svelte";
   import ColorSchemeSelector from "../buttons/ColorSchemeSelector.svelte";
   import ProfileNavComponent from "./ProfileNavComponent.svelte";

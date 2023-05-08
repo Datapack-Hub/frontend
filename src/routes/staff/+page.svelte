@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import UserCard from "$components/MiniProfileCard.svelte";
+  import UserCard from "$lib/components/MiniProfileCard.svelte";
   import { fly } from "svelte/transition";
   import { onMount } from "svelte";
 

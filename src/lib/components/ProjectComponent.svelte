@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { getAuthorNameFromID } from "$globals";
+  import { getAuthorNameFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
 
   export let project: Project;

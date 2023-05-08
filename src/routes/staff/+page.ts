@@ -1,5 +1,5 @@
 import { browser } from "$app/environment";
-import { apiURL } from "$globals";
+import { apiURL } from "$lib/globals/functions";
 
 export const load = async ({ fetch }) => {
   if (browser) {

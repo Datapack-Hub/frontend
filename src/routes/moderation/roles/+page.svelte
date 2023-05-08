@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { apiURL, fetchAuthed, user } from "$globals";
+  import { user } from "$lib/globals/stores";
   import { goto } from "$app/navigation";
+  import { apiURL, fetchAuthed } from "$lib/globals/functions";
 
   let rolesJson: Role[];
 

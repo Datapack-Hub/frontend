@@ -1,7 +1,7 @@
 <script lang="ts">
-  import CasualLine from "$components/CasualLine.svelte";
-  import ProjectComponent from "$components/ProjectComponent.svelte";
-  import { apiURL } from "$globals";
+  import CasualLine from "$lib/components/CasualLine.svelte";
+  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
+  import { apiURL } from "$lib/globals/functions";
   import type { PageData } from "./$types";
 
   import IconSearch from "~icons/tabler/Search.svelte";

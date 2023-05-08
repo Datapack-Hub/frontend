@@ -1,23 +1,15 @@
 <script lang="ts">
   import "../app.postcss";
-  import Navbar from "$components/nav/Navbar.svelte";
-  import {
-    apiURL,
-    fetchAuthed,
-    getCookie,
-    isDark,
-    loadColorPref,
-    user,
-    isAuthenticated,
-    role,
-  } from "$globals";
-  import BannedModal from "$components/modals/BannedModal.svelte";
+  import Navbar from "$lib/components/nav/Navbar.svelte";
+  import BannedModal from "$lib/components/modals/BannedModal.svelte";
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
-  import Footer from "$components/nav/Footer.svelte";
+  import Footer from "$lib/components/nav/Footer.svelte";
   import { setContext } from "svelte";
-  import CasualLine from "$components/CasualLine.svelte";
+  import CasualLine from "$lib/components/CasualLine.svelte";
+  import { apiURL, fetchAuthed, getCookie, loadColorPref } from "$lib/globals/functions";
+  import { isAuthenticated, isDark, role, user } from "$lib/globals/stores";
 
   (async () => {
     if (browser) {
@@ -57,18 +49,59 @@
 
 <!-- {#await pageLoad() then} -->
 {#if $isAuthenticated}
-  {#if ["helper","moderator","admin"].includes($user.role)}
-  <div class="{$isDark ? 'dark' : ''}">
-    <div class="min-h-screen bg-new-white-200 transition-all dark:bg-stone-900">
-      <Navbar />
-      <BannedModal />
-      <slot />
+  {#if ["helper", "moderator", "admin"].includes($user.role)}
+    <div class="{$isDark ? 'dark' : ''}">
+      <div
+        class="min-h-screen bg-new-white-200 transition-all dark:bg-stone-900">
+        <Navbar />
+        <BannedModal />
+        <slot />
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
   {:else}
-  <div class="bg-stone-900 w-screen h-screen flex fixed left-0 top-0">
-    <div class="relative m-auto w-1/3 justify-self-center rounded-xl p-3 align-middle bg-stone-800 shadow-md shadow-black/25">
+    <div class="fixed left-0 top-0 flex h-screen w-screen bg-stone-900">
+      <div
+        class="relative m-auto w-1/3 justify-self-center rounded-xl bg-stone-800 p-3 align-middle shadow-md shadow-black/25">
+        <div class="flex items-center justify-center">
+          <img
+            src="/logos/dph.svg"
+            alt="logo"
+            class="mr-1 h-8 rounded-full transition-all hover:brightness-75"
+            height="32"
+            width="32" />
+          <span
+            class="hidden font-brand text-2xl font-bold text-white transition-colors md:block">
+            Datapack Hub
+          </span>
+        </div>
+        <CasualLine />
+        <p class="mb-5 font-brand text-lg text-white">
+          The Datapack Hub website is coming very soon!
+        </p>
+        <p class="font-brand text-white"><b>In the meantime, come chat!</b></p>
+        <p>
+          <a
+            href="https://discord.gg/aEXsdjjdu4"
+            class="font-brand text-sky-200">
+            - Join our Discord</a>
+        </p>
+        <p class="mb-5">
+          <a
+            href="https://planetminecraft.com/group/daily_datapackers"
+            class="font-brand text-sky-200">
+            - Follow our PMC group!</a>
+        </p>
+        <p class="font-brand text-sm font-thin italic text-white">
+          ~ your favourite datapack hub staff team
+        </p>
+      </div>
+    </div>
+  {/if}
+{:else}
+  <div class="fixed left-0 top-0 flex h-screen w-screen bg-stone-900">
+    <div
+      class="relative m-auto w-1/3 justify-self-center rounded-xl bg-stone-800 p-3 align-middle shadow-md shadow-black/25">
       <div class="flex items-center justify-center">
         <img
           src="/logos/dph.svg"
@@ -77,42 +110,30 @@
           height="32"
           width="32" />
         <span
-          class="hidden font-brand text-2xl font-bold transition-colors text-white  md:block">
+          class="hidden font-brand text-2xl font-bold text-white transition-colors md:block">
           Datapack Hub
         </span>
       </div>
       <CasualLine />
-      <p class="text-white font-brand mb-5 text-lg">The Datapack Hub website is coming very soon!</p>
-      <p class="text-white font-brand"><b>In the meantime, come chat!</b></p>
-      <p><a href="https://discord.gg/aEXsdjjdu4" class="text-sky-200 font-brand"> - Join our Discord</a></p>
-      <p class="mb-5"><a href="https://planetminecraft.com/group/daily_datapackers" class="text-sky-200 font-brand"> - Follow our PMC group!</a></p>
-      <p class="text-white font-brand text-sm italic font-thin">~ your favourite datapack hub staff team</p>
+      <p class="mb-5 font-brand text-lg text-white">
+        The Datapack Hub website is coming very soon!
+      </p>
+      <p class="font-brand text-white"><b>In the meantime, come chat!</b></p>
+      <p>
+        <a href="https://discord.gg/aEXsdjjdu4" class="font-brand text-sky-200">
+          - Join our Discord</a>
+      </p>
+      <p class="mb-5">
+        <a
+          href="https://planetminecraft.com/group/daily_datapackers"
+          class="font-brand text-sky-200">
+          - Follow our PMC group!</a>
+      </p>
+      <p class="font-brand text-sm font-thin italic text-white">
+        ~ your favourite datapack hub staff team
+      </p>
     </div>
   </div>
-  {/if}
-{:else}
-<div class="bg-stone-900 w-screen h-screen flex fixed left-0 top-0">
-  <div class="relative m-auto w-1/3 justify-self-center rounded-xl p-3 align-middle bg-stone-800 shadow-md shadow-black/25">
-    <div class="flex items-center justify-center">
-      <img
-        src="/logos/dph.svg"
-        alt="logo"
-        class="mr-1 h-8 rounded-full transition-all hover:brightness-75"
-        height="32"
-        width="32" />
-      <span
-        class="hidden font-brand text-2xl font-bold transition-colors text-white  md:block">
-        Datapack Hub
-      </span>
-    </div>
-    <CasualLine />
-    <p class="text-white font-brand mb-5 text-lg">The Datapack Hub website is coming very soon!</p>
-    <p class="text-white font-brand"><b>In the meantime, come chat!</b></p>
-    <p><a href="https://discord.gg/aEXsdjjdu4" class="text-sky-200 font-brand"> - Join our Discord</a></p>
-    <p class="mb-5"><a href="https://planetminecraft.com/group/daily_datapackers" class="text-sky-200 font-brand"> - Follow our PMC group!</a></p>
-    <p class="text-white font-brand text-sm italic font-thin">~ your favourite datapack hub staff team</p>
-  </div>
-</div>
 {/if}
 
 <!-- {/await} -->

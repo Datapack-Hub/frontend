@@ -1,6 +1,6 @@
 <script lang="ts">
   import { draw } from "svelte/transition";
-  import { isDark } from "$globals";
+  import { isDark } from "$lib/globals/stores";
 
   let toggle = () => {
     $isDark = !$isDark;
