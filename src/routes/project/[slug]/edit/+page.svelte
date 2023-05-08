@@ -4,11 +4,12 @@
   import type { PageData } from "./$types";
   import JSZip from 'jszip'
   import MultiSelect from 'svelte-multiselect'
+  import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
 
-  const ui_libs = [`Svelte`, `React`, `Vue`, `Angular`, `...`]
+  const ui_libs = ["1.13-1.14.4","1.15-1.16.1","1.16.2-1.16.5","1.17.x","1.18.x","1.19-1.19.3","1.19.4"]
 
   let selected: string[] = []
-
+  let zipFile : File;
   let activePage = "versions";
 
   let categories = [
@@ -30,15 +31,20 @@
 
   export let data: PageData;
 
-  let createVersion: boolean = true;
+  let createVersion: boolean = false;
 
   // modals
   let newVersion: Modal;
 
   async function upload() {
-    let zipFile = (
-      document.getElementById("zip") as HTMLInputElement
-    ).files?.item(0);
+    let inp = document.getElementById("zip") as HTMLInputElement
+    zipFile = inp.files?.item(0) as File;
+
+    if (zipFile?.size > 5000000){
+      toasts.error("File size can't be more than 5mb!");
+      inp.files = null
+      return
+    }
 
     let jsZip = new JSZip()
 
@@ -50,6 +56,30 @@
     } else {
       alert("undefined file");
     }
+  }
+
+  async function uploadVersion() {
+    let v_name = document.getElementById("v_name") as HTMLInputElement
+    let v_code = document.getElementById("v_code") as HTMLInputElement
+    let v_changelog = document.getElementById("v_changelog") as HTMLInputElement
+    let v_rp = document.getElementById("v_rp") as HTMLInputElement
+
+    if (!v_name.value) return toasts.error("Please make sure you give a version name!")
+    if (!v_code.value) return toasts.error("Please make sure you give a version number!")
+    if (!v_changelog.value) return toasts.error("Please make sure you give a version changelog!")
+    if (selected.length == 0) return toasts.error("Please select at least one compatible Minecraft version!")
+
+    let versiondata = {
+      "name":v_name.value,
+      "description":v_changelog.value,
+      "minecraft_versions":selected,
+      "version_code":v_code.value,
+      "primary_download":zipFile,
+      "resource_pack_download":null as null | File
+    }
+    if(v_rp.files?.length == 1) versiondata["resource_pack_download"] = v_rp.files.item(0)
+
+    toasts.success("whooosh! the data has been sent! except... it hasn't. if you're seeing this, then this functionality hasn't been implemented yet. be patient, and ask Silabear repeatedly!")
   }
 </script>
 
@@ -160,7 +190,8 @@
     <!-- VERSIONS-->
     {:else if activePage == "versions"}
       <div class="text-center align-middle md:text-start">
-        <div class="flex space-x-2 rounded-xl bg-stone-800 p-2 py-3 my-2">
+        {#if createVersion == false}
+        <div class="flex space-x-2 rounded-xl dark:bg-stone-800 bg-new-white-300 p-2 py-3 my-2">
           <label for="zip" class="max-w-100">
             <span
               class="cursor-pointer rounded-xl bg-green-600 p-2 font-brand font-bold dark:text-white"
@@ -176,32 +207,43 @@
             >(Supported: *.zip)</span>
           <!-- <p class="align-middle font-brand dark:text-new-white-200">No versions yet!</p> -->
         </div>
-        {#if createVersion == true}
-          <div class="rounded-xl bg-stone-800 p-2">
+        {:else}
+        {@const ver = (Math.random() * 10).toFixed(1)}
+          <div class="rounded-xl dark:bg-stone-800 bg-new-white-300 p-2">
+            <button
+            class="float-right cursor-pointer select-none font-black dark:text-white"
+            on:click="{() => createVersion = false}">X</button>
             <h2 class="font-brand dark:text-white text-xl mb-2 font-bold">Creating new Version</h2>
-
+            
             <div class="flex space-x-4">
               <p class="align-middle font-brand dark:text-new-white-200 w-1/2">Version Name</p>
               <p class="align-middle font-brand dark:text-new-white-200 w-1/2">Version Number</p>
             </div>
             <div class="flex space-x-2">
               <input
-              class="h-10 w-1/2 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white mb-4"
-              placeholder="{data.project?.title} v4.5"
+              class="h-10 w-1/2 rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white mb-4"
+              placeholder="{data.project?.title} v{ver}"
               id="v_name" />
               <input
-              class="h-10 w-1/6 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white mb-4"
-              placeholder="4.5"
-              id="v_name" />
+              class="h-10 w-1/6 rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white mb-4"
+              placeholder="v{ver}"
+              id="v_code" />
             </div>
             
             <p class="align-middle font-brand dark:text-new-white-200">Changelog (supports markdown!)</p>
             <textarea
-            class="h-36 w-3/4 resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+            class="h-36 w-3/4 resize-none rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white mb-4"
             placeholder="This update changes..."
             id="v_changelog"></textarea>
 
-            <MultiSelect bind:selected options={ui_libs} liSelectedClass="text-green-600"/>
+            <p class="align-middle font-brand dark:text-new-white-200">Minecraft Versions</p>
+            <MultiSelect bind:selected options={ui_libs} liSelectedClass="liSelectedClass"/>
+            <p class="mb-4"></p>
+
+            <p class="align-middle font-brand dark:text-new-white-200">Resource Pack Download (optional)</p>
+            <input type="file" id="v_rp" class="p-2 bg-new-white-400 dark:bg-stone-700 rounded-xl dark:text-white font-brand mb-4">
+            <p></p>
+            <button class="button-style" on:click={uploadVersion}>Create Version</button>
           </div>
         {/if}
       </div>
@@ -234,3 +276,14 @@
     Your file will be automatically compressed to reduce file size.
   </p>
 </Modal>
+
+<style lang="postcss">
+  .liSelectedClass {
+    @apply bg-orange-500;
+  }
+</style>
+
+<ToastContainer placement="bottom-right" let:data>
+  <FlatToast data="{data}" />
+  <!-- Provider template for your toasts -->
+</ToastContainer>

@@ -15,7 +15,7 @@ const config = {
           100: "#fcf2de",
           200: "#F5E8D0",
           300: "#edd6ab",
-          400: "#d3c4aa"
+          400: "#DEC699"
         },
         "dph-orange": "#ea580c",
       },
