@@ -5,6 +5,7 @@
   import type { PageData } from "./$types";
 
   import IconPencil from "~icons/tabler/Pencil.svelte";
+  import IconDownload from "~icons/tabler/Download.svelte";
   import { user } from "$lib/globals/stores";
 
   export let data: PageData;
@@ -104,7 +105,7 @@
           <h2 class="w-1/3 font-brand text-xl font-black dark:text-white">
             Name
           </h2>
-          <h2 class="w-1/3 font-brand text-xl font-black dark:text-white">
+          <h2 class="flex-grow font-brand text-xl font-black dark:text-white">
             Minecraft versions
           </h2>
         </div>
@@ -119,9 +120,12 @@
                 {version.version_code}
               </h2>
             </div>
-            <h2 class="font-brand dark:text-white">
+            <h2 class="flex-grow font-brand dark:text-white">
               {version.minecraft_versions}
             </h2>
+            <a
+              href="{version.primary_download}"
+              class="rounded-xl bg-lime-500 p-2 font-brand">Download</a>
           </div>
         {/each}
         <p class="mx-1 mt-2 font-brand dark:text-white">
@@ -130,7 +134,10 @@
       {:else}
         <h2 class="font-brand text-xl dark:text-white">
           <b>No versions yet!</b> Why not
-          <a href="/project/{data.project?.url}/edit">create one</a>?
+          <a
+            href="/project/{data.project?.url}/edit"
+            class="text-cyan-500 underline">create one</a
+          >?
         </h2>
       {/if}
     </div>

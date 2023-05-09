@@ -1,7 +1,7 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { categories } from "$lib/globals/functions";
+  import { categories, fetchAuthed } from "$lib/globals/functions";
   import type { PageData } from "./$types";
   import JSZip from "jszip";
   import MultiSelect from "svelte-multiselect";
@@ -42,27 +42,29 @@
 
     if (zipFile) {
       let zip = await jsZip.loadAsync(zipFile);
-      if (zip.file("pack.mcmeta") == null) return alert("Missing pack.mcmeta");
+      if (zip.file("pack.mcmeta") == null) {
+        return toasts.error("Missing pack.mcmeta");
+      }
 
       createVersion = true;
     } else {
-      alert("undefined file");
+      return toasts.error("Missing file");
     }
   }
 
   async function uploadVersion() {
-    let v_name = document.getElementById("v_name") as HTMLInputElement;
-    let v_code = document.getElementById("v_code") as HTMLInputElement;
-    let v_changelog = document.getElementById(
-      "v_changelog"
-    ) as HTMLInputElement;
+    let v_name = (document.getElementById("v_name") as HTMLInputElement).value;
+    let v_code = (document.getElementById("v_code") as HTMLInputElement).value;
+    let v_changelog = (
+      document.getElementById("v_changelog") as HTMLInputElement
+    ).value;
     let v_rp = document.getElementById("v_rp") as HTMLInputElement;
 
-    if (!v_name.value)
+    if (!v_name)
       return toasts.error("Please make sure you give a version name!");
-    if (!v_code.value)
+    if (!v_code)
       return toasts.error("Please make sure you give a version number!");
-    if (!v_changelog.value)
+    if (!v_changelog)
       return toasts.error("Please make sure you give a version changelog!");
     if (selected.length == 0)
       return toasts.error(
@@ -70,17 +72,19 @@
       );
 
     let versionData = {
-      name: v_name.value,
-      description: v_changelog.value,
+      name: v_name,
+      description: v_changelog,
       minecraft_versions: selected,
-      version_code: v_code.value,
+      version_code: v_code,
       primary_download: zipFile,
       resource_pack_download: v_rp.files?.item(0),
     };
 
-    toasts.success(
-      "Woosh! the data has been sent! Except... it hasn't. If you're seeing this, then this functionality hasn't been implemented yet. Be patient, and ask Silabear repeatedly!"
-    );
+    let upload = await fetchAuthed("POST","https://api.datapackhub.net/versions/new/" + data.project?.ID, versionData)
+    if(upload.ok) {
+      toasts.success("Posted the version! Refresh to see the latest changes.")
+      return createVersion = false;
+    }
   }
 </script>
 
@@ -229,12 +233,14 @@
             </div>
             <div class="flex space-x-2">
               <input
-                class="mb-4 h-10 w-1/2 rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+                class="mb-4 h-10 w-1/2 rounded-md bg-new-white-400 p-2 font-brand text-lg placeholder:text-new-white-200 dark:bg-stone-700 dark:text-white"
                 placeholder="{data.project?.title} v{ver}"
+                maxlength="40"
                 id="v_name" />
               <input
-                class="mb-4 h-10 w-1/6 rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+                class="mb-4 h-10 w-1/6 rounded-md bg-new-white-400 p-2 font-brand text-lg placeholder:text-new-white-200 dark:bg-stone-700 dark:text-white"
                 placeholder="v{ver}"
+                maxlength="15"
                 id="v_code" />
             </div>
 
@@ -251,8 +257,8 @@
             </p>
             <MultiSelect
               bind:selected="{selected}"
-              outerDivClass="bg-orange-500"
-              options="{ui_libs}" />
+              options="{ui_libs}"
+              liSelectedClass="liSelectedClass" />
             <p class="mb-4"></p>
 
             <p class="align-middle font-brand dark:text-new-white-200">
@@ -267,6 +273,25 @@
               >Create Version</button>
           </div>
         {/if}
+        {#each data.versions ?? [] as version}
+          <div
+            class="mb-2 flex items-center space-x-3 rounded-xl bg-new-white-300 p-2 last:mb-0 dark:bg-new-white-200 dark:bg-opacity-10">
+            <div class="flex w-1/3 items-center space-x-2">
+              <h2 class="font-brand text-xl font-bold dark:text-white">
+                {version.name}
+              </h2>
+              <h2 class="text-md font-brand font-thin italic dark:text-white">
+                {version.version_code}
+              </h2>
+            </div>
+            <h2 class="flex-grow font-brand dark:text-white">
+              {version.minecraft_versions}
+            </h2>
+            <a
+              href="{version.primary_download}"
+              class="rounded-xl bg-lime-500 p-2 font-brand">Download</a>
+          </div>
+        {/each}
       </div>
     {/if}
   </div>
@@ -305,8 +330,8 @@
 
 <style lang="postcss">
   :root {
-    --sms-bg: theme(colors.stone.800);
-    --sms-border: 1px solid theme(colors.stone.700);
+    --sms-bg: theme(colors.stone.700);
+    --sms-border: 0px solid theme(colors.stone.700);
     --sms-selected-bg: theme(colors.stone.700);
     --sms-remove-btn-hover-bg: theme(colors.orange.500);
     --sms-options-bg: theme(colors.stone.700);

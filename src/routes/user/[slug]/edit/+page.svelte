@@ -2,6 +2,7 @@
   import { goto } from "$app/navigation";
   import { apiURL, fetchAuthed } from "$lib/globals/functions";
   import { isAuthenticated, user } from "$lib/globals/stores";
+  import { toasts } from "svelte-toasts";
   import type { PageData } from "./$types";
 
   export let data: PageData;
@@ -18,6 +19,10 @@
 
     if ($user.role == "admin") {
       req.role = (document.getElementById("role") as HTMLInputElement).value;
+    }
+
+    if (bio.value.length > 500) {
+      return;
     }
 
     fetchAuthed("patch", `${apiURL}/user/id/${data.profile?.id}`, req).then(
