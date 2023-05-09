@@ -104,8 +104,11 @@
           <h2 class="w-1/3 font-brand text-xl font-black dark:text-white">
             Name
           </h2>
-          <h2 class="w-1/3 font-brand text-xl font-black dark:text-white">
+          <h2 class="flex-grow font-brand text-xl font-black dark:text-white">
             Minecraft versions
+          </h2>
+          <h2 class="font-brand text-xl font-black dark:text-white">
+            Download
           </h2>
         </div>
         {#each data.versions ?? [] as version}
@@ -119,9 +122,10 @@
                 {version.version_code}
               </h2>
             </div>
-            <h2 class="font-brand dark:text-white">
+            <h2 class="font-brand dark:text-white flex-grow">
               {version.minecraft_versions}
             </h2>
+            <a href={version.primary_download} class="bg-lime-500 p-2 rounded-xl font-brand">Download</a>
           </div>
         {/each}
         <p class="mx-1 mt-2 font-brand dark:text-white">
