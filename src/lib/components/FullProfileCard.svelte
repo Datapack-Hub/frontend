@@ -84,7 +84,7 @@
     {/if}
   </p>
   <p
-    class="styled-scrollbar my-3 max-h-64 w-full overflow-y-scroll whitespace-pre-line rounded-xl bg-white/40 p-2 font-brand text-sm dark:bg-stone-700/40 dark:text-white md:text-lg">
+    class="styled-scrollbar my-3 max-h-64 w-full overflow-y-scroll whitespace-pre-line rounded-xl bg-white/40 p-2 font-brand text-sm dark:bg-stone-700/40 dark:text-white">
     {userProfile.bio.replaceAll("\\n", "\n")}
   </p>
   {#if $isAuthenticated && $user.id === userProfile.id}
