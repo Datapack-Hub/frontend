@@ -7,7 +7,7 @@ export const load = (async ({ params }) => {
   if (projectReq.ok) {
     const project = (await projectReq.json()) as Project;
     const versionsReq = await fetch(apiURL + "/versions/project/" + project.ID);
-    
+
     if (versionsReq.ok) {
       return {
         project: project,
@@ -19,7 +19,6 @@ export const load = (async ({ params }) => {
       message: "Something went wrong?",
       description: await versionsReq.text(),
     });
-
   } else if (projectReq.status == 404) {
     throw error(404, {
       message: "Project not found",

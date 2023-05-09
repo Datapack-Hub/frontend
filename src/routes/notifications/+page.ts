@@ -15,7 +15,7 @@ export const load = (async () => {
     }
     throw error(unread.status, {
       message: unread.statusText,
-      description: "Something went wrong"
-    })
+      description: "Something went wrong",
+    });
   }
 }) satisfies PageLoad;

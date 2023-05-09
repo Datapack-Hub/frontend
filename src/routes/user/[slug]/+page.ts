@@ -3,7 +3,6 @@ import type { PageLoad } from "./$types";
 import { apiURL } from "$lib/globals/functions";
 
 export const load = (async ({ params, fetch }) => {
-  
   const [user, projects, role] = await Promise.all([
     fetch(`${apiURL}/user/${params.slug}`),
     fetch(`${apiURL}/user/${params.slug}/projects`),
@@ -18,16 +17,15 @@ export const load = (async ({ params, fetch }) => {
   }
 
   if (user.ok && projects.ok && role.ok) {
-    
     const [profileJson, projectJson] = await Promise.all([
       (await user.json()) as User,
       (await projects.json()).result as Project[],
     ]);
-    
+
     const profileRole: Role = (await role.json()).roles.find(
       (v: Role) => v.name == profileJson?.role
     );
-    
+
     return {
       profile: profileJson,
       projects: projectJson,
@@ -37,6 +35,6 @@ export const load = (async ({ params, fetch }) => {
 
   throw error(user.status, {
     message: user.statusText,
-    description: "Something went wrong"
-  })
+    description: "Something went wrong",
+  });
 }) satisfies PageLoad;

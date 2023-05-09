@@ -30,7 +30,7 @@
 
   async function upload() {
     let inp = document.getElementById("zip") as HTMLInputElement;
-    zipFile = inp.files?.item(0) as File;
+    zipFile = inp.files?.item(0)!;
 
     if (zipFile?.size > 5e6) {
       toasts.error("File size can't be more than 5mb!");
@@ -66,24 +66,33 @@
       return toasts.error("Please make sure you give a version number!");
     if (!v_changelog)
       return toasts.error("Please make sure you give a version changelog!");
-    if (selected.length == 0)
+    if (selected.length == 0) {
       return toasts.error(
         "Please select at least one compatible Minecraft version!"
       );
+    }
+
+    let fileForm = new FormData()
+
+    fileForm.append('file', zipFile)
 
     let versionData = {
       name: v_name,
       description: v_changelog,
       minecraft_versions: selected,
       version_code: v_code,
-      primary_download: zipFile,
+      fileForm,
       resource_pack_download: v_rp.files?.item(0),
     };
 
-    let upload = await fetchAuthed("POST","https://api.datapackhub.net/versions/new/" + data.project?.ID, versionData)
-    if(upload.ok) {
-      toasts.success("Posted the version! Refresh to see the latest changes.")
-      return createVersion = false;
+    let upload = await fetchAuthed(
+      "POST",
+      "https://api.datapackhub.net/versions/new/" + data.project?.ID,
+      versionData
+    );
+    if (upload.ok) {
+      toasts.success("Posted the version! Refresh to see the latest changes.");
+      return (createVersion = false);
     }
   }
 </script>

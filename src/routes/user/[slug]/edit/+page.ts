@@ -6,7 +6,6 @@ import { role } from "$lib/globals/stores";
 
 export const load = (async ({ params }) => {
   if (browser) {
-    
     let defaultRole: Role = {
       name: "default",
       color: null,
