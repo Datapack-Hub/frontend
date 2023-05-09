@@ -273,6 +273,25 @@
               >Create Version</button>
           </div>
         {/if}
+        {#each data.versions ?? [] as version}
+          <div
+            class="mb-2 flex items-center space-x-3 rounded-xl bg-new-white-300 p-2 last:mb-0 dark:bg-new-white-200 dark:bg-opacity-10">
+            <div class="flex w-1/3 items-center space-x-2">
+              <h2 class="font-brand text-xl font-bold dark:text-white">
+                {version.name}
+              </h2>
+              <h2 class="text-md font-brand font-thin italic dark:text-white">
+                {version.version_code}
+              </h2>
+            </div>
+            <h2 class="flex-grow font-brand dark:text-white">
+              {version.minecraft_versions}
+            </h2>
+            <a
+              href="{version.primary_download}"
+              class="rounded-xl bg-lime-500 p-2 font-brand">Download</a>
+          </div>
+        {/each}
       </div>
     {/if}
   </div>

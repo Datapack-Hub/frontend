@@ -9,13 +9,14 @@ export const load = (async ({ params }) => {
 
     if (projectReq.ok) {
       const projectJson = (await projectReq.json()) as Project;
-
       const meReq = await fetchAuthed("get", apiURL + "/user/me");
       if (meReq.ok) {
         const meJson = (await meReq.json()) as User;
         if (meJson.id == projectJson.author) {
+          const versionsReq = await (await fetchAuthed("get",apiURL + "/versions/project/" + projectJson.ID)).json() as Version[]
           return {
             project: projectJson,
+            versions: versionsReq
           };
         } else {
           throw error(403, {
