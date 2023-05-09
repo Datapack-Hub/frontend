@@ -1,5 +1,6 @@
 import { browser } from "$app/environment";
 import { apiURL, fetchAuthed } from "$lib/globals/functions";
+import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 
 export const load = (async () => {
@@ -11,8 +12,10 @@ export const load = (async () => {
       return {
         notifications: notificationsJSON,
       };
-    } else {
-      alert("hi is error");
     }
+    throw error(unread.status, {
+      message: unread.statusText,
+      description: "Something went wrong"
+    })
   }
 }) satisfies PageLoad;

@@ -23,7 +23,7 @@
 
   export let data: PageData;
 
-  let createVersion: boolean = false;
+  let createVersion = false;
 
   // modals
   let newVersion: Modal;
