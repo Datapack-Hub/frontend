@@ -89,8 +89,8 @@
       );
     }
 
-    let data = new FileReader();
-    let file = data.readAsText(zipFile);
+    let reader = new FileReader();
+    let file = reader.readAsText(zipFile);
 
     let versionData = {
       name: v_name,
