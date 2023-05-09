@@ -231,7 +231,6 @@
             </div>
             <div class="flex space-x-2">
               <input
-<<<<<<< HEAD
                 class="mb-4 h-10 w-1/2 rounded-md placeholder:text-new-white-200 bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
                 placeholder="{data.project?.title} v{ver}"
                 maxlength="40"
@@ -241,28 +240,13 @@
                 placeholder="v{ver}"
                 maxlength="15"
                 id="v_code" />
-=======
-              class="h-10 w-1/2 rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white mb-4"
-              placeholder="{data.project?.title} v{ver}"
-              id="v_name" />
-              <input
-              class="h-10 w-1/6 rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white mb-4"
-              placeholder="v{ver}"
-              id="v_code" />
->>>>>>> c967fac9384d97dce68f035db32a7711e4f83dcd
             </div>
             
             <p class="align-middle font-brand dark:text-new-white-200">Changelog (supports markdown!)</p>
             <textarea
-<<<<<<< HEAD
-              class="mb-4 h-36 w-3/4 placeholder:text-new-white-200 resize-none rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
-              placeholder="This update changes..."
-              id="v_changelog"></textarea>
-=======
             class="h-36 w-3/4 resize-none rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white mb-4"
             placeholder="This update changes..."
             id="v_changelog"></textarea>
->>>>>>> c967fac9384d97dce68f035db32a7711e4f83dcd
 
             <p class="align-middle font-brand dark:text-new-white-200">Minecraft Versions</p>
             <MultiSelect bind:selected options={ui_libs} liSelectedClass="liSelectedClass"/>
@@ -305,17 +289,10 @@
   </p>
 </Modal>
 
-<style lang="postcss">
-  .liSelectedClass {
-    @apply bg-orange-500;
-  }
-</style>
-
 <ToastContainer placement="bottom-right" let:data>
   <FlatToast data="{data}" />
   <!-- Provider template for your toasts -->
 </ToastContainer>
-<<<<<<< HEAD
 
 <style lang="postcss">
   :root {
@@ -327,5 +304,3 @@
     --sms-text-color: theme(colors.white);
   }
 </style>
-=======
->>>>>>> c967fac9384d97dce68f035db32a7711e4f83dcd
