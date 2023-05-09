@@ -89,18 +89,16 @@
       );
     }
 
-    let reader = new FileReader();
-    let file = reader.readAsText(zipFile);
-
     let versionData = {
       name: v_name,
       description: v_changelog,
       minecraft_versions: selected,
       version_code: v_code,
-      file: file,
+      // filename: zipFile.name,
+      primary_download: await zipFile.text(),
       resource_pack_download: v_rp.files?.item(0),
     };
-
+    
     let upload = await fetchAuthed(
       "POST",
       "https://api.datapackhub.net/versions/new/" + data.project?.ID,
