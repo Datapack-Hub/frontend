@@ -20,8 +20,7 @@
   }
 
   let orangeVerifiedHover = {
-    content:
-      "Verified for being part of the Datapack Hub staff team.",
+    content: "Verified for being part of the Datapack Hub staff team.",
     placement: "top",
   };
 

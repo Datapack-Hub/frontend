@@ -122,10 +122,12 @@
                 {version.version_code}
               </h2>
             </div>
-            <h2 class="font-brand dark:text-white flex-grow">
+            <h2 class="flex-grow font-brand dark:text-white">
               {version.minecraft_versions}
             </h2>
-            <a href={version.primary_download} class="bg-lime-500 p-2 rounded-xl font-brand">Download</a>
+            <a
+              href="{version.primary_download}"
+              class="rounded-xl bg-lime-500 p-2 font-brand">Download</a>
           </div>
         {/each}
         <p class="mx-1 mt-2 font-brand dark:text-white">
@@ -134,7 +136,10 @@
       {:else}
         <h2 class="font-brand text-xl dark:text-white">
           <b>No versions yet!</b> Why not
-          <a href="/project/{data.project?.url}/edit" class="text-cyan-500 underline">create one</a>?
+          <a
+            href="/project/{data.project?.url}/edit"
+            class="text-cyan-500 underline">create one</a
+          >?
         </h2>
       {/if}
     </div>

@@ -21,7 +21,7 @@
       req.role = (document.getElementById("role") as HTMLInputElement).value;
     }
 
-    if(bio.value.length > 500) {
+    if (bio.value.length > 500) {
       return;
     }
 
