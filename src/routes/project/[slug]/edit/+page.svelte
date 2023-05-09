@@ -51,18 +51,18 @@
   }
 
   async function uploadVersion() {
-    let v_name = document.getElementById("v_name") as HTMLInputElement;
-    let v_code = document.getElementById("v_code") as HTMLInputElement;
-    let v_changelog = document.getElementById(
+    let v_name = (document.getElementById("v_name") as HTMLInputElement).value;
+    let v_code = (document.getElementById("v_code") as HTMLInputElement).value;
+    let v_changelog = (document.getElementById(
       "v_changelog"
-    ) as HTMLInputElement;
+    ) as HTMLInputElement).value;
     let v_rp = document.getElementById("v_rp") as HTMLInputElement;
 
-    if (!v_name.value)
+    if (!v_name)
       return toasts.error("Please make sure you give a version name!");
-    if (!v_code.value)
+    if (!v_code)
       return toasts.error("Please make sure you give a version number!");
-    if (!v_changelog.value)
+    if (!v_changelog)
       return toasts.error("Please make sure you give a version changelog!");
     if (selected.length == 0)
       return toasts.error(
@@ -70,10 +70,10 @@
       );
 
     let versionData = {
-      name: v_name.value,
-      description: v_changelog.value,
+      name: v_name,
+      description: v_changelog,
       minecraft_versions: selected,
-      version_code: v_code.value,
+      version_code: v_code,
       primary_download: zipFile,
       resource_pack_download: v_rp.files?.item(0),
     };
@@ -229,12 +229,14 @@
             </div>
             <div class="flex space-x-2">
               <input
-                class="mb-4 h-10 w-1/2 rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+                class="mb-4 h-10 w-1/2 rounded-md placeholder:text-new-white-200 bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
                 placeholder="{data.project?.title} v{ver}"
+                maxlength="40"
                 id="v_name" />
               <input
-                class="mb-4 h-10 w-1/6 rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+                class="mb-4 h-10 w-1/6 rounded-md placeholder:text-new-white-200 bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
                 placeholder="v{ver}"
+                maxlength="15"
                 id="v_code" />
             </div>
 
@@ -242,7 +244,7 @@
               Changelog (supports markdown!)
             </p>
             <textarea
-              class="mb-4 h-36 w-3/4 resize-none rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+              class="mb-4 h-36 w-3/4 placeholder:text-new-white-200 resize-none rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
               placeholder="This update changes..."
               id="v_changelog"></textarea>
 
@@ -305,8 +307,8 @@
 
 <style lang="postcss">
   :root {
-    --sms-bg: theme(colors.stone.800);
-    --sms-border: 1px solid theme(colors.stone.700);
+    --sms-bg: theme(colors.stone.700);
+    --sms-border: 0px solid theme(colors.stone.700);
     --sms-selected-bg: theme(colors.stone.700);
     --sms-remove-btn-hover-bg: theme(colors.orange.500);
     --sms-options-bg: theme(colors.stone.700);

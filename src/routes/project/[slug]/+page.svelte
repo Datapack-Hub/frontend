@@ -130,7 +130,7 @@
       {:else}
         <h2 class="font-brand text-xl dark:text-white">
           <b>No versions yet!</b> Why not
-          <a href="/project/{data.project?.url}/edit">create one</a>?
+          <a href="/project/{data.project?.url}/edit" class="text-cyan-500 underline">create one</a>?
         </h2>
       {/if}
     </div>
