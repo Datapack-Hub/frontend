@@ -19,7 +19,7 @@ export const load = (async ({ params }) => {
               "get",
               apiURL + "/versions/project/" + projectJson.ID
             )
-          ).json()) as Version[];
+          ).json()).result as Version[];
           return {
             project: projectJson,
             versions: versionsReq,

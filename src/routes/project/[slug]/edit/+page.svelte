@@ -1,7 +1,7 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { categories, fetchAuthed } from "$lib/globals/functions";
+  import { fetchAuthed } from "$lib/globals/functions";
   import type { PageData } from "./$types";
   import JSZip from "jszip";
   import MultiSelect from "svelte-multiselect";
@@ -28,9 +28,26 @@
   // modals
   let newVersion: Modal;
 
+  let categories = [
+    { id: 1, text: `Adventure` },
+    { id: 2, text: `Magic` },
+    { id: 3, text: `Minecraft, but` },
+    { id: 4, text: `Cursed` },
+    { id: 5, text: `World Generation` },
+    { id: 6, text: `Tools and Equipment` },
+    { id: 7, text: `German` },
+    { id: 8, text: `Recipe` },
+    { id: 9, text: `Quality of Life` },
+    { id: 10, text: `Items and Blocks` },
+    { id: 11, text: `Cosmetics` },
+    { id: 12, text: `Miscellaneous` },
+    { id: 13, text: `Utility` },
+    { id: 24, text: `Vanilla+` },
+  ];
+
   async function upload() {
     let inp = document.getElementById("zip") as HTMLInputElement;
-    zipFile = inp.files?.item(0)!;
+    zipFile = inp.files![0];
 
     if (zipFile?.size > 5e6) {
       toasts.error("File size can't be more than 5mb!");
@@ -72,23 +89,22 @@
       );
     }
 
-    let fileForm = new FormData()
-
-    fileForm.append('file', zipFile)
+    let data = new FileReader();
+    let file = data.readAsText(zipFile);
 
     let versionData = {
       name: v_name,
       description: v_changelog,
       minecraft_versions: selected,
       version_code: v_code,
-      fileForm,
+      file: file,
       resource_pack_download: v_rp.files?.item(0),
     };
 
     let upload = await fetchAuthed(
       "POST",
       "https://api.datapackhub.net/versions/new/" + data.project?.ID,
-      versionData
+      versionData,
     );
     if (upload.ok) {
       toasts.success("Posted the version! Refresh to see the latest changes.");
@@ -189,7 +205,7 @@
             class="w-1/4 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
             value="{data.project?.tags}">
             {#each categories as cat}
-              <option value="{cat}">
+              <option value="{cat.id}">
                 {cat.text}
               </option>
             {/each}

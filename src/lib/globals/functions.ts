@@ -52,13 +52,17 @@ export async function getAuthorNameFromID(
 export async function fetchAuthed(
   method: string,
   url: string,
-  data: object | undefined = undefined
+  data: object | undefined = undefined,
+  headers: HeadersInit | undefined = undefined
 ): Promise<Response> {
   // what is going on here
   const resp = await fetch(url, {
     method: method,
     ...(data ? { body: JSON.stringify(data) } : {}), // ah yes ternary grossness
-    headers: { Authorization: `Basic ${await getCookie("dph_token")}` },
+    headers: {
+      Authorization: `Basic ${await getCookie("dph_token")}`,
+      ...headers
+    },
   });
 
   if (resp.status == 498) removeCookie("dph_token");
