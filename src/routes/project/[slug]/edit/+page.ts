@@ -14,12 +14,14 @@ export const load = (async ({ params }) => {
       if (meReq.ok) {
         const meJson = (await meReq.json()) as User;
         if (meJson.id == projectJson.author) {
-          const versionsReq = (await (
-            await fetchAuthed(
-              "get",
-              apiURL + "/versions/project/" + projectJson.ID
-            )
-          ).json()).result as Version[];
+          const versionsReq = (
+            await (
+              await fetchAuthed(
+                "get",
+                apiURL + "/versions/project/" + projectJson.ID
+              )
+            ).json()
+          ).result as Version[];
           return {
             project: projectJson,
             versions: versionsReq,

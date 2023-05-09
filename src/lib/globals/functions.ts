@@ -61,7 +61,7 @@ export async function fetchAuthed(
     ...(data ? { body: JSON.stringify(data) } : {}), // ah yes ternary grossness
     headers: {
       Authorization: `Basic ${await getCookie("dph_token")}`,
-      ...headers
+      ...headers,
     },
   });
 

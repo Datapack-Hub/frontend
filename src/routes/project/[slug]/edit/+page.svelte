@@ -98,11 +98,11 @@
       primary_download: await zipFile.text(),
       resource_pack_download: v_rp.files?.item(0),
     };
-    
+
     let upload = await fetchAuthed(
       "POST",
       "https://api.datapackhub.net/versions/new/" + data.project?.ID,
-      versionData,
+      versionData
     );
     if (upload.ok) {
       toasts.success("Posted the version! Refresh to see the latest changes.");
