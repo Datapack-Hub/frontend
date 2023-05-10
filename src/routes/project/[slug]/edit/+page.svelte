@@ -1,7 +1,7 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { categories, fetchAuthed } from "$lib/globals/functions";
+  import { categories, fetchAuthed, sendBlobAuthed } from "$lib/globals/functions";
   import type { PageData } from "./$types";
   import JSZip from "jszip";
   import MultiSelect from "svelte-multiselect";
@@ -80,7 +80,8 @@
       resource_pack_download: v_rp.files?.item(0),
     };
 
-    let upload = await fetchAuthed("POST","https://api.datapackhub.net/versions/new/" + data.project?.ID, versionData)
+    // let upload = await sendBlobAuthed("https://api.datapackhub.net/versions/new/" + data.project?.ID, versionData)
+    let upload = await fetchAuthed("POST", "https://api.datapackhub.net/versions/new/" + data.project?.ID, versionData)
     if(upload.ok) {
       toasts.success("Posted the version! Refresh to see the latest changes.")
       return createVersion = false;

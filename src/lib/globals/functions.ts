@@ -52,7 +52,7 @@ export async function getAuthorNameFromID(
 export async function fetchAuthed(
   method: string,
   url: string,
-  data: object | undefined = undefined
+  data: object | Blob | FormData | undefined = undefined
 ): Promise<Response> {
   // what is going on here
   const resp = await fetch(url, {
@@ -64,6 +64,18 @@ export async function fetchAuthed(
   if (resp.status == 498) removeCookie("dph_token");
 
   return resp;
+}
+
+export async function sendBlobAuthed(url: string, data: Blob) {
+  const res = await fetch(url, {
+    method: "post",
+    body: data, // ah yes ternary grossness
+    headers: { Authorization: `Basic ${await getCookie("dph_token")}` },
+  });
+
+  if (res.status == 498) removeCookie("dph_token");
+
+  return res;
 }
 
 export async function getCookie(item: string) {
