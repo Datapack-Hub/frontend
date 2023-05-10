@@ -94,7 +94,7 @@
       description: v_changelog,
       minecraft_versions: selected,
       version_code: v_code,
-      // filename: zipFile.name,
+      filename: zipFile.name,
       primary_download: await zipFile.text(),
       resource_pack_download: v_rp.files?.item(0),
     };
