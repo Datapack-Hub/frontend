@@ -89,37 +89,34 @@
       );
     }
 
-    let formData = new FormData();
+    const reader = new FileReader();
+    reader.readAsDataURL(zipFile);
+    reader.onload = async () => {
+      let transformedFile = reader.result;
 
-    let selectedAsString = "";
-    selected.forEach((v) => (selectedAsString += v + ","));
+      let versionData = {
+        name: v_name,
+        description: v_changelog,
+        minecraft_versions: selected,
+        version_code: v_code,
+        filename: zipFile.name,
+        primary_download: transformedFile,
+        resource_pack_download: v_rp.files?.item(0),
+      };
 
-    formData.append("name", v_name);
-    formData.append("description", v_changelog);
-    formData.append("version_code", v_code);
-    formData.append("primary_download", zipFile, zipFile.name);
-    formData.append("minecraft_versions", selectedAsString);
-    formData.append("resource_pack_download", v_rp.files?[0], v_rp.files?[0].name)
-
-    // let versionData = {
-    //   name: v_name,
-    //   description: v_changelog,
-    //   minecraft_versions: selected,
-    //   version_code: v_code,
-    //   filename: zipFile.name,
-    //   primary_download: await zipFile.text(),
-    //   resource_pack_download: v_rp.files?.item(0),
-    // };
-
-    let upload = await fetchAuthed(
-      "POST",
-      "https://api.datapackhub.net/versions/new/" + data.project?.ID,
-      formData
-    );
-    if (upload.ok) {
-      toasts.success("Posted the version! Refresh to see the latest changes.");
-      return (createVersion = false);
-    }
+      let upload = await fetchAuthed(
+        "POST",
+        "https://api.datapackhub.net/versions/new/" + data.project?.ID,
+        versionData
+      );
+      if (upload.ok) {
+        toasts.success(
+          "Posted the version! Refresh to see the latest changes."
+        );
+        return (createVersion = false);
+      }
+    };
+    reader.onerror = (error) => console.error(error);
   }
 </script>
 

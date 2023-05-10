@@ -73,7 +73,19 @@ export async function fetchAuthed(
 export async function sendBlobAuthed(url: string, data: Blob) {
   const res = await fetch(url, {
     method: "post",
-    body: data, // ah yes ternary grossness
+    body: data,
+    headers: { Authorization: `Basic ${await getCookie("dph_token")}` },
+  });
+
+  if (res.status == 498) removeCookie("dph_token");
+
+  return res;
+}
+
+export async function sendFormAuthed(url: string, data: FormData) {
+  const res = await fetch(url, {
+    method: "post",
+    body: data,
     headers: { Authorization: `Basic ${await getCookie("dph_token")}` },
   });
 
