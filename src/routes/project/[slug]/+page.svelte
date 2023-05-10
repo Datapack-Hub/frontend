@@ -5,6 +5,7 @@
   import type { PageData } from "./$types";
 
   import IconPencil from "~icons/tabler/Pencil.svelte";
+  import IconDownload from "~icons/tabler/Download.svelte";
   import { user } from "$lib/globals/stores";
 
   export let data: PageData;
@@ -106,9 +107,6 @@
           </h2>
           <h2 class="flex-grow font-brand text-xl font-black dark:text-white">
             Minecraft versions
-          </h2>
-          <h2 class="font-brand text-xl font-black dark:text-white">
-            Download
           </h2>
         </div>
         {#each data.versions ?? [] as version}

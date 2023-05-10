@@ -21,14 +21,20 @@ export const load = (async ({ params, fetch }) => {
       (await user.json()) as User,
       (await projects.json()).result as Project[],
     ]);
+
     const profileRole: Role = (await role.json()).roles.find(
       (v: Role) => v.name == profileJson?.role
     );
+
     return {
       profile: profileJson,
       projects: projectJson,
       role: profileRole,
     };
   }
-  return {};
+
+  throw error(user.status, {
+    message: user.statusText,
+    description: "Something went wrong",
+  });
 }) satisfies PageLoad;

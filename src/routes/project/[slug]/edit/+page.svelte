@@ -1,7 +1,7 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { categories, fetchAuthed, sendBlobAuthed } from "$lib/globals/functions";
+  import { fetchAuthed } from "$lib/globals/functions";
   import type { PageData } from "./$types";
   import JSZip from "jszip";
   import MultiSelect from "svelte-multiselect";
@@ -23,14 +23,31 @@
 
   export let data: PageData;
 
-  let createVersion: boolean = false;
+  let createVersion = false;
 
   // modals
   let newVersion: Modal;
 
+  let categories = [
+    { id: 1, text: `Adventure` },
+    { id: 2, text: `Magic` },
+    { id: 3, text: `Minecraft, but` },
+    { id: 4, text: `Cursed` },
+    { id: 5, text: `World Generation` },
+    { id: 6, text: `Tools and Equipment` },
+    { id: 7, text: `German` },
+    { id: 8, text: `Recipe` },
+    { id: 9, text: `Quality of Life` },
+    { id: 10, text: `Items and Blocks` },
+    { id: 11, text: `Cosmetics` },
+    { id: 12, text: `Miscellaneous` },
+    { id: 13, text: `Utility` },
+    { id: 24, text: `Vanilla+` },
+  ];
+
   async function upload() {
     let inp = document.getElementById("zip") as HTMLInputElement;
-    zipFile = inp.files?.item(0) as File;
+    zipFile = inp.files![0];
 
     if (zipFile?.size > 5e6) {
       toasts.error("File size can't be more than 5mb!");
@@ -66,25 +83,30 @@
       return toasts.error("Please make sure you give a version number!");
     if (!v_changelog)
       return toasts.error("Please make sure you give a version changelog!");
-    if (selected.length == 0)
+    if (selected.length == 0) {
       return toasts.error(
         "Please select at least one compatible Minecraft version!"
       );
+    }
 
     let versionData = {
       name: v_name,
       description: v_changelog,
       minecraft_versions: selected,
       version_code: v_code,
-      primary_download: zipFile,
+      filename: zipFile.name,
+      primary_download: await zipFile.text(),
       resource_pack_download: v_rp.files?.item(0),
     };
 
-    // let upload = await sendBlobAuthed("https://api.datapackhub.net/versions/new/" + data.project?.ID, versionData)
-    let upload = await fetchAuthed("POST", "https://api.datapackhub.net/versions/new/" + data.project?.ID, versionData)
-    if(upload.ok) {
-      toasts.success("Posted the version! Refresh to see the latest changes.")
-      return createVersion = false;
+    let upload = await fetchAuthed(
+      "POST",
+      "https://api.datapackhub.net/versions/new/" + data.project?.ID,
+      versionData
+    );
+    if (upload.ok) {
+      toasts.success("Posted the version! Refresh to see the latest changes.");
+      return (createVersion = false);
     }
   }
 </script>
@@ -181,7 +203,7 @@
             class="w-1/4 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
             value="{data.project?.tags}">
             {#each categories as cat}
-              <option value="{cat}">
+              <option value="{cat.id}">
                 {cat.text}
               </option>
             {/each}
@@ -274,6 +296,25 @@
               >Create Version</button>
           </div>
         {/if}
+        {#each data.versions ?? [] as version}
+          <div
+            class="mb-2 flex items-center space-x-3 rounded-xl bg-new-white-300 p-2 last:mb-0 dark:bg-new-white-200 dark:bg-opacity-10">
+            <div class="flex w-1/3 items-center space-x-2">
+              <h2 class="font-brand text-xl font-bold dark:text-white">
+                {version.name}
+              </h2>
+              <h2 class="text-md font-brand font-thin italic dark:text-white">
+                {version.version_code}
+              </h2>
+            </div>
+            <h2 class="flex-grow font-brand dark:text-white">
+              {version.minecraft_versions}
+            </h2>
+            <a
+              href="{version.primary_download}"
+              class="rounded-xl bg-lime-500 p-2 font-brand">Download</a>
+          </div>
+        {/each}
       </div>
     {/if}
   </div>
