@@ -120,12 +120,14 @@
                 {version.version_code}
               </h2>
             </div>
-            <h2 class="flex-grow font-brand dark:text-white">
-              {version.minecraft_versions}
+            <h2 class="flex-grow flex font-brand dark:text-white space-x-1">
+              {#each version.minecraft_versions.split(",") ?? [] as mcv}
+                <div class="px-1 border-dph-orange border-2 rounded-lg bg-dph-orange/25">{mcv}</div>
+              {/each}
             </h2>
             <a
               href="{version.primary_download}"
-              class="rounded-xl bg-lime-500 p-2 font-brand">Download</a>
+              class="rounded-xl bg-dph-orange p-1 px-2 font-brand dark:text-white">Download</a>
           </div>
         {/each}
         <p class="mx-1 mt-2 font-brand dark:text-white">
