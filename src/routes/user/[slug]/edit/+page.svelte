@@ -72,8 +72,8 @@
             >{data.profile?.role}</option>
           {#each roles as r}
             {#if r != data.profile?.role}
-              <option value="{data.profile?.role}" selected
-                >{data.profile?.role}</option>
+              <option value="{r}" selected
+                >{r}</option>
             {/if}
           {/each}
         </select><br /><br />
