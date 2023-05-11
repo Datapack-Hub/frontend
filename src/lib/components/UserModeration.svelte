@@ -204,17 +204,12 @@
     class="mt-2 align-middle font-brand dark:text-new-white-200">
     Notification Type
   </label>
-  <select name="notif-type" id="notif-type">
+  <select name="notif-type" id="notif-type" class="mb-4 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white">
     <option value="default">Default</option>
     <option value="important">Important</option>
     <option value="announcement">Announcement</option>
     <option value="rainbow">Rainbow 🌈</option>
   </select>
-  <input
-    class="mb-4 h-8 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
-    value="default"
-    name="notif-type"
-    id="notif-type" />
   <button
     on:click="{async () => await sendNotif()}"
     class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"

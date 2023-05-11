@@ -67,7 +67,7 @@
       <br /><br />
       {#if $isAuthenticated && $user.role == "admin"}
         <p class="align-middle font-brand dark:text-new-white-200">Site Role</p>
-        <select name="roleSelection" id="rolez" bind:value="{newRole}">
+        <select name="roleSelection" id="rolez" bind:value="{newRole}" class="h-10 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white">
           <option value="{data.profile?.role}" selected
             >{data.profile?.role}</option>
           {#each roles as r}
@@ -76,11 +76,7 @@
                 >{data.profile?.role}</option>
             {/if}
           {/each}
-        </select>
-        <input
-          class="h-10 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
-          value="{data.profile?.role}"
-          id="role" /><br /><br />
+        </select><br /><br />
       {/if}
       <button
         on:click="{save}"
