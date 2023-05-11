@@ -6,7 +6,12 @@
 
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconDownload from "~icons/tabler/Download.svelte";
+  import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import { user } from "$lib/globals/stores";
+  import Modal from "$lib/components/modals/Modal.svelte";
+  import CasualLine from "$lib/components/CasualLine.svelte";
+  import tippy from "sveltejs-tippy";
+  import { onMount } from "svelte";
 
   export let data: PageData;
   let visible = false;
@@ -19,6 +24,14 @@
       author = "By " + (await getAuthorNameFromID(data.project?.author));
     visible = true;
   })();
+
+  let dlModal: Modal;
+  let activeVersion: Version;
+
+  function openVersion(item: Version){
+    activeVersion = item;
+    dlModal.open()
+  }
 </script>
 
 <svelte:head>
@@ -128,10 +141,9 @@
                 </div>
               {/each}
             </h2>
-            <a
-              href="{version.primary_download}"
-              class="rounded-xl bg-dph-orange p-1 px-2 font-brand dark:text-white"
-              >Download</a>
+            <button
+              on:click={() => {openVersion(version)}}
+              class="rounded-xl bg-dph-orange p-1 px-2 font-brand dark:text-white">Download</button>
           </div>
         {/each}
         <p class="mx-1 mt-2 font-brand dark:text-white">
@@ -149,3 +161,36 @@
     </div>
   {/if}
 </main>
+
+<Modal bind:this={dlModal}>
+  <h1 class="font-brand text-xl font-bold dark:text-white">
+    Download Version: {activeVersion.name}
+  </h1>
+  <CasualLine />
+  <div class="font-brand dark:text-white items-middle flex items-center">
+    <p class="pr-1">Select a valid Minecraft version below to download the datapack. </p> 
+    <div use:tippy="{{
+      content:
+        "The version you select here will determine what pack_format is used in pack.mcmeta",
+      placement: "right",
+    }}">
+      <IconInfo/>
+    </div> 
+  </div>
+  <div class="flex font-brand dark:text-white space-x-2 my-2">
+    {#each activeVersion.minecraft_versions.split(",") ?? [] as mcv}
+      <div class="p-1 px-2 border-dph-orange border-2 rounded-lg bg-dph-orange/25 hover:scale-102 cursor-pointer">{mcv}</div>
+    {/each}
+  </div>
+  <p class="pr-1 font-brand dark:text-white italic text-xs">If your version is not listed above, then this datapack is not supported for your version. </p> 
+
+  {#if activeVersion.rp_download}
+  <CasualLine />
+  <p class="font-brand dark:text-white pr-1">This datapack also has a resource pack which you need to download! </p> 
+  <div class="flex my-2">
+    <div class="p-1 px-2 border-dph-orange border-2 rounded-lg bg-dph-orange/25 hover:scale-102 cursor-pointer dark:text-white font-brand">Download Resource Pack</div>
+  </div>
+  {/if}
+  <CasualLine />
+  <p class="pr-1 font-brand text-sm text-sky-300 flex space-x-1 items-center"><IconInfo /><a href="/">How to install a datapack</a></p>
+</Modal>
