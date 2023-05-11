@@ -61,7 +61,7 @@
     const content = document.getElementById(
       "notif-content"
     ) as HTMLTextAreaElement;
-    const type = document.getElementById("notif-type") as HTMLInputElement;
+    const type = document.getElementById("notif-type") as HTMLSelectElement;
 
     if (
       typeof message == "undefined" ||
@@ -179,26 +179,41 @@
     Send an anonymous notification (unless you put your name down) to the user.
     For warnings, use the Warn button.
   </p>
-  <p class="mt-3 align-middle font-brand dark:text-new-white-200">
+  <label
+    for="notif-message"
+    class="mt-3 align-middle font-brand dark:text-new-white-200">
     Notification Message
-  </p>
+  </label>
   <input
     class="h-8 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Your cake is burning!"
+    name="notif-message"
     id="notif-message" />
-  <p class="mt-3 align-middle font-brand dark:text-new-white-200">
+  <label
+    for="notif-content"
+    class="mt-3 align-middle font-brand dark:text-new-white-200">
     Notification Body
-  </p>
+  </label>
   <textarea
     class="h-24 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Just a quick reiminder that your cake which you forgot about has been in the oven for 10 minutes too long."
+    name="notif-content"
     id="notif-content"></textarea>
-  <p class="mt-2 align-middle font-brand dark:text-new-white-200">
+  <label
+    for="notif-type"
+    class="mt-2 align-middle font-brand dark:text-new-white-200">
     Notification Type
-  </p>
+  </label>
+  <select name="notif-type" id="notif-type">
+    <option value="default">Default</option>
+    <option value="important">Important</option>
+    <option value="announcement">Announcement</option>
+    <option value="rainbow">Rainbow 🌈</option>
+  </select>
   <input
     class="mb-4 h-8 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     value="default"
+    name="notif-type"
     id="notif-type" />
   <button
     on:click="{async () => await sendNotif()}"

@@ -36,6 +36,7 @@
           type="text"
           bind:value="{query}"
           id="query"
+          maxlength="75"
           class="ml-2 bg-new-white-300 font-brand placeholder:text-stone-400 focus:outline-none dark:bg-stone-600 dark:text-white"
           on:input="{search}" />
       </div>

@@ -19,6 +19,16 @@ export const categories = [
   { id: 24, text: `Vanilla+` },
 ];
 
+export const roles = [
+  "admin",
+  "moderator",
+  "helper",
+  "verified",
+  "nerd",
+  "donator",
+  "default",
+];
+
 /**
  * Loads the user's preferred color scheme
  */

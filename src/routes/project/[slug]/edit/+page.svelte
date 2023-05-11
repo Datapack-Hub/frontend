@@ -172,6 +172,7 @@
             class="h-10 w-1/2 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
             placeholder="Title"
             value="{data.project?.title}"
+            maxlength="50"
             id="title" /><br /><br />
 
           <!-- Short Description -->
@@ -182,7 +183,8 @@
             class="h-24 w-3/4 resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
             placeholder="This short description is used for social media embeds and the listing page."
             id="desc"
-            value="{data.project?.description}"></textarea
+            value="{data.project?.description}"
+            maxlength="200"></textarea
           ><br /><br />
 
           <!-- Long Description -->
@@ -193,7 +195,8 @@
             class="h-96 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
             placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
             id="body"
-            value="{data.project?.body}"></textarea
+            value="{data.project?.body}"
+            maxlength="2000"></textarea
           ><br /><br />
 
           <!-- Downloadable File -->
@@ -267,7 +270,7 @@
               <input
                 class="mb-4 h-10 w-1/2 rounded-md bg-new-white-400 p-2 font-brand text-lg placeholder:text-new-white-200 dark:bg-stone-700 dark:text-white"
                 placeholder="{data.project?.title} v{ver}"
-                maxlength="40"
+                maxlength="50"
                 id="v_name" />
               <input
                 class="mb-4 h-10 w-1/6 rounded-md bg-new-white-400 p-2 font-brand text-lg placeholder:text-new-white-200 dark:bg-stone-700 dark:text-white"
@@ -282,7 +285,8 @@
             <textarea
               class="mb-4 h-36 w-3/4 resize-none rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
               placeholder="This update changes..."
-              id="v_changelog"></textarea>
+              id="v_changelog"
+              maxlength="2000"></textarea>
 
             <p class="align-middle font-brand dark:text-new-white-200">
               Minecraft Versions

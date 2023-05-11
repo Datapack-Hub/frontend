@@ -1,11 +1,12 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { apiURL, fetchAuthed } from "$lib/globals/functions";
+  import { apiURL, fetchAuthed, roles } from "$lib/globals/functions";
   import { isAuthenticated, user } from "$lib/globals/stores";
-  import { toasts } from "svelte-toasts";
   import type { PageData } from "./$types";
 
   export let data: PageData;
+
+  let newRole = data.profile?.role;
 
   function save() {
     const uname = document.getElementById("username") as HTMLInputElement;
@@ -14,12 +15,8 @@
     let req = {
       username: uname.value,
       bio: bio.value,
-      role: data.profile?.role,
+      role: newRole,
     };
-
-    if ($user.role == "admin") {
-      req.role = (document.getElementById("role") as HTMLInputElement).value;
-    }
 
     if (bio.value.length > 500) {
       return;
@@ -58,6 +55,7 @@
       <input
         class="h-10 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
         value="{data.profile?.username}"
+        maxlength="32"
         id="username" />
       <br /><br />
       <p class="align-middle font-brand dark:text-new-white-200">Bio</p>
@@ -69,6 +67,16 @@
       <br /><br />
       {#if $isAuthenticated && $user.role == "admin"}
         <p class="align-middle font-brand dark:text-new-white-200">Site Role</p>
+        <select name="roleSelection" id="rolez" bind:value="{newRole}">
+          <option value="{data.profile?.role}" selected
+            >{data.profile?.role}</option>
+          {#each roles as r}
+            {#if r != data.profile?.role}
+              <option value="{data.profile?.role}" selected
+                >{data.profile?.role}</option>
+            {/if}
+          {/each}
+        </select>
         <input
           class="h-10 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white"
           value="{data.profile?.role}"
