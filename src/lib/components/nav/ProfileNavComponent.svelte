@@ -8,6 +8,8 @@
   import IconRead from "~icons/tabler/Bell.svelte";
   import { isAuthenticated, isDark, role, user } from "$lib/globals/stores";
 
+  export let small: boolean;
+
   let signInHoverMsg = {
     content: "Sign In",
     placement: "bottom",
@@ -39,13 +41,13 @@
   $: iconColor = $isDark ? "white" : "black";
 </script>
 
-<div class="z-50 ml-6 flex items-center justify-center">
+<div class="z-50 ml-3 flex items-center justify-center md:ml-6">
   {#if $isAuthenticated}
-    {#if ["moderator", "developer", "admin"].includes($role.name)}
+    {#if ["moderator", "developer", "admin"].includes($role.name) && !small}
       <a
         href="/moderation/console"
         aria-label="Moderation console"
-        class="z-20 mr-6"
+        class="z-20 mr-3 md:mr-6"
         use:tippy="{moderationHoverMsg}">
         <IconShield height="24" width="24" color="{iconColor}" />
       </a>
@@ -72,7 +74,7 @@
         alt="{$user.username}'s profile picture"
         height="32"
         width="32"
-        class="ml-6 rounded-full outline outline-2 outline-offset-2"
+        class="ml-3 rounded-full outline outline-2 outline-offset-2 md:ml-6"
         style="outline-color:{$role.color ?? '#eab308'};" />
     </a>
   {:else}

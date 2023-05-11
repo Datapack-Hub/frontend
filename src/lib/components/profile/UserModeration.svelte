@@ -1,7 +1,7 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { apiURL, fetchAuthed } from "../globals/functions";
+  import { apiURL, fetchAuthed } from "../../globals/functions";
   import { browser } from "$app/environment";
   import SvelteMarkdown from "svelte-markdown";
   import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
@@ -196,7 +196,7 @@
   </label>
   <textarea
     class="h-24 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
-    placeholder="Just a quick reiminder that your cake which you forgot about has been in the oven for 10 minutes too long."
+    placeholder="Just a quick reminder that your cake which you forgot about has been in the oven for 10 minutes too long."
     name="notif-content"
     id="notif-content"></textarea>
   <label
@@ -204,7 +204,10 @@
     class="mt-2 align-middle font-brand dark:text-new-white-200">
     Notification Type
   </label>
-  <select name="notif-type" id="notif-type" class="mb-4 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white">
+  <select
+    name="notif-type"
+    id="notif-type"
+    class="mb-4 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white">
     <option value="default">Default</option>
     <option value="important">Important</option>
     <option value="announcement">Announcement</option>

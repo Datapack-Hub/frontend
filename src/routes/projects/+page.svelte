@@ -27,7 +27,8 @@
       class="mt-8 pb-2 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Browse Datapacks
     </h1>
-    <div class="my-4 flex">
+    <div
+      class="my-4 flex flex-col items-center justify-center sm:flex-row md:justify-normal">
       <div
         class="flex w-64 items-center rounded-full bg-new-white-300 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-600">
         <IconSearch color="white" on:click="{search}" />
@@ -44,30 +45,37 @@
       <div class="flex items-center">
         <a
           href="/projects"
-          class="mx-1 h-6 w-6 rounded-full bg-orange-600 px-1 text-center dark:text-white"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light dark:text-white sm:mt-0"
           >1</a>
         <a
           href="/projects"
-          class="mx-1 h-6 w-6 rounded-full bg-orange-600 px-1 text-center dark:text-white"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light dark:text-white sm:mt-0"
           >2</a>
         <a
           href="/projects"
-          class="mx-1 h-6 w-6 rounded-full bg-orange-600 px-1 text-center dark:text-white"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light dark:text-white sm:mt-0"
           >3</a>
         <a
           href="/projects"
-          class="mx-1 h-6 w-6 rounded-full bg-orange-600 px-1 text-center dark:text-white"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light dark:text-white sm:mt-0"
           >4</a>
         <a
           href="/projects"
-          class="mx-1 h-6 w-6 rounded-full bg-orange-600 px-1 text-center dark:text-white"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light dark:text-white sm:mt-0"
           >5</a>
       </div>
     </div>
     <CasualLine />
-    <div class="mt-4 flex">
-      <div class="w-1/5 rounded-xl bg-stone-800"></div>
-      <div class="mx-3 w-full">
+    <div class="mt-4 flex flex-col md:flex-row">
+      <div class="mb-3 w-full rounded-xl bg-stone-800 p-2 lg:w-1/4 xl:w-1/5">
+        <p class="w-full text-center font-brand text-xl text-white">
+          Search Settings
+        </p>
+        <p class="w-full text-center font-brand text-white/60">
+          TODO: Add these
+        </p>
+      </div>
+      <div class="ml-0 w-full md:ml-3">
         {#if data.projects}
           {#if data.projects.length >= 1}
             {#each data.projects as project}

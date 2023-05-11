@@ -1,6 +1,11 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { apiURL, fetchAuthed, roles } from "$lib/globals/functions";
+  import {
+    apiURL,
+    fetchAuthed,
+    roles,
+    titleCase,
+  } from "$lib/globals/functions";
   import { isAuthenticated, user } from "$lib/globals/stores";
   import type { PageData } from "./$types";
 
@@ -67,13 +72,16 @@
       <br /><br />
       {#if $isAuthenticated && $user.role == "admin"}
         <p class="align-middle font-brand dark:text-new-white-200">Site Role</p>
-        <select name="roleSelection" id="rolez" bind:value="{newRole}" class="h-10 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white">
+        <select
+          name="roleSelection"
+          id="rolez"
+          bind:value="{newRole}"
+          class="h-10 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-800 dark:text-white">
           <option value="{data.profile?.role}" selected
             >{data.profile?.role}</option>
           {#each roles as r}
             {#if r != data.profile?.role}
-              <option value="{r}" selected
-                >{r}</option>
+              <option value="{r}" selected>{titleCase(r)}</option>
             {/if}
           {/each}
         </select><br /><br />

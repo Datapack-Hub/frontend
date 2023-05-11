@@ -20,7 +20,7 @@
     <img
       src="{project.icon}"
       alt="{project.title} icon"
-      class="aspect-square w-24 rounded-lg bg-cover" />
+      class="aspect-square w-20 rounded-lg bg-cover" />
   </a>
   <div class="ml-4 w-2/3">
     <a

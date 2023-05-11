@@ -1,7 +1,7 @@
 <script lang="ts">
-  import ProfileCard from "$lib/components/FullProfileCard.svelte";
+  import ProfileCard from "$lib/components/profile/FullProfileCard.svelte";
   import ProjectComponent from "$lib/components/ProjectComponent.svelte";
-  import UserModeration from "$lib/components/UserModeration.svelte";
+  import UserModeration from "$lib/components/profile/UserModeration.svelte";
   import { isAuthenticated, user } from "$lib/globals/stores";
   import type { PageData } from "./$types";
 

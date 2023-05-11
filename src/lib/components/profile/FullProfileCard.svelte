@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { titleCase } from "$lib/globals/functions";
   import { isAuthenticated, user } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
 
@@ -7,17 +8,6 @@
 
   let userProfile = profile!;
   let role = profileRole!;
-
-  function titleCase(str: string | undefined): string {
-    if (str == undefined) return "null";
-    return str
-      .toLowerCase()
-      .split(" ")
-      .map((word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(" ");
-  }
 
   let orangeVerifiedHover = {
     content: "Verified for being part of the Datapack Hub staff team.",

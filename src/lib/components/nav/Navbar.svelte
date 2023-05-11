@@ -1,7 +1,7 @@
 <script lang="ts">
   import { isDark } from "$lib/globals/stores";
   import { onMount } from "svelte";
-  import ColorSchemeSelector from "../buttons/ColorSchemeSelector.svelte";
+  import ColorSchemeSelector from "../ColorSchemeSelector.svelte";
   import ProfileNavComponent from "./ProfileNavComponent.svelte";
   import IconCompass from "~icons/tabler/Compass.svelte";
   import IconSchool from "~icons/tabler/School.svelte";
@@ -16,6 +16,7 @@
 
   $: iconColor = $isDark ? "white" : "black";
   $: showNavBG = scrollY > 50 || innerWidth < 768;
+  $: isSmall = innerWidth < 768;
 </script>
 
 <svelte:window bind:scrollY="{scrollY}" bind:innerWidth="{innerWidth}" />
@@ -32,7 +33,7 @@
         <img
           src="/logos/dph.svg"
           alt="logo"
-          class="min-h-8 transition-all hover:brightness-75"
+          class="min-h-8 flex-shrink-0 transition-all hover:brightness-75"
           height="32"
           width="32" />
         <span
@@ -63,7 +64,7 @@
           <a
             href="/projects"
             aria-label="Link to the Datapack Hub projects page"
-            class="z-20 pl-6 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
+            class="z-20 pl-3 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:pl-6">
             <IconCompass
               height="24"
               width="24"
@@ -72,21 +73,26 @@
           <a
             href="/"
             aria-label="Link to the Datapack Hub developer wiki"
-            class="z-20 pl-6 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
+            class="z-20 pl-3 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:pl-6">
             <IconSchool height="24" width="24" style="{{ color: iconColor }}" />
           </a>
-          <a
-            href="/"
-            aria-label="Link to the Datapack Hub competitions page"
-            class="z-20 pl-6 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
-            <IconSwords height="24" width="24" style="{{ color: iconColor }}" />
-          </a>
+          {#if !isSmall}
+            <a
+              href="/"
+              aria-label="Link to the Datapack Hub competitions page"
+              class="z-20 pl-3 font-brand text-lg font-light transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:pl-6">
+              <IconSwords
+                height="24"
+                width="24"
+                style="{{ color: iconColor }}" />
+            </a>
+          {/if}
         {/if}
       {/if}
     </div>
     <div class="mb-0 flex items-center justify-between">
       <ColorSchemeSelector />
-      <ProfileNavComponent />
+      <ProfileNavComponent small="{isSmall}" />
     </div>
   </div>
 </nav>

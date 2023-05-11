@@ -2,21 +2,10 @@
   import { user } from "$lib/globals/stores";
   import { goto } from "$app/navigation";
   import { browser } from "$app/environment";
-  import { apiURL, fetchAuthed } from "$lib/globals/functions";
+  import { apiURL, fetchAuthed, titleCase } from "$lib/globals/functions";
 
   let rolesJson: Role[];
   let activePage = "dashboard";
-
-  function titleCase(str: string | undefined): string {
-    if (!str) return "null";
-    return str
-      .toLowerCase()
-      .split(" ")
-      .map((word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(" ");
-  }
 
   (async () => {
     if (browser) {
