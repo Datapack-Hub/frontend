@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fetchAuthed, apiURL } from "$lib/globals/functions";
-  import toast, {Toaster} from 'svelte-french-toast'
+  import toast, { Toaster } from "svelte-french-toast";
 
   let moi: HTMLDivElement;
 
@@ -39,7 +39,7 @@
   </div>
 {/if}
 
-<Toaster/>
+<Toaster />
 
 <!-- <ToastContainer placement="bottom-right" let:data>
   <FlatToast data="{data}" />

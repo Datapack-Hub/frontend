@@ -34,6 +34,9 @@
     logOutDialog.close();
 
     me.open();
+    if (browser) {
+      document.getElementById("modal-msg")?.focus();
+    }
   }
 
   async function warn() {
@@ -163,7 +166,7 @@
   <textarea
     class="mb-4 h-24 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="..."
-    id="warn-message"></textarea>
+    id="modal-msg"></textarea>
   <button
     on:click="{async () => await warn()}"
     class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
@@ -188,7 +191,7 @@
     class="h-8 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Your cake is burning!"
     name="notif-message"
-    id="notif-message" />
+    id="modal-msg" />
   <label
     for="notif-content"
     class="mt-3 align-middle font-brand dark:text-new-white-200">
@@ -243,7 +246,7 @@
   <textarea
     class="h-24 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Burning cake after being **repeatedly told** to stop"
-    id="ban-message"></textarea>
+    id="modal-msg"></textarea>
   <button
     on:click="{async () => await banUser()}"
     class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
@@ -367,4 +370,4 @@
   <FlatToast data="{data}" />
   Provider template for your toasts
 </ToastContainer> -->
-<Toaster/>
+<Toaster />

@@ -110,9 +110,7 @@
         versionData
       );
       if (upload.ok) {
-        toast.success(
-          "Posted the version! Refresh to see the latest changes."
-        );
+        toast.success("Posted the version! Refresh to see the latest changes.");
         return (createVersion = false);
       }
     };
@@ -359,7 +357,7 @@
   </p>
 </Modal>
 
-<Toaster/>
+<Toaster />
 
 <style lang="postcss">
   :root {
