@@ -30,7 +30,7 @@
     <div
       class="my-4 flex flex-col items-center justify-center sm:flex-row md:justify-normal">
       <div
-        class="flex w-64 items-center rounded-full bg-new-white-300 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-600">
+        class="flex w-64 items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-600">
         <IconSearch color="white" on:click="{search}" />
         <input
           placeholder="Search Datapacks"
@@ -38,7 +38,7 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class="ml-2 bg-new-white-300 font-brand placeholder:text-stone-400 focus:outline-none dark:bg-stone-600 dark:text-white"
+          class="ml-2 bg-pearl-lusta-200 font-brand placeholder:text-stone-400 focus:outline-none dark:bg-stone-600 dark:text-white"
           on:input="{search}" />
       </div>
       <div class="px-2"></div>

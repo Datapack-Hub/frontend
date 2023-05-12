@@ -9,7 +9,7 @@
 </svelte:head>
 
 <main
-  class="relative -translate-y-20 bg-new-white-200 px-4 transition-all dark:bg-stone-900 md:translate-y-0 lg:px-32 xl:px-64">
+  class="relative -translate-y-20 bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 md:translate-y-0 lg:px-32 xl:px-64">
   <div class="w-full flex-col items-center md:flex-row md:items-start">
     <h1
       class="pt-8 md:pt-20 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-4xl">
@@ -24,7 +24,7 @@
 
       <div class=" rounded-xl bg-stone-800 p-2 pb-2">
         <!-- Icon -->
-        <p class="align-middle font-brand dark:text-new-white-200">Icon</p>
+        <p class="align-middle font-brand dark:text-pearl-lusta-100">Icon</p>
         <img
           src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
           alt="Your logo here"
@@ -40,44 +40,49 @@
         <br /><br />
 
         <!-- Title -->
-        <p class="align-middle font-brand dark:text-new-white-200">Title</p>
+        <p class="align-middle font-brand dark:text-pearl-lusta-100">Title</p>
         <input
-          class="h-10 w-1/2 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+          class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
           placeholder="Title"
-          id="title" /><br /><br />
+          id="title"
+          maxlength="50" /><br /><br />
 
         <!-- Short Description -->
-        <p class="align-middle font-brand dark:text-new-white-200">
+        <p class="align-middle font-brand dark:text-pearl-lusta-100">
           Short Description
         </p>
         <textarea
-          class="h-24 w-3/4 resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+          class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
           placeholder="This short description is used for social media embeds and the listing page."
-          id="desc"></textarea
+          id="desc"
+          maxlength="200"></textarea
         ><br /><br />
 
         <!-- Long Description -->
-        <p class="align-middle font-brand dark:text-new-white-200">
+        <p class="align-middle font-brand dark:text-pearl-lusta-100">
           Long Description (supports markdown)
         </p>
         <textarea
-          class="h-96 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+          class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
           placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
-          id="body"></textarea
+          id="body"
+          maxlength="2000"></textarea
         ><br /><br />
 
         <!-- Downloadable File -->
-        <p class="align-middle font-brand dark:text-new-white-200">
+        <p class="align-middle font-brand dark:text-pearl-lusta-100">
           Datapack File Upload
         </p>
         <input
           type="file"
-          class="rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+          class="rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
           id="file" /><br /><br />
         <!-- Category -->
-        <p class="align-middle font-brand dark:text-new-white-200">Category</p>
+        <p class="align-middle font-brand dark:text-pearl-lusta-100">
+          Category
+        </p>
         <select
-          class="w-1/4 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+          class="w-1/4 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
           value="{selected}">
           {#each categories as cat}
             <option value="{cat}">

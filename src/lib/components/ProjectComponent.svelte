@@ -15,7 +15,7 @@
 </script>
 
 <div
-  class="my-1 flex w-full items-center rounded-xl bg-new-white-300 p-2 dark:bg-stone-800 dark:text-white">
+  class="my-1 flex w-full items-center rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800 dark:text-white">
   <a href="/project/{project.url}" class="">
     <img
       src="{project.icon}"

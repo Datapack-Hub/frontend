@@ -1,9 +1,9 @@
 <script lang="ts">
   import { apiURL } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
-  import { toastStyle } from '$lib/globals/consts';
+  import { toastStyle } from "$lib/globals/consts";
   import toast from "svelte-french-toast";
-  import IconX from '~icons/tabler/X.svelte';
+  import IconX from "~icons/tabler/X.svelte";
 
   let moi: HTMLDivElement;
 
@@ -12,16 +12,21 @@
 
   async function removeThis() {
     visible = false;
-    toast.promise(fetchAuthed(
-      "DELETE",
-      `${apiURL}/notifs/delete/${notification?.id}`
-    ).then((v) => {
+    toast.promise(
+      fetchAuthed("DELETE", `${apiURL}/notifs/delete/${notification?.id}`).then(
+        (v) => {
           if (v.ok) {
             moi.parentNode!.removeChild(moi);
           } else {
             visible = true;
           }
-    }));
+        }
+      ), {
+        loading: "Removing notification...",
+        error: "Failed!",
+        success: "Removed notification!"
+      }, toastStyle
+    );
   }
 </script>
 
@@ -37,7 +42,7 @@
     </div>
     <button
       class="right-0 top-0 h-1 font-brand dark:text-white"
-      on:click="{removeThis}"><IconX/></button>
+      on:click="{removeThis}"><IconX /></button>
   </div>
 {/if}
 

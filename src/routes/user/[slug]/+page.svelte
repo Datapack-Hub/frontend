@@ -27,7 +27,7 @@
 </svelte:head>
 
 <main
-  class="flex w-full -translate-y-20 flex-col items-center bg-new-white-200 px-8 transition-all dark:bg-stone-900 md:translate-y-0 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
+  class="flex w-full -translate-y-20 flex-col items-center bg-pearl-lusta-100 px-8 transition-all dark:bg-stone-900 md:translate-y-0 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
   <div class="w-full">
     <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
     {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
@@ -44,7 +44,7 @@
         <a href="/projects/new" class="button-sm ml-6">New Project</a>
       {/if}
     </div>
-    <CasualLine/>
+    <CasualLine />
     <div class="mb-2"></div>
     {#if data.projects?.length == 0}
       <p class="mt-48 text-center text-3xl text-opacity-40 dark:text-white">

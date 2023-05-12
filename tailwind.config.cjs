@@ -10,12 +10,18 @@ const config = {
         console: ["Space Mono", "monospace"]
       },
       colors: {
-        "new-white": "#F5E8D0",
-        "new-white": {
-          100: "#fcf2de",
-          200: "#F5E8D0",
-          300: "#edd6ab",
-          400: "#DEC699"
+        'pearl-lusta': { // NEW NEW WHITE
+          '50': '#fcf2de',
+          '100': '#f9eacc',
+          '200': '#f3d394',
+          '300': '#edb85c',
+          '400': '#e99f36',
+          '500': '#e27f1e',
+          '600': '#c75f18',
+          '700': '#a64217',
+          '800': '#873419',
+          '900': '#6f2b18',
+          '950': '#401508',
         },
         "dph-orange": "#ea580c",
       },

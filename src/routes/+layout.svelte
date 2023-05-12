@@ -58,13 +58,13 @@
   {#if ["helper", "moderator", "admin"].includes($user.role)}
     <div class="{$isDark ? 'dark' : ''}">
       <div
-        class="min-h-screen bg-new-white-200 transition-all dark:bg-stone-900">
+        class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
         <Navbar />
         <BannedModal />
         <slot />
       </div>
       <Footer />
-      <Toaster/>
+      <Toaster />
     </div>
   {:else}
     <div class="fixed left-0 top-0 flex h-screen w-screen bg-stone-900">

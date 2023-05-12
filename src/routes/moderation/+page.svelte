@@ -25,7 +25,7 @@
 </svelte:head>
 
 <main
-  class="-translate-y-20 bg-new-white-200 px-4 transition-all dark:bg-stone-900 md:translate-y-0 lg:px-32 xl:px-64">
+  class="-translate-y-20 bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 md:translate-y-0 lg:px-32 xl:px-64">
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -60,7 +60,7 @@
           </label>
           <span class="align-center font-brand dark:text-white"
             >(Supported: *.zip)</span>
-          <!-- <p class="align-middle font-brand dark:text-new-white-200">No versions yet!</p> -->
+          <!-- <p class="align-middle font-brand dark:text-pearl-lusta-100">No versions yet!</p> -->
         </div>
       </div>
     {:else if activePage == "roles"}

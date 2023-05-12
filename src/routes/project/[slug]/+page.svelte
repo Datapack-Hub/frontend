@@ -33,46 +33,46 @@
     dlModal.open();
   }
 
-  async function download(url:string, version: string) {
-    let zip = await fetch(url)
-    let zipBlob = await zip.blob()
-    let parsedZip = await JSZip.loadAsync(zipBlob)
+  async function download(url: string, version: string) {
+    let zip = await fetch(url);
+    let zipBlob = await zip.blob();
+    let parsedZip = await JSZip.loadAsync(zipBlob);
 
-    let packMcm = await parsedZip.files["pack.mcmeta"].async("text")
-    let packMcmData = JSON.parse(packMcm)
+    let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
+    let packMcmData = JSON.parse(packMcm);
     let packFormat;
-    switch(version){
+    switch (version) {
       case "1.13–1.14.4":
-        packFormat = 4
+        packFormat = 4;
         break;
       case "1.15-1.16.1":
         packFormat = 5;
         break;
       case "1.16.2-1.16.5":
-        packFormat = 6
+        packFormat = 6;
         break;
       case "1.17.x":
-        packFormat = 7
+        packFormat = 7;
         break;
       case "1.18.x":
-        packFormat = 8
+        packFormat = 8;
         break;
       case "1.19-1.19.3":
-        packFormat = 10
+        packFormat = 10;
         break;
       case "1.19.4":
-        packFormat = 12
+        packFormat = 12;
         break;
     }
-    packMcmData["pack"]["pack_format"] = packFormat
+    packMcmData["pack"]["pack_format"] = packFormat;
 
-    await parsedZip.file("pack.mcmeta",JSON.stringify(packMcmData))
+    await parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
 
-    let final = await parsedZip.generateAsync({type:"base64"})
-    var clickmeplz = document.createElement("a")
-    clickmeplz.download = url.split("/")[url.split("/").length -1]
+    let final = await parsedZip.generateAsync({ type: "base64" });
+    var clickmeplz = document.createElement("a");
+    clickmeplz.download = url.split("/")[url.split("/").length - 1];
     clickmeplz.href = "data:application/zip;base64," + final;
-    clickmeplz.click()
+    clickmeplz.click();
   }
 </script>
 
@@ -93,13 +93,13 @@
 </svelte:head>
 
 <main
-  class="h-screen -translate-y-20 bg-new-white-200 px-0 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
+  class="h-screen -translate-y-20 bg-pearl-lusta-100 px-0 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
   <div class="pt-16"></div>
   <div class="mb-2 font-brand text-sky-300">
     <a href="/projects">&lt; Explore other projects</a>
   </div>
   <div
-    class="flex w-full rounded-xl bg-new-white-300 p-4 dark:bg-new-white-200 dark:bg-opacity-10">
+    class="flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
     <img
       src="{data.project?.icon}"
       alt="Icon for {data.project?.title}"
@@ -147,14 +147,14 @@
   </div>
   {#if activePage == "description"}
     <div
-      class="rounded-xl bg-new-white-300 p-4 dark:bg-new-white-200 dark:bg-opacity-5">
+      class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-5">
       <p class="font-brand text-lg font-light dark:text-white">
         {data.project?.body}
       </p>
     </div>
   {:else if activePage == "versions"}
     <div
-      class="mb-2 items-center rounded-xl bg-new-white-300 p-3 dark:bg-new-white-200 dark:bg-opacity-5">
+      class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100 dark:bg-opacity-5">
       {#if data.versions?.length != 0}
         <div class="mx-3 flex space-x-3">
           <h2 class="w-1/3 font-brand text-xl font-black dark:text-white">
@@ -166,7 +166,7 @@
         </div>
         {#each data.versions ?? [] as version}
           <div
-            class="mb-2 flex items-center space-x-3 rounded-xl bg-new-white-300 p-2 last:mb-0 dark:bg-new-white-200 dark:bg-opacity-10">
+            class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
             <div class="flex w-1/3 items-center space-x-2">
               <h2 class="font-brand text-xl font-bold dark:text-white">
                 {version.name}
@@ -180,7 +180,7 @@
                 <button
                   class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1">
                   {mcv}
-            </button>
+                </button>
               {/each}
             </h2>
             <button
@@ -227,8 +227,11 @@
   </div>
   <div class="my-2 flex space-x-2 font-brand dark:text-white">
     {#each activeVersion.minecraft_versions.split(",") ?? [] as mcv}
-      <button class="p-1 px-2 border-dph-orange border-2 rounded-lg bg-dph-orange/25 hover:scale-102 cursor-pointer"
-      on:click={() => {download(activeVersion.primary_download,mcv)}}>{mcv}</button>
+      <button
+        class="p-1 px-2 border-dph-orange border-2 rounded-lg bg-dph-orange/25 hover:scale-102 cursor-pointer"
+        on:click="{() => {
+          download(activeVersion.primary_download, mcv);
+        }}">{mcv}</button>
     {/each}
   </div>
   <p class="pr-1 font-brand text-xs italic dark:text-white">

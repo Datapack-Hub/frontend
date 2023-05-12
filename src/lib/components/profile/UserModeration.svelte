@@ -5,7 +5,7 @@
   import { browser } from "$app/environment";
   import SvelteMarkdown from "svelte-markdown";
   import toast, { Toaster } from "svelte-french-toast";
-  import { apiURL } from "$lib/globals/consts";
+  import { apiURL, toastStyle } from "$lib/globals/consts";
 
   export let user: User | undefined;
 
@@ -35,9 +35,6 @@
     logOutDialog.close();
 
     me.open();
-    if (browser) {
-      document.getElementById("modal-msg")?.focus();
-    }
   }
 
   async function warn() {
@@ -52,7 +49,7 @@
     });
     if (warnt.ok) {
       warnDialog.close();
-      toast.success(`Warned ${user?.username}!`);
+      toast.success(`Warned ${user?.username}!`, toastStyle);
     } else {
       alert(await warnt.text());
     }
@@ -81,7 +78,7 @@
     });
     if (sent.ok) {
       notifDialog.close();
-      toast.success(`Sent a notification to ${user?.username}!`);
+      toast.success(`Sent a notification to ${user?.username}!`, toastStyle);
     } else {
       alert(await sent.text());
     }
@@ -118,7 +115,7 @@
     );
     if (ban.ok) {
       banDialog.close();
-      toast.success(`${user?.username} is now banned!`);
+      toast.success(`${user?.username} is now banned!`, toastStyle);
     } else {
       alert(await ban.text());
     }
@@ -132,7 +129,7 @@
     if (unban.ok) {
       unbanDialog.close();
       modJson["banned"] == false;
-      toast.success(`${user?.username} is now unbanned.`);
+      toast.success(`${user?.username} is now unbanned.`, toastStyle);
     } else {
       alert(await unban.text());
     }
@@ -145,7 +142,10 @@
     );
     if (logout.ok) {
       logOutDialog.close();
-      toast.success(`${user?.username} is now logged out of their account.`);
+      toast.success(
+        `${user?.username} is now logged out of their account.`,
+        toastStyle
+      );
     } else {
       alert(await logout.text());
     }
@@ -161,16 +161,16 @@
     This message is sent to the user as a notification. Always be professional,
     even when they are not.
   </p>
-  <p class="mt-3 align-middle font-brand dark:text-new-white-200">
+  <p class="mt-3 align-middle font-brand dark:text-pearl-lusta-100">
     Warn Message
   </p>
   <textarea
-    class="mb-4 h-24 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="mb-4 h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="..."
-    id="modal-msg"></textarea>
+    id="warn-message"></textarea>
   <button
     on:click="{async () => await warn()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Warn {user?.username}</button>
 </Modal>
 
@@ -185,33 +185,33 @@
   </p>
   <label
     for="notif-message"
-    class="mt-3 align-middle font-brand dark:text-new-white-200">
+    class="mt-3 align-middle font-brand dark:text-pearl-lusta-100">
     Notification Message
   </label>
   <input
-    class="h-8 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Your cake is burning!"
     name="notif-message"
-    id="modal-msg" />
+    id="notif-message" />
   <label
     for="notif-content"
-    class="mt-3 align-middle font-brand dark:text-new-white-200">
+    class="mt-3 align-middle font-brand dark:text-pearl-lusta-100">
     Notification Body
   </label>
   <textarea
-    class="h-24 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Just a quick reminder that your cake which you forgot about has been in the oven for 10 minutes too long."
     name="notif-content"
     id="notif-content"></textarea>
   <label
     for="notif-type"
-    class="mt-2 align-middle font-brand dark:text-new-white-200">
+    class="mt-2 align-middle font-brand dark:text-pearl-lusta-100">
     Notification Type
   </label>
   <select
     name="notif-type"
     id="notif-type"
-    class="mb-4 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white">
+    class="mb-4 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white">
     <option value="default">Default</option>
     <option value="important">Important</option>
     <option value="announcement">Announcement</option>
@@ -219,7 +219,7 @@
   </select>
   <button
     on:click="{async () => await sendNotif()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Send</button>
 </Modal>
 
@@ -232,25 +232,27 @@
     Banning a user prevents them from interacting with the website. You can
     write a message or ban reason to be displayed when they try to log in.
   </p>
-  <p class="mt-3 align-middle font-brand dark:text-new-white-200">Ban Expiry</p>
+  <p class="mt-3 align-middle font-brand dark:text-pearl-lusta-100">
+    Ban Expiry
+  </p>
   <input
     type="date"
-    class="h-8 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     id="ban-expiry" />
-  <label class="font-brand dark:text-new-white-200">
+  <label class="font-brand dark:text-pearl-lusta-100">
     <input type="checkbox" id="ban-permanent" />
     Permanent?
   </label>
-  <p class="mt-3 align-middle font-brand dark:text-new-white-200">
+  <p class="mt-3 align-middle font-brand dark:text-pearl-lusta-100">
     Ban Message (supports markdown)
   </p>
   <textarea
-    class="h-24 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Burning cake after being **repeatedly told** to stop"
-    id="modal-msg"></textarea>
+    id="ban-message"></textarea>
   <button
     on:click="{async () => await banUser()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Ban {user?.username}</button>
 </Modal>
 
@@ -268,7 +270,7 @@
   <p class="font-brand dark:text-white">Unban them to end their ban early.</p>
   <button
     on:click="{async () => await unbanUser()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Unban {user?.username}</button>
 </Modal>
 
@@ -283,7 +285,7 @@
   </p>
   <button
     on:click="{async () => await logOutUser()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-new-white-200 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Log them out!</button>
 </Modal>
 

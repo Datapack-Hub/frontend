@@ -123,7 +123,7 @@
 </svelte:head>
 
 <main
-  class="relative bg-new-white-200 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class="relative bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -149,7 +149,7 @@
       <div class="text-center align-middle md:text-start">
         <div class=" rounded-xl bg-stone-800 p-2 pb-2">
           <!-- Icon -->
-          <p class="align-middle font-brand dark:text-new-white-200">Icon</p>
+          <p class="align-middle font-brand dark:text-pearl-lusta-100">Icon</p>
           <img
             src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
             alt="Your logo"
@@ -165,20 +165,20 @@
           <br /><br />
 
           <!-- Title -->
-          <p class="align-middle font-brand dark:text-new-white-200">Title</p>
+          <p class="align-middle font-brand dark:text-pearl-lusta-100">Title</p>
           <input
-            class="h-10 w-1/2 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+            class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
             placeholder="Title"
             value="{data.project?.title}"
             maxlength="50"
             id="title" /><br /><br />
 
           <!-- Short Description -->
-          <p class="align-middle font-brand dark:text-new-white-200">
+          <p class="align-middle font-brand dark:text-pearl-lusta-100">
             Short Description
           </p>
           <textarea
-            class="h-24 w-3/4 resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+            class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
             placeholder="This short description is used for social media embeds and the listing page."
             id="desc"
             value="{data.project?.description}"
@@ -186,11 +186,11 @@
           ><br /><br />
 
           <!-- Long Description -->
-          <p class="align-middle font-brand dark:text-new-white-200">
+          <p class="align-middle font-brand dark:text-pearl-lusta-100">
             Long Description (supports markdown)
           </p>
           <textarea
-            class="h-96 w-full resize-none rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+            class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
             placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
             id="body"
             value="{data.project?.body}"
@@ -198,19 +198,19 @@
           ><br /><br />
 
           <!-- Downloadable File -->
-          <p class="align-middle font-brand dark:text-new-white-200">
+          <p class="align-middle font-brand dark:text-pearl-lusta-100">
             Datapack File Upload
           </p>
           <input
             type="file"
-            class="rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+            class="rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
             id="file" /><br /><br />
           <!-- Category -->
-          <p class="align-middle font-brand dark:text-new-white-200">
+          <p class="align-middle font-brand dark:text-pearl-lusta-100">
             Category
           </p>
           <select
-            class="w-1/4 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+            class="w-1/4 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
             value="{data.project?.tags}">
             {#each categories as cat}
               <option value="{cat.id}">
@@ -230,7 +230,7 @@
       <div class="text-center align-middle md:text-start">
         {#if createVersion == false}
           <div
-            class="my-2 flex space-x-2 rounded-xl bg-new-white-300 p-2 py-3 dark:bg-stone-800">
+            class="my-2 flex space-x-2 rounded-xl bg-pearl-lusta-200 p-2 py-3 dark:bg-stone-800">
             <label for="zip" class="max-w-100">
               <span
                 class="cursor-pointer rounded-xl bg-green-600 p-2 font-brand font-bold dark:text-white"
@@ -244,11 +244,11 @@
               on:input="{upload}" />
             <span class="align-center font-brand dark:text-white"
               >(Supported: *.zip)</span>
-            <!-- <p class="align-middle font-brand dark:text-new-white-200">No versions yet!</p> -->
+            <!-- <p class="align-middle font-brand dark:text-pearl-lusta-100">No versions yet!</p> -->
           </div>
         {:else}
           {@const ver = (Math.random() * 10).toFixed(1)}
-          <div class="rounded-xl bg-new-white-300 p-2 dark:bg-stone-800">
+          <div class="rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800">
             <button
               class="float-right cursor-pointer select-none font-black dark:text-white"
               on:click="{() => (createVersion = false)}">X</button>
@@ -257,36 +257,38 @@
             </h2>
 
             <div class="flex space-x-4">
-              <p class="w-1/2 align-middle font-brand dark:text-new-white-200">
+              <p
+                class="w-1/2 align-middle font-brand dark:text-pearl-lusta-100">
                 Version Name
               </p>
-              <p class="w-1/2 align-middle font-brand dark:text-new-white-200">
+              <p
+                class="w-1/2 align-middle font-brand dark:text-pearl-lusta-100">
                 Version Number
               </p>
             </div>
             <div class="flex space-x-2">
               <input
-                class="mb-4 h-10 w-1/2 rounded-md bg-new-white-400 p-2 font-brand text-lg placeholder:text-new-white-200 dark:bg-stone-700 dark:text-white"
+                class="mb-4 h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
                 placeholder="{data.project?.title} v{ver}"
                 maxlength="50"
                 id="v_name" />
               <input
-                class="mb-4 h-10 w-1/6 rounded-md bg-new-white-400 p-2 font-brand text-lg placeholder:text-new-white-200 dark:bg-stone-700 dark:text-white"
+                class="mb-4 h-10 w-1/6 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
                 placeholder="v{ver}"
                 maxlength="15"
                 id="v_code" />
             </div>
 
-            <p class="align-middle font-brand dark:text-new-white-200">
+            <p class="align-middle font-brand dark:text-pearl-lusta-100">
               Changelog (supports markdown!)
             </p>
             <textarea
-              class="mb-4 h-36 w-3/4 resize-none rounded-md bg-new-white-400 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+              class="mb-4 h-36 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
               placeholder="This update changes..."
               id="v_changelog"
               maxlength="2000"></textarea>
 
-            <p class="align-middle font-brand dark:text-new-white-200">
+            <p class="align-middle font-brand dark:text-pearl-lusta-100">
               Minecraft Versions
             </p>
             <MultiSelect
@@ -295,13 +297,13 @@
               liSelectedClass="liSelectedClass" />
             <p class="mb-4"></p>
 
-            <p class="align-middle font-brand dark:text-new-white-200">
+            <p class="align-middle font-brand dark:text-pearl-lusta-100">
               Resource Pack Download (optional)
             </p>
             <input
               type="file"
               id="v_rp"
-              class="mb-4 rounded-xl bg-new-white-400 p-2 font-brand dark:bg-stone-700 dark:text-white" />
+              class="mb-4 rounded-xl bg-pearl-lusta-300 p-2 font-brand dark:bg-stone-700 dark:text-white" />
             <p></p>
             <button class="button-style" on:click="{uploadVersion}"
               >Create Version</button>
@@ -309,7 +311,7 @@
         {/if}
         {#each data.versions ?? [] as version}
           <div
-            class="mb-2 flex items-center space-x-3 rounded-xl bg-new-white-300 p-2 last:mb-0 dark:bg-new-white-200 dark:bg-opacity-10">
+            class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
             <div class="flex w-1/3 items-center space-x-2">
               <h2 class="font-brand text-xl font-bold dark:text-white">
                 {version.name}
@@ -338,12 +340,12 @@
   </h1>
   <CasualLine />
   <!-- <p class="dark:text-white font-brand">Upload a file here, and give your version a name. You'll be able to change more details later.</p> -->
-  <p class="align-middle font-brand dark:text-new-white-200">Version Name</p>
+  <p class="align-middle font-brand dark:text-pearl-lusta-100">Version Name</p>
   <input
-    class="mb-2 h-10 w-full rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+    class="mb-2 h-10 w-full rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
     placeholder="Burnt Cake Update"
     id="title" />
-  <p class="align-middle font-brand dark:text-new-white-200">
+  <p class="align-middle font-brand dark:text-pearl-lusta-100">
     Drag to upload a file.
   </p>
   <label for="zip" class="max-w-100">

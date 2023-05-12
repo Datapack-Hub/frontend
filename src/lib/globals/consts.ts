@@ -1,3 +1,5 @@
+import type { DefaultToastOptions } from "svelte-french-toast";
+
 export const apiURL = "https://api.datapackhub.net";
 
 export const categories = [
@@ -27,10 +29,4 @@ export const roles = [
   "default",
 ];
 
-export const toastStyle = {
-  style: "background-color: #292524; color: white;",
-  iconTheme: {
-    primary: "green",
-    secondary: "white",
-  },
-};
+export const toastStyle: DefaultToastOptions = {};

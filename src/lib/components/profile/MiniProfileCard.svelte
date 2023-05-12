@@ -7,7 +7,7 @@
 
 <a href="/user/{person?.username.toLowerCase()}">
   <div
-    class="my-2 flex w-full rounded-xl bg-new-white-300 p-2 dark:bg-stone-800">
+    class="my-2 flex w-full rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800">
     <img
       src="{person?.profile_icon}"
       alt="{person?.username}'s profile picture"
