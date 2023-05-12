@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["Datapack", "datapacks", "interactable", "Notif", "tippy"]
+  "cSpell.words": [
+    "consts",
+    "Datapack",
+    "datapacks",
+    "interactable",
+    "Notif",
+    "tippy"
+  ]
 }

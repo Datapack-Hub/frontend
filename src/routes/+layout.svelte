@@ -9,12 +9,13 @@
   import { setContext } from "svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
   import {
-    apiURL,
     fetchAuthed,
     getCookie,
     loadColorPref,
   } from "$lib/globals/functions";
   import { isAuthenticated, isDark, role, user } from "$lib/globals/stores";
+  import { Toaster } from "svelte-french-toast";
+  import { apiURL } from "$lib/globals/consts";
 
   (async () => {
     if (browser) {
@@ -63,6 +64,7 @@
         <slot />
       </div>
       <Footer />
+      <Toaster/>
     </div>
   {:else}
     <div class="fixed left-0 top-0 flex h-screen w-screen bg-stone-900">

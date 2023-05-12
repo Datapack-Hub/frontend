@@ -1,4 +1,4 @@
-import { apiURL } from "$lib/globals/functions";
+import { apiURL } from "$lib/globals/consts";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 

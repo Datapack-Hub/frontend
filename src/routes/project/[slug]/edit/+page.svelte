@@ -357,8 +357,6 @@
   </p>
 </Modal>
 
-<Toaster />
-
 <style lang="postcss">
   :root {
     --sms-bg: theme(colors.stone.700);

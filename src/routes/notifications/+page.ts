@@ -1,5 +1,6 @@
 import { browser } from "$app/environment";
-import { apiURL, fetchAuthed } from "$lib/globals/functions";
+import { fetchAuthed } from "$lib/globals/functions";
+import { apiURL } from "$lib/globals/consts";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 

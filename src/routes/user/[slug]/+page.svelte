@@ -4,6 +4,7 @@
   import UserModeration from "$lib/components/profile/UserModeration.svelte";
   import { isAuthenticated, user } from "$lib/globals/stores";
   import type { PageData } from "./$types";
+  import CasualLine from "$lib/components/CasualLine.svelte";
 
   export let data: PageData;
 </script>
@@ -35,9 +36,16 @@
   </div>
   <div
     class="styled-scrollbar mx-24 mt-16 h-full w-full overflow-y-auto md:mt-0">
-    <h1 class="text-center text-xl font-bold dark:text-white md:text-left">
-      {data.profile?.username}'s projects
-    </h1>
+    <div class="flex items-center mb-2">
+      <h1 class="text-center text-xl font-bold dark:text-white md:text-left">
+        {data.profile?.username}'s projects
+      </h1>
+      {#if data.profile.id == $user.id}
+        <a href="/projects/new" class="button-sm ml-6">New Project</a>
+      {/if}
+    </div>
+    <CasualLine/>
+    <div class="mb-2"></div>
     {#if data.projects?.length == 0}
       <p class="mt-48 text-center text-3xl text-opacity-40 dark:text-white">
         No projects!

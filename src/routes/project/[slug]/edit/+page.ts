@@ -1,6 +1,7 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import { apiURL, fetchAuthed } from "$lib/globals/functions";
+import { fetchAuthed } from "$lib/globals/functions";
+import { apiURL } from "$lib/globals/consts";
 import { browser } from "$app/environment";
 
 export const load = (async ({ params }) => {

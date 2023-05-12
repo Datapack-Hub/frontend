@@ -1,10 +1,11 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
-  import { apiURL, fetchAuthed, removeCookie } from "$lib/globals/functions";
+  import { fetchAuthed, removeCookie } from "$lib/globals/functions";
   import SvelteMarkdown from "svelte-markdown";
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
   import { isAuthenticated } from "$lib/globals/stores";
+  import { apiURL } from "$lib/globals/consts";
 
   let visible = false;
   let banReason: string;

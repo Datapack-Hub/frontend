@@ -1,13 +1,13 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
+  import { apiURL, roles } from "$lib/globals/consts";
   import {
-    apiURL,
     fetchAuthed,
-    roles,
     titleCase,
   } from "$lib/globals/functions";
   import { isAuthenticated, user } from "$lib/globals/stores";
   import type { PageData } from "./$types";
+  import toast from "svelte-french-toast";
 
   export let data: PageData;
 
@@ -27,7 +27,7 @@
       return;
     }
 
-    fetchAuthed("patch", `${apiURL}/user/id/${data.profile?.id}`, req).then(
+    toast.promise(fetchAuthed("patch", `${apiURL}/user/id/${data.profile?.id}`, req).then(
       (res) => {
         if (!res.ok) {
           return res.text().then((txt) => alert(txt));
@@ -38,7 +38,11 @@
         }
         goto("/user/" + uname.value);
       }
-    );
+    ), {
+      success: "Profile saved!",
+      loading: "Saving...",
+      error: "Profile unable to save 😭"
+    });
   }
 </script>
 

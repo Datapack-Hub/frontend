@@ -1,6 +1,6 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import { apiURL } from "$lib/globals/functions";
+import { apiURL } from "$lib/globals/consts";
 
 export const load = (async ({ params, fetch }) => {
   const [user, projects, role] = await Promise.all([

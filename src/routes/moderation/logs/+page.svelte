@@ -1,7 +1,8 @@
 <script lang="ts">
   import { user } from "$lib/globals/stores";
   import { goto } from "$app/navigation";
-  import { apiURL, fetchAuthed } from "$lib/globals/functions";
+  import { fetchAuthed } from "$lib/globals/functions";
+  import { apiURL } from "$lib/globals/consts";
 
   let logsJson: [{ username: string; action: string; time: number }];
 

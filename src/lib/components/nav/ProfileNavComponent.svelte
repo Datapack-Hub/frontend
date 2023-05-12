@@ -1,12 +1,13 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { apiURL, fetchAuthed } from "$lib/globals/functions";
+  import { fetchAuthed } from "$lib/globals/functions";
   import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconUnread from "~icons/tabler/BellRinging.svelte";
   import IconRead from "~icons/tabler/Bell.svelte";
   import { isAuthenticated, isDark, role, user } from "$lib/globals/stores";
+  import { apiURL } from "$lib/globals/consts";
 
   export let small: boolean;
 

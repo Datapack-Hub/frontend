@@ -1,10 +1,11 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { apiURL, fetchAuthed } from "../../globals/functions";
+  import { fetchAuthed } from "../../globals/functions";
   import { browser } from "$app/environment";
   import SvelteMarkdown from "svelte-markdown";
   import toast, { Toaster } from "svelte-french-toast";
+  import { apiURL } from "$lib/globals/consts";
 
   export let user: User | undefined;
 
@@ -370,4 +371,3 @@
   <FlatToast data="{data}" />
   Provider template for your toasts
 </ToastContainer> -->
-<Toaster />

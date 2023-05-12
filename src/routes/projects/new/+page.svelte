@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { categories } from "$lib/globals/functions";
+  import { categories } from "$lib/globals/consts";
 
   let selected: { id: number; text: string };
 </script>
@@ -12,7 +12,7 @@
   class="relative -translate-y-20 bg-new-white-200 px-4 transition-all dark:bg-stone-900 md:translate-y-0 lg:px-32 xl:px-64">
   <div class="w-full flex-col items-center md:flex-row md:items-start">
     <h1
-      class="mt-8 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-4xl">
+      class="pt-8 md:pt-20 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-4xl">
       Create New <span class="text-dph-orange">Datapack</span>
     </h1>
     <div class="text-center align-middle md:text-start">
