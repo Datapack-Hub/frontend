@@ -5,7 +5,7 @@
   import type { PageData } from "./$types";
   import JSZip from "jszip";
   import MultiSelect from "svelte-multiselect";
-  import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
+  import toast, { Toaster } from "svelte-french-toast";
 
   const ui_libs = [
     "1.13-1.14.4",
@@ -50,7 +50,7 @@
     zipFile = inp.files![0];
 
     if (zipFile?.size > 5e6) {
-      toasts.error("File size can't be more than 5mb!");
+      toast.error("File size can't be more than 5mb!");
       inp.files = null;
       return;
     }
@@ -60,12 +60,12 @@
     if (zipFile) {
       let zip = await jsZip.loadAsync(zipFile);
       if (zip.file("pack.mcmeta") == null) {
-        return toasts.error("Missing pack.mcmeta");
+        return toast.error("Missing pack.mcmeta");
       }
 
       createVersion = true;
     } else {
-      return toasts.error("Missing file");
+      return toast.error("Missing file");
     }
   }
 
@@ -78,13 +78,13 @@
     let v_rp = document.getElementById("v_rp") as HTMLInputElement;
 
     if (!v_name)
-      return toasts.error("Please make sure you give a version name!");
+      return toast.error("Please make sure you give a version name!");
     if (!v_code)
-      return toasts.error("Please make sure you give a version number!");
+      return toast.error("Please make sure you give a version number!");
     if (!v_changelog)
-      return toasts.error("Please make sure you give a version changelog!");
+      return toast.error("Please make sure you give a version changelog!");
     if (selected.length == 0) {
-      return toasts.error(
+      return toast.error(
         "Please select at least one compatible Minecraft version!"
       );
     }
@@ -110,7 +110,7 @@
         versionData
       );
       if (upload.ok) {
-        toasts.success(
+        toast.success(
           "Posted the version! Refresh to see the latest changes."
         );
         return (createVersion = false);
@@ -359,10 +359,7 @@
   </p>
 </Modal>
 
-<ToastContainer placement="bottom-right" let:data>
-  <FlatToast data="{data}" />
-  <!-- Provider template for your toasts -->
-</ToastContainer>
+<Toaster/>
 
 <style lang="postcss">
   :root {

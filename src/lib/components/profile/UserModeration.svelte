@@ -4,7 +4,7 @@
   import { apiURL, fetchAuthed } from "../../globals/functions";
   import { browser } from "$app/environment";
   import SvelteMarkdown from "svelte-markdown";
-  import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
+  import toast, { Toaster } from "svelte-french-toast";
 
   export let user: User | undefined;
 
@@ -48,7 +48,7 @@
     });
     if (warnt.ok) {
       warnDialog.close();
-      toasts.success(`Warned ${user?.username}!`);
+      toast.success(`Warned ${user?.username}!`);
     } else {
       alert(await warnt.text());
     }
@@ -77,7 +77,7 @@
     });
     if (sent.ok) {
       notifDialog.close();
-      toasts.success(`Sent a notification to ${user?.username}!`);
+      toast.success(`Sent a notification to ${user?.username}!`);
     } else {
       alert(await sent.text());
     }
@@ -114,7 +114,7 @@
     );
     if (ban.ok) {
       banDialog.close();
-      toasts.success(`${user?.username} is now banned!`);
+      toast.success(`${user?.username} is now banned!`);
     } else {
       alert(await ban.text());
     }
@@ -128,7 +128,7 @@
     if (unban.ok) {
       unbanDialog.close();
       modJson["banned"] == false;
-      toasts.success(`${user?.username} is now unbanned.`);
+      toast.success(`${user?.username} is now unbanned.`);
     } else {
       alert(await unban.text());
     }
@@ -141,7 +141,7 @@
     );
     if (logout.ok) {
       logOutDialog.close();
-      toasts.success(`${user?.username} is now logged out of their account.`);
+      toast.success(`${user?.username} is now logged out of their account.`);
     } else {
       alert(await logout.text());
     }
@@ -363,7 +363,8 @@
   {/await}
 {/if}
 
-<ToastContainer placement="bottom-right" let:data>
+<!-- <ToastContainer placement="bottom-right" let:data>
   <FlatToast data="{data}" />
-  <!-- Provider template for your toasts -->
-</ToastContainer>
+  Provider template for your toasts
+</ToastContainer> -->
+<Toaster/>

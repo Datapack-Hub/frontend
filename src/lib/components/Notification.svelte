@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fetchAuthed, apiURL } from "$lib/globals/functions";
-  import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
+  import toast, {Toaster} from 'svelte-french-toast'
 
   let moi: HTMLDivElement;
 
@@ -14,11 +14,11 @@
       `${apiURL}/notifs/delete/${notification?.id}`
     );
     if (de.ok) {
-      toasts.success("Removed the notification!");
+      toast.success("Removed the notification!");
       moi.parentNode!.removeChild(moi);
     } else {
       visible = true;
-      toasts.error("Failed to remove the notification.");
+      toast.error("Failed to remove the notification.");
     }
   }
 </script>
@@ -39,10 +39,12 @@
   </div>
 {/if}
 
-<ToastContainer placement="bottom-right" let:data>
+<Toaster/>
+
+<!-- <ToastContainer placement="bottom-right" let:data>
   <FlatToast data="{data}" />
-  <!-- Provider template for your toasts -->
-</ToastContainer>
+  Provider template for your toasts
+</ToastContainer> -->
 
 <style lang="postcss">
   /* @HoodieRocks can you fix this so it works on light mode too */
