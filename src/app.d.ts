@@ -65,6 +65,7 @@ declare type Version = {
   minecraft_versions: string;
   primary_download: string;
   rp_download: string?;
+  file_name: string;
 };
 
 /// <reference types="@sveltejs/kit" />

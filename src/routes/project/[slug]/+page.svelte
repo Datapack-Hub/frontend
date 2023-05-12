@@ -10,6 +10,8 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
   import tippy from "sveltejs-tippy";
+  import JSZip from "jszip";
+  import { parse } from "postcss";
 
   export let data: PageData;
   let visible = false;
@@ -29,6 +31,48 @@
   function openVersion(item: Version) {
     activeVersion = item;
     dlModal.open();
+  }
+
+  async function download(url:string, version: string) {
+    let zip = await fetch(url)
+    let zipBlob = await zip.blob()
+    let parsedZip = await JSZip.loadAsync(zipBlob)
+
+    let packMcm = await parsedZip.files["pack.mcmeta"].async("text")
+    let packMcmData = JSON.parse(packMcm)
+    let packFormat;
+    switch(version){
+      case "1.13–1.14.4":
+        packFormat = 4
+        break;
+      case "1.15-1.16.1":
+        packFormat = 5;
+        break;
+      case "1.16.2-1.16.5":
+        packFormat = 6
+        break;
+      case "1.17.x":
+        packFormat = 7
+        break;
+      case "1.18.x":
+        packFormat = 8
+        break;
+      case "1.19-1.19.3":
+        packFormat = 10
+        break;
+      case "1.19.4":
+        packFormat = 12
+        break;
+    }
+    packMcmData["pack"]["pack_format"] = packFormat
+
+    await parsedZip.file("pack.mcmeta",JSON.stringify(packMcmData))
+
+    let final = await parsedZip.generateAsync({type:"base64"})
+    var clickmeplz = document.createElement("a")
+    clickmeplz.download = url.split("/")[url.split("/").length -1]
+    clickmeplz.href = "data:application/zip;base64," + final;
+    clickmeplz.click()
   }
 </script>
 
@@ -133,10 +177,10 @@
             </div>
             <h2 class="flex flex-grow space-x-1 font-brand dark:text-white">
               {#each version.minecraft_versions.split(",") ?? [] as mcv}
-                <div
+                <button
                   class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1">
                   {mcv}
-                </div>
+            </button>
               {/each}
             </h2>
             <button
@@ -183,10 +227,8 @@
   </div>
   <div class="my-2 flex space-x-2 font-brand dark:text-white">
     {#each activeVersion.minecraft_versions.split(",") ?? [] as mcv}
-      <div
-        class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 hover:scale-102">
-        {mcv}
-      </div>
+      <button class="p-1 px-2 border-dph-orange border-2 rounded-lg bg-dph-orange/25 hover:scale-102 cursor-pointer"
+      on:click={() => {download(activeVersion.primary_download,mcv)}}>{mcv}</button>
     {/each}
   </div>
   <p class="pr-1 font-brand text-xs italic dark:text-white">
