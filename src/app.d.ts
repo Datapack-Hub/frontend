@@ -62,7 +62,7 @@ declare type Version = {
   name: string;
   description: string;
   version_code: string;
-  minecraft_versions: Array<string>;
+  minecraft_versions: string;
   primary_download: string;
   rp_download: string?;
 };

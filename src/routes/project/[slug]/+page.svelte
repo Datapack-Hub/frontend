@@ -5,13 +5,11 @@
   import type { PageData } from "./$types";
 
   import IconPencil from "~icons/tabler/Pencil.svelte";
-  import IconDownload from "~icons/tabler/Download.svelte";
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import { user } from "$lib/globals/stores";
   import Modal from "$lib/components/modals/Modal.svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
   import tippy from "sveltejs-tippy";
-  import { onMount } from "svelte";
 
   export let data: PageData;
   let visible = false;
