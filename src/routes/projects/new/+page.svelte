@@ -3,10 +3,7 @@
 
   let selected: { id: number; text: string };
 
-  async function create() {
-    
-  }
-
+  async function create() {}
 </script>
 
 <svelte:head>
@@ -14,14 +11,15 @@
 </svelte:head>
 
 <main
-  class="relative bg-new-white-200 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
-  <div class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
+  class="bg-new-white-200 relative px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  <div
+    class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="pt-8 md:pt-20 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-4xl">
+      class="pt-8 text-center font-brand text-5xl font-bold text-pearl-lusta-900 dark:text-white md:pt-20 md:text-start md:text-4xl lg:text-4xl">
       Create New <span class="text-dph-orange">Datapack</span>
     </h1>
     <div class="text-center align-middle md:text-start">
-      <p class="pb-4 font-brand dark:text-white">
+      <p class="pb-4 font-brand text-pearl-lusta-900 dark:text-white">
         Before starting, please read the Site Rules. <b
           >Only upload content that you made yourself or have permission to
           distribute.</b>
@@ -29,7 +27,10 @@
 
       <div class=" rounded-xl bg-stone-800 p-2 pb-2">
         <!-- Icon -->
-        <p class="align-middle font-brand dark:text-pearl-lusta-100">Icon</p>
+        <p
+          class="align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
+          Icon
+        </p>
         <img
           src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
           alt="Your logo here"
@@ -38,56 +39,63 @@
           class="mr-3 inline-block rounded-2xl" />
         <label for="icon" class="max-w-100 group inline-block">
           <span
-            class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle font-brand dark:text-white"
+            class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle font-brand text-pearl-lusta-900 dark:text-white"
             >Upload icon</span>
         </label>
         <input id="icon" type="file" class="hidden" />
         <br /><br />
 
         <!-- Title -->
-        <p class="align-middle font-brand dark:text-pearl-lusta-100">Title</p>
+        <p
+          class="align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
+          Title
+        </p>
         <input
-          class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+          class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-900 dark:text-white"
           placeholder="Title"
           id="title"
           maxlength="50" /><br /><br />
 
         <!-- Short Description -->
-        <p class="align-middle font-brand dark:text-pearl-lusta-100">
+        <p
+          class="align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
           Short Description
         </p>
         <textarea
-          class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+          class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-900 dark:text-white"
           placeholder="This short description is used for social media embeds and the listing page."
           id="desc"
           maxlength="200"></textarea
         ><br /><br />
 
         <!-- Long Description -->
-        <p class="align-middle font-brand dark:text-pearl-lusta-100">
+        <p
+          class="align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
           Long Description (supports markdown)
         </p>
         <textarea
-          class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+          class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-900 dark:text-white"
           placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
           id="body"
           maxlength="2000"></textarea
         ><br /><br />
 
         <!-- Downloadable File -->
-        <p class="align-middle font-brand dark:text-pearl-lusta-100">
+        <p
+          class="align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
           Datapack File Upload
         </p>
         <input
           type="file"
-          class="rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+          class="rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-900 dark:text-white"
           id="file" /><br /><br />
         <!-- Category -->
-        <p class="align-middle font-brand dark:text-pearl-lusta-100">
+        <p
+          class="align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
           Category
         </p>
         <select
-          class="w-1/4 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+          class="w-1/4 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-900 dark:text-white"
           value="{selected}">
           {#each categories as cat}
             <option value="{cat}">

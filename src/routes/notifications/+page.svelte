@@ -14,11 +14,11 @@
   <div
     class="h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="mt-8 pb-2 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="mt-8 pb-2 text-center font-brand text-5xl font-bold text-pearl-lusta-900 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Notifications
     </h1>
     {#if data.notifications?.length == 0}
-      <h1 class="font-brand dark:text-white">
+      <h1 class="font-brand text-pearl-lusta-900 dark:text-white">
         <b>No notifications!</b> It's lonely in here
       </h1>
     {/if}

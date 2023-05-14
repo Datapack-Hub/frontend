@@ -39,7 +39,7 @@
   </div>
 
   <p
-    class="mt-4 w-full text-center font-brand text-5xl font-bold dark:text-white md:text-4xl lg:text-5xl">
+    class="mt-4 w-full text-center font-brand text-5xl font-bold text-pearl-lusta-900 dark:text-white md:text-4xl lg:text-5xl">
     {profile?.username}
     {#if ["moderator", "developer", "admin"].includes(role.name)}
       <span
@@ -57,7 +57,7 @@
   </p>
 
   <p
-    class="mt-1 w-full text-center align-middle font-brand font-semibold dark:text-white sm:text-base md:text-lg">
+    class="mt-1 w-full text-center align-middle font-brand font-semibold text-pearl-lusta-900 dark:text-white sm:text-base md:text-lg">
     {#if role.name != "default"}
       <span style="color:{role.color};">
         {#if role.name == "nerd"}🤓 Nerd
@@ -73,7 +73,7 @@
     {/if}
   </p>
   <p
-    class="styled-scrollbar my-3 max-h-64 w-full overflow-y-scroll whitespace-pre-line rounded-xl bg-white/40 p-2 font-brand dark:bg-stone-700/40 dark:text-white">
+    class="styled-scrollbar my-3 max-h-64 w-full overflow-y-scroll whitespace-pre-line rounded-xl bg-white/40 p-2 font-brand dark:bg-stone-700/40 text-pearl-lusta-900 dark:text-white">
     {userProfile.bio.replaceAll("\\n", "\n")}
   </p>
   {#if $isAuthenticated && $user.id === userProfile.id}

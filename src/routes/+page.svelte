@@ -96,7 +96,7 @@
         </h1>
       </div>
       <h2
-        class="w-full text-center text-xl text-black dark:text-pearl-lusta-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
+        class="w-full text-center text-xl text-black text-pearl-lusta-900 dark:text-pearl-lusta-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{rawRand.toString()}"
           class="text-gradient bg-gradient-to-br from-pink-600 to-yellow-400 font-bold">

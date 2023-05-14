@@ -21,11 +21,13 @@
             visible = true;
           }
         }
-      ), {
+      ),
+      {
         loading: "Removing notification...",
         error: "Failed!",
-        success: "Removed notification!"
-      }, toastStyle
+        success: "Removed notification!",
+      },
+      toastStyle
     );
   }
 </script>
@@ -38,10 +40,12 @@
       <h1 class="font-brand text-xl font-bold {notification?.type}-text">
         {#if notification?.read == false}• {/if}{notification?.message}
       </h1>
-      <p class="font-brand dark:text-white">{notification?.description}</p>
+      <p class="font-brand text-pearl-lusta-900 dark:text-white">
+        {notification?.description}
+      </p>
     </div>
     <button
-      class="right-0 top-0 h-1 font-brand dark:text-white"
+      class="right-0 top-0 h-1 font-brand text-pearl-lusta-900 dark:text-white"
       on:click="{removeThis}"><IconX /></button>
   </div>
 {/if}

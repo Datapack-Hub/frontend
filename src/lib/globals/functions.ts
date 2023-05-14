@@ -18,7 +18,7 @@ export async function getAuthorFromID(
   authorID: number | undefined
 ): Promise<User> {
   const data = await fetch(`${apiURL}/user/id/${authorID}`);
-  return ((await data.json()) as User);
+  return (await data.json()) as User;
 }
 
 /**
