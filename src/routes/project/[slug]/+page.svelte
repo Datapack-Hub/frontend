@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { getAuthorNameFromID } from "$lib/globals/functions";
+  import { getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
 
@@ -11,17 +11,17 @@
   import CasualLine from "$lib/components/CasualLine.svelte";
   import tippy from "sveltejs-tippy";
   import JSZip from "jszip";
-  import { parse } from "postcss";
+  import toast, { Toaster } from "svelte-french-toast";
 
   export let data: PageData;
   let visible = false;
   let activePage = "description";
 
-  let author = "Loading...";
+  let author: User;
 
   (async () => {
     if (browser)
-      author = "By " + (await getAuthorNameFromID(data.project?.author));
+      author = (await getAuthorFromID(data.project?.author));
     visible = true;
   })();
 
@@ -33,10 +33,10 @@
     dlModal.open();
   }
 
-  async function download(url: string, version: string) {
-    let zip = await fetch(url);
-    let zipBlob = await zip.blob();
-    let parsedZip = await JSZip.loadAsync(zipBlob);
+  async function download(url:string, version: string, rp:boolean) {
+    let zip = await fetch(url)
+    let zipBlob = await zip.blob()
+    let parsedZip = await JSZip.loadAsync(zipBlob)
 
     let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
     let packMcmData = JSON.parse(packMcm);
@@ -73,6 +73,9 @@
     clickmeplz.download = url.split("/")[url.split("/").length - 1];
     clickmeplz.href = "data:application/zip;base64," + final;
     clickmeplz.click();
+
+    (rp) ? toast.success("Downloaded file! Make sure to download the resource pack too.") : toast.success("Downloaded file!")
+
   }
 </script>
 
@@ -108,18 +111,22 @@
       <h1 class="font-brand text-5xl font-black dark:text-white">
         {data.project?.title}
       </h1>
-      {#if visible}
-        <h2
-          class="mt-4 font-brand text-xl font-bold transition-all dark:text-white"
-          in:fade="{{ duration: 250 }}">
-          {author}
-        </h2>
-      {/if}
       <h2
         class="text-md font-brand transition-all dark:text-white"
         in:fade="{{ duration: 250 }}">
         {data.project?.description}
       </h2>
+      {#if visible}
+      <div class="flex items-center space-x-2">
+        <img src={author.profile_icon} class="max-h-7 rounded-full" alt="pfp"/>
+        <a
+          href="/user/{author.username}"
+          class="mt-1 font-brand text-xl font-medium transition-all dark:text-white"
+          in:fade="{{ duration: 250 }}">
+          {author.username}
+      </a>
+      </div>
+      {/if}
     </div>
     <a href="/well-thats-awkward.txt" download class="button-style h-fit"
       >Download Latest</a>
@@ -178,7 +185,9 @@
             <h2 class="flex flex-grow space-x-1 font-brand dark:text-white">
               {#each version.minecraft_versions.split(",") ?? [] as mcv}
                 <button
-                  class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1">
+                  class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
+                  on:click={() => download(version.primary_download, mcv, (version.resource_pack_download) ? true: false )}
+                  >
                   {mcv}
                 </button>
               {/each}
@@ -227,11 +236,8 @@
   </div>
   <div class="my-2 flex space-x-2 font-brand dark:text-white">
     {#each activeVersion.minecraft_versions.split(",") ?? [] as mcv}
-      <button
-        class="p-1 px-2 border-dph-orange border-2 rounded-lg bg-dph-orange/25 hover:scale-102 cursor-pointer"
-        on:click="{() => {
-          download(activeVersion.primary_download, mcv);
-        }}">{mcv}</button>
+      <button class="p-1 px-2 border-dph-orange border-2 rounded-lg bg-dph-orange/25 hover:scale-102 cursor-pointer"
+      on:click={() => {download(activeVersion.primary_download,mcv,(activeVersion.resource_pack_download) ? true: false )}}>{mcv}</button>
     {/each}
   </div>
   <p class="pr-1 font-brand text-xs italic dark:text-white">
@@ -239,16 +245,17 @@
     your version.
   </p>
 
-  {#if activeVersion.rp_download}
+  {#if activeVersion.resource_pack_download}
     <CasualLine />
     <p class="pr-1 font-brand dark:text-white">
       This datapack also has a resource pack which you need to download!
     </p>
     <div class="my-2 flex">
-      <div
+      <a
+        href={activeVersion.resource_pack_download}
         class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 font-brand hover:scale-102 dark:text-white">
         Download Resource Pack
-      </div>
+    </a>
     </div>
   {/if}
   <CasualLine />
@@ -256,3 +263,5 @@
     <IconInfo /><a href="/">How to install a datapack</a>
   </p>
 </Modal>
+
+<Toaster />

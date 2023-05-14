@@ -19,7 +19,7 @@
 
   let selected: string[] = [];
   let zipFile: File;
-  let activePage = "versions";
+  let activePage = "details";
 
   export let data: PageData;
 
@@ -151,7 +151,7 @@
           <!-- Icon -->
           <p class="align-middle font-brand dark:text-pearl-lusta-100">Icon</p>
           <img
-            src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+            src={data.project?.icon}
             alt="Your logo"
             height="100"
             width="100"
@@ -210,8 +210,8 @@
             Category
           </p>
           <select
-            class="w-1/4 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
-            value="{data.project?.tags}">
+            class="w-1/4 rounded-md bg-new-white-300 p-2 font-brand text-lg dark:bg-stone-700 dark:text-white"
+            value="{data.project?.category[0]}">
             {#each categories as cat}
               <option value="{cat.id}">
                 {cat.text}

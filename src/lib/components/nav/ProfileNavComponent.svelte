@@ -6,6 +6,7 @@
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconUnread from "~icons/tabler/BellRinging.svelte";
   import IconRead from "~icons/tabler/Bell.svelte";
+  import IconPlus from "~icons/tabler/Plus.svelte";
   import { isAuthenticated, isDark, role, user } from "$lib/globals/stores";
   import { apiURL } from "$lib/globals/consts";
 
@@ -26,6 +27,11 @@
     placement: "bottom",
   };
 
+  let newHoverMsg = {
+    content: "Create Project",
+    placement: "bottom",
+  };
+
   let notifsAvailable = false;
 
   onMount(async () => {
@@ -43,6 +49,13 @@
 </script>
 
 <div class="z-50 ml-3 flex items-center justify-center md:ml-6">
+  <a
+    href="/projects/new"
+    aria-label="Create Project"
+    class="z-20 mr-3 md:mr-6"
+    use:tippy="{newHoverMsg}">
+    <IconPlus height="24" width="24" color="{iconColor}" />
+  </a>
   {#if $isAuthenticated}
     {#if ["moderator", "developer", "admin"].includes($role.name) && !small}
       <a

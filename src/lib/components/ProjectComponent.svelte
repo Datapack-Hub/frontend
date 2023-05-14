@@ -1,15 +1,15 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { getAuthorNameFromID } from "$lib/globals/functions";
+  import { getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
 
   export let project: Project;
 
-  let author = "Loading...";
+  let author: User;
   let visible = false;
 
   (async () => {
-    if (browser) author = await getAuthorNameFromID(project.author);
+    if (browser) author = await getAuthorFromID(project.author);
     visible = true;
   })();
 </script>
@@ -30,10 +30,10 @@
     </a>
     {#if visible}
       <a
-        href="/user/{author.toLowerCase()}"
+        href="/user/{author.username.toLowerCase()}"
         class="text-xs text-opacity-40 hover:underline dark:text-white md:text-sm"
         in:fade="{{ duration: 250 }}">
-        By {author}
+        By {author.username}
       </a>
     {/if}
     <p

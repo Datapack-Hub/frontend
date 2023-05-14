@@ -2,6 +2,11 @@
   import { categories } from "$lib/globals/consts";
 
   let selected: { id: number; text: string };
+
+  async function create() {
+    
+  }
+
 </script>
 
 <svelte:head>
@@ -9,8 +14,8 @@
 </svelte:head>
 
 <main
-  class="relative -translate-y-20 bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 md:translate-y-0 lg:px-32 xl:px-64">
-  <div class="w-full flex-col items-center md:flex-row md:items-start">
+  class="relative bg-new-white-200 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  <div class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
       class="pt-8 md:pt-20 text-center font-brand text-5xl font-bold dark:text-white md:text-start md:text-4xl lg:text-4xl">
       Create New <span class="text-dph-orange">Datapack</span>

@@ -35,7 +35,7 @@ declare type Project = {
   ID: number;
   author: number;
   icon: string?;
-  tags: string[];
+  category: string[];
   title: string;
   url: string;
   type: "datapack" | "url";
@@ -64,7 +64,7 @@ declare type Version = {
   version_code: string;
   minecraft_versions: string;
   primary_download: string;
-  rp_download: string?;
+  resource_pack_download: string?;
   file_name: string;
 };
 
