@@ -53,6 +53,10 @@
   setContext("roleData", role);
 </script>
 
+<svelte:head>
+  <title>{document.title ?? "Datapack Hub"}</title>
+</svelte:head>
+
 <!-- {#await pageLoad() then} -->
 {#if $isAuthenticated}
   {#if ["helper", "moderator", "admin"].includes($user.role)}
