@@ -15,7 +15,7 @@
 </script>
 
 <div
-  class="my-1 flex w-full items-center rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800 text-pearl-lusta-900 dark:text-white">
+  class="my-1 flex w-full items-center rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800 text-pearl-lusta-950 dark:text-white">
   <a href="/project/{project.url}" class="">
     <img
       src="{project.icon}"
@@ -31,13 +31,13 @@
     {#if visible}
       <a
         href="/user/{author.username.toLowerCase()}"
-        class="text-xs text-opacity-40 hover:underline text-pearl-lusta-900 dark:text-white md:text-sm"
+        class="text-xs text-opacity-40 hover:underline text-pearl-lusta-950 dark:text-white md:text-sm"
         in:fade="{{ duration: 250 }}">
         By {author.username}
       </a>
     {/if}
     <p
-      class=" mt-2 line-clamp-2 text-sm font-medium text-opacity-70 text-pearl-lusta-900 dark:text-white md:text-base">
+      class=" mt-2 line-clamp-2 text-sm font-medium text-opacity-70 text-pearl-lusta-950 dark:text-white md:text-base">
       {project.description}
     </p>
   </div>

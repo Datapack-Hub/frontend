@@ -24,7 +24,7 @@
   <div
     class="-translate-y-20 items-center pt-0 md:translate-y-0 md:flex-row md:items-start md:pt-20">
     <h1
-      class="mt-8 pb-2 text-center font-brand text-5xl font-bold text-pearl-lusta-900 dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="mt-8 pb-2 text-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Browse Datapacks
     </h1>
     <div
@@ -38,30 +38,30 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class="ml-2 bg-pearl-lusta-200 font-brand placeholder:text-stone-400 focus:outline-none dark:bg-stone-600 text-pearl-lusta-900 dark:text-white"
+          class="ml-2 bg-pearl-lusta-200 font-brand placeholder:text-stone-400 focus:outline-none dark:bg-stone-600 text-pearl-lusta-950 dark:text-white"
           on:input="{search}" />
       </div>
       <div class="px-2"></div>
       <div class="flex items-center">
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-900 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
           >1</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-900 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
           >2</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-900 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
           >3</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-900 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
           >4</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-900 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
           >5</a>
       </div>
     </div>
@@ -82,12 +82,12 @@
               <ProjectComponent project="{project}" />
             {/each}
           {:else}
-            <h2 class="font-brand text-pearl-lusta-900 dark:text-white">
+            <h2 class="font-brand text-pearl-lusta-950 dark:text-white">
               No results found
             </h2>
           {/if}
         {:else}
-          <h2 class="font-brand text-pearl-lusta-900 dark:text-white">
+          <h2 class="font-brand text-pearl-lusta-950 dark:text-white">
             No results found
           </h2>
         {/if}

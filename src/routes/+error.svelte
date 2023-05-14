@@ -34,16 +34,16 @@
 <main
   class="flex h-screen w-full flex-col items-center justify-center bg-pearl-lusta-100 px-8 transition-colors dark:bg-stone-900 md:flex-row md:justify-start md:px-16 lg:px-24">
   <p
-    class="mb-8 w-full text-center font-console text-9xl font-bold text-pearl-lusta-900 dark:text-white md:mb-0 md:w-1/2 md:text-[10rem] lg:text-[12rem] xl:text-[15rem]">
+    class="mb-8 w-full text-center font-console text-9xl font-bold text-pearl-lusta-950 dark:text-white md:mb-0 md:w-1/2 md:text-[10rem] lg:text-[12rem] xl:text-[15rem]">
     {$page.status}
   </p>
   <div class="w-full md:w-1/3">
     <p
-      class="mb-6 text-center font-console text-5xl font-bold text-pearl-lusta-900 dark:text-white md:text-left md:text-6xl lg:text-8xl xl:text-9xl">
+      class="mb-6 text-center font-console text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-left md:text-6xl lg:text-8xl xl:text-9xl">
       {$page.error?.message}
     </p>
     <p
-      class="font-brand text-lg text-opacity-40 text-pearl-lusta-900 dark:text-white dark:text-opacity-40 md:text-xl lg:text-2xl">
+      class="font-brand text-lg text-opacity-40 text-pearl-lusta-950 dark:text-white dark:text-opacity-40 md:text-xl lg:text-2xl">
       {message}
     </p>
   </div>

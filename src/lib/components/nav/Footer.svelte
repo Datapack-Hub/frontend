@@ -8,12 +8,12 @@
         alt="logo"
         class="h-12 w-full transition-all hover:brightness-75 md:w-auto" />
       <p
-        class="hidden w-full text-center font-brand text-2xl font-bold transition-colors hover:text-neutral-700 active:text-neutral-600 text-pearl-lusta-900 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block md:text-left">
+        class="hidden w-full text-center font-brand text-2xl font-bold transition-colors hover:text-neutral-700 active:text-neutral-600 text-pearl-lusta-950 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block md:text-left">
         Datapack Hub
       </p>
     </div>
     <p
-      class="mt-4 text-center font-brand text-sm font-light text-opacity-25 text-pearl-lusta-900 dark:text-white dark:text-opacity-25 md:text-left">
+      class="mt-4 text-center font-brand text-sm font-light text-opacity-25 text-pearl-lusta-950 dark:text-white dark:text-opacity-25 md:text-left">
       Copyright © 2023 Datapack Hub<br />Not an official Minecraft product. Not
       approved by or associated with Mojang Studios
     </p>
@@ -37,18 +37,18 @@
     <!-- put header content here -->
     <div class="flex w-full text-center">
       <ul
-        class="w-1/3 text-center font-brand text-pearl-lusta-900 dark:text-white md:text-right">
+        class="w-1/3 text-center font-brand text-pearl-lusta-950 dark:text-white md:text-right">
         <li><a href="https://discord.gg/aEXsdjjdu4">Community Discord</a></li>
         <li><a href="/staff">Staff Team</a></li>
       </ul>
       <ul
-        class="w-1/3 text-center font-brand text-pearl-lusta-900 dark:text-white md:text-right">
+        class="w-1/3 text-center font-brand text-pearl-lusta-950 dark:text-white md:text-right">
         <li><a href="https://discord.gg/aEXsdjjdu4">Discord</a></li>
         <li><a href="https://twitter.com/DatapackHub">Twitter</a></li>
         <li><a href="https://github.com/Datapack-Hub">GitHub</a></li>
       </ul>
       <ul
-        class="w-1/3 text-center font-brand text-pearl-lusta-900 dark:text-white md:text-right">
+        class="w-1/3 text-center font-brand text-pearl-lusta-950 dark:text-white md:text-right">
         <li><a href="/rules">Site Rules</a></li>
         <li><a href="/privacy">Privacy</a></li>
         <li><a href="/terms">Terms</a></li>

@@ -38,7 +38,7 @@
     class="styled-scrollbar mx-24 mt-16 h-full w-full overflow-y-auto md:mt-0">
     <div class="mb-2 flex items-center">
       <h1
-        class="text-center text-xl font-bold text-pearl-lusta-900 dark:text-white md:text-left">
+        class="text-center text-xl font-bold text-pearl-lusta-950 dark:text-white md:text-left">
         {data.profile?.username}'s projects
       </h1>
       {#if data.profile.id == $user.id}
@@ -49,7 +49,7 @@
     <div class="mb-2"></div>
     {#if data.projects?.length == 0}
       <p
-        class="mt-48 text-center text-3xl text-opacity-40 text-pearl-lusta-900 dark:text-white">
+        class="mt-48 text-center text-3xl text-opacity-40 text-pearl-lusta-950 dark:text-white">
         No projects!
       </p>
     {:else}

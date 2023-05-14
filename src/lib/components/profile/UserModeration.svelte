@@ -153,20 +153,20 @@
 </script>
 
 <Modal bind:this="{warnDialog}">
-  <h1 class="font-brand text-xl font-bold text-pearl-lusta-900 dark:text-white">
+  <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
     Warn {user?.username}
   </h1>
   <CasualLine />
-  <p class="font-brand text-pearl-lusta-900 dark:text-white">
+  <p class="font-brand text-pearl-lusta-950 dark:text-white">
     This message is sent to the user as a notification. Always be professional,
     even when they are not.
   </p>
   <p
-    class="mt-3 align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
+    class="mt-3 align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Warn Message
   </p>
   <textarea
-    class="mb-4 h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-900 dark:text-white"
+    class="mb-4 h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
     placeholder="..."
     id="warn-message"></textarea>
   <button
@@ -176,43 +176,43 @@
 </Modal>
 
 <Modal bind:this="{notifDialog}">
-  <h1 class="font-brand text-xl font-bold text-pearl-lusta-900 dark:text-white">
+  <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
     Notify {user?.username}
   </h1>
   <CasualLine />
-  <p class="font-brand text-pearl-lusta-900 dark:text-white">
+  <p class="font-brand text-pearl-lusta-950 dark:text-white">
     Send an anonymous notification (unless you put your name down) to the user.
     For warnings, use the Warn button.
   </p>
   <label
     for="notif-message"
-    class="mt-3 align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
+    class="mt-3 align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Notification Message
   </label>
   <input
-    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-900 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
     placeholder="Your cake is burning!"
     name="notif-message"
     id="notif-message" />
   <label
     for="notif-content"
-    class="mt-3 align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
+    class="mt-3 align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Notification Body
   </label>
   <textarea
-    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-900 dark:text-white"
+    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
     placeholder="Just a quick reminder that your cake which you forgot about has been in the oven for 10 minutes too long."
     name="notif-content"
     id="notif-content"></textarea>
   <label
     for="notif-type"
-    class="mt-2 align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
+    class="mt-2 align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Notification Type
   </label>
   <select
     name="notif-type"
     id="notif-type"
-    class="mb-4 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-900 dark:text-white">
+    class="mb-4 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white">
     <option value="default">Default</option>
     <option value="important">Important</option>
     <option value="announcement">Announcement</option>
@@ -225,32 +225,32 @@
 </Modal>
 
 <Modal bind:this="{banDialog}">
-  <h1 class="font-brand text-xl font-bold text-pearl-lusta-900 dark:text-white">
+  <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
     Ban {user?.username}
   </h1>
   <CasualLine />
-  <p class="font-brand text-pearl-lusta-900 dark:text-white">
+  <p class="font-brand text-pearl-lusta-950 dark:text-white">
     Banning a user prevents them from interacting with the website. You can
     write a message or ban reason to be displayed when they try to log in.
   </p>
   <p
-    class="mt-3 align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
+    class="mt-3 align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Ban Expiry
   </p>
   <input
     type="date"
-    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-900 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
     id="ban-expiry" />
-  <label class="font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
+  <label class="font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
     <input type="checkbox" id="ban-permanent" />
     Permanent?
   </label>
   <p
-    class="mt-3 align-middle font-brand text-pearl-lusta-900 dark:text-pearl-lusta-100">
+    class="mt-3 align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Ban Message (supports markdown)
   </p>
   <textarea
-    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-900 dark:text-white"
+    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
     placeholder="Burning cake after being **repeatedly told** to stop"
     id="ban-message"></textarea>
   <button
@@ -260,17 +260,17 @@
 </Modal>
 
 <Modal bind:this="{unbanDialog}">
-  <h1 class="font-brand text-xl font-bold text-pearl-lusta-900 dark:text-white">
+  <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
     Unban {user?.username}
   </h1>
   <CasualLine />
-  <p class="font-brand text-pearl-lusta-900 dark:text-white">
+  <p class="font-brand text-pearl-lusta-950 dark:text-white">
     {user?.username} has been banned for the following reason:
   </p>
   <p class="my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300">
     <SvelteMarkdown source="{modJson['banMessage']}" />
   </p>
-  <p class="font-brand text-pearl-lusta-900 dark:text-white">
+  <p class="font-brand text-pearl-lusta-950 dark:text-white">
     Unban them to end their ban early.
   </p>
   <button
@@ -280,11 +280,11 @@
 </Modal>
 
 <Modal bind:this="{logOutDialog}">
-  <h1 class="font-brand text-xl font-bold text-pearl-lusta-900 dark:text-white">
+  <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
     Log {user?.username} out
   </h1>
   <CasualLine />
-  <p class="font-brand text-pearl-lusta-900 dark:text-white">
+  <p class="font-brand text-pearl-lusta-950 dark:text-white">
     This will log {user?.username} out of all their signed-in devices, and generate
     them a new token. They will need to sign in again.
   </p>
@@ -301,14 +301,14 @@
     <div class="ms:max-w-lg flex max-w-full justify-center md:justify-start">
       <div class="mt-4 w-full rounded-xl bg-red-500/25 p-2">
         <h1
-          class="font-brand text-lg font-medium text-pearl-lusta-900 dark:text-white">
+          class="font-brand text-lg font-medium text-pearl-lusta-950 dark:text-white">
           Moderation Actions
         </h1>
         <CasualLine />
         <div class="xs:flex-col md:flex">
           <div class="md:w-2/3">
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-red-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-900 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-red-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-950 dark:text-white"
               on:click="{() => {
                 if (modJson['banned']) open(unbanDialog);
                 else open(banDialog);
@@ -319,7 +319,7 @@
                 ).toDateString()}){:else}Ban{/if}
             </button>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-orange-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-900 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-orange-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-950 dark:text-white"
               on:click="{() => open(warnDialog)}">
               <img
                 src="/icons/warn.svg"
@@ -328,7 +328,7 @@
               Warn
             </button>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-900 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-950 dark:text-white"
               on:click="{() => open(notifDialog)}">
               <img
                 src="/icons/message.svg"
@@ -338,7 +338,7 @@
             </button>
             <a
               href="/user/{user?.username}/edit"
-              class="mt-1 flex w-full items-center rounded-md bg-blue-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-900 dark:text-white">
+              class="mt-1 flex w-full items-center rounded-md bg-blue-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-950 dark:text-white">
               <img
                 src="/icons/settings.svg"
                 alt="ban"
@@ -346,7 +346,7 @@
               Edit Profile Details
             </a>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-indigo-600 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-900 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-indigo-600 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-950 dark:text-white"
               on:click="{() => open(logOutDialog)}">
               <img
                 src="/icons/log-out.svg"
@@ -357,17 +357,17 @@
           </div>
           <div class="w-1/3 pl-2">
             <p
-              class="font-brand text-xl font-extrabold text-pearl-lusta-900 dark:text-white">
+              class="font-brand text-xl font-extrabold text-pearl-lusta-950 dark:text-white">
               User Info
             </p>
-            <p class="font-brand text-pearl-lusta-900 dark:text-white">
+            <p class="font-brand text-pearl-lusta-950 dark:text-white">
               <b>ID: </b>
               {user.id}
             </p>
             {#if modJson["banned"]}<p class="font-brand">
                 <b>Banned: </b>True
               </p>
-            {:else}<p class="font-brand text-pearl-lusta-900 dark:text-white">
+            {:else}<p class="font-brand text-pearl-lusta-950 dark:text-white">
                 <b>Banned: </b>False
               </p>
             {/if}

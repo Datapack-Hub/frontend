@@ -111,11 +111,11 @@
       class="mr-6 h-24 w-24 rounded-lg" />
     <div class="flex-grow">
       <h1
-        class="font-brand text-5xl font-black text-pearl-lusta-900 dark:text-white">
+        class="font-brand text-5xl font-black text-pearl-lusta-950 dark:text-white">
         {data.project?.title}
       </h1>
       <h2
-        class="text-md font-brand transition-all text-pearl-lusta-900 dark:text-white"
+        class="text-md font-brand transition-all text-pearl-lusta-950 dark:text-white"
         in:fade="{{ duration: 250 }}">
         {data.project?.description}
       </h2>
@@ -127,7 +127,7 @@
             alt="pfp" />
           <a
             href="/user/{author.username}"
-            class="mt-1 font-brand text-xl font-medium transition-all text-pearl-lusta-900 dark:text-white"
+            class="mt-1 font-brand text-xl font-medium transition-all text-pearl-lusta-950 dark:text-white"
             in:fade="{{ duration: 250 }}">
             {author.username}
           </a>
@@ -162,7 +162,7 @@
     <div
       class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-5">
       <p
-        class="font-brand text-lg font-light text-pearl-lusta-900 dark:text-white">
+        class="font-brand text-lg font-light text-pearl-lusta-950 dark:text-white">
         {data.project?.body}
       </p>
     </div>
@@ -172,11 +172,11 @@
       {#if data.versions?.length != 0}
         <div class="mx-3 flex space-x-3">
           <h2
-            class="w-1/3 font-brand text-xl font-black text-pearl-lusta-900 dark:text-white">
+            class="w-1/3 font-brand text-xl font-black text-pearl-lusta-950 dark:text-white">
             Name
           </h2>
           <h2
-            class="flex-grow font-brand text-xl font-black text-pearl-lusta-900 dark:text-white">
+            class="flex-grow font-brand text-xl font-black text-pearl-lusta-950 dark:text-white">
             Minecraft versions
           </h2>
         </div>
@@ -185,16 +185,16 @@
             class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
             <div class="flex w-1/3 items-center space-x-2">
               <h2
-                class="font-brand text-xl font-bold text-pearl-lusta-900 dark:text-white">
+                class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
                 {version.name}
               </h2>
               <h2
-                class="text-md font-brand font-thin italic text-pearl-lusta-900 dark:text-white">
+                class="text-md font-brand font-thin italic text-pearl-lusta-950 dark:text-white">
                 {version.version_code}
               </h2>
             </div>
             <h2
-              class="flex flex-grow space-x-1 font-brand text-pearl-lusta-900 dark:text-white">
+              class="flex flex-grow space-x-1 font-brand text-pearl-lusta-950 dark:text-white">
               {#each version.minecraft_versions.split(",") ?? [] as mcv}
                 <button
                   class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
@@ -212,15 +212,15 @@
               on:click="{() => {
                 openVersion(version);
               }}"
-              class="rounded-xl bg-dph-orange p-1 px-2 font-brand text-pearl-lusta-900 dark:text-white"
+              class="rounded-xl bg-dph-orange p-1 px-2 font-brand text-pearl-lusta-950 dark:text-white"
               >Download</button>
           </div>
         {/each}
-        <p class="mx-1 mt-2 font-brand text-pearl-lusta-900 dark:text-white">
+        <p class="mx-1 mt-2 font-brand text-pearl-lusta-950 dark:text-white">
           (Showing {data.versions?.length} versions)
         </p>
       {:else}
-        <h2 class="font-brand text-xl text-pearl-lusta-900 dark:text-white">
+        <h2 class="font-brand text-xl text-pearl-lusta-950 dark:text-white">
           <b>No versions yet!</b> Why not
           <a
             href="/project/{data.project?.url}/edit"
@@ -233,12 +233,12 @@
 </main>
 
 <Modal bind:this="{dlModal}">
-  <h1 class="font-brand text-xl font-bold text-pearl-lusta-900 dark:text-white">
+  <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
     Download Version: {activeVersion.name}
   </h1>
   <CasualLine />
   <div
-    class="items-middle flex items-center font-brand text-pearl-lusta-900 dark:text-white">
+    class="items-middle flex items-center font-brand text-pearl-lusta-950 dark:text-white">
     <p class="pr-1">
       Select a valid Minecraft version below to download the datapack.
     </p>
@@ -252,7 +252,7 @@
     </div>
   </div>
   <div
-    class="my-2 flex space-x-2 font-brand text-pearl-lusta-900 dark:text-white">
+    class="my-2 flex space-x-2 font-brand text-pearl-lusta-950 dark:text-white">
     {#each activeVersion.minecraft_versions.split(",") ?? [] as mcv}
       <button
         class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 hover:scale-102"
@@ -266,20 +266,20 @@
     {/each}
   </div>
   <p
-    class="pr-1 font-brand text-xs italic text-pearl-lusta-900 dark:text-white">
+    class="pr-1 font-brand text-xs italic text-pearl-lusta-950 dark:text-white">
     If your version is not listed above, then this datapack is not supported for
     your version.
   </p>
 
   {#if activeVersion.resource_pack_download}
     <CasualLine />
-    <p class="pr-1 font-brand text-pearl-lusta-900 dark:text-white">
+    <p class="pr-1 font-brand text-pearl-lusta-950 dark:text-white">
       This datapack also has a resource pack which you need to download!
     </p>
     <div class="my-2 flex">
       <a
         href="{activeVersion.resource_pack_download}"
-        class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 font-brand hover:scale-102 text-pearl-lusta-900 dark:text-white">
+        class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 font-brand hover:scale-102 text-pearl-lusta-950 dark:text-white">
         Download Resource Pack
       </a>
     </div>

@@ -15,7 +15,7 @@
     <div>
       <a href="/user/{person?.username.toLowerCase()}"
         ><h1
-          class="mr-2 font-brand text-xl font-bold text-pearl-lusta-900 dark:text-white">
+          class="mr-2 font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
           {person?.username}
         </h1></a>
       <span class="font-brand font-bold" style="color:{role?.color};"
