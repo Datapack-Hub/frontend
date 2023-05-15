@@ -25,7 +25,7 @@
       When you post a submission, it will be reviewed by our moderators to make
       sure it follows these rules.
     </p>
-    <ul class=" list-disc">
+    <ul class="list-disc">
       <li>
         Posting malware. This is self explanatory - if you post malware instead
         of an actual datapack, then you will be blocked from visiting the site.
