@@ -45,23 +45,23 @@
       <div class="flex items-center">
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-500 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
           >1</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-500 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
           >2</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-500 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
           >3</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-500 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
           >4</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-600 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-orange-500 p-1 text-center font-brand font-light text-pearl-lusta-950 dark:text-white sm:mt-0"
           >5</a>
       </div>
     </div>
