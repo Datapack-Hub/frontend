@@ -47,7 +47,7 @@
           height="32"
           width="32" />
         <span
-          class="hidden font-brand text-2xl font-bold text-black transition-colors hover:text-neutral-700 active:text-neutral-600 text-pearl-lusta-950 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
+          class="hidden font-brand text-2xl font-bold text-black text-pearl-lusta-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
           Datapack Hub
         </span>
       </a>

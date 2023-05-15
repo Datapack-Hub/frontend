@@ -1,5 +1,6 @@
 <script lang="ts">
   import { categories } from "$lib/globals/consts";
+  import IconFile from "~icons/tabler/Upload.svelte";
 
   let selected: { id: number; text: string };
 
@@ -19,13 +20,14 @@
       Create New <span class="text-dph-orange">Datapack</span>
     </h1>
     <div class="text-center align-middle md:text-start">
-      <p class="pb-4 font-brand text-pearl-lusta-950 dark:text-white">
+      <p
+        class="pb-4 font-brand text-pearl-lusta-950 opacity-60 dark:text-white">
         Before starting, please read the Site Rules. <b
           >Only upload content that you made yourself or have permission to
           distribute.</b>
       </p>
 
-      <div class=" rounded-xl bg-stone-800 p-2 pb-2">
+      <div class=" rounded-xl bg-pearl-lusta-200 p-2 pb-2 dark:bg-stone-800">
         <!-- Icon -->
         <p
           class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
@@ -37,32 +39,28 @@
           height="100"
           width="100"
           class="mr-3 inline-block rounded-2xl" />
-        <label for="icon" class="max-w-100 group inline-block">
-          <span
-            class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle font-brand text-pearl-lusta-950 dark:text-white"
-            >Upload icon</span>
-        </label>
+        <label for="icon" class="button-boring"> Upload Icon </label>
         <input id="icon" type="file" class="hidden" />
         <br /><br />
 
         <!-- Title -->
         <p
-          class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+          class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
           Title
         </p>
         <input
-          class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+          class="input-base override-input-outline h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2 font-brand"
           placeholder="Title"
           id="title"
           maxlength="50" /><br /><br />
 
         <!-- Short Description -->
         <p
-          class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+          class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
           Short Description
         </p>
         <textarea
-          class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+          class="input-base override-input-outline h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand"
           placeholder="This short description is used for social media embeds and the listing page."
           id="desc"
           maxlength="200"></textarea
@@ -70,11 +68,11 @@
 
         <!-- Long Description -->
         <p
-          class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+          class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
           Long Description (supports markdown)
         </p>
         <textarea
-          class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+          class="input-base override-input-outline h-96 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand"
           placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
           id="body"
           maxlength="2000"></textarea
@@ -85,9 +83,14 @@
           class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
           Datapack File Upload
         </p>
+        <label for="file" class="button-style flex w-fit items-center">
+          <IconFile class="{'mr-2'}" />
+          Upload File
+        </label>
         <input
           type="file"
-          class="rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+          name="file"
+          class="invisible"
           id="file" /><br /><br />
         <!-- Category -->
         <p
@@ -95,7 +98,7 @@
           Category
         </p>
         <select
-          class="w-1/4 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+          class="input-base override-input-outline w-1/4 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg"
           value="{selected}">
           {#each categories as cat}
             <option value="{cat}">
@@ -103,12 +106,15 @@
             </option>
           {/each}
         </select><br /><br />
-        <button
-          class="text-md my-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 py-2 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl">
-          Create
-        </button>
+        <button class="button-empty"> Create </button>
       </div>
     </div>
   </div>
 </main>
 <br />
+
+<style lang="postcss">
+  .input-base {
+    @apply text-pearl-lusta-950 transition-all placeholder:text-pearl-lusta-950 placeholder:text-opacity-40 hover:placeholder:text-opacity-60 dark:bg-stone-700 dark:placeholder:text-pearl-lusta-100 dark:placeholder:text-opacity-40 dark:hover:placeholder:text-opacity-60;
+  }
+</style>

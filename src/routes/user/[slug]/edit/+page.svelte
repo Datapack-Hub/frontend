@@ -65,7 +65,7 @@
         Username
       </p>
       <input
-        class="h-10 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-800 text-pearl-lusta-950 dark:text-white"
+        class="h-10 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
         value="{data.profile?.username}"
         maxlength="32"
         id="username" />
@@ -75,7 +75,7 @@
         Bio
       </p>
       <textarea
-        class="h-40 w-80 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-800 text-pearl-lusta-950 dark:text-white"
+        class="h-40 w-80 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
         maxlength="500"
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
         id="bio"></textarea>
@@ -89,7 +89,7 @@
           name="roleSelection"
           id="rolez"
           bind:value="{newRole}"
-          class="h-10 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-800 text-pearl-lusta-950 dark:text-white">
+          class="h-10 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
           <option value="{data.profile?.role}" selected
             >{data.profile?.role}</option>
           {#each roles as r}

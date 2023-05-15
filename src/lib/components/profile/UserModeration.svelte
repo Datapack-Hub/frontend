@@ -166,7 +166,7 @@
     Warn Message
   </p>
   <textarea
-    class="mb-4 h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+    class="mb-4 h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     placeholder="..."
     id="warn-message"></textarea>
   <button
@@ -190,7 +190,7 @@
     Notification Message
   </label>
   <input
-    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     placeholder="Your cake is burning!"
     name="notif-message"
     id="notif-message" />
@@ -200,7 +200,7 @@
     Notification Body
   </label>
   <textarea
-    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     placeholder="Just a quick reminder that your cake which you forgot about has been in the oven for 10 minutes too long."
     name="notif-content"
     id="notif-content"></textarea>
@@ -212,7 +212,7 @@
   <select
     name="notif-type"
     id="notif-type"
-    class="mb-4 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white">
+    class="mb-4 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white">
     <option value="default">Default</option>
     <option value="important">Important</option>
     <option value="announcement">Announcement</option>
@@ -239,7 +239,7 @@
   </p>
   <input
     type="date"
-    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     id="ban-expiry" />
   <label class="font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
     <input type="checkbox" id="ban-permanent" />
@@ -250,7 +250,7 @@
     Ban Message (supports markdown)
   </p>
   <textarea
-    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     placeholder="Burning cake after being **repeatedly told** to stop"
     id="ban-message"></textarea>
   <button
@@ -308,7 +308,7 @@
         <div class="xs:flex-col md:flex">
           <div class="md:w-2/3">
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-red-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-950 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-red-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => {
                 if (modJson['banned']) open(unbanDialog);
                 else open(banDialog);
@@ -319,7 +319,7 @@
                 ).toDateString()}){:else}Ban{/if}
             </button>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-orange-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-950 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-orange-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(warnDialog)}">
               <img
                 src="/icons/warn.svg"
@@ -328,7 +328,7 @@
               Warn
             </button>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-950 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(notifDialog)}">
               <img
                 src="/icons/message.svg"
@@ -338,7 +338,7 @@
             </button>
             <a
               href="/user/{user?.username}/edit"
-              class="mt-1 flex w-full items-center rounded-md bg-blue-500 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-950 dark:text-white">
+              class="mt-1 flex w-full items-center rounded-md bg-blue-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
               <img
                 src="/icons/settings.svg"
                 alt="ban"
@@ -346,7 +346,7 @@
               Edit Profile Details
             </a>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-indigo-600 p-1 text-left font-brand transition-all hover:scale-102 text-pearl-lusta-950 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-indigo-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(logOutDialog)}">
               <img
                 src="/icons/log-out.svg"

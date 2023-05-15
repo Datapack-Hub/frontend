@@ -1,11 +1,10 @@
 <script lang="ts">
-  import CasualLine from "$lib/components/CasualLine.svelte";
-  import Modal from "$lib/components/modals/Modal.svelte";
   import { fetchAuthed } from "$lib/globals/functions";
   import type { PageData } from "./$types";
   import JSZip from "jszip";
   import MultiSelect from "svelte-multiselect";
-  import toast, { Toaster } from "svelte-french-toast";
+  import toast from "svelte-french-toast";
+  import { categories } from "$lib/globals/consts";
 
   const ui_libs = [
     "1.13-1.14.4",
@@ -24,26 +23,6 @@
   export let data: PageData;
 
   let createVersion = false;
-
-  // modals
-  let newVersion: Modal;
-
-  let categories = [
-    { id: 1, text: `Adventure` },
-    { id: 2, text: `Magic` },
-    { id: 3, text: `Minecraft, but` },
-    { id: 4, text: `Cursed` },
-    { id: 5, text: `World Generation` },
-    { id: 6, text: `Tools and Equipment` },
-    { id: 7, text: `German` },
-    { id: 8, text: `Recipe` },
-    { id: 9, text: `Quality of Life` },
-    { id: 10, text: `Items and Blocks` },
-    { id: 11, text: `Cosmetics` },
-    { id: 12, text: `Miscellaneous` },
-    { id: 13, text: `Utility` },
-    { id: 24, text: `Vanilla+` },
-  ];
 
   async function upload() {
     let inp = document.getElementById("zip") as HTMLInputElement;
@@ -173,7 +152,7 @@
             Title
           </p>
           <input
-            class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+            class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
             placeholder="Title"
             value="{data.project?.title}"
             maxlength="50"
@@ -185,7 +164,7 @@
             Short Description
           </p>
           <textarea
-            class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+            class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
             placeholder="This short description is used for social media embeds and the listing page."
             id="desc"
             value="{data.project?.description}"
@@ -198,7 +177,7 @@
             Long Description (supports markdown)
           </p>
           <textarea
-            class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+            class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
             placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
             id="body"
             value="{data.project?.body}"
@@ -212,7 +191,7 @@
           </p>
           <input
             type="file"
-            class="rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+            class="rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
             id="file" /><br /><br />
           <!-- Category -->
           <p
@@ -220,7 +199,7 @@
             Category
           </p>
           <select
-            class="bg-new-white-300 w-1/4 rounded-md p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+            class="bg-new-white-300 w-1/4 rounded-md p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
             value="{data.project?.category[0]}">
             {#each categories as cat}
               <option value="{cat.id}">
@@ -280,12 +259,12 @@
             </div>
             <div class="flex space-x-2">
               <input
-                class="mb-4 h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg placeholder:text-pearl-lusta-100 dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+                class="mb-4 h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
                 placeholder="{data.project?.title} v{ver}"
                 maxlength="50"
                 id="v_name" />
               <input
-                class="mb-4 h-10 w-1/6 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg placeholder:text-pearl-lusta-100 dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+                class="mb-4 h-10 w-1/6 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
                 placeholder="v{ver}"
                 maxlength="15"
                 id="v_code" />
@@ -296,7 +275,7 @@
               Changelog (supports markdown!)
             </p>
             <textarea
-              class="mb-4 h-36 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
+              class="mb-4 h-36 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
               placeholder="This update changes..."
               id="v_changelog"
               maxlength="2000"></textarea>
@@ -318,7 +297,7 @@
             <input
               type="file"
               id="v_rp"
-              class="mb-4 rounded-xl bg-pearl-lusta-300 p-2 font-brand dark:bg-stone-700 text-pearl-lusta-950 dark:text-white" />
+              class="mb-4 rounded-xl bg-pearl-lusta-300 p-2 font-brand text-pearl-lusta-950 dark:bg-stone-700 dark:text-white" />
             <p></p>
             <button class="button-style" on:click="{uploadVersion}"
               >Create Version</button>
@@ -351,35 +330,6 @@
   </div>
 </main>
 <br />
-
-<Modal bind:this="{newVersion}">
-  <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
-    Create a New Version
-  </h1>
-  <CasualLine />
-  <!-- <p class="text-pearl-lusta-950 dark:text-white font-brand">Upload a file here, and give your version a name. You'll be able to change more details later.</p> -->
-  <p
-    class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-    Version Name
-  </p>
-  <input
-    class="mb-2 h-10 w-full rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg dark:bg-stone-700 text-pearl-lusta-950 dark:text-white"
-    placeholder="Burnt Cake Update"
-    id="title" />
-  <p
-    class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-    Drag to upload a file.
-  </p>
-  <label for="zip" class="max-w-100">
-    <span
-      class="mb-2 cursor-pointer rounded-xl bg-stone-700 p-2 align-middle font-brand hover:bg-stone-600 text-pearl-lusta-950 dark:text-white"
-      >Upload datapack ZIP</span>
-  </label>
-  <input id="zip" type="file" class="hidden" accept=".zip" />
-  <p class="font-brand text-pearl-lusta-950 dark:text-white">
-    Your file will be automatically compressed to reduce file size.
-  </p>
-</Modal>
 
 <style lang="postcss">
   :root {

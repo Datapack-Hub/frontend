@@ -38,7 +38,7 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class="ml-2 bg-pearl-lusta-200 font-brand placeholder:text-stone-400 focus:outline-none dark:bg-stone-600 text-pearl-lusta-950 dark:text-white"
+          class="ml-2 bg-pearl-lusta-200 font-brand text-pearl-lusta-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-600 dark:text-white"
           on:input="{search}" />
       </div>
       <div class="px-2"></div>

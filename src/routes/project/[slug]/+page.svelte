@@ -12,12 +12,19 @@
   import tippy from "sveltejs-tippy";
   import JSZip from "jszip";
   import toast, { Toaster } from "svelte-french-toast";
+  import DOMPurify from "isomorphic-dompurify";
+  import SvelteMarkdown from "svelte-markdown";
 
   export let data: PageData;
   let visible = false;
   let activePage = "description";
 
   let author: User;
+
+  let body = DOMPurify.sanitize(data.project?.body!, {
+    FORBID_ATTR: ["style", "class", "placeholder", "src"],
+    FORBID_TAGS: ["canvas", "svg", "iframe", "img", "input"],
+  });
 
   (async () => {
     if (browser) author = await getAuthorFromID(data.project?.author);
@@ -40,6 +47,7 @@
     let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
     let packMcmData = JSON.parse(packMcm);
     let packFormat;
+
     switch (version) {
       case "1.13–1.14.4":
         packFormat = 4;
@@ -63,15 +71,16 @@
         packFormat = 12;
         break;
     }
+
     packMcmData["pack"]["pack_format"] = packFormat;
 
-    await parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
+    parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
 
     let final = await parsedZip.generateAsync({ type: "base64" });
-    var clickmeplz = document.createElement("a");
-    clickmeplz.download = url.split("/")[url.split("/").length - 1];
-    clickmeplz.href = "data:application/zip;base64," + final;
-    clickmeplz.click();
+    var clickMePlz = document.createElement("a");
+    clickMePlz.download = url.split("/")[url.split("/").length - 1];
+    clickMePlz.href = "data:application/zip;base64," + final;
+    clickMePlz.click();
 
     rp
       ? toast.success(
@@ -115,7 +124,7 @@
         {data.project?.title}
       </h1>
       <h2
-        class="text-md font-brand transition-all text-pearl-lusta-950 dark:text-white"
+        class="text-md font-brand text-pearl-lusta-950 transition-all dark:text-white"
         in:fade="{{ duration: 250 }}">
         {data.project?.description}
       </h2>
@@ -127,7 +136,7 @@
             alt="pfp" />
           <a
             href="/user/{author.username}"
-            class="mt-1 font-brand text-xl font-medium transition-all text-pearl-lusta-950 dark:text-white"
+            class="mt-1 font-brand text-xl font-medium text-pearl-lusta-950 transition-all dark:text-white"
             in:fade="{{ duration: 250 }}">
             {author.username}
           </a>
@@ -161,9 +170,8 @@
   {#if activePage == "description"}
     <div
       class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-5">
-      <p
-        class="font-brand text-lg font-light text-pearl-lusta-950 dark:text-white">
-        {data.project?.body}
+      <p class="prose dark:prose-invert">
+        <SvelteMarkdown source="{body}" />
       </p>
     </div>
   {:else if activePage == "versions"}
@@ -279,7 +287,7 @@
     <div class="my-2 flex">
       <a
         href="{activeVersion.resource_pack_download}"
-        class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 font-brand hover:scale-102 text-pearl-lusta-950 dark:text-white">
+        class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 font-brand text-pearl-lusta-950 hover:scale-102 dark:text-white">
         Download Resource Pack
       </a>
     </div>

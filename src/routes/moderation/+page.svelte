@@ -36,16 +36,16 @@
       <button
         class="rounded-xl {activePage === 'dashboard'
           ? 'bg-stone-600'
-          : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand hover:scale-102 text-pearl-lusta-950 dark:text-white"
+          : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand text-pearl-lusta-950 hover:scale-102 dark:text-white"
         on:click="{() => (activePage = 'dashboard')}">Dashboard</button>
       <button
         class="rounded-xl {activePage === 'roles'
           ? 'bg-stone-600'
-          : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand hover:scale-102 text-pearl-lusta-950 dark:text-white"
+          : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand text-pearl-lusta-950 hover:scale-102 dark:text-white"
         on:click="{() => (activePage = 'roles')}">Roles</button>
       <a href="/moderation/console"
         ><button
-          class="cursor-pointer rounded-xl bg-stone-800 p-1 px-3 font-brand hover:scale-102 text-pearl-lusta-950 dark:text-white"
+          class="cursor-pointer rounded-xl bg-stone-800 p-1 px-3 font-brand text-pearl-lusta-950 hover:scale-102 dark:text-white"
           >Console</button
         ></a>
     </div>
