@@ -115,7 +115,8 @@
   <div
     class="flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
     <img
-      src="{data.project?.icon ?? "https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"}"
+      src="{data.project?.icon ??
+        'https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg'}"
       alt="Icon for {data.project?.title.trimStart()}"
       class="mr-6 h-32 rounded-lg" />
     <div class="flex-grow">
@@ -124,17 +125,19 @@
         {data.project?.title.trimStart()}
       </h1>
       <h2
-        class="text-md font-brand text-pearl-lusta-950 transition-all dark:text-white mt-2 opacity-60">
+        class="text-md mt-2 font-brand text-pearl-lusta-950 opacity-60 transition-all dark:text-white">
         {data.project?.description?.trimStart()}
       </h2>
       {#if visible}
-        <a href="/user/{author.username}" class="flex items-center space-x-2 mt-4">
+        <a
+          href="/user/{author.username}"
+          class="mt-4 flex items-center space-x-2">
           <img
             src="{author.profile_icon}"
             class="max-h-7 rounded-full"
             alt="pfp" />
           <span
-            class="font-brand text-lg text-pearl-lusta-950 transition-all dark:text-white hover:underline"
+            class="font-brand text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
             in:fade="{{ duration: 250 }}">
             {author.username}
           </span>

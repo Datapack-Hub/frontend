@@ -36,8 +36,9 @@
   </div>
   <div
     class="styled-scrollbar mx-24 mt-16 h-full w-full overflow-y-auto md:mt-0">
-    <div class="flex items-center mb-2">
-      <h1 class="text-center text-xl font-bold dark:text-white md:text-left flex-grow">
+    <div class="mb-2 flex items-center">
+      <h1
+        class="flex-grow text-center text-xl font-bold dark:text-white md:text-left">
         {data.profile?.username}'s projects
       </h1>
       {#if data.profile.id == $user.id}

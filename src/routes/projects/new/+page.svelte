@@ -3,24 +3,24 @@
 
   let iconVal: FileList;
   let iconElem: HTMLImageElement;
-  let titleVal = ""
-  let descVal = ""
-  let bodyVal = ""
+  let titleVal = "";
+  let descVal = "";
+  let bodyVal = "";
   let selected: { id: number; text: string };
 
   async function create() {
     let projData = {
-      "type":"datapack",
-      "url":titleVal.toLowerCase().replaceAll(" ","-"),
-      "title":titleVal,
-      "description":descVal,
-      "body":bodyVal,
-      "category":selected.text
-    }
+      type: "datapack",
+      url: titleVal.toLowerCase().replaceAll(" ", "-"),
+      title: titleVal,
+      description: descVal,
+      body: bodyVal,
+      category: selected.text,
+    };
   }
 
   function uploadIcon() {
-    iconElem.src = URL.createObjectURL(iconVal[0])
+    iconElem.src = URL.createObjectURL(iconVal[0]);
   }
 </script>
 
@@ -58,7 +58,12 @@
           class="mr-3 inline-block rounded-2xl"
           bind:this="{iconElem}" />
         <label for="icon" class="button-boring">Upload Icon </label>
-        <input id="icon" type="file" class="hidden" bind:files="{iconVal}" on:change={uploadIcon}/>
+        <input
+          id="icon"
+          type="file"
+          class="hidden"
+          bind:files="{iconVal}"
+          on:change="{uploadIcon}" />
         <br /><br />
 
         <!-- Title -->
@@ -113,7 +118,8 @@
         </select><br /><br />
 
         <p class="align-middle font-brand dark:text-pearl-lusta-100">
-          You'll be able to edit more project details once you've created the project.
+          You'll be able to edit more project details once you've created the
+          project.
         </p>
 
         <button
