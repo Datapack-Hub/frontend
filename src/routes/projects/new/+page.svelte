@@ -1,21 +1,26 @@
 <script lang="ts">
   import { categories } from "$lib/globals/consts";
 
-  let IconEl = document.getElementById("icon") as HTMLInputElement
-  let TitleEl = document.getElementById("title") as HTMLInputElement
-  let DescEl = document.getElementById("description") as HTMLInputElement
-  let BodyEl = document.getElementById("body") as HTMLInputElement
+  let iconVal: FileList;
+  let iconElem: HTMLImageElement;
+  let titleVal = ""
+  let descVal = ""
+  let bodyVal = ""
   let selected: { id: number; text: string };
 
   async function create() {
-    let projdata = {
+    let projData = {
       "type":"datapack",
-      "url":TitleEl.value.toLowerCase().replaceAll(" ","-"),
-      "title":TitleEl.value,
-      "description":DescEl.value,
-      "body":BodyEl.value,
+      "url":titleVal.toLowerCase().replaceAll(" ","-"),
+      "title":titleVal,
+      "description":descVal,
+      "body":bodyVal,
       "category":selected.text
     }
+  }
+
+  function uploadIcon() {
+    iconElem.src = URL.createObjectURL(iconVal[0])
   }
 </script>
 
@@ -51,11 +56,9 @@
           height="100"
           width="100"
           class="mr-3 inline-block rounded-2xl"
-          id="iconimg" />
+          bind:this="{iconElem}" />
         <label for="icon" class="button-boring">Upload Icon </label>
-        <input id="icon" type="file" class="hidden" on:change={() => {
-          document.getElementById("iconimg").src = URL.createObjectURL(document.getElementById("icon").files[0])
-        }}/>
+        <input id="icon" type="file" class="hidden" bind:files="{iconVal}" on:change={uploadIcon}/>
         <br /><br />
 
         <!-- Title -->
@@ -66,7 +69,7 @@
         <input
           class="input-base override-input-outline h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2 font-brand"
           placeholder="Title"
-          id="title"
+          bind:value="{titleVal}"
           maxlength="50" /><br /><br />
 
         <!-- Short Description -->
@@ -78,6 +81,7 @@
           class="input-base override-input-outline h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand"
           placeholder="This short description is used for social media embeds and the listing page."
           id="description"
+          bind:value="{descVal}"
           maxlength="200"></textarea
         ><br /><br />
 
@@ -89,7 +93,7 @@
         <textarea
           class="input-base override-input-outline h-96 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand"
           placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
-          id="body"
+          bind:value="{bodyVal}"
           maxlength="2000"></textarea
         ><br /><br />
 

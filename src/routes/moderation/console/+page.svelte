@@ -17,7 +17,7 @@
       goto("/");
     }
 
-    consoleIn = document.getElementById("cons")?.innerHTML!;
+    consoleIn = document.getElementById("cons")?.innerHTML ?? "";
 
     submitCmd = async () => {
       if (command) {
