@@ -2,7 +2,7 @@ import { apiURL } from "$lib/globals/consts";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 
-export const load = (async ({ params }) => {
+export const load = (async ({ params, fetch }) => {
   const projectReq = await fetch(apiURL + "/projects/get/" + params.slug);
   if (projectReq.ok) {
     const project = (await projectReq.json()) as Project;

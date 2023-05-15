@@ -4,7 +4,7 @@ import { fetchAuthed } from "$lib/globals/functions";
 import { apiURL } from "$lib/globals/consts";
 import { browser } from "$app/environment";
 
-export const load = (async ({ params }) => {
+export const load = (async ({ params, fetch }) => {
   if (browser) {
     const projectReq = await fetch(apiURL + "/projects/get/" + params.slug);
 
