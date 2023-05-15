@@ -1,10 +1,22 @@
 <script lang="ts">
   import { categories } from "$lib/globals/consts";
-  import IconFile from "~icons/tabler/Upload.svelte";
 
+  let IconEl = document.getElementById("icon") as HTMLInputElement
+  let TitleEl = document.getElementById("title") as HTMLInputElement
+  let DescEl = document.getElementById("description") as HTMLInputElement
+  let BodyEl = document.getElementById("body") as HTMLInputElement
   let selected: { id: number; text: string };
 
-  async function create() {}
+  async function create() {
+    let projdata = {
+      "type":"datapack",
+      "url":TitleEl.value.toLowerCase().replaceAll(" ","-"),
+      "title":TitleEl.value,
+      "description":DescEl.value,
+      "body":BodyEl.value,
+      "category":selected.text
+    }
+  }
 </script>
 
 <svelte:head>
@@ -38,9 +50,12 @@
           alt="Your logo here"
           height="100"
           width="100"
-          class="mr-3 inline-block rounded-2xl" />
-        <label for="icon" class="button-boring"> Upload Icon </label>
-        <input id="icon" type="file" class="hidden" />
+          class="mr-3 inline-block rounded-2xl"
+          id="iconimg" />
+        <label for="icon" class="button-boring">Upload Icon </label>
+        <input id="icon" type="file" class="hidden" on:change={() => {
+          document.getElementById("iconimg").src = URL.createObjectURL(document.getElementById("icon").files[0])
+        }}/>
         <br /><br />
 
         <!-- Title -->
@@ -62,7 +77,7 @@
         <textarea
           class="input-base override-input-outline h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand"
           placeholder="This short description is used for social media embeds and the listing page."
-          id="desc"
+          id="description"
           maxlength="200"></textarea
         ><br /><br />
 
@@ -78,20 +93,6 @@
           maxlength="2000"></textarea
         ><br /><br />
 
-        <!-- Downloadable File -->
-        <p
-          class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-          Datapack File Upload
-        </p>
-        <label for="file" class="button-style flex w-fit items-center">
-          <IconFile class="{'mr-2'}" />
-          Upload File
-        </label>
-        <input
-          type="file"
-          name="file"
-          class="invisible"
-          id="file" /><br /><br />
         <!-- Category -->
         <p
           class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
@@ -106,7 +107,15 @@
             </option>
           {/each}
         </select><br /><br />
-        <button class="button-empty"> Create </button>
+
+        <p class="align-middle font-brand dark:text-pearl-lusta-100">
+          You'll be able to edit more project details once you've created the project.
+        </p>
+
+        <button
+          class="text-md mt-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 py-2 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl">
+          Create Project
+        </button>
       </div>
     </div>
   </div>
