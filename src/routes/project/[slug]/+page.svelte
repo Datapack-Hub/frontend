@@ -115,38 +115,36 @@
   <div
     class="flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
     <img
-      src="{data.project?.icon}"
-      alt="Icon for {data.project?.title}"
-      class="mr-6 h-24 w-24 rounded-lg" />
+      src="{data.project?.icon ?? "https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"}"
+      alt="Icon for {data.project?.title.trimStart()}"
+      class="mr-6 h-32 rounded-lg" />
     <div class="flex-grow">
       <h1
-        class="font-brand text-5xl font-black text-pearl-lusta-950 dark:text-white">
-        {data.project?.title}
+        class="font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
+        {data.project?.title.trimStart()}
       </h1>
       <h2
-        class="text-md font-brand text-pearl-lusta-950 transition-all dark:text-white"
-        in:fade="{{ duration: 250 }}">
-        {data.project?.description}
+        class="text-md font-brand text-pearl-lusta-950 transition-all dark:text-white mt-2 opacity-60">
+        {data.project?.description?.trimStart()}
       </h2>
       {#if visible}
-        <div class="flex items-center space-x-2">
+        <a href="/user/{author.username}" class="flex items-center space-x-2 mt-4">
           <img
             src="{author.profile_icon}"
             class="max-h-7 rounded-full"
             alt="pfp" />
-          <a
-            href="/user/{author.username}"
-            class="mt-1 font-brand text-xl font-medium text-pearl-lusta-950 transition-all dark:text-white"
+          <span
+            class="font-brand text-lg text-pearl-lusta-950 transition-all dark:text-white hover:underline"
             in:fade="{{ duration: 250 }}">
             {author.username}
-          </a>
-        </div>
+          </span>
+        </a>
       {/if}
     </div>
     <a href="/well-thats-awkward.txt" download class="button-style h-fit"
       >Download Latest</a>
   </div>
-  <div class="my-2 mt-4 flex space-x-2">
+  <div class="my-2 mt-6 flex space-x-2">
     <div class="min-w-fit flex-grow">
       <button
         class="button-base {activePage === 'description'
@@ -169,14 +167,14 @@
   </div>
   {#if activePage == "description"}
     <div
-      class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-5">
+      class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
       <p class="prose dark:prose-invert">
         <SvelteMarkdown source="{body}" />
       </p>
     </div>
   {:else if activePage == "versions"}
     <div
-      class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100 dark:bg-opacity-5">
+      class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
       {#if data.versions?.length != 0}
         <div class="mx-3 flex space-x-3">
           <h2
