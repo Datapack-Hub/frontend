@@ -18,7 +18,7 @@
   class="my-1 flex w-full items-center rounded-xl bg-pearl-lusta-200 p-2 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
   <a href="/project/{project.url}" class="">
     <img
-      src="{project.icon}"
+      src="{project.icon ?? "https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"}"
       alt="{project.title} icon"
       class="aspect-square w-20 rounded-lg bg-cover" />
   </a>
