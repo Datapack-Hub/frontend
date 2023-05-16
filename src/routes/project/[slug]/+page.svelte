@@ -11,7 +11,7 @@
   import CasualLine from "$lib/components/CasualLine.svelte";
   import tippy from "sveltejs-tippy";
   import JSZip from "jszip";
-  import toast, { Toaster } from "svelte-french-toast";
+  import toast from "svelte-french-toast";
   import DOMPurify from "isomorphic-dompurify";
   import SvelteMarkdown from "svelte-markdown";
 
@@ -221,6 +221,7 @@
               on:click="{() => {
                 openVersion(version);
               }}"
+              id="#download"
               class="rounded-xl bg-dph-orange p-1 px-2 font-brand text-pearl-lusta-950 dark:text-white"
               >Download</button>
           </div>
@@ -298,5 +299,3 @@
     <IconInfo /><a href="/">How to install a datapack</a>
   </p>
 </Modal>
-
-<Toaster />

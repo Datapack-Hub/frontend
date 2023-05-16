@@ -34,7 +34,7 @@
 
 {#if visible}
   <div
-    class="flex w-full {notification?.type}-background my-2 rounded-xl p-4"
+    class="flex w-full {notification?.type}-background my-2 rounded-xl p-4 testNotif"
     bind:this="{moi}">
     <div class="flex-auto">
       <h1 class="font-brand text-xl font-bold {notification?.type}-text">
@@ -58,10 +58,10 @@
 <style lang="postcss">
   /* @HoodieRocks can you fix this so it works on light mode too */
   .default-text {
-    @apply text-white;
+    @apply text-pearl-lusta-950 dark:text-white;
   }
   .default-background {
-    @apply bg-stone-800;
+    @apply bg-pearl-lusta-200 dark:bg-stone-800;
   }
 
   .important-text {

@@ -220,6 +220,7 @@
   </select>
   <button
     on:click="{async () => await sendNotif()}"
+    id="send_notif_btn"
     class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Send</button>
 </Modal>
@@ -329,6 +330,7 @@
             </button>
             <button
               class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              id="send_notif"
               on:click="{() => open(notifDialog)}">
               <img
                 src="/icons/message.svg"
