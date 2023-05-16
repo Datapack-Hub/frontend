@@ -5,11 +5,16 @@ import { fetchAuthed } from "$lib/globals/functions";
 import { browser } from "$app/environment";
 
 export const load = (async ({ params, fetch }) => {
-  if(browser){
-    const projectReq = await fetchAuthed("get",apiURL + "/projects/get/" + params.slug);
+  if (browser) {
+    const projectReq = await fetchAuthed(
+      "get",
+      apiURL + "/projects/get/" + params.slug
+    );
     if (projectReq.ok) {
       const project = (await projectReq.json()) as Project;
-      const versionsReq = await fetch(apiURL + "/versions/project/" + project.ID);
+      const versionsReq = await fetch(
+        apiURL + "/versions/project/" + project.ID
+      );
 
       if (versionsReq.ok) {
         return {

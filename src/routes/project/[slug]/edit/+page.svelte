@@ -18,6 +18,7 @@
 
   let selected: string[] = [];
   let zipFile: File;
+  let resourceFile: File;
   let activePage = "details";
 
   export let data: PageData;
@@ -68,32 +69,43 @@
       );
     }
 
-    const reader = new FileReader();
-    reader.readAsDataURL(zipFile);
-    reader.onload = async () => {
-      let transformedFile = reader.result;
+    const dataReader = new FileReader();
+    const packReader = new FileReader();
+    let transformedFile: string | ArrayBuffer | null;
 
-      let versionData = {
-        name: v_name,
-        description: v_changelog,
-        minecraft_versions: selected,
-        version_code: v_code,
-        filename: zipFile.name,
-        primary_download: transformedFile,
-        resource_pack_download: v_rp.files?.item(0),
-      };
-
-      let upload = await fetchAuthed(
-        "POST",
-        "https://api.datapackhub.net/versions/new/" + data.project?.ID,
-        versionData
-      );
-      if (upload.ok) {
-        toast.success("Posted the version! Refresh to see the latest changes.");
-        return (createVersion = false);
-      }
+    dataReader.readAsDataURL(zipFile);
+    dataReader.onload = async () => {
+      transformedFile = dataReader.result;
     };
-    reader.onerror = (error) => console.error(error);
+
+    if (v_rp.files) {
+      packReader.readAsDataURL(v_rp.files[0]);
+      packReader.onload = async () => {
+        let versionData = {
+          name: v_name,
+          description: v_changelog,
+          minecraft_versions: selected,
+          version_code: v_code,
+          filename: zipFile.name,
+          primary_download: transformedFile,
+          resource_pack_download: packReader.result,
+        };
+
+        let upload = await fetchAuthed(
+          "POST",
+          "https://api.datapackhub.net/versions/new/" + data.project?.ID,
+          versionData
+        );
+        if (upload.ok) {
+          toast.success(
+            "Posted the version! Refresh to see the latest changes."
+          );
+          return (createVersion = false);
+        }
+      };
+      packReader.onerror = (error) => console.error(error)
+    }
+    dataReader.onerror = (error) => console.error(error);
   }
 </script>
 
