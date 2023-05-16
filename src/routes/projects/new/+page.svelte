@@ -1,22 +1,25 @@
 <script lang="ts">
-  import { categories } from "$lib/globals/consts";
+  import { apiURL, categories } from "$lib/globals/consts";
+  import { fetchAuthed } from "$lib/globals/functions";
 
   let iconVal: FileList;
   let iconElem: HTMLImageElement;
-  let titleVal = "";
-  let descVal = "";
-  let bodyVal = "";
-  let selected: { id: number; text: string };
+  let titleVal = ""
+  let descVal = ""
+  let bodyVal = ""
+  // let cat = document.getElementById("cat") as HTMLSelectElement
 
   async function create() {
     let projData = {
-      type: "datapack",
-      url: titleVal.toLowerCase().replaceAll(" ", "-"),
-      title: titleVal,
-      description: descVal,
-      body: bodyVal,
-      category: selected.text,
-    };
+      "type":"datapack",
+      "url":titleVal.toLowerCase().replaceAll(" ","-"),
+      "title":titleVal,
+      "description":descVal,
+      "body":bodyVal,
+      "category":"German"
+    }
+
+    await fetchAuthed("post",apiURL + "/projects/create",projData)
   }
 
   function uploadIcon() {
@@ -109,7 +112,7 @@
         </p>
         <select
           class="input-base override-input-outline w-1/4 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg"
-          value="{selected}">
+          id="cat">
           {#each categories as cat}
             <option value="{cat}">
               {cat.text}
@@ -123,7 +126,8 @@
         </p>
 
         <button
-          class="text-md mt-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 py-2 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl">
+          class="text-md mt-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 py-2 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl"
+          on:click={create}>
           Create Project
         </button>
       </div>
@@ -134,6 +138,6 @@
 
 <style lang="postcss">
   .input-base {
-    @apply text-pearl-lusta-950 transition-all placeholder:text-pearl-lusta-950 placeholder:text-opacity-40 hover:placeholder:text-opacity-60 dark:bg-stone-700 dark:placeholder:text-pearl-lusta-100 dark:placeholder:text-opacity-40 dark:hover:placeholder:text-opacity-60;
+    @apply text-pearl-lusta-950 transition-all placeholder:text-pearl-lusta-950 placeholder:text-opacity-40 hover:placeholder:text-opacity-60 dark:bg-stone-700 dark:text-pearl-lusta-100 dark:placeholder:text-pearl-lusta-100 dark:placeholder:text-opacity-40 dark:hover:placeholder:text-opacity-60;
   }
 </style>
