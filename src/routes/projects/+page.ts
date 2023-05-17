@@ -1,3 +1,4 @@
+import { apiURL } from "$lib/globals/consts";
 import type { PageLoad } from "./$types";
 
 export const load = (async ({ fetch }) => {
@@ -5,6 +6,7 @@ export const load = (async ({ fetch }) => {
 
   if (proj.ok) {
     const data = (await proj.json()).result as Project[];
+    
     return {
       projects: data,
     };
