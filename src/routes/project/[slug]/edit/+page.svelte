@@ -103,7 +103,7 @@
           return (createVersion = false);
         }
       };
-      packReader.onerror = (error) => console.error(error)
+      packReader.onerror = (error) => console.error(error);
     }
     dataReader.onerror = (error) => console.error(error);
   }
