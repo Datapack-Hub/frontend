@@ -3,6 +3,7 @@
   import { goto } from "$app/navigation";
   import { fetchAuthed } from "$lib/globals/functions";
   import { apiURL } from "$lib/globals/consts";
+  import { page } from "$app/stores";
 
   let logsJson: [{ username: string; action: string; time: number }];
 
@@ -11,7 +12,7 @@
       goto("/");
     }
 
-    let logs = await fetchAuthed("get", `${apiURL}/moderation/logs?page=1`);
+    let logs = await fetchAuthed("get", `${apiURL}/moderation/logs?page=${$page.url.searchParams.get("page") ?? "1"}`);
     logsJson = (await logs.json())["result"];
   }
 </script>
@@ -30,7 +31,7 @@
     <br />
     {#await loadStuff() then}
       <table class="w-full table-auto p-2 text-left font-brand dark:text-white">
-        <tr class="bg-emerald-500 p-2">
+        <tr class="bg-emerald-500">
           <th class="p-2">User</th>
           <th>Action</th>
           <th>When</th>

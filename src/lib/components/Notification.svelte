@@ -12,23 +12,15 @@
 
   async function removeThis() {
     visible = false;
-    toast.promise(
-      fetchAuthed("DELETE", `${apiURL}/notifs/delete/${notification?.id}`).then(
-        (v) => {
-          if (v.ok) {
-            moi.parentNode!.removeChild(moi);
-          } else {
-            visible = true;
-          }
-        }
-      ),
-      {
-        loading: "Removing notification...",
-        error: "Failed!",
-        success: "Removed notification!",
-      },
-      toastStyle
-    );
+    let res = await fetchAuthed("DELETE", `${apiURL}/notifs/delete/${notification?.id}`)
+
+    if (res.ok) {
+      moi.parentNode!.removeChild(moi);
+    } else {
+      visible = true;
+    }
+
+    toast.success("Removed notification!", toastStyle);
   }
 </script>
 

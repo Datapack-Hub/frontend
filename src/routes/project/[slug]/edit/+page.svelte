@@ -18,7 +18,6 @@
 
   let selected: string[] = [];
   let zipFile: File;
-  let resourceFile: File;
   let activePage = "details";
 
   export let data: PageData;
@@ -155,7 +154,7 @@
               class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle font-brand text-pearl-lusta-950 dark:text-white"
               >Upload icon</span>
           </label>
-          <input id="icon" type="file" class="hidden" />
+          <input id="icon" type="file" accept="image/jpeg,image/png,image/webp,image/avif" class="hidden" />
           <br /><br />
 
           <!-- Title -->
