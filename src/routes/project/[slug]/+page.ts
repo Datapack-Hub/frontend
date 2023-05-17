@@ -1,4 +1,4 @@
-import { apiURL } from "$lib/globals/consts";
+import { apiURL, roles } from "$lib/globals/consts";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 import { fetchAuthed } from "$lib/globals/functions";
@@ -6,27 +6,22 @@ import { browser } from "$app/environment";
 
 export const load = (async ({ params, fetch }) => {
   if (browser) {
-    const projectReq = await fetchAuthed(
-      "get",
-      apiURL + "/projects/get/" + params.slug
-    );
-    if (projectReq.ok) {
+    const [projectReq, versionsReq, rolesReq] = await Promise.all([
+      fetch(`${apiURL}/projects/get/${params.slug}`),
+      fetch(`${apiURL}/versions/project/url/${params.slug}`),
+      fetch(`${apiURL}/user/staff/roles`),
+    ]);
+
+    if (projectReq.ok && versionsReq.ok && rolesReq.ok) {
       const project = (await projectReq.json()) as Project;
-      const versionsReq = await fetch(
-        apiURL + "/versions/project/" + project.ID
-      );
+      const versions = (await versionsReq.json()).result as Version[];
+      const roles = (await rolesReq.json()).roles as Role[];
 
-      if (versionsReq.ok) {
-        return {
-          project: project,
-          versions: (await versionsReq.json()).result as Version[],
-        };
-      }
-
-      throw error(500, {
-        message: "Something went wrong?",
-        description: await versionsReq.text(),
-      });
+      return {
+        project: project,
+        versions: versions,
+        roles: roles,
+      };
     } else if (projectReq.status == 404) {
       throw error(404, {
         message: "Project not found",

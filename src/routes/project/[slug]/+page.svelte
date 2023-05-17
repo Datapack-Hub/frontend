@@ -1,12 +1,12 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { getAuthorFromID } from "$lib/globals/functions";
+  import { getAuthorFromID, titleCase } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
 
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
-  import { user } from "$lib/globals/stores";
+  import { isAuthenticated, user } from "$lib/globals/stores";
   import Modal from "$lib/components/modals/Modal.svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
   import tippy from "sveltejs-tippy";
@@ -14,6 +14,7 @@
   import toast from "svelte-french-toast";
   import DOMPurify from "isomorphic-dompurify";
   import SvelteMarkdown from "svelte-markdown";
+  import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
 
   export let data: PageData;
   let visible = false;
@@ -33,6 +34,9 @@
 
   let dlModal: Modal;
   let activeVersion: Version;
+
+  let modModal: Modal;
+  let modModalPage = "delete";
 
   function openVersion(item: Version) {
     activeVersion = item;
@@ -144,8 +148,16 @@
         </a>
       {/if}
     </div>
-    <a href="/well-thats-awkward.txt" download class="button-style h-fit"
-      >Download Latest</a>
+    <div class="flex flex-col space-y-1">
+      <a href="/well-thats-awkward.txt" download class="button-style h-fit"
+        >Download Latest</a>
+      {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
+        <button
+          on:click="{() => modModal.open()}"
+          class="rounded-lg bg-red-600 px-3 text-center font-brand text-lg text-white transition-all hover:scale-105 active:brightness-75"
+          >Moderate</button>
+      {/if}
+    </div>
   </div>
   <div class="my-2 mt-6 flex space-x-2">
     <div class="min-w-fit flex-grow">
@@ -171,7 +183,7 @@
   {#if activePage == "description"}
     <div
       class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
-      <p class="prose dark:prose-invert">
+      <p class="prose font-brand dark:prose-invert">
         <SvelteMarkdown source="{body}" />
       </p>
     </div>
@@ -298,4 +310,53 @@
   <p class="flex items-center space-x-1 pr-1 font-brand text-sm text-sky-300">
     <IconInfo /><a href="/">How to install a datapack</a>
   </p>
+</Modal>
+
+<Modal bind:this="{modModal}">
+  <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
+    Moderate {data.project?.title}
+  </h1>
+  <CasualLine />
+  <p class="mb-2 font-brand dark:text-white">
+    If this project breaks the rules, then please help keep the website clean by
+    moderating it.
+  </p>
+  <p
+    class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    User
+  </p>
+  <MiniProfileCard
+    person="{author}"
+    role="{data.roles?.find((v) => author.role == v.name)}" />
+  <div class="mb-2 min-w-fit items-center">
+    <p
+      class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+      Select Action
+    </p>
+    <button
+      class="button-base {modModalPage === 'delete'
+        ? 'bg-stone-600'
+        : 'bg-stone-800'}"
+      on:click="{() => (modModalPage = 'delete')}">Delete</button>
+    <button
+      class="button-base {modModalPage === 'disable'
+        ? 'bg-stone-600'
+        : 'bg-stone-800'}"
+      on:click="{() => (modModalPage = 'disable')}">Disable</button>
+    <button
+      class="button-base {modModalPage === 'write note'
+        ? 'bg-stone-600'
+        : 'bg-stone-800'}"
+      on:click="{() => (modModalPage = 'write note')}">Write Note</button>
+  </div>
+  <p
+    class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    Moderation Note
+  </p>
+  <textarea
+    class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand dark:bg-stone-700"
+    placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
+    id="description"
+    maxlength="200"></textarea>
+  <button class="button-style">{titleCase(modModalPage)}</button>
 </Modal>

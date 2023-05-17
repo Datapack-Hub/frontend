@@ -9,6 +9,7 @@
   import IconPlus from "~icons/tabler/Plus.svelte";
   import { isAuthenticated, isDark, role, user } from "$lib/globals/stores";
   import { apiURL } from "$lib/globals/consts";
+  import { afterNavigate } from "$app/navigation";
 
   export let small: boolean;
 
@@ -32,18 +33,24 @@
     placement: "bottom",
   };
 
-  let notifsAvailable = false;
+  $: unreadNotifications = false;
+
+  afterNavigate(async () => {
+    refreshNotifications()
+  });
 
   onMount(async () => {
-    if (browser) {
-      let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`);
-
-      if (notif.ok) {
-        let notifJson = await notif.json();
-        if (notifJson.count != 0) notifsAvailable = true;
-      }
-    }
+    await refreshNotifications()
   });
+
+  async function refreshNotifications() {
+    let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`);
+
+    if (notif.ok) {
+      let notifJson = await notif.json();
+      if (notifJson.count != 0) unreadNotifications = true;
+    }
+  }
 
   $: iconColor = $isDark ? "white" : "black";
 </script>
@@ -67,7 +74,7 @@
       </a>
     {/if}
     <a href="/notifications" class="z-20" use:tippy="{notificationHoverMsg}">
-      {#if notifsAvailable}
+      {#if unreadNotifications}
         <IconUnread height="24" width="24" color="{iconColor}" />
       {:else}
         <IconRead height="24" width="24" color="{iconColor}" />

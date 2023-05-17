@@ -57,7 +57,7 @@
 
 <svelte:window bind:innerWidth="{innerWidth}" />
 
-<main class="bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900">
+<main class="px-4 transition-all bg-stone-900">
   {#if $user.role != "default" && $isAuthenticated == true}
     {#if !isSmallWidth}
       <div
