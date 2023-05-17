@@ -2,7 +2,7 @@
   import { browser } from "$app/environment";
   import { getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
-  import IconNoPhoto from "~icons/tabler/PolaroidFilled.svelte";
+  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
 
   export let project: Project;
 
