@@ -34,7 +34,7 @@
 
 {#if visible}
   <div
-    class="flex w-full {notification?.type}-background my-2 rounded-xl p-4 testNotif"
+    class="flex w-full {notification?.type}-background testNotif my-2 rounded-xl p-4"
     bind:this="{moi}">
     <div class="flex-auto">
       <h1 class="font-brand text-xl font-bold {notification?.type}-text">

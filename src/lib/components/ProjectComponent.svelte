@@ -17,7 +17,11 @@
 
 <div
   class="my-1 flex w-full items-center rounded-xl bg-pearl-lusta-200 p-2 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
-  <a href="/project/{project.url}" class="bg-pearl-lusta-300 dark:bg-stone-700 dark:text-pearl-lusta-100 rounded-lg {project.icon ? "" : "p-4"}">
+  <a
+    href="/project/{project.url}"
+    class="rounded-lg bg-pearl-lusta-300 dark:bg-stone-700 dark:text-pearl-lusta-100 {project.icon
+      ? ''
+      : 'p-4'}">
     {#if project.icon}
       <img
         src="{project.icon}"

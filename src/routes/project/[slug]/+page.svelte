@@ -148,15 +148,16 @@
         </a>
       {/if}
     </div>
-    <div class="flex-col flex space-y-1">
+    <div class="flex flex-col space-y-1">
       <a href="/well-thats-awkward.txt" download class="button-style h-fit"
-      >Download Latest</a>
+        >Download Latest</a>
       {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
-        <button on:click={() => modModal.open()} class="rounded-lg px-3 font-brand text-white transition-all hover:scale-105 active:brightness-75 bg-red-600 text-lg text-center">Moderate</button>
+        <button
+          on:click="{() => modModal.open()}"
+          class="rounded-lg bg-red-600 px-3 text-center font-brand text-lg text-white transition-all hover:scale-105 active:brightness-75"
+          >Moderate</button>
       {/if}
-      
     </div>
-    
   </div>
   <div class="my-2 mt-6 flex space-x-2">
     <div class="min-w-fit flex-grow">
@@ -182,7 +183,7 @@
   {#if activePage == "description"}
     <div
       class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
-      <p class="prose dark:prose-invert font-brand">
+      <p class="prose font-brand dark:prose-invert">
         <SvelteMarkdown source="{body}" />
       </p>
     </div>
@@ -316,13 +317,18 @@
     Moderate {data.project?.title}
   </h1>
   <CasualLine />
-  <p class="font-brand dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p>
+  <p class="mb-2 font-brand dark:text-white">
+    If this project breaks the rules, then please help keep the website clean by
+    moderating it.
+  </p>
   <p
     class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
     User
   </p>
-  <MiniProfileCard person={author} role={data.roles?.find((v) => author.role == v.name)} />
-  <div class="min-w-fit mb-2 items-center">
+  <MiniProfileCard
+    person="{author}"
+    role="{data.roles?.find((v) => author.role == v.name)}" />
+  <div class="mb-2 min-w-fit items-center">
     <p
       class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
       Select Action
@@ -348,10 +354,9 @@
     Moderation Note
   </p>
   <textarea
-    class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700 font-brand"
+    class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand dark:bg-stone-700"
     placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
     id="description"
-    maxlength="200"></textarea
-  >
+    maxlength="200"></textarea>
   <button class="button-style">{titleCase(modModalPage)}</button>
 </Modal>

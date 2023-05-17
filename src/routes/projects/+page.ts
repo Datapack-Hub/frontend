@@ -6,7 +6,7 @@ export const load = (async ({ fetch }) => {
 
   if (proj.ok) {
     const data = (await proj.json()).result as Project[];
-    
+
     return {
       projects: data,
     };
