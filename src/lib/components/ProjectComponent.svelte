@@ -2,6 +2,7 @@
   import { browser } from "$app/environment";
   import { getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
+  import IconNoPhoto from "~icons/tabler/PolaroidFilled.svelte";
 
   export let project: Project;
 
@@ -16,12 +17,15 @@
 
 <div
   class="my-1 flex w-full items-center rounded-xl bg-pearl-lusta-200 p-2 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
-  <a href="/project/{project.url}" class="">
-    <img
-      src="{project.icon ??
-        'https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg'}"
-      alt="{project.title} icon"
-      class="aspect-square w-20 rounded-lg bg-cover" />
+  <a href="/project/{project.url}" class="bg-pearl-lusta-300 dark:bg-stone-700 dark:text-pearl-lusta-100 rounded-lg {project.icon ? "" : "p-4"}">
+    {#if project.icon}
+      <img
+        src="{project.icon}"
+        alt="{project.title} icon"
+        class="aspect-square w-20 rounded-lg bg-cover" />
+    {:else}
+      <IconNoPhoto width="48" height="48" />
+    {/if}
   </a>
   <div class="ml-4 w-2/3">
     <a
@@ -32,13 +36,13 @@
     {#if visible}
       <a
         href="/user/{author.username.toLowerCase()}"
-        class="text-xs text-pearl-lusta-950 text-opacity-40 hover:underline dark:text-white md:text-sm"
+        class="text-xs text-pearl-lusta-950 text-opacity-40 hover:underline dark:text-white dark:hover:text-pearl-lusta-100 md:text-sm"
         in:fade="{{ duration: 250 }}">
         By {author.username}
       </a>
     {/if}
     <p
-      class=" mt-2 line-clamp-2 text-sm font-medium text-pearl-lusta-950 text-opacity-70 dark:text-white md:text-base">
+      class=" mt-2 line-clamp-2 text-sm font-medium text-pearl-lusta-950 text-opacity-70 dark:text-pearl-lusta-100 md:text-base">
       {project.description}
     </p>
   </div>
