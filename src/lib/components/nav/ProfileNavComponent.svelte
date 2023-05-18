@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
   import { fetchAuthed } from "$lib/globals/functions";
   import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
@@ -36,11 +35,11 @@
   $: unreadNotifications = false;
 
   afterNavigate(async () => {
-    refreshNotifications()
+    refreshNotifications();
   });
 
   onMount(async () => {
-    await refreshNotifications()
+    await refreshNotifications();
   });
 
   async function refreshNotifications() {

@@ -86,7 +86,11 @@
       };
     };
 
-    dataReader.onerror = (error) => {return (toast.error("There was an error handling this resource pack upload!"))}
+    dataReader.onerror = () => {
+      return toast.error(
+        "There was an error handling this resource pack upload!"
+      );
+    };
 
     if (v_rp.files?.length == 1) {
       packReader.readAsDataURL(v_rp.files[0]);
@@ -101,21 +105,28 @@
           resource_pack_download: packReader.result,
         };
       };
-      packReader.onerror = (error) => {return (toast.error("There was an error handling this resource pack upload!"))}
+      packReader.onerror = () => {
+        return toast.error(
+          "There was an error handling this resource pack upload!"
+        );
+      };
     }
 
-    let upload = await fetchAuthed("POST","https://api.datapackhub.net/versions/new/" + data.project?.ID,versionData);
+    let upload = await fetchAuthed(
+      "POST",
+      "https://api.datapackhub.net/versions/new/" + data.project?.ID,
+      versionData
+    );
 
     if (upload.ok) {
-      toast.success(
-        "Posted the version! Refresh to see the latest changes."
-      );
+      toast.success("Posted the version! Refresh to see the latest changes.");
       return (createVersion = false);
-    }else{
-      let er = await upload.text()
+    } else {
+      let er = await upload.text();
       toast.error(
-        "There was an error uploading the file. Please try again later. If the issue persists, please contact an admin. Error: " + er
-      )
+        "There was an error uploading the file. Please try again later. If the issue persists, please contact an admin. Error: " +
+          er
+      );
     }
   }
 </script>
@@ -166,7 +177,11 @@
               class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle font-brand text-pearl-lusta-950 dark:text-white"
               >Upload icon</span>
           </label>
-          <input id="icon" type="file" accept="image/jpeg,image/png,image/webp,image/avif" class="hidden" />
+          <input
+            id="icon"
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/avif"
+            class="hidden" />
           <br /><br />
 
           <!-- Title -->

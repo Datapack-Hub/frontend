@@ -4,7 +4,7 @@
   import { fetchAuthed } from "../../globals/functions";
   import { browser } from "$app/environment";
   import SvelteMarkdown from "svelte-markdown";
-  import toast, { Toaster } from "svelte-french-toast";
+  import toast from "svelte-french-toast";
   import { apiURL, toastStyle } from "$lib/globals/consts";
 
   export let user: User | undefined;

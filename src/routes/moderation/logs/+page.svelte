@@ -12,7 +12,12 @@
       goto("/");
     }
 
-    let logs = await fetchAuthed("get", `${apiURL}/moderation/logs?page=${$page.url.searchParams.get("page") ?? "1"}`);
+    let logs = await fetchAuthed(
+      "get",
+      `${apiURL}/moderation/logs?page=${
+        $page.url.searchParams.get("page") ?? "1"
+      }`
+    );
     logsJson = (await logs.json())["result"];
   }
 </script>

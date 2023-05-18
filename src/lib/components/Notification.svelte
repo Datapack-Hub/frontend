@@ -12,7 +12,10 @@
 
   async function removeThis() {
     visible = false;
-    let res = await fetchAuthed("DELETE", `${apiURL}/notifs/delete/${notification?.id}`)
+    let res = await fetchAuthed(
+      "DELETE",
+      `${apiURL}/notifs/delete/${notification?.id}`
+    );
 
     if (res.ok) {
       moi.parentNode!.removeChild(moi);
@@ -37,7 +40,7 @@
       </p>
     </div>
     <button
-      class="right-0 top-0 h-1 font-brand text-pearl-lusta-950 dark:text-white closeButton"
+      class="closeButton right-0 top-0 h-1 font-brand text-pearl-lusta-950 dark:text-white"
       on:click="{removeThis}"><IconX /></button>
   </div>
 {/if}
