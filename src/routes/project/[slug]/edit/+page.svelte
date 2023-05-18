@@ -71,16 +71,27 @@
     const dataReader = new FileReader();
     const packReader = new FileReader();
     let transformedFile: string | ArrayBuffer | null;
-
     dataReader.readAsDataURL(zipFile);
+
+    let versionData;
+
     dataReader.onload = async () => {
-      transformedFile = dataReader.result;
+      versionData = {
+        name: v_name,
+        description: v_changelog,
+        minecraft_versions: selected,
+        version_code: v_code,
+        filename: zipFile.name,
+        primary_download: dataReader.result,
+      };
     };
 
-    if (v_rp.files) {
+    dataReader.onerror = (error) => {return (toast.error("There was an error handling this resource pack upload!"))}
+
+    if (v_rp.files?.length == 1) {
       packReader.readAsDataURL(v_rp.files[0]);
       packReader.onload = async () => {
-        let versionData = {
+        versionData = {
           name: v_name,
           description: v_changelog,
           minecraft_versions: selected,
@@ -89,22 +100,23 @@
           primary_download: transformedFile,
           resource_pack_download: packReader.result,
         };
-
-        let upload = await fetchAuthed(
-          "POST",
-          "https://api.datapackhub.net/versions/new/" + data.project?.ID,
-          versionData
-        );
-        if (upload.ok) {
-          toast.success(
-            "Posted the version! Refresh to see the latest changes."
-          );
-          return (createVersion = false);
-        }
       };
-      packReader.onerror = (error) => console.error(error);
+      packReader.onerror = (error) => {return (toast.error("There was an error handling this resource pack upload!"))}
     }
-    dataReader.onerror = (error) => console.error(error);
+
+    let upload = await fetchAuthed("POST","https://api.datapackhub.net/versions/new/" + data.project?.ID,versionData);
+
+    if (upload.ok) {
+      toast.success(
+        "Posted the version! Refresh to see the latest changes."
+      );
+      return (createVersion = false);
+    }else{
+      let er = await upload.text()
+      toast.error(
+        "There was an error uploading the file. Please try again later. If the issue persists, please contact an admin. Error: " + er
+      )
+    }
   }
 </script>
 

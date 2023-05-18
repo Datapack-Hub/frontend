@@ -317,10 +317,7 @@
     Moderate {data.project?.title}
   </h1>
   <CasualLine />
-  <p class="mb-2 font-brand dark:text-white">
-    If this project breaks the rules, then please help keep the website clean by
-    moderating it.
-  </p>
+  <!-- <p class="font-brand dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
   <p
     class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
     User
