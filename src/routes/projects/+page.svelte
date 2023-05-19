@@ -1,5 +1,6 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
+  import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
   import ProjectComponent from "$lib/components/ProjectComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
   import type { PageData } from "./$types";
@@ -75,11 +76,16 @@
           TODO: Add these
         </p>
       </div>
-      <div class="ml-0 w-full md:ml-3">
+      <div class="ml-0 w-full md:ml-3 space-y-2">
         {#if data.projects}
           {#if data.projects.length >= 1}
             {#each data.projects as project}
-              <ProjectComponent project="{project}" />
+              <!-- uncomment these to see the featured stuff on the thingy thing -->
+              <!-- {#if Math.random() < 0.2} -->
+              <!-- <FeaturedProjectComponent project="{project}" /> -->
+              <!-- {:else} -->
+              <ProjectComponent project={project} />
+              <!-- {/if} -->
             {/each}
           {:else}
             <h2 class="font-brand text-pearl-lusta-950 dark:text-white">

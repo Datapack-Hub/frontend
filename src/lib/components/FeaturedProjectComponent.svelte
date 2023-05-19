@@ -30,20 +30,20 @@
 </script>
 
 <div
-  class="my-3 w-full items-center rounded-xl outline {manual
+  class="mb-3 w-full items-center rounded-xl outline {manual
     ? 'outline-rose-600'
     : 'outline-dph-orange'} relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
   <div class="flex items-center">
     <a
       href="/project/{project.url}"
-      class="w-1/6 rounded-lg {project.icon
+      class="rounded-lg {project.icon
         ? ''
         : 'p-4 bg-pearl-lusta-300 dark:bg-stone-700 dark:text-pearl-lusta-100'}">
       {#if project.icon}
         <img
           src="{project.icon}"
           alt="{project.title} icon"
-          class="aspect-square rounded-lg bg-cover" />
+          class="aspect-square w-24 rounded-lg bg-cover" />
       {:else}
         <IconNoPhoto width="48" height="48" />
       {/if}

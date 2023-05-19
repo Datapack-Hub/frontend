@@ -129,8 +129,8 @@
       </div>
     </div>
     <div
-      class="my-8 h-full w-4/5 justify-between rounded-xl bg-pearl-lusta-200 px-4 dark:bg-stone-800 sm:my-16 md:my-0 md:h-2/3 md:w-1/2">
-      <h3 class="mt-3 font-brand text-2xl font-bold text-pearl-lusta-100">
+      class="my-8 h-full w-4/5 justify-between rounded-xl bg-pearl-lusta-200 px-4 dark:bg-stone-800 sm:my-16 md:my-0 md:h-2/3 md:w-1/2 space-y-3">
+      <h3 class="mt-2 font-brand text-2xl font-bold text-pearl-lusta-100">
         Featured Datapack (WIP, not finished)
       </h3>
       <FeaturedProjectComponent project="{proj}" />

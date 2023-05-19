@@ -16,7 +16,7 @@
 </script>
 
 <div
-  class="my-1 flex w-full items-center rounded-xl bg-pearl-lusta-200 p-2 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
+  class="flex w-full items-center rounded-xl bg-pearl-lusta-200 p-2 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
   <a
     href="/project/{project.url}"
     class="rounded-lg bg-pearl-lusta-300 dark:bg-stone-700 dark:text-pearl-lusta-100 {project.icon
