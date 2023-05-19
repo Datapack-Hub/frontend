@@ -111,7 +111,7 @@
 </svelte:head>
 
 <main
-  class="h-screen -translate-y-20 bg-pearl-lusta-100 px-0 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
+  class="-translate-y-20 bg-pearl-lusta-100 px-0 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
   <div class="pt-16"></div>
   <div class="mb-2 font-brand text-sky-300">
     <a href="/projects">&lt; Explore other projects</a>
@@ -184,7 +184,7 @@
     <div
       class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
       <p class="prose font-brand dark:prose-invert">
-        <SvelteMarkdown source="{body}" />
+        <SvelteMarkdown source="{body.replaceAll("\\n","\n")}"/>
       </p>
     </div>
   {:else if activePage == "versions"}
