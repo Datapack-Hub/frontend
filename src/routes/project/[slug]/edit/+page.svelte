@@ -154,7 +154,7 @@
         class="{activePage === 'versions'
           ? 'bg-stone-600'
           : 'bg-stone-800'} button-base"
-        on:click="{() => (activePage = 'versions')}">Versions</button>
+        on:click="{() => (activePage = 'versions')}">Versions ({data.versions?.length})</button>
     </div>
 
     <!-- DETAILS-->
@@ -260,8 +260,8 @@
             class="my-2 flex space-x-2 rounded-xl bg-pearl-lusta-200 p-2 py-3 dark:bg-stone-800">
             <label for="zip" class="max-w-100">
               <span
-                class="cursor-pointer rounded-xl bg-green-600 p-2 font-brand font-bold text-pearl-lusta-950 dark:text-white"
-                >Upload datapack ZIP</span>
+                class="button-style cursor-pointer"
+                >Upload datapack file</span>
             </label>
             <input
               type="file"
@@ -276,7 +276,7 @@
           </div>
         {:else}
           {@const ver = (Math.random() * 10).toFixed(1)}
-          <div class="rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800">
+          <div class="rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800 my-2">
             <button
               class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
               on:click="{() => (createVersion = false)}">X</button>
@@ -342,26 +342,28 @@
           </div>
         {/if}
         {#each data.versions ?? [] as version}
-          <div
-            class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
-            <div class="flex w-1/3 items-center space-x-2">
-              <h2
-                class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
-                {version.name}
-              </h2>
-              <h2
-                class="text-md font-brand font-thin italic text-pearl-lusta-950 dark:text-white">
-                {version.version_code}
-              </h2>
-            </div>
+        <div
+        class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
+          <div class="flex w-1/3 items-center space-x-2">
             <h2
-              class="flex-grow font-brand text-pearl-lusta-950 dark:text-white">
-              {version.minecraft_versions}
+              class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
+              {version.name}
             </h2>
-            <a
-              href="{version.primary_download}"
-              class="rounded-xl bg-lime-500 p-2 font-brand">Download</a>
+            <h2
+              class="text-md font-brand font-thin italic text-pearl-lusta-950 dark:text-white">
+              {version.version_code}
+            </h2>
           </div>
+          <h2
+            class="flex flex-grow space-x-1 font-brand text-pearl-lusta-950 dark:text-white">
+            {#each version.minecraft_versions.split(",") ?? [] as mcv}
+              <button
+                class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1">
+                {mcv}
+              </button>
+            {/each}
+          </h2>
+        </div>
         {/each}
       </div>
     {/if}
