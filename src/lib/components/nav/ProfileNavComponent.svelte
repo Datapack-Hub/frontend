@@ -35,7 +35,7 @@
   $: unreadNotifications = false;
 
   afterNavigate(async () => {
-    refreshNotifications();
+    await refreshNotifications();
   });
 
   onMount(async () => {
@@ -44,6 +44,7 @@
 
   async function refreshNotifications() {
     let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`);
+    unreadNotifications = false;
 
     if (notif.ok) {
       let notifJson = await notif.json();

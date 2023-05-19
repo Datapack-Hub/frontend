@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import anime from "animejs";
+  import { fade } from "svelte/transition";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
@@ -73,7 +74,7 @@
 
 <main class="bg-pearl-lusta-100 transition-all dark:bg-stone-900">
   <div
-    class="flex h-[66.666vh] w-full -translate-y-20 flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:translate-y-0 md:flex-row md:justify-between md:px-16 lg:px-24">
+    class="flex h-[75vh] w-full -translate-y-20 flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:translate-y-0 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
       <div
         class="relative mb-4 h-36 w-full md:mb-0 {visible
@@ -96,7 +97,7 @@
         </h1>
       </div>
       <h2
-        class="w-full text-center text-xl text-black text-pearl-lusta-950 dark:text-pearl-lusta-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
+        class="w-full text-center text-xl text-pearl-lusta-950 dark:text-pearl-lusta-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{rawRand.toString()}"
           class="text-gradient bg-gradient-to-br from-pink-600 to-yellow-400 font-bold">
@@ -111,8 +112,44 @@
       </div>
     </div>
     <div
-      class="my-8 h-full w-4/5 rounded-xl bg-pearl-lusta-200 dark:bg-stone-800 sm:my-16 md:mt-0 md:h-2/3 md:w-2/5">
-      <h2>Content here</h2>
+      class="my-8 flex h-full w-4/5 flex-col justify-between rounded-xl bg-pearl-lusta-200 px-4 dark:bg-stone-800 sm:my-16 md:my-0 md:h-2/3 md:w-2/5">
+      <h3 class="font-brand text-2xl font-bold text-pearl-lusta-100">
+        Featured Datapack (WIP, not finished)
+      </h3>
+      <div
+        class="border-1 my-1 flex w-full items-center rounded-xl border border-stone-600 bg-pearl-lusta-200 p-2 text-pearl-lusta-950 outline outline-2 outline-offset-4 outline-dph-orange dark:bg-stone-800 dark:text-white">
+        <a
+          href="/project/no"
+          class="rounded-lg bg-pearl-lusta-300 dark:bg-stone-700 dark:text-pearl-lusta-100">
+          <img
+            src="https://static.planetminecraft.com/files/avatar/3183322_24.jpg"
+            alt="silabear icon"
+            class="aspect-square w-20 rounded-lg bg-cover" />
+        </a>
+        <div class="ml-4 w-2/3">
+          <a
+            href="/project/no"
+            class="font-brand text-lg hover:underline md:text-xl lg:text-2xl">
+            Totally real Datapack
+          </a>
+          {#if visible}
+            <a
+              href="/user/silabear"
+              class="text-xs text-pearl-lusta-950 text-opacity-40 hover:underline dark:text-white dark:hover:text-pearl-lusta-100 md:text-sm"
+              in:fade="{{ duration: 250 }}">
+              By Sillybear
+            </a>
+          {/if}
+          <p
+            class=" mt-2 line-clamp-2 text-sm font-medium text-pearl-lusta-950 text-opacity-70 dark:text-pearl-lusta-100 md:text-base">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore
+            voluptatum eligendi vero dignissimos, eum ratione, excepturi rerum
+            dolore autem harum id. Atque veritatis, ad rerum aut suscipit
+            incidunt harum delectus.
+          </p>
+        </div>
+      </div>
+      <div></div>
     </div>
   </div>
   <div class="h-[33.333vh] w-full bg-pearl-lusta-200 dark:bg-stone-800">

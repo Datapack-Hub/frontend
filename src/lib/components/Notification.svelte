@@ -4,8 +4,9 @@
   import { toastStyle } from "$lib/globals/consts";
   import toast from "svelte-french-toast";
   import IconX from "~icons/tabler/X.svelte";
+  import { createEventDispatcher } from "svelte";
 
-  let moi: HTMLDivElement;
+  const dispatch = createEventDispatcher();
 
   export let notification: Notif | undefined;
   let visible = true;
@@ -18,7 +19,9 @@
     );
 
     if (res.ok) {
-      moi.parentNode!.removeChild(moi);
+      dispatch("close", {
+        id: notification?.id,
+      });
     } else {
       visible = true;
     }
@@ -29,8 +32,7 @@
 
 {#if visible}
   <div
-    class="flex w-full {notification?.type}-background testNotif my-2 rounded-xl p-4"
-    bind:this="{moi}">
+    class="flex w-full {notification?.type}-background testNotif my-2 rounded-xl p-4">
     <div class="flex-auto">
       <h1 class="font-brand text-xl font-bold {notification?.type}-text">
         {#if notification?.read == false}• {/if}{notification?.message}
