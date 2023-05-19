@@ -184,7 +184,7 @@
     <div
       class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
       <p class="prose font-brand dark:prose-invert">
-        <SvelteMarkdown source="{body.replaceAll("\\n","\n")}"/>
+        <SvelteMarkdown source="{body.replaceAll('\\n', '\n')}" />
       </p>
     </div>
   {:else if activePage == "versions"}
@@ -246,7 +246,7 @@
           <b>No versions yet!</b> Why not
           <a
             href="/project/{data.project?.url}/edit"
-            class="text-cyan-500 underline">create one</a
+            class="text-blue-500 underline">create one</a
           >?
         </h2>
       {/if}

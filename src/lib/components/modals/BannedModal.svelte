@@ -64,7 +64,7 @@
         <b>Your ban will expire:</b>
         {new Date(expiry).toLocaleString()}. <br /> Until then, wait for the ban
         to expire, and read
-        <a href="/rules" class="text-cyan-500 underline">our rules</a>.
+        <a href="/rules" class="text-blue-500 underline">our rules</a>.
       </p>
       <button class="button-style mt-4" on:click="{signOut}">Log Out</button>
     </div>
