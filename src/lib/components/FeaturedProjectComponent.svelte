@@ -36,14 +36,14 @@
   <div class="flex items-center">
     <a
       href="/project/{project.url}"
-      class="w-1/5 rounded-lg {project.icon
+      class="w-1/6 rounded-lg {project.icon
         ? ''
         : 'p-4 bg-pearl-lusta-300 dark:bg-stone-700 dark:text-pearl-lusta-100'}">
       {#if project.icon}
         <img
           src="{project.icon}"
           alt="{project.title} icon"
-          class="aspect-square w-max rounded-lg bg-cover" />
+          class="aspect-square rounded-lg bg-cover" />
       {:else}
         <IconNoPhoto width="48" height="48" />
       {/if}
