@@ -33,7 +33,7 @@
   class="my-3 w-full items-center rounded-xl outline {manual
     ? 'outline-rose-600'
     : 'outline-dph-orange'} relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
-  <div class="flex">
+  <div class="flex items-center">
     <a
       href="/project/{project.url}"
       class="w-1/5 rounded-lg {project.icon
