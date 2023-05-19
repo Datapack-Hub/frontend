@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import anime from "animejs";
-  import { fade } from "svelte/transition";
   import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
@@ -12,7 +11,20 @@
 
   let proj: Project;
 
-  proj = {"ID":1,"author":1,"body":"actually very long description","category":["German"],"description":"This datapack makes dropped items appear realistic as if they were thrown onto the ground!","icon":"https://cdn.discordapp.com/attachments/723984082853298297/1076083669409730590/IMG_2434.png","title":"Realistic Item Drops","type":"datapack","updated":0,"uploaded":0,"url":"realistic-item-drops"} as Project
+  proj = {
+    ID: 1,
+    author: 1,
+    body: "actually very long description",
+    category: ["German"],
+    description:
+      "This datapack makes dropped items appear realistic as if they were thrown onto the ground!",
+    icon: "https://cdn.discordapp.com/attachments/723984082853298297/1076083669409730590/IMG_2434.png",
+    title: "Realistic Item Drops",
+    type: "datapack",
+    updated: 0,
+    uploaded: 0,
+    url: "realistic-item-drops",
+  } as Project;
 
   onMount(async () => {
     let textWrapper = document.querySelectorAll(".split-text .letters");
@@ -117,12 +129,12 @@
       </div>
     </div>
     <div
-      class="my-8 h-full w-4/5 justify-between rounded-xl bg-pearl-lusta-200 px-4 dark:bg-stone-800 sm:my-16 md:my-0 md:h-2/3 md:w-2/5">
+      class="my-8 h-full w-4/5 justify-between rounded-xl bg-pearl-lusta-200 px-4 dark:bg-stone-800 sm:my-16 md:my-0 md:h-2/3 md:w-1/2">
       <h3 class="mt-3 font-brand text-2xl font-bold text-pearl-lusta-100">
         Featured Datapack (WIP, not finished)
       </h3>
-      <FeaturedProjectComponent project={proj} />
-      <FeaturedProjectComponent project={proj} manual={true}/>
+      <FeaturedProjectComponent project="{proj}" />
+      <FeaturedProjectComponent project="{proj}" manual="{true}" />
       <div></div>
     </div>
   </div>
