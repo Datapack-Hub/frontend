@@ -333,17 +333,17 @@
     <button
       class="button-base {modModalPage === 'delete'
         ? 'bg-stone-600'
-        : 'bg-stone-800'}"
+        : 'bg-stone-900'}"
       on:click="{() => (modModalPage = 'delete')}">Delete</button>
     <button
       class="button-base {modModalPage === 'disable'
         ? 'bg-stone-600'
-        : 'bg-stone-800'}"
+        : 'bg-stone-900'}"
       on:click="{() => (modModalPage = 'disable')}">Disable</button>
     <button
       class="button-base {modModalPage === 'write note'
         ? 'bg-stone-600'
-        : 'bg-stone-800'}"
+        : 'bg-stone-900'}"
       on:click="{() => (modModalPage = 'write note')}">Write Note</button>
   </div>
   <p

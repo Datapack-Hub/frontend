@@ -118,6 +118,7 @@
       </h3>
       <div
         class="border-1 my-1 flex w-full items-center rounded-xl border border-stone-600 bg-pearl-lusta-200 p-2 text-pearl-lusta-950 outline outline-2 outline-offset-4 outline-dph-orange dark:bg-stone-800 dark:text-white">
+        <div class="absolute bg-dph-orange text-white p-1 -translate-y-[85px] rounded-t-md">Featured Datapack</div>
         <a
           href="/project/no"
           class="rounded-lg bg-pearl-lusta-300 dark:bg-stone-700 dark:text-pearl-lusta-100">
