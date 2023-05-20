@@ -19,7 +19,9 @@
       <div
         class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
         <Navbar />
-        <BannedModal />
+        {#if $user.banned}
+          <BannedModal />
+        {/if}
         <slot />
       </div>
       <Footer />
