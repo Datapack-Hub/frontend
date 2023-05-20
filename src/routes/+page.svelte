@@ -133,7 +133,7 @@
       </div>
     </div>
     <div
-      class="my-8 h-full w-4/5 justify-between rounded-xl bg-pearl-lusta-200 px-4 dark:bg-stone-800 sm:my-16 md:my-0 md:h-2/3 md:w-1/2 space-y-3">
+      class="my-8 h-full w-4/5 justify-between space-y-3 rounded-xl bg-pearl-lusta-200 px-4 dark:bg-stone-800 sm:my-16 md:my-0 md:h-2/3 md:w-1/2">
       <h3 class="mt-2 font-brand text-2xl font-bold text-pearl-lusta-100">
         Featured Datapack (WIP, not finished)
       </h3>
@@ -143,7 +143,7 @@
       <div></div>
     </div>
   </div>
-  <div class="h-[33.333vh] w-full bg-pearl-lusta-200 dark:bg-stone-800">
+  <div class="h-screen w-full bg-pearl-lusta-200 dark:bg-stone-800">
     <h2>Content here</h2>
   </div>
 </main>
