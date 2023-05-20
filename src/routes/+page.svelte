@@ -3,7 +3,6 @@
   import anime from "animejs";
   import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
-  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);

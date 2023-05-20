@@ -2,15 +2,14 @@
   import { browser } from "$app/environment";
   import { getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
-  import tippy from "sveltejs-tippy";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import TrendUpIcon from "~icons/tabler/TrendingUp.svelte";
   import TrophyIcon from "~icons/tabler/Trophy.svelte";
 
   export let project: Project;
-  export let type = "popular";
+  export let type: "popular" | "featured" | "random" = "popular";
 
-  let style: String;
+  let style: string;
   switch (type) {
     case "popular":
       style = "dph-orange";
@@ -25,16 +24,6 @@
 
   let author: User;
   let visible = false;
-
-  let hoverManual = {
-    content: "Featured By Staff",
-    placement: "bottom"
-  };
-
-  let hoverNotManual = {
-    content: "Popular",
-    placement: "bottom"
-  };
 
   (async () => {
     if (browser) author = await getAuthorFromID(project.author);
