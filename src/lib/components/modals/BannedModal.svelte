@@ -10,7 +10,6 @@
   let visible = false;
   let banReason: string;
   let expiry: number;
-  let lazyMarkdownComponent;
 
   onMount(async () => {
     if (browser) {
@@ -32,10 +31,6 @@
   function signOut() {
     removeCookie("dph_token");
     window.location.replace("/");
-  }
-
-  function loadMarkdown() {
-    lazyMarkdownComponent = import('svelte-markdown')
   }
 </script>
 
@@ -63,7 +58,7 @@
         <b>You are banned from Datapack Hub.</b> The reason is displayed below:
       </p>
       <p
-        class="my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300 prose">
+        class="prose my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300">
         <SvelteMarkdown source="{banReason}" />
       </p>
       <p class="mt-6 font-brand text-pearl-lusta-950 dark:text-white">

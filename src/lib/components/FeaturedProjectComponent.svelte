@@ -12,19 +12,19 @@
   export let type: "popular" | "featured" | "random" = "popular";
 
   let hovermsgs = {
-    "popular":{
+    popular: {
       content: "This datapack is trending on Datapack Hub",
       placement: "bottom"
     },
-    "featured":{
+    featured: {
       content: "This datapack has been featured by Datapack Hub staff",
       placement: "bottom"
     },
-    "random":{
+    random: {
       content: "This datapack is a completely random one for you to try out!",
       placement: "bottom"
     }
-  }
+  };
 
   let style: string;
   switch (type) {
@@ -89,8 +89,8 @@
     </div>
   </div>
   <div
-    class="absolute right-3 top-0 bg-{style} rounded-b-md px-2 py-0.5 font-brand text-xs flex space-x-1"
-    use:tippy={hovermsgs[type]}>
+    class="absolute right-3 top-0 bg-{style} flex space-x-1 rounded-b-md px-2 py-0.5 font-brand text-xs"
+    use:tippy="{hovermsgs[type]}">
     {#if type == "popular"}
       <TrendUpIcon />
       <p>Popular</p>
@@ -98,8 +98,8 @@
       <TrophyIcon />
       <p>Featured</p>
     {:else if type == "random"}
-    <DiceIcon />
-    <p>Random</p>
+      <DiceIcon />
+      <p>Random</p>
     {/if}
   </div>
 </div>
