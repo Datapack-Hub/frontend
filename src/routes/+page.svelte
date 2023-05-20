@@ -2,6 +2,8 @@
   import { onMount } from "svelte";
   import anime from "animejs";
   import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
+  import { apiURL } from "$lib/globals/consts";
+  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
@@ -24,9 +26,13 @@
     updated: 0,
     uploaded: 0,
     url: "realistic-item-drops",
+    status:"live"
   } as Project;
 
+  let random: Project;
   onMount(async () => {
+    let randomreq = await fetch(apiURL + "/projects/random")
+    random = await randomreq.json() as Project
     let textWrapper = document.querySelectorAll(".split-text .letters");
     textWrapper.forEach((el) => {
       el.innerHTML = el.textContent!.replace(
@@ -133,8 +139,11 @@
       <h3 class="mt-2 font-brand text-2xl font-bold text-pearl-lusta-100">
         Featured Datapack (WIP, not finished)
       </h3>
-      <FeaturedProjectComponent project="{proj}" />
-      <FeaturedProjectComponent project="{proj}" manual="{true}" />
+      {#if random}
+      <FeaturedProjectComponent project="{proj}" type="popular"/>
+      <FeaturedProjectComponent project="{proj}" type="featured" />
+      <FeaturedProjectComponent project="{random}" type="random"/>
+      {/if}
       <div></div>
     </div>
   </div>

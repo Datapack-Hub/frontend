@@ -8,7 +8,20 @@
   import TrophyIcon from "~icons/tabler/Trophy.svelte";
 
   export let project: Project;
-  export let manual = false;
+  export let type = "popular";
+
+  let style: String;
+  switch(type){
+    case "popular":
+      style = "dph-orange"
+      break;
+    case "featured":
+      style = "rose-600"
+      break;
+    case "random":
+      style = "stone-600"
+      break;
+  }
 
   let author: User;
   let visible = false;
@@ -30,9 +43,7 @@
 </script>
 
 <div
-  class="mb-3 w-full items-center rounded-xl outline {manual
-    ? 'outline-rose-600'
-    : 'outline-dph-orange'} relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
+  class="mb-3 w-full items-center rounded-xl outline outline-{style} relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
   <div class="flex items-center">
     <a
       href="/project/{project.url}"
@@ -69,11 +80,8 @@
     </div>
   </div>
   <div
-    use:tippy="{manual ? hoverNotManual : hoverManual}"
-    class="absolute right-3 top-0 {manual
-      ? 'bg-rose-600'
-      : 'bg-dph-orange'} rounded-b-md px-2 py-0.5 font-brand text-xs">
-    {#if manual}
+    class="absolute right-3 top-0 bg-{style} rounded-b-md px-2 py-0.5 font-brand text-xs">
+    {#if type == "featured"}
       <TrendUpIcon />
     {:else}
       <TrophyIcon />
