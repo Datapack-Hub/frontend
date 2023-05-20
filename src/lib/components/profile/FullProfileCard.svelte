@@ -11,19 +11,19 @@
 
   let orangeVerifiedHover = {
     content: "Verified for being part of the Datapack Hub staff team.",
-    placement: "top",
+    placement: "top"
   };
 
   let blueVerifiedHover = {
     content:
       "Verified for being known for helping others with their datapacks.",
-    placement: "top",
+    placement: "top"
   };
 
   let emeraldVerifiedHover = {
     content:
       "Verified for their datapacks being high-quality or being active in the community.",
-    placement: "top",
+    placement: "top"
   };
 </script>
 

@@ -13,7 +13,7 @@
     "1.17.x",
     "1.18.x",
     "1.19-1.19.3",
-    "1.19.4",
+    "1.19.4"
   ];
 
   let selected: string[] = [];
@@ -26,7 +26,7 @@
 
   async function upload() {
     let inp = document.getElementById("zip") as HTMLInputElement;
-    zipFile = inp.files![0];
+    zipFile = inp.files[0];
 
     if (zipFile?.size > 5e6) {
       toast.error("File size can't be more than 5mb!");
@@ -82,7 +82,7 @@
         minecraft_versions: selected,
         version_code: v_code,
         filename: zipFile.name,
-        primary_download: dataReader.result,
+        primary_download: dataReader.result
       };
     };
 
@@ -102,7 +102,7 @@
           version_code: v_code,
           filename: zipFile.name,
           primary_download: transformedFile,
-          resource_pack_download: packReader.result,
+          resource_pack_download: packReader.result
         };
       };
       packReader.onerror = () => {

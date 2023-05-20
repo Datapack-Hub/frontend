@@ -14,22 +14,22 @@
 
   let signInHoverMsg = {
     content: "Sign In",
-    placement: "bottom",
+    placement: "bottom"
   };
 
   let notificationHoverMsg = {
     content: "Notifications",
-    placement: "bottom",
+    placement: "bottom"
   };
 
   let moderationHoverMsg = {
     content: "Moderation",
-    placement: "bottom",
+    placement: "bottom"
   };
 
   let newHoverMsg = {
     content: "Create Project",
-    placement: "bottom",
+    placement: "bottom"
   };
 
   $: unreadNotifications = false;
@@ -88,7 +88,7 @@
           "<span class='items-center'><br /><button onclick=\"document.cookie = 'dph_token' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; window.location.replace('/')\" class='text-sky-500'>Sign Out</a></span>",
         placement: 'bottom',
         interactive: true,
-        allowHTML: true,
+        allowHTML: true
       }}">
       <img
         src="{$user.profile_icon}&size=48"

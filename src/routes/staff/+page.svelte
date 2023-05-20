@@ -31,7 +31,7 @@
         <div in:fly="{{ x: -200, duration: 500, delay: i * 75 }}">
           <UserCard
             person="{person}"
-            role="{data.roleData?.find((v) => person.role == v.name)}" />
+            role="{data.roleData?.find(v => person.role == v.name)}" />
         </div>
       {/each}
     {/if}

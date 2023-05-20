@@ -7,7 +7,7 @@
   let source = "";
   $: cleanedSource = DOMPurify.sanitize(source, {
     FORBID_ATTR: ["style", "class", "placeholder", "src"],
-    FORBID_TAGS: ["canvas", "svg", "iframe", "img"],
+    FORBID_TAGS: ["canvas", "svg", "iframe", "img"]
   });
 </script>
 

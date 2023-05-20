@@ -6,7 +6,7 @@
   let localNotifCopy = data.notifications;
 
   function remove(e: CustomEvent<any>) {
-    localNotifCopy = localNotifCopy?.filter((v) => v.id != e.detail.id);
+    localNotifCopy = localNotifCopy?.filter(v => v.id != e.detail.id);
   }
 </script>
 
@@ -28,9 +28,7 @@
       </h1>
     {/if}
     {#each localNotifCopy ?? [] as notification}
-      <Notification
-        on:close="{(e) => remove(e)}"
-        notification="{notification}" />
+      <Notification on:close="{e => remove(e)}" notification="{notification}" />
     {/each}
   </div>
 </main>

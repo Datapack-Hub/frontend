@@ -23,12 +23,12 @@
     type: "datapack",
     updated: 0,
     uploaded: 0,
-    url: "realistic-item-drops",
+    url: "realistic-item-drops"
   } as Project;
 
   onMount(async () => {
     let textWrapper = document.querySelectorAll(".split-text .letters");
-    textWrapper.forEach((el) => {
+    textWrapper.forEach(el => {
       el.innerHTML = el.textContent!.replace(
         /\S/g,
         "<span class='letter'>$&</span>"
@@ -41,40 +41,40 @@
         targets: "#indexText1 .letter",
         translateY: ["1.1em", 0],
         duration: 750,
-        delay: (_el, i) => 50 * i,
+        delay: (_el, i) => 50 * i
       })
       .add({
         targets: "#indexText1",
         opacity: 0,
         duration: 1000,
         easing: "easeOutExpo",
-        delay: 1000,
+        delay: 1000
       })
       .add({
         targets: "#indexText2 .letter",
         translateY: ["1.1em", 0],
         duration: 750,
-        delay: (_el, i) => 50 * i,
+        delay: (_el, i) => 50 * i
       })
       .add({
         targets: "#indexText2",
         opacity: 0,
         duration: 1000,
         easing: "easeOutExpo",
-        delay: 1000,
+        delay: 1000
       })
       .add({
         targets: "#indexText3 .letter",
         translateY: ["1.1em", 0],
         duration: 750,
-        delay: (_el, i) => 50 * i,
+        delay: (_el, i) => 50 * i
       })
       .add({
         targets: "#indexText3",
         opacity: 0,
         duration: 1000,
         easing: "easeOutExpo",
-        delay: 1000,
+        delay: 1000
       });
     visible = true;
   });

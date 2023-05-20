@@ -12,7 +12,7 @@ export const user: Writable<User> = writable({
   bio: "",
   profile_icon: "",
   role: "admin" /** For role info, use the `role` store */,
-  banned: false,
+  banned: false
 });
 /**
  * Contains all information about a role
@@ -22,5 +22,5 @@ export const role = writable({
   name: "default",
   color: null,
   verified: false,
-  permissions: [] as string[],
+  permissions: [] as string[]
 });

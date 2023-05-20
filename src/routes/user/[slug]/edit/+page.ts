@@ -11,19 +11,19 @@ export const load = (async ({ params }) => {
       name: "default",
       color: null,
       verified: false,
-      permissions: [] as string[],
+      permissions: [] as string[]
     };
 
-    const unsubscribeFromRole = role.subscribe((r) => (defaultRole = r));
+    const unsubscribeFromRole = role.subscribe(r => (defaultRole = r));
 
     const [user, me] = await Promise.all([
       fetchAuthed("get", apiURL + "/user/" + params.slug),
-      fetchAuthed("get", apiURL + "/user/me"),
+      fetchAuthed("get", apiURL + "/user/me")
     ]);
 
     const [userJSON, meJSON] = await Promise.all([
       (await user.json()) as User,
-      (await me.json()) as User,
+      (await me.json()) as User
     ]);
 
     if (user.ok && me.ok) {
@@ -34,13 +34,13 @@ export const load = (async ({ params }) => {
         unsubscribeFromRole();
         throw error(403, {
           message: "Not allowed!",
-          description: "This is not you, you can't edit their profile.",
+          description: "This is not you, you can't edit their profile."
         });
       }
 
       unsubscribeFromRole();
       return {
-        profile: userJSON as User,
+        profile: userJSON as User
       };
     }
   }

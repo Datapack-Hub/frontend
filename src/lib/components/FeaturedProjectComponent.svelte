@@ -15,12 +15,12 @@
 
   let hoverManual = {
     content: "Featured By Staff",
-    placement: "bottom",
+    placement: "bottom"
   };
 
   let hoverNotManual = {
     content: "Popular",
-    placement: "bottom",
+    placement: "bottom"
   };
 
   (async () => {

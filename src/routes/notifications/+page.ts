@@ -11,12 +11,12 @@ export const load = (async () => {
       const notificationsJSON = (await unread.json()).result as Notif[];
 
       return {
-        notifications: notificationsJSON,
+        notifications: notificationsJSON
       };
     }
     throw error(unread.status, {
       message: unread.statusText,
-      description: "Something went wrong",
+      description: "Something went wrong"
     });
   }
 }) satisfies PageLoad;

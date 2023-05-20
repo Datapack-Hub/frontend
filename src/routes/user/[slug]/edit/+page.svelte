@@ -17,7 +17,7 @@
     let req = {
       username: uname.value,
       bio: bio.value,
-      role: newRole,
+      role: newRole
     };
 
     if (bio.value.length > 500) {
@@ -26,9 +26,9 @@
 
     toast.promise(
       fetchAuthed("patch", `${apiURL}/user/id/${data.profile?.id}`, req).then(
-        (res) => {
+        res => {
           if (!res.ok) {
-            return res.text().then((txt) => alert(txt));
+            return res.text().then(txt => alert(txt));
           }
           if (data.profile?.id == $user.id) {
             $user.username = uname.value;
@@ -40,7 +40,7 @@
       {
         success: "Profile saved!",
         loading: "Saving...",
-        error: "Profile unable to save 😭",
+        error: "Profile unable to save 😭"
       }
     );
   }

@@ -13,7 +13,7 @@
     <svg
       xmlns="http://www.w3.org/2000/svg"
       on:click="{toggle}"
-      on:keydown|preventDefault="{(k) => (k.key == 'T' ? toggle : null)}"
+      on:keydown|preventDefault="{k => (k.key == 'T' ? toggle : null)}"
       class="icon icon-tabler icon-tabler-moon-stars ml-0 cursor-pointer hover:brightness-75 md:ml-6"
       width="24"
       height="24"
@@ -43,7 +43,7 @@
     <svg
       xmlns="http://www.w3.org/2000/svg"
       on:click="{toggle}"
-      on:keydown|preventDefault="{(k) => (k.key == 'T' ? toggle : null)}"
+      on:keydown|preventDefault="{k => (k.key == 'T' ? toggle : null)}"
       class="icon icon-tabler icon-tabler-sun-high ml-0 cursor-pointer hover:brightness-200 md:ml-6"
       width="24"
       height="24"

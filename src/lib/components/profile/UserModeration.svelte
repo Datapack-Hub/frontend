@@ -45,7 +45,7 @@
     let warnt = await fetchAuthed("post", `${apiURL}/notifs/send/${user?.id}`, {
       type: "important",
       message: "Warning",
-      description: msgTxt.value,
+      description: msgTxt.value
     });
     if (warnt.ok) {
       warnDialog.close();
@@ -74,7 +74,7 @@
     let sent = await fetchAuthed("post", `${apiURL}/notifs/send/${user?.id}`, {
       type: type.value,
       message: message.value,
-      description: content.value,
+      description: content.value
     });
     if (sent.ok) {
       notifDialog.close();
@@ -110,7 +110,7 @@
       {
         id: user?.id,
         expires: exp,
-        message: message.value,
+        message: message.value
       }
     );
     if (ban.ok) {

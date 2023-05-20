@@ -9,7 +9,7 @@ const futureDate = new Date()
 futureDate.setTime(futureDate.getTime() + (24*60*60*1000))
 
 export default defineConfig({
-  // example  
+  // example
   site: 'datapackhub.net',
   scanner: { exclude: ['/moderation/*'] },
   urls: [ //TODO: Add a sitemap.xml so i dont have to do this
@@ -24,7 +24,7 @@ export default defineConfig({
     "puppeteer:before-goto": async(page) => {
       await page.setCookie({
         name: "dph_token",
-        value: token!,
+        value: token ?? "",
         expires: futureDate.getTime(),
         secure: true,
         domain: "datapackhub.net",

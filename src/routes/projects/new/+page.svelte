@@ -16,7 +16,7 @@
       title: titleVal,
       description: descVal,
       body: bodyVal,
-      category: "German",
+      category: "German"
     };
 
     await fetchAuthed("post", apiURL + "/projects/create", projData);

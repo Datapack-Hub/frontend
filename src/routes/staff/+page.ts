@@ -9,7 +9,7 @@ export const load = async ({ fetch }) => {
         fetch(`${apiURL}/user/staff/moderator`),
         fetch(`${apiURL}/user/staff/developer`),
         fetch(`${apiURL}/user/staff/helper`),
-        fetch(`${apiURL}/user/staff/roles`),
+        fetch(`${apiURL}/user/staff/roles`)
       ]);
 
     if (admins.ok) {
@@ -18,13 +18,13 @@ export const load = async ({ fetch }) => {
           (await admins.json()).values as User[],
           (await moderators.json()).values as User[],
           (await devs.json()).values as User[],
-          (await helpers.json()).values as User[],
+          (await helpers.json()).values as User[]
         ]);
 
       const data = adminsJSON.concat(moderatorsJSON, devsJSON, helpersJSON);
       return {
         staff: data,
-        roleData: (await prefetchedRoles.json()).roles as Role[],
+        roleData: (await prefetchedRoles.json()).roles as Role[]
       };
     }
   }

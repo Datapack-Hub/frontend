@@ -16,7 +16,7 @@ export const categories = [
   { id: 11, text: `Cosmetics` },
   { id: 12, text: `Miscellaneous` },
   { id: 13, text: `Utility` },
-  { id: 24, text: `Vanilla+` },
+  { id: 24, text: `Vanilla+` }
 ];
 
 export const roles = [
@@ -26,7 +26,7 @@ export const roles = [
   "verified",
   "nerd",
   "donator",
-  "default",
+  "default"
 ];
 
 export const toastStyle: DefaultToastOptions = {};

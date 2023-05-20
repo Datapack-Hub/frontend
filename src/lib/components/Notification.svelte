@@ -20,7 +20,7 @@
 
     if (res.ok) {
       dispatch("close", {
-        id: notification?.id,
+        id: notification?.id
       });
     } else {
       visible = true;

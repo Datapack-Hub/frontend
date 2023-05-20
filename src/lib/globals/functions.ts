@@ -41,8 +41,8 @@ export async function fetchAuthed(
     ...(data ? { body: JSON.stringify(data) } : {}), // ah yes ternary grossness
     headers: {
       Authorization: `Basic ${await getCookie("dph_token")}`,
-      ...headers,
-    },
+      ...headers
+    }
   });
 
   if (resp.status == 498) removeCookie("dph_token");
@@ -54,7 +54,7 @@ export async function sendBlobAuthed(url: string, data: Blob) {
   const res = await fetch(url, {
     method: "post",
     body: data,
-    headers: { Authorization: `Basic ${await getCookie("dph_token")}` },
+    headers: { Authorization: `Basic ${await getCookie("dph_token")}` }
   });
 
   if (res.status == 498) removeCookie("dph_token");
@@ -66,7 +66,7 @@ export async function sendFormAuthed(url: string, data: FormData) {
   const res = await fetch(url, {
     method: "post",
     body: data,
-    headers: { Authorization: `Basic ${await getCookie("dph_token")}` },
+    headers: { Authorization: `Basic ${await getCookie("dph_token")}` }
   });
 
   if (res.status == 498) removeCookie("dph_token");
@@ -99,7 +99,7 @@ export function titleCase(str: string | undefined): string {
   return str
     .toLowerCase()
     .split(" ")
-    .map((word) => {
+    .map(word => {
       return word.charAt(0).toUpperCase() + word.slice(1);
     })
     .join(" ");

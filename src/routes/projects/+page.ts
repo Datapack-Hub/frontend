@@ -8,7 +8,7 @@ export const load = (async ({ fetch }) => {
     const data = (await proj.json()).result as Project[];
 
     return {
-      projects: data,
+      projects: data
     };
   }
 

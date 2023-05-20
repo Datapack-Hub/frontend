@@ -25,26 +25,26 @@ export const load = (async ({ params, fetch }) => {
           ).result as Version[];
           return {
             project: projectJson,
-            versions: versionsReq,
+            versions: versionsReq
           };
         }
 
         throw error(403, {
           message: "Not your project.",
-          description: "Only the owner can edit this.",
+          description: "Only the owner can edit this."
         });
       }
 
       throw error(401, {
         message: "Please sign in.",
         description:
-          "If you are signed in, then our server must be down. Sorry!",
+          "If you are signed in, then our server must be down. Sorry!"
       });
     }
 
     throw error(404, {
       message: "Silly boy!",
-      description: "Doesn't exist, nerd!",
+      description: "Doesn't exist, nerd!"
     });
   }
 }) satisfies PageLoad;

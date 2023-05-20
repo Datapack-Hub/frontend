@@ -22,9 +22,9 @@
 
   let author: User;
 
-  let body = DOMPurify.sanitize(data.project?.body!, {
+  let body = DOMPurify.sanitize(data.project?.body ?? "", {
     FORBID_ATTR: ["style", "class", "placeholder", "src"],
-    FORBID_TAGS: ["canvas", "svg", "iframe", "img", "input"],
+    FORBID_TAGS: ["canvas", "svg", "iframe", "img", "input"]
   });
 
   (async () => {
@@ -44,63 +44,53 @@
   }
 
   async function download(url: string, version: string, rp: boolean) {
-    let promise = new Promise(async (res, rej) => {
-      let zip = await fetch(url);
-      let zipBlob = await zip.blob();
-      let parsedZip = await JSZip.loadAsync(zipBlob);
+    let zip = await fetch(url);
+    let zipBlob = await zip.blob();
+    let parsedZip = await JSZip.loadAsync(zipBlob);
 
-      let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
-      let packMcmData = JSON.parse(packMcm);
-      let packFormat;
+    let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
+    let packMcmData = JSON.parse(packMcm);
+    let packFormat;
 
-      switch (version) {
-        case "1.13–1.14.4":
-          packFormat = 4;
-          break;
-        case "1.15-1.16.1":
-          packFormat = 5;
-          break;
-        case "1.16.2-1.16.5":
-          packFormat = 6;
-          break;
-        case "1.17.x":
-          packFormat = 7;
-          break;
-        case "1.18.x":
-          packFormat = 8;
-          break;
-        case "1.19-1.19.3":
-          packFormat = 10;
-          break;
-        case "1.19.4":
-          packFormat = 12;
-          break;
-      }
+    switch (version) {
+      case "1.13–1.14.4":
+        packFormat = 4;
+        break;
+      case "1.15-1.16.1":
+        packFormat = 5;
+        break;
+      case "1.16.2-1.16.5":
+        packFormat = 6;
+        break;
+      case "1.17.x":
+        packFormat = 7;
+        break;
+      case "1.18.x":
+        packFormat = 8;
+        break;
+      case "1.19-1.19.3":
+        packFormat = 10;
+        break;
+      case "1.19.4":
+        packFormat = 12;
+        break;
+    }
 
-      packMcmData["pack"]["pack_format"] = packFormat;
+    packMcmData["pack"]["pack_format"] = packFormat;
 
-      parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
+    parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
 
-      let final = await parsedZip.generateAsync({ type: "base64" });
-      var clickMePlz = document.createElement("a");
-      clickMePlz.download = url.split("/")[url.split("/").length - 1];
-      clickMePlz.href = "data:application/zip;base64," + final;
-      clickMePlz.click();
-      res(true);
-    });
+    let final = await parsedZip.generateAsync({ type: "base64" });
+    var clickMePlz = document.createElement("a");
+    clickMePlz.download = url.split("/")[url.split("/").length - 1];
+    clickMePlz.href = "data:application/zip;base64," + final;
+    clickMePlz.click();
 
     rp
-      ? toast.promise(promise, {
-          loading: "Preparing download...",
-          success:
-            "Downloaded file! Make sure to download the resource pack too.",
-          error: "Download failed!",
-        })
-      : toast.promise(promise, {
-          loading: "Preparing download...",
-          success: "Downloaded file!",
-          error: "Download failed!",
-        });
+      ? toast.success(
+          "Downloaded file! Make sure to download the resource pack too."
+        )
+      : toast.success("Downloaded file!");
   }
 </script>
 
@@ -278,7 +268,7 @@
       use:tippy="{{
         content:
           'The version you select here will determine what pack_format is used in pack.mcmeta',
-        placement: 'right',
+        placement: 'right'
       }}">
       <IconInfo />
     </div>
@@ -334,7 +324,7 @@
   </p>
   <MiniProfileCard
     person="{author}"
-    role="{data.roles?.find((v) => author.role == v.name)}" />
+    role="{data.roles?.find(v => author.role == v.name)}" />
   <div class="mb-2 min-w-fit items-center">
     <p
       class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">

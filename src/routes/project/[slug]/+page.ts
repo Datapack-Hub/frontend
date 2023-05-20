@@ -8,7 +8,7 @@ export const load = (async ({ params, fetch }) => {
     const [projectReq, versionsReq, rolesReq] = await Promise.all([
       fetch(`${apiURL}/projects/get/${params.slug}`),
       fetch(`${apiURL}/versions/project/url/${params.slug}`),
-      fetch(`${apiURL}/user/staff/roles`),
+      fetch(`${apiURL}/user/staff/roles`)
     ]);
 
     if (projectReq.ok && versionsReq.ok && rolesReq.ok) {
@@ -19,12 +19,12 @@ export const load = (async ({ params, fetch }) => {
       return {
         project: project,
         versions: versions,
-        roles: roles,
+        roles: roles
       };
     } else if (projectReq.status == 404) {
       throw error(404, {
         message: "Project not found",
-        description: "Why not go ahead and turn the idea into a reality?",
+        description: "Why not go ahead and turn the idea into a reality?"
       });
     }
     return {};
