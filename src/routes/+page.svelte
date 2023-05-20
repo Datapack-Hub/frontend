@@ -18,7 +18,7 @@
     category: ["German"],
     description:
       "This datapack makes dropped items appear realistic as if they were thrown onto the ground!",
-    icon: "https://cdn.discordapp.com/attachments/723984082853298297/1076083669409730590/IMG_2434.png",
+    icon: null,
     title: "Realistic Item Drops",
     type: "datapack",
     updated: 0,
