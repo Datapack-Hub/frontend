@@ -18,7 +18,7 @@
     category: ["German"],
     description:
       "This datapack makes dropped items appear realistic as if they were thrown onto the ground!",
-    icon: null,
+    icon: "https://cdn.discordapp.com/attachments/723984082853298297/1076083669409730590/IMG_2434.png",
     title: "Realistic Item Drops",
     type: "datapack",
     updated: 0,
@@ -133,8 +133,8 @@
       <h3 class="mt-2 font-brand text-2xl font-bold text-pearl-lusta-100">
         Featured Datapack (WIP, not finished)
       </h3>
-      <!-- <FeaturedProjectComponent project="{proj}" />
-      <FeaturedProjectComponent project="{proj}" manual="{true}" /> -->
+      <FeaturedProjectComponent project="{proj}" />
+      <FeaturedProjectComponent project="{proj}" manual="{true}" />
       <div></div>
     </div>
   </div>
