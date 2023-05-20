@@ -133,8 +133,8 @@
       <h3 class="mt-2 font-brand text-2xl font-bold text-pearl-lusta-100">
         Featured Datapack (WIP, not finished)
       </h3>
-      <FeaturedProjectComponent project="{proj}" />
-      <FeaturedProjectComponent project="{proj}" manual="{true}" />
+      <!-- <FeaturedProjectComponent project="{proj}" />
+      <FeaturedProjectComponent project="{proj}" manual="{true}" /> -->
       <div></div>
     </div>
   </div>
