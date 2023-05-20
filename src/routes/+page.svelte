@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { PageData } from './$types';
   import { onMount } from "svelte";
   import anime from "animejs";
   import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
@@ -11,9 +10,6 @@
   let width: number;
 
   let proj: Project;
-
-  export let data: PageData;
-
 
   proj = {
     ID: 1,
@@ -139,7 +135,6 @@
       </h3>
       <FeaturedProjectComponent project="{proj}" />
       <FeaturedProjectComponent project="{proj}" manual="{true}" />
-      <FeaturedProjectComponent projet ="{randProjJSON}" />
       <div></div>
     </div>
   </div>
