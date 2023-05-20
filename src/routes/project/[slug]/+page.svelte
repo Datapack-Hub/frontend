@@ -117,7 +117,7 @@
     <a href="/projects">&lt; Explore other projects</a>
   </div>
   <div
-    class="flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
+    class="relative flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
     <img
       src="{data.project?.icon ??
         'https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg'}"
@@ -125,8 +125,13 @@
       class="mr-6 h-32 rounded-lg" />
     <div class="flex-grow">
       <h1
-        class="font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
+        class="flex items-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
         {data.project?.title.trimStart()}
+        {#if data.project?.status == "draft"}
+          <span
+            class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
+            >Draft</span>
+        {/if}
       </h1>
       <h2
         class="text-md mt-2 font-brand text-pearl-lusta-950 opacity-60 transition-all dark:text-white">
@@ -183,7 +188,8 @@
   {#if activePage == "description"}
     <div
       class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
-      <p class="prose prose-stone font-brand leading-tight dark:prose-invert">
+      <p
+        class="prose prose-stone w-full font-brand leading-tight dark:prose-invert">
         <SvelteMarkdown source="{body.replaceAll('\\n', '\n')}" />
       </p>
     </div>

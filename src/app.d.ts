@@ -41,6 +41,7 @@ declare type Project = {
   type: "datapack" | "url";
   description: string?;
   body: string;
+  status: string?;
 };
 
 declare type Notif = {

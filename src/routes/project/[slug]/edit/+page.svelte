@@ -26,7 +26,7 @@
 
   async function upload() {
     let inp = document.getElementById("zip") as HTMLInputElement;
-    zipFile = inp.files[0];
+    if (inp.files) zipFile = inp.files[0];
 
     if (zipFile?.size > 5e6) {
       toast.error("File size can't be more than 5mb!");
