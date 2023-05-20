@@ -40,7 +40,8 @@ declare type Project = {
   url: string;
   type: "datapack" | "url";
   description: string?;
-  body: string;
+  body: string,
+  status: string?;
 };
 
 declare type Notif = {

@@ -16,8 +16,9 @@
 </script>
 
 <div
-  class="flex w-full items-center rounded-xl bg-pearl-lusta-200 p-2 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
-  <a
+  class="relative w-full items-center rounded-xl bg-pearl-lusta-200 p-2 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
+  <div class="flex">
+    <a
     href="/project/{project.url}"
     class="rounded-lg bg-pearl-lusta-300 dark:bg-stone-700 dark:text-pearl-lusta-100 {project.icon
       ? ''
@@ -50,4 +51,10 @@
       {project.description}
     </p>
   </div>
+  </div>
+  {#if project.status == "draft"}
+  <h2 class="absolute right-0 top-0 px-2 rounded-bl-md rounded-tr-xl bg-stone-700 text-stone-500 font-brand font-bold">Draft</h2>
+  {:else if project.status == "disabled"}
+  <h2 class="absolute right-0 top-0 px-2 rounded-bl-md rounded-tr-xl bg-red-700/50 text-red-500 font-brand font-bold">Disabled</h2>
+  {/if}
 </div>

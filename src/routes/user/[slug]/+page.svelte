@@ -41,7 +41,7 @@
         class="flex-grow text-center text-xl font-bold dark:text-white md:text-left">
         {data.profile?.username}'s projects
       </h1>
-      {#if data.profile.id == $user.id}
+      {#if data.profile?.id == $user.id}
         <a href="/projects/new" class="button-sm ml-6">New Project</a>
       {/if}
     </div>
@@ -53,9 +53,11 @@
         No projects!
       </p>
     {:else}
+    <div class="space-y-2">
       {#each data.projects ?? [] as project}
         <ProjectComponent project="{project}" />
       {/each}
+    </div>
     {/if}
   </div>
 </main>
