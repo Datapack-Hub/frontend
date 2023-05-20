@@ -1,18 +1,18 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
-  import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
   import ProjectComponent from "$lib/components/ProjectComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
   import type { PageData } from "./$types";
+  import debounce from "lodash-es/debounce";
 
   import IconSearch from "~icons/tabler/Search.svelte";
 
   let query: string;
 
-  async function search() {
+  let search = debounce(async () => {
     let searchResult = await fetch(apiURL + `/projects/search?query=${query}`);
     data.projects = (await searchResult.json()).result as Project[];
-  }
+  }, 300);
 
   export let data: PageData;
 </script>
@@ -76,7 +76,7 @@
           TODO: Add these
         </p>
       </div>
-      <div class="ml-0 w-full md:ml-3 space-y-2">
+      <div class="ml-0 w-full space-y-2 md:ml-3">
         {#if data.projects}
           {#if data.projects.length >= 1}
             {#each data.projects as project}
@@ -84,7 +84,7 @@
               <!-- {#if Math.random() < 0.2} -->
               <!-- <FeaturedProjectComponent project="{project}" /> -->
               <!-- {:else} -->
-              <ProjectComponent project={project} />
+              <ProjectComponent project="{project}" />
               <!-- {/if} -->
             {/each}
           {:else}

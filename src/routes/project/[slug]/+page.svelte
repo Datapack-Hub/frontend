@@ -44,53 +44,63 @@
   }
 
   async function download(url: string, version: string, rp: boolean) {
-    let zip = await fetch(url);
-    let zipBlob = await zip.blob();
-    let parsedZip = await JSZip.loadAsync(zipBlob);
+    let promise = new Promise(async (res, rej) => {
+      let zip = await fetch(url);
+      let zipBlob = await zip.blob();
+      let parsedZip = await JSZip.loadAsync(zipBlob);
 
-    let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
-    let packMcmData = JSON.parse(packMcm);
-    let packFormat;
+      let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
+      let packMcmData = JSON.parse(packMcm);
+      let packFormat;
 
-    switch (version) {
-      case "1.13–1.14.4":
-        packFormat = 4;
-        break;
-      case "1.15-1.16.1":
-        packFormat = 5;
-        break;
-      case "1.16.2-1.16.5":
-        packFormat = 6;
-        break;
-      case "1.17.x":
-        packFormat = 7;
-        break;
-      case "1.18.x":
-        packFormat = 8;
-        break;
-      case "1.19-1.19.3":
-        packFormat = 10;
-        break;
-      case "1.19.4":
-        packFormat = 12;
-        break;
-    }
+      switch (version) {
+        case "1.13–1.14.4":
+          packFormat = 4;
+          break;
+        case "1.15-1.16.1":
+          packFormat = 5;
+          break;
+        case "1.16.2-1.16.5":
+          packFormat = 6;
+          break;
+        case "1.17.x":
+          packFormat = 7;
+          break;
+        case "1.18.x":
+          packFormat = 8;
+          break;
+        case "1.19-1.19.3":
+          packFormat = 10;
+          break;
+        case "1.19.4":
+          packFormat = 12;
+          break;
+      }
 
-    packMcmData["pack"]["pack_format"] = packFormat;
+      packMcmData["pack"]["pack_format"] = packFormat;
 
-    parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
+      parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
 
-    let final = await parsedZip.generateAsync({ type: "base64" });
-    var clickMePlz = document.createElement("a");
-    clickMePlz.download = url.split("/")[url.split("/").length - 1];
-    clickMePlz.href = "data:application/zip;base64," + final;
-    clickMePlz.click();
+      let final = await parsedZip.generateAsync({ type: "base64" });
+      var clickMePlz = document.createElement("a");
+      clickMePlz.download = url.split("/")[url.split("/").length - 1];
+      clickMePlz.href = "data:application/zip;base64," + final;
+      clickMePlz.click();
+      res(true);
+    });
 
     rp
-      ? toast.success(
-          "Downloaded file! Make sure to download the resource pack too."
-        )
-      : toast.success("Downloaded file!");
+      ? toast.promise(promise, {
+          loading: "Preparing download...",
+          success:
+            "Downloaded file! Make sure to download the resource pack too.",
+          error: "Download failed!",
+        })
+      : toast.promise(promise, {
+          loading: "Preparing download...",
+          success: "Downloaded file!",
+          error: "Download failed!",
+        });
   }
 </script>
 
@@ -183,7 +193,7 @@
   {#if activePage == "description"}
     <div
       class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
-      <p class="prose font-brand dark:prose-invert">
+      <p class="prose prose-stone font-brand leading-tight dark:prose-invert">
         <SvelteMarkdown source="{body.replaceAll('\\n', '\n')}" />
       </p>
     </div>

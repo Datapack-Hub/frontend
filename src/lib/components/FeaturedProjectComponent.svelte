@@ -4,8 +4,8 @@
   import { fade } from "svelte/transition";
   import tippy from "sveltejs-tippy";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
-  import TrendUpIcon from "~icons/tabler/TrendingUp.svelte"
-  import TrophyIcon from "~icons/tabler/Trophy.svelte"
+  import TrendUpIcon from "~icons/tabler/TrendingUp.svelte";
+  import TrophyIcon from "~icons/tabler/Trophy.svelte";
 
   export let project: Project;
   export let manual = false;
@@ -15,12 +15,12 @@
 
   let hoverManual = {
     content: "Featured By Staff",
-    placement: "bottom"
+    placement: "bottom",
   };
 
   let hoverNotManual = {
     content: "Popular",
-    placement: "bottom"
+    placement: "bottom",
   };
 
   (async () => {
@@ -38,7 +38,7 @@
       href="/project/{project.url}"
       class="rounded-lg {project.icon
         ? ''
-        : 'p-4 bg-pearl-lusta-300 dark:bg-stone-700 dark:text-pearl-lusta-100'}">
+        : 'bg-pearl-lusta-300 p-4 dark:bg-stone-700 dark:text-pearl-lusta-100'}">
       {#if project.icon}
         <img
           src="{project.icon}"
@@ -57,7 +57,7 @@
       {#if visible}
         <a
           href="/user/{author.username.toLowerCase()}"
-          class="text-xs block text-pearl-lusta-950 opacity-40 hover:underline dark:text-white dark:hover:text-pearl-lusta-100 md:text-sm"
+          class="block text-xs text-pearl-lusta-950 opacity-40 hover:underline dark:text-white dark:hover:text-pearl-lusta-100 md:text-sm"
           in:fade="{{ duration: 250 }}">
           By {author.username}
         </a>
@@ -69,14 +69,14 @@
     </div>
   </div>
   <div
-    use:tippy={manual ? hoverNotManual : hoverManual}
-    class="absolute top-0 right-3 {manual
+    use:tippy="{manual ? hoverNotManual : hoverManual}"
+    class="absolute right-3 top-0 {manual
       ? 'bg-rose-600'
-      : 'bg-dph-orange'} rounded-b-md py-0.5 px-2 font-brand text-xs">
+      : 'bg-dph-orange'} rounded-b-md px-2 py-0.5 font-brand text-xs">
     {#if manual}
       <TrendUpIcon />
-      {:else}
+    {:else}
       <TrophyIcon />
     {/if}
-    </div>
+  </div>
 </div>
