@@ -4,8 +4,8 @@ const cssnano = require('cssnano')
 
 const config = {
   plugins: [
-    tailwindcss(), //Some plugins, like tailwindcss/nesting, need to run before Tailwind, tailwindcss(), 
-    cssnano({ preset: "advanced", plugins: [autoprefixer]})
+    tailwindcss(), //Some plugins, like tailwindcss/nesting, need to run before Tailwind, tailwindcss(),
+    cssnano({ preset: "advanced", plugins: [autoprefixer] })
   ],
 };
 
