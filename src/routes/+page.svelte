@@ -34,10 +34,8 @@
     random = (await randomreq.json()) as Project;
     let textWrapper = document.querySelectorAll(".split-text .letters");
     textWrapper.forEach(el => {
-      el.innerHTML = el.textContent?.replace(
-        /\S/g,
-        "<span class='letter'>$&</span>"
-      ) ?? "";
+      el.innerHTML =
+        el.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ?? "";
     });
 
     anime

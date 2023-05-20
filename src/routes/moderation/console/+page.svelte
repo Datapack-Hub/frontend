@@ -63,7 +63,11 @@
     {#if !isSmallWidth}
       <div
         class="h-screen w-full flex-col font-console text-lime-400 md:items-start md:pt-20">
-        <div id="big" bind:this="{objDiv}" class="overflow-y-scroll" style="height: 92%;">
+        <div
+          id="big"
+          bind:this="{objDiv}"
+          class="overflow-y-scroll"
+          style="height: 92%;">
           <span class="text-lg font-bold">Datapack Hub Console</span><br />
           <span class="text-lg font-normal">Welcome!</span>
           <ul class="list-none" id="cons">{@html consoleIn}</ul>
