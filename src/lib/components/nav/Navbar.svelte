@@ -31,6 +31,7 @@
     <div class="flex items-center">
       <a href="/" class="z-20 flex cursor-pointer items-center">
         <img
+          loading="lazy"
           src="/logos/dph.svg"
           alt="logo"
           class="min-h-8 flex-shrink-0 transition-all hover:brightness-75"

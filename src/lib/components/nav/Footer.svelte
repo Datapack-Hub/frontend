@@ -4,6 +4,7 @@
   <div>
     <div class="flex items-center space-x-2">
       <img
+        loading="lazy"
         src="/logos/dph.svg"
         alt="logo"
         class="h-12 w-full transition-all hover:brightness-75 md:w-auto" />

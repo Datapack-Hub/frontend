@@ -41,8 +41,11 @@
         : 'bg-pearl-lusta-300 p-4 dark:bg-stone-700 dark:text-pearl-lusta-100'}">
       {#if project.icon}
         <img
+          loading="lazy"
           src="{project.icon}"
           alt="{project.title} icon"
+          width="128"
+          height="128"
           class="aspect-square w-24 rounded-lg bg-cover" />
       {:else}
         <IconNoPhoto width="48" height="48" />

@@ -314,7 +314,11 @@
                 if (modJson['banned']) open(unbanDialog);
                 else open(banDialog);
               }}">
-              <img src="/icons/ban.svg" alt="ban" class="h-8 p-1 dark:invert" />
+              <img
+                loading="lazy"
+                src="/icons/ban.svg"
+                alt="ban"
+                class="h-8 p-1 dark:invert" />
               {#if modJson["banned"]}Unban (expires {new Date(
                   modJson["banExpiry"]
                 ).toDateString()}){:else}Ban{/if}
@@ -323,6 +327,7 @@
               class="mt-1 flex w-full items-center rounded-md bg-orange-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(warnDialog)}">
               <img
+                loading="lazy"
                 src="/icons/warn.svg"
                 alt="warn"
                 class="h-8 p-1 dark:invert" />
@@ -333,6 +338,7 @@
               id="send_notif"
               on:click="{() => open(notifDialog)}">
               <img
+                loading="lazy"
                 src="/icons/message.svg"
                 alt="msg"
                 class="h-8 p-1 dark:invert" />
@@ -342,6 +348,7 @@
               href="/user/{user?.username}/edit"
               class="mt-1 flex w-full items-center rounded-md bg-blue-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
               <img
+                loading="lazy"
                 src="/icons/settings.svg"
                 alt="ban"
                 class="h-8 p-1 dark:invert" />
@@ -351,6 +358,7 @@
               class="mt-1 flex w-full items-center rounded-md bg-indigo-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(logOutDialog)}">
               <img
+                loading="lazy"
                 src="/icons/log-out.svg"
                 alt="warn"
                 class="h-8 p-1 dark:invert" />

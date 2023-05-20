@@ -9,6 +9,7 @@
   <div
     class="my-2 flex w-full rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800">
     <img
+      loading="lazy"
       src="{person?.profile_icon}"
       alt="{person?.username}'s profile picture"
       class="float-left mr-2 h-16 w-16 rounded-full" />
@@ -20,6 +21,7 @@
         </h1></a>
       <span class="font-brand font-bold" style="color:{role?.color};"
         >{#if person?.role != "admin"}{titleCase(person?.role)}{:else}<img
+            loading="lazy"
             src="/logos/dph.svg"
             alt="logo"
             class="inline-block"

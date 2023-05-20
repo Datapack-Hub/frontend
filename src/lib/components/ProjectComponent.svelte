@@ -25,6 +25,7 @@
         : 'p-4'}">
       {#if project.icon}
         <img
+          loading="lazy"
           src="{project.icon}"
           alt="{project.title} icon"
           class="aspect-square w-20 rounded-lg bg-cover" />

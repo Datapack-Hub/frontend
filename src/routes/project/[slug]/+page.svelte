@@ -119,6 +119,7 @@
   <div
     class="relative flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
     <img
+      loading="lazy"
       src="{data.project?.icon ??
         'https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg'}"
       alt="Icon for {data.project?.title.trimStart()}"
@@ -142,6 +143,7 @@
           href="/user/{author.username}"
           class="mt-4 flex items-center space-x-2">
           <img
+            loading="lazy"
             src="{author.profile_icon}"
             class="max-h-7 rounded-full"
             alt="pfp" />

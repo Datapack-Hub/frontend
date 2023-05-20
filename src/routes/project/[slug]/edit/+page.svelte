@@ -168,6 +168,7 @@
             Icon
           </p>
           <img
+            loading="lazy"
             src="{data.project?.icon}"
             alt="Your logo"
             height="100"

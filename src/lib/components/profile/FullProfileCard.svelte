@@ -30,6 +30,7 @@
 <div class="ms:max-w-lg flex max-w-full flex-col items-center md:items-start">
   <div class="self-center">
     <img
+      loading="lazy"
       src="{userProfile?.profile_icon}"
       alt="{userProfile?.username}'s profile picture"
       height="128"
@@ -62,6 +63,7 @@
       <span style="color:{role?.color};">
         {#if role?.name == "nerd"}🤓 Nerd
         {:else if role?.name == "admin"}<img
+            loading="lazy"
             src="/logos/dph.svg"
             alt="logo"
             class="inline-block"
@@ -81,6 +83,7 @@
       href="/user/{$user.username}/edit"
       class="text-md mt-1 w-full rounded-md border-2 border-red-400 bg-red-400/10 px-2 py-2 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:text-lg lg:text-lg">
       <img
+        loading="lazy"
         src="/icons/settings.svg"
         alt="settings"
         width="24"

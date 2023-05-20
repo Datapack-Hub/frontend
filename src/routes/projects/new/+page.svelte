@@ -54,6 +54,7 @@
           Icon
         </p>
         <img
+          loading="lazy"
           src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
           alt="Your logo here"
           height="100"
