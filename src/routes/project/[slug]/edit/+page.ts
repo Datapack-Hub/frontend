@@ -7,15 +7,13 @@ import { browser } from "$app/environment";
 export const load = (async ({ params, fetch }) => {
   if (browser) {
     const projectReq = await fetch(apiURL + "/projects/get/" + params.slug);
-    let userObj: User;
-    const unsubUser = user.subscribe(v => (userObj = v));
 
     if (projectReq.ok) {
       const projectJson = (await projectReq.json()) as Project;
-      const me = await fetchUser(userObj.id);
+      const meReq = await fetchAuthed("get", apiURL + "/user/me");
 
-      if (me.ok) {
-        const meJson = (await me.json()) as User;
+      if (meReq.ok) {
+        const meJson = (await meReq.json()) as User;
         if (meJson.id == projectJson.author) {
           const versionsReq = (
             await (
