@@ -85,7 +85,7 @@
     parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
 
     let final = await parsedZip.generateAsync({ type: "base64" });
-    var clickMePlz = document.createElement("a");
+    // var clickMePlz = document.createElement("a");
     clickMePlz.download = url.split("/")[url.split("/").length - 1];
     clickMePlz.href = "data:application/zip;base64," + final;
     clickMePlz.click();
