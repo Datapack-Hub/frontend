@@ -86,9 +86,9 @@
 
     let final = await parsedZip.generateAsync({ type: "base64" });
     // var clickMePlz = document.createElement("a");
-    clickMePlz.download = url.split("/")[url.split("/").length - 1];
-    clickMePlz.href = "data:application/zip;base64," + final;
-    clickMePlz.click();
+    // clickMePlz.download = url.split("/")[url.split("/").length - 1];
+    // clickMePlz.href = "data:application/zip;base64," + final;
+    // clickMePlz.click();
 
     rp
       ? toast.success(
