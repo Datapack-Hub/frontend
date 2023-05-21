@@ -3,6 +3,7 @@
   import { apiURL, roles } from "$lib/globals/consts";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { isAuthenticated, user } from "$lib/globals/stores";
+  import { onMount } from "svelte";
   import type { PageData } from "./$types";
   import toast from "svelte-french-toast";
 
@@ -10,9 +11,15 @@
 
   let newRole = data.profile?.role;
 
+  let uname: HTMLInputElement;
+  let bio:HTMLTextAreaElement;
+
+  onMount(() => {
+    uname = document.getElementById("username") as HTMLInputElement;
+    bio = document.getElementById("bio") as HTMLTextAreaElement;
+  })
+
   function save() {
-    const uname = document.getElementById("username") as HTMLInputElement;
-    const bio = document.getElementById("bio") as HTMLTextAreaElement;
 
     let req = {
       username: uname.value,
@@ -75,10 +82,14 @@
         Bio
       </p>
       <textarea
-        class="h-40 w-80 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
+        class="h-96 w-1/2 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
         maxlength="500"
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
         id="bio"></textarea>
+      <p
+        class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100 text-xs">
+        {(500 - bio?.value.length).toString()} characters left
+      </p>
       <br /><br />
       {#if $isAuthenticated && $user.role == "admin"}
         <p
