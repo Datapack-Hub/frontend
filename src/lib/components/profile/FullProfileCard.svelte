@@ -80,11 +80,11 @@
     {userProfile?.bio.replaceAll("\\n", "\n")}
   </p>
   {#if $isAuthenticated && $user.id === userProfile?.id}
-    <a href="/user/{$user.username}/edit" class="button-alt">
+    <a href="/user/{$user.username}/edit" class="button-alt flex items-center">
       <IconSettings
         width="24"
         height="24"
-        class="float-left mr-2 max-w-sm stroke-blue-400 invert" />
+        class="float-left mr-2 max-w-sm stroke-blue-400" />
       Profile Settings
     </a>
   {/if}

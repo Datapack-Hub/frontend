@@ -11,6 +11,7 @@
   import IconMessage from "~icons/tabler/MailForward.svelte";
   import IconLogOut from "~icons/tabler/Logout.svelte";
   import IconSettings from "~icons/tabler/Settings.svelte";
+  import { isDark } from "$lib/globals/stores";
 
   export let user: User | undefined;
 
@@ -19,6 +20,8 @@
   let banDialog: Modal;
   let unbanDialog: Modal;
   let logOutDialog: Modal;
+
+  $: iconColor = $isDark ? "white" : "black";
 
   let modJson: { banned: boolean; banExpiry: number; banMessage: string };
 
@@ -319,7 +322,7 @@
                 if (modJson['banned']) open(unbanDialog);
                 else open(banDialog);
               }}">
-              <IconBan class="h-8 p-1 dark:invert" />
+              <IconBan height=32 width=32 color={iconColor} class="p-1" />
               {#if modJson["banned"]}Unban (expires {new Date(
                   modJson["banExpiry"]
                 ).toDateString()}){:else}Ban{/if}
@@ -327,26 +330,26 @@
             <button
               class="mt-1 flex w-full items-center rounded-md bg-orange-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(warnDialog)}">
-              <IconWarn class="h-8 p-1 dark:invert" />
+              <IconWarn height=32 width=32 color={iconColor} class="p-1" />
               Warn
             </button>
             <button
               class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               id="send_notif"
               on:click="{() => open(notifDialog)}">
-              <IconMessage class="h-8 p-1 dark:invert" />
+              <IconMessage height=32 width=32 color={iconColor} class="p-1" />
               Send a Notification
             </button>
             <a
               href="/user/{user?.username}/edit"
               class="mt-1 flex w-full items-center rounded-md bg-blue-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
-              <IconSettings class="h-8 p-1 dark:invert" />
+              <IconSettings height=32 width=32 color={iconColor} class="p-1" />
               Edit Profile Details
             </a>
             <button
               class="mt-1 flex w-full items-center rounded-md bg-indigo-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(logOutDialog)}">
-              <IconLogOut class="h-8 p-1 dark:invert" />
+              <IconLogOut height=32 width=32 color={iconColor} class="p-1" />
               Log User Out
             </button>
           </div>
