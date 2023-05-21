@@ -7,6 +7,8 @@
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import IconCube from "~icons/tabler/Box.svelte";
+  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
+
   import { isAuthenticated, user } from "$lib/globals/stores";
   import Modal from "$lib/components/modals/Modal.svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
@@ -118,13 +120,18 @@
     <a href="/projects">&lt; Explore other projects</a>
   </div>
   <div
-    class="relative flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
-    <img
-      loading="lazy"
-      src="{data.project?.icon ??
-        'https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg'}"
-      alt="Icon for {data.project?.title.trimStart()}"
-      class="mr-6 h-32 rounded-lg" />
+    class="relative flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10 dark:text-pearl-lusta-100">
+    <div class="{data.project?.icon ? "p-0" : "p-4"} mr-6 bg-stone-600 rounded-xl">
+      {#if data.project?.icon}
+        <img
+          loading="lazy"
+          src="{data.project?.icon}"
+          alt="{data.project?.title} icon"
+          class="aspect-square w-20 rounded-lg bg-cover" />
+      {:else}
+        <IconNoPhoto width="96" height="96" />
+      {/if}
+    </div>
     <div class="flex-grow">
       <h1
         class="flex items-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
@@ -140,27 +147,25 @@
         {data.project?.description?.trimStart()}
       </h2>
       {#if visible}
-      <div class="flex space-x-2 items-center mt-4 ">
-        <a
-          href="/user/{author.username}"
-          class="flex items-center space-x-2">
-          <img
-            loading="lazy"
-            src="{author.profile_icon}"
-            class="max-h-7 rounded-full"
-            alt="pfp" />
-          <span
-            class="font-brand text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
-            in:fade="{{ duration: 250 }}">
-            {author.username}
+        <div class="flex space-x-2 items-center mt-4">
+          <a href="/user/{author.username}" class="flex items-center space-x-2">
+            <img
+              loading="lazy"
+              src="{author.profile_icon}"
+              class="max-h-7 rounded-full"
+              alt="pfp" />
+            <span
+              class="font-brand text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
+              in:fade="{{ duration: 250 }}">
+              {author.username}
+            </span>
+          </a>
+          <span class="font-brand dark:text-white"> • </span>
+          <span class="font-brand dark:text-white flex items-center space-x-1">
+            <IconCube />
+            <p>{data.project?.category}</p>
           </span>
-        </a>
-        <span class="font-brand dark:text-white"> • </span>
-        <span class="font-brand dark:text-white flex items-center space-x-1">
-          <IconCube />
-          <p>{data.project?.category}</p>
-        </span>
-      </div>
+        </div>
       {/if}
     </div>
     <div class="flex flex-col space-y-1">
