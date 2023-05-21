@@ -31,7 +31,7 @@
 </script>
 
 {#if visible}
-  <div
+  <li
     class="flex w-full {notification?.type}-background testNotif my-2 rounded-xl p-4">
     <div class="flex-auto">
       <h1 class="font-brand text-xl font-bold {notification?.type}-text">
@@ -44,7 +44,7 @@
     <button
       class="closeButton right-0 top-0 h-1 font-brand text-pearl-lusta-950 dark:text-white"
       on:click="{removeThis}"><IconX /></button>
-  </div>
+  </li>
 {/if}
 
 <!-- <ToastContainer placement="bottom-right" let:data>

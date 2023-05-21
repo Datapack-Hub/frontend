@@ -4,6 +4,7 @@
   import { apiURL } from "$lib/globals/consts";
   import type { PageData } from "./$types";
   import debounce from "lodash-es/debounce";
+  import autoAnimate from "@formkit/auto-animate";
 
   import IconSearch from "~icons/tabler/Search.svelte";
 
@@ -76,9 +77,9 @@
           TODO: Add these
         </p>
       </div>
-      <div class="ml-0 w-full space-y-2 md:ml-3">
-        {#if data.projects}
-          {#if data.projects.length >= 1}
+      {#if data.projects}
+        {#if data.projects.length >= 1}
+          <ul class="ml-0 w-full space-y-2 md:ml-3" use:autoAnimate>
             {#each data.projects as project}
               <!-- uncomment these to see the featured stuff on the thingy thing -->
               <!-- {#if Math.random() < 0.2} -->
@@ -87,17 +88,17 @@
               <ProjectComponent project="{project}" />
               <!-- {/if} -->
             {/each}
-          {:else}
-            <h2 class="font-brand text-pearl-lusta-950 dark:text-white">
-              No results found
-            </h2>
-          {/if}
+          </ul>
         {:else}
           <h2 class="font-brand text-pearl-lusta-950 dark:text-white">
             No results found
           </h2>
         {/if}
-      </div>
+      {:else}
+        <h2 class="font-brand text-pearl-lusta-950 dark:text-white">
+          No results found
+        </h2>
+      {/if}
     </div>
   </div>
 </main>

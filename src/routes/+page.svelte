@@ -3,6 +3,7 @@
   import anime from "animejs";
   import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
+  import autoAnimate from "@formkit/auto-animate";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
@@ -137,11 +138,15 @@
       <h3 class="mt-3 font-brand text-2xl font-medium text-pearl-lusta-100">
         Featured
       </h3>
-      <FeaturedProjectComponent project="{proj}" type="popular" />
-      <FeaturedProjectComponent project="{proj}" type="featured" />
-      {#if random}
-        <FeaturedProjectComponent project="{random}" type="random" />
-      {/if}
+      <div use:autoAnimate>
+        {#if visible}
+          <FeaturedProjectComponent project="{proj}" type="popular" />
+          <FeaturedProjectComponent project="{proj}" type="featured" />
+          {#if random}
+            <FeaturedProjectComponent project="{random}" type="random" />
+          {/if}
+        {/if}
+      </div>
       <div></div>
     </div>
   </div>

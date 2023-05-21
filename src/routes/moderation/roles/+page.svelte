@@ -3,6 +3,7 @@
   import { goto } from "$app/navigation";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { apiURL } from "$lib/globals/consts";
+  import autoAnimate from '@formkit/auto-animate'
 
   let rolesJson: Role[];
 
@@ -32,7 +33,7 @@
     </p>
     <br />
     {#await loadStuff() then}
-      <table class="w-full table-auto p-2 text-left font-brand">
+      <table class="w-full table-auto p-2 text-left font-brand" use:autoAnimate>
         <tr class="bg-emerald-500 p-2">
           <th class="p-2 text-pearl-lusta-950 dark:text-white">Role Name</th>
           <th class="p-2 text-pearl-lusta-950 dark:text-white">Permissions</th>

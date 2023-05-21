@@ -4,6 +4,7 @@
   import { browser } from "$app/environment";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { apiURL } from "$lib/globals/consts";
+  import autoAnimate from '@formkit/auto-animate';
 
   let rolesJson: Role[];
   let activePage = "dashboard";
@@ -51,7 +52,7 @@
     </div>
 
     {#if activePage == "dashboard"}
-      <div class="text-center align-middle md:text-start">
+      <div use:autoAnimate class="text-center align-middle md:text-start">
         <div class="flex space-x-2 rounded-xl bg-stone-800 p-2 py-3">
           <label for="icon" class="max-w-100">
             <span
@@ -66,6 +67,7 @@
       </div>
     {:else if activePage == "roles"}
       <div
+      use:autoAnimate
         class="flex flex-col space-x-2 rounded-xl bg-stone-800 p-2 py-3 text-center align-middle md:text-start">
         <h1
           class="m-2 text-center font-brand text-2xl font-bold text-pearl-lusta-950 dark:text-white md:text-start">
@@ -78,7 +80,7 @@
               >Permissions</th>
           </tr>
           {#each rolesJson ?? [] as i}
-            <tr class="odd:bg-stone-700/25">
+            <tr use:autoAnimate class="odd:bg-stone-700/25">
               <td
                 ><p
                   style="color: {i.color};"
