@@ -66,32 +66,15 @@
     if (selected.length == 0) {
       return toast.error(
         "Please select at least one compatible Minecraft version!"
-      );
-    }
+        );
+      }
 
-    const dataReader = new FileReader();
-    const packReader = new FileReader();
+      const dataReader = new FileReader();
+      const packReader = new FileReader();
     let transformedFile: string | ArrayBuffer | null;
     dataReader.readAsDataURL(zipFile);
 
     let versionData;
-
-    dataReader.onload = async () => {
-      versionData = {
-        name: v_name,
-        description: v_changelog,
-        minecraft_versions: selected,
-        version_code: v_code,
-        filename: zipFile.name,
-        primary_download: dataReader.result
-      };
-    };
-
-    dataReader.onerror = () => {
-      return toast.error(
-        "There was an error handling this resource pack upload!"
-      );
-    };
 
     if (v_rp.files?.length == 1) {
       packReader.readAsDataURL(v_rp.files[0]);
@@ -113,22 +96,41 @@
       };
     }
 
-    let upload = await fetchAuthed(
-      "POST",
-      `${apiURL}/versions/new/${data.project?.ID}`,
-      versionData
-    );
+    dataReader.onload = async () => {
+      versionData = {
+        name: v_name,
+        description: v_changelog,
+        minecraft_versions: selected,
+        version_code: v_code,
+        filename: zipFile.name,
+        primary_download: dataReader.result,
+        resource_pack_download: packReader.result
+      };
 
-    if (upload.ok) {
-      toast.success("Posted the version! Refresh to see the latest changes.");
-      return (createVersion = false);
-    } else {
-      let er = await upload.text();
-      toast.error(
-        "There was an error uploading the file. Please try again later. If the issue persists, please contact an admin. Error: " +
-          er
+      let upload = await fetchAuthed(
+        "POST",
+        `${apiURL}/versions/new/${data.project?.ID}`,
+        versionData
       );
-    }
+
+      if (upload.ok) {
+        toast.success("Posted the version! Refresh to see the latest changes.");
+        return (createVersion = false);
+      } else {
+        let er = await upload.text();
+        toast.error(
+          "There was an error uploading the file. Please try again later. If the issue persists, please contact an admin. Error: " +
+            er
+        );
+      }
+    };
+
+    dataReader.onerror = () => {
+      return toast.error(
+        "There was an error handling this resource pack upload!"
+      );
+    };
+
   }
   let titleValue = data.project?.title;
   let descVal = data.project?.description;

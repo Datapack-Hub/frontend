@@ -50,30 +50,6 @@ export async function fetchAuthed(
   return resp;
 }
 
-export async function sendBlobAuthed(url: string, data: Blob) {
-  const res = await fetch(url, {
-    method: "post",
-    body: data,
-    headers: { Authorization: `Basic ${await getCookie("dph_token")}` }
-  });
-
-  if (res.status == 498) removeCookie("dph_token");
-
-  return res;
-}
-
-export async function sendFormAuthed(url: string, data: FormData) {
-  const res = await fetch(url, {
-    method: "post",
-    body: data,
-    headers: { Authorization: `Basic ${await getCookie("dph_token")}` }
-  });
-
-  if (res.status == 498) removeCookie("dph_token");
-
-  return res;
-}
-
 export async function getCookie(item: string) {
   const name = item + "=";
   const decodedCookie = decodeURIComponent(document.cookie);
