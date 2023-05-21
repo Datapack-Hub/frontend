@@ -31,6 +31,10 @@
   }
 </script>
 
+<svelte:head>
+  <title>{$page.error?.message} | Datapack Hub</title>
+</svelte:head>
+
 <main
   class="flex h-screen w-full flex-col items-center justify-center bg-pearl-lusta-100 px-8 transition-colors dark:bg-stone-900 md:flex-row md:justify-start md:px-16 lg:px-24">
   <p
