@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
   import { getAuthorFromID, titleCase } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
@@ -19,6 +18,7 @@
   import SvelteMarkdown from "svelte-markdown";
   import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
   import autoAnimate from "@formkit/auto-animate";
+  import { onMount } from "svelte";
 
   export let data: PageData;
   let visible = false;
@@ -31,10 +31,10 @@
     FORBID_TAGS: ["canvas", "svg", "iframe", "img", "input"]
   });
 
-  (async () => {
-    if (browser) author = await getAuthorFromID(data.project?.author ?? 0);
+  onMount(async () => {
+    author = await getAuthorFromID(data.project?.author ?? 0);
     visible = true;
-  })();
+  });
 
   let dlModal: Modal;
   let activeVersion: Version;

@@ -62,6 +62,7 @@
         </p>
         <p class="font-brand text-sm font-thin italic text-white">
           ~ your favourite datapack hub staff team
+          ~ if this shows up im going to freak
         </p>
       </div>
     </div>

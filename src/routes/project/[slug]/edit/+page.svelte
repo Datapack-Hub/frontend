@@ -315,7 +315,8 @@
             </div>
           {:else}
             {@const ver = (Math.random() * 10).toFixed(1)}
-            <div class="my-2 rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800">
+            <div
+              class="my-2 rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800">
               <button
                 class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
                 on:click="{() => (createVersion = false)}">X</button>
