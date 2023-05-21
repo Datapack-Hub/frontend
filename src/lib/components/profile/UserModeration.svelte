@@ -308,7 +308,7 @@
     Loading...
   {:then}
     <div class="ms:max-w-lg flex max-w-full justify-center md:justify-start">
-      <div class="mt-4 w-full rounded-xl bg-red-500/25 p-2">
+      <div class="w-full rounded-xl bg-red-500/25 p-2">
         <h1
           class="font-brand text-lg font-medium text-pearl-lusta-950 dark:text-white">
           Moderation Actions

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { titleCase } from "$lib/globals/functions";
   import { isAuthenticated, user } from "$lib/globals/stores";
+  import SvelteMarkdown from "svelte-markdown";
   import tippy from "sveltejs-tippy";
   import IconSettings from "~icons/tabler/Settings.svelte";
 
@@ -76,13 +77,13 @@
     {/if}
   </p>
   <p
-    class="styled-scrollbar my-3 max-h-64 w-full overflow-y-scroll whitespace-pre-line rounded-xl bg-white/40 p-2 font-brand text-pearl-lusta-950 dark:bg-stone-700/40 dark:text-white">
-    {userProfile?.bio.replaceAll("\\n", "\n")}
+    class="prose prose-stone w-full font-brand leading-tight dark:prose-invert bg-stone-800 p-2 rounded-xl my-2">
+    <SvelteMarkdown source="{profile?.bio.replaceAll('\\n', '\n').replaceAll("![", "[")}" />
   </p>
   {#if $isAuthenticated && $user.id === userProfile?.id}
     <a
       href="/user/{$user.username}/edit"
-      class="button-alt flex w-full items-center">
+      class="button-alt flex w-full items-center mb-2">
       <IconSettings
         width="24"
         height="24"
