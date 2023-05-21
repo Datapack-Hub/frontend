@@ -57,12 +57,12 @@
 </svelte:head>
 
 <main
-  class="-translate-y-20 overflow-y-scroll bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 md:translate-y-0 lg:px-32 xl:px-64">
+  class="-translate-y-20 bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 md:translate-y-0 lg:px-32 xl:px-64">
   <div
-    class="h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
+    class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
       class="mt-8 pb-10 text-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
-      Profile Settings for <span class="{data.profile?.role}-text"
+      Profile Settings for <span style="color: {data.role?.color};"
         >{data.profile?.username || "<loading>"}</span>
     </h1>
     <div class="text-center align-middle md:text-start">
