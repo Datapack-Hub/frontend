@@ -171,7 +171,7 @@
     id="warn-message"></textarea>
   <button
     on:click="{async () => await warn()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-base rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Warn {user?.username}</button>
 </Modal>
 
@@ -221,7 +221,7 @@
   <button
     on:click="{async () => await sendNotif()}"
     id="send_notif_btn"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-base rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Send</button>
 </Modal>
 
@@ -256,7 +256,7 @@
     id="ban-message"></textarea>
   <button
     on:click="{async () => await banUser()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-base rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Ban {user?.username}</button>
 </Modal>
 
@@ -276,7 +276,7 @@
   </p>
   <button
     on:click="{async () => await unbanUser()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-base rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Unban {user?.username}</button>
 </Modal>
 
@@ -291,7 +291,7 @@
   </p>
   <button
     on:click="{async () => await logOutUser()}"
-    class="text-md rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="text-base rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Log them out!</button>
 </Modal>
 

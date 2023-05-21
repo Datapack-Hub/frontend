@@ -44,13 +44,13 @@
     {profile?.username}
     {#if ["moderator", "developer", "admin"].includes(role?.name ?? "")}
       <span
-        class="material-icons text-md align-middle text-orange-500 transition-all hover:scale-125"
+        class="material-icons text-base align-middle text-orange-500 transition-all hover:scale-125"
         use:tippy="{orangeVerifiedHover}">verified</span
       >{:else if userProfile?.role == "helper"}<span
-        class="material-icons text-md align-middle text-blue-500 transition-all hover:scale-125"
+        class="material-icons text-base align-middle text-blue-500 transition-all hover:scale-125"
         use:tippy="{blueVerifiedHover}">verified</span
       >{:else if userProfile?.role == "verified"}<span
-        class="material-icons text-md align-middle text-emerald-500 transition-all hover:scale-125"
+        class="material-icons text-base align-middle text-emerald-500 transition-all hover:scale-125"
         use:tippy="{emeraldVerifiedHover}"
         >verified
       </span>

@@ -135,7 +135,7 @@
         {/if}
       </h1>
       <h2
-        class="text-md mt-2 font-brand text-pearl-lusta-950/60 transition-all dark:text-white/60">
+        class="text-base mt-2 font-brand text-pearl-lusta-950/60 transition-all dark:text-white/60">
         {data.project?.description?.trimStart()}
       </h2>
       {#if visible}
@@ -217,7 +217,7 @@
                 {version.name}
               </h2>
               <h2
-                class="text-md font-brand font-thin italic text-pearl-lusta-950 dark:text-white">
+                class="text-base font-brand font-thin italic text-pearl-lusta-950 dark:text-white">
                 {version.version_code}
               </h2>
             </div>
