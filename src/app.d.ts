@@ -29,6 +29,7 @@ declare type User = {
   role: string;
   profile_icon: string;
   banned: boolean;
+  banData: { message: string; expires: number };
 };
 
 declare type Project = {

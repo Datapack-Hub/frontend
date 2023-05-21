@@ -77,13 +77,13 @@
       {#if visible}
         <a
           href="/user/{author.username.toLowerCase()}"
-          class="block text-xs text-pearl-lusta-950 opacity-40 hover:underline dark:text-white dark:hover:text-pearl-lusta-100 md:text-sm"
+          class="block text-xs text-pearl-lusta-950/40 hover:underline dark:text-white/40 dark:hover:text-pearl-lusta-100/40 md:text-sm"
           in:fade="{{ duration: 250 }}">
           By {author.username}
         </a>
       {/if}
       <p
-        class="line-clamp-2 text-sm font-medium text-pearl-lusta-950 opacity-70 dark:text-pearl-lusta-100 md:text-sm">
+        class="line-clamp-2 text-sm font-medium text-pearl-lusta-950/40 dark:text-pearl-lusta-100/40 md:text-sm">
         {project.description}
       </p>
     </div>

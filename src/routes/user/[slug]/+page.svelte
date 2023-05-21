@@ -49,7 +49,7 @@
     <div class="mb-2"></div>
     {#if data.projects?.length == 0}
       <p
-        class="mt-48 text-center text-3xl text-pearl-lusta-950 text-opacity-40 dark:text-white">
+        class="mt-48 text-center text-3xl text-pearl-lusta-950/40 dark:text-white/40">
         No projects!
       </p>
     {:else}

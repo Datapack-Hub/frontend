@@ -40,8 +40,7 @@
       Create New <span class="text-dph-orange">Datapack</span>
     </h1>
     <div class="text-center align-middle md:text-start">
-      <p
-        class="pb-4 font-brand text-pearl-lusta-950 opacity-60 dark:text-white">
+      <p class="pb-4 font-brand text-pearl-lusta-950/60 dark:text-white/60">
         Before starting, please read the Site Rules. <b
           >Only upload content that you made yourself or have permission to
           distribute.</b>
@@ -126,11 +125,7 @@
           project.
         </p>
 
-        <button
-          class="text-md mt-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 py-2 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl"
-          on:click="{create}">
-          Create Project
-        </button>
+        <button class="button-alt" on:click="{create}"> Create Project </button>
       </div>
     </div>
   </div>
@@ -139,6 +134,6 @@
 
 <style lang="postcss">
   .input-base {
-    @apply text-pearl-lusta-950 transition-all placeholder:text-pearl-lusta-950 placeholder:text-opacity-40 hover:placeholder:text-opacity-60 dark:bg-stone-700 dark:text-pearl-lusta-100 dark:placeholder:text-pearl-lusta-100 dark:placeholder:text-opacity-40 dark:hover:placeholder:text-opacity-60;
+    @apply text-pearl-lusta-950 transition-all placeholder:text-pearl-lusta-950/40 hover:placeholder:text-pearl-lusta-950/60 dark:bg-stone-700 dark:text-pearl-lusta-100 dark:placeholder:text-pearl-lusta-100/40 dark:hover:placeholder:text-pearl-lusta-100/60;
   }
 </style>

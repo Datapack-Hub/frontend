@@ -43,8 +43,8 @@
   });
 
   async function refreshNotifications() {
-    let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`);
     unreadNotifications = false;
+    let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`);
 
     if (notif.ok) {
       let notifJson = await notif.json();
@@ -104,7 +104,7 @@
       id="sign_in"
       href="{apiURL}/auth/login"
       aria-label="Button to sign in via GitHub"
-      class="text-md rounded-md border-2 border-red-500 bg-red-500 bg-opacity-30 px-2 py-1 font-brand text-red-500 transition-all hover:scale-110 active:brightness-75 dark:border-red-400 dark:bg-red-400 dark:bg-opacity-10 dark:text-red-400 md:px-3 md:py-2 md:text-lg lg:text-xl"
+      class="button-alt"
       use:tippy="{signInHoverMsg}">
       Sign in
     </a>

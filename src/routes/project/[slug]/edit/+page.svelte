@@ -247,10 +247,7 @@
               </option>
             {/each}
           </select><br /><br />
-          <button
-            class="text-md pu-2 my-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 pb-1 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl">
-            Update Project
-          </button>
+          <button class="button-alt"> Update Project </button>
         </div>
       </div>
 
@@ -344,7 +341,7 @@
         {/if}
         {#each data.versions ?? [] as version}
           <div
-            class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
+            class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100/10">
             <div class="flex w-1/3 items-center space-x-2">
               <h2
                 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">

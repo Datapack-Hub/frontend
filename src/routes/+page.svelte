@@ -30,8 +30,9 @@
 
   let random: Project;
   onMount(async () => {
-    let randomreq = await fetch(apiURL + "/projects/random");
-    random = (await randomreq.json()) as Project;
+    let randomReq = await fetch(apiURL + "/projects/random");
+    random = (await randomReq.json()) as Project;
+
     let textWrapper = document.querySelectorAll(".split-text .letters");
     textWrapper.forEach(el => {
       el.innerHTML =
@@ -136,9 +137,9 @@
       <h3 class="mt-2 font-brand text-2xl font-bold text-pearl-lusta-100">
         Featured Datapack (WIP, not finished)
       </h3>
+      <FeaturedProjectComponent project="{proj}" type="popular" />
+      <FeaturedProjectComponent project="{proj}" type="featured" />
       {#if random}
-        <FeaturedProjectComponent project="{proj}" type="popular" />
-        <FeaturedProjectComponent project="{proj}" type="featured" />
         <FeaturedProjectComponent project="{random}" type="random" />
       {/if}
       <div></div>

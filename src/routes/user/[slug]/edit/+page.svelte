@@ -99,11 +99,7 @@
           {/each}
         </select><br /><br />
       {/if}
-      <button
-        on:click="{save}"
-        class="text-md my-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 py-2 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl">
-        Save Changes
-      </button>
+      <button on:click="{save}" class="button-alt"> Save Changes </button>
     </div>
   </div>
 </main>

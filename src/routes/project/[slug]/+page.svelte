@@ -28,7 +28,7 @@
   });
 
   (async () => {
-    if (browser) author = await getAuthorFromID(data.project?.author);
+    if (browser) author = await getAuthorFromID(data.project?.author ?? 0);
     visible = true;
   })();
 
@@ -117,7 +117,7 @@
     <a href="/projects">&lt; Explore other projects</a>
   </div>
   <div
-    class="relative flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
+    class="relative flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
     <img
       loading="lazy"
       src="{data.project?.icon ??
@@ -135,7 +135,7 @@
         {/if}
       </h1>
       <h2
-        class="text-md mt-2 font-brand text-pearl-lusta-950 opacity-60 transition-all dark:text-white">
+        class="text-md mt-2 font-brand text-pearl-lusta-950/60 transition-all dark:text-white/60">
         {data.project?.description?.trimStart()}
       </h2>
       {#if visible}
@@ -188,8 +188,7 @@
     {/if}
   </div>
   {#if activePage == "description"}
-    <div
-      class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
+    <div class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
       <p
         class="prose prose-stone w-full font-brand leading-tight dark:prose-invert">
         <SvelteMarkdown source="{body.replaceAll('\\n', '\n')}" />
@@ -197,7 +196,7 @@
     </div>
   {:else if activePage == "versions"}
     <div
-      class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
+      class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
       {#if data.versions?.length != 0}
         <div class="mx-3 flex space-x-3">
           <h2
@@ -211,7 +210,7 @@
         </div>
         {#each data.versions ?? [] as version}
           <div
-            class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100 dark:bg-opacity-10">
+            class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100/10">
             <div class="flex w-1/3 items-center space-x-2">
               <h2
                 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">

@@ -1,3 +1,4 @@
+import { getUserFromCache, userExistsInCache } from "./cache";
 import { apiURL } from "./consts";
 import { isDark } from "./stores";
 
@@ -14,11 +15,8 @@ export function loadColorPref() {
  * @param authorID ID of the author
  * @returns username of the author
  */
-export async function getAuthorFromID(
-  authorID: number | undefined
-): Promise<User> {
-  const data = await fetch(`${apiURL}/user/id/${authorID}`);
-  return (await data.json()) as User;
+export async function getAuthorFromID(authorID: number): Promise<User> {
+  return await fetchUser(authorID);
 }
 
 /**
@@ -103,4 +101,15 @@ export function titleCase(str: string | undefined): string {
       return word.charAt(0).toUpperCase() + word.slice(1);
     })
     .join(" ");
+}
+
+export async function fetchUser(id: number | string): Promise<User> {
+  if (userExistsInCache(id)) return getUserFromCache(id);
+  let userFetch: Response;
+  if (typeof id == "number")
+    userFetch = await fetchAuthed("get", `${apiURL}/user/id/${id}`);
+  else if (typeof id == "string")
+    userFetch = await fetchAuthed("get", `${apiURL}/user/${id}`);
+  else throw TypeError("how did this happen");
+  return (await userFetch.json()) as User;
 }

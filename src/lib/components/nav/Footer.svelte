@@ -14,7 +14,7 @@
       </p>
     </div>
     <p
-      class="mt-4 text-center font-brand text-sm font-light text-pearl-lusta-950 text-opacity-25 dark:text-white dark:text-opacity-25 md:text-left">
+      class="mt-4 text-center font-brand text-sm font-light text-pearl-lusta-950/25 dark:text-white/25 md:text-left">
       Copyright © 2023 Datapack Hub<br />Not an official Minecraft product. Not
       approved by or associated with Mojang Studios
     </p>

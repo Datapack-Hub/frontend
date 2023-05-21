@@ -1,11 +1,10 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
-  import { fetchAuthed, removeCookie } from "$lib/globals/functions";
+  import { fetchUser, removeCookie } from "$lib/globals/functions";
   import SvelteMarkdown from "svelte-markdown";
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
-  import { isAuthenticated } from "$lib/globals/stores";
-  import { apiURL } from "$lib/globals/consts";
+  import { isAuthenticated, user } from "$lib/globals/stores";
 
   let visible = false;
   let banReason: string;
@@ -13,17 +12,14 @@
 
   onMount(async () => {
     if (browser) {
-      let me = await fetchAuthed("get", `${apiURL}/user/me`);
-      if (me.ok) {
-        let meJson = (await me.json()) as {
-          banned: boolean;
-          banData: { message: string; expires: number };
-        };
-        if (meJson.banned == true) {
-          banReason = meJson.banData.message;
-          expiry = meJson.banData.expires;
-          visible = true;
-        }
+      let me = (await fetchUser($user.id)) as {
+        banned: boolean;
+        banData: { message: string; expires: number };
+      };
+      if (me.banned == true) {
+        banReason = me.banData.message;
+        expiry = me.banData.expires;
+        visible = true;
       }
     }
   });
