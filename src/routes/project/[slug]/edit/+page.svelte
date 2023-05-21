@@ -263,7 +263,7 @@
             class="bg-new-white-300 w-1/4 rounded-md p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
             bind:value="{catVal}">
             {#each categories as cat}
-              <option value="{cat.id}">
+              <option value="{cat.text}">
                 {cat.text}
               </option>
             {/each}
