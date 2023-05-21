@@ -9,6 +9,7 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
+  import autoAnimate from "@formkit/auto-animate";
 
   let publishModal: Modal;
 
@@ -204,206 +205,208 @@
     </div>
 
     <!-- DETAILS-->
-    {#if activePage == "details"}
-      <div class="text-center align-middle md:text-start">
-        <div class=" rounded-xl bg-stone-800 p-2 pb-2">
-          <!-- Icon -->
-          <p
-            class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-            Icon
-          </p>
-          <img
-            loading="lazy"
-            src="{data.project?.icon}"
-            alt="Your logo"
-            height="100"
-            width="100"
-            class="mr-3 inline-block rounded-2xl" />
-          <label for="icon" class="max-w-100 group inline-block">
-            <span
-              class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle font-brand text-pearl-lusta-950 dark:text-white"
-              >Upload icon</span>
-          </label>
-          <input
-            id="icon"
-            type="file"
-            accept="image/jpeg,image/png,image/webp,image/avif"
-            class="hidden" />
-          <br /><br />
-
-          <!-- Title -->
-          <p
-            class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-            Title
-          </p>
-          <input
-            class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-            placeholder="Title"
-            maxlength="50"
-            id="title"
-            bind:value="{titleValue}" /><br /><br />
-
-          <!-- Short Description -->
-          <p
-            class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-            Short Description
-          </p>
-          <textarea
-            class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-            placeholder="This short description is used for social media embeds and the listing page."
-            id="desc"
-            maxlength="200"
-            bind:value="{descVal}"></textarea
-          ><br /><br />
-
-          <!-- Long Description -->
-          <p
-            class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-            Long Description (supports markdown)
-          </p>
-          <textarea
-            class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-            placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
-            id="body"
-            maxlength="2000"
-            bind:value="{bodyVal}"></textarea
-          ><br /><br />
-          <!-- Category -->
-          <p
-            class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-            Category
-          </p>
-          <select
-            class="bg-new-white-300 w-1/4 rounded-md p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-            bind:value="{catVal}">
-            {#each categories as cat}
-              <option value="{cat.text}">
-                {cat.text}
-              </option>
-            {/each}
-          </select><br /><br />
-          <button
-            class="text-md pu-2 my-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 pb-1 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl"
-            on:click="{create}">
-            Update Project
-          </button>
-        </div>
-      </div>
-
-      <!-- VERSIONS-->
-    {:else if activePage == "versions"}
-      <div class="text-center align-middle md:text-start">
-        {#if createVersion == false}
-          <div
-            class="my-2 flex space-x-2 rounded-xl bg-pearl-lusta-200 p-2 py-3 dark:bg-stone-800">
-            <label for="zip" class="max-w-100">
-              <span class="button-style cursor-pointer"
-                >Upload datapack file</span>
+    <div use:autoAnimate>
+      {#if activePage == "details"}
+        <div class="text-center align-middle md:text-start">
+          <div class=" rounded-xl bg-stone-800 p-2 pb-2">
+            <!-- Icon -->
+            <p
+              class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+              Icon
+            </p>
+            <img
+              loading="lazy"
+              src="{data.project?.icon}"
+              alt="Your logo"
+              height="100"
+              width="100"
+              class="mr-3 inline-block rounded-2xl" />
+            <label for="icon" class="max-w-100 group inline-block">
+              <span
+                class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle font-brand text-pearl-lusta-950 dark:text-white"
+                >Upload icon</span>
             </label>
             <input
+              id="icon"
               type="file"
-              class="hidden"
-              accept=".zip"
-              id="zip"
-              on:input="{upload}" />
-            <span
-              class="align-center font-brand text-pearl-lusta-950 dark:text-white"
-              >(Supported: *.zip)</span>
-            <!-- <p class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">No versions yet!</p> -->
-          </div>
-        {:else}
-          {@const ver = (Math.random() * 10).toFixed(1)}
-          <div class="my-2 rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800">
-            <button
-              class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
-              on:click="{() => (createVersion = false)}">X</button>
-            <h2
-              class="mb-2 font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
-              Creating new Version
-            </h2>
+              accept="image/jpeg,image/png,image/webp,image/avif"
+              class="hidden" />
+            <br /><br />
 
-            <div class="flex space-x-4">
-              <p
-                class="w-1/2 align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-                Version Name
-              </p>
-              <p
-                class="w-1/2 align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-                Version Number
-              </p>
-            </div>
-            <div class="flex space-x-2">
-              <input
-                class="mb-4 h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
-                placeholder="{data.project?.title} v{ver}"
-                maxlength="50"
-                id="v_name" />
-              <input
-                class="mb-4 h-10 w-1/6 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
-                placeholder="v{ver}"
-                maxlength="15"
-                id="v_code" />
-            </div>
-
+            <!-- Title -->
             <p
               class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-              Changelog (supports markdown!)
-            </p>
-            <textarea
-              class="mb-4 h-36 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-              placeholder="This update changes..."
-              id="v_changelog"
-              maxlength="2000"></textarea>
-
-            <p
-              class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-              Minecraft Versions
-            </p>
-            <MultiSelect
-              bind:selected="{selected}"
-              options="{ui_libs}"
-              liSelectedClass="liSelectedClass" />
-            <p class="mb-4"></p>
-
-            <p
-              class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-              Resource Pack Download (optional)
+              Title
             </p>
             <input
-              type="file"
-              id="v_rp"
-              class="mb-4 rounded-xl bg-pearl-lusta-300 p-2 font-brand text-pearl-lusta-950 dark:bg-stone-700 dark:text-white" />
-            <p></p>
-            <button class="button-style" on:click="{uploadVersion}"
-              >Create Version</button>
+              class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+              placeholder="Title"
+              maxlength="50"
+              id="title"
+              bind:value="{titleValue}" /><br /><br />
+
+            <!-- Short Description -->
+            <p
+              class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+              Short Description
+            </p>
+            <textarea
+              class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+              placeholder="This short description is used for social media embeds and the listing page."
+              id="desc"
+              maxlength="200"
+              bind:value="{descVal}"></textarea
+            ><br /><br />
+
+            <!-- Long Description -->
+            <p
+              class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+              Long Description (supports markdown)
+            </p>
+            <textarea
+              class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+              placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
+              id="body"
+              maxlength="2000"
+              bind:value="{bodyVal}"></textarea
+            ><br /><br />
+            <!-- Category -->
+            <p
+              class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+              Category
+            </p>
+            <select
+              class="bg-new-white-300 w-1/4 rounded-md p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+              bind:value="{catVal}">
+              {#each categories as cat}
+                <option value="{cat.text}">
+                  {cat.text}
+                </option>
+              {/each}
+            </select><br /><br />
+            <button
+              class="text-md pu-2 my-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 pb-1 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl"
+              on:click="{create}">
+              Update Project
+            </button>
           </div>
-        {/if}
-        {#each data.versions ?? [] as version}
-          <div
-            class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100/10">
-            <div class="flex w-1/3 items-center space-x-2">
+        </div>
+
+        <!-- VERSIONS-->
+      {:else if activePage == "versions"}
+        <div class="text-center align-middle md:text-start">
+          {#if createVersion == false}
+            <div
+              class="my-2 flex space-x-2 rounded-xl bg-pearl-lusta-200 p-2 py-3 dark:bg-stone-800">
+              <label for="zip" class="max-w-100">
+                <span class="button-style cursor-pointer"
+                  >Upload datapack file</span>
+              </label>
+              <input
+                type="file"
+                class="hidden"
+                accept=".zip"
+                id="zip"
+                on:input="{upload}" />
+              <span
+                class="align-center font-brand text-pearl-lusta-950 dark:text-white"
+                >(Supported: *.zip)</span>
+              <!-- <p class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">No versions yet!</p> -->
+            </div>
+          {:else}
+            {@const ver = (Math.random() * 10).toFixed(1)}
+            <div class="my-2 rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800">
+              <button
+                class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+                on:click="{() => (createVersion = false)}">X</button>
               <h2
-                class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
-                {version.name}
+                class="mb-2 font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
+                Creating new Version
               </h2>
+
+              <div class="flex space-x-4">
+                <p
+                  class="w-1/2 align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                  Version Name
+                </p>
+                <p
+                  class="w-1/2 align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                  Version Number
+                </p>
+              </div>
+              <div class="flex space-x-2">
+                <input
+                  class="mb-4 h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
+                  placeholder="{data.project?.title} v{ver}"
+                  maxlength="50"
+                  id="v_name" />
+                <input
+                  class="mb-4 h-10 w-1/6 rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
+                  placeholder="v{ver}"
+                  maxlength="15"
+                  id="v_code" />
+              </div>
+
+              <p
+                class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                Changelog (supports markdown!)
+              </p>
+              <textarea
+                class="mb-4 h-36 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+                placeholder="This update changes..."
+                id="v_changelog"
+                maxlength="2000"></textarea>
+
+              <p
+                class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                Minecraft Versions
+              </p>
+              <MultiSelect
+                bind:selected="{selected}"
+                options="{ui_libs}"
+                liSelectedClass="liSelectedClass" />
+              <p class="mb-4"></p>
+
+              <p
+                class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                Resource Pack Download (optional)
+              </p>
+              <input
+                type="file"
+                id="v_rp"
+                class="mb-4 rounded-xl bg-pearl-lusta-300 p-2 font-brand text-pearl-lusta-950 dark:bg-stone-700 dark:text-white" />
+              <p></p>
+              <button class="button-style" on:click="{uploadVersion}"
+                >Create Version</button>
+            </div>
+          {/if}
+          {#each data.versions ?? [] as version}
+            <div
+              class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100/10">
+              <div class="flex w-1/3 items-center space-x-2">
+                <h2
+                  class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
+                  {version.name}
+                </h2>
+                <h2
+                  class="font-brand text-base font-thin italic text-pearl-lusta-950 dark:text-white">
+                  {version.version_code}
+                </h2>
+              </div>
               <h2
-                class="font-brand text-base font-thin italic text-pearl-lusta-950 dark:text-white">
-                {version.version_code}
+                class="flex flex-grow space-x-1 font-brand text-pearl-lusta-950 dark:text-white">
+                {#each version.minecraft_versions.split(",") ?? [] as mcv}
+                  <button
+                    class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1">
+                    {mcv}
+                  </button>
+                {/each}
               </h2>
             </div>
-            <h2
-              class="flex flex-grow space-x-1 font-brand text-pearl-lusta-950 dark:text-white">
-              {#each version.minecraft_versions.split(",") ?? [] as mcv}
-                <button
-                  class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1">
-                  {mcv}
-                </button>
-              {/each}
-            </h2>
-          </div>
-        {/each}
-      </div>
-    {/if}
+          {/each}
+        </div>
+      {/if}
+    </div>
   </div>
 </main>
 <br />

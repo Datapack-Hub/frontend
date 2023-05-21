@@ -10,7 +10,7 @@
     class="my-2 flex w-full rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800">
     <img
       loading="lazy"
-      src="{person?.profile_icon}"
+      src="{person?.profile_icon}?size=64"
       alt="{person?.username}'s profile picture"
       class="float-left mr-2 h-16 w-16 rounded-full" />
     <div>
