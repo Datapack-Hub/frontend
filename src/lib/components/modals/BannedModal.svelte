@@ -4,8 +4,8 @@
   import SvelteMarkdown from "svelte-markdown";
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
-  import { isAuthenticated, user } from "$lib/globals/stores";
-  import IconBan from '~icons/tabler/Ban.svelte'
+  import { isAuthenticated } from "$lib/globals/stores";
+  import IconBan from "~icons/tabler/Ban.svelte";
   import { apiURL } from "$lib/globals/consts";
 
   let visible = false;

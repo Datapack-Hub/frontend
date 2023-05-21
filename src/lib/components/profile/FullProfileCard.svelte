@@ -2,6 +2,7 @@
   import { titleCase } from "$lib/globals/functions";
   import { isAuthenticated, user } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
+  import IconSettings from "~icons/tabler/Settings.svelte";
 
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
@@ -44,13 +45,13 @@
     {profile?.username}
     {#if ["moderator", "developer", "admin"].includes(role?.name ?? "")}
       <span
-        class="material-icons text-base align-middle text-orange-500 transition-all hover:scale-125"
+        class="material-icons align-middle text-base text-orange-500 transition-all hover:scale-125"
         use:tippy="{orangeVerifiedHover}">verified</span
       >{:else if userProfile?.role == "helper"}<span
-        class="material-icons text-base align-middle text-blue-500 transition-all hover:scale-125"
+        class="material-icons align-middle text-base text-blue-500 transition-all hover:scale-125"
         use:tippy="{blueVerifiedHover}">verified</span
       >{:else if userProfile?.role == "verified"}<span
-        class="material-icons text-base align-middle text-emerald-500 transition-all hover:scale-125"
+        class="material-icons align-middle text-base text-emerald-500 transition-all hover:scale-125"
         use:tippy="{emeraldVerifiedHover}"
         >verified
       </span>
@@ -80,10 +81,7 @@
   </p>
   {#if $isAuthenticated && $user.id === userProfile?.id}
     <a href="/user/{$user.username}/edit" class="button-alt">
-      <img
-        loading="lazy"
-        src="/icons/settings.svg"
-        alt="settings"
+      <IconSettings
         width="24"
         height="24"
         class="float-left mr-2 max-w-sm stroke-blue-400 invert" />

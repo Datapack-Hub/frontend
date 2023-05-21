@@ -348,7 +348,7 @@
                 {version.name}
               </h2>
               <h2
-                class="text-base font-brand font-thin italic text-pearl-lusta-950 dark:text-white">
+                class="font-brand text-base font-thin italic text-pearl-lusta-950 dark:text-white">
                 {version.version_code}
               </h2>
             </div>

@@ -6,6 +6,11 @@
   import SvelteMarkdown from "svelte-markdown";
   import toast from "svelte-french-toast";
   import { apiURL, toastStyle } from "$lib/globals/consts";
+  import IconWarn from "~icons/tabler/AlertTriangle.svelte";
+  import IconBan from "~icons/tabler/Ban.svelte";
+  import IconMessage from "~icons/tabler/MailForward.svelte";
+  import IconLogOut from "~icons/tabler/Logout.svelte";
+  import IconSettings from "~icons/tabler/Settings.svelte";
 
   export let user: User | undefined;
 
@@ -171,7 +176,7 @@
     id="warn-message"></textarea>
   <button
     on:click="{async () => await warn()}"
-    class="text-base rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="rounded-md bg-dph-orange p-2 font-brand text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Warn {user?.username}</button>
 </Modal>
 
@@ -221,7 +226,7 @@
   <button
     on:click="{async () => await sendNotif()}"
     id="send_notif_btn"
-    class="text-base rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="rounded-md bg-dph-orange p-2 font-brand text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Send</button>
 </Modal>
 
@@ -256,7 +261,7 @@
     id="ban-message"></textarea>
   <button
     on:click="{async () => await banUser()}"
-    class="text-base rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="rounded-md bg-dph-orange p-2 font-brand text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Ban {user?.username}</button>
 </Modal>
 
@@ -276,7 +281,7 @@
   </p>
   <button
     on:click="{async () => await unbanUser()}"
-    class="text-base rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="rounded-md bg-dph-orange p-2 font-brand text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Unban {user?.username}</button>
 </Modal>
 
@@ -291,7 +296,7 @@
   </p>
   <button
     on:click="{async () => await logOutUser()}"
-    class="text-base rounded-md bg-dph-orange p-2 font-brand font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="rounded-md bg-dph-orange p-2 font-brand text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Log them out!</button>
 </Modal>
 
@@ -314,11 +319,7 @@
                 if (modJson['banned']) open(unbanDialog);
                 else open(banDialog);
               }}">
-              <img
-                loading="lazy"
-                src="/icons/ban.svg"
-                alt="ban"
-                class="h-8 p-1 dark:invert" />
+              <IconBan class="h-8 p-1 dark:invert" />
               {#if modJson["banned"]}Unban (expires {new Date(
                   modJson["banExpiry"]
                 ).toDateString()}){:else}Ban{/if}
@@ -326,42 +327,26 @@
             <button
               class="mt-1 flex w-full items-center rounded-md bg-orange-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(warnDialog)}">
-              <img
-                loading="lazy"
-                src="/icons/warn.svg"
-                alt="warn"
-                class="h-8 p-1 dark:invert" />
+              <IconWarn class="h-8 p-1 dark:invert" />
               Warn
             </button>
             <button
               class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               id="send_notif"
               on:click="{() => open(notifDialog)}">
-              <img
-                loading="lazy"
-                src="/icons/message.svg"
-                alt="msg"
-                class="h-8 p-1 dark:invert" />
+              <IconMessage class="h-8 p-1 dark:invert" />
               Send a Notification
             </button>
             <a
               href="/user/{user?.username}/edit"
               class="mt-1 flex w-full items-center rounded-md bg-blue-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
-              <img
-                loading="lazy"
-                src="/icons/settings.svg"
-                alt="ban"
-                class="h-8 p-1 dark:invert" />
+              <IconSettings class="h-8 p-1 dark:invert" />
               Edit Profile Details
             </a>
             <button
               class="mt-1 flex w-full items-center rounded-md bg-indigo-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(logOutDialog)}">
-              <img
-                loading="lazy"
-                src="/icons/log-out.svg"
-                alt="warn"
-                class="h-8 p-1 dark:invert" />
+              <IconLogOut class="h-8 p-1 dark:invert" />
               Log User Out
             </button>
           </div>
