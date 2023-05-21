@@ -59,7 +59,6 @@
       </p>
       <p class="font-brand text-sm font-thin italic text-white">
         ~ your favourite datapack hub staff team
-        ~ test >:(
       </p>
     </div>
   </div>

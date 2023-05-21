@@ -155,7 +155,7 @@
           <a href="/user/{author.username}" class="flex items-center space-x-2">
             <img
               loading="lazy"
-              src="{author.profile_icon}"
+              src="{author.profile_icon}?size=32"
               class="max-h-7 rounded-full"
               alt="pfp" />
             <span
