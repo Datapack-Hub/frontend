@@ -136,8 +136,8 @@
   let catVal = data.project?.category;
 
   async function create() {
-    if(titleValue?.length ?? 0 < 4) return toast.error("Title must be at least 3 characters")
-    if(bodyVal?.length ?? 0 < 101) return toast.error("Body must be at least 100 characters")
+    if(titleValue?.length < 4) return toast.error("Title must be at least 3 characters")
+    if(bodyVal?.length < 101) return toast.error("Body must be at least 100 characters")
 
     let projData = {
       title: titleValue,

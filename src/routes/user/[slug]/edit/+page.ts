@@ -16,9 +16,10 @@ export const load = (async ({ params }) => {
 
     const unsubscribeFromRole = role.subscribe(r => (defaultRole = r));
 
-    const [user, me] = await Promise.all([
+    const [user, me, roles] = await Promise.all([
       fetchAuthed("get", apiURL + "/user/" + params.slug),
-      fetchAuthed("get", apiURL + "/user/me")
+      fetchAuthed("get", apiURL + "/user/me"),
+      fetch(`${apiURL}/user/staff/roles`)
     ]);
 
     const [userJSON, meJSON] = await Promise.all([
@@ -26,7 +27,11 @@ export const load = (async ({ params }) => {
       (await me.json()) as User
     ]);
 
-    if (user.ok && me.ok) {
+    if (user.ok && me.ok && roles.ok) {
+      const profileRole: Role = (await roles.json()).roles.find(
+        (v: Role) => v.name == userJSON?.role
+      );
+
       if (
         userJSON.username != meJSON.username &&
         !defaultRole.permissions.includes("EDIT_USER")
@@ -40,7 +45,8 @@ export const load = (async ({ params }) => {
 
       unsubscribeFromRole();
       return {
-        profile: userJSON as User
+        profile: userJSON as User,
+        role: profileRole
       };
     }
   }
