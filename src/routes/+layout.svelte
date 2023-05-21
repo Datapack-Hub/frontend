@@ -33,7 +33,6 @@
         class="relative m-auto w-1/3 justify-self-center rounded-xl bg-stone-800 p-3 align-middle shadow-md shadow-black/25">
         <div class="flex items-center justify-center">
           <img
-            loading="lazy"
             src="/logos/dph.svg"
             alt="logo"
             class="mr-1 h-8 rounded-full transition-all hover:brightness-75"

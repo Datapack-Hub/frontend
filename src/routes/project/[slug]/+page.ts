@@ -28,6 +28,6 @@ export const load = (async ({ params }) => {
         description: "Why not go ahead and turn the idea into a reality?"
       });
     }
-    return {};
   }
+  return {};
 }) satisfies PageLoad;
