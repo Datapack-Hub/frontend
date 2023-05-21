@@ -4,7 +4,8 @@
   import JSZip from "jszip";
   import MultiSelect from "svelte-multiselect";
   import toast from "svelte-french-toast";
-  import { categories } from "$lib/globals/consts";
+  import { apiURL, categories } from "$lib/globals/consts";
+  import { goto } from "$app/navigation";
 
   const ui_libs = [
     "1.13-1.14.4",
@@ -129,6 +130,34 @@
       );
     }
   }
+  let titleValue = data.project?.title;
+  let descVal = data.project?.description;
+  let bodyVal = data.project?.body;
+  let catVal = data.project?.category;
+
+  async function create() {
+    if(titleValue?.length < 4) return toast.error("Title must be at least 3 characters")
+    if(bodyVal?.length < 101) return toast.error("Body must be at least 100 characters")
+
+    let projData = {
+      title: titleValue,
+      description: descVal,
+      body: bodyVal,
+      category: "German"
+    };
+
+    let x = await fetchAuthed(
+      "post",
+      apiURL + "/projects/edit/" + data.project?.ID,
+      projData
+    );
+    if (x.ok) {
+      goto(".")
+      toast.success("Edited project!");
+    } else {
+      toast.error("oops!");
+    }
+  }
 </script>
 
 <svelte:head>
@@ -194,9 +223,9 @@
           <input
             class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
             placeholder="Title"
-            value="{data.project?.title}"
             maxlength="50"
-            id="title" /><br /><br />
+            id="title"
+            bind:value="{titleValue}" /><br /><br />
 
           <!-- Short Description -->
           <p
@@ -207,8 +236,8 @@
             class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
             placeholder="This short description is used for social media embeds and the listing page."
             id="desc"
-            value="{data.project?.description}"
-            maxlength="200"></textarea
+            maxlength="200"
+            bind:value="{descVal}"></textarea
           ><br /><br />
 
           <!-- Long Description -->
@@ -220,8 +249,8 @@
             class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
             placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
             id="body"
-            value="{data.project?.body}"
-            maxlength="2000"></textarea
+            maxlength="2000"
+            bind:value="{bodyVal}"></textarea
           ><br /><br />
           <!-- Category -->
           <p
@@ -237,7 +266,11 @@
               </option>
             {/each}
           </select><br /><br />
-          <button class="button-alt"> Update Project </button>
+          <button
+            class="text-md pu-2 my-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 pb-1 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl"
+            on:click="{create}">
+            Update Project
+          </button>
         </div>
       </div>
 

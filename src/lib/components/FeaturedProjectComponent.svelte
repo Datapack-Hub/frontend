@@ -65,7 +65,7 @@
           height="128"
           class="aspect-square w-24 rounded-lg bg-cover" />
       {:else}
-        <IconNoPhoto width="48" height="48" />
+        <IconNoPhoto width="64" height="64" />
       {/if}
     </a>
     <div class="ml-4 w-2/3">

@@ -45,13 +45,13 @@
     {profile?.username}
     {#if ["moderator", "developer", "admin"].includes(role?.name ?? "")}
       <span
-        class="material-icons align-middle text-base md:text-lg lg:text-xl text-orange-500 transition-all hover:scale-125"
+        class="material-icons align-middle text-base text-orange-500 transition-all hover:scale-125 md:text-lg lg:text-xl"
         use:tippy="{orangeVerifiedHover}">verified</span
       >{:else if userProfile?.role == "helper"}<span
-        class="material-icons align-middle text-base md:text-lg lg:text-xl text-blue-500 transition-all hover:scale-125"
+        class="material-icons align-middle text-base text-blue-500 transition-all hover:scale-125 md:text-lg lg:text-xl"
         use:tippy="{blueVerifiedHover}">verified</span
       >{:else if userProfile?.role == "verified"}<span
-        class="material-icons align-middle text-base md:text-lg lg:text-xl text-emerald-500 transition-all hover:scale-125"
+        class="material-icons align-middle text-base text-emerald-500 transition-all hover:scale-125 md:text-lg lg:text-xl"
         use:tippy="{emeraldVerifiedHover}"
         >verified
       </span>
@@ -80,7 +80,9 @@
     {userProfile?.bio.replaceAll("\\n", "\n")}
   </p>
   {#if $isAuthenticated && $user.id === userProfile?.id}
-    <a href="/user/{$user.username}/edit" class="button-alt flex items-center w-full">
+    <a
+      href="/user/{$user.username}/edit"
+      class="button-alt flex w-full items-center">
       <IconSettings
         width="24"
         height="24"

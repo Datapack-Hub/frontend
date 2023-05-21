@@ -6,7 +6,10 @@ import { browser } from "$app/environment";
 
 export const load = (async ({ params, fetch }) => {
   if (browser) {
-    const projectReq = await fetch(apiURL + "/projects/get/" + params.slug);
+    const projectReq = await fetchAuthed(
+      "get",
+      apiURL + "/projects/get/" + params.slug
+    );
 
     if (projectReq.ok) {
       const projectJson = (await projectReq.json()) as Project;

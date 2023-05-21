@@ -322,7 +322,7 @@
                 if (modJson['banned']) open(unbanDialog);
                 else open(banDialog);
               }}">
-              <IconBan height=32 width=32 color={iconColor} class="p-1" />
+              <IconBan height="32" width="32" color="{iconColor}" class="p-1" />
               {#if modJson["banned"]}Unban (expires {new Date(
                   modJson["banExpiry"]
                 ).toDateString()}){:else}Ban{/if}
@@ -330,26 +330,42 @@
             <button
               class="mt-1 flex w-full items-center rounded-md bg-orange-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(warnDialog)}">
-              <IconWarn height=32 width=32 color={iconColor} class="p-1" />
+              <IconWarn
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
               Warn
             </button>
             <button
               class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               id="send_notif"
               on:click="{() => open(notifDialog)}">
-              <IconMessage height=32 width=32 color={iconColor} class="p-1" />
+              <IconMessage
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
               Send a Notification
             </button>
             <a
               href="/user/{user?.username}/edit"
               class="mt-1 flex w-full items-center rounded-md bg-blue-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
-              <IconSettings height=32 width=32 color={iconColor} class="p-1" />
+              <IconSettings
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
               Edit Profile Details
             </a>
             <button
               class="mt-1 flex w-full items-center rounded-md bg-indigo-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(logOutDialog)}">
-              <IconLogOut height=32 width=32 color={iconColor} class="p-1" />
+              <IconLogOut
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
               Log User Out
             </button>
           </div>
