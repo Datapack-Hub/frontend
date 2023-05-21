@@ -67,5 +67,9 @@
 }
 
 .prose {
-  @apply max-w-full;
+    @apply max-w-full
+  }
+
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  @apply text-blue-400 no-underline font-medium
 }

@@ -6,6 +6,7 @@
 
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
+  import IconCube from "~icons/tabler/Box.svelte";
   import { isAuthenticated, user } from "$lib/globals/stores";
   import Modal from "$lib/components/modals/Modal.svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
@@ -139,9 +140,10 @@
         {data.project?.description?.trimStart()}
       </h2>
       {#if visible}
+      <div class="flex space-x-2 items-center mt-4 ">
         <a
           href="/user/{author.username}"
-          class="mt-4 flex items-center space-x-2">
+          class="flex items-center space-x-2">
           <img
             loading="lazy"
             src="{author.profile_icon}"
@@ -153,6 +155,12 @@
             {author.username}
           </span>
         </a>
+        <span class="font-brand dark:text-white"> • </span>
+        <span class="font-brand dark:text-white flex items-center space-x-1">
+          <IconCube />
+          <p>{data.project?.category}</p>
+        </span>
+      </div>
       {/if}
     </div>
     <div class="flex flex-col space-y-1">
