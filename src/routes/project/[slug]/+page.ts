@@ -28,7 +28,10 @@ export const load = (async ({ params }) => {
         description: "Why not go ahead and turn the idea into a reality?"
       });
     } else {
-      return {};
+      throw error(500, {
+        message: "WHOOPS",
+        description: "something?"
+      });
     }
   }
 }) satisfies PageLoad;

@@ -57,7 +57,7 @@
     let packFormat;
 
     switch (version) {
-      case "1.13–1.14.4":
+      case "1.13-1.14.4":
         packFormat = 4;
         break;
       case "1.15-1.16.1":
@@ -85,10 +85,10 @@
     parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
 
     let final = await parsedZip.generateAsync({ type: "base64" });
-    // var clickMePlz = document.createElement("a");
-    // clickMePlz.download = url.split("/")[url.split("/").length - 1];
-    // clickMePlz.href = "data:application/zip;base64," + final;
-    // clickMePlz.click();
+    var clickMePlz = document.createElement("a");
+    clickMePlz.download = url.split("/")[url.split("/").length - 1];
+    clickMePlz.href = "data:application/zip;base64," + final;
+    clickMePlz.click();
 
     rp
       ? toast.success(
