@@ -1,14 +1,14 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import Notification from "$lib/components/Notification.svelte";
-  import autoAnimate from '@formkit/auto-animate'
+  import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
 
   export let data: PageData;
   let localNotifCopy = data.notifications;
-  let visible = false
+  let visible = false;
 
-  onMount(() => visible = true)
+  onMount(() => (visible = true));
 
   function remove(e: CustomEvent<any>) {
     localNotifCopy = localNotifCopy?.filter(v => v.id != e.detail.id);
@@ -36,7 +36,9 @@
         {/if}
         <ul use:autoAnimate>
           {#each localNotifCopy ?? [] as notification}
-            <Notification on:close="{e => remove(e)}" notification="{notification}" />
+            <Notification
+              on:close="{e => remove(e)}"
+              notification="{notification}" />
           {/each}
         </ul>
       {/if}

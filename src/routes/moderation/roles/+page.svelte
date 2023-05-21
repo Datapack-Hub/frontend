@@ -3,7 +3,7 @@
   import { goto } from "$app/navigation";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { apiURL } from "$lib/globals/consts";
-  import autoAnimate from '@formkit/auto-animate'
+  import autoAnimate from "@formkit/auto-animate";
 
   let rolesJson: Role[];
 

@@ -71,11 +71,11 @@
     if (selected.length == 0) {
       return toast.error(
         "Please select at least one compatible Minecraft version!"
-        );
-      }
+      );
+    }
 
-      const dataReader = new FileReader();
-      const packReader = new FileReader();
+    const dataReader = new FileReader();
+    const packReader = new FileReader();
     let transformedFile: string | ArrayBuffer | null;
     dataReader.readAsDataURL(zipFile);
 
@@ -135,7 +135,6 @@
         "There was an error handling this resource pack upload!"
       );
     };
-
   }
   let titleValue = data.project?.title;
   let descVal = data.project?.description;
@@ -189,17 +188,18 @@
           : 'bg-stone-800'} button-base"
         on:click="{() => (activePage = 'details')}">Details</button>
       <div class="flex-grow">
-      <button
-        class="{activePage === 'versions'
-          ? 'bg-stone-600'
-          : 'bg-stone-800'} button-base"
-        on:click="{() => (activePage = 'versions')}"
-        >Versions ({data.versions?.length})</button></div>
-      {#if ["draft","unpublished","disabled"].includes(data.project?.status)}
-      <button
-        class="bg-green-600 button-base flex items-center space-x-1"
-        on:click="{() => publishModal.open()}"
-        ><IconTick /><span>Publish Project</span></button>
+        <button
+          class="{activePage === 'versions'
+            ? 'bg-stone-600'
+            : 'bg-stone-800'} button-base"
+          on:click="{() => (activePage = 'versions')}"
+          >Versions ({data.versions?.length})</button>
+      </div>
+      {#if ["draft", "unpublished", "disabled"].includes(data.project?.status)}
+        <button
+          class="button-base flex items-center space-x-1 bg-green-600"
+          on:click="{() => publishModal.open()}"
+          ><IconTick /><span>Publish Project</span></button>
       {/if}
     </div>
 
@@ -408,17 +408,23 @@
 </main>
 <br />
 
-<Modal bind:this={publishModal}>
+<Modal bind:this="{publishModal}">
   <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
     Publish {data.project?.title}
   </h1>
   <CasualLine />
-  <p class="font-brand dark:text-white mb-2">Your project is currently: {data.project?.status}. If this project has not been published before, then it will be reviewed by a moderator before going live.</p>
-  <p class="font-brand dark:text-white mb-2">By publishing this project, you agree that it follows the rules.</p>
+  <p class="mb-2 font-brand dark:text-white">
+    Your project is currently: {data.project?.status}. If this project has not
+    been published before, then it will be reviewed by a moderator before going
+    live.
+  </p>
+  <p class="mb-2 font-brand dark:text-white">
+    By publishing this project, you agree that it follows the rules.
+  </p>
   <button
-        class="bg-green-600 button-base flex items-center space-x-1"
-        on:click="{() => publishModal.open()}"
-        ><IconTick /><span>Publish Project</span></button>
+    class="button-base flex items-center space-x-1 bg-green-600"
+    on:click="{() => publishModal.open()}"
+    ><IconTick /><span>Publish Project</span></button>
 </Modal>
 
 <style lang="postcss">

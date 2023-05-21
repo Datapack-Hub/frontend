@@ -4,7 +4,7 @@
   import { browser } from "$app/environment";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { apiURL } from "$lib/globals/consts";
-  import autoAnimate from '@formkit/auto-animate';
+  import autoAnimate from "@formkit/auto-animate";
 
   let rolesJson: Role[];
   let activePage = "dashboard";
@@ -67,7 +67,7 @@
       </div>
     {:else if activePage == "roles"}
       <div
-      use:autoAnimate
+        use:autoAnimate
         class="flex flex-col space-x-2 rounded-xl bg-stone-800 p-2 py-3 text-center align-middle md:text-start">
         <h1
           class="m-2 text-center font-brand text-2xl font-bold text-pearl-lusta-950 dark:text-white md:text-start">

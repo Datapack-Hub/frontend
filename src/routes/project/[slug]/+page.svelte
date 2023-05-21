@@ -18,7 +18,7 @@
   import DOMPurify from "isomorphic-dompurify";
   import SvelteMarkdown from "svelte-markdown";
   import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
-  import autoAnimate from '@formkit/auto-animate'
+  import autoAnimate from "@formkit/auto-animate";
 
   export let data: PageData;
   let visible = false;
@@ -122,7 +122,10 @@
   </div>
   <div
     class="relative flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10 dark:text-pearl-lusta-100">
-    <div class="{data.project?.icon ? "p-0" : "p-4 bg-stone-600 h-20"} mr-6 rounded-xl">
+    <div
+      class="{data.project?.icon
+        ? 'p-0'
+        : 'h-20 bg-stone-600 p-4'} mr-6 rounded-xl">
       {#if data.project?.icon}
         <img
           loading="lazy"
@@ -148,7 +151,7 @@
         {data.project?.description?.trimStart()}
       </h2>
       {#if visible}
-        <div class="flex space-x-2 items-center mt-4">
+        <div class="mt-4 flex items-center space-x-2">
           <a href="/user/{author.username}" class="flex items-center space-x-2">
             <img
               loading="lazy"
@@ -162,7 +165,7 @@
             </span>
           </a>
           <span class="font-brand dark:text-white"> • </span>
-          <span class="font-brand dark:text-white flex items-center space-x-1">
+          <span class="flex items-center space-x-1 font-brand dark:text-white">
             <IconCube />
             <p>{data.project?.category}</p>
           </span>
@@ -193,7 +196,7 @@
           : 'bg-stone-800'}"
         on:click="{() => (activePage = 'versions')}">Versions</button>
     </div>
-    {#if $user.id == data.project?.author || ["admin","moderator"].includes($user.role)}
+    {#if $user.id == data.project?.author || ["admin", "moderator"].includes($user.role)}
       <a
         class="button-base ml-auto flex items-center space-x-1"
         href="/project/{data.project?.url}/edit">
@@ -259,7 +262,7 @@
                   id="#download"
                   class="rounded-xl bg-dph-orange p-1 px-2 font-brand text-pearl-lusta-950 dark:text-white"
                   >Download</button>
-                </li>
+              </li>
             {/each}
           </ul>
           <p class="mx-1 mt-2 font-brand text-pearl-lusta-950 dark:text-white">

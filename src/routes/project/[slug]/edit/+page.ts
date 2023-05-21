@@ -4,7 +4,7 @@ import { fetchAuthed } from "$lib/globals/functions";
 import { apiURL } from "$lib/globals/consts";
 import { browser } from "$app/environment";
 
-export const load = (async ({ params, fetch }) => {
+export const load = (async ({ params }) => {
   if (browser) {
     const projectReq = await fetchAuthed(
       "get",
@@ -17,7 +17,10 @@ export const load = (async ({ params, fetch }) => {
 
       if (meReq.ok) {
         const meJson = (await meReq.json()) as User;
-        if (meJson.id == projectJson.author || ["admin","moderator"].includes(meJson.role)) {
+        if (
+          meJson.id == projectJson.author ||
+          ["admin", "moderator"].includes(meJson.role)
+        ) {
           const versionsReq = (
             await (
               await fetchAuthed(
