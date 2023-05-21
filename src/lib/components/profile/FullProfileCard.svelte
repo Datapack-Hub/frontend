@@ -77,13 +77,14 @@
     {/if}
   </p>
   <p
-    class="prose prose-stone w-full font-brand leading-tight dark:prose-invert bg-stone-800 p-2 rounded-xl my-2">
-    <SvelteMarkdown source="{profile?.bio.replaceAll('\\n', '\n').replaceAll("![", "[")}" />
+    class="prose prose-stone my-2 w-full rounded-xl bg-stone-800 p-2 font-brand leading-tight dark:prose-invert">
+    <SvelteMarkdown
+      source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
   {#if $isAuthenticated && $user.id === userProfile?.id}
     <a
       href="/user/{$user.username}/edit"
-      class="button-alt flex w-full items-center mb-2">
+      class="button-alt mb-2 flex w-full items-center">
       <IconSettings
         width="24"
         height="24"

@@ -115,7 +115,7 @@
 
     let upload = await fetchAuthed(
       "POST",
-      "https://api.datapackhub.net/versions/new/" + data.project?.ID,
+      `${apiURL}/versions/new/${data.project?.ID}`,
       versionData
     );
 
@@ -136,14 +136,16 @@
   let catVal = data.project?.category;
 
   async function create() {
-    if(titleValue?.length ?? 0 < 4) return toast.error("Title must be at least 3 characters")
-    if(bodyVal?.length ?? 0 < 101) return toast.error("Body must be at least 100 characters")
+    if ((titleValue?.length ?? 0) < 4)
+      return toast.error("Title must be at least 3 characters");
+    if ((bodyVal?.length ?? 0) < 101)
+      return toast.error("Body must be at least 100 characters");
 
     let projData = {
       title: titleValue,
       description: descVal,
       body: bodyVal,
-      category: "German"
+      category: [catVal]
     };
 
     let x = await fetchAuthed(
@@ -152,7 +154,7 @@
       projData
     );
     if (x.ok) {
-      goto(".")
+      goto(".");
       toast.success("Edited project!");
     } else {
       toast.error("oops!");
@@ -259,7 +261,7 @@
           </p>
           <select
             class="bg-new-white-300 w-1/4 rounded-md p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-            value="{data.project?.category[0]}">
+            bind:value="{catVal}">
             {#each categories as cat}
               <option value="{cat.id}">
                 {cat.text}

@@ -12,15 +12,14 @@
   let newRole = data.profile?.role;
 
   let uname: HTMLInputElement;
-  let bio:HTMLTextAreaElement;
+  let bio: HTMLTextAreaElement;
 
   onMount(() => {
     uname = document.getElementById("username") as HTMLInputElement;
     bio = document.getElementById("bio") as HTMLTextAreaElement;
-  })
+  });
 
   function save() {
-
     let req = {
       username: uname.value,
       bio: bio.value,
@@ -87,7 +86,7 @@
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
         id="bio"></textarea>
       <p
-        class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100 text-xs">
+        class="align-middle font-brand text-xs text-pearl-lusta-950 dark:text-pearl-lusta-100">
         {(500 - bio?.value.length).toString()} characters left
       </p>
       <br /><br />
