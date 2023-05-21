@@ -24,6 +24,7 @@ export const load = (async ({ params, fetch }) => {
       message: "Project not found",
       description: "Why not go ahead and turn the idea into a reality?"
     });
+  } else {
+    return {};
   }
-  return {};
 }) satisfies PageLoad;

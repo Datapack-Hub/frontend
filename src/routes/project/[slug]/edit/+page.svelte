@@ -196,7 +196,7 @@
           on:click="{() => (activePage = 'versions')}"
           >Versions ({data.versions?.length})</button>
       </div>
-      {#if ["draft", "unpublished", "disabled"].includes(data.project?.status)}
+      {#if ["draft", "unpublished", "disabled"].includes(data.project?.status ?? "draft")}
         <button
           class="button-base flex items-center space-x-1 bg-green-600"
           on:click="{() => publishModal.open()}"
