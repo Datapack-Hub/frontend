@@ -187,7 +187,7 @@
           : 'bg-stone-800'}"
         on:click="{() => (activePage = 'versions')}">Versions</button>
     </div>
-    {#if $user.id == data.project?.author}
+    {#if $user.id == data.project?.author || ["admin","moderator"].includes($user.role)}
       <a
         class="button-base ml-auto flex items-center space-x-1"
         href="/project/{data.project?.url}/edit">
