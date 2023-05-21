@@ -145,7 +145,7 @@
       title: titleValue,
       description: descVal,
       body: bodyVal,
-      category: [catVal]
+      category: catVal
     };
 
     let x = await fetchAuthed(

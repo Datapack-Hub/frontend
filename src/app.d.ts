@@ -35,7 +35,7 @@ declare type Project = {
   ID: number;
   author: number;
   icon: string?;
-  category: string[];
+  category: string;
   title: string;
   url: string;
   type: "datapack" | "url";
