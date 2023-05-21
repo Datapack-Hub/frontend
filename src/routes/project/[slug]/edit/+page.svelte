@@ -223,16 +223,6 @@
             value="{data.project?.body}"
             maxlength="2000"></textarea
           ><br /><br />
-
-          <!-- Downloadable File -->
-          <p
-            class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-            Datapack File Upload
-          </p>
-          <input
-            type="file"
-            class="rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-            id="file" /><br /><br />
           <!-- Category -->
           <p
             class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
