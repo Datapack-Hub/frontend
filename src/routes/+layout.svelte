@@ -13,12 +13,12 @@
 </script>
 
 <!-- {#await pageLoad() then} -->
-{#if $isAuthenticated && ["helper", "moderator", "admin"].includes($user.role)}
-  <div class="{$isDark ? 'dark' : ''}">
+<div class="{$isDark ? 'dark' : ''}">
+  {#if $isAuthenticated && ["helper", "moderator", "admin"].includes($user.role)}
     <div
       class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
       <Navbar />
-      {#if $user.banned ?? false}
+      {#if $user.banned}
         <BannedModal />
       {/if}
       <slot />
@@ -61,7 +61,7 @@
         ~ your favourite datapack hub staff team
       </p>
     </div>
+    {/if}
   </div>
-{/if}
 
 <!-- {/await} -->
