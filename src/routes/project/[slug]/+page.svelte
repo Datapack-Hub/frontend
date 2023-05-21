@@ -121,7 +121,7 @@
   </div>
   <div
     class="relative flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10 dark:text-pearl-lusta-100">
-    <div class="{data.project?.icon ? "p-0" : "p-4"} mr-6 bg-stone-600 rounded-xl">
+    <div class="{data.project?.icon ? "p-0" : "p-4 bg-stone-600 h-20"} mr-6 rounded-xl">
       {#if data.project?.icon}
         <img
           loading="lazy"
@@ -129,7 +129,7 @@
           alt="{data.project?.title} icon"
           class="aspect-square w-20 rounded-lg bg-cover" />
       {:else}
-        <IconNoPhoto width="96" height="96" />
+        <IconNoPhoto width="48" height="48" />
       {/if}
     </div>
     <div class="flex-grow">
