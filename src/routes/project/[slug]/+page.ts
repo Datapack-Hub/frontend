@@ -12,7 +12,7 @@ export const load = (async ({ params }) => {
       fetchAuthed("get", `${apiURL}/user/staff/roles`)
     ]);
 
-    if (!projectReq.ok && versionsReq.ok && rolesReq.ok) {
+    if (projectReq.ok && versionsReq.ok && rolesReq.ok) {
       const project = (await projectReq.json()) as Project;
       const versions = (await versionsReq.json()).result as Version[];
       const roles = (await rolesReq.json()).roles as Role[];
