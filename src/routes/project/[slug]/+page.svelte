@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getAuthorFromID, titleCase } from "$lib/globals/functions";
+  import { getAuthorFromID, sanitize, titleCase } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
 
@@ -14,7 +14,6 @@
   import tippy from "sveltejs-tippy";
   import JSZip from "jszip";
   import toast from "svelte-french-toast";
-  import DOMPurify from "isomorphic-dompurify";
   import SvelteMarkdown from "svelte-markdown";
   import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
   import autoAnimate from "@formkit/auto-animate";
@@ -25,11 +24,6 @@
   let activePage = "description";
 
   let author: User;
-
-  let body = DOMPurify.sanitize(data.project?.body ?? "", {
-    FORBID_ATTR: ["style", "class", "placeholder", "src"],
-    FORBID_TAGS: ["canvas", "svg", "iframe", "img", "input"]
-  });
 
   onMount(async () => {
     author = await getAuthorFromID(data.project?.author ?? 0);
@@ -99,13 +93,13 @@
 </script>
 
 <svelte:head>
-  <title>{data.project?.title} | Datapack Hub</title>
+  <title>{sanitize(data.project?.title)} | Datapack Hub</title>
 
-  <meta property="title" content="{data.project?.title}" />
-  <meta property="description" content="{data.project?.description}" />
+  <meta property="title" content="{sanitize(data.project?.title)}" />
+  <meta property="description" content="{sanitize(data.project?.description)}" />
 
-  <meta property="og:title" content="{data.project?.title} | Datapack Hub" />
-  <meta property="og:description" content="{data.project?.description}" />
+  <meta property="og:title" content="{sanitize(data.project?.title)} | Datapack Hub" />
+  <meta property="og:description" content="{sanitize(data.project?.description)}" />
 
   <meta name="og:profile:username" content="Silabear" />
   <meta name="og:image" content="{data.project?.icon}" />
@@ -130,7 +124,7 @@
         <img
           loading="lazy"
           src="{data.project?.icon}"
-          alt="{data.project?.title} icon"
+          alt="{sanitize(data.project?.title)} icon"
           class="aspect-square w-20 rounded-lg bg-cover" />
       {:else}
         <IconNoPhoto width="48" height="48" />
@@ -139,7 +133,7 @@
     <div class="flex-grow">
       <h1
         class="flex items-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
-        {data.project?.title.trimStart()}
+        {sanitize(data.project?.title.trimStart())}
         {#if data.project?.status == "draft"}
           <span
             class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
@@ -148,7 +142,7 @@
       </h1>
       <h2
         class="mt-2 font-brand text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
-        {data.project?.description?.trimStart()}
+        {sanitize(data.project?.description?.trimStart())}
       </h2>
       {#if visible}
         <div class="mt-4 flex items-center space-x-2">
@@ -167,7 +161,7 @@
           <span class="font-brand dark:text-white"> • </span>
           <span class="flex items-center space-x-1 font-brand dark:text-white">
             <IconCube />
-            <p>{data.project?.category}</p>
+            <p>{sanitize(data.project?.category)}</p>
           </span>
         </div>
       {/if}
@@ -209,7 +203,7 @@
       <div class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
         <p
           class="prose prose-stone w-full font-brand leading-tight dark:prose-invert">
-          <SvelteMarkdown source="{body.replaceAll('\\n', '\n')}" />
+          <SvelteMarkdown source="{sanitize(data.project?.body).replaceAll('\\n', '\n')}" />
         </p>
       </div>
     {:else if activePage == "versions"}
@@ -233,11 +227,11 @@
                 <div class="flex w-1/3 items-center space-x-2">
                   <h2
                     class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
-                    {version.name}
+                    {sanitize(version.name)}
                   </h2>
                   <h2
                     class="font-brand text-base font-thin italic text-pearl-lusta-950 dark:text-white">
-                    {version.version_code}
+                    {sanitize(version.version_code)}
                   </h2>
                 </div>
                 <h2
@@ -284,7 +278,7 @@
 
 <Modal bind:this="{dlModal}">
   <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
-    Download Version: {activeVersion.name}
+    Download Version: {sanitize(activeVersion.name)}
   </h1>
   <CasualLine />
   <div

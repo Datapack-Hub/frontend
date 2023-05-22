@@ -39,7 +39,7 @@ declare type Project = {
   title: string;
   url: string;
   type: "datapack" | "url";
-  description: string?;
+  description: string;
   body: string;
   status: string?;
 };

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fetchAuthed } from "$lib/globals/functions";
+  import { fetchAuthed, sanitize } from "$lib/globals/functions";
   import type { PageData } from "./$types";
   import JSZip from "jszip";
   import MultiSelect from "svelte-multiselect";
@@ -137,22 +137,22 @@
       );
     };
   }
-  let titleValue = data.project?.title;
+  let titleVal = data.project?.title;
   let descVal = data.project?.description;
   let bodyVal = data.project?.body;
   let catVal = data.project?.category;
 
   async function create() {
-    if ((titleValue?.length ?? 0) < 4)
+    if ((titleVal?.length ?? 0) < 4)
       return toast.error("Title must be at least 3 characters");
     if ((bodyVal?.length ?? 0) < 101)
       return toast.error("Body must be at least 100 characters");
 
     let projData = {
-      title: titleValue,
-      description: descVal,
-      body: bodyVal,
-      category: catVal
+      title: sanitize(titleVal),
+      description: sanitize(descVal),
+      body: sanitize(bodyVal),
+      category: sanitize(catVal)
     };
 
     let x = await fetchAuthed(
@@ -179,7 +179,7 @@
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
       class="pt-8 text-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-4xl">
-      Edit <span class="text-dph-orange">{data.project?.title}</span>
+      Edit <span class="text-dph-orange">{titleVal}</span>
     </h1>
     <br />
     <div class="mb-2 flex space-x-2">
@@ -243,7 +243,7 @@
               placeholder="Title"
               maxlength="50"
               id="title"
-              bind:value="{titleValue}" /><br /><br />
+              bind:value="{titleVal}" /><br /><br />
 
             <!-- Short Description -->
             <p
@@ -414,7 +414,7 @@
 
 <Modal bind:this="{publishModal}">
   <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
-    Publish {data.project?.title}
+    Publish {sanitize(data.project?.title)}
   </h1>
   <CasualLine />
   <p class="mb-2 font-brand dark:text-white">
