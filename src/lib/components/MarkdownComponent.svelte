@@ -1,20 +1,17 @@
 <script lang="ts">
-  import MarkdownIt from "markdown-it";
-  import { onMount } from "svelte";
+  import SvelteMarkdown from 'svelte-markdown';
+  import DOMPurify from "isomorphic-dompurify";
 
-  export let source: string | undefined;
-  let compiledSource = "";
+  export let source = "";
 
-  onMount(() => {
-    let md = MarkdownIt({
-      breaks: true,
-      linkify: true
-    });
-
-    if (source) compiledSource = md.render(source);
+  $: cleanedSource = DOMPurify.sanitize(source, {
+    FORBID_ATTR: ["style", "class", "placeholder", "src"],
+    FORBID_TAGS: ["canvas", "svg", "iframe", "img"],
+    ALLOWED_TAGS: ["details", "summary"]
   });
 </script>
 
-<p class="prose prose-stone leading-snug dark:prose-invert">
-  {@html compiledSource}
-</p>
+
+<div class="prose prose-stone dark:prose-invert leading-snug">
+  <SvelteMarkdown source="{cleanedSource}" />
+</div>

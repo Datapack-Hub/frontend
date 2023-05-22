@@ -20,7 +20,7 @@
     "1.17.x",
     "1.18.x",
     "1.19-1.19.3",
-    "1.19.4"
+    "1.19.4",
   ];
 
   let selected: string[] = [];
@@ -78,81 +78,67 @@
 
     const dataReader = new FileReader();
     const packReader = new FileReader();
-    let transformedFile: string | ArrayBuffer | null;
+
     dataReader.readAsDataURL(zipFile);
 
-    let versionData: {
-      name:string,
-      description:string,
-      minecraft_versions:string[],
-      version_code:string,
-      filename:string,
-      primary_download:string|ArrayBuffer|null,
-      resource_pack_download:string|ArrayBuffer|null|undefined
-      squash: boolean
+    let versionData = {
+      name: v_name,
+      description: v_changelog,
+      minecraft_versions: selected,
+      version_code: v_code,
+      filename: zipFile.name,
+      primary_download: "",
+      resource_pack_download: "",
+      squash: v_squash.checked
     };
 
-    if (v_rp.files?.length == 1) {
-      packReader.readAsDataURL(v_rp.files[0]);
-      packReader.onload = async () => {
-        versionData = {
-          name: v_name,
-          description: v_changelog,
-          minecraft_versions: selected,
-          version_code: v_code,
-          filename: zipFile.name,
-          primary_download: transformedFile,
-          resource_pack_download: packReader.result,
-          squash: false
-        };
-      };
-      packReader.onerror = () => {
-        return toast.error(
-          "There was an error handling this resource pack upload!"
-        );
-      };
-    }
-
-    dataReader.onload = async () => {
-      versionData = {
-        name: v_name,
-        description: v_changelog,
-        minecraft_versions: selected,
-        version_code: v_code,
-        filename: zipFile.name,
-        primary_download: dataReader.result,
-        resource_pack_download: packReader.result,
-        squash: false
+    let promise = new Promise((resolve, reject) => {
+      dataReader.onload = () => {
+        versionData.primary_download = dataReader.result as string
+        resolve(dataReader.result);
       };
 
-      if(v_squash.checked){
-        versionData.squash = true
+      dataReader.onerror = () => {
+        reject("There was an error handling this datapack upload!");
+      };
+    }).then(() => {
+
+      if (v_rp.files?.length == 1) {
+        packReader.readAsDataURL(v_rp.files[0]);
+
+        new Promise((resolve, reject) => {
+            packReader.onload = () => {
+            versionData.resource_pack_download = packReader.result as string
+            resolve(packReader.result)
+          };
+
+          packReader.onerror = () => {
+            reject("There was an error handling this resource pack upload!");
+          };
+        }).then(() => {
+          fetchAuthed(
+            "POST",
+            `${apiURL}/versions/new/${data.project?.ID}`,
+            versionData
+          ).then(() => {
+            toast.success(
+              "Posted the version! Refresh to see the latest changes."
+            );
+            return (createVersion = false);
+          }).catch(err => {
+            toast.error(
+              "There was an error uploading the file. Please try again later. If the issue persists, please contact an admin. Error: " +
+                err
+            );
+          });
+        })
       }
-
-      let upload = await fetchAuthed(
-        "POST",
-        `${apiURL}/versions/new/${data.project?.ID}`,
-        versionData
-      );
-
-      if (upload.ok) {
-        toast.success("Posted the version! Refresh to see the latest changes.");
-        return (createVersion = false);
-      } else {
-        let er = await upload.text();
-        toast.error(
-          "There was an error uploading the file. Please try again later. If the issue persists, please contact an admin. Error: " +
-            er
-        );
-      }
-    };
-
-    dataReader.onerror = () => {
-      return toast.error(
-        "There was an error handling this resource pack upload!"
-      );
-    };
+    }, err => {
+      return toast.error(err)
+    });
   }
+
+
   let titleValue = data.project?.title;
   let descVal = data.project?.description;
   let bodyVal = data.project?.body;
@@ -168,7 +154,7 @@
       title: titleValue,
       description: descVal,
       body: bodyVal,
-      category: catVal
+      category: catVal,
     };
 
     let x = await fetchAuthed(
@@ -374,7 +360,6 @@
                 id="v_changelog"
                 maxlength="2000"></textarea>
 
-
               <p
                 class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
                 Minecraft Versions
@@ -396,10 +381,12 @@
               <p></p>
               <div class=" mb-4">
                 <input name="squash" id="squash" type="checkbox" />
-                <label for="squash"
+                <label
+                  for="squash"
                   class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
-                  Squash datapack. (This compresses the zip file, making it load faster in game)
-              </label>
+                  Squash datapack. (This compresses the zip file, making it load
+                  faster in game)
+                </label>
               </div>
               <button class="button-style" on:click="{uploadVersion}"
                 >Create Version</button>
