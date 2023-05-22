@@ -92,7 +92,7 @@
       squash: v_squash.checked
     };
 
-    let promise = new Promise((resolve, reject) => {
+    toast.promise(new Promise((resolve, reject) => {
       dataReader.onload = () => {
         versionData.primary_download = dataReader.result as string
         resolve(dataReader.result);
@@ -133,36 +133,13 @@
           });
         })
       }
-<<<<<<< HEAD
     }, err => {
       return toast.error(err)
+    }), {
+      error: "Something went wrong!",
+      loading: "Uploading... (this may take a minute)",
+      success: "Successfully uploaded!"
     });
-=======
-
-      toast.promise(
-        fetchAuthed(
-          "POST",
-          `${apiURL}/versions/new/${data.project?.ID}`,
-          versionData
-        ).then(res => {
-          if(res.ok){
-            createVersion = false
-          }
-        }),
-        {
-          success: "Version uploaded! Refresh to see the latest changes.",
-          loading: "Uploading (this can take a minute)...",
-          error: "Unable to upload version. Please try again later"
-        }
-      );
-    };
-
-    dataReader.onerror = () => {
-      return toast.error(
-        "There was an error handling this resource pack upload!"
-      );
-    };
->>>>>>> 53b267855c77ae72ed3d280f5db76b986518b88a
   }
 
 
