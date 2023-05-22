@@ -62,6 +62,7 @@
       document.getElementById("v_changelog") as HTMLInputElement
     ).value;
     let v_rp = document.getElementById("v_rp") as HTMLInputElement;
+    let v_squash = document.getElementById("squash") as HTMLInputElement;
 
     if (!v_name)
       return toast.error("Please make sure you give a version name!");
@@ -80,7 +81,16 @@
     let transformedFile: string | ArrayBuffer | null;
     dataReader.readAsDataURL(zipFile);
 
-    let versionData;
+    let versionData: {
+      name:string,
+      description:string,
+      minecraft_versions:string[],
+      version_code:string,
+      filename:string,
+      primary_download:string|ArrayBuffer|null,
+      resource_pack_download:string|ArrayBuffer|null|undefined
+      squash: boolean
+    };
 
     if (v_rp.files?.length == 1) {
       packReader.readAsDataURL(v_rp.files[0]);
@@ -92,7 +102,8 @@
           version_code: v_code,
           filename: zipFile.name,
           primary_download: transformedFile,
-          resource_pack_download: packReader.result
+          resource_pack_download: packReader.result,
+          squash: false
         };
       };
       packReader.onerror = () => {
@@ -110,8 +121,13 @@
         version_code: v_code,
         filename: zipFile.name,
         primary_download: dataReader.result,
-        resource_pack_download: packReader.result
+        resource_pack_download: packReader.result,
+        squash: false
       };
+
+      if(v_squash.checked){
+        versionData.squash = true
+      }
 
       let upload = await fetchAuthed(
         "POST",
@@ -357,6 +373,7 @@
                 placeholder="This update changes..."
                 id="v_changelog"
                 maxlength="2000"></textarea>
+              
 
               <p
                 class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
@@ -377,6 +394,13 @@
                 id="v_rp"
                 class="mb-4 rounded-xl bg-pearl-lusta-300 p-2 font-brand text-pearl-lusta-950 dark:bg-stone-700 dark:text-white" />
               <p></p>
+              <div class=" mb-4">
+                <input name="squash" id="squash" type="checkbox" />
+                <label for="squash"
+                  class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                  Squash datapack. (This compresses the zip file, making it load faster in game)
+              </label>
+              </div>
               <button class="button-style" on:click="{uploadVersion}"
                 >Create Version</button>
             </div>
