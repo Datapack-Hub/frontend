@@ -20,7 +20,7 @@
     "1.17.x",
     "1.18.x",
     "1.19-1.19.3",
-    "1.19.4",
+    "1.19.4"
   ];
 
   let selected: string[] = [];
@@ -92,56 +92,65 @@
       squash: v_squash.checked
     };
 
-    toast.promise(new Promise((resolve, reject) => {
-      dataReader.onload = () => {
-        versionData.primary_download = dataReader.result as string
-        resolve(dataReader.result);
-      };
+    toast.promise(
+      new Promise((resolve, reject) => {
+        dataReader.onload = () => {
+          versionData.primary_download = dataReader.result as string;
+          resolve(dataReader.result);
+        };
 
-      dataReader.onerror = () => {
-        reject("There was an error handling this datapack upload!");
-      };
-    }).then(() => {
+        dataReader.onerror = () => {
+          reject("There was an error handling this datapack upload!");
+        };
+      }).then(
+        () => {
+          if (v_rp.files?.length == 1) {
+            packReader.readAsDataURL(v_rp.files[0]);
 
-      if (v_rp.files?.length == 1) {
-        packReader.readAsDataURL(v_rp.files[0]);
+            new Promise((resolve, reject) => {
+              packReader.onload = () => {
+                versionData.resource_pack_download =
+                  packReader.result as string;
+                resolve(packReader.result);
+              };
 
-        new Promise((resolve, reject) => {
-            packReader.onload = () => {
-            versionData.resource_pack_download = packReader.result as string
-            resolve(packReader.result)
-          };
-
-          packReader.onerror = () => {
-            reject("There was an error handling this resource pack upload!");
-          };
-        }).then(() => {
-          fetchAuthed(
-            "POST",
-            `${apiURL}/versions/new/${data.project?.ID}`,
-            versionData
-          ).then(() => {
-            toast.success(
-              "Posted the version! Refresh to see the latest changes."
-            );
-            return (createVersion = false);
-          }).catch(err => {
-            toast.error(
-              "There was an error uploading the file. Please try again later. If the issue persists, please contact an admin. Error: " +
-                err
-            );
-          });
-        })
+              packReader.onerror = () => {
+                reject(
+                  "There was an error handling this resource pack upload!"
+                );
+              };
+            }).then(() => {
+              fetchAuthed(
+                "POST",
+                `${apiURL}/versions/new/${data.project?.ID}`,
+                versionData
+              )
+                .then(() => {
+                  toast.success(
+                    "Posted the version! Refresh to see the latest changes."
+                  );
+                  return (createVersion = false);
+                })
+                .catch(err => {
+                  toast.error(
+                    "There was an error uploading the file. Please try again later. If the issue persists, please contact an admin. Error: " +
+                      err
+                  );
+                });
+            });
+          }
+        },
+        err => {
+          return toast.error(err);
+        }
+      ),
+      {
+        error: "Something went wrong!",
+        loading: "Uploading... (this may take a minute)",
+        success: "Successfully uploaded!"
       }
-    }, err => {
-      return toast.error(err)
-    }), {
-      error: "Something went wrong!",
-      loading: "Uploading... (this may take a minute)",
-      success: "Successfully uploaded!"
-    });
+    );
   }
-
 
   let titleValue = data.project?.title;
   let descVal = data.project?.description;
@@ -158,7 +167,7 @@
       title: titleValue,
       description: descVal,
       body: bodyVal,
-      category: catVal,
+      category: catVal
     };
 
     let x = await fetchAuthed(
@@ -174,13 +183,16 @@
     }
   }
 
-  async function publish(){
-    publishModal.close()
-    let pub = await fetchAuthed("post",apiURL + "/projects/id/" + data.project?.ID + "/publish")
-    if(pub.ok){
-      let t = await pub.text()
-      toast.success(t)
-      goto(".")
+  async function publish() {
+    publishModal.close();
+    let pub = await fetchAuthed(
+      "post",
+      apiURL + "/projects/id/" + data.project?.ID + "/publish"
+    );
+    if (pub.ok) {
+      let t = await pub.text();
+      toast.success(t);
+      goto(".");
     }
   }
 </script>
@@ -452,8 +464,7 @@
   </p>
   <button
     class="button-base flex items-center space-x-1 bg-green-600"
-    on:click="{publish}"
-    ><IconTick /><span>Publish Project</span></button>
+    on:click="{publish}"><IconTick /><span>Publish Project</span></button>
 </Modal>
 
 <style lang="postcss">

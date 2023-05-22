@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SvelteMarkdown from 'svelte-markdown';
+  import SvelteMarkdown from "svelte-markdown";
   import DOMPurify from "isomorphic-dompurify";
 
   export let source = "";
@@ -11,7 +11,6 @@
   });
 </script>
 
-
-<div class="prose prose-stone dark:prose-invert leading-snug">
+<div class="prose prose-stone leading-snug dark:prose-invert">
   <SvelteMarkdown source="{cleanedSource}" />
 </div>
