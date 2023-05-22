@@ -20,6 +20,7 @@ test.beforeEach(async ({ page }) => {
 test("notifications can be removed", async ({ page }) => {
   // check if it sent
   await page.goto("/notifications");
+  await page.locator(".testNotif").first().waitFor()
   for (let i = 0; i < (await page.locator(".testNotif").count()); i++) {
     await page.getByRole("button").nth(i).click();
     await page.waitForResponse((res) => {
@@ -58,7 +59,7 @@ test("notification can be sent", async ({ page }) => {
   await test.step("go to page", async () => {
     // check if it sent
     await page.goto("/notifications");
-    await page.locator(".testNotif").waitFor();
+    await page.locator(".testNotif").first().waitFor();
   });
 
   expect(await page.locator(".testNotif").count()).toBeGreaterThan(0);

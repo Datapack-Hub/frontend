@@ -373,7 +373,7 @@
                 placeholder="This update changes..."
                 id="v_changelog"
                 maxlength="2000"></textarea>
-              
+
 
               <p
                 class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
