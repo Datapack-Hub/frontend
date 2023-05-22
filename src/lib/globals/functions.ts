@@ -1,6 +1,5 @@
 import { apiURL } from "./consts";
 import { isDark } from "./stores";
-import DOMPurify from "isomorphic-dompurify";
 
 /**
  * Loads the user's preferred color scheme
@@ -80,12 +79,4 @@ export function titleCase(str: string | undefined): string {
       return word.charAt(0).toUpperCase() + word.slice(1);
     })
     .join(" ");
-}
-
-export function sanitize(str: string | undefined) {
-  if (!str) return "";
-  return DOMPurify.sanitize(str ?? "", {
-    FORBID_ATTR: ["style", "class", "placeholder", "src"],
-    FORBID_TAGS: ["canvas", "svg", "iframe", "img", "input"]
-  });
 }

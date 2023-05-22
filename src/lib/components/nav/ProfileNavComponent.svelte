@@ -92,7 +92,7 @@
       }}">
       <img
         loading="lazy"
-        src="{$user.profile_icon}&size=64"
+        src="{$user.profile_icon}&size=48"
         alt="{$user.username}'s profile picture"
         height="32"
         width="32"

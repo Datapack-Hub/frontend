@@ -16,7 +16,7 @@ export default defineConfig({
     '/staff',
     '/rules',
     '/user/hoodierocks',
-    '/project/realistic-dropped-items',
+    '/project/burnttoast',
     '/'
   ],
   debug: true,
