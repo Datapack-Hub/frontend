@@ -144,6 +144,14 @@
           <span
             class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
             >Draft</span>
+        {:else if data.project?.status == "publish_queue"}
+          <span
+            class="mx-3 rounded-full bg-yellow-700 px-2 font-brand text-xl font-bold text-yellow-500"
+            >Awaiting Approval</span>
+        {:else if data.project?.status == "unpublished"}
+          <span
+            class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
+            >Unpublished</span>
         {/if}
       </h1>
       <h2

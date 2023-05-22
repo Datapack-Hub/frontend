@@ -133,9 +133,36 @@
           });
         })
       }
+<<<<<<< HEAD
     }, err => {
       return toast.error(err)
     });
+=======
+
+      toast.promise(
+        fetchAuthed(
+          "POST",
+          `${apiURL}/versions/new/${data.project?.ID}`,
+          versionData
+        ).then(res => {
+          if(res.ok){
+            createVersion = false
+          }
+        }),
+        {
+          success: "Version uploaded! Refresh to see the latest changes.",
+          loading: "Uploading (this can take a minute)...",
+          error: "Unable to upload version. Please try again later"
+        }
+      );
+    };
+
+    dataReader.onerror = () => {
+      return toast.error(
+        "There was an error handling this resource pack upload!"
+      );
+    };
+>>>>>>> 53b267855c77ae72ed3d280f5db76b986518b88a
   }
 
 
@@ -167,6 +194,16 @@
       toast.success("Edited project!");
     } else {
       toast.error("oops!");
+    }
+  }
+
+  async function publish(){
+    publishModal.close()
+    let pub = await fetchAuthed("post",apiURL + "/projects/id/" + data.project?.ID + "/publish")
+    if(pub.ok){
+      let t = await pub.text()
+      toast.success(t)
+      goto(".")
     }
   }
 </script>
@@ -438,7 +475,7 @@
   </p>
   <button
     class="button-base flex items-center space-x-1 bg-green-600"
-    on:click="{() => publishModal.open()}"
+    on:click="{publish}"
     ><IconTick /><span>Publish Project</span></button>
 </Modal>
 
