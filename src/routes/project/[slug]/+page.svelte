@@ -7,6 +7,8 @@
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import IconCube from "~icons/tabler/Box.svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
+  import IconTick from "~icons/tabler/Check.svelte";
+  import IconCross from "~icons/tabler/X.svelte";
 
   import { isAuthenticated, user } from "$lib/globals/stores";
   import Modal from "$lib/components/modals/Modal.svelte";
@@ -203,6 +205,16 @@
           ? 'bg-stone-600'
           : 'bg-stone-800'}"
         on:click="{() => (activePage = 'versions')}">Versions</button>
+    </div>
+    <div class="flex space-x-1">
+      {#if data.project?.status == "publish_queue" || data.project?.status == "review_queue" && ["moderator", "admin"].includes($user.role) }
+      <button
+          class="button-base bg-green-600 flex items-center space-x-1"><IconTick /><span>Approve</span></button>
+      <button
+          class="button-base bg-yellow-600 flex items-center space-x-1"><IconPencil /><span>Request Changes</span></button>
+      <button
+          class="button-base bg-red-600 flex items-center space-x-1"><IconCross /><span>Deny</span></button>
+      {/if}
     </div>
     {#if $user.id == data.project?.author || ["admin", "moderator"].includes($user.role)}
       <a
