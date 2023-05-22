@@ -43,7 +43,7 @@
   </p>
   <div class="w-full md:w-1/3">
     <p
-      class="mb-6 text-center font-console text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-left md:text-6xl lg:text-8xl xl:text-9xl">
+      class="mb-6 text-center font-console text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-left md:text-6xl lg:text-8xl">
       {$page.error?.message}
     </p>
     <p

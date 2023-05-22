@@ -4,12 +4,12 @@ import type { PageLoad } from "./$types";
 import { browser } from "$app/environment";
 import { fetchAuthed } from "$lib/globals/functions";
 
-export const load = (async ({ params }) => {
+export const load = (async ({ params, fetch }) => {
   if (browser) {
     const [projectReq, versionsReq, rolesReq] = await Promise.all([
       fetchAuthed("get", `${apiURL}/projects/get/${params.slug}`),
       fetchAuthed("get", `${apiURL}/versions/project/url/${params.slug}`),
-      fetchAuthed("get", `${apiURL}/user/staff/roles`)
+      fetch(`${apiURL}/user/staff/roles`)
     ]);
 
     if (projectReq.ok && versionsReq.ok && rolesReq.ok) {
@@ -27,11 +27,7 @@ export const load = (async ({ params }) => {
         message: "Project not found",
         description: "Why not go ahead and turn the idea into a reality?"
       });
-    } else {
-      throw error(500, {
-        message: "WHOOPS",
-        description: "something?"
-      });
     }
   }
+  return {};
 }) satisfies PageLoad;
