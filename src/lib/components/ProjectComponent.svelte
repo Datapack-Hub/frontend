@@ -58,6 +58,16 @@
       class="absolute right-0 top-0 rounded-bl-md rounded-tr-xl bg-stone-700 px-2 font-brand font-bold text-stone-500">
       Draft
     </h2>
+  {:else if project.status == "unpublished"}
+    <h2
+      class="absolute right-0 top-0 rounded-bl-md rounded-tr-xl bg-stone-700 px-2 font-brand font-bold text-stone-500">
+      Unpublished
+    </h2>
+  {:else if project.status == "publish_queue"}
+    <h2
+      class="absolute right-0 top-0 rounded-bl-md rounded-tr-xl bg-yellow-700 px-2 font-brand font-bold text-yellow-500">
+      Awaiting Approval
+    </h2>
   {:else if project.status == "disabled"}
     <h2
       class="absolute right-0 top-0 rounded-bl-md rounded-tr-xl bg-red-700/50 px-2 font-brand font-bold text-red-500">
