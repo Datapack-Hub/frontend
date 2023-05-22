@@ -1,12 +1,12 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
   import { fetchAuthed, removeCookie } from "$lib/globals/functions";
-  import SvelteMarkdown from "svelte-markdown";
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
   import { isAuthenticated } from "$lib/globals/stores";
   import IconBan from "~icons/tabler/Ban.svelte";
   import { apiURL } from "$lib/globals/consts";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
 
   let visible = false;
   let banReason: string;
@@ -57,7 +57,7 @@
       </p>
       <p
         class="prose my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300">
-        <SvelteMarkdown source="{banReason}" />
+        <MarkdownComponent source="{banReason}" />
       </p>
       <p class="mt-6 font-brand text-pearl-lusta-950 dark:text-white">
         <b>Your ban will expire:</b>

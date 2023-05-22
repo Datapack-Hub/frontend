@@ -15,10 +15,10 @@
   import JSZip from "jszip";
   import toast from "svelte-french-toast";
   import DOMPurify from "isomorphic-dompurify";
-  import SvelteMarkdown from "svelte-markdown";
   import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
+  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
 
   export let data: PageData;
   let visible = false;
@@ -207,9 +207,8 @@
   <div use:autoAnimate>
     {#if activePage == "description"}
       <div class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
-        <p
-          class="prose prose-stone w-full font-brand leading-tight dark:prose-invert">
-          <SvelteMarkdown source="{body.replaceAll('\\n', '\n')}" />
+        <p class="w-full font-brand leading-tight dark:prose-invert">
+          <MarkdownComponent source="{body.replaceAll('\\n', '\n')}" />
         </p>
       </div>
     {:else if activePage == "versions"}

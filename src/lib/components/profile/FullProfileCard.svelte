@@ -1,9 +1,9 @@
 <script lang="ts">
   import { titleCase } from "$lib/globals/functions";
   import { isAuthenticated, user } from "$lib/globals/stores";
-  import SvelteMarkdown from "svelte-markdown";
   import tippy from "sveltejs-tippy";
   import IconSettings from "~icons/tabler/Settings.svelte";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
 
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
@@ -78,7 +78,7 @@
   </p>
   <p
     class="prose prose-stone my-2 w-full rounded-xl bg-stone-800 p-2 font-brand leading-tight dark:prose-invert">
-    <SvelteMarkdown
+    <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
   {#if $isAuthenticated && $user.id === userProfile?.id}

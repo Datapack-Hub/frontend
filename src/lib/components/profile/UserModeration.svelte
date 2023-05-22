@@ -3,7 +3,6 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import { fetchAuthed } from "../../globals/functions";
   import { browser } from "$app/environment";
-  import SvelteMarkdown from "svelte-markdown";
   import toast from "svelte-french-toast";
   import { apiURL, toastStyle } from "$lib/globals/consts";
   import IconWarn from "~icons/tabler/AlertTriangle.svelte";
@@ -12,6 +11,7 @@
   import IconLogOut from "~icons/tabler/Logout.svelte";
   import IconSettings from "~icons/tabler/Settings.svelte";
   import { isDark } from "$lib/globals/stores";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
 
   export let user: User | undefined;
 
@@ -277,7 +277,7 @@
     {user?.username} has been banned for the following reason:
   </p>
   <p class="my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300">
-    <SvelteMarkdown source="{modJson['banMessage']}" />
+    <MarkdownComponent source="{modJson['banMessage']}" />
   </p>
   <p class="font-brand text-pearl-lusta-950 dark:text-white">
     Unban them to end their ban early.
