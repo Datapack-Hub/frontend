@@ -3,7 +3,6 @@
   import { goto } from "$app/navigation";
   import { fetchAuthed } from "$lib/globals/functions";
   import { apiURL } from "$lib/globals/consts";
-  import { page } from "$app/stores";
   import ProjectComponent from "$lib/components/ProjectComponent.svelte";
 
   let projects: Project[];
@@ -13,10 +12,7 @@
       goto("/");
     }
 
-    let q = await fetchAuthed(
-      "get",
-      `${apiURL}/moderation/queue/publish`
-    );
+    let q = await fetchAuthed("get", `${apiURL}/moderation/queue/publish`);
     projects = (await q.json())["projects"] as Project[];
   }
 </script>
@@ -33,9 +29,11 @@
       Project publication queue
     </h1>
     {#await loadStuff() then}
-    <p class="my-2 dark:text-white font-brand">There are {projects.length} items awaiting approval:</p>
+      <p class="my-2 font-brand dark:text-white">
+        There are {projects.length} items awaiting approval:
+      </p>
       {#each projects ?? [] as proj}
-      <ProjectComponent project={proj} />
+        <ProjectComponent project="{proj}" />
       {/each}
     {/await}
   </div>

@@ -1,5 +1,5 @@
 <script>
-  import dph from '$lib/assets/logos/dph.svg'
+  import dph from "$lib/assets/logos/dph.svg";
 </script>
 
 <footer

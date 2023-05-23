@@ -1,5 +1,9 @@
 <script lang="ts">
-  import { fetchAuthed, getAuthorFromID, titleCase } from "$lib/globals/functions";
+  import {
+    fetchAuthed,
+    getAuthorFromID,
+    titleCase
+  } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
 
@@ -9,7 +13,6 @@
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconCross from "~icons/tabler/X.svelte";
-  import IconWarn from "~icons/tabler/AlertTriangle.svelte";
 
   import { isAuthenticated, user } from "$lib/globals/stores";
   import Modal from "$lib/components/modals/Modal.svelte";
@@ -48,77 +51,87 @@
   }
 
   async function download(url: string, version: string, rp: boolean) {
-    if(browser) {
-    let zip = await fetch(url);
-    let zipBlob = await zip.blob();
-    let parsedZip = await JSZip.loadAsync(zipBlob);
+    if (browser) {
+      let zip = await fetch(url);
+      let zipBlob = await zip.blob();
+      let parsedZip = await JSZip.loadAsync(zipBlob);
 
-    let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
-    let packMcmData = JSON.parse(packMcm);
-    let packFormat;
+      let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
+      let packMcmData = JSON.parse(packMcm);
+      let packFormat;
 
-    switch (version) {
-      case "1.13-1.14.4":
-        packFormat = 4;
-        break;
-      case "1.15-1.16.1":
-        packFormat = 5;
-        break;
-      case "1.16.2-1.16.5":
-        packFormat = 6;
-        break;
-      case "1.17.x":
-        packFormat = 7;
-        break;
-      case "1.18.x":
-        packFormat = 8;
-        break;
-      case "1.19-1.19.3":
-        packFormat = 10;
-        break;
-      case "1.19.4":
-        packFormat = 12;
-        break;
+      switch (version) {
+        case "1.13-1.14.4":
+          packFormat = 4;
+          break;
+        case "1.15-1.16.1":
+          packFormat = 5;
+          break;
+        case "1.16.2-1.16.5":
+          packFormat = 6;
+          break;
+        case "1.17.x":
+          packFormat = 7;
+          break;
+        case "1.18.x":
+          packFormat = 8;
+          break;
+        case "1.19-1.19.3":
+          packFormat = 10;
+          break;
+        case "1.19.4":
+          packFormat = 12;
+          break;
+      }
+
+      packMcmData["pack"]["pack_format"] = packFormat;
+
+      parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
+
+      let final = await parsedZip.generateAsync({ type: "base64" });
+      var clickMePlz = document.createElement("a");
+      clickMePlz.download = url.split("/")[url.split("/").length - 1];
+      clickMePlz.href = "data:application/zip;base64," + final;
+      clickMePlz.click();
+
+      rp
+        ? toast.success(
+            "Downloaded file! Make sure to download the resource pack too."
+          )
+        : toast.success("Downloaded file!");
     }
-
-    packMcmData["pack"]["pack_format"] = packFormat;
-
-    parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
-
-    let final = await parsedZip.generateAsync({ type: "base64" });
-    var clickMePlz = document.createElement("a");
-    clickMePlz.download = url.split("/")[url.split("/").length - 1];
-    clickMePlz.href = "data:application/zip;base64," + final;
-    clickMePlz.click();
-
-    rp
-      ? toast.success(
-          "Downloaded file! Make sure to download the resource pack too."
-        )
-      : toast.success("Downloaded file!");
   }
-}
 
-  async function dismissModMsg(){
-    let dsm = await fetchAuthed("DELETE", apiURL + "/moderation/project/" + data.project?.ID.toString() + "/dismiss_message")
-    if(dsm.ok){
-      mm.remove()
-      return toast.success("Deleted the message!")
+  async function dismissModMsg() {
+    let dsm = await fetchAuthed(
+      "DELETE",
+      apiURL +
+        "/moderation/project/" +
+        data.project?.ID.toString() +
+        "/dismiss_message"
+    );
+    if (dsm.ok) {
+      mm.remove();
+      return toast.success("Deleted the message!");
     }
   }
 
   let status = data.project?.status;
-  let mm: HTMLDivElement
+  let mm: HTMLDivElement;
 
-  async function approve(){
-    let p = await fetchAuthed("PATCH",apiURL + "/moderation/project/" + data.project?.ID.toString() + "/action",{
-      action:"publish"
-    })
-    if(p.ok){
+  async function approve() {
+    let p = await fetchAuthed(
+      "PATCH",
+      apiURL + "/moderation/project/" + data.project?.ID.toString() + "/action",
+      {
+        action: "publish"
+      }
+    );
+    if (p.ok) {
       status = "live";
-      return toast.success("Published the project!")
-    }else{
-      return toast.error("Something went wrong! Try again later.")
+      return toast.success("Published the project!");
+    } else {
+      return toast.error("Something went wrong! Try again later.");
     }
   }
 </script>
@@ -217,19 +230,25 @@
     </div>
   </div>
   {#if data.project?.mod_message}
-  <div class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100" id="modmsg" bind:this={mm}>
-    {#if status != "disabled"}
-    <button
-    class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
-    on:click="{dismissModMsg}"><IconCross /></button>
-    {/if}
-    <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
-    <p
-      class="prose mt-2 mb-1 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
-      <SvelteMarkdown source={data.project?.mod_message} />
-    </p>
-    <p class="font-brand text-xs">Only you (and staff) can read this message. Once you've acknowleged it, you can dismiss the message if the project isn't disabled.</p>
-  </div>
+    <div
+      class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100"
+      id="modmsg"
+      bind:this="{mm}">
+      {#if status != "disabled"}
+        <button
+          class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+          on:click="{dismissModMsg}"><IconCross /></button>
+      {/if}
+      <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
+      <p
+        class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
+        <SvelteMarkdown source="{data.project?.mod_message}" />
+      </p>
+      <p class="font-brand text-xs">
+        Only you (and staff) can read this message. Once you've acknowleged it,
+        you can dismiss the message if the project isn't disabled.
+      </p>
+    </div>
   {/if}
   <div class="my-2 mt-6 flex space-x-2">
     <div class="min-w-fit flex-grow">
@@ -245,14 +264,14 @@
         on:click="{() => (activePage = 'versions')}">Versions</button>
     </div>
     <div class="flex space-x-1">
-      {#if status == "publish_queue" || status == "review_queue" && ["moderator", "admin"].includes($user.role) }
-      <button
-          class="button-base bg-green-600 flex items-center space-x-1"
+      {#if status == "publish_queue" || (status == "review_queue" && ["moderator", "admin"].includes($user.role))}
+        <button
+          class="button-base flex items-center space-x-1 bg-green-600"
           on:click="{approve}"><IconTick /><span>Approve</span></button>
-      <button
-          class="button-base bg-yellow-600 flex items-center space-x-1"><IconPencil /><span>Request Changes</span></button>
-      <button
-          class="button-base bg-red-600 flex items-center space-x-1"><IconCross /><span>Deny</span></button>
+        <button class="button-base flex items-center space-x-1 bg-yellow-600"
+          ><IconPencil /><span>Request Changes</span></button>
+        <button class="button-base flex items-center space-x-1 bg-red-600"
+          ><IconCross /><span>Deny</span></button>
       {/if}
     </div>
     {#if $user.id == data.project?.author || ["admin", "moderator"].includes($user.role)}

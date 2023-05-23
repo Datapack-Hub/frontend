@@ -30,7 +30,7 @@
   });
 
   function signOut() {
-    if(browser) {
+    if (browser) {
       removeCookie("dph_token");
       location.replace("/");
     }
