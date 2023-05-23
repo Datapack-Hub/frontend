@@ -9,8 +9,10 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
+  import IconCross from "~icons/tabler/X.svelte";
   import autoAnimate from "@formkit/auto-animate";
   import { browser } from "$app/environment";
+  import SvelteMarkdown from "svelte-markdown";
 
   let publishModal: Modal;
 
@@ -212,7 +214,15 @@
       class="pt-8 text-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-4xl">
       Edit <span class="text-dph-orange">{data.project?.title}</span>
     </h1>
-    <br />
+    {#if data.project?.mod_message}
+    <div class="my-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100">
+      <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
+      <p
+        class="prose mt-2 mb-1 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
+        <SvelteMarkdown source={data.project?.mod_message} />
+      </p>
+    </div>
+    {/if}
     <div class="mb-2 flex space-x-2">
       <button
         class="{activePage === 'details'

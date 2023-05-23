@@ -9,6 +9,7 @@
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconCross from "~icons/tabler/X.svelte";
+  import IconWarn from "~icons/tabler/AlertTriangle.svelte";
 
   import { isAuthenticated, user } from "$lib/globals/stores";
   import Modal from "$lib/components/modals/Modal.svelte";
@@ -101,18 +102,20 @@
   async function dismissModMsg(){
     let dsm = await fetchAuthed("DELETE", apiURL + "/moderation/project/" + data.project?.ID.toString() + "/dismiss_message")
     if(dsm.ok){
+      mm.remove()
       return toast.success("Deleted the message!")
     }
   }
 
-  let status = data.project?.status
+  let status = data.project?.status;
+  let mm: HTMLDivElement
 
   async function approve(){
     let p = await fetchAuthed("PATCH",apiURL + "/moderation/project/" + data.project?.ID.toString() + "/action",{
       action:"publish"
     })
     if(p.ok){
-      status = "live"
+      status = "live";
       return toast.success("Published the project!")
     }else{
       return toast.error("Something went wrong! Try again later.")
@@ -214,16 +217,18 @@
     </div>
   </div>
   {#if data.project?.mod_message}
-  <div class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100">
+  <div class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100" id="modmsg" bind:this={mm}>
+    {#if status != "disabled"}
     <button
     class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
     on:click="{dismissModMsg}"><IconCross /></button>
+    {/if}
     <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
     <p
       class="prose mt-2 mb-1 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
       <SvelteMarkdown source={data.project?.mod_message} />
     </p>
-    <p class="font-brand text-xs">Only you (and staff) can read this message. Once you've acknowleged it, you can dismiss the message.</p>
+    <p class="font-brand text-xs">Only you (and staff) can read this message. Once you've acknowleged it, you can dismiss the message if the project isn't disabled.</p>
   </div>
   {/if}
   <div class="my-2 mt-6 flex space-x-2">
