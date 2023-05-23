@@ -226,6 +226,7 @@
       class="prose mt-2 mb-1 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
       <SvelteMarkdown source={data.project?.mod_message} />
     </p>
+    <p class="font-brand text-xs">Only you (and staff) can read this message. Once you've acknowleged it, you can dismiss the message.</p>
   </div>
   {/if}
   <div class="my-2 mt-6 flex space-x-2">
