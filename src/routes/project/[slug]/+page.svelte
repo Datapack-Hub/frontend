@@ -16,24 +16,19 @@
   import tippy from "sveltejs-tippy";
   import JSZip from "jszip";
   import toast from "svelte-french-toast";
-  import DOMPurify from "isomorphic-dompurify";
   import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
   import SvelteMarkdown from "svelte-markdown";
+  import { browser } from "$app/environment";
 
   export let data: PageData;
   let visible = false;
   let activePage = "description";
 
   let author: User;
-
-  let body = DOMPurify.sanitize(data.project?.body ?? "", {
-    FORBID_ATTR: ["style", "class", "placeholder", "src"],
-    FORBID_TAGS: ["canvas", "svg", "iframe", "img", "input"]
-  });
 
   onMount(async () => {
     author = await getAuthorFromID(data.project?.author ?? 0);
@@ -52,6 +47,7 @@
   }
 
   async function download(url: string, version: string, rp: boolean) {
+    if(browser) {
     let zip = await fetch(url);
     let zipBlob = await zip.blob();
     let parsedZip = await JSZip.loadAsync(zipBlob);
@@ -100,9 +96,10 @@
         )
       : toast.success("Downloaded file!");
   }
+}
 
-  async function dismiss_mod_msg(){
-    let dsm = await fetchAuthed("DELETE",apiURL + "/moderation/project/" + data.project?.ID.toString() + "/dismiss_message")
+  async function dismissModMsg(){
+    let dsm = await fetchAuthed("DELETE", apiURL + "/moderation/project/" + data.project?.ID.toString() + "/dismiss_message")
     if(dsm.ok){
       return toast.success("Deleted the message!")
     }
@@ -220,7 +217,7 @@
   <div class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100">
     <button
     class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
-    on:click="{dismiss_mod_msg}"><IconCross /></button>
+    on:click="{dismissModMsg}"><IconCross /></button>
     <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
     <p
       class="prose mt-2 mb-1 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
@@ -265,7 +262,7 @@
     {#if activePage == "description"}
       <div class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
         <p class="w-full font-brand leading-tight dark:prose-invert">
-          <MarkdownComponent source="{body.replaceAll('\\n', '\n')}" />
+          <MarkdownComponent source="{data.project?.description}" />
         </p>
       </div>
     {:else if activePage == "versions"}

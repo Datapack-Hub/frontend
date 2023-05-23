@@ -10,6 +10,7 @@
   import CasualLine from "$lib/components/CasualLine.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
   import autoAnimate from "@formkit/auto-animate";
+  import { browser } from "$app/environment";
 
   let publishModal: Modal;
 
@@ -32,26 +33,28 @@
   let createVersion = false;
 
   async function upload() {
-    let inp = document.getElementById("zip") as HTMLInputElement;
-    if (inp.files) zipFile = inp.files[0];
+    if(browser) {
+      let inp = document.getElementById("zip") as HTMLInputElement;
+      if (inp.files) zipFile = inp.files[0];
 
-    if (zipFile?.size > 5e6) {
-      toast.error("File size can't be more than 5mb!");
-      inp.files = null;
-      return;
-    }
-
-    let jsZip = new JSZip();
-
-    if (zipFile) {
-      let zip = await jsZip.loadAsync(zipFile);
-      if (zip.file("pack.mcmeta") == null) {
-        return toast.error("Missing pack.mcmeta");
+      if (zipFile?.size > 5e6) {
+        toast.error("File size can't be more than 5mb!");
+        inp.files = null;
+        return;
       }
 
-      createVersion = true;
-    } else {
-      return toast.error("Missing file");
+      let jsZip = new JSZip();
+
+      if (zipFile) {
+        let zip = await jsZip.loadAsync(zipFile);
+        if (zip.file("pack.mcmeta") == null) {
+          return toast.error("Missing pack.mcmeta");
+        }
+
+        createVersion = true;
+      } else {
+        return toast.error("Missing file");
+      }
     }
   }
 
