@@ -82,7 +82,14 @@
     </a>
     <a
       href="/user/{$user.username}"
-      >
+      use:tippy="{{
+        content:
+          $user.username +
+          "<span class='items-center'><br /><button onclick=\"document.cookie = 'dph_token' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; window.location.replace('/')\" class='text-sky-500'>Sign Out</a></span>",
+        placement: 'bottom',
+        interactive: true,
+        allowHTML: true
+      }}">
       <img
         loading="lazy"
         src="{$user.profile_icon}&size=48"
