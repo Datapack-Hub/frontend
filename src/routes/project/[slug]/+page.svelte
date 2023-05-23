@@ -134,6 +134,11 @@
       return toast.error("Something went wrong! Try again later.");
     }
   }
+
+  let description = ""
+  if(data.project?.description) {
+    description = data.project.description
+  }
 </script>
 
 <svelte:head>
@@ -286,7 +291,7 @@
     {#if activePage == "description"}
       <div class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
         <p class="w-full font-brand leading-tight dark:prose-invert">
-          <MarkdownComponent source="{data.project?.description}" />
+          <MarkdownComponent source="{description}" />
         </p>
       </div>
     {:else if activePage == "versions"}
