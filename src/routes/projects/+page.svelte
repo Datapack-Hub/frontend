@@ -7,13 +7,14 @@
   import autoAnimate from "@formkit/auto-animate";
 
   import IconSearch from "~icons/tabler/Search.svelte";
+  import { browser } from "$app/environment";
 
   let query: string;
 
-  let search = debounce(async () => {
+  let search = browser ? debounce(async () => {
     let searchResult = await fetch(apiURL + `/projects/search?query=${query}`);
     data.projects = (await searchResult.json()).result as Project[];
-  }, 300);
+  }, 300) : () => {};
 
   export let data: PageData;
 </script>
