@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getAuthorFromID, titleCase } from "$lib/globals/functions";
+  import { fetchAuthed, getAuthorFromID, titleCase } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
 
@@ -21,6 +21,8 @@
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import { apiURL } from "$lib/globals/consts";
+  import SvelteMarkdown from "svelte-markdown";
 
   export let data: PageData;
   let visible = false;
@@ -98,6 +100,27 @@
         )
       : toast.success("Downloaded file!");
   }
+
+  async function dismiss_mod_msg(){
+    let dsm = await fetchAuthed("DELETE",apiURL + "/moderation/project/" + data.project?.ID.toString() + "/dismiss_message")
+    if(dsm.ok){
+      return toast.success("Deleted the message!")
+    }
+  }
+
+  let status = data.project?.status
+
+  async function approve(){
+    let p = await fetchAuthed("PATCH",apiURL + "/moderation/project/" + data.project?.ID.toString() + "/action",{
+      action:"publish"
+    })
+    if(p.ok){
+      status = "live"
+      return toast.success("Published the project!")
+    }else{
+      return toast.error("Something went wrong! Try again later.")
+    }
+  }
 </script>
 
 <svelte:head>
@@ -142,15 +165,15 @@
       <h1
         class="flex items-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
         {data.project?.title.trimStart()}
-        {#if data.project?.status == "draft"}
+        {#if status == "draft"}
           <span
             class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
             >Draft</span>
-        {:else if data.project?.status == "publish_queue"}
+        {:else if status == "publish_queue"}
           <span
             class="mx-3 rounded-full bg-yellow-700 px-2 font-brand text-xl font-bold text-yellow-500"
             >Awaiting Approval</span>
-        {:else if data.project?.status == "unpublished"}
+        {:else if status == "unpublished"}
           <span
             class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
             >Unpublished</span>
@@ -193,6 +216,18 @@
       {/if}
     </div>
   </div>
+  {#if data.project?.mod_message}
+  <div class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100">
+    <button
+    class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+    on:click="{dismiss_mod_msg}"><IconCross /></button>
+    <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
+    <p
+      class="prose mt-2 mb-1 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
+      <SvelteMarkdown source={data.project?.mod_message} />
+    </p>
+  </div>
+  {/if}
   <div class="my-2 mt-6 flex space-x-2">
     <div class="min-w-fit flex-grow">
       <button
@@ -207,9 +242,10 @@
         on:click="{() => (activePage = 'versions')}">Versions</button>
     </div>
     <div class="flex space-x-1">
-      {#if data.project?.status == "publish_queue" || data.project?.status == "review_queue" && ["moderator", "admin"].includes($user.role) }
+      {#if status == "publish_queue" || status == "review_queue" && ["moderator", "admin"].includes($user.role) }
       <button
-          class="button-base bg-green-600 flex items-center space-x-1"><IconTick /><span>Approve</span></button>
+          class="button-base bg-green-600 flex items-center space-x-1"
+          on:click="{approve}"><IconTick /><span>Approve</span></button>
       <button
           class="button-base bg-yellow-600 flex items-center space-x-1"><IconPencil /><span>Request Changes</span></button>
       <button

@@ -42,6 +42,7 @@ declare type Project = {
   description: string?;
   body: string;
   status: string?;
+  mod_message: string?;
 };
 
 declare type Notif = {
