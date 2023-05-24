@@ -308,7 +308,7 @@
               class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
               placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
               id="body"
-              bind:value="{bodyVal}"maxlength="100000"></textarea
+              bind:value="{bodyVal}"maxlength="10000"></textarea
             ><br /><br />
             <!-- Category -->
             <p
