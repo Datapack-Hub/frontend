@@ -11,7 +11,6 @@
   import IconTick from "~icons/tabler/Check.svelte";
   import autoAnimate from "@formkit/auto-animate";
   import { browser } from "$app/environment";
-  import SvelteMarkdown from "svelte-markdown";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
 
   let publishModal: Modal;
