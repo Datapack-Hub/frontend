@@ -77,14 +77,14 @@
     {/if}
   </p>
   <p
-    class="prose prose-stone my-2 w-full rounded-xl bg-stone-800 p-2 font-brand leading-tight dark:prose-invert">
+    class="prose prose-stone mt-8 w-full rounded-xl bg-stone-800 p-4 font-brand leading-tight dark:prose-invert">
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
   {#if $isAuthenticated && $user.id === userProfile?.id}
     <a
       href="/user/{$user.username}/edit"
-      class="button-alt mb-2 flex w-full items-center">
+      class="button-alt my-4 flex w-full items-center">
       <IconSettings
         width="24"
         height="24"

@@ -28,14 +28,14 @@
 
 <main
   class="flex w-full -translate-y-20 flex-col items-center bg-pearl-lusta-100 px-8 transition-all dark:bg-stone-900 md:translate-y-0 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
-  <div class="w-full">
+  <div class="w-1/3">
     <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
     {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
       <UserModeration user="{data.profile}" />
     {/if}
   </div>
   <div
-    class="styled-scrollbar mx-24 mt-16 h-full w-full overflow-y-auto md:mt-0">
+    class="styled-scrollbar mx-24 mt-16 h-full w-2/3 overflow-y-auto md:mt-0">
     <div class="mb-2 flex items-center">
       <h1
         class="flex-grow text-center text-xl font-bold dark:text-white md:text-left">
