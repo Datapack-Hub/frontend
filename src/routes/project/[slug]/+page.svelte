@@ -295,7 +295,7 @@
       class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100"
       id="modmsg"
       bind:this="{mm}">
-      {#if status != "disabled" || status != "review_queue"}
+      {#if status && !["disabled", "review_queue"].includes(status)}
         <button
           class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
           on:click="{dismissModMsg}"><IconCross /></button>
