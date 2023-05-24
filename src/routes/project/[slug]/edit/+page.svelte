@@ -10,6 +10,8 @@
   import CasualLine from "$lib/components/CasualLine.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
   import autoAnimate from "@formkit/auto-animate";
+  import { browser } from "$app/environment";
+  import SvelteMarkdown from "svelte-markdown";
 
   let publishModal: Modal;
 
@@ -32,26 +34,28 @@
   let createVersion = false;
 
   async function upload() {
-    let inp = document.getElementById("zip") as HTMLInputElement;
-    if (inp.files) zipFile = inp.files[0];
+    if (browser) {
+      let inp = document.getElementById("zip") as HTMLInputElement;
+      if (inp.files) zipFile = inp.files[0];
 
-    if (zipFile?.size > 5e6) {
-      toast.error("File size can't be more than 5mb!");
-      inp.files = null;
-      return;
-    }
-
-    let jsZip = new JSZip();
-
-    if (zipFile) {
-      let zip = await jsZip.loadAsync(zipFile);
-      if (zip.file("pack.mcmeta") == null) {
-        return toast.error("Missing pack.mcmeta");
+      if (zipFile?.size > 5e6) {
+        toast.error("File size can't be more than 5mb!");
+        inp.files = null;
+        return;
       }
 
-      createVersion = true;
-    } else {
-      return toast.error("Missing file");
+      let jsZip = new JSZip();
+
+      if (zipFile) {
+        let zip = await jsZip.loadAsync(zipFile);
+        if (zip.file("pack.mcmeta") == null) {
+          return toast.error("Missing pack.mcmeta");
+        }
+
+        createVersion = true;
+      } else {
+        return toast.error("Missing file");
+      }
     }
   }
 
@@ -209,7 +213,16 @@
       class="pt-8 text-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-4xl">
       Edit <span class="text-dph-orange">{data.project?.title}</span>
     </h1>
-    <br />
+    {#if data.project?.mod_message}
+      <div
+        class="my-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100">
+        <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
+        <p
+          class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
+          <SvelteMarkdown source="{data.project?.mod_message}" />
+        </p>
+      </div>
+    {/if}
     <div class="mb-2 flex space-x-2">
       <button
         class="{activePage === 'details'
@@ -295,7 +308,8 @@
               class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
               placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
               id="body"
-              bind:value="{bodyVal}"></textarea
+              bind:value="{bodyVal}"
+              maxlength="10000"></textarea
             ><br /><br />
             <!-- Category -->
             <p

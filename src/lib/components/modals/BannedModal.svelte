@@ -30,8 +30,10 @@
   });
 
   function signOut() {
-    removeCookie("dph_token");
-    window.location.replace("/");
+    if (browser) {
+      removeCookie("dph_token");
+      location.replace("/");
+    }
   }
 </script>
 

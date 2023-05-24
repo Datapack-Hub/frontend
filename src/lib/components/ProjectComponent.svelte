@@ -63,7 +63,7 @@
       class="absolute right-0 top-0 rounded-bl-md rounded-tr-xl bg-stone-700 px-2 font-brand font-bold text-stone-500">
       Unpublished
     </h2>
-  {:else if project.status == "publish_queue"}
+  {:else if project.status == "publish_queue" || project.status == "review_queue"}
     <h2
       class="absolute right-0 top-0 rounded-bl-md rounded-tr-xl bg-yellow-700 px-2 font-brand font-bold text-yellow-500">
       Awaiting Approval

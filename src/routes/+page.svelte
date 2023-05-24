@@ -26,7 +26,8 @@
     updated: 0,
     uploaded: 0,
     url: "realistic-item-drops",
-    status: "live"
+    status: "live",
+    mod_message: null
   } as Project;
 
   let random: Project;

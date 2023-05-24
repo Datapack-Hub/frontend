@@ -102,7 +102,7 @@
           class="input-base override-input-outline h-96 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand"
           placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
           bind:value="{bodyVal}"
-          maxlength="2000"></textarea
+          maxlength="10000"></textarea
         ><br /><br />
 
         <!-- Category -->

@@ -5,20 +5,29 @@
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { apiURL } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";
+  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
+  import { sampleSize } from "lodash-es";
+
+  let activePage = "publish_queue";
 
   let rolesJson: Role[];
-  let activePage = "dashboard";
+  let publishQueue: Project[];
+  let reviewQueue: Project[];
 
-  (async () => {
-    if (browser) {
-      if ($user.role == "default") {
-        goto("/");
-      }
-
-      let logs = await fetchAuthed("get", `${apiURL}/user/staff/roles`);
-      rolesJson = (await logs.json())["roles"];
+  async function loadStuff() {
+    if ($user.role == "default") {
+      goto("/");
     }
-  })();
+
+    let pq = await fetchAuthed("get", `${apiURL}/moderation/queue/publish`);
+    publishQueue = (await pq.json())["projects"] as Project[];
+
+    let rq = await fetchAuthed("get", `${apiURL}/moderation/queue/review`);
+    reviewQueue = (await rq.json())["projects"] as Project[];
+
+    let r = await fetchAuthed("get", `${apiURL}/user/staff/roles`);
+    rolesJson = (await r.json())["roles"];
+  }
 </script>
 
 <svelte:head>
@@ -35,66 +44,93 @@
     </h1>
     <div class="mb-2 flex space-x-2">
       <button
-        class="rounded-xl {activePage === 'dashboard'
+        class="button-base {activePage === 'publish_queue'
           ? 'bg-stone-600'
-          : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand text-pearl-lusta-950 hover:scale-102 dark:text-white"
-        on:click="{() => (activePage = 'dashboard')}">Dashboard</button>
+          : 'bg-stone-800'}"
+        on:click="{() => (activePage = 'publish_queue')}">Publish Queue</button>
       <button
-        class="rounded-xl {activePage === 'roles'
+        class="button-base {activePage === 'review_queue'
           ? 'bg-stone-600'
-          : 'bg-stone-800'} cursor-pointer p-1 px-3 font-brand text-pearl-lusta-950 hover:scale-102 dark:text-white"
+          : 'bg-stone-800'}"
+        on:click="{() => (activePage = 'review_queue')}">Review Queue</button>
+      <button
+        class="button-base {activePage === 'roles'
+          ? 'bg-stone-600'
+          : 'bg-stone-800'}"
         on:click="{() => (activePage = 'roles')}">Roles</button>
       <a href="/moderation/console"
-        ><button
-          class="cursor-pointer rounded-xl bg-stone-800 p-1 px-3 font-brand text-pearl-lusta-950 hover:scale-102 dark:text-white"
-          >Console</button
-        ></a>
+        ><button class="button-base bg-stone-800">Open console</button></a>
     </div>
 
-    {#if activePage == "dashboard"}
-      <div use:autoAnimate class="text-center align-middle md:text-start">
-        <div class="flex space-x-2 rounded-xl bg-stone-800 p-2 py-3">
-          <label for="icon" class="max-w-100">
-            <span
-              class="cursor-pointer rounded-xl bg-green-600 p-2 font-brand font-bold text-pearl-lusta-950 dark:text-white"
-              >Upload datapack ZIP</span>
-          </label>
-          <span
-            class="align-center font-brand text-pearl-lusta-950 dark:text-white"
-            >(Supported: *.zip)</span>
-          <!-- <p class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">No versions yet!</p> -->
+    {#await loadStuff()}
+      <p class="p-2 font-brand dark:text-white">Loading...</p>
+    {:then}
+      {#if activePage == "publish_queue"}
+        <div
+          use:autoAnimate
+          class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start">
+          {#if publishQueue.length == 0}
+            <p class="font-brand dark:text-white">
+              You're all caught up! There are no projects in the queue.
+            </p>
+          {:else}
+            <p class="font-brand dark:text-white">
+              There are {publishQueue.length} items awaiting approval:
+            </p>
+            {#each publishQueue ?? [] as proj}
+              <ProjectComponent project="{proj}" />
+            {/each}
+          {/if}
         </div>
-      </div>
-    {:else if activePage == "roles"}
-      <div
-        use:autoAnimate
-        class="flex flex-col space-x-2 rounded-xl bg-stone-800 p-2 py-3 text-center align-middle md:text-start">
-        <h1
-          class="m-2 text-center font-brand text-2xl font-bold text-pearl-lusta-950 dark:text-white md:text-start">
-          Site Roles
-        </h1>
-        <table class="table-auto rounded-xl p-2 text-left font-brand">
-          <tr class="bg-emerald-500 p-2">
-            <th class="p-2 text-pearl-lusta-950 dark:text-white">Role Name</th>
-            <th class="p-2 text-pearl-lusta-950 dark:text-white"
-              >Permissions</th>
-          </tr>
-          {#each rolesJson ?? [] as i}
-            <tr use:autoAnimate class="odd:bg-stone-700/25">
-              <td
-                ><p
-                  style="color: {i.color};"
-                  class="text-pearl-lusta-950 dark:text-white">
-                  ⬤ {titleCase(i.name)}
-                </p></td>
-              <td class="text-pearl-lusta-950 dark:text-white"
-                >{#if i.permissions.length != 0}{i.permissions.join(
-                    " | "
-                  )}{:else}None{/if}</td>
+      {:else if activePage == "review_queue"}
+        <div
+          use:autoAnimate
+          class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start">
+          {#if reviewQueue.length == 0}
+            <p class="font-brand dark:text-white">
+              You're all caught up! There are no projects in the queue.
+            </p>
+          {:else}
+            <p class="font-brand dark:text-white">
+              There are {reviewQueue.length} items awaiting approval:
+            </p>
+            {#each reviewQueue ?? [] as proj}
+              <ProjectComponent project="{proj}" />
+            {/each}
+          {/if}
+        </div>
+      {:else if activePage == "roles"}
+        <div
+          use:autoAnimate
+          class="flex flex-col space-x-2 rounded-xl bg-stone-800 p-2 py-3 text-center align-middle md:text-start">
+          <h1
+            class="m-2 text-center font-brand text-2xl font-bold text-pearl-lusta-950 dark:text-white md:text-start">
+            Site Roles
+          </h1>
+          <table class="table-auto rounded-xl p-2 text-left font-brand">
+            <tr class="bg-emerald-500 p-2">
+              <th class="p-2 text-pearl-lusta-950 dark:text-white"
+                >Role Name</th>
+              <th class="p-2 text-pearl-lusta-950 dark:text-white"
+                >Permissions</th>
             </tr>
-          {/each}
-        </table>
-      </div>
-    {/if}
+            {#each rolesJson ?? [] as i}
+              <tr use:autoAnimate class="odd:bg-stone-700/25">
+                <td
+                  ><p
+                    style="color: {i.color};"
+                    class="text-pearl-lusta-950 dark:text-white">
+                    ⬤ {titleCase(i.name)}
+                  </p></td>
+                <td class="text-pearl-lusta-950 dark:text-white"
+                  >{#if i.permissions.length != 0}{i.permissions.join(
+                      " | "
+                    )}{:else}None{/if}</td>
+              </tr>
+            {/each}
+          </table>
+        </div>
+      {/if}
+    {/await}
   </div>
 </main>

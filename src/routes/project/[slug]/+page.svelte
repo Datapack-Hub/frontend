@@ -1,5 +1,9 @@
 <script lang="ts">
-  import { getAuthorFromID, titleCase } from "$lib/globals/functions";
+  import {
+    fetchAuthed,
+    getAuthorFromID,
+    titleCase
+  } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
 
@@ -16,22 +20,19 @@
   import tippy from "sveltejs-tippy";
   import JSZip from "jszip";
   import toast from "svelte-french-toast";
-  import DOMPurify from "isomorphic-dompurify";
   import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import { apiURL } from "$lib/globals/consts";
+  import SvelteMarkdown from "svelte-markdown";
+  import { browser } from "$app/environment";
 
   export let data: PageData;
   let visible = false;
   let activePage = "description";
 
   let author: User;
-
-  let body = DOMPurify.sanitize(data.project?.body ?? "", {
-    FORBID_ATTR: ["style", "class", "placeholder", "src"],
-    FORBID_TAGS: ["canvas", "svg", "iframe", "img", "input"]
-  });
 
   onMount(async () => {
     author = await getAuthorFromID(data.project?.author ?? 0);
@@ -50,53 +51,149 @@
   }
 
   async function download(url: string, version: string, rp: boolean) {
-    let zip = await fetch(url);
-    let zipBlob = await zip.blob();
-    let parsedZip = await JSZip.loadAsync(zipBlob);
+    if (browser) {
+      let zip = await fetch(url);
+      let zipBlob = await zip.blob();
+      let parsedZip = await JSZip.loadAsync(zipBlob);
 
-    let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
-    let packMcmData = JSON.parse(packMcm);
-    let packFormat;
+      let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
+      let packMcmData = JSON.parse(packMcm);
+      let packFormat;
 
-    switch (version) {
-      case "1.13-1.14.4":
-        packFormat = 4;
+      switch (version) {
+        case "1.13-1.14.4":
+          packFormat = 4;
+          break;
+        case "1.15-1.16.1":
+          packFormat = 5;
+          break;
+        case "1.16.2-1.16.5":
+          packFormat = 6;
+          break;
+        case "1.17.x":
+          packFormat = 7;
+          break;
+        case "1.18.x":
+          packFormat = 8;
+          break;
+        case "1.19-1.19.3":
+          packFormat = 10;
+          break;
+        case "1.19.4":
+          packFormat = 12;
+          break;
+      }
+
+      packMcmData["pack"]["pack_format"] = packFormat;
+
+      parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
+
+      let final = await parsedZip.generateAsync({ type: "base64" });
+      var clickMePlz = document.createElement("a");
+      clickMePlz.download = url.split("/")[url.split("/").length - 1];
+      clickMePlz.href = "data:application/zip;base64," + final;
+      clickMePlz.click();
+
+      rp
+        ? toast.success(
+            "Downloaded file! Make sure to download the resource pack too."
+          )
+        : toast.success("Downloaded file!");
+    }
+  }
+
+  async function dismissModMsg() {
+    let dsm = await fetchAuthed(
+      "DELETE",
+      apiURL +
+        "/moderation/project/" +
+        data.project?.ID.toString() +
+        "/dismiss_message"
+    );
+    if (dsm.ok) {
+      mm.remove();
+      return toast.success("Deleted the message!");
+    }
+  }
+
+  let status = data.project?.status;
+  let mm: HTMLDivElement;
+
+  async function approve() {
+    let p = await fetchAuthed(
+      "PATCH",
+      apiURL + "/moderation/project/" + data.project?.ID.toString() + "/action",
+      {
+        action: "publish"
+      }
+    );
+    if (p.ok) {
+      status = "live";
+      return toast.success("Published the project!");
+    } else {
+      return toast.error("Something went wrong! Try again later.");
+    }
+  }
+
+  let body = "";
+  if (data.project?.body) {
+    body = data.project.body;
+  }
+
+  let postedModMsg = "";
+  let modReqData: object;
+
+  async function moderate() {
+    switch (modModalPage) {
+      case "delete":
+        if (postedModMsg.length != 0) {
+          modReqData = {
+            action: "delete",
+            message: postedModMsg
+          };
+        } else {
+          modReqData = {
+            action: "delete"
+          };
+        }
         break;
-      case "1.15-1.16.1":
-        packFormat = 5;
+      case "disable":
+        if (postedModMsg.length != 0) {
+          modReqData = {
+            action: "disable",
+            message: postedModMsg
+          };
+        } else {
+          modReqData = {
+            action: "disable"
+          };
+        }
         break;
-      case "1.16.2-1.16.5":
-        packFormat = 6;
-        break;
-      case "1.17.x":
-        packFormat = 7;
-        break;
-      case "1.18.x":
-        packFormat = 8;
-        break;
-      case "1.19-1.19.3":
-        packFormat = 10;
-        break;
-      case "1.19.4":
-        packFormat = 12;
+      case "write note":
+        if (postedModMsg.length != 0) {
+          modReqData = {
+            action: "write_note",
+            message: postedModMsg
+          };
+          alert(postedModMsg);
+        } else {
+          return toast.error("You gotta leave them a message!");
+        }
         break;
     }
 
-    packMcmData["pack"]["pack_format"] = packFormat;
-
-    parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
-
-    let final = await parsedZip.generateAsync({ type: "base64" });
-    var clickMePlz = document.createElement("a");
-    clickMePlz.download = url.split("/")[url.split("/").length - 1];
-    clickMePlz.href = "data:application/zip;base64," + final;
-    clickMePlz.click();
-
-    rp
-      ? toast.success(
-          "Downloaded file! Make sure to download the resource pack too."
-        )
-      : toast.success("Downloaded file!");
+    alert(JSON.stringify(modReqData));
+    let modReq = await fetchAuthed(
+      "PATCH",
+      apiURL + "/moderation/project/" + data.project?.ID + "/action",
+      modReqData
+    );
+    if (modReq.ok) {
+      toast.success("Moderated project!");
+      modModal.close();
+    } else {
+      toast.error("Something went wrong!");
+    }
   }
 </script>
 
@@ -142,15 +239,15 @@
       <h1
         class="flex items-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
         {data.project?.title.trimStart()}
-        {#if data.project?.status == "draft"}
+        {#if status == "draft"}
           <span
             class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
             >Draft</span>
-        {:else if data.project?.status == "publish_queue"}
+        {:else if status == "publish_queue" || status == "review_queue"}
           <span
             class="mx-3 rounded-full bg-yellow-700 px-2 font-brand text-xl font-bold text-yellow-500"
             >Awaiting Approval</span>
-        {:else if data.project?.status == "unpublished"}
+        {:else if status == "unpublished"}
           <span
             class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
             >Unpublished</span>
@@ -193,6 +290,28 @@
       {/if}
     </div>
   </div>
+  {#if data.project?.mod_message}
+    <div
+      class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100"
+      id="modmsg"
+      bind:this="{mm}">
+      {#if status != "disabled" || status != "review_queue"}
+        <button
+          class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+          on:click="{dismissModMsg}"><IconCross /></button>
+      {/if}
+      <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
+      <p
+        class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
+        <!-- <SvelteMarkdown source="{data.project?.mod_message}" /> -->
+        {data.project.mod_message}
+      </p>
+      <p class="font-brand text-xs">
+        Only you (and staff) can read this message. Once you've acknowleged it,
+        you can dismiss the message if the project isn't disabled.
+      </p>
+    </div>
+  {/if}
   <div class="my-2 mt-6 flex space-x-2">
     <div class="min-w-fit flex-grow">
       <button
@@ -207,13 +326,22 @@
         on:click="{() => (activePage = 'versions')}">Versions</button>
     </div>
     <div class="flex space-x-1">
-      {#if data.project?.status == "publish_queue" || data.project?.status == "review_queue" && ["moderator", "admin"].includes($user.role) }
-      <button
-          class="button-base bg-green-600 flex items-center space-x-1"><IconTick /><span>Approve</span></button>
-      <button
-          class="button-base bg-yellow-600 flex items-center space-x-1"><IconPencil /><span>Request Changes</span></button>
-      <button
-          class="button-base bg-red-600 flex items-center space-x-1"><IconCross /><span>Deny</span></button>
+      {#if status == "publish_queue" || (status == "review_queue" && ["moderator", "admin"].includes($user.role))}
+        <button
+          class="button-base flex items-center space-x-1 bg-green-600"
+          on:click="{approve}"><IconTick /><span>Approve</span></button>
+        <button
+          class="button-base flex items-center space-x-1 bg-yellow-600"
+          on:click="{() => {
+            modModalPage = 'disable';
+            modModal.open();
+          }}"><IconPencil /><span>Request Changes</span></button>
+        <button
+          class="button-base flex items-center space-x-1 bg-red-600"
+          on:click="{() => {
+            modModalPage = 'delete';
+            modModal.open();
+          }}"><IconCross /><span>Deny</span></button>
       {/if}
     </div>
     {#if $user.id == data.project?.author || ["admin", "moderator"].includes($user.role)}
@@ -228,7 +356,7 @@
     {#if activePage == "description"}
       <div class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
         <p class="w-full font-brand leading-tight dark:prose-invert">
-          <MarkdownComponent source="{body.replaceAll('\\n', '\n')}" />
+          <MarkdownComponent source="{body}" />
         </p>
       </div>
     {:else if activePage == "versions"}
@@ -401,6 +529,8 @@
     class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand dark:bg-stone-700"
     placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
     id="description"
-    maxlength="200"></textarea>
-  <button class="button-style">{titleCase(modModalPage)}</button>
+    maxlength="200"
+    bind:value="{postedModMsg}"></textarea>
+  <button class="button-style" on:click="{moderate}"
+    >{titleCase(modModalPage)}</button>
 </Modal>
