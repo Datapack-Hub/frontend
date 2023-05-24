@@ -187,7 +187,7 @@
           <span
             class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
             >Draft</span>
-        {:else if status == "publish_queue"}
+        {:else if status == "publish_queue" || status == "review_queue"}
           <span
             class="mx-3 rounded-full bg-yellow-700 px-2 font-brand text-xl font-bold text-yellow-500"
             >Awaiting Approval</span>
@@ -239,7 +239,7 @@
       class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100"
       id="modmsg"
       bind:this="{mm}">
-      {#if status != "disabled"}
+      {#if status != "disabled" || status != "review_queue"}
         <button
           class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
           on:click="{dismissModMsg}"><IconCross /></button>
