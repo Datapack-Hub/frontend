@@ -139,6 +139,58 @@
   if(data.project?.body) {
     body = data.project.body
   }
+
+  let postedModMsg = ""
+  let modReqData: object;
+
+  async function moderate(){
+    switch(modModalPage){
+      case "delete":
+        if (postedModMsg.length != 0) {
+          modReqData = {
+            action: "delete",
+            message:postedModMsg
+          }
+        }else{
+          modReqData = {
+            action: "delete"
+          }
+        }
+        break;
+      case "disable":
+        if (postedModMsg.length != 0) {
+          modReqData = {
+            action: "disable",
+            message:postedModMsg
+          }
+        }else{
+          modReqData = {
+            action: "disable"
+          }
+        }
+        break;
+      case "write note":
+        if (postedModMsg.length != 0) {
+          modReqData = {
+            action: "write_note",
+            message:postedModMsg
+          }
+          alert(postedModMsg)
+        }else{
+          return toast.error("You gotta leave them a message!")
+        }
+        break;
+    }
+
+    alert(JSON.stringify(modReqData))
+    let modReq = await fetchAuthed("PATCH",apiURL + "/moderation/project/" + data.project?.ID + "/action",modReqData)
+    if(modReq.ok){
+      toast.success("Moderated project!")
+      modModal.close()
+    }else{
+      toast.error("Something went wrong!")
+    }
+  }
 </script>
 
 <svelte:head>
@@ -247,7 +299,8 @@
       <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
       <p
         class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
-        <SvelteMarkdown source="{data.project?.mod_message}" />
+        <!-- <SvelteMarkdown source="{data.project?.mod_message}" /> -->
+        {data.project.mod_message}
       </p>
       <p class="font-brand text-xs">
         Only you (and staff) can read this message. Once you've acknowleged it,
@@ -273,9 +326,18 @@
         <button
           class="button-base flex items-center space-x-1 bg-green-600"
           on:click="{approve}"><IconTick /><span>Approve</span></button>
-        <button class="button-base flex items-center space-x-1 bg-yellow-600"
-          ><IconPencil /><span>Request Changes</span></button>
-        <button class="button-base flex items-center space-x-1 bg-red-600"
+        <button 
+          class="button-base flex items-center space-x-1 bg-yellow-600"
+          on:click={() => {
+            modModalPage = "disable"
+            modModal.open()
+          }}><IconPencil /><span>Request Changes</span></button>
+        <button 
+          class="button-base flex items-center space-x-1 bg-red-600"
+          on:click={() => {
+            modModalPage = "delete"
+            modModal.open()
+          }}
           ><IconCross /><span>Deny</span></button>
       {/if}
     </div>
@@ -464,6 +526,7 @@
     class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand dark:bg-stone-700"
     placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
     id="description"
-    maxlength="200"></textarea>
-  <button class="button-style">{titleCase(modModalPage)}</button>
+    maxlength="200"
+    bind:value={postedModMsg}></textarea>
+  <button class="button-style" on:click="{moderate}">{titleCase(modModalPage)}</button>
 </Modal>
