@@ -135,9 +135,9 @@
     }
   }
 
-  let description = ""
-  if(data.project?.description) {
-    description = data.project.description
+  let body = ""
+  if(data.project?.body) {
+    body = data.project.body
   }
 </script>
 
@@ -291,7 +291,7 @@
     {#if activePage == "description"}
       <div class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
         <p class="w-full font-brand leading-tight dark:prose-invert">
-          <MarkdownComponent source="{description}" />
+          <MarkdownComponent source="{body}" />
         </p>
       </div>
     {:else if activePage == "versions"}

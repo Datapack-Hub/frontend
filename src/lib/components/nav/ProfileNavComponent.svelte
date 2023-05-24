@@ -66,8 +66,8 @@
   {#if $isAuthenticated}
     {#if ["moderator", "developer", "admin"].includes($role.name) && !small}
       <a
-        href="/moderation/console"
-        aria-label="Moderation console"
+        href="/moderation"
+        aria-label="Moderation"
         class="z-20 mr-3 md:mr-6"
         use:tippy="{moderationHoverMsg}">
         <IconShield height="24" width="24" color="{iconColor}" />
