@@ -25,7 +25,6 @@
   import { onMount } from "svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
-  import SvelteMarkdown from "svelte-markdown";
   import { browser } from "$app/environment";
 
   export let data: PageData;

@@ -12,6 +12,7 @@
   import autoAnimate from "@formkit/auto-animate";
   import { browser } from "$app/environment";
   import SvelteMarkdown from "svelte-markdown";
+  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
 
   let publishModal: Modal;
 
@@ -219,7 +220,7 @@
         <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
         <p
           class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
-          <SvelteMarkdown source="{data.project?.mod_message}" />
+          <MarkdownComponent source="{data.project?.mod_message}" />
         </p>
       </div>
     {/if}

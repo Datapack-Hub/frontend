@@ -1,12 +1,10 @@
 <script lang="ts">
   import { user } from "$lib/globals/stores";
   import { goto } from "$app/navigation";
-  import { browser } from "$app/environment";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { apiURL } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";
   import ProjectComponent from "$lib/components/ProjectComponent.svelte";
-  import { sampleSize } from "lodash-es";
 
   let activePage = "publish_queue";
 
