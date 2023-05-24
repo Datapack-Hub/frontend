@@ -29,7 +29,7 @@
   <div
     class="flex h-32 w-full flex-row items-center justify-between drop-shadow-md md:h-16">
     <div class="flex items-center">
-      <a href="/" class="z-20 flex cursor-pointer items-center">
+      <a href="/" class="z-20 flex cursor-pointer items-center space-x-2">
         <img
           loading="lazy"
           src="/logos/dph.svg"
