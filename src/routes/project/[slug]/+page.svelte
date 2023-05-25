@@ -216,82 +216,85 @@
 
 <main
   class="-translate-y-20 bg-pearl-lusta-100 px-0 pb-3 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
-  <div class="pt-16"></div>
-  <div class="mb-2 font-brand text-sky-300">
-    <a href="/projects">&lt; Explore other projects</a>
-  </div>
+  <div class="pt-20"></div>
   <div class="flex space-x-4">
     <!--Project Meta-->
     <div
-      class="flex flex-col mt-12 w-1/4 h-fit rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10 dark:text-pearl-lusta-100">
-      <div
-        class="{data.project?.icon
-          ? 'p-0'
-          : 'h-20 bg-stone-600 p-4'} mr-6 rounded-xl">
-        {#if data.project?.icon}
-          <img
-            loading="lazy"
-            src="{data.project?.icon}"
-            alt="{data.project?.title} icon"
-            class="aspect-square w-20 rounded-lg bg-cover" />
-        {:else}
-          <IconNoPhoto width="48" height="48" />
-        {/if}
+      class="flex flex-col w-1/4 h-fit">
+      <div class="my-3 font-brand text-sky-300">
+        <a href="/projects">&lt; Explore other projects</a>
       </div>
-      <div class="flex-grow">
-        <h1
-          class="flex items-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
-          {data.project?.title.trimStart()}
-          {#if status == "draftx"}
-            <span
-              class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
-              >Draft</span>
-          {:else if status == "publish_queue" || status == "review_queue"}
-            <span
-              class="mx-3 rounded-full bg-yellow-700 px-2 font-brand text-xl font-bold text-yellow-500"
-              >Awaiting Approval</span>
-          {:else if status == "unpublished"}
-            <span
-              class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
-              >Unpublished</span>
+      <div class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10 dark:text-pearl-lusta-100">
+        <div
+          class="{data.project?.icon
+            ? 'p-0'
+            : 'h-20 bg-stone-600 p-4'} mr-6 rounded-xl">
+          {#if data.project?.icon}
+            <img
+              loading="lazy"
+              src="{data.project?.icon}"
+              alt="{data.project?.title} icon"
+              class="aspect-square w-20 rounded-lg bg-cover" />
+          {:else}
+            <IconNoPhoto width="48" height="48" />
           {/if}
-        </h1>
-        <h2
-          class="mt-2 font-brand text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
-          {data.project?.description?.trimStart()}
-        </h2>
-        {#if visible}
-          <div class="mt-4 flex items-center space-x-2">
-            <a href="/user/{author.username}" class="flex items-center space-x-2">
-              <img
-                loading="lazy"
-                src="{author.profile_icon}?size=32"
-                class="max-h-7 rounded-full"
-                alt="pfp" />
+        </div>
+        <div class="flex-grow">
+          <h1
+            class="flex items-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
+            {data.project?.title.trimStart()}
+            {#if status == "draftx"}
               <span
-                class="font-brand text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
-                in:fade="{{ duration: 250 }}">
-                {author.username}
+                class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
+                >Draft</span>
+            {:else if status == "publish_queue" || status == "review_queue"}
+              <span
+                class="mx-3 rounded-full bg-yellow-700 px-2 font-brand text-xl font-bold text-yellow-500"
+                >Awaiting Approval</span>
+            {:else if status == "unpublished"}
+              <span
+                class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
+                >Unpublished</span>
+            {/if}
+          </h1>
+          <h2
+            class="mt-2 font-brand text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
+            {data.project?.description?.trimStart()}
+          </h2>
+          {#if visible}
+            <div class="mt-4 flex items-center space-x-2">
+              <a href="/user/{author.username}" class="flex items-center space-x-2">
+                <img
+                  loading="lazy"
+                  src="{author.profile_icon}?size=32"
+                  class="max-h-7 rounded-full"
+                  alt="pfp" />
+                <span
+                  class="font-brand text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
+                  in:fade="{{ duration: 250 }}">
+                  {author.username}
+                </span>
+              </a>
+              <span class="font-brand dark:text-white"> • </span>
+              <span class="flex items-center space-x-1 font-brand dark:text-white">
+                <IconCube />
+                <p>{data.project?.category}</p>
               </span>
-            </a>
-            <span class="font-brand dark:text-white"> • </span>
-            <span class="flex items-center space-x-1 font-brand dark:text-white">
-              <IconCube />
-              <p>{data.project?.category}</p>
-            </span>
-          </div>
-        {/if}
+            </div>
+          {/if}
+        </div>
+        <div class="hidden flex-col space-y-1">
+          <a href="/well-thats-awkward.txt" class="button-style h-fit"
+            >Download Latest</a>
+          {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
+            <button
+              on:click="{() => modModal.open()}"
+              class="rounded-lg bg-red-600 px-3 text-center font-brand text-lg text-white transition-all hover:scale-105 active:brightness-75"
+              >Moderate</button>
+          {/if}
+        </div>
       </div>
-      <div class="hidden flex-col space-y-1">
-        <a href="/well-thats-awkward.txt" class="button-style h-fit"
-          >Download Latest</a>
-        {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
-          <button
-            on:click="{() => modModal.open()}"
-            class="rounded-lg bg-red-600 px-3 text-center font-brand text-lg text-white transition-all hover:scale-105 active:brightness-75"
-            >Moderate</button>
-        {/if}
-      </div>
+      
     </div>
 
     <!--Mod Message-->
