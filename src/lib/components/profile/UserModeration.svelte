@@ -300,7 +300,7 @@
     <div class="flex max-w-full justify-center md:justify-start">
       <div class="w-full rounded-xl bg-red-600/25 p-2">
         <h1
-          class="font-brand text-base md:text-lg font-medium text-pearl-lusta-950 dark:text-white">
+          class="font-brand text-base font-medium text-pearl-lusta-950 dark:text-white md:text-lg">
           Moderation Actions
         </h1>
         <CasualLine />
@@ -328,12 +328,10 @@
               Warn
             </button>
             <button
-              class="text-sm mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-sm text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               id="send_notif"
               on:click="{() => open(notifDialog)}">
-              <IconMessage
-                color="{iconColor}"
-                class="p-1" />
+              <IconMessage color="{iconColor}" class="p-1" />
               Send a Notification
             </button>
             <a
@@ -359,7 +357,7 @@
           </div>
           <div class="w-1/3 pl-2">
             <p
-              class="font-brand text-xl font-extrabold text-pearl-lusta-950 dark:text-white mt-6 md:mt-0">
+              class="mt-6 font-brand text-xl font-extrabold text-pearl-lusta-950 dark:text-white md:mt-0">
               User Info
             </p>
             <p class="font-brand text-pearl-lusta-950 dark:text-white">

@@ -341,7 +341,7 @@
             <div
               class="my-2 flex space-x-2 rounded-xl bg-pearl-lusta-200 p-2 py-3 dark:bg-stone-800">
               <label for="zip" class="max-w-100">
-                <span class="button-style cursor-pointer"
+                <span class="button-primary cursor-pointer"
                   >Upload datapack file</span>
               </label>
               <input

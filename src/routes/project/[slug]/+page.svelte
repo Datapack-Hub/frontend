@@ -219,12 +219,12 @@
   <div class="pt-20"></div>
   <div class="flex space-x-4">
     <!--Project Meta-->
-    <div
-      class="flex flex-col w-1/4 h-fit">
+    <div class="flex h-fit w-1/4 flex-col">
       <div class="my-3 font-brand text-sky-300">
         <a href="/projects">&lt; Explore other projects</a>
       </div>
-      <div class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10 dark:text-pearl-lusta-100">
+      <div
+        class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10 dark:text-pearl-lusta-100">
         <div
           class="{data.project?.icon
             ? 'p-0'
@@ -263,7 +263,9 @@
           </h2>
           {#if visible}
             <div class="mt-4 flex items-center space-x-2">
-              <a href="/user/{author.username}" class="flex items-center space-x-2">
+              <a
+                href="/user/{author.username}"
+                class="flex items-center space-x-2">
                 <img
                   loading="lazy"
                   src="{author.profile_icon}?size=32"
@@ -276,7 +278,8 @@
                 </span>
               </a>
               <span class="font-brand dark:text-white"> • </span>
-              <span class="flex items-center space-x-1 font-brand dark:text-white">
+              <span
+                class="flex items-center space-x-1 font-brand dark:text-white">
                 <IconCube />
                 <p>{data.project?.category}</p>
               </span>
@@ -284,7 +287,7 @@
           {/if}
         </div>
         <div class="hidden flex-col space-y-1">
-          <a href="/well-thats-awkward.txt" class="button-style h-fit"
+          <a href="/well-thats-awkward.txt" class="button-primary h-fit"
             >Download Latest</a>
           {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
             <button
@@ -294,7 +297,6 @@
           {/if}
         </div>
       </div>
-
     </div>
 
     <!--Mod Message-->
@@ -315,8 +317,8 @@
           {data.project.mod_message}
         </p>
         <p class="font-brand text-xs">
-          Only you (and staff) can read this message. Once you've acknowleged it,
-          you can dismiss the message if the project isn't disabled.
+          Only you (and staff) can read this message. Once you've acknowleged
+          it, you can dismiss the message if the project isn't disabled.
         </p>
       </div>
     {/if}
@@ -340,10 +342,10 @@
         <div class="flex space-x-1">
           {#if ["moderator", "admin"].includes($user.role)}
             <button
-                class="button-base flex items-center space-x-1"
-                on:click="{() => {
-                  modModal.open();
-                }}"><IconShield /><span>Moderate</span></button>
+              class="button-base flex items-center space-x-1"
+              on:click="{() => {
+                modModal.open();
+              }}"><IconShield /><span>Moderate</span></button>
             {#if status == "publish_queue" || (status == "review_queue" && ["moderator", "admin"].includes($user.role))}
               <button
                 class="button-base flex items-center space-x-1 bg-green-600"
@@ -372,9 +374,10 @@
         {/if}
       </div>
       {#if activePage == "description"}
-        <div class="rounded-xl w-full bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
+        <div
+          class="w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
           <p class="w-full font-brand leading-tight">
-            <MarkdownComponent source="{body.replace("\\n", "\n")}" />
+            <MarkdownComponent source="{body.replace('\\n', '\n')}" />
           </p>
         </div>
       {:else if activePage == "versions"}
@@ -430,7 +433,8 @@
                 </li>
               {/each}
             </ul>
-            <p class="mx-1 mt-2 font-brand text-pearl-lusta-950 dark:text-white">
+            <p
+              class="mx-1 mt-2 font-brand text-pearl-lusta-950 dark:text-white">
               (Showing {data.versions?.length} versions)
             </p>
           {:else}
@@ -550,6 +554,6 @@
     id="description"
     maxlength="200"
     bind:value="{postedModMsg}"></textarea>
-  <button class="button-style" on:click="{moderate}"
+  <button class="button-primary" on:click="{moderate}"
     >{titleCase(modModalPage)}</button>
 </Modal>

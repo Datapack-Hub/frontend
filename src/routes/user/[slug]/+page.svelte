@@ -36,7 +36,7 @@
     {/if}
   </div>
   <div
-    class="styled-scrollbar ml-0 md:ml-24 mt-16 h-full w-2/3 overflow-y-auto md:mt-0">
+    class="styled-scrollbar ml-0 mt-16 h-full w-2/3 overflow-y-auto md:ml-24 md:mt-0">
     <div class="mb-2 flex items-center">
       <h1
         class="flex-grow text-center text-xl font-bold dark:text-white md:text-left">
@@ -51,7 +51,7 @@
     <div class="mb-2"></div>
     {#if data.projects?.length == 0}
       <p
-        class="mt-24 md:mt-48 text-center text-3xl text-pearl-lusta-950/40 dark:text-white/40">
+        class="mt-24 text-center text-3xl text-pearl-lusta-950/40 dark:text-white/40 md:mt-48">
         No projects!
       </p>
     {:else}

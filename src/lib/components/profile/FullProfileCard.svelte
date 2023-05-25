@@ -84,7 +84,7 @@
   </p>
   {#if $isAuthenticated && $user.id === userProfile?.id}
     <Button
-      style="accent"
+      style="secondary"
       click="/user/{$user.username}/edit"
       classes="my-4 flex w-full items-center">
       <IconSettings

@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let style: "style" | "accent" | "boring" | "alt" | "sm" | "base" =
-    "style";
+  export let style: "primary" | "secondary" | "boring" | "alt" | "sm" | "base" =
+    "primary";
   export let click: string | (() => void);
   export let classes = "";
 </script>

@@ -37,7 +37,7 @@
       <div class="flex items-center">
         <a
           href="/project/{project.url}"
-          class="font-brand text-lg hover:underline md:text-xl lg:text-2xl mr-1.5">
+          class="mr-1.5 font-brand text-lg hover:underline md:text-xl lg:text-2xl">
           {project.title}
         </a>
         {#if visible}
