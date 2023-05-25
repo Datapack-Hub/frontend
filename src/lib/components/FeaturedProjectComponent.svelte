@@ -32,7 +32,7 @@
       style = "dph-orange";
       break;
     case "featured":
-      style = "rose-600";
+      style = "blue-600";
       break;
     case "random":
       style = "stone-600";

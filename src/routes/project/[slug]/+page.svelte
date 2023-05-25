@@ -224,11 +224,11 @@
         <a href="/projects">&lt; Explore other projects</a>
       </div>
       <div
-        class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10 dark:text-pearl-lusta-100">
+        class="rounded-xl border-pearl-lusta-200 p-4 border dark:border-pearl-lusta-100/10 dark:text-pearl-lusta-100">
         <div
           class="{data.project?.icon
             ? 'p-0'
-            : 'h-20 bg-stone-600 p-4'} mr-6 rounded-xl">
+            : 'h-20 w-20 bg-stone-600 p-4'} mr-6 rounded-xl">
           {#if data.project?.icon}
             <img
               loading="lazy"
@@ -375,7 +375,7 @@
       </div>
       {#if activePage == "description"}
         <div
-          class="w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
+          class="w-full rounded-xl border-2 border-pearl-lusta-200 p-4 dark:border-pearl-lusta-100/10">
           <p class="w-full font-brand leading-tight">
             <MarkdownComponent source="{body.replace('\\n', '\n')}" />
           </p>
@@ -449,6 +449,7 @@
         </div>
       {/if}
     </div>
+    <div class="w-1/3"></div>
   </div>
 </main>
 

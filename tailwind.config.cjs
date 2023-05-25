@@ -34,8 +34,8 @@ const config = {
   safelist: [
     "outline-dph-orange",
     "bg-dph-orange",
-    "outline-rose-600",
-    "bg-rose-600",
+    "outline-blue-600",
+    "bg-blue-600",
     "outline-stone-600",
     "bg-stone-600"
   ],

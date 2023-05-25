@@ -4,7 +4,6 @@
   import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";
-  import Button from "$lib/components/Button.svelte";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
