@@ -102,7 +102,7 @@
   {:else}
     <a
       id="sign_in"
-      href="{apiURL}/auth/login"
+      click="{apiURL}/auth/login"
       aria-label="Button to sign in via GitHub"
       class="button-alt"
       use:tippy="{signInHoverMsg}">

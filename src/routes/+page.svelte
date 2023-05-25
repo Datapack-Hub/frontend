@@ -4,6 +4,7 @@
   import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";
+  import Button from "$lib/components/Button.svelte";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
@@ -130,8 +131,8 @@
       </h2>
       <div
         class="mt-8 flex w-full items-center justify-evenly md:mt-16 md:w-64 md:justify-between">
-        <a href="/projects" class="button-style">Discover</a>
-        <a href="/projects" class="button-style">Explore</a>
+        <Button click="/projects">Discover</Button>
+        <Button click="/projects">Explore</Button>
       </div>
     </div>
     <div

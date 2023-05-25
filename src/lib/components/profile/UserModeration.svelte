@@ -12,6 +12,7 @@
   import IconSettings from "~icons/tabler/Settings.svelte";
   import { isDark } from "$lib/globals/stores";
   import MarkdownComponent from "../MarkdownComponent.svelte";
+  import Button from "../Button.svelte";
 
   export let user: User | undefined;
 
@@ -177,10 +178,7 @@
     class="mb-4 h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     placeholder="..."
     id="warn-message"></textarea>
-  <button
-    on:click="{async () => await warn()}"
-    class="rounded-md bg-dph-orange p-2 font-brand text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
-    >Warn {user?.username}</button>
+  <Button click="{async () => await warn()}">Warn {user?.username}</Button>
 </Modal>
 
 <Modal bind:this="{notifDialog}">
@@ -262,10 +260,7 @@
     class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     placeholder="Burning cake after being **repeatedly told** to stop"
     id="ban-message"></textarea>
-  <button
-    on:click="{async () => await banUser()}"
-    class="rounded-md bg-dph-orange p-2 font-brand text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
-    >Ban {user?.username}</button>
+  <Button click="{async () => await banUser()}">Ban {user?.username}</Button>
 </Modal>
 
 <Modal bind:this="{unbanDialog}">
@@ -282,10 +277,8 @@
   <p class="font-brand text-pearl-lusta-950 dark:text-white">
     Unban them to end their ban early.
   </p>
-  <button
-    on:click="{async () => await unbanUser()}"
-    class="rounded-md bg-dph-orange p-2 font-brand text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
-    >Unban {user?.username}</button>
+  <Button click="{async () => await unbanUser()}"
+    >Unban {user?.username}</Button>
 </Modal>
 
 <Modal bind:this="{logOutDialog}">
@@ -297,10 +290,7 @@
     This will log {user?.username} out of all their signed-in devices, and generate
     them a new token. They will need to sign in again.
   </p>
-  <button
-    on:click="{async () => await logOutUser()}"
-    class="rounded-md bg-dph-orange p-2 font-brand text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
-    >Log them out!</button>
+  <Button click="{async () => await logOutUser()}">Log them out!</Button>
 </Modal>
 
 {#if user}

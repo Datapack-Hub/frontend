@@ -7,6 +7,7 @@
   import IconBan from "~icons/tabler/Ban.svelte";
   import { apiURL } from "$lib/globals/consts";
   import MarkdownComponent from "../MarkdownComponent.svelte";
+  import Button from "../Button.svelte";
 
   let visible = false;
   let banReason: string;
@@ -67,7 +68,7 @@
         to expire, and read
         <a href="/rules" class="text-blue-500 underline">our rules</a>.
       </p>
-      <button class="button-style mt-4" on:click="{signOut}">Log Out</button>
+      <Button style="style" classes="mt-4" click="{signOut}">Log Out</Button>
     </div>
   </div>
 {/if}

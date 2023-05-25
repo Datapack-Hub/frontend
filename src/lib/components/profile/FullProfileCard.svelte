@@ -4,6 +4,7 @@
   import tippy from "sveltejs-tippy";
   import IconSettings from "~icons/tabler/Settings.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
+  import Button from "../Button.svelte";
 
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
@@ -82,14 +83,15 @@
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
   {#if $isAuthenticated && $user.id === userProfile?.id}
-    <a
-      href="/user/{$user.username}/edit"
-      class="button-alt my-4 flex w-full items-center">
+    <Button
+      style="alt"
+      click="/user/{$user.username}/edit"
+      classes="my-4 flex w-full items-center">
       <IconSettings
         width="24"
         height="24"
         class="float-left mr-2 stroke-blue-400" />
       Profile Settings
-    </a>
+    </Button>
   {/if}
 </div>

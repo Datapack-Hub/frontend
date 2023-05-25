@@ -12,6 +12,7 @@
   import autoAnimate from "@formkit/auto-animate";
   import { browser } from "$app/environment";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import Button from "$lib/components/Button.svelte";
 
   let publishModal: Modal;
 
@@ -427,8 +428,7 @@
                   faster in game)
                 </label>
               </div>
-              <button class="button-style" on:click="{uploadVersion}"
-                >Create Version</button>
+              <Button click="{uploadVersion}">Create Version</Button>
             </div>
           {/if}
           {#each data.versions ?? [] as version}

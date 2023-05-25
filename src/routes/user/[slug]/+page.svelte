@@ -5,6 +5,7 @@
   import { isAuthenticated, user } from "$lib/globals/stores";
   import type { PageData } from "./$types";
   import CasualLine from "$lib/components/CasualLine.svelte";
+  import Button from "$lib/components/Button.svelte";
 
   export let data: PageData;
 </script>
@@ -42,7 +43,8 @@
         {data.profile?.username}'s projects
       </h1>
       {#if data.profile?.id == $user.id}
-        <a href="/projects/new" class="button-sm ml-6">New Project</a>
+        <Button style="sm" click="/projects/new" classes="ml-6"
+          >New Project</Button>
       {/if}
     </div>
     <CasualLine />

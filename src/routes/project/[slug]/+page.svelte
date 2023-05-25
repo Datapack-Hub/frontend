@@ -26,6 +26,7 @@
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
   import { browser } from "$app/environment";
+  import Button from "$lib/components/Button.svelte";
 
   export let data: PageData;
   let visible = false;
@@ -279,8 +280,8 @@
       {/if}
     </div>
     <div class="flex flex-col space-y-1">
-      <a href="/well-thats-awkward.txt" download class="button-style h-fit"
-        >Download Latest</a>
+      <Button click="/well-thats-awkward.txt" download classes="h-fit"
+        >Download Latest</Button>
       {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
         <button
           on:click="{() => modModal.open()}"
@@ -354,7 +355,7 @@
   <div use:autoAnimate>
     {#if activePage == "description"}
       <div class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
-        <p class="w-full font-brand leading-tight dark:prose-invert">
+        <p class="w-full font-brand leading-tight">
           <MarkdownComponent source="{body}" />
         </p>
       </div>

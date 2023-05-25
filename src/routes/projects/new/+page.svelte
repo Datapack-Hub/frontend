@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Button from "$lib/components/Button.svelte";
   import { apiURL, categories } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
 
@@ -125,7 +126,7 @@
           project.
         </p>
 
-        <button class="button-alt" on:click="{create}"> Create Project </button>
+        <Button style="alt" click="{create}">Create Project</Button>
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@
   import { apiURL } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";
   import ProjectComponent from "$lib/components/ProjectComponent.svelte";
+  import Button from "$lib/components/Button.svelte";
 
   let activePage = "publish_queue";
 
@@ -41,23 +42,24 @@
       Moderation Dashboard
     </h1>
     <div class="mb-2 flex space-x-2">
-      <button
-        class="button-base {activePage === 'publish_queue'
+      <Button
+        style="base"
+        classes="{activePage === 'publish_queue'
           ? 'bg-stone-600'
           : 'bg-stone-800'}"
-        on:click="{() => (activePage = 'publish_queue')}">Publish Queue</button>
-      <button
-        class="button-base {activePage === 'review_queue'
+        click="{() => (activePage = 'publish_queue')}">Publish Queue</Button>
+      <Button
+        style="base"
+        classes="{activePage === 'review_queue'
           ? 'bg-stone-600'
           : 'bg-stone-800'}"
-        on:click="{() => (activePage = 'review_queue')}">Review Queue</button>
-      <button
-        class="button-base {activePage === 'roles'
-          ? 'bg-stone-600'
-          : 'bg-stone-800'}"
-        on:click="{() => (activePage = 'roles')}">Roles</button>
-      <a href="/moderation/console"
-        ><button class="button-base bg-stone-800">Open console</button></a>
+        click="{() => (activePage = 'review_queue')}">Review Queue</Button>
+      <Button
+        style="base"
+        classes="{activePage === 'roles' ? 'bg-stone-600' : 'bg-stone-800'}"
+        click="{() => (activePage = 'roles')}">Roles</Button>
+      <Button style="base" classes="bg-stone-800" click="/moderation/console"
+        >Open console</Button>
     </div>
 
     {#await loadStuff()}

@@ -13,6 +13,9 @@ dependencies:
   animejs:
     specifier: ^3.2.1
     version: 3.2.1
+  highlight.js:
+    specifier: ^11.8.0
+    version: 11.8.0
   isomorphic-dompurify:
     specifier: ^1.5.0
     version: 1.5.0
@@ -28,8 +31,8 @@ devDependencies:
     specifier: ^1.1.77
     version: 1.1.77
   '@playwright/test':
-    specifier: ^1.34.2
-    version: 1.34.2
+    specifier: ^1.34.3
+    version: 1.34.3
   '@sveltejs/adapter-auto':
     specifier: ^1.0.3
     version: 1.0.3(@sveltejs/kit@1.18.0)
@@ -84,6 +87,15 @@ devDependencies:
   marked:
     specifier: ^5.0.2
     version: 5.0.2
+  marked-highlight:
+    specifier: ^2.0.0
+    version: 2.0.0(marked@5.0.2)
+  marked-linkify-it:
+    specifier: ^3.0.2
+    version: 3.0.2(marked@5.0.2)
+  marked-smartypants:
+    specifier: ^1.0.2
+    version: 1.0.2(marked@5.0.2)
   postcss:
     specifier: ^8.4.23
     version: 8.4.23
@@ -696,13 +708,13 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@playwright/test@1.34.2:
-    resolution: {integrity: sha512-v/LBnwzD0225q8xEv3t9DmNPX61yvNnEbiA8PoNk1fbkxApJFCWYLPpQbdVWzHaARdZD9g1PYBoOvnffortfKw==}
+  /@playwright/test@1.34.3:
+    resolution: {integrity: sha512-zPLef6w9P6T/iT6XDYG3mvGOqOyb6eHaV9XtkunYs0+OzxBtrPAAaHotc0X+PJ00WPPnLfFBTl7mf45Mn8DBmw==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
       '@types/node': 20.2.3
-      playwright-core: 1.34.2
+      playwright-core: 1.34.3
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -1634,7 +1646,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001489
-      electron-to-chromium: 1.4.405
+      electron-to-chromium: 1.4.406
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11(browserslist@4.21.5)
     dev: true
@@ -2309,8 +2321,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium@1.4.405:
-    resolution: {integrity: sha512-JdDgnwU69FMZURoesf9gNOej2Cms1XJFfLk24y1IBtnAdhTcJY/mXnokmpmxHN59PcykBP4bgUU98vLY44Lhuw==}
+  /electron-to-chromium@1.4.406:
+    resolution: {integrity: sha512-NXlDDH8Z4tK5ZX7w9dW/lRUsZ0TwL1rg3Sw1e5HKbk3+LCAh3SyUjYyGoxOf9xNxyg+DtaofkFpHS4T5Z2Q26w==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -2874,6 +2886,11 @@ packages:
     dependencies:
       function-bind: 1.1.1
 
+  /highlight.js@11.8.0:
+    resolution: {integrity: sha512-MedQhoqVdr0U6SSnWPzfiadUcDHfN/Wzq25AkXiQv9oiOO/sG0S7XkvpFIqWBl9Yq1UYyYOOVORs5UW2XlPyzg==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
   /hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
     dev: true
@@ -3321,6 +3338,12 @@ packages:
   /lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
+  /linkify-it@4.0.1:
+    resolution: {integrity: sha512-C7bfi1UZmoj8+PQx22XyeXCuBlokoyWQL5pWSP+EI6nzRylyThouddufc2c1NDIcP9k5agmN9fLpA7VNJfIiqw==}
+    dependencies:
+      uc.micro: 1.0.6
+    dev: true
+
   /listhen@1.0.1:
     resolution: {integrity: sha512-RBzBGHMCc5wP8J5Vf8WgF4CAJH8dWHi9LaKB7vfzZt54CiH/0dp01rudy2hFD9wCrTM+UfxFVnn5wTIiY+Qhiw==}
     dependencies:
@@ -3425,6 +3448,32 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       semver: 6.3.0
+    dev: true
+
+  /marked-highlight@2.0.0(marked@5.0.2):
+    resolution: {integrity: sha512-UjpDrs8TJh7dWdKzdnkt/aXdQEQ1FW5Jy6tRTjvWdUgsev2srAAgh8l04JoQUyzD3qP8UDrhHAa6seHUyPXg/w==}
+    peerDependencies:
+      marked: ^4 || ^5
+    dependencies:
+      marked: 5.0.2
+    dev: true
+
+  /marked-linkify-it@3.0.2(marked@5.0.2):
+    resolution: {integrity: sha512-MK+uwKrXYzGoNE8HH+Kgl3r3BomCJb0mxf7BJlMSYWkiBkkk2oO02khpc8vLWoQB6QAGJoVA0HprcLdDu3N+sw==}
+    peerDependencies:
+      marked: ^4 || ^5
+    dependencies:
+      linkify-it: 4.0.1
+      marked: 5.0.2
+    dev: true
+
+  /marked-smartypants@1.0.2(marked@5.0.2):
+    resolution: {integrity: sha512-hpbM9waiBSIHpqdoU5AAeuYozeObBwUet3xkCFrFBA+1329byRVxLDwYmelMCS3ss+sEVJhDgrunIy+ubiqFwQ==}
+    peerDependencies:
+      marked: ^4 || ^5
+    dependencies:
+      marked: 5.0.2
+      smartypants: 0.1.6
     dev: true
 
   /marked@5.0.2:
@@ -3861,8 +3910,8 @@ packages:
       pathe: 1.1.0
     dev: true
 
-  /playwright-core@1.34.2:
-    resolution: {integrity: sha512-MrkgGWLANc5qthXduvIY1a/tuafROyTORVd86fwKwgoYrmnBooN/GgeZSBm7ljTLV2FCWNSXV3se7qeScKn83g==}
+  /playwright-core@1.34.3:
+    resolution: {integrity: sha512-2pWd6G7OHKemc5x1r1rp8aQcpvDh7goMBZlJv6Co5vCNLVcQJdhxRL09SGaY6HcyHH9aT4tiynZabMofVasBYw==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
@@ -4721,6 +4770,11 @@ packages:
     engines: {node: '>=8.0.0'}
     dev: true
 
+  /smartypants@0.1.6:
+    resolution: {integrity: sha512-zGXh+Q6Y3OPTLM5x2HxAIkEAj4ZcePftmIOdIYozv2T+m03Sp5R4YppczKuo6IdnSMc99U+Wgvy8Mil0eeep7g==}
+    hasBin: true
+    dev: true
+
   /sorcery@0.11.0:
     resolution: {integrity: sha512-J69LQ22xrQB1cIFJhPfgtLuI6BpWRiWu1Y3vSsIwK/eAScqJxd/+CJlUuHQRdX2C9NGFamq+KqNywGgaThwfHw==}
     hasBin: true
@@ -5233,6 +5287,10 @@ packages:
     resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
     engines: {node: '>=12.20'}
     hasBin: true
+    dev: true
+
+  /uc.micro@1.0.6:
+    resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
     dev: true
 
   /ufo@0.8.6:
