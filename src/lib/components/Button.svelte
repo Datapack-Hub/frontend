@@ -3,11 +3,10 @@
     "style";
   export let click: string | (() => void);
   export let classes = "";
-  export let download = false;
 </script>
 
 {#if typeof click == "string"}
-  <a href="{click}" download="{download}" class="button-{style} {classes}">
+  <a href="{click}" class="button-{style} {classes}">
     <slot />
   </a>
 {:else}

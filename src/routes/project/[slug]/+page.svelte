@@ -280,8 +280,8 @@
       {/if}
     </div>
     <div class="flex flex-col space-y-1">
-      <Button click="/well-thats-awkward.txt" download classes="h-fit"
-        >Download Latest</Button>
+      <a href="/well-thats-awkward.txt" class="button-style h-fit"
+        >Download Latest</a>
       {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
         <button
           on:click="{() => modModal.open()}"
