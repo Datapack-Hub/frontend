@@ -129,15 +129,10 @@
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>
-      <div
-        class="mt-8 flex w-full items-center justify-evenly md:mt-16 md:w-64 md:justify-between">
-        <Button click="/projects">Discover</Button>
-        <Button click="/projects">Explore</Button>
-      </div>
     </div>
     <div
       class="my-8 h-full w-4/5 justify-between space-y-3 overflow-y-auto rounded-xl bg-pearl-lusta-200 px-4 dark:bg-stone-800 sm:my-16 md:my-0 md:h-2/3 md:w-1/2">
-      <h3 class="mt-3 font-brand text-2xl font-medium text-pearl-lusta-100">
+      <h3 class="font-brand text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center my-6">
         Featured
       </h3>
       <div use:autoAnimate>
