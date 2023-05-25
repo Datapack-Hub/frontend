@@ -13,6 +13,7 @@
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconCross from "~icons/tabler/X.svelte";
+  import IconShield from "~icons/tabler/Shield.svelte";
 
   import { isAuthenticated, user } from "$lib/globals/stores";
   import Modal from "$lib/components/modals/Modal.svelte";
@@ -219,213 +220,228 @@
   <div class="mb-2 font-brand text-sky-300">
     <a href="/projects">&lt; Explore other projects</a>
   </div>
-  <div
-    class="relative flex w-full rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10 dark:text-pearl-lusta-100">
+  <div class="flex space-x-4">
+    <!--Project Meta-->
     <div
-      class="{data.project?.icon
-        ? 'p-0'
-        : 'h-20 bg-stone-600 p-4'} mr-6 rounded-xl">
-      {#if data.project?.icon}
-        <img
-          loading="lazy"
-          src="{data.project?.icon}"
-          alt="{data.project?.title} icon"
-          class="aspect-square w-20 rounded-lg bg-cover" />
-      {:else}
-        <IconNoPhoto width="48" height="48" />
-      {/if}
-    </div>
-    <div class="flex-grow">
-      <h1
-        class="flex items-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
-        {data.project?.title.trimStart()}
-        {#if status == "draft"}
-          <span
-            class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
-            >Draft</span>
-        {:else if status == "publish_queue" || status == "review_queue"}
-          <span
-            class="mx-3 rounded-full bg-yellow-700 px-2 font-brand text-xl font-bold text-yellow-500"
-            >Awaiting Approval</span>
-        {:else if status == "unpublished"}
-          <span
-            class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
-            >Unpublished</span>
+      class="flex flex-col mt-12 w-1/4 h-fit rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10 dark:text-pearl-lusta-100">
+      <div
+        class="{data.project?.icon
+          ? 'p-0'
+          : 'h-20 bg-stone-600 p-4'} mr-6 rounded-xl">
+        {#if data.project?.icon}
+          <img
+            loading="lazy"
+            src="{data.project?.icon}"
+            alt="{data.project?.title} icon"
+            class="aspect-square w-20 rounded-lg bg-cover" />
+        {:else}
+          <IconNoPhoto width="48" height="48" />
         {/if}
-      </h1>
-      <h2
-        class="mt-2 font-brand text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
-        {data.project?.description?.trimStart()}
-      </h2>
-      {#if visible}
-        <div class="mt-4 flex items-center space-x-2">
-          <a href="/user/{author.username}" class="flex items-center space-x-2">
-            <img
-              loading="lazy"
-              src="{author.profile_icon}?size=32"
-              class="max-h-7 rounded-full"
-              alt="pfp" />
+      </div>
+      <div class="flex-grow">
+        <h1
+          class="flex items-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
+          {data.project?.title.trimStart()}
+          {#if status == "draftx"}
             <span
-              class="font-brand text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
-              in:fade="{{ duration: 250 }}">
-              {author.username}
+              class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
+              >Draft</span>
+          {:else if status == "publish_queue" || status == "review_queue"}
+            <span
+              class="mx-3 rounded-full bg-yellow-700 px-2 font-brand text-xl font-bold text-yellow-500"
+              >Awaiting Approval</span>
+          {:else if status == "unpublished"}
+            <span
+              class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
+              >Unpublished</span>
+          {/if}
+        </h1>
+        <h2
+          class="mt-2 font-brand text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
+          {data.project?.description?.trimStart()}
+        </h2>
+        {#if visible}
+          <div class="mt-4 flex items-center space-x-2">
+            <a href="/user/{author.username}" class="flex items-center space-x-2">
+              <img
+                loading="lazy"
+                src="{author.profile_icon}?size=32"
+                class="max-h-7 rounded-full"
+                alt="pfp" />
+              <span
+                class="font-brand text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
+                in:fade="{{ duration: 250 }}">
+                {author.username}
+              </span>
+            </a>
+            <span class="font-brand dark:text-white"> • </span>
+            <span class="flex items-center space-x-1 font-brand dark:text-white">
+              <IconCube />
+              <p>{data.project?.category}</p>
             </span>
+          </div>
+        {/if}
+      </div>
+      <div class="hidden flex-col space-y-1">
+        <a href="/well-thats-awkward.txt" class="button-style h-fit"
+          >Download Latest</a>
+        {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
+          <button
+            on:click="{() => modModal.open()}"
+            class="rounded-lg bg-red-600 px-3 text-center font-brand text-lg text-white transition-all hover:scale-105 active:brightness-75"
+            >Moderate</button>
+        {/if}
+      </div>
+    </div>
+
+    <!--Mod Message-->
+    {#if data.project?.mod_message}
+      <div
+        class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100"
+        id="modmsg"
+        bind:this="{mm}">
+        {#if status && !["disabled", "review_queue"].includes(status)}
+          <button
+            class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+            on:click="{dismissModMsg}"><IconCross /></button>
+        {/if}
+        <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
+        <p
+          class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
+          <!-- <SvelteMarkdown source="{data.project?.mod_message}" /> -->
+          {data.project.mod_message}
+        </p>
+        <p class="font-brand text-xs">
+          Only you (and staff) can read this message. Once you've acknowleged it,
+          you can dismiss the message if the project isn't disabled.
+        </p>
+      </div>
+    {/if}
+
+    <!--Main-->
+    <div use:autoAnimate class="w-3/4">
+      <!--Buttons-->
+      <div class="mb-2 flex space-x-2">
+        <div class="min-w-fit flex-grow">
+          <button
+            class="button-base {activePage === 'description'
+              ? 'bg-stone-600'
+              : 'bg-stone-800'}"
+            on:click="{() => (activePage = 'description')}">Description</button>
+          <button
+            class="button-base {activePage === 'versions'
+              ? 'bg-stone-600'
+              : 'bg-stone-800'}"
+            on:click="{() => (activePage = 'versions')}">Versions</button>
+        </div>
+        <div class="flex space-x-1">
+          {#if ["moderator", "admin"].includes($user.role)}
+            <button
+                class="button-base flex items-center space-x-1"
+                on:click="{() => {
+                  modModal.open();
+                }}"><IconShield /><span>Moderate</span></button>
+            {#if status == "publish_queue" || (status == "review_queue" && ["moderator", "admin"].includes($user.role))}
+              <button
+                class="button-base flex items-center space-x-1 bg-green-600"
+                on:click="{approve}"><IconTick /><span>Approve</span></button>
+              <button
+                class="button-base flex items-center space-x-1 bg-yellow-600"
+                on:click="{() => {
+                  modModalPage = 'disable';
+                  modModal.open();
+                }}"><IconPencil /><span>Request Changes</span></button>
+              <button
+                class="button-base flex items-center space-x-1 bg-red-600"
+                on:click="{() => {
+                  modModalPage = 'delete';
+                  modModal.open();
+                }}"><IconCross /><span>Deny</span></button>
+            {/if}
+          {/if}
+        </div>
+        {#if $user.id == data.project?.author || ["admin", "moderator"].includes($user.role)}
+          <a
+            class="button-base ml-auto flex items-center space-x-1"
+            href="/project/{data.project?.url}/edit">
+            <IconPencil /><span>Edit</span>
           </a>
-          <span class="font-brand dark:text-white"> • </span>
-          <span class="flex items-center space-x-1 font-brand dark:text-white">
-            <IconCube />
-            <p>{data.project?.category}</p>
-          </span>
+        {/if}
+      </div>
+      {#if activePage == "description"}
+        <div class="rounded-xl w-full bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
+          <p class="w-full font-brand leading-tight">
+            <MarkdownComponent source="{body}" />
+          </p>
+        </div>
+      {:else if activePage == "versions"}
+        <div
+          class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+          {#if data.versions?.length != 0}
+            <div class="mx-3 flex space-x-3">
+              <h2
+                class="w-1/3 font-brand text-xl font-black text-pearl-lusta-950 dark:text-white">
+                Name
+              </h2>
+              <h2
+                class="flex-grow font-brand text-xl font-black text-pearl-lusta-950 dark:text-white">
+                Minecraft versions
+              </h2>
+            </div>
+            <ul use:autoAnimate>
+              {#each data.versions ?? [] as version}
+                <li
+                  class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100/10">
+                  <div class="flex w-1/3 items-center space-x-2">
+                    <h2
+                      class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
+                      {version.name}
+                    </h2>
+                    <h2
+                      class="font-brand text-base font-thin italic text-pearl-lusta-950 dark:text-white">
+                      {version.version_code}
+                    </h2>
+                  </div>
+                  <h2
+                    class="flex flex-grow space-x-1 font-brand text-pearl-lusta-950 dark:text-white">
+                    {#each version.minecraft_versions.split(",") ?? [] as mcv}
+                      <button
+                        class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
+                        on:click="{() =>
+                          download(
+                            version.primary_download,
+                            mcv,
+                            version.resource_pack_download ? true : false
+                          )}">
+                        {mcv}
+                      </button>
+                    {/each}
+                  </h2>
+                  <button
+                    on:click="{() => {
+                      openVersion(version);
+                    }}"
+                    id="#download"
+                    class="rounded-xl bg-dph-orange p-1 px-2 font-brand text-pearl-lusta-950 dark:text-white"
+                    >Download</button>
+                </li>
+              {/each}
+            </ul>
+            <p class="mx-1 mt-2 font-brand text-pearl-lusta-950 dark:text-white">
+              (Showing {data.versions?.length} versions)
+            </p>
+          {:else}
+            <h2 class="font-brand text-xl text-pearl-lusta-950 dark:text-white">
+              <b>No versions yet!</b> Why not
+              <a
+                href="/project/{data.project?.url}/edit"
+                class="text-blue-500 underline">create one</a
+              >?
+            </h2>
+          {/if}
         </div>
       {/if}
     </div>
-    <div class="flex flex-col space-y-1">
-      <a href="/well-thats-awkward.txt" class="button-style h-fit"
-        >Download Latest</a>
-      {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
-        <button
-          on:click="{() => modModal.open()}"
-          class="rounded-lg bg-red-600 px-3 text-center font-brand text-lg text-white transition-all hover:scale-105 active:brightness-75"
-          >Moderate</button>
-      {/if}
-    </div>
-  </div>
-  {#if data.project?.mod_message}
-    <div
-      class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100"
-      id="modmsg"
-      bind:this="{mm}">
-      {#if status && !["disabled", "review_queue"].includes(status)}
-        <button
-          class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
-          on:click="{dismissModMsg}"><IconCross /></button>
-      {/if}
-      <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
-      <p
-        class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
-        <!-- <SvelteMarkdown source="{data.project?.mod_message}" /> -->
-        {data.project.mod_message}
-      </p>
-      <p class="font-brand text-xs">
-        Only you (and staff) can read this message. Once you've acknowleged it,
-        you can dismiss the message if the project isn't disabled.
-      </p>
-    </div>
-  {/if}
-  <div class="my-2 mt-6 flex space-x-2">
-    <div class="min-w-fit flex-grow">
-      <button
-        class="button-base {activePage === 'description'
-          ? 'bg-stone-600'
-          : 'bg-stone-800'}"
-        on:click="{() => (activePage = 'description')}">Description</button>
-      <button
-        class="button-base {activePage === 'versions'
-          ? 'bg-stone-600'
-          : 'bg-stone-800'}"
-        on:click="{() => (activePage = 'versions')}">Versions</button>
-    </div>
-    <div class="flex space-x-1">
-      {#if status == "publish_queue" || (status == "review_queue" && ["moderator", "admin"].includes($user.role))}
-        <button
-          class="button-base flex items-center space-x-1 bg-green-600"
-          on:click="{approve}"><IconTick /><span>Approve</span></button>
-        <button
-          class="button-base flex items-center space-x-1 bg-yellow-600"
-          on:click="{() => {
-            modModalPage = 'disable';
-            modModal.open();
-          }}"><IconPencil /><span>Request Changes</span></button>
-        <button
-          class="button-base flex items-center space-x-1 bg-red-600"
-          on:click="{() => {
-            modModalPage = 'delete';
-            modModal.open();
-          }}"><IconCross /><span>Deny</span></button>
-      {/if}
-    </div>
-    {#if $user.id == data.project?.author || ["admin", "moderator"].includes($user.role)}
-      <a
-        class="button-base ml-auto flex items-center space-x-1"
-        href="/project/{data.project?.url}/edit">
-        <IconPencil /><span>Edit</span>
-      </a>
-    {/if}
-  </div>
-  <div use:autoAnimate>
-    {#if activePage == "description"}
-      <div class="rounded-xl bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
-        <p class="w-full font-brand leading-tight">
-          <MarkdownComponent source="{body}" />
-        </p>
-      </div>
-    {:else if activePage == "versions"}
-      <div
-        class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
-        {#if data.versions?.length != 0}
-          <div class="mx-3 flex space-x-3">
-            <h2
-              class="w-1/3 font-brand text-xl font-black text-pearl-lusta-950 dark:text-white">
-              Name
-            </h2>
-            <h2
-              class="flex-grow font-brand text-xl font-black text-pearl-lusta-950 dark:text-white">
-              Minecraft versions
-            </h2>
-          </div>
-          <ul use:autoAnimate>
-            {#each data.versions ?? [] as version}
-              <li
-                class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100/10">
-                <div class="flex w-1/3 items-center space-x-2">
-                  <h2
-                    class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
-                    {version.name}
-                  </h2>
-                  <h2
-                    class="font-brand text-base font-thin italic text-pearl-lusta-950 dark:text-white">
-                    {version.version_code}
-                  </h2>
-                </div>
-                <h2
-                  class="flex flex-grow space-x-1 font-brand text-pearl-lusta-950 dark:text-white">
-                  {#each version.minecraft_versions.split(",") ?? [] as mcv}
-                    <button
-                      class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
-                      on:click="{() =>
-                        download(
-                          version.primary_download,
-                          mcv,
-                          version.resource_pack_download ? true : false
-                        )}">
-                      {mcv}
-                    </button>
-                  {/each}
-                </h2>
-                <button
-                  on:click="{() => {
-                    openVersion(version);
-                  }}"
-                  id="#download"
-                  class="rounded-xl bg-dph-orange p-1 px-2 font-brand text-pearl-lusta-950 dark:text-white"
-                  >Download</button>
-              </li>
-            {/each}
-          </ul>
-          <p class="mx-1 mt-2 font-brand text-pearl-lusta-950 dark:text-white">
-            (Showing {data.versions?.length} versions)
-          </p>
-        {:else}
-          <h2 class="font-brand text-xl text-pearl-lusta-950 dark:text-white">
-            <b>No versions yet!</b> Why not
-            <a
-              href="/project/{data.project?.url}/edit"
-              class="text-blue-500 underline">create one</a
-            >?
-          </h2>
-        {/if}
-      </div>
-    {/if}
   </div>
 </main>
 
