@@ -34,7 +34,7 @@
     "jszip": "^3.10.1",
     "lodash-es": "^4.17.21",
     "marked": "^5.0.2",
-    "marked-highlight": "^2.0.0",
+    "marked-highlight": "^2.0.1",
     "marked-linkify-it": "^3.0.2",
     "marked-smartypants": "^1.0.2",
     "postcss": "^8.4.23",

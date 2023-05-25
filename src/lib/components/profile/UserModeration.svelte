@@ -297,17 +297,17 @@
   {#await loadData()}
     Loading...
   {:then}
-    <div class="ms:max-w-lg flex max-w-full justify-center md:justify-start">
-      <div class="w-full rounded-xl bg-red-500/25 p-2">
+    <div class="flex max-w-full justify-center md:justify-start">
+      <div class="w-full rounded-xl bg-red-600/25 p-2">
         <h1
-          class="font-brand text-lg font-medium text-pearl-lusta-950 dark:text-white">
+          class="font-brand text-base md:text-lg font-medium text-pearl-lusta-950 dark:text-white">
           Moderation Actions
         </h1>
         <CasualLine />
         <div class="xs:flex-col md:flex">
           <div class="md:w-2/3">
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-red-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-red-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => {
                 if (modJson['banned']) open(unbanDialog);
                 else open(banDialog);
@@ -318,7 +318,7 @@
                 ).toDateString()}){:else}Ban{/if}
             </button>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-orange-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-dph-orange p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(warnDialog)}">
               <IconWarn
                 height="32"
@@ -328,19 +328,17 @@
               Warn
             </button>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="text-sm mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               id="send_notif"
               on:click="{() => open(notifDialog)}">
               <IconMessage
-                height="32"
-                width="32"
                 color="{iconColor}"
                 class="p-1" />
               Send a Notification
             </button>
             <a
               href="/user/{user?.username}/edit"
-              class="mt-1 flex w-full items-center rounded-md bg-blue-500 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
+              class="mt-1 flex w-full items-center rounded-md bg-green-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
               <IconSettings
                 height="32"
                 width="32"
@@ -361,18 +359,16 @@
           </div>
           <div class="w-1/3 pl-2">
             <p
-              class="font-brand text-xl font-extrabold text-pearl-lusta-950 dark:text-white">
+              class="font-brand text-xl font-extrabold text-pearl-lusta-950 dark:text-white mt-6 md:mt-0">
               User Info
             </p>
             <p class="font-brand text-pearl-lusta-950 dark:text-white">
               <b>ID: </b>
               {user.id}
             </p>
-            {#if modJson["banned"]}<p class="font-brand">
-                <b>Banned: </b>True
-              </p>
-            {:else}<p class="font-brand text-pearl-lusta-950 dark:text-white">
-                <b>Banned: </b>False
+            {#if modJson["banned"]}
+              <p class="font-brand text-pearl-lusta-950 dark:text-white">
+                <b>Banned</b>
               </p>
             {/if}
           </div>

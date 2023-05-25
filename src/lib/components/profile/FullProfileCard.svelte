@@ -30,7 +30,7 @@
   };
 </script>
 
-<div class="ms:max-w-lg flex max-w-full flex-col items-center md:items-start">
+<div class="flex max-w-full flex-col items-center md:items-start">
   <div class="self-center">
     <img
       loading="lazy"
@@ -43,17 +43,17 @@
   </div>
 
   <p
-    class="mt-4 w-full text-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-4xl lg:text-5xl">
+    class="mt-4 w-full text-center font-brand text-4xl font-bold text-pearl-lusta-950 dark:text-white md:text-3xl lg:text-4xl">
     {profile?.username}
     {#if ["moderator", "developer", "admin"].includes(role?.name ?? "")}
       <span
-        class="material-icons align-middle text-base text-orange-500 transition-all hover:scale-125 md:text-lg lg:text-xl"
+        class="material-icons align-middle text-lg text-orange-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
         use:tippy="{orangeVerifiedHover}">verified</span
       >{:else if userProfile?.role == "helper"}<span
-        class="material-icons align-middle text-base text-blue-500 transition-all hover:scale-125 md:text-lg lg:text-xl"
+        class="material-icons align-middle text-lg text-blue-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
         use:tippy="{blueVerifiedHover}">verified</span
       >{:else if userProfile?.role == "verified"}<span
-        class="material-icons align-middle text-base text-emerald-500 transition-all hover:scale-125 md:text-lg lg:text-xl"
+        class="material-icons align-middle text-lg text-emerald-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
         use:tippy="{emeraldVerifiedHover}"
         >verified
       </span>
@@ -63,7 +63,7 @@
   <p
     class="mt-1 w-full text-center align-middle font-brand font-semibold text-pearl-lusta-950 dark:text-white sm:text-base md:text-lg">
     {#if role?.name != "default"}
-      <span style="color:{role?.color};">
+      <span style="color: {role?.color};">
         {#if role?.name == "nerd"}🤓 Nerd
         {:else if role?.name == "admin"}<img
             loading="lazy"
@@ -78,13 +78,13 @@
     {/if}
   </p>
   <p
-    class="prose prose-stone mt-8 w-full rounded-xl bg-stone-800 p-4 font-brand leading-tight dark:prose-invert">
+    class="mt-8 w-full rounded-xl bg-stone-800 p-6 font-brand leading-tight dark:prose-invert">
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
   {#if $isAuthenticated && $user.id === userProfile?.id}
     <Button
-      style="alt"
+      style="accent"
       click="/user/{$user.username}/edit"
       classes="my-4 flex w-full items-center">
       <IconSettings

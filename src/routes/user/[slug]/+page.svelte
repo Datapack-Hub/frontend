@@ -29,14 +29,14 @@
 
 <main
   class="flex w-full -translate-y-20 flex-col items-center bg-pearl-lusta-100 px-8 transition-all dark:bg-stone-900 md:translate-y-0 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
-  <div class="w-1/3">
+  <div class="w-full md:w-1/2 2xl:w-1/3">
     <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
     {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
       <UserModeration user="{data.profile}" />
     {/if}
   </div>
   <div
-    class="styled-scrollbar mx-24 mt-16 h-full w-2/3 overflow-y-auto md:mt-0">
+    class="styled-scrollbar ml-0 md:ml-24 mt-16 h-full w-2/3 overflow-y-auto md:mt-0">
     <div class="mb-2 flex items-center">
       <h1
         class="flex-grow text-center text-xl font-bold dark:text-white md:text-left">
@@ -51,7 +51,7 @@
     <div class="mb-2"></div>
     {#if data.projects?.length == 0}
       <p
-        class="mt-48 text-center text-3xl text-pearl-lusta-950/40 dark:text-white/40">
+        class="mt-24 md:mt-48 text-center text-3xl text-pearl-lusta-950/40 dark:text-white/40">
         No projects!
       </p>
     {:else}
@@ -61,5 +61,6 @@
         {/each}
       </div>
     {/if}
+    <div class="mb-48 md:mb-0"></div>
   </div>
 </main>
