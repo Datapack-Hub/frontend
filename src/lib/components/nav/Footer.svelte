@@ -20,37 +20,37 @@
     </p>
   </div>
   <div class="hidden lg:block"></div>
-  <div class="w-full md:w-2/3">
-    <div class="flex w-full">
+  <div class="w-full md:w-1/2">
+    <div class="flex w-full text-center">
       <h3
-        class="mb-4 w-1/3 text-center font-brand text-xl font-bold text-orange-500 md:text-right">
+        class="mb-4 w-1/3 text-center font-brand text-xl font-bold text-orange-500 uppercase">
         Support
       </h3>
       <h3
-        class="mb-4 w-1/3 text-center font-brand text-xl font-bold text-orange-500 md:text-right">
+        class="mb-4 w-1/3 text-center font-brand text-xl font-bold text-orange-500 uppercase">
         Socials
       </h3>
       <h3
-        class="mb-4 w-1/3 text-center font-brand text-xl font-bold text-orange-500 md:text-right">
+        class="mb-4 w-1/3 text-center font-brand text-xl font-bold text-orange-500 uppercase">
         Policies
       </h3>
     </div>
     <!-- put header content here -->
     <div class="flex w-full text-center">
       <ul
-        class="w-1/3 text-center font-brand text-pearl-lusta-950 dark:text-white md:text-right">
+        class="w-1/3 text-center font-brand text-pearl-lusta-950 dark:text-white">
         <li><a href="https://discord.gg/aEXsdjjdu4">Community Discord</a></li>
         <li><a href="/staff">Staff Team</a></li>
         <li><a href="/staff">About us</a></li>
       </ul>
       <ul
-        class="w-1/3 text-center font-brand text-pearl-lusta-950 dark:text-white md:text-right">
+        class="w-1/3 text-center font-brand text-pearl-lusta-950 dark:text-white">
         <li><a href="https://discord.gg/aEXsdjjdu4">Discord</a></li>
         <li><a href="https://github.com/Datapack-Hub">GitHub</a></li>
         <li><a href="https://twitter.com/DatapackHub">Twitter</a></li>
       </ul>
       <ul
-        class="w-1/3 text-center font-brand text-pearl-lusta-950 dark:text-white md:text-right">
+        class="w-1/3 text-center font-brand text-pearl-lusta-950 dark:text-white">
         <li><a href="/rules">Guidelines</a></li>
         <li><a href="/privacy">Privacy</a></li>
         <li><a href="/terms">Terms</a></li>

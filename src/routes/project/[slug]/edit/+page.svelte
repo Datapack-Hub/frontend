@@ -253,7 +253,7 @@
           <div class=" rounded-xl bg-stone-800 p-2 pb-2">
             <!-- Icon -->
             <p
-              class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+              class="align-middle font-brand text-dph-orange">
               Icon
             </p>
             <img
@@ -277,7 +277,7 @@
 
             <!-- Title -->
             <p
-              class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+              class="align-middle font-brand text-dph-orange">
               Title
             </p>
             <input
@@ -289,7 +289,7 @@
 
             <!-- Short Description -->
             <p
-              class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+              class="align-middle font-brand text-dph-orange">
               Short Description
             </p>
             <textarea
@@ -302,7 +302,7 @@
 
             <!-- Long Description -->
             <p
-              class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+              class="align-middle font-brand text-dph-orange">
               Long Description (supports markdown)
             </p>
             <textarea
@@ -314,7 +314,7 @@
             ><br /><br />
             <!-- Category -->
             <p
-              class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
+              class="align-middle font-brand text-dph-orange">
               Category
             </p>
             <select
@@ -326,11 +326,10 @@
                 </option>
               {/each}
             </select><br /><br />
-            <button
-              class="text-md pu-2 my-2 rounded-md border-2 border-red-400 bg-red-400 bg-opacity-10 px-2 pb-1 font-brand text-red-400 transition-all hover:scale-105 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl"
-              on:click="{create}">
+            <Button
+              click="{create}">
               Update Project
-            </button>
+            </Button>
           </div>
         </div>
 
