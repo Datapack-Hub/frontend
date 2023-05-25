@@ -294,7 +294,7 @@
           {/if}
         </div>
       </div>
-      
+
     </div>
 
     <!--Mod Message-->
@@ -374,7 +374,7 @@
       {#if activePage == "description"}
         <div class="rounded-xl w-full bg-pearl-lusta-200 p-4 dark:bg-pearl-lusta-100/10">
           <p class="w-full font-brand leading-tight">
-            <MarkdownComponent source="{body}" />
+            <MarkdownComponent source="{body.replace("\\n", "\n")}" />
           </p>
         </div>
       {:else if activePage == "versions"}
