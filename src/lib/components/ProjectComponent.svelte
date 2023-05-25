@@ -34,19 +34,21 @@
       {/if}
     </a>
     <div class="ml-4 w-2/3">
-      <a
-        href="/project/{project.url}"
-        class="font-brand text-lg hover:underline md:text-xl lg:text-2xl">
-        {project.title}
-      </a>
-      {#if visible}
+      <div class="flex items-center">
         <a
-          href="/user/{author.username.toLowerCase()}"
-          class="text-xs text-pearl-lusta-950/40 hover:underline dark:text-white dark:hover:text-blue-300 md:text-sm"
-          in:fade="{{ duration: 250 }}">
-          By {author.username}
+          href="/project/{project.url}"
+          class="font-brand text-lg hover:underline md:text-xl lg:text-2xl mr-1.5">
+          {project.title}
         </a>
-      {/if}
+        {#if visible}
+          <a
+            href="/user/{author.username.toLowerCase()}"
+            class="text-xs text-pearl-lusta-950/40 hover:underline dark:text-pearl-lusta-100/70 dark:hover:text-blue-300 md:text-sm"
+            in:fade="{{ duration: 250 }}">
+            • By {author.username}
+          </a>
+        {/if}
+      </div>
       <p
         class=" mt-2 line-clamp-2 text-sm font-medium text-pearl-lusta-950/70 dark:text-pearl-lusta-100 md:text-base">
         {project.description}

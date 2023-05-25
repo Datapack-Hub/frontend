@@ -24,10 +24,10 @@
 <nav
   id="nav"
   class="sticky top-[calc(100%-8rem)] z-40 w-full px-8 transition-all md:fixed md:top-0 md:translate-y-0 md:px-16 lg:px-24 {showNavBG
-    ? 'bg-pearl-lusta-50/70 dark:bg-stone-800/70'
+    ? 'bg-pearl-lusta-50 dark:bg-stone-800'
     : ''}">
   <div
-    class="flex h-32 w-full flex-row items-center justify-between drop-shadow-md md:h-16">
+    class="flex h-32 w-full flex-row items-center justify-between shadow-md md:h-16">
     <div class="flex items-center">
       <a href="/" class="z-20 flex cursor-pointer items-center space-x-2">
         <img
