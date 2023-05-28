@@ -6,11 +6,18 @@ const config = {
   plugins: [
     sveltekit(),
     Icons({
-     compiler: 'svelte' 
+     compiler: 'svelte'
     })
   ],
 	server:{
 		host:"0.0.0.0"
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: "@use \"src/variables.scss\" as *;"
+      }
+    }
   }
 };
 
