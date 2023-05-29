@@ -1,6 +1,11 @@
 import preprocess from "svelte-preprocess";
 import adapter from "@sveltejs/adapter-cloudflare";
 import { vitePreprocess } from "@sveltejs/kit/vite";
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -10,16 +15,15 @@ const config = {
     vitePreprocess(),
     preprocess({
       postcss: true,
-
       scss: {
-        "prependData": "@use \"src/variables.scss\" as *;"
+        prependData: `@import '${join(__dirname, 'src/variables.scss').replace(/\\/g, '/')}';`
       }
     }),
   ],
 
   kit: {
-    adapter: adapter(),    
-  },
+    adapter: adapter(),
+  }
 };
 
 export default config;

@@ -68,7 +68,7 @@
         to expire, and read
         <a href="/rules" class="text-blue-500 underline">our rules</a>.
       </p>
-      <Button style="style" classes="mt-4" click="{signOut}">Log Out</Button>
+      <Button classes="mt-4" click="{signOut}">Log Out</Button>
     </div>
   </div>
 {/if}

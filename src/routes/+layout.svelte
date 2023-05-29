@@ -18,7 +18,7 @@
   {#if $isAuthenticated && ["helper", "moderator", "admin"].includes($user.role)}
     <div class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
       <Navbar></Navbar>
-      {#if &#x24;user.banned}
+      {#if $user.banned}
         <BannedModal></BannedModal>
       {/if}
       <slot></slot>
