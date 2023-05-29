@@ -131,7 +131,8 @@
     </div>
     <div
       class="my-8 h-3/4 w-4/5 justify-between space-y-3 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:h-2/3 md:w-1/2">
-      <h3 class="font-brand text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center my-6">
+      <h3
+        class="font-brand text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center my-6">
         Featured
       </h3>
       <div use:autoAnimate>

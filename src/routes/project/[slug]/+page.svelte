@@ -7,27 +7,26 @@
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
 
-  import IconPencil from "~icons/tabler/Pencil.svelte";
-  import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import IconCube from "~icons/tabler/Box.svelte";
-  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
-  import IconCross from "~icons/tabler/X.svelte";
+  import IconInfo from "~icons/tabler/HelpCircle.svelte";
+  import IconPencil from "~icons/tabler/Pencil.svelte";
+  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
+  import IconCross from "~icons/tabler/X.svelte";
 
-  import { isAuthenticated, user } from "$lib/globals/stores";
-  import Modal from "$lib/components/modals/Modal.svelte";
-  import CasualLine from "$lib/components/CasualLine.svelte";
-  import tippy from "sveltejs-tippy";
-  import JSZip from "jszip";
-  import toast from "svelte-french-toast";
-  import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
-  import autoAnimate from "@formkit/auto-animate";
-  import { onMount } from "svelte";
-  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
-  import { apiURL } from "$lib/globals/consts";
   import { browser } from "$app/environment";
-  import Button from "$lib/components/Button.svelte";
+  import CasualLine from "$lib/components/CasualLine.svelte";
+  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import Modal from "$lib/components/modals/Modal.svelte";
+  import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
+  import { apiURL } from "$lib/globals/consts";
+  import { isAuthenticated, user } from "$lib/globals/stores";
+  import autoAnimate from "@formkit/auto-animate";
+  import JSZip from "jszip";
+  import { onMount } from "svelte";
+  import toast from "svelte-french-toast";
+  import tippy from "sveltejs-tippy";
 
   export let data: PageData;
   let visible = false;

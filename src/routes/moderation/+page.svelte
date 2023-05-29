@@ -1,11 +1,10 @@
 <script lang="ts">
-  import { user } from "$lib/globals/stores";
   import { goto } from "$app/navigation";
-  import { fetchAuthed, titleCase } from "$lib/globals/functions";
-  import { apiURL } from "$lib/globals/consts";
-  import autoAnimate from "@formkit/auto-animate";
-  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
   import Button from "$lib/components/Button.svelte";
+  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
+  import { fetchAuthed, titleCase } from "$lib/globals/functions";
+  import { user } from "$lib/globals/stores";
+  import autoAnimate from "@formkit/auto-animate";
 
   let activePage = "publish_queue";
 
@@ -18,13 +17,13 @@
       goto("/");
     }
 
-    let pq = await fetchAuthed("get", `${apiURL}/moderation/queue/publish`);
+    let pq = await fetchAuthed("get", "/moderation/queue/publish");
     publishQueue = (await pq.json())["projects"] as Project[];
 
-    let rq = await fetchAuthed("get", `${apiURL}/moderation/queue/review`);
+    let rq = await fetchAuthed("get", "/moderation/queue/review");
     reviewQueue = (await rq.json())["projects"] as Project[];
 
-    let r = await fetchAuthed("get", `${apiURL}/user/staff/roles`);
+    let r = await fetchAuthed("get", "/user/staff/roles");
     rolesJson = (await r.json())["roles"];
   }
 </script>

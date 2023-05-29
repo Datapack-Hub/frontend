@@ -1,8 +1,7 @@
 <script lang="ts">
-  import { user } from "$lib/globals/stores";
   import { goto } from "$app/navigation";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
-  import { apiURL } from "$lib/globals/consts";
+  import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
 
   let rolesJson: Role[];
@@ -12,7 +11,7 @@
       goto("/");
     }
 
-    let logs = await fetchAuthed("get", `${apiURL}/user/staff/roles`);
+    let logs = await fetchAuthed("get", "/user/staff/roles");
     rolesJson = (await logs.json())["roles"];
   }
 </script>

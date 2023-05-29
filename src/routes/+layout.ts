@@ -21,7 +21,7 @@ export const load = (async ({ fetch, url }) => {
 
     if (token) {
       const [userRes, roleRes] = await Promise.all([
-        fetchAuthed("get", `${apiURL}/user/me`),
+        fetchAuthed("get", "/user/me"),
         fetch(`${apiURL}/user/staff/roles`)
       ]);
 

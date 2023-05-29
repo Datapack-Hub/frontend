@@ -17,8 +17,8 @@ export const load = (async ({ params }) => {
     const unsubscribeFromRole = role.subscribe(r => (defaultRole = r));
 
     const [user, me, roles] = await Promise.all([
-      fetchAuthed("get", apiURL + "/user/" + params.slug),
-      fetchAuthed("get", apiURL + "/user/me"),
+      fetchAuthed("get", "/user/" + params.slug),
+      fetchAuthed("get", "/user/me"),
       fetch(`${apiURL}/user/staff/roles`)
     ]);
 

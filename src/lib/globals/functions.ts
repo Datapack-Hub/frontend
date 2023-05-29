@@ -2,7 +2,7 @@ import { apiURL } from "./consts";
 import { isDark } from "./stores";
 
 /**
- * Loads the user's preferred color scheme
+ * Loads the user's preferred color scheme from LocalStorage
  */
 export function loadColorPref() {
   isDark.set(localStorage.getItem("dp_colorPref") == "true");
@@ -14,9 +14,7 @@ export function loadColorPref() {
  * @param authorID ID of the author
  * @returns username of the author
  */
-export async function getAuthorFromID(
-  authorID: number | undefined
-): Promise<User> {
+export async function getAuthorFromID(authorID: number): Promise<User> {
   const data = await fetch(`${apiURL}/user/id/${authorID}`);
   return (await data.json()) as User;
 }
@@ -36,7 +34,7 @@ export async function fetchAuthed(
   headers: HeadersInit | undefined = undefined
 ): Promise<Response> {
   // what is going on here
-  const resp = await fetch(url, {
+  const resp = await fetch(`${apiURL}${url}`, {
     method: method,
     ...(data ? { body: JSON.stringify(data) } : {}), // ah yes ternary grossness
     headers: {

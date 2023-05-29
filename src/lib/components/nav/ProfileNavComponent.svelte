@@ -44,7 +44,7 @@
 
   async function refreshNotifications() {
     unreadNotifications = false;
-    let notif = await fetchAuthed("get", `${apiURL}/notifs/unread`);
+    let notif = await fetchAuthed("get", "/notifs/unread");
 
     if (notif.ok) {
       let notifJson = await notif.json();

@@ -5,7 +5,6 @@
   import { browser } from "$app/environment";
   import { isAuthenticated } from "$lib/globals/stores";
   import IconBan from "~icons/tabler/Ban.svelte";
-  import { apiURL } from "$lib/globals/consts";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import Button from "../Button.svelte";
 
@@ -15,7 +14,7 @@
 
   onMount(async () => {
     if (browser) {
-      let me = await fetchAuthed("get", `${apiURL}/user/me`);
+      let me = await fetchAuthed("get", "/user/me");
       if (me.ok) {
         let meJson = (await me.json()) as {
           banned: boolean;

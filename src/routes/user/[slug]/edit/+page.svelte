@@ -1,11 +1,11 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { apiURL, roles } from "$lib/globals/consts";
+  import { roles } from "$lib/globals/consts";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { isAuthenticated, user } from "$lib/globals/stores";
   import { onMount } from "svelte";
-  import type { PageData } from "./$types";
   import toast from "svelte-french-toast";
+  import type { PageData } from "./$types";
 
   export let data: PageData;
 
@@ -31,18 +31,16 @@
     }
 
     toast.promise(
-      fetchAuthed("PATCH", `${apiURL}/user/id/${data.profile?.id}`, req).then(
-        res => {
-          if (!res.ok) {
-            return res.text().then(txt => alert(txt));
-          }
-          if (data.profile?.id == $user.id) {
-            $user.username = uname.value;
-            $user.bio = bio.value;
-          }
-          goto("/user/" + uname.value);
+      fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, req).then(res => {
+        if (!res.ok) {
+          return res.text().then(txt => alert(txt));
         }
-      ),
+        if (data.profile?.id == $user.id) {
+          $user.username = uname.value;
+          $user.bio = bio.value;
+        }
+        goto("/user/" + uname.value);
+      }),
       {
         success: "Profile saved!",
         loading: "Saving...",

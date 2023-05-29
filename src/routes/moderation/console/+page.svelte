@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { isAuthenticated, role, user } from "$lib/globals/stores";
   import { goto } from "$app/navigation";
   import { fetchAuthed } from "$lib/globals/functions";
-  import { apiURL } from "$lib/globals/consts";
+  import { isAuthenticated, role, user } from "$lib/globals/stores";
+  import { onMount } from "svelte";
 
   let submitCmd: () => Promise<void> | undefined;
   let commandInput: HTMLInputElement;
@@ -27,7 +26,7 @@
         commandInput.value = "Loading...";
 
         try {
-          let res = await fetchAuthed("post", `${apiURL}/moderation/console`, {
+          let res = await fetchAuthed("post", "/moderation/console", {
             command: command
           });
 

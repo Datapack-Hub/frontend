@@ -15,7 +15,7 @@
   export let project: Project;
   export let type: "trending" | "featured" | "random" | "new" = "trending";
 
-  let views = Math.round(Math.random() * 1000).toString()
+  let views = Math.round(Math.random() * 1000).toString();
 
   let hovermsgs = {
     trending: {
@@ -48,7 +48,7 @@
       style = "stone-600";
       break;
     case "new":
-      style = "lime-400"
+      style = "lime-400";
       break;
   }
 
@@ -88,25 +88,26 @@
         {project.title}
       </a>
       {#if visible}
-      <div class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-white font-brand">
-        <a
-          href="/user/{author.username.toLowerCase()}"
-          class="block dark:hover:text-pearl-lusta-100"
-          in:fade="{{ duration: 250 }}">
-          {author.username}
-        </a>
-        <span>•</span>
-        <span>1.19</span>
-        <span>•</span>
-        <span>Beta 1.1</span>
-      </div>
+        <div
+          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-white font-brand">
+          <a
+            href="/user/{author.username.toLowerCase()}"
+            class="block dark:hover:text-pearl-lusta-100"
+            in:fade="{{ duration: 250 }}">
+            {author.username}
+          </a>
+          <span>•</span>
+          <span>1.19</span>
+          <span>•</span>
+          <span>Beta 1.1</span>
+        </div>
       {/if}
     </div>
   </div>
   <div
     class="absolute right-0 top-0 m-2 text-{style} font-bold flex space-x-1 rounded-md px-2 py-0.5 font-brand text-md items-center"
     use:tippy="{hovermsgs[type]}">
-      <Eyecon />
-      <p>{views}</p>
+    <Eyecon />
+    <p>{views}</p>
   </div>
 </div>

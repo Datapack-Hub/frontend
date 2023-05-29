@@ -51,7 +51,7 @@
       "warn-message"
     ) as HTMLTextAreaElement;
 
-    let warnt = await fetchAuthed("post", `${apiURL}/notifs/send/${user?.id}`, {
+    let warnt = await fetchAuthed("post", `/notifs/send/${user?.id}`, {
       type: "important",
       message: "Warning",
       description: msgTxt.value
@@ -80,7 +80,7 @@
     )
       return alert("Make sure all fields are filled in!");
 
-    let sent = await fetchAuthed("post", `${apiURL}/notifs/send/${user?.id}`, {
+    let sent = await fetchAuthed("post", `/notifs/send/${user?.id}`, {
       type: type.value,
       message: message.value,
       description: content.value

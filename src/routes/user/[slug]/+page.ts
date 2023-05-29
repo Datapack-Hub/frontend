@@ -8,7 +8,7 @@ export const load = (async ({ params, fetch }) => {
   if (browser) {
     const [user, projects, role] = await Promise.all([
       fetch(`${apiURL}/user/${params.slug}`),
-      fetchAuthed("get", `${apiURL}/user/${params.slug}/projects`),
+      fetchAuthed("get", `/user/${params.slug}/projects`),
       fetch(`${apiURL}/user/staff/roles`)
     ]);
 

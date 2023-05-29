@@ -252,10 +252,7 @@
         <div class="text-center align-middle md:text-start">
           <div class=" rounded-xl bg-stone-800 p-2 pb-2">
             <!-- Icon -->
-            <p
-              class="align-middle font-brand text-dph-orange">
-              Icon
-            </p>
+            <p class="align-middle font-brand text-dph-orange">Icon</p>
             <img
               loading="lazy"
               src="{data.project?.icon}"
@@ -276,10 +273,7 @@
             <br /><br />
 
             <!-- Title -->
-            <p
-              class="align-middle font-brand text-dph-orange">
-              Title
-            </p>
+            <p class="align-middle font-brand text-dph-orange">Title</p>
             <input
               class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
               placeholder="Title"
@@ -288,8 +282,7 @@
               bind:value="{titleValue}" /><br /><br />
 
             <!-- Short Description -->
-            <p
-              class="align-middle font-brand text-dph-orange">
+            <p class="align-middle font-brand text-dph-orange">
               Short Description
             </p>
             <textarea
@@ -301,8 +294,7 @@
             ><br /><br />
 
             <!-- Long Description -->
-            <p
-              class="align-middle font-brand text-dph-orange">
+            <p class="align-middle font-brand text-dph-orange">
               Long Description (supports markdown)
             </p>
             <textarea
@@ -313,10 +305,7 @@
               maxlength="10000"></textarea
             ><br /><br />
             <!-- Category -->
-            <p
-              class="align-middle font-brand text-dph-orange">
-              Category
-            </p>
+            <p class="align-middle font-brand text-dph-orange">Category</p>
             <select
               class="bg-new-white-300 w-1/4 rounded-md p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
               bind:value="{catVal}">
@@ -326,10 +315,7 @@
                 </option>
               {/each}
             </select><br /><br />
-            <Button
-              click="{create}">
-              Update Project
-            </Button>
+            <Button click="{create}">Update Project</Button>
           </div>
         </div>
 

@@ -13,7 +13,7 @@ export const load = (async ({ params }) => {
 
     if (projectReq.ok) {
       const projectJson = (await projectReq.json()) as Project;
-      const meReq = await fetchAuthed("get", apiURL + "/user/me");
+      const meReq = await fetchAuthed("get", "/user/me");
 
       if (meReq.ok) {
         const meJson = (await meReq.json()) as User;

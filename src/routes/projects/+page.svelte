@@ -1,10 +1,10 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
   import ProjectComponent from "$lib/components/ProjectComponent.svelte";
-  import { apiURL, categories } from "$lib/globals/consts";
-  import type { PageData } from "./$types";
-  import debounce from "lodash-es/debounce";
+  import { apiURL } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";
+  import debounce from "lodash-es/debounce";
+  import type { PageData } from "./$types";
 
   import IconSearch from "~icons/tabler/Search.svelte";
 
