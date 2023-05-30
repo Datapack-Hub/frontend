@@ -6,7 +6,7 @@
 
   let rolesJson: Role[];
 
-  let user = useUser()
+  let user = useUser();
   async function loadStuff() {
     if ($user.role == "default") {
       goto("/");

@@ -12,7 +12,7 @@
   let publishQueue: Project[];
   let reviewQueue: Project[];
 
-  let user = useUser()
+  let user = useUser();
 
   async function loadStuff() {
     if ($user.role == "default") {
