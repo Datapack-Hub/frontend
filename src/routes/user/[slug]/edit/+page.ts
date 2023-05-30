@@ -3,18 +3,12 @@ import type { PageLoad } from "./$types";
 import { fetchAuthed } from "$lib/globals/functions";
 import { apiURL } from "$lib/globals/consts";
 import { browser } from "$app/environment";
-import { role } from "$lib/globals/stores";
+import { useRole } from "$lib/globals/stores";
+import { get } from "svelte/store";
 
 export const load = (async ({ params }) => {
   if (browser) {
-    let defaultRole: Role = {
-      name: "default",
-      color: null,
-      verified: false,
-      permissions: [] as string[]
-    };
-
-    const unsubscribeFromRole = role.subscribe(r => (defaultRole = r));
+    const defaultRole = get(useRole());
 
     const [user, me, roles] = await Promise.all([
       fetchAuthed("get", "/user/" + params.slug),
@@ -36,14 +30,12 @@ export const load = (async ({ params }) => {
         userJSON.username != meJSON.username &&
         !defaultRole.permissions.includes("EDIT_USER")
       ) {
-        unsubscribeFromRole();
         throw error(403, {
           message: "Not allowed!",
           description: "This is not you, you can't edit their profile."
         });
       }
 
-      unsubscribeFromRole();
       return {
         profile: userJSON as User,
         role: profileRole

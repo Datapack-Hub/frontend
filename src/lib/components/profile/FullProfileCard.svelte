@@ -1,16 +1,17 @@
 <script lang="ts">
   import { titleCase } from "$lib/globals/functions";
-  import { isAuthenticated, user } from "$lib/globals/stores";
+  import { useUser } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
   import IconSettings from "~icons/tabler/Settings.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import Button from "../Button.svelte";
+  import { getContext } from "svelte";
 
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
 
-  let userProfile = profile;
-  let role = profileRole;
+  let authed = getContext("authed");
+  let user = useUser();
 
   let orangeVerifiedHover = {
     content: "Verified for being part of the Datapack Hub staff team.",
@@ -34,25 +35,25 @@
   <div class="self-center">
     <img
       loading="lazy"
-      src="{userProfile?.profile_icon}"
-      alt="{userProfile?.username}'s profile picture"
+      src="{profile?.profile_icon}"
+      alt="{profile?.username}'s profile picture"
       height="128"
       width="128"
       class="rounded-full outline outline-2 outline-offset-4 md:h-24 md:w-24 lg:h-32 lg:w-32"
-      style="outline-color:{role?.color};" />
+      style="outline-color:{profileRole?.color};" />
   </div>
 
   <p
     class="mt-4 w-full text-center font-brand text-4xl font-bold text-pearl-lusta-950 dark:text-white md:text-3xl lg:text-4xl">
     {profile?.username}
-    {#if ["moderator", "developer", "admin"].includes(role?.name ?? "")}
+    {#if ["moderator", "developer", "admin"].includes(profileRole?.name ?? "")}
       <span
         class="material-icons align-middle text-lg text-orange-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
         use:tippy="{orangeVerifiedHover}">verified</span
-      >{:else if userProfile?.role == "helper"}<span
+      >{:else if profile?.role == "helper"}<span
         class="material-icons align-middle text-lg text-blue-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
         use:tippy="{blueVerifiedHover}">verified</span
-      >{:else if userProfile?.role == "verified"}<span
+      >{:else if profile?.role == "verified"}<span
         class="material-icons align-middle text-lg text-emerald-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
         use:tippy="{emeraldVerifiedHover}"
         >verified
@@ -62,10 +63,10 @@
 
   <p
     class="mt-1 w-full text-center align-middle font-brand font-semibold text-pearl-lusta-950 dark:text-white sm:text-base md:text-lg">
-    {#if role?.name != "default"}
-      <span style="color: {role?.color};">
-        {#if role?.name == "nerd"}🤓 Nerd
-        {:else if role?.name == "admin"}<img
+    {#if profileRole?.name != "default"}
+      <span style="color: {profileRole?.color};">
+        {#if profileRole?.name == "nerd"}🤓 Nerd
+        {:else if profileRole?.name == "admin"}<img
             loading="lazy"
             src="/logos/dph.svg"
             alt="logo"
@@ -82,7 +83,7 @@
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
-  {#if $isAuthenticated && $user.id === userProfile?.id}
+  {#if authed && $user.id === profile?.id}
     <Button
       style="secondary"
       click="/user/{$user.username}/edit"

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { apiURL } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
-  import { toastStyle } from "$lib/globals/consts";
   import toast from "svelte-french-toast";
   import IconX from "~icons/tabler/X.svelte";
   import { createEventDispatcher } from "svelte";
@@ -26,7 +25,7 @@
       visible = true;
     }
 
-    toast.success("Removed notification!", toastStyle);
+    toast.success("Removed notification!");
   }
 </script>
 

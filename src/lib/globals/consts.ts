@@ -1,7 +1,4 @@
-import type { DefaultToastOptions } from "svelte-french-toast";
-
 export const apiURL = "https://api.datapackhub.net";
-
 export const categories = [
   "Adventure",
   "Magic",
@@ -18,7 +15,6 @@ export const categories = [
   "Utility",
   "Vanilla+"
 ];
-
 export const roles = [
   "admin",
   "moderator",
@@ -28,5 +24,3 @@ export const roles = [
   "donator",
   "default"
 ];
-
-export const toastStyle: DefaultToastOptions = {};

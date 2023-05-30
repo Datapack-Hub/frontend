@@ -2,10 +2,10 @@
   import { goto } from "$app/navigation";
   import { roles } from "$lib/globals/consts";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
-  import { isAuthenticated, user } from "$lib/globals/stores";
-  import { onMount } from "svelte";
+  import { getContext, onMount } from "svelte";
   import toast from "svelte-french-toast";
   import type { PageData } from "./$types";
+  import { useUser } from "$lib/globals/stores";
 
   export let data: PageData;
 
@@ -13,6 +13,9 @@
 
   let uname: HTMLInputElement;
   let bio: HTMLTextAreaElement;
+
+  let user = useUser();
+  let authed = getContext("authed");
 
   onMount(() => {
     uname = document.getElementById("username") as HTMLInputElement;
@@ -88,7 +91,7 @@
         {(500 - bio?.value.length).toString()} characters left
       </p>
       <br /><br />
-      {#if $isAuthenticated && $user.role == "admin"}
+      {#if authed && $user.role == "admin"}
         <p
           class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">
           Site Role

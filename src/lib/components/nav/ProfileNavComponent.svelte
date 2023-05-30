@@ -1,16 +1,21 @@
 <script lang="ts">
-  import { fetchAuthed } from "$lib/globals/functions";
-  import { onMount } from "svelte";
-  import tippy from "sveltejs-tippy";
-  import IconShield from "~icons/tabler/Shield.svelte";
-  import IconUnread from "~icons/tabler/BellRinging.svelte";
-  import IconRead from "~icons/tabler/Bell.svelte";
-  import IconPlus from "~icons/tabler/Plus.svelte";
-  import { isAuthenticated, isDark, role, user } from "$lib/globals/stores";
-  import { apiURL } from "$lib/globals/consts";
   import { afterNavigate } from "$app/navigation";
+  import { apiURL } from "$lib/globals/consts";
+  import { fetchAuthed } from "$lib/globals/functions";
+  import { isDark, useRole, useUser } from "$lib/globals/stores";
+  import { onMount } from "svelte";
+  import { getContext } from "svelte";
+  import tippy from "sveltejs-tippy";
+  import IconRead from "~icons/tabler/Bell.svelte";
+  import IconUnread from "~icons/tabler/BellRinging.svelte";
+  import IconPlus from "~icons/tabler/Plus.svelte";
+  import IconShield from "~icons/tabler/Shield.svelte";
 
   export let small: boolean;
+
+  let user = useUser();
+  let role = useRole();
+  let authed = getContext("authed");
 
   let signInHoverMsg = {
     content: "Sign In",
@@ -63,7 +68,7 @@
     use:tippy="{newHoverMsg}">
     <IconPlus height="24" width="24" color="{iconColor}" />
   </a>
-  {#if $isAuthenticated}
+  {#if authed}
     {#if ["moderator", "developer", "admin"].includes($role.name) && !small}
       <a
         href="/moderation"

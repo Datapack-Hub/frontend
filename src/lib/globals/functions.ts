@@ -1,5 +1,29 @@
 import { apiURL } from "./consts";
 import { isDark } from "./stores";
+import { getContext, hasContext, setContext } from "svelte";
+import { readable, writable } from "svelte/store";
+
+// context for any type of store
+export const useSharedStore = <T, A>(
+  name: string,
+  fn: (value?: A) => T,
+  defaultValue?: A
+) => {
+  if (hasContext(name)) {
+    return getContext<T>(name);
+  }
+  const _value = fn(defaultValue);
+  setContext(name, _value);
+  return _value;
+};
+
+// writable store context
+export const useWritable = <T>(name: string, value: T) =>
+  useSharedStore(name, writable, value);
+
+// readable store context
+export const useReadable = <T>(name: string, value: T) =>
+  useSharedStore(name, readable, value);
 
 /**
  * Loads the user's preferred color scheme from LocalStorage
@@ -48,24 +72,22 @@ export async function fetchAuthed(
   return resp;
 }
 
-export async function getCookie(item: string) {
-  const name = item + "=";
-  const decodedCookie = decodeURIComponent(document.cookie);
-  const ca = decodedCookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == " ") {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
+export function getCookie(cookieName: string): string | null {
+  const cookies = document.cookie.split(";");
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+
+    if (cookie.startsWith(cookieName + "=")) {
+      return cookie.substring(cookieName.length + 1);
     }
   }
-  return "";
+
+  return null;
 }
 
 export async function removeCookie(name: string) {
-  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
 export function titleCase(str: string | undefined): string {

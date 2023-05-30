@@ -6,16 +6,22 @@
   import Footer from "$lib/components/nav/Footer.svelte";
   import { setContext } from "svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
-  import { isAuthenticated, isDark, role, user } from "$lib/globals/stores";
+  import { isDark, useUser } from "$lib/globals/stores";
   import { Toaster } from "svelte-french-toast";
+  import type { LayoutData } from "./$types";
 
-  setContext("user", user);
-  setContext("roleData", role);
+  export let data: LayoutData;
+
+  let user = useUser();
+
+  setContext("user", data.user);
+  setContext("roleData", data.role);
+  setContext("authed", data.authed);
 </script>
 
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? 'dark' : ''}">
-  {#if $isAuthenticated && ["helper", "moderator", "admin"].includes($user.role)}
+  {#if data.authed && ["helper", "moderator", "admin"].includes($user.role)}
     <div
       class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
       <Navbar />

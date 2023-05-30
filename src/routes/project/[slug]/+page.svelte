@@ -21,18 +21,20 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
   import { apiURL } from "$lib/globals/consts";
-  import { isAuthenticated, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import JSZip from "jszip";
-  import { onMount } from "svelte";
+  import { getContext, onMount } from "svelte";
   import toast from "svelte-french-toast";
   import tippy from "sveltejs-tippy";
+  import { useUser } from "$lib/globals/stores";
 
   export let data: PageData;
   let visible = false;
   let activePage = "description";
 
   let author: User;
+  let authed = getContext("authed");
+  let user = useUser();
 
   onMount(async () => {
     author = await getAuthorFromID(data.project?.author ?? 0);
@@ -288,7 +290,7 @@
         <div class="hidden flex-col space-y-1">
           <a href="/well-thats-awkward.txt" class="button-primary h-fit"
             >Download Latest</a>
-          {#if $isAuthenticated && ["moderator", "developer", "admin"].includes($user.role)}
+          {#if authed && ["moderator", "developer", "admin"].includes($user.role)}
             <button
               on:click="{() => modModal.open()}"
               class="rounded-lg bg-red-600 px-3 text-center font-brand text-lg text-white transition-all hover:scale-105 active:brightness-75"

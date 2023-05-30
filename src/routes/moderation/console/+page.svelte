@@ -1,8 +1,8 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { fetchAuthed } from "$lib/globals/functions";
-  import { isAuthenticated, role, user } from "$lib/globals/stores";
-  import { onMount } from "svelte";
+  import { useRole, useUser } from "$lib/globals/stores";
+  import { getContext, onMount } from "svelte";
 
   let submitCmd: () => Promise<void> | undefined;
   let commandInput: HTMLInputElement;
@@ -10,6 +10,10 @@
   let consoleIn = "";
   let innerWidth = 0;
   let objDiv: HTMLDivElement;
+
+  let user = useUser();
+  let role = useRole();
+  let authed = getContext("authed");
 
   $: isSmallWidth = innerWidth < 768;
 
@@ -58,7 +62,7 @@
 <svelte:window bind:innerWidth="{innerWidth}" />
 
 <main class="bg-stone-900 px-4 transition-all">
-  {#if $user.role != "default" && $isAuthenticated == true}
+  {#if $user.role != "default" && authed == true}
     {#if !isSmallWidth}
       <div
         class="h-screen w-full flex-col font-console text-lime-400 md:items-start md:pt-20">

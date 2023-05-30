@@ -4,7 +4,7 @@
   import { fetchAuthed } from "../../globals/functions";
   import { browser } from "$app/environment";
   import toast from "svelte-french-toast";
-  import { apiURL, toastStyle } from "$lib/globals/consts";
+  import { apiURL } from "$lib/globals/consts";
   import IconWarn from "~icons/tabler/AlertTriangle.svelte";
   import IconBan from "~icons/tabler/Ban.svelte";
   import IconMessage from "~icons/tabler/MailForward.svelte";
@@ -21,8 +21,6 @@
   let banDialog: Modal;
   let unbanDialog: Modal;
   let logOutDialog: Modal;
-
-  $: iconColor = $isDark ? "white" : "black";
 
   let modJson: { banned: boolean; banExpiry: number; banMessage: string };
 
@@ -58,7 +56,7 @@
     });
     if (warnt.ok) {
       warnDialog.close();
-      toast.success(`Warned ${user?.username}!`, toastStyle);
+      toast.success(`Warned ${user?.username}!`);
     } else {
       alert(await warnt.text());
     }
@@ -87,7 +85,7 @@
     });
     if (sent.ok) {
       notifDialog.close();
-      toast.success(`Sent a notification to ${user?.username}!`, toastStyle);
+      toast.success(`Sent a notification to ${user?.username}!`);
     } else {
       alert(await sent.text());
     }
@@ -124,7 +122,7 @@
     );
     if (ban.ok) {
       banDialog.close();
-      toast.success(`${user?.username} is now banned!`, toastStyle);
+      toast.success(`${user?.username} is now banned!`);
     } else {
       alert(await ban.text());
     }
@@ -138,7 +136,7 @@
     if (unban.ok) {
       unbanDialog.close();
       modJson["banned"] == false;
-      toast.success(`${user?.username} is now unbanned.`, toastStyle);
+      toast.success(`${user?.username} is now unbanned.`);
     } else {
       alert(await unban.text());
     }
@@ -151,14 +149,12 @@
     );
     if (logout.ok) {
       logOutDialog.close();
-      toast.success(
-        `${user?.username} is now logged out of their account.`,
-        toastStyle
-      );
+      toast.success(`${user?.username} is now logged out of their account.`);
     } else {
       alert(await logout.text());
     }
   }
+  $: iconColor = $isDark ? "white" : "black";
 </script>
 
 <Modal bind:this="{warnDialog}">
