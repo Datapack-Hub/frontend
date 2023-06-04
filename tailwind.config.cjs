@@ -32,9 +32,12 @@ const config = {
   },
 
   safelist: [
-    "text-dph-orange",
-    "text-blue-400",
-    "text-stone-600"
+    "outline-dph-orange",
+    "bg-dph-orange",
+    "outline-blue-600",
+    "bg-blue-600",
+    "outline-stone-600",
+    "bg-stone-600"
   ],
 
   plugins: [require('@tailwindcss/typography')],

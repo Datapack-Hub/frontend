@@ -137,9 +137,8 @@
       </h3>
       <div use:autoAnimate>
         {#if visible}
-          <FeaturedProjectComponent project="{proj}" type="trending" />
+          <FeaturedProjectComponent project="{proj}" type="popular" />
           <FeaturedProjectComponent project="{proj}" type="featured" />
-          <FeaturedProjectComponent project="{proj}" type="new" />
           {#if random}
             <FeaturedProjectComponent project="{random}" type="random" />
           {/if}
