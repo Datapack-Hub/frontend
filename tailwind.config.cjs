@@ -23,7 +23,7 @@ const config = {
           '900': '#875915',
           '950': '#4a2e05',
         },
-        "dph-orange": "#ea580c",
+        "dph-orange": "#ff631a",
       },
       scale: {
         '102': '1.02',
