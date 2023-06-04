@@ -9,7 +9,7 @@
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "format": "prettier --cache src --config ./.prettierrc --write --plugin-search-dir=. ./src/**/*.{svelte,ts}",
+    "format": "prettier --cache src --write --plugin-search-dir=. ./src/**/*.{svelte,ts}",
     "lighthouse": "unlighthouse --config unlighthouse.config.ts",
     "lint": "eslint ."
   },
@@ -63,5 +63,18 @@
     "isomorphic-dompurify": "^1.6.0",
     "svelte-french-toast": "1.0.4-beta.0",
     "svelte-multiselect": "^8.6.2"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSameLine": true,
+    "semi": true,
+    "svelteStrictMode": true,
+    "svelteIndentScriptAndStyle": true,
+    "svelteSortOrder": "scripts-options-markup-styles",
+    "trailingComma": "none",
+    "plugins": [
+      "prettier-plugin-svelte"
+    ],
+    "pluginSearchDirs": false
   }
 }
