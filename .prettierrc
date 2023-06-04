@@ -1,0 +1,13 @@
+{
+  "arrowParens": "avoid",
+  "bracketSameLine": true,
+  "semi": true,
+  "svelteStrictMode": true,
+  "svelteIndentScriptAndStyle": true,
+  "svelteSortOrder": "scripts-options-markup-styles",
+  "trailingComma": "none",
+  "plugins": [
+    "prettier-plugin-svelte"
+  ],
+  "pluginSearchDirs": false
+}
