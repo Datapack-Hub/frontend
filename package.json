@@ -63,5 +63,76 @@
     "isomorphic-dompurify": "^1.6.0",
     "svelte-french-toast": "1.0.4-beta.0",
     "svelte-multiselect": "^8.6.2"
-  }
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": [
+      "svelte3",
+      "@typescript-eslint"
+    ],
+    "ignorePatterns": [
+      ".DS_Store",
+      "node_modules",
+      "/build",
+      "/.svelte-kit",
+      "/package",
+      ".env",
+      ".env.*",
+      "!.env.example",
+      "pnpm-lock.yaml",
+      "package-lock.json",
+      "yarn.lock",
+      "lighthouse",
+      "/.vscode"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "*.svelte"
+        ],
+        "processor": "svelte3/svelte3"
+      },
+      {
+        "files": [
+          "*.ts",
+          "*.svelte"
+        ],
+        "rules": {
+          "no-undef": "off"
+        }
+      }
+    ],
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 2020,
+      "extraFileExtensions": [
+        ".svelte"
+      ]
+    },
+    "env": {
+      "browser": true,
+      "es6": true,
+      "es2020": true,
+      "node": true
+    }
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSameLine": true,
+    "semi": true,
+    "svelteStrictMode": true,
+    "svelteIndentScriptAndStyle": true,
+    "svelteSortOrder": "scripts-options-markup-styles",
+    "trailingComma": "none",
+    "plugins": [
+      "prettier-plugin-svelte"
+    ],
+    "pluginSearchDirs": false
+  },
+  "engineStrict": true
 }
