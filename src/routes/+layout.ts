@@ -2,6 +2,7 @@ import { browser } from "$app/environment";
 import { goto } from "$app/navigation";
 import { apiURL } from "$lib/globals/consts";
 import { fetchAuthed, getCookie, loadColorPref } from "$lib/globals/functions";
+import { authed, role, user } from "$lib/globals/stores";
 import type { LayoutLoad } from "./$types";
 
 export const load = (async ({ fetch, url }) => {
@@ -16,7 +17,7 @@ export const load = (async ({ fetch, url }) => {
       goto("/");
     }
 
-    const token = await getCookie("dph_token");
+    const token = getCookie("dph_token");
 
     if (token) {
       const [userRes, roleRes] = await Promise.all([
@@ -25,19 +26,16 @@ export const load = (async ({ fetch, url }) => {
       ]);
 
       const userJson = (await userRes.json()) as User;
-      return {
-        user: userJson,
-        role: (await roleRes.json()).roles.find(
-          (v: Role) => v.name == userJson.role
-        ),
 
-        authed: true // user has a token
-      };
+      user.set(userJson);
+      role.set(
+        (await roleRes.json()).roles.find(
+          (v: Role) => v.name == userJson.role
+        ) as Role
+      );
+      authed.set(true);
     }
 
     loadColorPref();
   }
-  return {
-    authed: false // user does not have a token
-  };
 }) satisfies LayoutLoad;

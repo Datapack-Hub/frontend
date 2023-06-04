@@ -3,7 +3,7 @@
   import Button from "$lib/components/Button.svelte";
   import ProjectComponent from "$lib/components/ProjectComponent.svelte";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
-  import { useUser } from "$lib/globals/stores";
+  import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
 
   let activePage = "publish_queue";
@@ -11,8 +11,6 @@
   let rolesJson: Role[];
   let publishQueue: Project[];
   let reviewQueue: Project[];
-
-  let user = useUser();
 
   async function loadStuff() {
     if ($user.role == "default") {

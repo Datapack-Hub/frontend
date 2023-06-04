@@ -1,17 +1,16 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
   import CasualLine from "$lib/components/CasualLine.svelte";
   import { fetchAuthed, removeCookie } from "$lib/globals/functions";
-  import { getContext, onMount } from "svelte";
-  import { browser } from "$app/environment";
+  import { authed } from "$lib/globals/stores";
+  import { onMount } from "svelte";
   import IconBan from "~icons/tabler/Ban.svelte";
-  import MarkdownComponent from "../MarkdownComponent.svelte";
   import Button from "../Button.svelte";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
 
   let visible = false;
   let banReason: string;
   let expiry: number;
-
-  let authed = getContext("authed");
 
   onMount(async () => {
     if (browser) {
@@ -37,7 +36,7 @@
   }
 </script>
 
-{#if authed && visible}
+{#if $authed && visible}
   <div
     class="fixed left-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-lg backdrop-brightness-50">
     <div

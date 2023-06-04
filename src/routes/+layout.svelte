@@ -1,27 +1,17 @@
 <script lang="ts">
   // import "../app.scss";
-  import "../app.postcss";
-  import Navbar from "$lib/components/nav/Navbar.svelte";
+  import CasualLine from "$lib/components/CasualLine.svelte";
   import BannedModal from "$lib/components/modals/BannedModal.svelte";
   import Footer from "$lib/components/nav/Footer.svelte";
-  import { setContext } from "svelte";
-  import CasualLine from "$lib/components/CasualLine.svelte";
-  import { isDark, useUser } from "$lib/globals/stores";
+  import Navbar from "$lib/components/nav/Navbar.svelte";
+  import { authed, isDark, user } from "$lib/globals/stores";
   import { Toaster } from "svelte-french-toast";
-  import type { LayoutData } from "./$types";
-
-  export let data: LayoutData;
-
-  let user = useUser();
-
-  setContext("user", data.user);
-  setContext("roleData", data.role);
-  setContext("authed", data.authed);
+  import "../app.postcss";
 </script>
 
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? 'dark' : ''}">
-  {#if data.authed && ["helper", "moderator", "admin"].includes($user.role)}
+  {#if $authed && ["helper", "moderator", "admin"].includes($user.role)}
     <div
       class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
       <Navbar />

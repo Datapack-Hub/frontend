@@ -1,8 +1,9 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
+  import { apiURL } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
-  import { useRole, useUser } from "$lib/globals/stores";
-  import { getContext, onMount } from "svelte";
+  import { authed, role, user } from "$lib/globals/stores";
+  import { onMount } from "svelte";
 
   let submitCmd: () => Promise<void> | undefined;
   let commandInput: HTMLInputElement;
@@ -11,13 +12,11 @@
   let innerWidth = 0;
   let objDiv: HTMLDivElement;
 
-  let user = useUser();
-  let role = useRole();
-  let authed = getContext("authed");
-
   $: isSmallWidth = innerWidth < 768;
 
-  onMount(() => {
+  onMount(async () => {
+    await fetch(`${apiURL}/user/staff/roles`);
+
     if (!$role.permissions.includes("USE_CONSOLE")) {
       goto("/");
     }
@@ -62,7 +61,7 @@
 <svelte:window bind:innerWidth="{innerWidth}" />
 
 <main class="bg-stone-900 px-4 transition-all">
-  {#if $user.role != "default" && authed == true}
+  {#if $user.role != "default" && $authed}
     {#if !isSmallWidth}
       <div
         class="h-screen w-full flex-col font-console text-lime-400 md:items-start md:pt-20">

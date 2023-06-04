@@ -1,17 +1,13 @@
 <script lang="ts">
   import { titleCase } from "$lib/globals/functions";
-  import { useUser } from "$lib/globals/stores";
+  import { authed, user } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
   import IconSettings from "~icons/tabler/Settings.svelte";
-  import MarkdownComponent from "../MarkdownComponent.svelte";
   import Button from "../Button.svelte";
-  import { getContext } from "svelte";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
 
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
-
-  let authed = getContext("authed");
-  let user = useUser();
 
   let orangeVerifiedHover = {
     content: "Verified for being part of the Datapack Hub staff team.",
@@ -83,7 +79,7 @@
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
-  {#if authed && $user.id === profile?.id}
+  {#if $authed && $user.id === profile?.id}
     <Button
       style="secondary"
       click="/user/{$user.username}/edit"

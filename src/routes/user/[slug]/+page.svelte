@@ -1,17 +1,13 @@
 <script lang="ts">
-  import ProfileCard from "$lib/components/profile/FullProfileCard.svelte";
-  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
-  import UserModeration from "$lib/components/profile/UserModeration.svelte";
-  import type { PageData } from "./$types";
-  import CasualLine from "$lib/components/CasualLine.svelte";
   import Button from "$lib/components/Button.svelte";
-  import { getContext } from "svelte";
-  import { useUser } from "$lib/globals/stores";
+  import CasualLine from "$lib/components/CasualLine.svelte";
+  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
+  import ProfileCard from "$lib/components/profile/FullProfileCard.svelte";
+  import UserModeration from "$lib/components/profile/UserModeration.svelte";
+  import { authed, user } from "$lib/globals/stores";
+  import type { PageData } from "./$types";
 
   export let data: PageData;
-
-  let authed = getContext("authed");
-  let user = useUser();
 </script>
 
 <svelte:head>
@@ -35,7 +31,7 @@
   class="flex w-full -translate-y-20 flex-col items-center bg-pearl-lusta-100 px-8 transition-all dark:bg-stone-900 md:translate-y-0 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
   <div class="w-full md:w-1/2 2xl:w-1/3">
     <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
-    {#if authed && ["moderator", "developer", "admin"].includes($user.role)}
+    {#if $authed && ["moderator", "developer", "admin"].includes($user.role)}
       <UserModeration user="{data.profile}" />
     {/if}
   </div>

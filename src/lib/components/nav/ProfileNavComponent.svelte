@@ -2,9 +2,8 @@
   import { afterNavigate } from "$app/navigation";
   import { apiURL } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
-  import { isDark, useRole, useUser } from "$lib/globals/stores";
+  import { authed, isDark, role, user } from "$lib/globals/stores";
   import { onMount } from "svelte";
-  import { getContext } from "svelte";
   import tippy from "sveltejs-tippy";
   import IconRead from "~icons/tabler/Bell.svelte";
   import IconUnread from "~icons/tabler/BellRinging.svelte";
@@ -12,10 +11,6 @@
   import IconShield from "~icons/tabler/Shield.svelte";
 
   export let small: boolean;
-
-  let user = useUser();
-  let role = useRole();
-  let authed = getContext("authed");
 
   let signInHoverMsg = {
     content: "Sign In",

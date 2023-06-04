@@ -1,12 +1,11 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
-  import { useUser } from "$lib/globals/stores";
+  import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
 
   let rolesJson: Role[];
 
-  let user = useUser();
   async function loadStuff() {
     if ($user.role == "default") {
       goto("/");

@@ -3,17 +3,14 @@
   import { getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
-  import TrendUpIcon from "~icons/tabler/TrendingUp.svelte";
-  import TrophyIcon from "~icons/tabler/Trophy.svelte";
-  import DiceIcon from "~icons/tabler/Dice.svelte";
   import tippy from "sveltejs-tippy";
 
   export let project: Project;
-  export let type: "popular" | "featured" | "random" = "popular";
+  export let type: "popular" | "featured" | "random" | "new" = "popular";
 
   let views = Math.round(Math.random() * 1000).toString();
 
-  let hovermsgs = {
+  let hoverMsgs = {
     popular: {
       content: "This datapack is trending on Datapack Hub",
       placement: "bottom"
@@ -24,6 +21,10 @@
     },
     random: {
       content: "This datapack is a completely random one for you to try out!",
+      placement: "bottom"
+    },
+    new: {
+      content: "This datapack is new to Datapack Hub!",
       placement: "bottom"
     }
   };
@@ -102,8 +103,7 @@
   </div>
   <div
     class="absolute right-3 top-0 bg-{style} flex space-x-1 rounded-b-md px-2 py-0.5 font-brand text-xs"
-    use:tippy="{hovermsgs[type]}">
-    <Eyecon />
+    use:tippy="{hoverMsgs[type]}">
     <p>{views}</p>
   </div>
 </div>
