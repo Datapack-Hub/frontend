@@ -13,7 +13,6 @@
   }
 </script>
 
-{#if visible}
   <dialog
     bind:this={instance}
     class="backdrop:blur-lg backdrop:transform-gpu">
@@ -28,4 +27,4 @@
       <slot />
     </div>
   </dialog>
-{/if}
+
