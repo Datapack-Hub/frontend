@@ -1,18 +1,21 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
 
+  let instance: HTMLDialogElement
+
   let visible = false;
   export function open() {
-    visible = true;
+    instance.show()
   }
 
   export function close() {
-    visible = false;
+    instance.close()
   }
 </script>
 
 {#if visible}
   <dialog
+    bind:this={instance}
     class="backdrop:blur-lg backdrop:transform-gpu">
     <div
       in:fly="{{ y: 300 }}"
