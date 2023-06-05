@@ -28,7 +28,7 @@
     if (browser) {
       let modData = await fetchAuthed(
         "get",
-        `${apiURL}/moderation/user/${user?.id}`
+        `/moderation/user/${user?.id}`
       );
       modJson = await modData.json();
     }
