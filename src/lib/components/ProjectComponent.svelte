@@ -3,9 +3,13 @@
   import { getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
+  import TrendUpIcon from "~icons/tabler/TrendingUp.svelte";
+  import TrophyIcon from "~icons/tabler/Trophy.svelte";
+  import DiceIcon from "~icons/tabler/Dice.svelte";
+  import tippy from "sveltejs-tippy";
 
   export let project: Project;
-
+  
   let author: User;
   let visible = false;
 
@@ -16,64 +20,50 @@
 </script>
 
 <div
-  class="relative w-full items-center rounded-xl bg-pearl-lusta-200 p-2 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
-  <div class="flex">
+  class="w-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
+  <div class="flex items-center">
     <a
       href="/project/{project.url}"
-      class="rounded-lg bg-pearl-lusta-300 dark:bg-stone-700 dark:text-pearl-lusta-100 {project.icon
+      class="rounded-lg {project.icon
         ? ''
-        : 'p-4'}">
+        : 'bg-pearl-lusta-300 p-4 dark:bg-stone-700 dark:text-pearl-lusta-100'}">
       {#if project.icon}
         <img
           loading="lazy"
           src="{project.icon}"
           alt="{project.title} icon"
+          width="96"
+          height="96"
           class="aspect-square w-20 rounded-lg bg-cover" />
       {:else}
         <IconNoPhoto width="48" height="48" />
       {/if}
     </a>
     <div class="ml-4 w-2/3">
-      <div class="flex items-center">
-        <a
-          href="/project/{project.url}"
-          class="mr-1.5 font-brand text-lg hover:underline md:text-xl lg:text-2xl">
-          {project.title}
-        </a>
-        {#if visible}
+      <a
+        href="/project/{project.url}"
+        class="font-brand text-lg hover:underline md:text-xl lg:text-2xl">
+        {project.title}
+      </a>
+      {#if visible}
+        <div
+          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-white font-brand">
           <a
             href="/user/{author.username.toLowerCase()}"
-            class="text-xs text-pearl-lusta-950/40 hover:underline dark:text-pearl-lusta-100/70 dark:hover:text-blue-300 md:text-sm"
+            class="block dark:hover:text-pearl-lusta-100"
             in:fade="{{ duration: 250 }}">
-            • By {author.username}
+            {author.username}
           </a>
-        {/if}
-      </div>
+          <span>•</span>
+          <span>1.19</span>
+          <span>•</span>
+          <span>Beta 1.1</span>
+        </div>
+      {/if}
       <p
-        class=" mt-2 line-clamp-2 text-sm font-medium text-pearl-lusta-950/70 dark:text-pearl-lusta-100 md:text-base">
+        class="line-clamp-2 text-sm font-medium text-pearl-lusta-950/40 dark:text-pearl-lusta-100/40 md:text-sm">
         {project.description}
       </p>
     </div>
   </div>
-  {#if project.status == "draft"}
-    <h2
-      class="absolute right-0 top-0 rounded-bl-md rounded-tr-xl bg-stone-700 px-2 font-brand font-bold text-stone-500">
-      Draft
-    </h2>
-  {:else if project.status == "unpublished"}
-    <h2
-      class="absolute right-0 top-0 rounded-bl-md rounded-tr-xl bg-stone-700 px-2 font-brand font-bold text-stone-500">
-      Unpublished
-    </h2>
-  {:else if project.status == "publish_queue" || project.status == "review_queue"}
-    <h2
-      class="absolute right-0 top-0 rounded-bl-md rounded-tr-xl bg-yellow-700 px-2 font-brand font-bold text-yellow-500">
-      Awaiting Approval
-    </h2>
-  {:else if project.status == "disabled"}
-    <h2
-      class="absolute right-0 top-0 rounded-bl-md rounded-tr-xl bg-red-700/50 px-2 font-brand font-bold text-red-500">
-      Disabled
-    </h2>
-  {/if}
 </div>

@@ -9,6 +9,12 @@
   import "../app.postcss";
 </script>
 
+<svelte:head>
+  {#if authed && ["helper", "moderator", "admin"].includes($user.role)}
+  <title>Coming Soon</title>
+  {/if}
+</svelte:head>
+
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? 'dark' : ''}">
   {#if $authed && ["helper", "moderator", "admin"].includes($user.role)}
@@ -62,5 +68,4 @@
     </div>
   {/if}
 </div>
-
 <!-- {/await} -->
