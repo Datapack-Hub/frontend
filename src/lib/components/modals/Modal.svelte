@@ -5,7 +5,7 @@
 
   let visible = false;
   export function open() {
-    instance.show()
+    instance.showModal()
   }
 
   export function close() {
