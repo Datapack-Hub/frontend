@@ -25,4 +25,3 @@
 <main class="flex w-screen h-screen justify-center items-center">
   <button on:click="{() => modal.open()}">click me</button>
 </main>
-

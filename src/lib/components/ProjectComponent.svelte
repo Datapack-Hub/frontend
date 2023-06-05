@@ -3,10 +3,6 @@
   import { getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
-  import TrendUpIcon from "~icons/tabler/TrendingUp.svelte";
-  import TrophyIcon from "~icons/tabler/Trophy.svelte";
-  import DiceIcon from "~icons/tabler/Dice.svelte";
-  import tippy from "sveltejs-tippy";
 
   export let project: Project;
 
