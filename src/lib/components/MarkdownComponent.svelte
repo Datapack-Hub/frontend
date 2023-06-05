@@ -3,34 +3,32 @@
   import DOMPurify from "isomorphic-dompurify";
   import { marked } from "marked";
   import { onMount } from "svelte";
+  import { markedSmartypants } from "marked-smartypants";
 
-  export let source = "";
+  export let source: string | undefined = "";
 
   let html = "";
 
   onMount(async () => {
-    // marked.use(markedHighlight({
-    //   langPrefix: 'hljs language-',
-    //   highlight(code, lang) {
-    //     const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-    //     return hljs.highlight(code, { language }).value;
-    //   }
-    // }), markedSmartypants());
+    marked.use(markedSmartypants());
 
-    html = await marked.parse(
-      DOMPurify.sanitize(source, {
-        FORBID_ATTR: ["style", "class", "placeholder", "src"],
-        FORBID_TAGS: ["canvas", "svg", "iframe", "img"],
-        ALLOWED_TAGS: ["details", "summary"]
-      }),
-      {
-        async: true,
-        breaks: true,
-        gfm: true,
-        mangle: false,
-        headerIds: false
-      }
-    );
+    if (!source) html = "";
+    else {
+      html = await marked.parse(
+        DOMPurify.sanitize(source, {
+          FORBID_ATTR: ["style", "class", "placeholder", "src"],
+          FORBID_TAGS: ["canvas", "svg", "iframe", "img"],
+          ALLOWED_TAGS: ["details", "summary"]
+        }),
+        {
+          async: true,
+          breaks: true,
+          gfm: true,
+          mangle: false,
+          headerIds: false
+        }
+      );
+    }
   });
 </script>
 

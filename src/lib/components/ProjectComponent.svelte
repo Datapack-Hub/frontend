@@ -9,7 +9,7 @@
   import tippy from "sveltejs-tippy";
 
   export let project: Project;
-  
+
   let author: User;
   let visible = false;
 

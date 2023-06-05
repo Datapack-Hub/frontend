@@ -22,25 +22,20 @@
   let unbanDialog: Modal;
   let logOutDialog: Modal;
 
-  let modJson: { banned: boolean; banExpiry: number; banMessage: string };
+  let modJson: { banned: boolean; banExpiry: number; banMessage: string } = {
+    banned: false,
+    banExpiry: -1,
+    banMessage: "null"
+  };
 
   async function loadData() {
     if (browser) {
-      let modData = await fetchAuthed(
-        "get",
-        `/moderation/user/${user?.id}`
-      );
+      let modData = await fetchAuthed("get", `/moderation/user/${user?.id}`);
       modJson = await modData.json();
     }
   }
 
   function open(me: Modal) {
-    warnDialog.close();
-    notifDialog.close();
-    banDialog.close();
-    unbanDialog.close();
-    logOutDialog.close();
-
     me.open();
   }
 
@@ -135,7 +130,7 @@
     );
     if (unban.ok) {
       unbanDialog.close();
-      modJson["banned"] == false;
+      modJson.banned == false;
       toast.success(`${user?.username} is now unbanned.`);
     } else {
       alert(await unban.text());
@@ -156,6 +151,90 @@
   }
   $: iconColor = $isDark ? "white" : "black";
 </script>
+
+{#if user}
+  {#await loadData()}
+    Loading...
+  {:then}
+    <div class="flex max-w-full justify-center md:justify-start">
+      <div class="w-full rounded-xl bg-red-600/25 p-2">
+        <h1
+          class="font-brand text-base font-medium text-pearl-lusta-950 dark:text-white md:text-lg">
+          Moderation Actions
+        </h1>
+        <CasualLine />
+        <div class="xs:flex-col md:flex">
+          <div class="md:w-2/3">
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-red-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              on:click="{() => {
+                if (modJson.banned) open(unbanDialog);
+                else open(banDialog);
+              }}">
+              <IconBan height="32" width="32" color="{iconColor}" class="p-1" />
+              {#if modJson.banned}Unban (expires {new Date(
+                  modJson.banExpiry
+                ).toDateString()}){:else}Ban{/if}
+            </button>
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-dph-orange p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              on:click="{() => open(warnDialog)}">
+              <IconWarn
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
+              Warn
+            </button>
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-sm text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              id="send_notif"
+              on:click="{() => open(notifDialog)}">
+              <IconMessage color="{iconColor}" class="p-1" />
+              Send a Notification
+            </button>
+            <a
+              href="/user/{user?.username}/edit"
+              class="mt-1 flex w-full items-center rounded-md bg-green-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
+              <IconSettings
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
+              Edit Profile Details
+            </a>
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-indigo-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              on:click="{() => open(logOutDialog)}">
+              <IconLogOut
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
+              Log User Out
+            </button>
+          </div>
+          <div class="w-1/3 pl-2">
+            <p
+              class="mt-6 font-brand text-xl font-extrabold text-pearl-lusta-950 dark:text-white md:mt-0">
+              User Info
+            </p>
+            <p class="font-brand text-pearl-lusta-950 dark:text-white">
+              <b>ID: </b>
+              {user.id}
+            </p>
+            {#if modJson.banned}
+              <p class="font-brand text-pearl-lusta-950 dark:text-white">
+                <b>Banned</b>
+              </p>
+            {/if}
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+  {/await}
+{/if}
 
 <Modal bind:this="{warnDialog}">
   <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
@@ -268,7 +347,7 @@
     {user?.username} has been banned for the following reason:
   </p>
   <p class="my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300">
-    <MarkdownComponent source="{modJson['banMessage']}" />
+    <MarkdownComponent source="{modJson.banMessage}" />
   </p>
   <p class="font-brand text-pearl-lusta-950 dark:text-white">
     Unban them to end their ban early.
@@ -288,87 +367,3 @@
   </p>
   <Button click="{async () => await logOutUser()}">Log them out!</Button>
 </Modal>
-
-{#if user}
-  {#await loadData()}
-    Loading...
-  {:then}
-    <div class="flex max-w-full justify-center md:justify-start">
-      <div class="w-full rounded-xl bg-red-600/25 p-2">
-        <h1
-          class="font-brand text-base font-medium text-pearl-lusta-950 dark:text-white md:text-lg">
-          Moderation Actions
-        </h1>
-        <CasualLine />
-        <div class="xs:flex-col md:flex">
-          <div class="md:w-2/3">
-            <button
-              class="mt-1 flex w-full items-center rounded-md bg-red-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
-              on:click="{() => {
-                if (modJson['banned']) open(unbanDialog);
-                else open(banDialog);
-              }}">
-              <IconBan height="32" width="32" color="{iconColor}" class="p-1" />
-              {#if modJson["banned"]}Unban (expires {new Date(
-                  modJson["banExpiry"]
-                ).toDateString()}){:else}Ban{/if}
-            </button>
-            <button
-              class="mt-1 flex w-full items-center rounded-md bg-dph-orange p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
-              on:click="{() => open(warnDialog)}">
-              <IconWarn
-                height="32"
-                width="32"
-                color="{iconColor}"
-                class="p-1" />
-              Warn
-            </button>
-            <button
-              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-sm text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
-              id="send_notif"
-              on:click="{() => open(notifDialog)}">
-              <IconMessage color="{iconColor}" class="p-1" />
-              Send a Notification
-            </button>
-            <a
-              href="/user/{user?.username}/edit"
-              class="mt-1 flex w-full items-center rounded-md bg-green-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
-              <IconSettings
-                height="32"
-                width="32"
-                color="{iconColor}"
-                class="p-1" />
-              Edit Profile Details
-            </a>
-            <button
-              class="mt-1 flex w-full items-center rounded-md bg-indigo-600 p-1 text-left font-brand text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
-              on:click="{() => open(logOutDialog)}">
-              <IconLogOut
-                height="32"
-                width="32"
-                color="{iconColor}"
-                class="p-1" />
-              Log User Out
-            </button>
-          </div>
-          <div class="w-1/3 pl-2">
-            <p
-              class="mt-6 font-brand text-xl font-extrabold text-pearl-lusta-950 dark:text-white md:mt-0">
-              User Info
-            </p>
-            <p class="font-brand text-pearl-lusta-950 dark:text-white">
-              <b>ID: </b>
-              {user.id}
-            </p>
-            {#if modJson["banned"]}
-              <p class="font-brand text-pearl-lusta-950 dark:text-white">
-                <b>Banned</b>
-              </p>
-            {/if}
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-  {/await}
-{/if}

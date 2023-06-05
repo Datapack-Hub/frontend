@@ -1,30 +1,25 @@
 <script lang="ts">
-  import { fly } from "svelte/transition";
+  import IconClose from "~icons/tabler/X.svelte"
 
-  let instance: HTMLDialogElement
+  let instance: HTMLDialogElement;
 
-  let visible = false;
   export function open() {
-    instance.showModal()
+    instance.showModal();
   }
 
   export function close() {
-    instance.close()
+    instance.close();
   }
 </script>
 
-  <dialog
-    bind:this={instance}
-    class="backdrop:blur-lg backdrop:transform-gpu">
-    <div
-      in:fly="{{ y: 300 }}"
-      class="relative m-auto w-1/3 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
-      <form method="dialog">
-        <button
-          class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
-          >X</button>
-      </form>
-      <slot />
-    </div>
-  </dialog>
-
+<dialog bind:this="{instance}" class="bg-transparent backdrop:backdrop-blur-lg backdrop:brightness-75 backdrop:transition-all transition-all w-1/3">
+  <div
+    class="rounded-xl p-3 dark:bg-stone-800">
+    <form method="dialog">
+      <button
+        class="float-right text-pearl-lusta-950 dark:text-white"
+        ><IconClose/></button>
+    </form>
+    <slot />
+  </div>
+</dialog>
