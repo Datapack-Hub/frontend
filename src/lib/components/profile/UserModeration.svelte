@@ -1,18 +1,18 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
   import CasualLine from "$lib/components/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { fetchAuthed } from "../../globals/functions";
-  import { browser } from "$app/environment";
-  import toast from "svelte-french-toast";
   import { apiURL } from "$lib/globals/consts";
+  import { isDark } from "$lib/globals/stores";
+  import toast from "svelte-french-toast";
   import IconWarn from "~icons/tabler/AlertTriangle.svelte";
   import IconBan from "~icons/tabler/Ban.svelte";
-  import IconMessage from "~icons/tabler/MailForward.svelte";
   import IconLogOut from "~icons/tabler/Logout.svelte";
+  import IconMessage from "~icons/tabler/MailForward.svelte";
   import IconSettings from "~icons/tabler/Settings.svelte";
-  import { isDark } from "$lib/globals/stores";
-  import MarkdownComponent from "../MarkdownComponent.svelte";
+  import { fetchAuthed } from "../../globals/functions";
   import Button from "../Button.svelte";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
 
   export let user: User | undefined;
 
@@ -372,8 +372,3 @@
     <br />
   {/await}
 {/if}
-
-<!-- <ToastContainer placement="bottom-right" let:data>
-  <FlatToast data="{data}" />
-  Provider template for your toasts
-</ToastContainer> -->
