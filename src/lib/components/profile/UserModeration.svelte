@@ -190,7 +190,11 @@
               class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left font-brand text-sm text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               id="send_notif"
               on:click="{() => open(notifDialog)}">
-              <IconMessage color="{iconColor}" class="p-1" />
+              <IconMessage
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
               Send a Notification
             </button>
             <a

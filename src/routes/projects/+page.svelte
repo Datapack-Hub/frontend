@@ -26,7 +26,7 @@
   <div
     class="-translate-y-20 items-center pt-0 md:translate-y-0 md:flex-row md:items-start md:pt-20">
     <div
-      class="my-4 flex flex-col items-center justify-center sm:flex-row md:justify-normal">
+      class="my-4 flex flex-col items-center justify-center sm:flex-row md:justify-normal space-x-2">
       <div
         class="flex w-64 items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700">
         <IconSearch color="white" on:click="{search}" />
@@ -39,7 +39,6 @@
           class="ml-2 bg-pearl-lusta-200 font-brand text-pearl-lusta-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
           on:input="{search}" />
       </div>
-      <div class="px-2"></div>
       <div class="flex items-center">
         <a
           href="/projects"
@@ -65,7 +64,7 @@
     </div>
     <CasualLine />
     <div class="mt-4 flex flex-col md:flex-row">
-      <div class="mb-3 w-full rounded-xl bg-stone-800 p-2 lg:w-1/4 xl:w-1/5">
+      <div class="md:mb-3 mb-0 w-full rounded-xl bg-stone-800 p-2 lg:w-1/4 xl:w-1/5">
         <p class="w-full text-center font-brand text-xl text-white">
           Search Settings
         </p>
