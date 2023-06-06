@@ -1,18 +1,18 @@
 <script lang="ts">
-  import { fetchAuthed } from "$lib/globals/functions";
-  import type { PageData } from "./$types";
-  import JSZip from "jszip";
-  import MultiSelect from "svelte-multiselect";
-  import toast from "svelte-french-toast";
-  import { apiURL, categories } from "$lib/globals/consts";
-  import { goto } from "$app/navigation";
-  import Modal from "$lib/components/modals/Modal.svelte";
-  import CasualLine from "$lib/components/CasualLine.svelte";
-  import IconTick from "~icons/tabler/Check.svelte";
-  import autoAnimate from "@formkit/auto-animate";
   import { browser } from "$app/environment";
-  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
+  import CasualLine from "$lib/components/CasualLine.svelte";
+  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import Modal from "$lib/components/modals/Modal.svelte";
+  import { apiURL, categories } from "$lib/globals/consts";
+  import { fetchAuthed } from "$lib/globals/functions";
+  import autoAnimate from "@formkit/auto-animate";
+  import JSZip from "jszip";
+  import toast from "svelte-french-toast";
+  import MultiSelect from "svelte-multiselect";
+  import IconTick from "~icons/tabler/Check.svelte";
+  import type { PageData } from "./$types";
 
   let publishModal: Modal;
 
@@ -310,8 +310,8 @@
               class="bg-new-white-300 w-1/4 rounded-md p-2 font-brand text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
               bind:value="{catVal}">
               {#each categories as cat}
-                <option value="{cat.text}">
-                  {cat.text}
+                <option value="{cat}">
+                  {cat}
                 </option>
               {/each}
             </select><br /><br />

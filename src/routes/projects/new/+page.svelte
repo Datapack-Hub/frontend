@@ -116,7 +116,7 @@
           id="cat">
           {#each categories as cat}
             <option value="{cat}">
-              {cat.text}
+              {cat}
             </option>
           {/each}
         </select><br /><br />

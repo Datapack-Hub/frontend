@@ -70,3 +70,6 @@ declare type Version = {
   resource_pack_download: string?;
   file_name: string;
 };
+
+/// <reference types="@sveltejs/kit" />
+/// <reference types="unplugin-icons/types/svelte" />
