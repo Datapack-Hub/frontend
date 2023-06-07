@@ -8,7 +8,7 @@ export const load = (async ({ params }) => {
   if (browser) {
     const projectReq = await fetchAuthed(
       "get",
-      apiURL + "/projects/get/" + params.slug
+      "/projects/get/" + params.slug
     );
 
     if (projectReq.ok) {
@@ -25,7 +25,7 @@ export const load = (async ({ params }) => {
             await (
               await fetchAuthed(
                 "get",
-                apiURL + "/versions/project/" + projectJson.ID
+                "/versions/project/" + projectJson.ID
               )
             ).json()
           ).result as Version[];

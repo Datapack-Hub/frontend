@@ -216,7 +216,8 @@
 <main
   class="-translate-y-20 bg-pearl-lusta-100 px-0 pb-3 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
   <div class="pt-20"></div>
-  <div class="flex space-x-4">
+  <div class="flex space-x-4 w-full">
+
     <!--Project Meta-->
     <div class="flex h-fit w-1/4 flex-col">
       <div class="my-3 font-brand text-sky-300">
@@ -296,31 +297,29 @@
           {/if}
         </div>
       </div>
+      {#if data.project?.mod_message}
+        <div
+          class="mt-4 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100"
+          id="modmsg"
+          bind:this="{mm}">
+          {#if status && !["disabled", "review_queue"].includes(status)}
+            <button
+              class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+              on:click="{dismissModMsg}"><IconCross /></button>
+          {/if}
+          <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
+          <p
+            class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
+            <!-- <SvelteMarkdown source="{data.project?.mod_message}" /> -->
+            {data.project.mod_message}
+          </p>
+          <!-- <p class="font-brand text-xs">
+            Only you (and staff) can read this message. Once you've acknowleged
+            it, you can dismiss the message if the project isn't disabled.
+          </p> -->
+        </div>
+      {/if}
     </div>
-
-    <!--Mod Message-->
-    {#if data.project?.mod_message}
-      <div
-        class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100"
-        id="modmsg"
-        bind:this="{mm}">
-        {#if status && !["disabled", "review_queue"].includes(status)}
-          <button
-            class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
-            on:click="{dismissModMsg}"><IconCross /></button>
-        {/if}
-        <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
-        <p
-          class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
-          <!-- <SvelteMarkdown source="{data.project?.mod_message}" /> -->
-          {data.project.mod_message}
-        </p>
-        <p class="font-brand text-xs">
-          Only you (and staff) can read this message. Once you've acknowleged
-          it, you can dismiss the message if the project isn't disabled.
-        </p>
-      </div>
-    {/if}
 
     <!--Main-->
     <div use:autoAnimate class="w-3/4">
@@ -448,7 +447,6 @@
         </div>
       {/if}
     </div>
-    <div class="w-1/3"></div>
   </div>
 </main>
 

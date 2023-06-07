@@ -27,7 +27,7 @@
   };
 </script>
 
-<div class="flex max-w-full flex-col items-center md:items-start">
+<div class="mb-4 flex max-w-full flex-col items-center md:items-start">
   <div class="self-center">
     <img
       loading="lazy"
@@ -83,7 +83,7 @@
     <Button
       style="secondary"
       click="/user/{$user.username}/edit"
-      classes="my-4 flex w-full items-center">
+      classes="mt-4 flex w-full items-center">
       <IconSettings
         width="24"
         height="24"

@@ -10,7 +10,7 @@
     <slot />
   </a>
 {:else}
-  <button on:click="{() => click}" class="button-{style} {classes}">
+  <button on:click="{click}" class="button-{style} {classes}">
     <slot />
   </button>
 {/if}

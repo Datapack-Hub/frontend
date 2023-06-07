@@ -2,7 +2,12 @@
   import { browser } from "$app/environment";
   import { getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
+
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
+  import IconTrending from "~icons/tabler/TrendingUp.svelte"
+  import IconFeatured from "~icons/tabler/Trophy.svelte"
+  import IconRandom from "~icons/tabler/Dice.svelte"
+
   import tippy from "sveltejs-tippy";
 
   export let project: Project;
@@ -104,6 +109,12 @@
   <div
     class="absolute right-3 top-0 bg-{style} flex space-x-1 rounded-b-md px-2 py-0.5 font-brand text-xs"
     use:tippy="{hoverMsgs[type]}">
-    <p>{views}</p>
+    {#if type == "popular"}
+    <IconTrending /><span>Trending</span>
+    {:else if type == "featured"}
+    <IconFeatured /><span>Featured</span>
+    {:else if type == "random"}
+    <IconRandom /><span>Random</span>
+    {/if}
   </div>
 </div>
