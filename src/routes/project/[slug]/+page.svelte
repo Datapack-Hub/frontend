@@ -217,7 +217,6 @@
   class="-translate-y-20 bg-pearl-lusta-100 px-0 pb-3 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
   <div class="pt-20"></div>
   <div class="flex space-x-4 w-full">
-
     <!--Project Meta-->
     <div class="flex h-fit w-1/4 flex-col">
       <div class="my-3 font-brand text-sky-300">

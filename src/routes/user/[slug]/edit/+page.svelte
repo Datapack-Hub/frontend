@@ -14,8 +14,6 @@
   let uname: HTMLInputElement;
   let bio: HTMLTextAreaElement;
 
-  let thingies = bio?.value.length
-
   onMount(() => {
     uname = document.getElementById("username") as HTMLInputElement;
     bio = document.getElementById("bio") as HTMLTextAreaElement;
@@ -85,11 +83,11 @@
         maxlength="500"
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
         id="bio"></textarea>
-      {#key (500 - bio?.value.length)}
-      <p
-        class="align-middle font-brand text-xs text-pearl-lusta-950 dark:text-pearl-lusta-100">
-        {(500 - bio?.value.length).toString()} characters left
-      </p>
+      {#key 500 - bio?.value.length}
+        <p
+          class="align-middle font-brand text-xs text-pearl-lusta-950 dark:text-pearl-lusta-100">
+          {(500 - bio?.value.length).toString()} characters left
+        </p>
       {/key}
       <br /><br />
       {#if $authed && $user.role == "admin"}

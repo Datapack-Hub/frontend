@@ -3,17 +3,15 @@
   import { getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
 
+  import IconRandom from "~icons/tabler/Dice.svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
-  import IconTrending from "~icons/tabler/TrendingUp.svelte"
-  import IconFeatured from "~icons/tabler/Trophy.svelte"
-  import IconRandom from "~icons/tabler/Dice.svelte"
+  import IconTrending from "~icons/tabler/TrendingUp.svelte";
+  import IconFeatured from "~icons/tabler/Trophy.svelte";
 
   import tippy from "sveltejs-tippy";
 
   export let project: Project;
   export let type: "popular" | "featured" | "random" | "new" = "popular";
-
-  let views = Math.round(Math.random() * 1000).toString();
 
   let hoverMsgs = {
     popular: {
@@ -110,11 +108,11 @@
     class="absolute right-3 top-0 bg-{style} flex space-x-1 rounded-b-md px-2 py-0.5 font-brand text-xs"
     use:tippy="{hoverMsgs[type]}">
     {#if type == "popular"}
-    <IconTrending /><span>Trending</span>
+      <IconTrending /><span>Trending</span>
     {:else if type == "featured"}
-    <IconFeatured /><span>Featured</span>
+      <IconFeatured /><span>Featured</span>
     {:else if type == "random"}
-    <IconRandom /><span>Random</span>
+      <IconRandom /><span>Random</span>
     {/if}
   </div>
 </div>

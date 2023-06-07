@@ -1,15 +1,11 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 import { fetchAuthed } from "$lib/globals/functions";
-import { apiURL } from "$lib/globals/consts";
 import { browser } from "$app/environment";
 
 export const load = (async ({ params }) => {
   if (browser) {
-    const projectReq = await fetchAuthed(
-      "get",
-      "/projects/get/" + params.slug
-    );
+    const projectReq = await fetchAuthed("get", "/projects/get/" + params.slug);
 
     if (projectReq.ok) {
       const projectJson = (await projectReq.json()) as Project;
@@ -23,10 +19,7 @@ export const load = (async ({ params }) => {
         ) {
           const versionsReq = (
             await (
-              await fetchAuthed(
-                "get",
-                "/versions/project/" + projectJson.ID
-              )
+              await fetchAuthed("get", "/versions/project/" + projectJson.ID)
             ).json()
           ).result as Version[];
           return {
