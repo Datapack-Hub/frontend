@@ -36,7 +36,7 @@ export async function fetchAuthed(
   // what is going on here
   const resp = await fetch(`${apiURL}${url}`, {
     method: method,
-    ...(data ? { body: JSON.stringify(data) } : {}), // ah yes ternary grossness
+    body: data ? JSON.stringify(data) : undefined,
     headers: {
       Authorization: `Basic ${await getCookie("dph_token")}`,
       ...headers
