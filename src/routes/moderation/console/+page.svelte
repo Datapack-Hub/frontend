@@ -1,8 +1,6 @@
 <script lang="ts">
-  import { goto } from "$app/navigation";
-  import { apiURL } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
-  import { authed, role, user } from "$lib/globals/stores";
+  import { authed, user } from "$lib/globals/stores";
   import { onMount } from "svelte";
 
   let submitCmd: () => Promise<void> | undefined;
@@ -15,12 +13,6 @@
   $: isSmallWidth = innerWidth < 768;
 
   onMount(async () => {
-    await fetch(`${apiURL}/user/staff/roles`);
-
-    if (!$role.permissions.includes("USE_CONSOLE")) {
-      goto("/");
-    }
-
     consoleIn = document.getElementById("cons")?.innerHTML ?? "";
 
     submitCmd = async () => {

@@ -12,7 +12,7 @@ export const load = async ({ fetch }) => {
         fetch(`${apiURL}/user/staff/roles`)
       ]);
 
-    if (admins.ok) {
+    if ([admins, moderators, devs, helpers, prefetchedRoles].every(r => r.ok)) {
       const [adminsJSON, moderatorsJSON, devsJSON, helpersJSON] =
         await Promise.all([
           (await admins.json()).values as User[],

@@ -1,8 +1,8 @@
-import { error } from "@sveltejs/kit";
-import type { PageLoad } from "./$types";
+import { browser } from "$app/environment";
 import { apiURL } from "$lib/globals/consts";
 import { fetchAuthed } from "$lib/globals/functions";
-import { browser } from "$app/environment";
+import { error } from "@sveltejs/kit";
+import type { PageLoad } from "./$types";
 
 export const load = (async ({ params, fetch }) => {
   if (browser) {
@@ -19,26 +19,26 @@ export const load = (async ({ params, fetch }) => {
       });
     }
 
-    if (user.ok && projects.ok && role.ok) {
-      const [profileJson, projectJson] = await Promise.all([
-        (await user.json()) as User,
-        (await projects.json()).result as Project[]
-      ]);
-
-      const profileRole: Role = (await role.json()).roles.find(
-        (v: Role) => v.name == profileJson?.role
-      );
-
-      return {
-        profile: profileJson,
-        projects: projectJson,
-        role: profileRole
-      };
+    if ([user, projects, role].every(r => !r.ok)) {
+      throw error(user.status, {
+        message: "Unexpected error",
+        description: "Something unexpected happen, try again later"
+      });
     }
 
-    throw error(user.status, {
-      message: user.statusText,
-      description: "Something went wrong"
-    });
+    const [profileJson, projectJson] = await Promise.all([
+      (await user.json()) as User,
+      (await projects.json()).result as Project[]
+    ]);
+
+    const profileRole: Role = (await role.json()).roles.find(
+      (v: Role) => v.name == profileJson?.role
+    );
+
+    return {
+      profile: profileJson,
+      projects: projectJson,
+      role: profileRole
+    };
   }
 }) satisfies PageLoad;

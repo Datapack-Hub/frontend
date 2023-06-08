@@ -28,8 +28,8 @@
 </svelte:head>
 
 <main
-  class="flex w-full -translate-y-20 flex-col items-center bg-pearl-lusta-100 px-8 transition-all dark:bg-stone-900 md:translate-y-0 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
-  <div class="w-full md:w-1/2 2xl:w-1/3">
+  class="flex flex-col lg:flex-row w-full -translate-y-20 items-center bg-pearl-lusta-100 px-8 transition-all dark:bg-stone-900 md:translate-y-0 md:items-start md:px-16 md:pt-32 lg:px-24">
+  <div class="w-full lg:w-1/2 xl:w-1/3 2xl:w-1/4">
     <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
     {#if $authed && ["moderator", "developer", "admin"].includes($role.name)}
       <UserModeration user="{data.profile}" />

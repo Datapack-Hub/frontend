@@ -6,16 +6,16 @@ import type { PageLoad } from "./$types";
 export const load = (async () => {
   if (browser) {
     const unread = await fetchAuthed("get", "/notifs/");
-    if (unread.ok) {
-      const notificationsJSON = (await unread.json()).result as Notif[];
-
-      return {
-        notifications: notificationsJSON
-      };
+    if (!unread.ok) {
+      throw error(unread.status, {
+        message: unread.statusText,
+        description: "Something went wrong"
+      });
     }
-    throw error(unread.status, {
-      message: unread.statusText,
-      description: "Something went wrong"
-    });
+
+    const notificationsJSON = (await unread.json()).result as Notif[];
+    return {
+      notifications: notificationsJSON
+    };
   }
 }) satisfies PageLoad;

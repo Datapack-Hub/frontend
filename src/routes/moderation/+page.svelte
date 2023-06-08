@@ -61,75 +61,74 @@
         >Open console</Button>
     </div>
 
-    {#await loadStuff()}
-      <p class="p-2 font-brand dark:text-white">Loading...</p>
-    {:then}
-      {#if activePage == "publish_queue"}
-        <div
-          use:autoAnimate
-          class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start">
-          {#if publishQueue.length == 0}
-            <p class="font-brand dark:text-white">
-              You're all caught up! There are no projects in the queue.
-            </p>
-          {:else}
-            <p class="font-brand dark:text-white">
-              There are {publishQueue.length} items awaiting approval:
-            </p>
-            {#each publishQueue ?? [] as proj}
-              <ProjectComponent project="{proj}" />
-            {/each}
-          {/if}
-        </div>
-      {:else if activePage == "review_queue"}
-        <div
-          use:autoAnimate
-          class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start">
-          {#if reviewQueue.length == 0}
-            <p class="font-brand dark:text-white">
-              You're all caught up! There are no projects in the queue.
-            </p>
-          {:else}
-            <p class="font-brand dark:text-white">
-              There are {reviewQueue.length} items awaiting approval:
-            </p>
-            {#each reviewQueue ?? [] as proj}
-              <ProjectComponent project="{proj}" />
-            {/each}
-          {/if}
-        </div>
-      {:else if activePage == "roles"}
-        <div
-          use:autoAnimate
-          class="flex flex-col space-x-2 rounded-xl bg-stone-800 p-2 py-3 text-center align-middle md:text-start">
-          <h1
-            class="m-2 text-center font-brand text-2xl font-bold text-pearl-lusta-950 dark:text-white md:text-start">
-            Site Roles
-          </h1>
-          <table class="table-auto rounded-xl p-2 text-left font-brand">
-            <tr class="bg-emerald-500 p-2">
-              <th class="p-2 text-pearl-lusta-950 dark:text-white"
-                >Role Name</th>
-              <th class="p-2 text-pearl-lusta-950 dark:text-white"
-                >Permissions</th>
-            </tr>
-            {#each rolesJson ?? [] as i}
-              <tr use:autoAnimate class="odd:bg-stone-700/25">
-                <td
-                  ><p
-                    style="color: {i.color};"
-                    class="text-pearl-lusta-950 dark:text-white">
-                    ⬤ {titleCase(i.name)}
-                  </p></td>
-                <td class="text-pearl-lusta-950 dark:text-white"
-                  >{#if i.permissions.length != 0}{i.permissions.join(
-                      " | "
-                    )}{:else}None{/if}</td>
+    <div use:autoAnimate>
+      {#await loadStuff()}
+        <p class="p-2 font-brand dark:text-white">Loading...</p>
+      {:then}
+        {#if activePage == "publish_queue"}
+          <div
+            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start">
+            {#if publishQueue.length == 0}
+              <p class="font-brand dark:text-white">
+                You're all caught up! There are no projects in the queue.
+              </p>
+            {:else}
+              <p class="font-brand dark:text-white">
+                There are {publishQueue.length} items awaiting approval:
+              </p>
+              {#each publishQueue ?? [] as proj}
+                <ProjectComponent project="{proj}" />
+              {/each}
+            {/if}
+          </div>
+        {:else if activePage == "review_queue"}
+          <div
+            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start">
+            {#if reviewQueue.length == 0}
+              <p class="font-brand dark:text-white">
+                You're all caught up! There are no projects in the queue.
+              </p>
+            {:else}
+              <p class="font-brand dark:text-white">
+                There are {reviewQueue.length} items awaiting approval:
+              </p>
+              {#each reviewQueue ?? [] as proj}
+                <ProjectComponent project="{proj}" />
+              {/each}
+            {/if}
+          </div>
+        {:else if activePage == "roles"}
+          <div
+            class="flex flex-col space-x-2 rounded-xl bg-stone-800 p-2 py-3 text-center align-middle md:text-start">
+            <h1
+              class="m-2 text-center font-brand text-2xl font-bold text-pearl-lusta-950 dark:text-white md:text-start">
+              Site Roles
+            </h1>
+            <table class="table-auto rounded-xl p-2 text-left font-brand">
+              <tr class="bg-emerald-500 p-2">
+                <th class="p-2 text-pearl-lusta-950 dark:text-white"
+                  >Role Name</th>
+                <th class="p-2 text-pearl-lusta-950 dark:text-white"
+                  >Permissions</th>
               </tr>
-            {/each}
-          </table>
-        </div>
-      {/if}
-    {/await}
+              {#each rolesJson ?? [] as i}
+                <tr use:autoAnimate class="odd:bg-stone-700/25">
+                  <td
+                    ><p
+                      style="color: {i.color};"
+                      class="text-pearl-lusta-950 dark:text-white">
+                      ⬤ {titleCase(i.name)}
+                    </p></td>
+                  <td class="text-pearl-lusta-950 dark:text-white"
+                    >{#if i.permissions.length != 0}{i.permissions.join(
+                        " | "
+                      )}{:else}None{/if}</td>
+                </tr>
+              {/each}
+            </table>
+          </div>
+        {/if}
+      {/await}
+    </div>
   </div>
 </main>

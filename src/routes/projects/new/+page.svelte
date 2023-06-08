@@ -134,7 +134,7 @@
 <br />
 
 <style lang="postcss">
-  /* .input-base {
+  .input-base {
     @apply text-pearl-lusta-950 transition-all placeholder:text-pearl-lusta-950/40 hover:placeholder:text-pearl-lusta-950/60 dark:bg-stone-700 dark:text-pearl-lusta-100 dark:placeholder:text-pearl-lusta-100/40 dark:hover:placeholder:text-pearl-lusta-100/60;
-  } */
+  }
 </style>

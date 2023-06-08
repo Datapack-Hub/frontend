@@ -1,5 +1,5 @@
 <footer
-  class="flex h-96 flex-col items-center justify-evenly border-t-2 border-pearl-lusta-50 bg-pearl-lusta-100 px-8 dark:border-stone-700 dark:bg-stone-900 md:h-64 md:flex-row md:justify-between md:px-16 lg:px-24"
+  class="flex h-96 flex-col items-center justify-evenly border-t-2 border-pearl-lusta-50 bg-pearl-lusta-100 px-8 dark:border-stone-700 dark:bg-stone-900 lg:h-64 lg:flex-row lg:justify-between md:px-16 lg:px-24"
   id="footer">
   <div>
     <div class="flex items-center space-x-2">
@@ -7,14 +7,14 @@
         loading="lazy"
         src="/logos/dph.svg"
         alt="logo"
-        class="h-12 w-full transition-all hover:brightness-75 md:w-auto" />
+        class="h-12 w-full transition-all hover:brightness-75 lg:w-auto" />
       <p
-        class="hidden w-full text-center font-brand text-2xl font-bold text-pearl-lusta-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block md:text-left">
+        class="hidden w-full text-center font-brand text-2xl font-bold text-pearl-lusta-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 lg:block lg:text-left">
         Datapack Hub
       </p>
     </div>
     <p
-      class="mt-4 text-center font-brand text-sm font-light text-pearl-lusta-950/25 dark:text-white/25 md:text-left">
+      class="mt-4 text-center font-brand text-sm font-light text-pearl-lusta-950/25 dark:text-white/25 lg:text-left">
       Copyright © 2023 Datapack Hub<br />Not an official Minecraft product. Not
       approved by or associated with Mojang Studios
     </p>

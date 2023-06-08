@@ -53,7 +53,7 @@
 
 <style lang="postcss">
   /* @HoodieRocks can you fix this so it works on light mode too */
-  /* .default-text {
+  .default-text {
     @apply text-pearl-lusta-950 dark:text-white;
   }
   .default-background {
@@ -79,5 +79,5 @@
   }
   .rainbow-background {
     @apply bg-gradient-to-r from-red-500/75 via-green-500/75 via-orange-500/75 via-yellow-500/75 to-blue-500/75;
-  } */
+  }
 </style>

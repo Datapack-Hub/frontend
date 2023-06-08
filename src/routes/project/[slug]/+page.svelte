@@ -214,11 +214,11 @@
 </svelte:head>
 
 <main
-  class="-translate-y-20 bg-pearl-lusta-100 px-0 pb-3 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
+  class="-translate-y-20 bg-pearl-lusta-100 px-0 pb-64 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
   <div class="pt-20"></div>
-  <div class="flex space-x-4 w-full">
+  <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-4 w-full">
     <!--Project Meta-->
-    <div class="flex h-fit w-1/4 flex-col">
+    <div class="flex h-fit w-full lg:w-2/5 xl:w-1/4 flex-col">
       <div class="my-3 font-brand text-sky-300">
         <a href="/projects">&lt; Explore other projects</a>
       </div>
@@ -263,17 +263,17 @@
           {#if visible}
             <div class="mt-4 flex items-center space-x-2">
               <a
-                href="/user/{author.username}"
+                href="/user/{author?.username}"
                 class="flex items-center space-x-2">
                 <img
                   loading="lazy"
-                  src="{author.profile_icon}?size=32"
+                  src="{author?.profile_icon}?size=32"
                   class="max-h-7 rounded-full"
                   alt="pfp" />
                 <span
-                  class="font-brand text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
+                  class="font-brand text-sm md:text-base xl:text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
                   in:fade="{{ duration: 250 }}">
-                  {author.username}
+                  {author?.username}
                 </span>
               </a>
               <span class="font-brand dark:text-white"> • </span>
@@ -321,7 +321,7 @@
     </div>
 
     <!--Main-->
-    <div use:autoAnimate class="w-3/4">
+    <div use:autoAnimate class="w-full mt-4 lg:w-3/4 lg:mt-0">
       <!--Buttons-->
       <div class="mb-2 flex space-x-2">
         <div class="min-w-fit flex-grow">
@@ -451,7 +451,7 @@
 
 <Modal bind:this="{dlModal}">
   <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
-    Download Version: {activeVersion.name}
+    Download Version: {activeVersion?.name ?? "Undefined"}
   </h1>
   <CasualLine />
   <div
@@ -470,14 +470,14 @@
   </div>
   <div
     class="my-2 flex space-x-2 font-brand text-pearl-lusta-950 dark:text-white">
-    {#each activeVersion.minecraft_versions.split(",") ?? [] as mcv}
+    {#each activeVersion?.minecraft_versions.split(",") ?? [] as mcv}
       <button
         class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 hover:scale-102"
         on:click="{() => {
           download(
-            activeVersion.primary_download,
+            activeVersion?.primary_download,
             mcv,
-            activeVersion.resource_pack_download ? true : false
+            activeVersion?.resource_pack_download ? true : false
           );
         }}">{mcv}</button>
     {/each}
@@ -488,14 +488,14 @@
     your version.
   </p>
 
-  {#if activeVersion.resource_pack_download}
+  {#if activeVersion?.resource_pack_download}
     <CasualLine />
     <p class="pr-1 font-brand text-pearl-lusta-950 dark:text-white">
       This datapack also has a resource pack which you need to download!
     </p>
     <div class="my-2 flex">
       <a
-        href="{activeVersion.resource_pack_download}"
+        href="{activeVersion?.resource_pack_download}"
         class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 font-brand text-pearl-lusta-950 hover:scale-102 dark:text-white">
         Download Resource Pack
       </a>
@@ -519,7 +519,7 @@
   </p>
   <MiniProfileCard
     person="{author}"
-    role="{data.roles?.find(v => author.role == v.name)}" />
+    role="{data.roles?.find(v => author?.role == v.name)}" />
   <div class="mb-2 min-w-fit items-center">
     <p
       class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">

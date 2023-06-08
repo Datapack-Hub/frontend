@@ -65,7 +65,7 @@
     <CasualLine />
     <div class="mt-4 flex flex-col md:flex-row">
       <div
-        class="md:mb-3 mb-0 w-full rounded-xl bg-stone-800 p-2 lg:w-1/4 xl:w-1/5">
+        class="mb-3 md:mb-0 w-full md:w-1/2 rounded-xl bg-stone-800 p-2 lg:w-1/4 xl:w-1/5">
         <p class="w-full text-center font-brand text-xl text-white">
           Search Settings
         </p>

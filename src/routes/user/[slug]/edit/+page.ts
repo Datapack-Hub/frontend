@@ -21,7 +21,7 @@ export const load = (async ({ params }) => {
       (await me.json()) as User
     ]);
 
-    if (user.ok && me.ok && roles.ok) {
+    if ([user, me, roles].every(r => r.ok)) {
       const profileRole: Role = (await roles.json()).roles.find(
         (v: Role) => v.name == userJSON?.role
       );

@@ -51,7 +51,7 @@
 </main>
 
 <style lang="postcss">
-  /* p {
+  p {
     @apply font-brand text-pearl-lusta-950 dark:text-white;
   }
 
@@ -61,5 +61,5 @@
 
   h2 {
     @apply pt-2 font-brand text-3xl font-bold text-pearl-lusta-950 dark:text-white;
-  } */
+  }
 </style>
