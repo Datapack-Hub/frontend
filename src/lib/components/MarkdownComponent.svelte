@@ -4,30 +4,32 @@
   import { marked } from "marked";
   import { onMount } from "svelte";
   import { markedSmartypants } from "marked-smartypants";
+  import { browser } from "$app/environment";
 
   export let source: string | undefined = "";
 
   let html = "";
 
   onMount(async () => {
-    marked.use(markedSmartypants());
-
-    if (!source) html = "";
-    else {
-      html = await marked.parse(
-        DOMPurify.sanitize(source, {
-          FORBID_ATTR: ["style", "class", "placeholder", "src"],
-          FORBID_TAGS: ["canvas", "svg", "iframe", "img"],
-          ALLOWED_TAGS: ["details", "summary"]
-        }),
-        {
-          async: true,
-          breaks: true,
-          gfm: true,
-          mangle: false,
-          headerIds: false
-        }
-      );
+    if(browser){
+      marked.use(markedSmartypants());
+      if (!source) html = "";
+      else {
+        html = await marked.parse(
+          DOMPurify.sanitize(source, {
+            FORBID_ATTR: ["style", "class", "placeholder", "src"],
+            FORBID_TAGS: ["canvas", "svg", "iframe", "img"],
+            ALLOWED_TAGS: ["details", "summary"]
+          }),
+          {
+            async: true,
+            breaks: true,
+            gfm: true,
+            mangle: false,
+            headerIds: false
+          }
+        );
+      }
     }
   });
 </script>
