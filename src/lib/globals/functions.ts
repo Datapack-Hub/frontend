@@ -15,7 +15,7 @@ export function loadColorPref() {
  * @returns username of the author
  */
 export async function getAuthorFromID(authorID: number): Promise<User> {
-  const data = await fetch(`/user/id/${authorID}`);
+  const data = await fetch(apiURL + `/user/id/${authorID}`);
   return (await data.json()) as User;
 }
 
