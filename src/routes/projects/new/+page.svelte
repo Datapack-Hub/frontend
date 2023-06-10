@@ -2,6 +2,7 @@
   import Button from "$lib/components/Button.svelte";
   import { categories } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
+  import autoAnimate from "@formkit/auto-animate";
 
   let iconVal: FileList;
   let iconElem: HTMLImageElement;
@@ -35,7 +36,7 @@
 <main
   class="bg-new-white-200 relative px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
-    class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
+    class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-16">
     <h1
       class="pt-8 text-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white md:pt-20 md:text-start md:text-4xl lg:text-4xl">
       Create New <span class="text-dph-orange">Datapack</span>
@@ -47,7 +48,7 @@
           distribute.</b>
       </p>
 
-      <div class=" rounded-xl bg-pearl-lusta-200 p-2 pb-2 dark:bg-stone-800">
+      <div class="rounded-xl bg-pearl-lusta-200 p-2 pb-2 dark:bg-stone-800" use:autoAnimate>
         <!-- Icon -->
         <p
           class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">

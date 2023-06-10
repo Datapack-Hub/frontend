@@ -223,7 +223,7 @@
         <a href="/projects">&lt; Explore other projects</a>
       </div>
       <div
-        class="rounded-xl border-pearl-lusta-200 p-4 border dark:border-pearl-lusta-100/10 dark:text-pearl-lusta-100">
+        class="rounded-xl border-pearl-lusta-200 p-4 bg-pearl-lusta-200 dark:bg-pearl-lusta-100/10">
         <div
           class="{data.project?.icon
             ? 'p-0'
@@ -240,7 +240,7 @@
         </div>
         <div class="flex-grow">
           <h1
-            class="flex items-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white">
+            class="flex items-center font-brand text-4xl font-bold text-pearl-lusta-950 dark:text-white">
             {data.project?.title.trimStart()}
             {#if status == "draftx"}
               <span
@@ -372,7 +372,7 @@
       </div>
       {#if activePage == "description"}
         <div
-          class="w-full rounded-xl border-2 border-pearl-lusta-200 p-4 dark:border-pearl-lusta-100/10">
+          class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
           <p class="w-full font-brand leading-tight">
             <MarkdownComponent source="{body.replace('\\n', '\n')}" />
           </p>
@@ -394,7 +394,7 @@
             <ul use:autoAnimate>
               {#each data.versions ?? [] as version}
                 <li
-                  class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100/10">
+                  class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100/10 first:border-2 first:border-dph-orange">
                   <div class="flex w-1/3 items-center space-x-2">
                     <h2
                       class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">

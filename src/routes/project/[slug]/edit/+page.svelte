@@ -177,7 +177,7 @@
 
     let x = await fetchAuthed(
       "post",
-      apiURL + "/projects/edit/" + data.project?.ID,
+      "/projects/edit/" + data.project?.ID,
       projData
     );
     if (x.ok) {

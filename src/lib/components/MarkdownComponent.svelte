@@ -34,6 +34,6 @@
   });
 </script>
 
-<div class="prose prose-stone leading-snug dark:prose-invert">
+<div class="prose prose-headings:mb-1 prose-h2:mt-6 prose-p:my-2 prose-ul:my-2 prose-img:my-3 dark:prose-invert leading-snug">
   {@html html}
 </div>
