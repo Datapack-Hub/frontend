@@ -105,7 +105,6 @@
   async function dismissModMsg() {
     let dsm = await fetchAuthed(
       "DELETE",
-      apiURL +
         "/moderation/project/" +
         data.project?.ID.toString() +
         "/dismiss_message"
@@ -122,7 +121,7 @@
   async function approve() {
     let p = await fetchAuthed(
       "PATCH",
-      apiURL + "/moderation/project/" + data.project?.ID.toString() + "/action",
+      "/moderation/project/" + data.project?.ID.toString() + "/action",
       {
         action: "publish"
       }
@@ -185,7 +184,7 @@
     alert(JSON.stringify(modReqData));
     let modReq = await fetchAuthed(
       "PATCH",
-      apiURL + "/moderation/project/" + data.project?.ID + "/action",
+      "/moderation/project/" + data.project?.ID + "/action",
       modReqData
     );
     if (modReq.ok) {

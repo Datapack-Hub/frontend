@@ -14,7 +14,7 @@
     visible = false;
     let res = await fetchAuthed(
       "DELETE",
-      `${apiURL}/notifs/delete/${notification?.id}`
+      `/notifs/delete/${notification?.id}`
     );
 
     if (res.ok) {

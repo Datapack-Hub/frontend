@@ -127,7 +127,7 @@
             }).then(() => {
               fetchAuthed(
                 "POST",
-                `${apiURL}/versions/new/${data.project?.ID}`,
+                `/versions/new/${data.project?.ID}`,
                 versionData
               )
                 .then(() => {

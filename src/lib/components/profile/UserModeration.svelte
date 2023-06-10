@@ -108,7 +108,7 @@
 
     let ban = await fetchAuthed(
       "post",
-      `${apiURL}/moderation/ban/${user?.id}`,
+      `/moderation/ban/${user?.id}`,
       {
         id: user?.id,
         expires: exp,
@@ -126,7 +126,7 @@
   async function unbanUser() {
     let unban = await fetchAuthed(
       "delete",
-      `${apiURL}/moderation/ban/${user?.id}`
+      `/moderation/ban/${user?.id}`
     );
     if (unban.ok) {
       unbanDialog.close();
@@ -140,7 +140,7 @@
   async function logOutUser() {
     let logout = await fetchAuthed(
       "post",
-      `${apiURL}/moderation/log_out/${user?.id}`
+      `/moderation/log_out/${user?.id}`
     );
     if (logout.ok) {
       logOutDialog.close();
