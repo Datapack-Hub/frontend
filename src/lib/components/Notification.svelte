@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { apiURL } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
+  import { createEventDispatcher } from "svelte";
   import toast from "svelte-french-toast";
   import IconX from "~icons/tabler/X.svelte";
-  import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
 
@@ -12,10 +11,7 @@
 
   async function removeThis() {
     visible = false;
-    let res = await fetchAuthed(
-      "DELETE",
-      `/notifs/delete/${notification?.id}`
-    );
+    let res = await fetchAuthed("DELETE", `/notifs/delete/${notification?.id}`);
 
     if (res.ok) {
       dispatch("close", {

@@ -20,7 +20,6 @@
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
   import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
-  import { apiURL } from "$lib/globals/consts";
   import { authed, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import JSZip from "jszip";
@@ -105,9 +104,7 @@
   async function dismissModMsg() {
     let dsm = await fetchAuthed(
       "DELETE",
-        "/moderation/project/" +
-        data.project?.ID.toString() +
-        "/dismiss_message"
+      "/moderation/project/" + data.project?.ID.toString() + "/dismiss_message"
     );
     if (dsm.ok) {
       mm.remove();

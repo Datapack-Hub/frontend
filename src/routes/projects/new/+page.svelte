@@ -48,7 +48,9 @@
           distribute.</b>
       </p>
 
-      <div class="rounded-xl bg-pearl-lusta-200 p-2 pb-2 dark:bg-stone-800" use:autoAnimate>
+      <div
+        class="rounded-xl bg-pearl-lusta-200 p-2 pb-2 dark:bg-stone-800"
+        use:autoAnimate>
         <!-- Icon -->
         <p
           class="align-middle font-brand text-pearl-lusta-950 dark:text-pearl-lusta-100">

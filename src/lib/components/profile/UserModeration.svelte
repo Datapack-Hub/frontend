@@ -2,7 +2,6 @@
   import { browser } from "$app/environment";
   import CasualLine from "$lib/components/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { apiURL } from "$lib/globals/consts";
   import { isDark } from "$lib/globals/stores";
   import toast from "svelte-french-toast";
   import IconWarn from "~icons/tabler/AlertTriangle.svelte";
@@ -106,15 +105,11 @@
       exp = new Date(expiry.value).getTime();
     }
 
-    let ban = await fetchAuthed(
-      "post",
-      `/moderation/ban/${user?.id}`,
-      {
-        id: user?.id,
-        expires: exp,
-        message: message.value
-      }
-    );
+    let ban = await fetchAuthed("post", `/moderation/ban/${user?.id}`, {
+      id: user?.id,
+      expires: exp,
+      message: message.value
+    });
     if (ban.ok) {
       banDialog.close();
       toast.success(`${user?.username} is now banned!`);
@@ -124,10 +119,7 @@
   }
 
   async function unbanUser() {
-    let unban = await fetchAuthed(
-      "delete",
-      `/moderation/ban/${user?.id}`
-    );
+    let unban = await fetchAuthed("delete", `/moderation/ban/${user?.id}`);
     if (unban.ok) {
       unbanDialog.close();
       modJson.banned == false;
@@ -138,10 +130,7 @@
   }
 
   async function logOutUser() {
-    let logout = await fetchAuthed(
-      "post",
-      `/moderation/log_out/${user?.id}`
-    );
+    let logout = await fetchAuthed("post", `/moderation/log_out/${user?.id}`);
     if (logout.ok) {
       logOutDialog.close();
       toast.success(`${user?.username} is now logged out of their account.`);
