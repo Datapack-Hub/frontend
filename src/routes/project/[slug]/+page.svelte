@@ -388,7 +388,12 @@
                   {#if !(data.project?.latest_version.minecraft_versions.split(",").includes(v))}
                   <IconAlert />
                   {/if}
-                  <div class="font-bold flex-grow">{v}</div>
+                  <div class="font-bold flex-grow flex items-center space-x-2">
+                    <p>{v}</p>
+                    {#if (data.project?.latest_version.minecraft_versions.split(",").includes(v))}
+                    <p class="font-thin italic">{data.project?.latest_version.version_code}</p>
+                    {/if}
+                  </div>
                   <IconRight />
                 </a>
                 {/if}
