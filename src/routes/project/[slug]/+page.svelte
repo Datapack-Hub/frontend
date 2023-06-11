@@ -13,6 +13,7 @@
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
+  import IconRight from "~icons/tabler/ChevronRight.svelte";
 
   import CasualLine from "$lib/components/CasualLine.svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
@@ -25,6 +26,7 @@
   import { onMount } from "svelte";
   import toast from "svelte-french-toast";
   import MultiSelect from "svelte-multiselect";
+  import Button from "$lib/components/Button.svelte";
 
   export let data: PageData;
   let visible = false;
@@ -41,6 +43,18 @@
             .some(v => selectedVersions.includes(v))
         )
       : data.versions;
+
+  let matches: Version[] | undefined = [];
+  let bigStitchedVersionList: string
+
+  data.versions?.forEach(item => {
+    bigStitchedVersionList = bigStitchedVersionList + item.minecraft_versions
+  })
+
+  function pickVersions(vs: string){
+    matches = data.versions?.filter(vers => vers.minecraft_versions.split(",").includes(vs))
+    if(matches?.length == 0) return toast.error("This datapack doesn't support " + vs)
+  }
 
   onMount(async () => {
     author = await getAuthorFromID(data.project?.author ?? 0);
@@ -168,7 +182,7 @@
         <a href="/projects">&lt; Explore other projects</a>
       </div>
       <div
-        class="rounded-xl border-pearl-lusta-200 p-4 bg-pearl-lusta-200 dark:bg-pearl-lusta-100/10">
+        class="rounded-xl border-pearl-lusta-200 p-4 mb-2  bg-pearl-lusta-200 dark:bg-pearl-lusta-100/10">
         <div
           class="{data.project?.icon
             ? 'p-0'
@@ -202,7 +216,7 @@
             {/if}
           </h1>
           <h2
-            class="mt-2  text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
+            class="mt-2 text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
             {data.project?.description?.trimStart()}
           </h2>
           {#if visible}
@@ -230,15 +244,15 @@
             </div>
           {/if}
         </div>
-        <div class="hidden flex-col space-y-1">
+        <div class="flex-col space-y-1 mt-4 mb-1">
           <a href="/well-thats-awkward.txt" class="button-primary h-fit"
             >Download Latest</a>
-          {#if $authed && ["moderator", "developer", "admin"].includes($user.role)}
+          <!-- {#if $authed && ["moderator", "developer", "admin"].includes($user.role)}
             <button
               on:click="{() => modModal.open()}"
               class="rounded-lg bg-red-600 px-3 text-center  text-lg text-white transition-all hover:scale-105 active:brightness-75"
               >Moderate</button>
-          {/if}
+          {/if} -->
         </div>
       </div>
       {#if data.project?.mod_message}
@@ -281,6 +295,7 @@
             on:click="{() => (activePage = 'versions')}">Versions</button>
         </div>
         <div class="flex space-x-1">
+          
           {#if ["moderator", "admin"].includes($user.role)}
             <button
               class="button-base flex items-center space-x-1"
@@ -313,6 +328,9 @@
             <IconPencil /><span>Edit</span>
           </a>
         {/if}
+        <button
+            class="button-base bg-dph-orange font-bold"
+            on:click="{() => (activePage = 'download')}">Download Latest</button>
       </div>
       {#if activePage == "description"}
         <div
@@ -341,7 +359,7 @@
                 Minecraft versions
               </h2>
             </div>
-            <ul use:autoAnimate>
+            <ul use:autoAnimate class="space-y-2">
               {#each versionMatches ?? [] as version}
                 <VersionDisplay version="{version}" />
               {/each}
@@ -360,6 +378,48 @@
             </h2>
           {/if}
         </div>
+
+      {:else if activePage == "download"}
+      <div
+        class="mb-2 items-center space-y-2">
+        <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+          {#if data.versions?.length != 0}
+            <p class="text-white">Select a Minecraft version:</p>
+            <div class="grid grid-cols-3 grid-rows-auto gap-3">
+              {#each versions ?? [] as v}
+                {#if bigStitchedVersionList.indexOf(v) >= 0}
+                <a 
+                  class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center dark:text-white"
+                  on:click="{() => pickVersions(v)}"
+                >
+                  <div class="font-bold flex-grow">{v}</div>
+                  <IconRight />
+                </a>
+                {/if}
+              {/each}
+            </div>
+          {:else}
+            <h2 class=" text-xl text-pearl-lusta-950 dark:text-white">
+              <b>No versions yet!</b> Why not
+              <a
+                href="/project/{data.project?.url}/edit"
+                class="text-blue-500 underline">create one</a
+              >?
+            </h2>
+          {/if}
+        </div>
+        {#if matches?.length != 0}
+        <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+          <p class="text-white">Matching Versions:</p>
+          {#each matches ?? [] as m}
+          <ul use:autoAnimate>
+            <p class="my-1"></p>
+            <VersionDisplay version={m} />
+          </ul>
+          {/each}
+        </div>
+        {/if}
+      </div>
       {/if}
     </div>
   </div>

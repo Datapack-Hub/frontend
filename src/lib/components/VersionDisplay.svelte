@@ -71,7 +71,7 @@
 </script>
 
 <li
-  class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-pearl-lusta-100/10 relative">
+  class="flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-pearl-lusta-100/10 relative">
   <div class="flex w-1/3 items-center space-x-2">
     <h2
       class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
