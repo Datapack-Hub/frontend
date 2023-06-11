@@ -22,9 +22,10 @@
   <title>Projects | Datapack Hub</title>
 </svelte:head>
 
-<main class="px-8 md:px-16 lg:px-24">
+<main
+  class="-translate-y-20 items-center pt-0 md:translate-y-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
   <div
-    class="-translate-y-20 items-center pt-0 md:translate-y-0 md:flex-row md:items-start md:pt-20">
+    class="my-4 flex flex-col items-center justify-center sm:flex-row md:justify-normal space-x-2">
     <div
       class="my-4 flex flex-col items-center justify-center sm:flex-row md:justify-normal space-x-2">
       <div
@@ -36,29 +37,29 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class="ml-2 bg-pearl-lusta-200  text-pearl-lusta-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
+          class="ml-2 bg-pearl-lusta-200 text-pearl-lusta-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
           on:input="{search}" />
       </div>
       <div class="flex items-center">
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center  font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >1</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center  font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >2</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center  font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >3</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center  font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >4</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center  font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >5</a>
       </div>
     </div>
@@ -66,34 +67,22 @@
     <div class="mt-4 flex flex-col md:flex-row">
       <div
         class="mb-3 md:mb-0 w-full md:w-1/2 rounded-xl bg-stone-800 p-2 lg:w-1/4 xl:w-1/5">
-        <p class="w-full text-center  text-xl text-white">
-          Search Settings
-        </p>
-        <p class="w-full text-center  text-white/60">
-          TODO: Add these
-        </p>
+        <p class="w-full text-center text-xl text-white">Search Settings</p>
+        <p class="w-full text-center text-white/60">TODO: Add these</p>
       </div>
-      {#if data.projects}
-        {#if data.projects.length >= 1}
-          <ul class="ml-0 w-full space-y-2 md:ml-3" use:autoAnimate>
-            {#each data.projects as project}
-              <!-- uncomment these to see the featured stuff on the thingy thing -->
-              <!-- {#if Math.random() < 0.2} -->
-              <!-- <FeaturedProjectComponent project="{project}" /> -->
-              <!-- {:else} -->
-              <ProjectComponent project="{project}" />
-              <!-- {/if} -->
-            {/each}
-          </ul>
-        {:else}
-          <h2 class=" text-pearl-lusta-950 dark:text-white">
-            No results found
-          </h2>
-        {/if}
+      {#if !data.projects || !(data.projects.length >= 1)}
+        <h2 class=" text-pearl-lusta-950 dark:text-white">No results found</h2>
       {:else}
-        <h2 class=" text-pearl-lusta-950 dark:text-white">
-          No results found
-        </h2>
+        <ul class="ml-0 w-full space-y-2 md:ml-3" use:autoAnimate>
+          {#each data.projects as project}
+            <!-- uncomment these to see the featured stuff on the thingy thing -->
+            <!-- {#if Math.random() < 0.2} -->
+            <!-- <FeaturedProjectComponent project="{project}" /> -->
+            <!-- {:else} -->
+            <ProjectComponent project="{project}" />
+            <!-- {/if} -->
+          {/each}
+        </ul>
       {/if}
     </div>
   </div>

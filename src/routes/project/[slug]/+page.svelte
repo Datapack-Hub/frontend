@@ -332,7 +332,7 @@
         </div>
       {:else if activePage == "versions"}
         <div
-          class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+          class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
           {#if data.versions?.length != 0}
             <div class="flex space-x-2 w-full items-center dark:text-white">
               <p class="mr-2">Search by Minecraft version: </p>

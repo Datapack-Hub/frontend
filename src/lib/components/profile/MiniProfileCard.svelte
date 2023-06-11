@@ -16,7 +16,7 @@
     <div>
       <a href="/user/{person?.username.toLowerCase()}"
         ><h1
-          class="mr-2  text-xl font-bold text-pearl-lusta-950 dark:text-white">
+          class="mr-2 text-xl font-bold text-pearl-lusta-950 dark:text-white">
           {person?.username}
         </h1></a>
       <span class=" font-bold" style="color:{role?.color};"
@@ -27,7 +27,7 @@
             class="inline-block"
             height="18"
             width="18" /> Datapack Hub Team{/if}</span>
-      <p class="line-clamp-1  dark:text-stone-300">{person?.bio}</p>
+      <p class="line-clamp-1 dark:text-stone-300">{person?.bio}</p>
     </div>
   </div>
 </a>

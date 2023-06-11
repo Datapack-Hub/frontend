@@ -48,20 +48,19 @@
           height="32"
           width="32" />
         <span
-          class="hidden font-brand text-2xl font-bold text-pearl-lusta-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
+          class="hidden text-2xl font-bold text-pearl-lusta-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
           Datapack Hub
         </span>
       </a>
-      <!-- <h1 class="font-brand text-2xl text-pearl-lusta-950 dark:text-white font-regular">You are temporarily banned from Datapack Hub</h1> -->
+      <!-- <h1 class=" text-2xl text-pearl-lusta-950 dark:text-white font-regular">You are temporarily banned from Datapack Hub</h1> -->
       <CasualLine />
-      <p class="font-brand text-lg text-pearl-lusta-950 dark:text-white">
+      <p class=" text-lg text-pearl-lusta-950 dark:text-white">
         <b>You are banned from Datapack Hub.</b> The reason is displayed below:
       </p>
-      <p
-        class="prose my-2 rounded-xl bg-stone-700 p-2 font-brand dark:text-stone-300">
+      <p class="prose my-2 rounded-xl bg-stone-700 p-2 dark:text-stone-300">
         <MarkdownComponent source="{banReason}" />
       </p>
-      <p class="mt-6 font-brand text-pearl-lusta-950 dark:text-white">
+      <p class="mt-6 text-pearl-lusta-950 dark:text-white">
         <b>Your ban will expire:</b>
         {new Date(expiry).toLocaleString()}. <br /> Until then, wait for the ban
         to expire, and read

@@ -150,12 +150,11 @@
     This message is sent to the user as a notification. Always be professional,
     even when they are not.
   </p>
-  <p
-    class="mt-3 align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+  <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Warn Message
   </p>
   <textarea
-    class="mb-4 h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2  text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+    class="mb-4 h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     placeholder="..."
     id="warn-message"></textarea>
   <Button click="{async () => await warn()}">Warn {user?.username}</Button>
@@ -172,33 +171,33 @@
   </p>
   <label
     for="notif-message"
-    class="mt-3 align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Notification Message
   </label>
   <input
-    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2  text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     placeholder="Your cake is burning!"
     name="notif-message"
     id="notif-message" />
   <label
     for="notif-content"
-    class="mt-3 align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Notification Body
   </label>
   <textarea
-    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2  text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     placeholder="Just a quick reminder that your cake which you forgot about has been in the oven for 10 minutes too long."
     name="notif-content"
     id="notif-content"></textarea>
   <label
     for="notif-type"
-    class="mt-2 align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    class="mt-2 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Notification Type
   </label>
   <select
     name="notif-type"
     id="notif-type"
-    class="mb-4 w-full resize-none rounded-md bg-pearl-lusta-200 p-2  text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white">
+    class="mb-4 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white">
     <option value="default">Default</option>
     <option value="important">Important</option>
     <option value="announcement">Announcement</option>
@@ -207,7 +206,7 @@
   <button
     on:click="{async () => await sendNotif()}"
     id="send_notif_btn"
-    class="rounded-md bg-dph-orange p-2  text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="rounded-md bg-dph-orange p-2 text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Send</button>
 </Modal>
 
@@ -220,24 +219,22 @@
     Banning a user prevents them from interacting with the website. You can
     write a message or ban reason to be displayed when they try to log in.
   </p>
-  <p
-    class="mt-3 align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+  <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Ban Expiry
   </p>
   <input
     type="date"
-    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2  text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     id="ban-expiry" />
   <label class=" text-pearl-lusta-950 dark:text-pearl-lusta-100">
     <input type="checkbox" id="ban-permanent" />
     Permanent?
   </label>
-  <p
-    class="mt-3 align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+  <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Ban Message (supports markdown)
   </p>
   <textarea
-    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2  text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+    class="h-24 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
     placeholder="Burning cake after being **repeatedly told** to stop"
     id="ban-message"></textarea>
   <Button click="{async () => await banUser()}">Ban {user?.username}</Button>
@@ -251,16 +248,12 @@
   <p class=" text-pearl-lusta-950 dark:text-white">
     {user?.username} has been banned for the following reason:
   </p>
-  <p class="my-2 rounded-xl bg-stone-700 p-2  dark:text-stone-300">
+  <p class="my-2 rounded-xl bg-stone-700 p-2 dark:text-stone-300">
     <MarkdownComponent source="" />
   </p>
   <p class=" text-pearl-lusta-950 dark:text-white">
     Unban them to end their ban early.
-  </p>
-  <Button click="{async () => await unbanUser()}"
-    >Unban {user?.username}</Button>
 </Modal>
-
 <Modal bind:this="{logOutDialog}">
   <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
     Log {user?.username} out
@@ -287,7 +280,7 @@
         <div class="xs:flex-col md:flex">
           <div class="md:w-2/3">
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-red-600 p-1 text-left  text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-red-600 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => {
                 if (modJson['banned']) open(unbanDialog);
                 else open(banDialog);
@@ -298,7 +291,7 @@
                 ).toDateString()}){:else}Ban{/if}
             </button>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-orange-600 p-1 text-left  text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-orange-600 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(warnDialog)}">
               <IconWarn
                 height="32"
@@ -308,7 +301,7 @@
               Warn
             </button>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left  text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               id="send_notif"
               on:click="{() => open(notifDialog)}">
               <IconMessage
@@ -320,7 +313,7 @@
             </button>
             <a
               href="/user/{user?.username}/edit"
-              class="mt-1 flex w-full items-center rounded-md bg-green-500 p-1 text-left  text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
+              class="mt-1 flex w-full items-center rounded-md bg-green-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
               <IconSettings
                 height="32"
                 width="32"
@@ -329,7 +322,7 @@
               Edit Profile Details
             </a>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-sky-500 p-1 text-left  text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-sky-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(logOutDialog)}">
               <IconLogOut
                 height="32"
@@ -341,7 +334,7 @@
           </div>
           <div class="w-1/3 pl-2">
             <p
-              class="mt-6  text-xl font-extrabold text-pearl-lusta-950 dark:text-white md:mt-0">
+              class="mt-6 text-xl font-extrabold text-pearl-lusta-950 dark:text-white md:mt-0">
               User Info
             </p>
             <p class=" text-pearl-lusta-950 dark:text-white">

@@ -56,13 +56,6 @@
 </script>
 
 <div class="z-50 ml-3 flex items-center justify-center md:ml-6">
-  <a
-    href="/projects/new"
-    aria-label="Create Project"
-    class="z-20 mr-3 md:mr-6"
-    use:tippy="{newHoverMsg}">
-    <IconPlus height="24" width="24" color="{iconColor}" />
-  </a>
   {#if authed}
     {#if ["moderator", "developer", "admin"].includes($role.name) && !small}
       <a
@@ -80,6 +73,15 @@
         <IconRead height="24" width="24" color="{iconColor}" />
       {/if}
     </a>
+    {#if !small}
+      <a
+        href="/projects/new"
+        aria-label="Create Project"
+        class="z-20 ml-3 md:ml-6"
+        use:tippy="{newHoverMsg}">
+        <IconPlus height="24" width="24" color="{iconColor}" />
+      </a>
+    {/if}
     <a
       href="/user/{$user.username}"
       use:tippy="{{
@@ -91,7 +93,6 @@
         allowHTML: true
       }}">
       <img
-        loading="lazy"
         src="{$user.profile_icon}&size=48"
         alt="{$user.username}'s profile picture"
         height="32"
