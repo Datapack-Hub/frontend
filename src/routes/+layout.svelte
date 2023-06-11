@@ -16,7 +16,7 @@
 </svelte:head>
 
 <!-- {#await pageLoad() then} -->
-<div class="{$isDark ? 'dark' : ''} ">
+<div class="{$isDark ? 'dark' : ''} font-brand">
   {#if $authed && ["helper", "moderator", "admin"].includes($user.role)}
     <div
       class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
