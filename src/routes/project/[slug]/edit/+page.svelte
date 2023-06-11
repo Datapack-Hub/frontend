@@ -5,7 +5,7 @@
   import CasualLine from "$lib/components/CasualLine.svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { apiURL, categories } from "$lib/globals/consts";
+  import { apiURL, categories, versions } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import JSZip from "jszip";
@@ -15,16 +15,6 @@
   import type { PageData } from "./$types";
 
   let publishModal: Modal;
-
-  const ui_libs = [
-    "1.13-1.14.4",
-    "1.15-1.16.1",
-    "1.16.2-1.16.5",
-    "1.17.x",
-    "1.18.x",
-    "1.19-1.19.3",
-    "1.19.4"
-  ];
 
   let selected: string[] = [];
   let zipFile: File;
@@ -391,7 +381,7 @@
               </p>
               <MultiSelect
                 bind:selected="{selected}"
-                options="{ui_libs}"
+                options="{versions}"
                 liSelectedClass="liSelectedClass" />
               <p class="mb-4"></p>
 

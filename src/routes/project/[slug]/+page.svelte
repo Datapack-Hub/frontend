@@ -9,97 +9,46 @@
 
   import IconCube from "~icons/tabler/Box.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
-  import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
 
-  import { browser } from "$app/environment";
   import CasualLine from "$lib/components/CasualLine.svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import VersionDisplay from "$lib/components/VersionDisplay.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
   import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
+  import { versions } from "$lib/globals/consts";
   import { authed, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
-  import JSZip from "jszip";
   import { onMount } from "svelte";
   import toast from "svelte-french-toast";
-  import tippy from "sveltejs-tippy";
+  import MultiSelect from "svelte-multiselect";
 
   export let data: PageData;
   let visible = false;
   let activePage = "description";
 
   let author: User;
+  let selectedVersions: string[] = [];
+
+  $: versionMatches =
+    selectedVersions.length != 0 && data.versions
+      ? data.versions?.filter(e =>
+          e.minecraft_versions
+            .split(",")
+            .some(v => selectedVersions.includes(v))
+        )
+      : data.versions;
 
   onMount(async () => {
     author = await getAuthorFromID(data.project?.author ?? 0);
     visible = true;
   });
 
-  let dlModal: Modal;
-  let activeVersion: Version;
-
   let modModal: Modal;
   let modModalPage = "delete";
-
-  function openVersion(item: Version) {
-    activeVersion = item;
-    dlModal.open();
-  }
-
-  async function download(url: string, version: string, rp: boolean) {
-    if (browser) {
-      let zip = await fetch(url);
-      let zipBlob = await zip.blob();
-      let parsedZip = await JSZip.loadAsync(zipBlob);
-
-      let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
-      let packMcmData = JSON.parse(packMcm);
-      let packFormat;
-
-      switch (version) {
-        case "1.13-1.14.4":
-          packFormat = 4;
-          break;
-        case "1.15-1.16.1":
-          packFormat = 5;
-          break;
-        case "1.16.2-1.16.5":
-          packFormat = 6;
-          break;
-        case "1.17.x":
-          packFormat = 7;
-          break;
-        case "1.18.x":
-          packFormat = 8;
-          break;
-        case "1.19-1.19.3":
-          packFormat = 10;
-          break;
-        case "1.19.4":
-          packFormat = 12;
-          break;
-      }
-
-      packMcmData["pack"]["pack_format"] = packFormat;
-
-      parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
-
-      let final = await parsedZip.generateAsync({ type: "base64" });
-      var clickMePlz = document.createElement("a");
-      clickMePlz.download = url.split("/")[url.split("/").length - 1];
-      clickMePlz.href = "data:application/zip;base64," + final;
-      clickMePlz.click();
-
-      rp
-        ? toast.success(
-            "Downloaded file! Make sure to download the resource pack too."
-          )
-        : toast.success("Downloaded file!");
-    }
-  }
 
   async function dismissModMsg() {
     let dsm = await fetchAuthed(
@@ -305,13 +254,12 @@
           <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
           <p
             class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
-            <!-- <SvelteMarkdown source="{data.project?.mod_message}" /> -->
-            {data.project.mod_message}
+            <MarkdownComponent source="{data.project?.mod_message}" />
           </p>
-          <!-- <p class="font-brand text-xs">
+          <p class="font-brand text-xs opacity-50">
             Only you (and staff) can read this message. Once you've acknowleged
             it, you can dismiss the message if the project isn't disabled.
-          </p> -->
+          </p>
         </div>
       {/if}
     </div>
@@ -377,7 +325,10 @@
         <div
           class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
           {#if data.versions?.length != 0}
-            <div class="mx-3 flex space-x-3">
+            <MultiSelect
+              bind:selected="{selectedVersions}"
+              options="{versions}" />
+            <div class="mx-3 flex space-x-3 mt-4">
               <h2
                 class="w-1/3 font-brand text-xl font-black text-pearl-lusta-950 dark:text-white">
                 Name
@@ -388,47 +339,13 @@
               </h2>
             </div>
             <ul use:autoAnimate>
-              {#each data.versions ?? [] as version}
-                <li
-                  class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100/10 first:border-2 first:border-dph-orange">
-                  <div class="flex w-1/3 items-center space-x-2">
-                    <h2
-                      class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
-                      {version.name}
-                    </h2>
-                    <h2
-                      class="font-brand text-base font-thin italic text-pearl-lusta-950 dark:text-white">
-                      {version.version_code}
-                    </h2>
-                  </div>
-                  <h2
-                    class="flex flex-grow space-x-1 font-brand text-pearl-lusta-950 dark:text-white">
-                    {#each version.minecraft_versions.split(",") ?? [] as mcv}
-                      <button
-                        class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
-                        on:click="{() =>
-                          download(
-                            version.primary_download,
-                            mcv,
-                            version.resource_pack_download ? true : false
-                          )}">
-                        {mcv}
-                      </button>
-                    {/each}
-                  </h2>
-                  <button
-                    on:click="{() => {
-                      openVersion(version);
-                    }}"
-                    id="#download"
-                    class="rounded-xl bg-dph-orange p-1 px-2 font-brand text-pearl-lusta-950 dark:text-white"
-                    >Download</button>
-                </li>
+              {#each versionMatches ?? [] as version}
+                <VersionDisplay version="{version}" />
               {/each}
             </ul>
             <p
               class="mx-1 mt-2 font-brand text-pearl-lusta-950 dark:text-white">
-              (Showing {data.versions?.length} versions)
+              (Showing {versionMatches?.length} versions)
             </p>
           {:else}
             <h2 class="font-brand text-xl text-pearl-lusta-950 dark:text-white">
@@ -444,64 +361,6 @@
     </div>
   </div>
 </main>
-
-<Modal bind:this="{dlModal}">
-  <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
-    Download Version: {activeVersion?.name ?? "Undefined"}
-  </h1>
-  <CasualLine />
-  <div
-    class="items-middle flex items-center font-brand text-pearl-lusta-950 dark:text-white">
-    <p class="pr-1">
-      Select a valid Minecraft version below to download the datapack.
-    </p>
-    <div
-      use:tippy="{{
-        content:
-          'The version you select here will determine what pack_format is used in pack.mcmeta',
-        placement: 'right'
-      }}">
-      <IconInfo />
-    </div>
-  </div>
-  <div
-    class="my-2 flex space-x-2 font-brand text-pearl-lusta-950 dark:text-white">
-    {#each activeVersion?.minecraft_versions.split(",") ?? [] as mcv}
-      <button
-        class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 hover:scale-102"
-        on:click="{() => {
-          download(
-            activeVersion?.primary_download,
-            mcv,
-            activeVersion?.resource_pack_download ? true : false
-          );
-        }}">{mcv}</button>
-    {/each}
-  </div>
-  <p
-    class="pr-1 font-brand text-xs italic text-pearl-lusta-950 dark:text-white">
-    If your version is not listed above, then this datapack is not supported for
-    your version.
-  </p>
-
-  {#if activeVersion?.resource_pack_download}
-    <CasualLine />
-    <p class="pr-1 font-brand text-pearl-lusta-950 dark:text-white">
-      This datapack also has a resource pack which you need to download!
-    </p>
-    <div class="my-2 flex">
-      <a
-        href="{activeVersion?.resource_pack_download}"
-        class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 font-brand text-pearl-lusta-950 hover:scale-102 dark:text-white">
-        Download Resource Pack
-      </a>
-    </div>
-  {/if}
-  <CasualLine />
-  <p class="flex items-center space-x-1 pr-1 font-brand text-sm text-sky-300">
-    <IconInfo /><a href="/">How to install a datapack</a>
-  </p>
-</Modal>
 
 <Modal bind:this="{modModal}">
   <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
@@ -550,3 +409,15 @@
   <button class="button-primary" on:click="{moderate}"
     >{titleCase(modModalPage)}</button>
 </Modal>
+
+<style lang="postcss">
+  :root {
+    --sms-bg: theme(colors.stone.700);
+    --sms-border: 0px solid theme(colors.stone.700);
+    --sms-selected-bg: theme(colors.stone.700);
+    --sms-remove-btn-hover-bg: theme(colors.dph-orange);
+    --sms-options-bg: theme(colors.stone.700);
+    --sms-text-color: theme(colors.white);
+    --sms-selected-bg: theme(colors.dph-orange/25);
+  }
+</style>
