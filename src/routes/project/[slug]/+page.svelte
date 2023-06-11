@@ -14,6 +14,7 @@
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
   import IconRight from "~icons/tabler/ChevronRight.svelte";
+  import IconAlert from "~icons/tabler/AlertTriangle.svelte";
 
   import CasualLine from "$lib/components/CasualLine.svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
@@ -244,16 +245,6 @@
             </div>
           {/if}
         </div>
-        <div class="flex-col space-y-1 mt-4 mb-1">
-          <a href="/well-thats-awkward.txt" class="button-primary h-fit"
-            >Download Latest</a>
-          <!-- {#if $authed && ["moderator", "developer", "admin"].includes($user.role)}
-            <button
-              on:click="{() => modModal.open()}"
-              class="rounded-lg bg-red-600 px-3 text-center  text-lg text-white transition-all hover:scale-105 active:brightness-75"
-              >Moderate</button>
-          {/if} -->
-        </div>
       </div>
       {#if data.project?.mod_message}
         <div
@@ -389,15 +380,21 @@
               {#each versions ?? [] as v}
                 {#if bigStitchedVersionList.indexOf(v) >= 0}
                 <a 
-                  class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center dark:text-white"
+                  class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 {!(data.project?.latest_version.minecraft_versions.split(",").includes(v))
+                  ? 'text-red-500'
+                  : 'text-white'}"
                   on:click="{() => pickVersions(v)}"
                 >
+                  {#if !(data.project?.latest_version.minecraft_versions.split(",").includes(v))}
+                  <IconAlert />
+                  {/if}
                   <div class="font-bold flex-grow">{v}</div>
                   <IconRight />
                 </a>
                 {/if}
               {/each}
             </div>
+            <div class="flex space-x-1 items-center mt-2 text-stone-500"><IconAlert /><p>means the datapack version is outdated</p></div>
           {:else}
             <h2 class=" text-xl text-pearl-lusta-950 dark:text-white">
               <b>No versions yet!</b> Why not
@@ -411,12 +408,11 @@
         {#if matches?.length != 0}
         <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
           <p class="text-white">Matching Versions:</p>
-          {#each matches ?? [] as m}
-          <ul use:autoAnimate>
-            <p class="my-1"></p>
-            <VersionDisplay version={m} />
+          <ul use:autoAnimate class="space-y-2">
+            {#each matches ?? [] as m}
+              <VersionDisplay version={m} />
+            {/each}
           </ul>
-          {/each}
         </div>
         {/if}
       </div>

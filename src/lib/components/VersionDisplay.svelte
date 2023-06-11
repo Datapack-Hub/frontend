@@ -6,11 +6,14 @@
   import { browser } from "$app/environment";
   import toast from "svelte-french-toast";
   import tippy from "sveltejs-tippy";
+  import MarkdownComponent from "./MarkdownComponent.svelte";
 
   export let version: Version;
 
   let dlModal: Modal;
   let activeVersion: Version;
+
+  let expanded = false;
 
   function openVersion(item: Version) {
     activeVersion = item;
@@ -71,39 +74,49 @@
 </script>
 
 <li
-  class="flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-pearl-lusta-100/10 relative">
-  <div class="flex w-1/3 items-center space-x-2">
+  class="rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-pearl-lusta-100/10 relative">
+  <div class="flex items-center space-x-3">
+    <div class="flex w-1/3 items-center space-x-2">
+      <a
+        class="cursor-pointer text-xl font-bold text-pearl-lusta-950 dark:text-white"
+        on:click="{() => {
+          if(expanded==false) {
+            expanded = true
+          }else expanded=false
+        }}">
+        {version.name}
+      </a>
+      <h2
+        class="text-base font-thin italic text-pearl-lusta-950 dark:text-white">
+        {version.version_code}
+      </h2>
+    </div>
     <h2
-      class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
-      {version.name}
+      class="flex flex-grow space-x-1  text-pearl-lusta-950 dark:text-white">
+      {#each version.minecraft_versions.split(",") ?? [] as mcv}
+        <button
+          class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
+          on:click="{() =>
+            download(
+              version.primary_download,
+              mcv,
+              version.resource_pack_download ? true : false
+            )}">
+          {mcv}
+        </button>
+      {/each}
     </h2>
-    <h2
-      class=" text-base font-thin italic text-pearl-lusta-950 dark:text-white">
-      {version.version_code}
-    </h2>
-  </div>
-  <h2
-    class="flex flex-grow space-x-1  text-pearl-lusta-950 dark:text-white">
-    {#each version.minecraft_versions.split(",") ?? [] as mcv}
-      <button
-        class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
-        on:click="{() =>
-          download(
-            version.primary_download,
-            mcv,
-            version.resource_pack_download ? true : false
-          )}">
-        {mcv}
-      </button>
-    {/each}
-  </h2>
-  <button
+    <button
     on:click="{() => {
       openVersion(version);
     }}"
     id="#download"
     class="rounded-xl bg-dph-orange p-1 px-2  text-pearl-lusta-950 dark:text-white"
     >Download</button>
+  </div>
+  {#if expanded}
+  <MarkdownComponent source={version.description} />
+  {/if}
 </li>
 
 <Modal bind:this="{dlModal}">

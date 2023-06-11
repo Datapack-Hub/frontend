@@ -182,7 +182,7 @@
     publishModal.close();
     let pub = await fetchAuthed(
       "post",
-      apiURL + "/projects/id/" + data.project?.ID + "/publish"
+      "/projects/id/" + data.project?.ID + "/publish"
     );
     if (pub.ok) {
       let t = await pub.text();

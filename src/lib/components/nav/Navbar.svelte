@@ -23,7 +23,7 @@
 
 <nav
   id="nav"
-  class="sticky top-[calc(100%-8rem)] z-40 w-full px-8 transition-all md:fixed md:top-0 md:translate-y-0 md:px-16 lg:px-24 {showNavBG
+  class="sticky top-[calc(100%-8rem)] z-40 w-full px-8 transition-all md:fixed md:top-0 md:translate-y-0 md:px-3 lg:px-24 {showNavBG
     ? 'bg-pearl-lusta-50 dark:bg-stone-800'
     : ''}">
   <div
