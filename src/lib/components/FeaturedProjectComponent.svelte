@@ -85,7 +85,7 @@
       </a>
       {#if visible}
         <div
-          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-white ">
+          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-white">
           <a
             href="/user/{author.username.toLowerCase()}"
             class="block dark:hover:text-pearl-lusta-100"
@@ -105,7 +105,7 @@
     </div>
   </div>
   <div
-    class="absolute right-3 top-0 bg-{style} flex space-x-1 rounded-b-md px-2 py-0.5  text-xs"
+    class="absolute right-3 top-0 bg-{style} flex space-x-1 rounded-b-md px-2 py-0.5 text-xs"
     use:tippy="{hoverMsgs[type]}">
     {#if type == "popular"}
       <IconTrending /><span>Trending</span>

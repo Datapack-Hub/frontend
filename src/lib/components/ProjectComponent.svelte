@@ -43,7 +43,7 @@
       </a>
       {#if visible}
         <div
-          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-white ">
+          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-white">
           <a
             href="/user/{author.username.toLowerCase()}"
             class="block dark:hover:text-pearl-lusta-100"
@@ -51,13 +51,16 @@
             {author.username}
           </a>
           {#if project.latest_version}
-          <span>•</span>
-          <span>{project.latest_version.minecraft_versions.split(",")[project.latest_version.minecraft_versions.split(",").length - 1]}</span>
-          <span>•</span>
-          <span>{project.latest_version.version_code}</span>
+            <span>•</span>
+            <span
+              >{project.latest_version.minecraft_versions.split(",")[
+                project.latest_version.minecraft_versions.split(",").length - 1
+              ]}</span>
+            <span>•</span>
+            <span>{project.latest_version.version_code}</span>
           {:else}
-          <span>•</span>
-          <span>No published version</span>
+            <span>•</span>
+            <span>No published version</span>
           {/if}
         </div>
       {/if}

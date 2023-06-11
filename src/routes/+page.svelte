@@ -105,17 +105,17 @@
           : 'invisible'}">
         <h1
           id="indexText1"
-          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center  text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
+          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
           <span class="letters inline-block text-dph-orange">Explore</span>
         </h1>
         <h1
           id="indexText2"
-          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center  text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
+          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
           <span class="letters inline-block text-dph-orange">Create</span>
         </h1>
         <h1
           id="indexText3"
-          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center  text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
+          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
           <span class="letters inline-block text-dph-orange">Play</span>
         </h1>
       </div>

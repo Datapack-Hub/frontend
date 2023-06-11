@@ -40,7 +40,7 @@
   </div>
 
   <p
-    class="mt-4 w-full text-center  text-4xl font-bold text-pearl-lusta-950 dark:text-white md:text-3xl lg:text-4xl">
+    class="mt-4 w-full text-center text-4xl font-bold text-pearl-lusta-950 dark:text-white md:text-3xl lg:text-4xl">
     {profile?.username}
     {#if ["moderator", "developer", "admin"].includes(profileRole?.name ?? "")}
       <span
@@ -58,7 +58,7 @@
   </p>
 
   <p
-    class="mt-1 w-full text-center align-middle  font-semibold text-pearl-lusta-950 dark:text-white sm:text-base md:text-lg">
+    class="mt-1 w-full text-center align-middle font-semibold text-pearl-lusta-950 dark:text-white sm:text-base md:text-lg">
     {#if profileRole?.name != "default"}
       <span style="color: {profileRole?.color};">
         {#if profileRole?.name == "nerd"}🤓 Nerd

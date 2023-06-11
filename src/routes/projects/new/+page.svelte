@@ -38,11 +38,11 @@
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-16">
     <h1
-      class="pt-8 text-center  text-5xl font-bold text-pearl-lusta-950 dark:text-white md:pt-20 md:text-start md:text-4xl lg:text-4xl">
+      class="pt-8 text-center text-5xl font-bold text-pearl-lusta-950 dark:text-white md:pt-20 md:text-start md:text-4xl lg:text-4xl">
       Create New <span class="text-dph-orange">Datapack</span>
     </h1>
     <div class="text-center align-middle md:text-start">
-      <p class="pb-4  text-pearl-lusta-950/60 dark:text-white/60">
+      <p class="pb-4 text-pearl-lusta-950/60 dark:text-white/60">
         Before starting, please read the Site Rules. <b
           >Only upload content that you made yourself or have permission to
           distribute.</b>
@@ -52,8 +52,7 @@
         class="rounded-xl bg-pearl-lusta-200 p-2 pb-2 dark:bg-stone-800"
         use:autoAnimate>
         <!-- Icon -->
-        <p
-          class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+        <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
           Icon
         </p>
         <img
@@ -75,22 +74,22 @@
 
         <!-- Title -->
         <p
-          class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+          class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
           Title
         </p>
         <input
-          class="input-base override-input-outline h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2 "
+          class="input-base override-input-outline h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2"
           placeholder="Title"
           bind:value="{titleVal}"
           maxlength="50" /><br /><br />
 
         <!-- Short Description -->
         <p
-          class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+          class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
           Short Description
         </p>
         <textarea
-          class="input-base override-input-outline h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2 "
+          class="input-base override-input-outline h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2"
           placeholder="This short description is used for social media embeds and the listing page."
           id="description"
           bind:value="{descVal}"
@@ -99,23 +98,22 @@
 
         <!-- Long Description -->
         <p
-          class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+          class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
           Long Description (supports markdown)
         </p>
         <textarea
-          class="input-base override-input-outline h-96 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 "
+          class="input-base override-input-outline h-96 w-full resize-none rounded-md bg-pearl-lusta-300 p-2"
           placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
           bind:value="{bodyVal}"
           maxlength="10000"></textarea
         ><br /><br />
 
         <!-- Category -->
-        <p
-          class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+        <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
           Category
         </p>
         <select
-          class="input-base override-input-outline w-1/4 rounded-md bg-pearl-lusta-300 p-2  text-lg"
+          class="input-base override-input-outline w-1/4 rounded-md bg-pearl-lusta-300 p-2 text-lg"
           id="cat">
           {#each categories as cat}
             <option value="{cat}">
@@ -124,7 +122,7 @@
           {/each}
         </select><br /><br />
 
-        <p class="align-middle  dark:text-pearl-lusta-100">
+        <p class="align-middle dark:text-pearl-lusta-100">
           You'll be able to edit more project details once you've created the
           project.
         </p>

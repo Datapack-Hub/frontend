@@ -4,7 +4,6 @@
   import { fetchAuthed, removeCookie } from "$lib/globals/functions";
   import { authed } from "$lib/globals/stores";
   import { onMount } from "svelte";
-  import IconBan from "~icons/tabler/Ban.svelte";
   import Button from "../Button.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
 
@@ -44,6 +43,7 @@
       <a href="/" class="z-20 flex cursor-pointer items-center justify-center">
         <img
           src="/logos/dph.svg"
+          alt="dph logo"
           class="mr-1 h-8 rounded-full transition-all hover:brightness-75"
           height="32"
           width="32" />

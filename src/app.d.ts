@@ -48,7 +48,7 @@ declare type Project = {
     name: string;
     description: string;
     minecraft_versions: string;
-    version_code:string;
+    version_code: string;
   };
 };
 

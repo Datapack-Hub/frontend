@@ -5,7 +5,7 @@
   import CasualLine from "$lib/components/CasualLine.svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { apiURL, categories, versions } from "$lib/globals/consts";
+  import { categories, versions } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import JSZip from "jszip";
@@ -201,7 +201,7 @@
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="pt-8 text-center  text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-4xl">
+      class="pt-8 text-center text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-4xl">
       Edit <span class="text-dph-orange">{data.project?.title}</span>
     </h1>
     {#if data.project?.mod_message}
@@ -209,7 +209,7 @@
         class="my-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100">
         <p class=" font-black">Message from Datapack Hub Staff:</p>
         <p
-          class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2  dark:text-stone-300">
+          class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 dark:text-stone-300">
           <MarkdownComponent source="{data.project?.mod_message}" />
         </p>
       </div>
@@ -242,7 +242,7 @@
         <div class="text-center align-middle md:text-start">
           <div class=" rounded-xl bg-stone-800 p-2 pb-2">
             <!-- Icon -->
-            <p class="align-middle  text-dph-orange">Icon</p>
+            <p class="align-middle text-dph-orange">Icon</p>
             <img
               loading="lazy"
               src="{data.project?.icon}"
@@ -252,7 +252,7 @@
               class="mr-3 inline-block rounded-2xl" />
             <label for="icon" class="max-w-100 group inline-block">
               <span
-                class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle  text-pearl-lusta-950 dark:text-white"
+                class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle text-pearl-lusta-950 dark:text-white"
                 >Upload icon</span>
             </label>
             <input
@@ -263,20 +263,18 @@
             <br /><br />
 
             <!-- Title -->
-            <p class="align-middle  text-dph-orange">Title</p>
+            <p class="align-middle text-dph-orange">Title</p>
             <input
-              class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2  text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+              class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
               placeholder="Title"
               maxlength="50"
               id="title"
               bind:value="{titleValue}" /><br /><br />
 
             <!-- Short Description -->
-            <p class="align-middle  text-dph-orange">
-              Short Description
-            </p>
+            <p class="align-middle text-dph-orange">Short Description</p>
             <textarea
-              class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2  text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+              class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
               placeholder="This short description is used for social media embeds and the listing page."
               id="desc"
               maxlength="200"
@@ -284,20 +282,20 @@
             ><br /><br />
 
             <!-- Long Description -->
-            <p class="align-middle  text-dph-orange">
+            <p class="align-middle text-dph-orange">
               Long Description (supports markdown)
             </p>
             <textarea
-              class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2  text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+              class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
               placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
               id="body"
               bind:value="{bodyVal}"
               maxlength="10000"></textarea
             ><br /><br />
             <!-- Category -->
-            <p class="align-middle  text-dph-orange">Category</p>
+            <p class="align-middle text-dph-orange">Category</p>
             <select
-              class="bg-new-white-300 w-1/4 rounded-md p-2  text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+              class="bg-new-white-300 w-1/4 rounded-md p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
               bind:value="{catVal}">
               {#each categories as cat}
                 <option value="{cat}">
@@ -325,8 +323,7 @@
                 accept=".zip"
                 id="zip"
                 on:input="{upload}" />
-              <span
-                class="align-center  text-pearl-lusta-950 dark:text-white"
+              <span class="align-center text-pearl-lusta-950 dark:text-white"
                 >(Supported: *.zip)</span>
               <!-- <p class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">No versions yet!</p> -->
             </div>
@@ -338,45 +335,45 @@
                 class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
                 on:click="{() => (createVersion = false)}">X</button>
               <h2
-                class="mb-2  text-xl font-bold text-pearl-lusta-950 dark:text-white">
+                class="mb-2 text-xl font-bold text-pearl-lusta-950 dark:text-white">
                 Creating new Version
               </h2>
 
               <div class="flex space-x-4">
                 <p
-                  class="w-1/2 align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                  class="w-1/2 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
                   Version Name
                 </p>
                 <p
-                  class="w-1/2 align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                  class="w-1/2 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
                   Version Number
                 </p>
               </div>
               <div class="flex space-x-2">
                 <input
-                  class="mb-4 h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2  text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
+                  class="mb-4 h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2 text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
                   placeholder="{data.project?.title} v{ver}"
                   maxlength="50"
                   id="v_name" />
                 <input
-                  class="mb-4 h-10 w-1/6 rounded-md bg-pearl-lusta-300 p-2  text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
+                  class="mb-4 h-10 w-1/6 rounded-md bg-pearl-lusta-300 p-2 text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
                   placeholder="v{ver}"
                   maxlength="15"
                   id="v_code" />
               </div>
 
               <p
-                class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
                 Changelog (supports markdown!)
               </p>
               <textarea
-                class="mb-4 h-36 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2  text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+                class="mb-4 h-36 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
                 placeholder="This update changes..."
                 id="v_changelog"
                 maxlength="2000"></textarea>
 
               <p
-                class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
                 Minecraft Versions
               </p>
               <MultiSelect
@@ -386,19 +383,19 @@
               <p class="mb-4"></p>
 
               <p
-                class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
                 Resource Pack Download (optional)
               </p>
               <input
                 type="file"
                 id="v_rp"
-                class="mb-4 rounded-xl bg-pearl-lusta-300 p-2  text-pearl-lusta-950 dark:bg-stone-700 dark:text-white" />
+                class="mb-4 rounded-xl bg-pearl-lusta-300 p-2 text-pearl-lusta-950 dark:bg-stone-700 dark:text-white" />
               <p></p>
               <div class=" mb-4">
                 <input name="squash" id="squash" type="checkbox" />
                 <label
                   for="squash"
-                  class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                  class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
                   Squash datapack. (This compresses the zip file, making it load
                   faster in game)
                 </label>
@@ -420,7 +417,7 @@
                 </h2>
               </div>
               <h2
-                class="flex flex-grow space-x-1  text-pearl-lusta-950 dark:text-white">
+                class="flex flex-grow space-x-1 text-pearl-lusta-950 dark:text-white">
                 {#each version.minecraft_versions.split(",") ?? [] as mcv}
                   <button
                     class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1">
@@ -442,12 +439,12 @@
     Publish {data.project?.title}
   </h1>
   <CasualLine />
-  <p class="mb-2  dark:text-white">
+  <p class="mb-2 dark:text-white">
     Your project is currently: {data.project?.status}. If this project has not
     been published before, then it will be reviewed by a moderator before going
     live.
   </p>
-  <p class="mb-2  dark:text-white">
+  <p class="mb-2 dark:text-white">
     By publishing this project, you agree that it follows the rules.
   </p>
   <button

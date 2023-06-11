@@ -1,12 +1,12 @@
 <script lang="ts">
-  import IconInfo from "~icons/tabler/HelpCircle.svelte";
-  import CasualLine from "./CasualLine.svelte";
-  import Modal from "./modals/Modal.svelte";
-  import JSZip from "jszip";
   import { browser } from "$app/environment";
+  import JSZip from "jszip";
   import toast from "svelte-french-toast";
   import tippy from "sveltejs-tippy";
+  import IconInfo from "~icons/tabler/HelpCircle.svelte";
+  import CasualLine from "./CasualLine.svelte";
   import MarkdownComponent from "./MarkdownComponent.svelte";
+  import Modal from "./modals/Modal.svelte";
 
   export let version: Version;
 
@@ -77,22 +77,21 @@
   class="rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-pearl-lusta-100/10 relative">
   <div class="flex items-center space-x-3">
     <div class="flex w-1/3 items-center space-x-2">
-      <a
-        class="cursor-pointer text-xl font-bold text-pearl-lusta-950 dark:text-white"
+      <button
+        class="text-xl font-bold text-pearl-lusta-950 dark:text-white"
         on:click="{() => {
-          if(expanded==false) {
-            expanded = true
-          }else expanded=false
+          if (expanded == false) {
+            expanded = true;
+          } else expanded = false;
         }}">
         {version.name}
-      </a>
+      </button>
       <h2
         class="text-base font-thin italic text-pearl-lusta-950 dark:text-white">
         {version.version_code}
       </h2>
     </div>
-    <h2
-      class="flex flex-grow space-x-1  text-pearl-lusta-950 dark:text-white">
+    <h2 class="flex flex-grow space-x-1 text-pearl-lusta-950 dark:text-white">
       {#each version.minecraft_versions.split(",") ?? [] as mcv}
         <button
           class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
@@ -107,15 +106,15 @@
       {/each}
     </h2>
     <button
-    on:click="{() => {
-      openVersion(version);
-    }}"
-    id="#download"
-    class="rounded-xl bg-dph-orange p-1 px-2  text-pearl-lusta-950 dark:text-white"
-    >Download</button>
+      on:click="{() => {
+        openVersion(version);
+      }}"
+      id="#download"
+      class="rounded-xl bg-dph-orange p-1 px-2 text-pearl-lusta-950 dark:text-white"
+      >Download</button>
   </div>
   {#if expanded}
-  <MarkdownComponent source={version.description} />
+    <MarkdownComponent source="{version.description}" />
   {/if}
 </li>
 
@@ -125,7 +124,7 @@
   </h1>
   <CasualLine />
   <div
-    class="items-middle flex items-center  text-pearl-lusta-950 dark:text-white">
+    class="items-middle flex items-center text-pearl-lusta-950 dark:text-white">
     <p class="pr-1">
       Select a valid Minecraft version below to download the datapack.
     </p>
@@ -138,8 +137,7 @@
       <IconInfo />
     </div>
   </div>
-  <div
-    class="my-2 flex space-x-2  text-pearl-lusta-950 dark:text-white">
+  <div class="my-2 flex space-x-2 text-pearl-lusta-950 dark:text-white">
     {#each activeVersion?.minecraft_versions.split(",") ?? [] as mcv}
       <button
         class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 hover:scale-102"
@@ -152,27 +150,26 @@
         }}">{mcv}</button>
     {/each}
   </div>
-  <p
-    class="pr-1  text-xs italic text-pearl-lusta-950 dark:text-white">
+  <p class="pr-1 text-xs italic text-pearl-lusta-950 dark:text-white">
     If your version is not listed above, then this datapack is not supported for
     your version.
   </p>
 
   {#if activeVersion?.resource_pack_download}
     <CasualLine />
-    <p class="pr-1  text-pearl-lusta-950 dark:text-white">
+    <p class="pr-1 text-pearl-lusta-950 dark:text-white">
       This datapack also has a resource pack which you need to download!
     </p>
     <div class="my-2 flex">
       <a
         href="{activeVersion?.resource_pack_download}"
-        class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2  text-pearl-lusta-950 hover:scale-102 dark:text-white">
+        class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 text-pearl-lusta-950 hover:scale-102 dark:text-white">
         Download Resource Pack
       </a>
     </div>
   {/if}
   <CasualLine />
-  <p class="flex items-center space-x-1 pr-1  text-sm text-sky-300">
+  <p class="flex items-center space-x-1 pr-1 text-sm text-sky-300">
     <IconInfo /><a href="/">How to install a datapack</a>
   </p>
 </Modal>

@@ -11,7 +11,7 @@
   <div
     class="h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="mt-8 pb-2 text-center  text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="mt-8 pb-2 text-center text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Datapack Hub Rules
     </h1>
     <CasualLine />
@@ -52,7 +52,7 @@
 
 <style lang="postcss">
   p {
-    @apply  text-pearl-lusta-950 dark:text-white;
+    @apply text-pearl-lusta-950 dark:text-white;
   }
 
   li {

@@ -37,7 +37,7 @@
       </p>
     </div>
     <button
-      class="closeButton right-0 top-0 h-1  text-pearl-lusta-950 dark:text-white"
+      class="closeButton right-0 top-0 h-1 text-pearl-lusta-950 dark:text-white"
       on:click="{removeThis}"><IconX /></button>
   </li>
 {/if}

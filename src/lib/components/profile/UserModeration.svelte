@@ -253,6 +253,8 @@
   </p>
   <p class=" text-pearl-lusta-950 dark:text-white">
     Unban them to end their ban early.
+  </p>
+  <Button click="{async () => await unbanUser()}">Log them out!</Button>
 </Modal>
 <Modal bind:this="{logOutDialog}">
   <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
