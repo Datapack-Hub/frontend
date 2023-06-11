@@ -13,7 +13,7 @@
   let dlModal: Modal;
   let activeVersion: Version;
 
-  let expanded = false;
+  export let expanded = false;
 
   function openVersion(item: Version) {
     activeVersion = item;
@@ -105,6 +105,7 @@
         </button>
       {/each}
     </h2>
+    {#if !expanded}
     <button
       on:click="{() => {
         openVersion(version);
@@ -112,9 +113,27 @@
       id="#download"
       class="rounded-xl bg-dph-orange p-1 px-2 text-pearl-lusta-950 dark:text-white"
       >Download</button>
+    {/if}
   </div>
   {#if expanded}
     <MarkdownComponent source="{version.description}" />
+    <h2 class="text-white">Download this version:</h2>
+    <button
+      on:click="{() => {
+        openVersion(version);
+      }}"
+      id="#download"
+      class="button-primary"
+      >Download Datapack</button>
+    {#if version.resource_pack_download}
+    <button
+      on:click="{() => {
+        openVersion(version);
+      }}"
+      id="#download"
+      class="button-primary"
+      >Download Required Resourcepack</button>
+      {/if}
   {/if}
 </li>
 

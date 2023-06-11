@@ -7,14 +7,14 @@
   import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
 
-  import IconAlert from "~icons/tabler/AlertTriangle.svelte";
   import IconCube from "~icons/tabler/Box.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
-  import IconRight from "~icons/tabler/ChevronRight.svelte";
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
+  import IconRight from "~icons/tabler/ChevronRight.svelte";
+  import IconAlert from "~icons/tabler/AlertTriangle.svelte";
 
   import CasualLine from "$lib/components/CasualLine.svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
@@ -22,11 +22,12 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
   import { versions } from "$lib/globals/consts";
-  import { user } from "$lib/globals/stores";
+  import { authed, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
   import toast from "svelte-french-toast";
   import MultiSelect from "svelte-multiselect";
+  import Button from "$lib/components/Button.svelte";
 
   export let data: PageData;
   let visible = false;
@@ -45,18 +46,15 @@
       : data.versions;
 
   let matches: Version[] | undefined = [];
-  let bigStitchedVersionList: string;
+  let bigStitchedVersionList: string
 
   data.versions?.forEach(item => {
-    bigStitchedVersionList = bigStitchedVersionList + item.minecraft_versions;
-  });
+    bigStitchedVersionList = bigStitchedVersionList + item.minecraft_versions
+  })
 
-  function pickVersions(vs: string) {
-    matches = data.versions?.filter(vers =>
-      vers.minecraft_versions.split(",").includes(vs)
-    );
-    if (matches?.length == 0)
-      return toast.error("This datapack doesn't support " + vs);
+  function pickVersions(vs: string){
+    matches = data.versions?.filter(vers => vers.minecraft_versions.split(",").includes(vs))
+    if(matches?.length == 0) return toast.error("This datapack doesn't support " + vs)
   }
 
   onMount(async () => {
@@ -181,11 +179,11 @@
   <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-4 w-full">
     <!--Project Meta-->
     <div class="flex h-fit w-full lg:w-2/5 xl:w-1/4 flex-col">
-      <div class="my-3 text-sky-300">
+      <div class="my-3  text-sky-300">
         <a href="/projects">&lt; Explore other projects</a>
       </div>
       <div
-        class="rounded-xl border-pearl-lusta-200 p-4 mb-2 bg-pearl-lusta-200 dark:bg-pearl-lusta-100/10">
+        class="rounded-xl border-pearl-lusta-200 p-4 mb-2  bg-pearl-lusta-200 dark:bg-pearl-lusta-100/10">
         <div
           class="{data.project?.icon
             ? 'p-0'
@@ -202,19 +200,19 @@
         </div>
         <div class="flex-grow">
           <h1
-            class="flex items-center text-4xl font-bold text-pearl-lusta-950 dark:text-white">
+            class="flex items-center  text-4xl font-bold text-pearl-lusta-950 dark:text-white">
             {data.project?.title.trimStart()}
             {#if status == "draft"}
               <span
-                class="mx-3 rounded-full bg-stone-700 px-2 text-xl font-bold text-stone-500"
+                class="mx-3 rounded-full bg-stone-700 px-2  text-xl font-bold text-stone-500"
                 >Draft</span>
             {:else if status == "publish_queue" || status == "review_queue"}
               <span
-                class="mx-3 rounded-full bg-yellow-700 px-2 text-xl font-bold text-yellow-500"
+                class="mx-3 rounded-full bg-yellow-700 px-2  text-xl font-bold text-yellow-500"
                 >Awaiting Approval</span>
             {:else if status == "unpublished"}
               <span
-                class="mx-3 rounded-full bg-stone-700 px-2 text-xl font-bold text-stone-500"
+                class="mx-3 rounded-full bg-stone-700 px-2  text-xl font-bold text-stone-500"
                 >Unpublished</span>
             {/if}
           </h1>
@@ -239,7 +237,8 @@
                 </span>
               </a>
               <span class=" dark:text-white"> • </span>
-              <span class="flex items-center space-x-1 dark:text-white">
+              <span
+                class="flex items-center space-x-1  dark:text-white">
                 <IconCube />
                 <p>{data.project?.category}</p>
               </span>
@@ -259,7 +258,7 @@
           {/if}
           <p class=" font-black">Message from Datapack Hub Staff:</p>
           <p
-            class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 dark:text-stone-300">
+            class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2  dark:text-stone-300">
             <MarkdownComponent source="{data.project?.mod_message}" />
           </p>
           <p class=" text-xs opacity-50">
@@ -284,9 +283,10 @@
             class="button-base {activePage === 'versions'
               ? 'bg-stone-600'
               : 'bg-stone-800'}"
-            on:click="{() => (activePage = 'versions')}">Versions</button>
+            on:click="{() => (activePage = 'versions')}">Version History</button>
         </div>
         <div class="flex space-x-1">
+          
           {#if ["moderator", "admin"].includes($user.role)}
             <button
               class="button-base flex items-center space-x-1"
@@ -320,33 +320,33 @@
           </a>
         {/if}
         <button
-          class="button-base bg-dph-orange font-bold"
-          on:click="{() => (activePage = 'download')}">Download Latest</button>
+            class="button-base bg-dph-orange font-bold"
+            on:click="{() => (activePage = 'download')}">Download</button>
       </div>
       {#if activePage == "description"}
         <div
           class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
-          <p class="w-full leading-tight">
+          <p class="w-full  leading-tight">
             <MarkdownComponent source="{body.replace('\\n', '\n')}" />
           </p>
         </div>
       {:else if activePage == "versions"}
         <div
-          class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+          class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
           {#if data.versions?.length != 0}
             <div class="flex space-x-2 w-full items-center dark:text-white">
-              <p class="mr-2">Search by Minecraft version:</p>
+              <p class="mr-2">Search by Minecraft version: </p>
               <MultiSelect
-                bind:selected="{selectedVersions}"
-                options="{versions}" />
+              bind:selected="{selectedVersions}"
+              options="{versions}"/>
             </div>
             <div class="mx-3 flex space-x-3 mt-4">
               <h2
-                class="w-1/3 text-xl font-black text-pearl-lusta-950 dark:text-white">
+                class="w-1/3  text-xl font-black text-pearl-lusta-950 dark:text-white">
                 Name
               </h2>
               <h2
-                class="flex-grow text-xl font-black text-pearl-lusta-950 dark:text-white">
+                class="flex-grow  text-xl font-black text-pearl-lusta-950 dark:text-white">
                 Minecraft versions
               </h2>
             </div>
@@ -355,7 +355,8 @@
                 <VersionDisplay version="{version}" />
               {/each}
             </ul>
-            <p class="mx-1 mt-2 text-pearl-lusta-950 dark:text-white">
+            <p
+              class="mx-1 mt-2  text-pearl-lusta-950 dark:text-white">
               (Showing {versionMatches?.length} versions)
             </p>
           {:else}
@@ -368,69 +369,56 @@
             </h2>
           {/if}
         </div>
+
       {:else if activePage == "download"}
-        <div class="mb-2 items-center space-y-2">
-          <div
-            class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
-            {#if data.versions?.length != 0}
-              <p class="text-white">Select a Minecraft version:</p>
-              <div class="grid grid-cols-3 grid-rows-auto gap-3">
-                {#each versions ?? [] as v}
-                  {#if bigStitchedVersionList.indexOf(v) >= 0}
-                    <a
-                      class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 {!data.project?.latest_version.minecraft_versions
-                        .split(',')
-                        .includes(v)
-                        ? 'text-red-500'
-                        : 'text-white'}"
-                      on:click="{() => pickVersions(v)}">
-                      {#if !data.project?.latest_version.minecraft_versions
-                        .split(",")
-                        .includes(v)}
-                        <IconAlert />
-                      {/if}
-                      <div
-                        class="font-bold flex-grow flex items-center space-x-2">
-                        <p>{v}</p>
-                        {#if data.project?.latest_version.minecraft_versions
-                          .split(",")
-                          .includes(v)}
-                          <p class="font-thin italic">
-                            {data.project?.latest_version.version_code}
-                          </p>
-                        {/if}
-                      </div>
-                      <IconRight />
-                    </a>
+      <div
+        class="mb-2 items-center space-y-2">
+        <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+          {#if data.versions?.length != 0}
+            <p class="text-white">Select a Minecraft version:</p>
+            <div class="grid grid-cols-3 grid-rows-auto gap-3">
+              {#each versions ?? [] as v}
+                {#if bigStitchedVersionList.indexOf(v) >= 0}
+                <a 
+                  class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 {!(data.project?.latest_version.minecraft_versions.split(",").includes(v))
+                  ? 'text-red-500'
+                  : 'text-white'}"
+                  on:click="{() => pickVersions(v)}"
+                >
+                  {#if !(data.project?.latest_version.minecraft_versions.split(",").includes(v))}
+                  <IconAlert />
                   {/if}
-                {/each}
-              </div>
-              <div class="flex space-x-1 items-center mt-2 text-stone-500">
-                <IconAlert />
-                <p>means the datapack version is outdated</p>
-              </div>
-            {:else}
-              <h2 class=" text-xl text-pearl-lusta-950 dark:text-white">
-                <b>No versions yet!</b> Why not
-                <a
-                  href="/project/{data.project?.url}/edit"
-                  class="text-blue-500 underline">create one</a
-                >?
-              </h2>
-            {/if}
-          </div>
-          {#if matches?.length != 0}
-            <div
-              class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
-              <p class="text-white">Matching Versions:</p>
-              <ul use:autoAnimate class="space-y-2">
-                {#each matches ?? [] as m}
-                  <VersionDisplay version="{m}" />
-                {/each}
-              </ul>
+                  <div class="font-bold flex-grow flex items-center space-x-2">
+                    <p>{v}</p>
+                    {#if (data.project?.latest_version.minecraft_versions.split(",").includes(v))}
+                    <p class="font-thin italic">{data.project?.latest_version.version_code}</p>
+                    {/if}
+                  </div>
+                  <IconRight />
+                </a>
+                {/if}
+              {/each}
             </div>
+            <div class="flex space-x-1 items-center mt-2 text-stone-500"><IconAlert /><p>means the datapack version is outdated</p></div>
+          {:else}
+            <h2 class=" text-xl text-pearl-lusta-950 dark:text-white">
+              <b>No versions yet!</b> Why not
+              <a
+                href="/project/{data.project?.url}/edit"
+                class="text-blue-500 underline">create one</a
+              >?
+            </h2>
           {/if}
         </div>
+        {#if matches?.length != 0}
+        <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+          <p class="text-white">Latest version:</p>
+          <ul use:autoAnimate class="space-y-2">
+          <VersionDisplay version={matches[0]} expanded={true}/>
+          </ul>
+        </div>
+        {/if}
+      </div>
       {/if}
     </div>
   </div>
@@ -443,7 +431,7 @@
   <CasualLine />
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
   <p
-    class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
     User
   </p>
   <MiniProfileCard
@@ -451,7 +439,7 @@
     role="{data.roles?.find(v => author?.role == v.name)}" />
   <div class="mb-2 min-w-fit items-center">
     <p
-      class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+      class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
       Select Action
     </p>
     <button
@@ -471,11 +459,11 @@
       on:click="{() => (modModalPage = 'write note')}">Write Note</button>
   </div>
   <p
-    class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Moderation Note
   </p>
   <textarea
-    class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700"
+    class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2  dark:bg-stone-700"
     placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
     id="description"
     maxlength="200"
@@ -492,6 +480,6 @@
     --sms-remove-btn-hover-bg: theme(colors.dph-orange);
     --sms-options-bg: theme(colors.stone.700);
     --sms-text-color: theme(colors.white);
-    --sms-selected-bg: theme(colors.dph-orange/25);
+    --sms-selected-bg: theme(colors.dph-orange/25)
   }
 </style>
