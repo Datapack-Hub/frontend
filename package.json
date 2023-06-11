@@ -54,13 +54,13 @@
   },
   "type": "module",
   "dependencies": {
-    "@formkit/auto-animate": "1.0.0-beta.6",
+    "@formkit/auto-animate": "^1.0.0-beta.6",
     "@tailwindcss/typography": "^0.5.9",
     "@types/dompurify": "^3.0.2",
     "animejs": "^3.2.1",
     "highlight.js": "^11.8.0",
     "isomorphic-dompurify": "^1.6.0",
-    "svelte-french-toast": "1.0.4-beta.0",
+    "svelte-french-toast": "^1.0.4-beta.0",
     "svelte-multiselect": "^8.6.2"
   },
   "prettier": {
