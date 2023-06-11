@@ -36,29 +36,29 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class="ml-2 bg-pearl-lusta-200 font-brand text-pearl-lusta-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
+          class="ml-2 bg-pearl-lusta-200  text-pearl-lusta-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
           on:input="{search}" />
       </div>
       <div class="flex items-center">
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center font-brand font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center  font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >1</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center font-brand font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center  font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >2</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center font-brand font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center  font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >3</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center font-brand font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center  font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >4</a>
         <a
           href="/projects"
-          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center font-brand font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="mx-1 mt-4 h-8 w-8 rounded-full bg-dph-orange p-1 text-center  font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >5</a>
       </div>
     </div>
@@ -66,10 +66,10 @@
     <div class="mt-4 flex flex-col md:flex-row">
       <div
         class="mb-3 md:mb-0 w-full md:w-1/2 rounded-xl bg-stone-800 p-2 lg:w-1/4 xl:w-1/5">
-        <p class="w-full text-center font-brand text-xl text-white">
+        <p class="w-full text-center  text-xl text-white">
           Search Settings
         </p>
-        <p class="w-full text-center font-brand text-white/60">
+        <p class="w-full text-center  text-white/60">
           TODO: Add these
         </p>
       </div>
@@ -86,12 +86,12 @@
             {/each}
           </ul>
         {:else}
-          <h2 class="font-brand text-pearl-lusta-950 dark:text-white">
+          <h2 class=" text-pearl-lusta-950 dark:text-white">
             No results found
           </h2>
         {/if}
       {:else}
-        <h2 class="font-brand text-pearl-lusta-950 dark:text-white">
+        <h2 class=" text-pearl-lusta-950 dark:text-white">
           No results found
         </h2>
       {/if}

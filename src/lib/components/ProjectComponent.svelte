@@ -38,22 +38,27 @@
     <div class="ml-4 w-2/3">
       <a
         href="/project/{project.url}"
-        class="font-brand text-lg hover:underline md:text-xl lg:text-2xl">
+        class=" text-lg hover:underline md:text-xl lg:text-2xl">
         {project.title}
       </a>
       {#if visible}
         <div
-          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-white font-brand">
+          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-white ">
           <a
             href="/user/{author.username.toLowerCase()}"
             class="block dark:hover:text-pearl-lusta-100"
             in:fade="{{ duration: 250 }}">
             {author.username}
           </a>
+          {#if project.latest_version}
           <span>•</span>
-          <span>1.19</span>
+          <span>{project.latest_version.minecraft_versions.split(",")[project.latest_version.minecraft_versions.split(",").length - 1]}</span>
           <span>•</span>
-          <span>Beta 1.1</span>
+          <span>{project.latest_version.version_code}</span>
+          {:else}
+          <span>•</span>
+          <span>No published version</span>
+          {/if}
         </div>
       {/if}
       <p

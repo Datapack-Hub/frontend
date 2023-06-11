@@ -1,5 +1,7 @@
 <script lang="ts">
   import IconClose from "~icons/tabler/X.svelte";
+  import { fly } from "svelte/transition";
+  import autoAnimate from "@formkit/auto-animate";
 
   let instance: HTMLDialogElement;
 
@@ -14,6 +16,8 @@
 
 <dialog
   bind:this="{instance}"
+  use:autoAnimate
+  in:fly="{{ y: -200, duration: 500 }}"
   class="bg-transparent backdrop:backdrop-blur-lg backdrop:brightness-75 backdrop:transition-all transition-all w-1/3">
   <div class="rounded-xl p-3 dark:bg-stone-800">
     <form method="dialog">

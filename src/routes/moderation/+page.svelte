@@ -37,7 +37,7 @@
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="my-3 pb-2 text-center font-brand text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="my-3 pb-2 text-center  text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Moderation Dashboard
     </h1>
     <div class="mb-2 flex space-x-2">
@@ -63,17 +63,17 @@
 
     <div use:autoAnimate>
       {#await loadStuff()}
-        <p class="p-2 font-brand dark:text-white">Loading...</p>
+        <p class="p-2  dark:text-white">Loading...</p>
       {:then}
         {#if activePage == "publish_queue"}
           <div
             class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start">
             {#if publishQueue.length == 0}
-              <p class="font-brand dark:text-white">
+              <p class=" dark:text-white">
                 You're all caught up! There are no projects in the queue.
               </p>
             {:else}
-              <p class="font-brand dark:text-white">
+              <p class=" dark:text-white">
                 There are {publishQueue.length} items awaiting approval:
               </p>
               {#each publishQueue ?? [] as proj}
@@ -85,11 +85,11 @@
           <div
             class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start">
             {#if reviewQueue.length == 0}
-              <p class="font-brand dark:text-white">
+              <p class=" dark:text-white">
                 You're all caught up! There are no projects in the queue.
               </p>
             {:else}
-              <p class="font-brand dark:text-white">
+              <p class=" dark:text-white">
                 There are {reviewQueue.length} items awaiting approval:
               </p>
               {#each reviewQueue ?? [] as proj}
@@ -101,10 +101,10 @@
           <div
             class="flex flex-col space-x-2 rounded-xl bg-stone-800 p-2 py-3 text-center align-middle md:text-start">
             <h1
-              class="m-2 text-center font-brand text-2xl font-bold text-pearl-lusta-950 dark:text-white md:text-start">
+              class="m-2 text-center  text-2xl font-bold text-pearl-lusta-950 dark:text-white md:text-start">
               Site Roles
             </h1>
-            <table class="table-auto rounded-xl p-2 text-left font-brand">
+            <table class="table-auto rounded-xl p-2 text-left ">
               <tr class="bg-emerald-500 p-2">
                 <th class="p-2 text-pearl-lusta-950 dark:text-white"
                   >Role Name</th>

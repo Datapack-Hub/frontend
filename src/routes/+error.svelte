@@ -47,7 +47,7 @@
       {$page.error?.message}
     </p>
     <p
-      class="font-brand text-lg text-pearl-lusta-950/40 dark:text-white/40 md:text-xl lg:text-2xl">
+      class=" text-lg text-pearl-lusta-950/40 dark:text-white/40 md:text-xl lg:text-2xl">
       {message}
       {$page.error?.description}
     </p>

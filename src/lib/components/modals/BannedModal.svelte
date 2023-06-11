@@ -42,7 +42,8 @@
     <div
       class="relative m-auto w-1/2 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
       <a href="/" class="z-20 flex cursor-pointer items-center justify-center">
-        <IconBan
+        <img
+          src="/logos/dph.svg"
           class="mr-1 h-8 rounded-full transition-all hover:brightness-75"
           height="32"
           width="32" />

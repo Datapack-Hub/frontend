@@ -105,17 +105,17 @@
           : 'invisible'}">
         <h1
           id="indexText1"
-          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center font-brand text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
+          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center  text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
           <span class="letters inline-block text-dph-orange">Explore</span>
         </h1>
         <h1
           id="indexText2"
-          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center font-brand text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
+          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center  text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
           <span class="letters inline-block text-dph-orange">Create</span>
         </h1>
         <h1
           id="indexText3"
-          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center font-brand text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
+          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center  text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
           <span class="letters inline-block text-dph-orange">Play</span>
         </h1>
       </div>
@@ -132,7 +132,7 @@
     <div
       class="my-8 h-3/4 w-4/5 justify-between space-y-3 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:h-2/3 md:w-1/2">
       <h3
-        class="font-brand text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center my-6">
+        class=" text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center my-6">
         Featured
       </h3>
       <div use:autoAnimate>

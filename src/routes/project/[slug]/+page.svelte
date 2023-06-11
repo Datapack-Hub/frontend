@@ -164,7 +164,7 @@
   <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-4 w-full">
     <!--Project Meta-->
     <div class="flex h-fit w-full lg:w-2/5 xl:w-1/4 flex-col">
-      <div class="my-3 font-brand text-sky-300">
+      <div class="my-3  text-sky-300">
         <a href="/projects">&lt; Explore other projects</a>
       </div>
       <div
@@ -185,24 +185,24 @@
         </div>
         <div class="flex-grow">
           <h1
-            class="flex items-center font-brand text-4xl font-bold text-pearl-lusta-950 dark:text-white">
+            class="flex items-center  text-4xl font-bold text-pearl-lusta-950 dark:text-white">
             {data.project?.title.trimStart()}
-            {#if status == "draftx"}
+            {#if status == "draft"}
               <span
-                class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
+                class="mx-3 rounded-full bg-stone-700 px-2  text-xl font-bold text-stone-500"
                 >Draft</span>
             {:else if status == "publish_queue" || status == "review_queue"}
               <span
-                class="mx-3 rounded-full bg-yellow-700 px-2 font-brand text-xl font-bold text-yellow-500"
+                class="mx-3 rounded-full bg-yellow-700 px-2  text-xl font-bold text-yellow-500"
                 >Awaiting Approval</span>
             {:else if status == "unpublished"}
               <span
-                class="mx-3 rounded-full bg-stone-700 px-2 font-brand text-xl font-bold text-stone-500"
+                class="mx-3 rounded-full bg-stone-700 px-2  text-xl font-bold text-stone-500"
                 >Unpublished</span>
             {/if}
           </h1>
           <h2
-            class="mt-2 font-brand text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
+            class="mt-2  text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
             {data.project?.description?.trimStart()}
           </h2>
           {#if visible}
@@ -216,14 +216,14 @@
                   class="max-h-7 rounded-full"
                   alt="pfp" />
                 <span
-                  class="font-brand text-sm md:text-base xl:text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
+                  class=" text-sm md:text-base xl:text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
                   in:fade="{{ duration: 250 }}">
                   {author?.username}
                 </span>
               </a>
-              <span class="font-brand dark:text-white"> • </span>
+              <span class=" dark:text-white"> • </span>
               <span
-                class="flex items-center space-x-1 font-brand dark:text-white">
+                class="flex items-center space-x-1  dark:text-white">
                 <IconCube />
                 <p>{data.project?.category}</p>
               </span>
@@ -236,7 +236,7 @@
           {#if $authed && ["moderator", "developer", "admin"].includes($user.role)}
             <button
               on:click="{() => modModal.open()}"
-              class="rounded-lg bg-red-600 px-3 text-center font-brand text-lg text-white transition-all hover:scale-105 active:brightness-75"
+              class="rounded-lg bg-red-600 px-3 text-center  text-lg text-white transition-all hover:scale-105 active:brightness-75"
               >Moderate</button>
           {/if}
         </div>
@@ -251,12 +251,12 @@
               class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
               on:click="{dismissModMsg}"><IconCross /></button>
           {/if}
-          <p class="font-brand font-black">Message from Datapack Hub Staff:</p>
+          <p class=" font-black">Message from Datapack Hub Staff:</p>
           <p
-            class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 font-brand dark:text-stone-300">
+            class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2  dark:text-stone-300">
             <MarkdownComponent source="{data.project?.mod_message}" />
           </p>
-          <p class="font-brand text-xs opacity-50">
+          <p class=" text-xs opacity-50">
             Only you (and staff) can read this message. Once you've acknowleged
             it, you can dismiss the message if the project isn't disabled.
           </p>
@@ -317,7 +317,7 @@
       {#if activePage == "description"}
         <div
           class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
-          <p class="w-full font-brand leading-tight">
+          <p class="w-full  leading-tight">
             <MarkdownComponent source="{body.replace('\\n', '\n')}" />
           </p>
         </div>
@@ -325,16 +325,19 @@
         <div
           class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
           {#if data.versions?.length != 0}
-            <MultiSelect
+            <div class="flex space-x-2 w-full items-center dark:text-white">
+              <p class="mr-2">Search by Minecraft version: </p>
+              <MultiSelect
               bind:selected="{selectedVersions}"
-              options="{versions}" />
+              options="{versions}"/>
+            </div>
             <div class="mx-3 flex space-x-3 mt-4">
               <h2
-                class="w-1/3 font-brand text-xl font-black text-pearl-lusta-950 dark:text-white">
+                class="w-1/3  text-xl font-black text-pearl-lusta-950 dark:text-white">
                 Name
               </h2>
               <h2
-                class="flex-grow font-brand text-xl font-black text-pearl-lusta-950 dark:text-white">
+                class="flex-grow  text-xl font-black text-pearl-lusta-950 dark:text-white">
                 Minecraft versions
               </h2>
             </div>
@@ -344,11 +347,11 @@
               {/each}
             </ul>
             <p
-              class="mx-1 mt-2 font-brand text-pearl-lusta-950 dark:text-white">
+              class="mx-1 mt-2  text-pearl-lusta-950 dark:text-white">
               (Showing {versionMatches?.length} versions)
             </p>
           {:else}
-            <h2 class="font-brand text-xl text-pearl-lusta-950 dark:text-white">
+            <h2 class=" text-xl text-pearl-lusta-950 dark:text-white">
               <b>No versions yet!</b> Why not
               <a
                 href="/project/{data.project?.url}/edit"
@@ -363,13 +366,13 @@
 </main>
 
 <Modal bind:this="{modModal}">
-  <h1 class="font-brand text-xl font-bold text-pearl-lusta-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
     Moderate {data.project?.title}
   </h1>
   <CasualLine />
-  <!-- <p class="font-brand dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
+  <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
   <p
-    class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
     User
   </p>
   <MiniProfileCard
@@ -377,7 +380,7 @@
     role="{data.roles?.find(v => author?.role == v.name)}" />
   <div class="mb-2 min-w-fit items-center">
     <p
-      class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+      class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
       Select Action
     </p>
     <button
@@ -397,11 +400,11 @@
       on:click="{() => (modModalPage = 'write note')}">Write Note</button>
   </div>
   <p
-    class="align-middle font-brand text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Moderation Note
   </p>
   <textarea
-    class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 font-brand dark:bg-stone-700"
+    class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2  dark:bg-stone-700"
     placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
     id="description"
     maxlength="200"
@@ -418,6 +421,6 @@
     --sms-remove-btn-hover-bg: theme(colors.dph-orange);
     --sms-options-bg: theme(colors.stone.700);
     --sms-text-color: theme(colors.white);
-    --sms-selected-bg: theme(colors.dph-orange/25);
+    --sms-selected-bg: theme(colors.dph-orange/25)
   }
 </style>

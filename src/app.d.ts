@@ -44,6 +44,12 @@ declare type Project = {
   body: string;
   status: string?;
   mod_message: string?;
+  latest_version: {
+    name: string;
+    description: string;
+    minecraft_versions: string;
+    version_code:string;
+  };
 };
 
 declare type Notif = {
