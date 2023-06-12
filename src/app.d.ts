@@ -48,7 +48,9 @@ declare type Project = {
     | "draft"
     | "disabled"
     | "deleted"
-    | "ghost";
+    | "ghost"
+    | "publish_queue"
+    | "review_queue";
   title: string;
   type: "datapack" | "url";
   url: string;
@@ -89,7 +91,7 @@ declare type Report = {
   message: string;
   reporter: User;
   project: Project;
-}
+};
 
 /// <reference types="@sveltejs/kit" />
 /// <reference types="unplugin-icons/types/svelte" />
