@@ -85,5 +85,11 @@ declare type Version = {
   version_code: string;
 };
 
+declare type Report = {
+  message: string;
+  reporter: User;
+  project: Project;
+}
+
 /// <reference types="@sveltejs/kit" />
 /// <reference types="unplugin-icons/types/svelte" />
