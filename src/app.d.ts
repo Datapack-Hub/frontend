@@ -77,5 +77,11 @@ declare type Version = {
   file_name: string;
 };
 
+declare type Report = {
+  message: string;
+  reporter: User;
+  project: Project;
+}
+
 /// <reference types="@sveltejs/kit" />
 /// <reference types="unplugin-icons/types/svelte" />

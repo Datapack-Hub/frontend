@@ -2,6 +2,7 @@
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
   import ProjectComponent from "$lib/components/ProjectComponent.svelte";
+  import ReportComponent from "$lib/components/ReportComponent.svelte";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
@@ -11,7 +12,7 @@
   let rolesJson: Role[];
   let publishQueue: Project[];
   let reviewQueue: Project[];
-  let reports: Project[];
+  let reports: Report[];
 
   async function loadStuff() {
     if ($user.role == "default") {
@@ -24,8 +25,8 @@
     let rq = await fetchAuthed("get", "/moderation/queue/review");
     reviewQueue = (await rq.json())["projects"] as Project[];
 
-    let rp = await fetchAuthed("get", "/moderation/queue/review");
-    reports = (await rp.json())["projects"] as Project[];
+    let rp = await fetchAuthed("get", "/moderation/queue/report");
+    reports = (await rp.json())["reports"] as Report[];
 
     let r = await fetchAuthed("get", "/user/staff/roles");
     rolesJson = (await r.json())["roles"];
@@ -116,10 +117,10 @@
               </p>
             {:else}
               <p class=" dark:text-white">
-                There are {reports.length} items awaiting approval:
+                There are {reports.length} reported item(s):
               </p>
               {#each reports ?? [] as proj}
-                <ProjectComponent project="{proj}" />
+                <ReportComponent project="{proj.project}" report="{proj}" />
               {/each}
             {/if}
           </div>
