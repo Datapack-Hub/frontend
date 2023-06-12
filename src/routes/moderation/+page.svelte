@@ -59,9 +59,7 @@
         click="{() => (activePage = 'review_queue')}">Review Queue</Button>
       <Button
         style="base"
-        classes="{activePage === 'reports'
-          ? 'bg-stone-600'
-          : 'bg-stone-800'}"
+        classes="{activePage === 'reports' ? 'bg-stone-600' : 'bg-stone-800'}"
         click="{() => (activePage = 'reports')}">Reports</Button>
       <Button
         style="base"

@@ -96,32 +96,31 @@
     };
 
     toast.promise(
-      new Promise((resolve, reject) => {
-        dataReader.onload = () => {
+      new Promise((_, reject) => {
+        dataReader.addEventListener("load", () => {
           versionData.primary_download = dataReader.result as string;
-          resolve(dataReader.result);
-        };
+        });
 
-        dataReader.onerror = () => {
+        dataReader.addEventListener("error", () => {
           reject("There was an error handling this datapack upload!");
-        };
+        });
       }).then(
         () => {
           if (v_rp.files?.length == 1) {
             packReader.readAsDataURL(v_rp.files[0]);
 
             new Promise((resolve, reject) => {
-              packReader.onload = () => {
+              packReader.addEventListener("load", () => {
                 versionData.resource_pack_download =
                   packReader.result as string;
                 resolve(packReader.result);
-              };
+              });
 
-              packReader.onerror = () => {
+              packReader.addEventListener("error", () => {
                 reject(
                   "There was an error handling this resource pack upload!"
                 );
-              };
+              });
             }).then(() => {
               fetchAuthed(
                 "POST",
@@ -256,9 +255,9 @@
           ><IconTick /><span>Publish Project</span></button>
       {:else if data.project?.status == "live"}
         <button
-            class="button-base flex items-center space-x-1 bg-stone-600"
-            on:click="{() => draftModal.open()}"
-            ><IconDraft /><span>Draft submission</span></button>
+          class="button-base flex items-center space-x-1 bg-stone-600"
+          on:click="{() => draftModal.open()}"
+          ><IconDraft /><span>Draft submission</span></button>
       {/if}
     </div>
 
@@ -431,7 +430,7 @@
           {/if}
           <div class="space-y-2">
             {#each data.versions ?? [] as version}
-              <VersionDisplay version={version} />
+              <VersionDisplay version="{version}" />
             {/each}
           </div>
         </div>
@@ -465,13 +464,16 @@
   </h1>
   <CasualLine />
   <p class="mb-2 dark:text-white">
-    Your project is currently {data.project?.status}. 
-  <p class="mb-2 dark:text-white">When you draft a project, it will become private, and removed from search engines if drafted for long enough. You will be able to restore the submission at any point.
+    Your project is currently {data.project?.status}.
+  </p>
+  <p class="mb-2 dark:text-white">
+    When you draft a project, it will become private, and removed from search
+    engines if drafted for long enough. You will be able to restore the
+    submission at any point.
   </p>
   <button
     class="button-base flex items-center space-x-1 bg-stone-600"
-    on:click="{draft}"
-    ><IconDraft /><span>Draft submission</span></button>
+    on:click="{draft}"><IconDraft /><span>Draft submission</span></button>
 </Modal>
 
 <style lang="postcss">

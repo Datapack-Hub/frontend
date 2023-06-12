@@ -2,7 +2,7 @@
   import { browser } from "$app/environment";
   import JSZip from "jszip";
   import toast from "svelte-french-toast";
-  import tippy from "sveltejs-tippy";  
+  import tippy from "sveltejs-tippy";
 
   import CasualLine from "./CasualLine.svelte";
   import MarkdownComponent from "./MarkdownComponent.svelte";
@@ -20,10 +20,18 @@
 
   let dlModal: Modal;
 
-  function downloadVersion(type: "datapack" | "resourcepack" | undefined = undefined) {
-    if(type == undefined || mc_version == undefined) return dlModal.open();
-    if(type == "datapack") return download(version.primary_download,mc_version,version.resource_pack_download ? true: false)
-    if(type == "resourcepack") return download(version.resource_pack_download,mc_version,false)
+  function downloadVersion(
+    type: "datapack" | "resourcepack" | undefined = undefined
+  ) {
+    if (type == undefined || mc_version == undefined) return dlModal.open();
+    if (type == "datapack")
+      return download(
+        version.primary_download,
+        mc_version,
+        version.resource_pack_download ? true : false
+      );
+    if (type == "resourcepack")
+      return download(version.resource_pack_download, mc_version, false);
   }
 
   async function download(url: string | null, version: string, rp: boolean) {
@@ -33,11 +41,10 @@
       let parsedZip: JSZip;
 
       try {
-        parsedZip = await JSZip.loadAsync(zipBlob)
-      }catch(er) {
-        return toast.error("something bad happened")
+        parsedZip = await JSZip.loadAsync(zipBlob);
+      } catch (er) {
+        return toast.error("something bad happened");
       }
-      
 
       let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
       let packMcmData = JSON.parse(packMcm);
@@ -98,9 +105,9 @@
           } else expanded = false;
         }}">
         {#if !expanded}
-        <IconFile />
+          <IconFile />
         {:else}
-        <IconFileFilled />
+          <IconFileFilled />
         {/if}
         <p>{version.name}</p>
       </button>
@@ -110,58 +117,61 @@
       </h2>
     </div>
     {#if !mc_version}
-    <h2 class="flex flex-grow space-x-1 text-pearl-lusta-950 dark:text-white">
-      {#each version.minecraft_versions.split(",") ?? [] as mcv}
-        <button
-          class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
-          on:click="{() =>
-            download(
-              version.primary_download,
-              mcv,
-              version.resource_pack_download ? true : false
-            )}">
-          {mcv}
-        </button>
-      {/each}
-    </h2>
+      <h2 class="flex flex-grow space-x-1 text-pearl-lusta-950 dark:text-white">
+        {#each version.minecraft_versions.split(",") ?? [] as mcv}
+          <button
+            class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
+            on:click="{() =>
+              download(
+                version.primary_download,
+                mcv,
+                version.resource_pack_download ? true : false
+              )}">
+            {mcv}
+          </button>
+        {/each}
+      </h2>
     {/if}
     {#if !expanded}
-    <button
-      on:click="{() => {
-        downloadVersion();
-      }}"
-      id="#download"
-      class="rounded-xl bg-dph-orange p-1 px-2 text-pearl-lusta-950 dark:text-white"
-      >Download</button>
+      <button
+        on:click="{() => {
+          downloadVersion();
+        }}"
+        id="#download"
+        class="rounded-xl bg-dph-orange p-1 px-2 text-pearl-lusta-950 dark:text-white"
+        >Download</button>
     {/if}
   </div>
   {#if expanded}
-  <h2 class="text-white mt-2">Changelog</h2>
-  <div class="w-full rounded-md bg-stone-700 p-2 mb-2 ">
-    <MarkdownComponent source="{version.description}" />
-  </div>
-  <h2 class="text-white">Download this version:</h2>
-  <div class="flex flex-col max-w-fit">
-  <button
-    on:click="{() => {
-      downloadVersion("datapack");
-    }}"
-    id="#download"
-    class="button-primary flex items-center space-x-2"
-    ><IconZIP /><p>Datapack</p>{#if mc_version} <p>(for {mc_version})</p>{/if}</button>
-  {#if version.resource_pack_download}
-  <button
-    on:click="{() => {
-      downloadVersion("resourcepack");
-    }}"
-    id="#download"
-    class="button-secondary flex items-center space-x-2 mt-2"
-    ><IconRP /><p>Required Resourcepack</p></button>
-  {/if}
-  </div>
-  <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-300">
-    <IconInfo /><a href="/">How to install a datapack</a>
-  </p>
+    <h2 class="text-white mt-2">Changelog</h2>
+    <div class="w-full rounded-md bg-stone-700 p-2 mb-2">
+      <MarkdownComponent source="{version.description}" />
+    </div>
+    <h2 class="text-white">Download this version:</h2>
+    <div class="flex flex-col max-w-fit">
+      <button
+        on:click="{() => {
+          downloadVersion('datapack');
+        }}"
+        id="#download"
+        class="button-primary flex items-center space-x-2"
+        ><IconZIP />
+        <p>Datapack</p>
+        {#if mc_version} <p>(for {mc_version})</p>{/if}</button>
+      {#if version.resource_pack_download}
+        <button
+          on:click="{() => {
+            downloadVersion('resourcepack');
+          }}"
+          id="#download"
+          class="button-secondary flex items-center space-x-2 mt-2"
+          ><IconRP />
+          <p>Required Resourcepack</p></button>
+      {/if}
+    </div>
+    <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-300">
+      <IconInfo /><a href="/">How to install a datapack</a>
+    </p>
   {/if}
 </div>
 

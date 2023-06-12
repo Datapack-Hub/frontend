@@ -3,6 +3,7 @@
   import Button from "$lib/components/Button.svelte";
   import { categories } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
+  import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import toast from "svelte-french-toast";
 
@@ -11,22 +12,29 @@
   let titleVal = "";
   let descVal = "";
   let bodyVal = "";
+  let catVal = ""; // meow?
+  let iconB64: string | ArrayBuffer | null | undefined;
   // let cat = document.getElementById("cat") as HTMLSelectElement
 
   async function create() {
-    let projData = {
+    let projData: Project = {
+      icon: iconB64?.toString() ?? null,
       type: "datapack",
       url: titleVal.toLowerCase().replaceAll(" ", "-"),
       title: titleVal,
       description: descVal,
       body: bodyVal,
-      category: "German"
+      category: catVal,
+      author: $user.id,
+      status: "draft",
+      latest_version: null,
+      mod_message: null
     };
 
     toast.promise(
       fetchAuthed("post", `/projects/create`, projData).then(res => {
         if (res.ok) {
-          goto("/project/" + titleVal.toLowerCase().replaceAll(" ", "-"))
+          goto("/project/" + titleVal.toLowerCase().replaceAll(" ", "-"));
         }
       }),
       {
@@ -38,7 +46,13 @@
   }
 
   function uploadIcon() {
+    let reader = new FileReader();
+
     iconElem.src = URL.createObjectURL(iconVal[0]);
+    reader.addEventListener("load", e => {
+      iconB64 = e.target?.result;
+    });
+    reader.readAsDataURL(iconVal[0]);
   }
 </script>
 
@@ -76,8 +90,9 @@
           width="100"
           class="mr-3 inline-block rounded-2xl"
           bind:this="{iconElem}" />
-        <label for="icon" class="button-boring">Upload Icon </label>
+        <label for="icon" class="button-boring">Upload Icon</label>
         <input
+          accept="image/*"
           id="icon"
           type="file"
           class="hidden"
@@ -127,6 +142,7 @@
         </p>
         <select
           class="input-base override-input-outline w-1/4 rounded-md bg-pearl-lusta-300 p-2 text-lg"
+          bind:value="{catVal}"
           id="cat">
           {#each categories as cat}
             <option value="{cat}">

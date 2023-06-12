@@ -14,6 +14,7 @@ declare namespace App {
       COUNTER: DurableObjectNamespace;
     };
     context: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       waitUntil(promise: Promise<any>): void;
     };
     caches: CacheStorage & { default: Cache };
@@ -24,38 +25,45 @@ declare module "sveltejs-tippy";
 
 declare type User = {
   id: number;
-  username: string;
-  bio: string;
-  role: string;
-  profile_icon: string;
-  banned: boolean;
   banData?: { message: string; expires: number };
+  banned: boolean;
+  bio: string;
+  profile_icon: string;
+  role: string;
+  username: string;
 };
 
 declare type Project = {
   ID: number;
   author: number;
-  icon: string?;
-  category: string;
-  title: string;
-  url: string;
-  type: "datapack" | "url";
-  description: string?;
   body: string;
-  status: string?;
+  category: string;
+  description: string?;
+  icon: string?;
   mod_message: string?;
+  status:
+    | "unpublished"
+    | "in_queue"
+    | "live"
+    | "draft"
+    | "disabled"
+    | "deleted"
+    | "ghost";
+  title: string;
+  type: "datapack" | "url";
+  url: string;
   latest_version: {
     name: string;
     description: string;
     minecraft_versions: string;
     version_code: string;
-  };
+  }?;
 };
 
 declare type Notif = {
   id: number;
-  message: string;
   description: string?;
+  message: string;
   read: boolean;
   type: "announcement" | "ban" | "warn" | "default" | "rainbow";
 };
@@ -70,11 +78,11 @@ declare type Role = {
 declare type Version = {
   name: string;
   description: string;
-  version_code: string;
+  file_name: string;
   minecraft_versions: string;
   primary_download: string;
   resource_pack_download: string?;
-  file_name: string;
+  version_code: string;
 };
 
 /// <reference types="@sveltejs/kit" />
