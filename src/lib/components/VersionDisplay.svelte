@@ -9,6 +9,8 @@
   import Modal from "./modals/Modal.svelte";
 
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
+  import IconZIP from "~icons/tabler/Cube.svelte";
+  import IconRP from "~icons/tabler/Sparkles.svelte";
   import IconFile from "~icons/tabler/File.svelte";
   import IconFileFilled from "~icons/tabler/FileFilled.svelte";
 
@@ -84,7 +86,7 @@
   }
 </script>
 
-<li
+<div
   class="rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-pearl-lusta-100/10 relative">
   <div class="flex items-center space-x-3">
     <div class="flex w-1/3 items-center space-x-2">
@@ -146,22 +148,22 @@
     }}"
     id="#download"
     class="button-primary flex items-center space-x-2"
-    ><IconFile /><p>Datapack</p>{#if mc_version} <p>(for {mc_version})</p>{/if}</button>
+    ><IconZIP /><p>Datapack</p>{#if mc_version} <p>(for {mc_version})</p>{/if}</button>
   {#if version.resource_pack_download}
   <button
     on:click="{() => {
       downloadVersion("resourcepack");
     }}"
     id="#download"
-    class="button-secondary flex items-center space-x-2 mt-1"
-    ><IconFile /><p>Required Resourcepack</p></button>
+    class="button-secondary flex items-center space-x-2 mt-2"
+    ><IconRP /><p>Required Resourcepack</p></button>
   {/if}
   </div>
   <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-300">
     <IconInfo /><a href="/">How to install a datapack</a>
   </p>
   {/if}
-</li>
+</div>
 
 <Modal bind:this="{dlModal}">
   <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">

@@ -16,6 +16,7 @@
   import IconRight from "~icons/tabler/ChevronRight.svelte";
   import IconAlert from "~icons/tabler/AlertTriangle.svelte";
   import IconFiles from "~icons/tabler/Files.svelte";
+  import IconReport from "~icons/tabler/Flag.svelte";
 
   import CasualLine from "$lib/components/CasualLine.svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
@@ -28,7 +29,7 @@
   import { onMount } from "svelte";
   import toast from "svelte-french-toast";
   import MultiSelect from "svelte-multiselect";
-  import Button from "$lib/components/Button.svelte";
+  import { goto } from "$app/navigation";
 
   export let data: PageData;
   let visible = false;
@@ -65,10 +66,12 @@
     visible = true;
   });
 
+  let reportModal: Modal;
   let modModal: Modal;
   let modModalPage = "delete";
 
   async function dismissModMsg() {
+    mm.remove();
     let dsm = await fetchAuthed(
       "DELETE",
       "/moderation/project/" + data.project?.ID.toString() + "/dismiss_message"
@@ -181,7 +184,7 @@
   <div class="pt-20"></div>
   <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-4 w-full">
     <!--Project Meta-->
-    <div class="flex h-fit w-full lg:w-2/5 xl:w-1/4 flex-col">
+    <div class="flex h-fit w-full lg:w-2/5 xl:w-1/4 flex-col" use:autoAnimate>
       <div class="my-3  text-sky-300">
         <a href="/projects">&lt; Explore other projects</a>
       </div>
@@ -289,7 +292,6 @@
             on:click="{() => (activePage = 'versions')}">Version History</button>
         </div>
         <div class="flex space-x-1">
-          
           {#if ["moderator", "admin"].includes($user.role)}
             <button
               class="button-base flex items-center space-x-1"
@@ -315,12 +317,19 @@
             {/if}
           {/if}
         </div>
-        {#if $user.id == data.project?.author || ["admin", "moderator"].includes($user.role)}
+        {#if $user.id == data.project?.author}
           <a
             class="button-base ml-auto flex items-center space-x-1"
             href="/project/{data.project?.url}/edit">
             <IconPencil /><span>Edit</span>
           </a>
+        {/if}
+        {#if $user.id != data.project?.author}
+        <button
+              class="button-base flex items-center space-x-1"
+              on:click="{() => {
+                reportModal.open();
+              }}"><IconReport /><span>Report</span></button>
         {/if}
         <button
             class="button-base bg-dph-orange font-bold"
@@ -464,6 +473,9 @@
         ? 'bg-stone-600'
         : 'bg-stone-900'}"
       on:click="{() => (modModalPage = 'write note')}">Write Note</button>
+    <button
+      class="button-base bg-stone-900"
+      on:click="{() => goto("/project/" + data.project?.url + "/edit")}">Edit Submission</button>
   </div>
   <p
     class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
@@ -477,6 +489,33 @@
     bind:value="{postedModMsg}"></textarea>
   <button class="button-primary" on:click="{moderate}"
     >{titleCase(modModalPage)}</button>
+</Modal>
+
+<Modal bind:this="{reportModal}">
+  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+    Report {data.project?.title}
+  </h1>
+  <CasualLine />
+  <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
+  <p
+    class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    Author
+  </p>
+  <MiniProfileCard
+    person="{author}"
+    role="{data.roles?.find(v => author?.role == v.name)}" />
+  <p
+    class="align-middle  text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    Report Message
+  </p>
+  <textarea
+    class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2  dark:bg-stone-700"
+    placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
+    id="description"
+    maxlength="200"
+    bind:value="{postedModMsg}"></textarea>
+  <button class="button-primary" on:click="{moderate}"
+    >Report</button>
 </Modal>
 
 <style lang="postcss">

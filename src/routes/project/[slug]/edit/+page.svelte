@@ -1,20 +1,28 @@
 <script lang="ts">
+  import type { PageData } from "./$types";
+
   import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
+
   import Button from "$lib/components/Button.svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
+  import VersionDisplay from "$lib/components/VersionDisplay.svelte";
+
   import { categories, versions } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
+
   import autoAnimate from "@formkit/auto-animate";
   import JSZip from "jszip";
   import toast from "svelte-french-toast";
   import MultiSelect from "svelte-multiselect";
+
   import IconTick from "~icons/tabler/Check.svelte";
-  import type { PageData } from "./$types";
+  import IconDraft from "~icons/tabler/FileOff.svelte";
 
   let publishModal: Modal;
+  let draftModal: Modal;
 
   let selected: string[] = [];
   let zipFile: File;
@@ -190,6 +198,19 @@
       goto(".");
     }
   }
+
+  async function draft() {
+    draftModal.close();
+    let dra = await fetchAuthed(
+      "post",
+      "/projects/id/" + data.project?.ID + "/draft"
+    );
+    if (dra.ok) {
+      let t = await dra.text();
+      toast.success(t);
+      goto(".");
+    }
+  }
 </script>
 
 <svelte:head>
@@ -206,7 +227,7 @@
     </h1>
     {#if data.project?.mod_message}
       <div
-        class="my-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100">
+        class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100">
         <p class=" font-black">Message from Datapack Hub Staff:</p>
         <p
           class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 dark:text-stone-300">
@@ -214,7 +235,7 @@
         </p>
       </div>
     {/if}
-    <div class="mb-2 flex space-x-2">
+    <div class="mb-2 mt-2 flex space-x-2">
       <button
         class="{activePage === 'details'
           ? 'bg-stone-600'
@@ -233,6 +254,11 @@
           class="button-base flex items-center space-x-1 bg-green-600"
           on:click="{() => publishModal.open()}"
           ><IconTick /><span>Publish Project</span></button>
+      {:else if data.project?.status == "live"}
+        <button
+            class="button-base flex items-center space-x-1 bg-stone-600"
+            on:click="{() => draftModal.open()}"
+            ><IconDraft /><span>Draft submission</span></button>
       {/if}
     </div>
 
@@ -403,30 +429,11 @@
               <Button click="{uploadVersion}">Create Version</Button>
             </div>
           {/if}
-          {#each data.versions ?? [] as version}
-            <div
-              class="mb-2 flex items-center space-x-3 rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 dark:bg-pearl-lusta-100/10">
-              <div class="flex w-1/3 items-center space-x-2">
-                <h2
-                  class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
-                  {version.name}
-                </h2>
-                <h2
-                  class=" text-base font-thin italic text-pearl-lusta-950 dark:text-white">
-                  {version.version_code}
-                </h2>
-              </div>
-              <h2
-                class="flex flex-grow space-x-1 text-pearl-lusta-950 dark:text-white">
-                {#each version.minecraft_versions.split(",") ?? [] as mcv}
-                  <button
-                    class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1">
-                    {mcv}
-                  </button>
-                {/each}
-              </h2>
-            </div>
-          {/each}
+          <div class="space-y-2">
+            {#each data.versions ?? [] as version}
+              <VersionDisplay version={version} />
+            {/each}
+          </div>
         </div>
       {/if}
     </div>
@@ -450,6 +457,21 @@
   <button
     class="button-base flex items-center space-x-1 bg-green-600"
     on:click="{publish}"><IconTick /><span>Publish Project</span></button>
+</Modal>
+
+<Modal bind:this="{draftModal}">
+  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+    Draft {data.project?.title}
+  </h1>
+  <CasualLine />
+  <p class="mb-2 dark:text-white">
+    Your project is currently {data.project?.status}. 
+  <p class="mb-2 dark:text-white">When you draft a project, it will become private, and removed from search engines if drafted for long enough. You will be able to restore the submission at any point.
+  </p>
+  <button
+    class="button-base flex items-center space-x-1 bg-stone-600"
+    on:click="{draft}"
+    ><IconDraft /><span>Draft submission</span></button>
 </Modal>
 
 <style lang="postcss">
