@@ -2,29 +2,40 @@
   import { browser } from "$app/environment";
   import JSZip from "jszip";
   import toast from "svelte-french-toast";
-  import tippy from "sveltejs-tippy";
-  import IconInfo from "~icons/tabler/HelpCircle.svelte";
+  import tippy from "sveltejs-tippy";  
+
   import CasualLine from "./CasualLine.svelte";
   import MarkdownComponent from "./MarkdownComponent.svelte";
   import Modal from "./modals/Modal.svelte";
 
+  import IconInfo from "~icons/tabler/HelpCircle.svelte";
+  import IconFile from "~icons/tabler/File.svelte";
+  import IconFileFilled from "~icons/tabler/FileFilled.svelte";
+
   export let version: Version;
+  export let expanded = false;
+  export let mc_version: string | undefined = undefined;
 
   let dlModal: Modal;
-  let activeVersion: Version;
 
-  export let expanded = false;
-
-  function openVersion(item: Version) {
-    activeVersion = item;
-    dlModal.open();
+  function downloadVersion(type: "datapack" | "resourcepack" | undefined = undefined) {
+    if(type == undefined || mc_version == undefined) return dlModal.open();
+    if(type == "datapack") return download(version.primary_download,mc_version,version.resource_pack_download ? true: false)
+    if(type == "resourcepack") return download(version.resource_pack_download,mc_version,false)
   }
 
-  async function download(url: string, version: string, rp: boolean) {
-    if (browser) {
+  async function download(url: string | null, version: string, rp: boolean) {
+    if (browser && url) {
       let zip = await fetch(url);
       let zipBlob = await zip.blob();
-      let parsedZip = await JSZip.loadAsync(zipBlob);
+      let parsedZip: JSZip;
+
+      try {
+        parsedZip = await JSZip.loadAsync(zipBlob)
+      }catch(er) {
+        return toast.error("something bad happened")
+      }
+      
 
       let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
       let packMcmData = JSON.parse(packMcm);
@@ -78,19 +89,25 @@
   <div class="flex items-center space-x-3">
     <div class="flex w-1/3 items-center space-x-2">
       <button
-        class="text-xl font-bold text-pearl-lusta-950 dark:text-white"
+        class="text-xl font-bold text-pearl-lusta-950 dark:text-white flex items-center space-x-1"
         on:click="{() => {
           if (expanded == false) {
             expanded = true;
           } else expanded = false;
         }}">
-        {version.name}
+        {#if !expanded}
+        <IconFile />
+        {:else}
+        <IconFileFilled />
+        {/if}
+        <p>{version.name}</p>
       </button>
       <h2
         class="text-base font-thin italic text-pearl-lusta-950 dark:text-white">
         {version.version_code}
       </h2>
     </div>
+    {#if !mc_version}
     <h2 class="flex flex-grow space-x-1 text-pearl-lusta-950 dark:text-white">
       {#each version.minecraft_versions.split(",") ?? [] as mcv}
         <button
@@ -105,10 +122,11 @@
         </button>
       {/each}
     </h2>
+    {/if}
     {#if !expanded}
     <button
       on:click="{() => {
-        openVersion(version);
+        downloadVersion();
       }}"
       id="#download"
       class="rounded-xl bg-dph-orange p-1 px-2 text-pearl-lusta-950 dark:text-white"
@@ -116,30 +134,38 @@
     {/if}
   </div>
   {#if expanded}
+  <h2 class="text-white mt-2">Changelog</h2>
+  <div class="w-full rounded-md bg-stone-700 p-2 mb-2 ">
     <MarkdownComponent source="{version.description}" />
-    <h2 class="text-white">Download this version:</h2>
-    <button
-      on:click="{() => {
-        openVersion(version);
-      }}"
-      id="#download"
-      class="button-primary"
-      >Download Datapack</button>
-    {#if version.resource_pack_download}
-    <button
-      on:click="{() => {
-        openVersion(version);
-      }}"
-      id="#download"
-      class="button-primary"
-      >Download Required Resourcepack</button>
-      {/if}
+  </div>
+  <h2 class="text-white">Download this version:</h2>
+  <div class="flex flex-col max-w-fit">
+  <button
+    on:click="{() => {
+      downloadVersion("datapack");
+    }}"
+    id="#download"
+    class="button-primary flex items-center space-x-2"
+    ><IconFile /><p>Datapack</p>{#if mc_version} <p>(for {mc_version})</p>{/if}</button>
+  {#if version.resource_pack_download}
+  <button
+    on:click="{() => {
+      downloadVersion("resourcepack");
+    }}"
+    id="#download"
+    class="button-secondary flex items-center space-x-2 mt-1"
+    ><IconFile /><p>Required Resourcepack</p></button>
+  {/if}
+  </div>
+  <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-300">
+    <IconInfo /><a href="/">How to install a datapack</a>
+  </p>
   {/if}
 </li>
 
 <Modal bind:this="{dlModal}">
   <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
-    Download Version: {activeVersion?.name ?? "Undefined"}
+    Download Version: {version?.name ?? "Undefined"}
   </h1>
   <CasualLine />
   <div
@@ -157,14 +183,14 @@
     </div>
   </div>
   <div class="my-2 flex space-x-2 text-pearl-lusta-950 dark:text-white">
-    {#each activeVersion?.minecraft_versions.split(",") ?? [] as mcv}
+    {#each version?.minecraft_versions.split(",") ?? [] as mcv}
       <button
         class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 hover:scale-102"
         on:click="{() => {
           download(
-            activeVersion?.primary_download,
+            version?.primary_download,
             mcv,
-            activeVersion?.resource_pack_download ? true : false
+            version?.resource_pack_download ? true : false
           );
         }}">{mcv}</button>
     {/each}
@@ -174,14 +200,14 @@
     your version.
   </p>
 
-  {#if activeVersion?.resource_pack_download}
+  {#if version?.resource_pack_download}
     <CasualLine />
     <p class="pr-1 text-pearl-lusta-950 dark:text-white">
       This datapack also has a resource pack which you need to download!
     </p>
     <div class="my-2 flex">
       <a
-        href="{activeVersion?.resource_pack_download}"
+        href="{version?.resource_pack_download}"
         class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 text-pearl-lusta-950 hover:scale-102 dark:text-white">
         Download Resource Pack
       </a>

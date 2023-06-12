@@ -15,6 +15,7 @@
   import IconCross from "~icons/tabler/X.svelte";
   import IconRight from "~icons/tabler/ChevronRight.svelte";
   import IconAlert from "~icons/tabler/AlertTriangle.svelte";
+  import IconFiles from "~icons/tabler/Files.svelte";
 
   import CasualLine from "$lib/components/CasualLine.svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
@@ -35,6 +36,7 @@
 
   let author: User;
   let selectedVersions: string[] = [];
+  let pickedVersion: string | undefined = undefined;
 
   $: versionMatches =
     selectedVersions.length != 0 && data.versions
@@ -53,6 +55,7 @@
   })
 
   function pickVersions(vs: string){
+    pickedVersion = vs;
     matches = data.versions?.filter(vers => vers.minecraft_versions.split(",").includes(vs))
     if(matches?.length == 0) return toast.error("This datapack doesn't support " + vs)
   }
@@ -412,10 +415,14 @@
         </div>
         {#if matches?.length != 0}
         <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
-          <p class="text-white">Latest version:</p>
+          <p class="text-white">Latest version for {pickedVersion}:</p>
           <ul use:autoAnimate class="space-y-2">
-          <VersionDisplay version={matches[0]} expanded={true}/>
+          <VersionDisplay version={matches[0]} expanded={true} mc_version={pickedVersion}/>
           </ul>
+          <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-400">
+            <IconFiles />
+            <a on:click={() => activePage = "versions"} class="cursor-pointer">Show All Versions</a>
+          </p>
         </div>
         {/if}
       </div>
