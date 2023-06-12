@@ -11,6 +11,7 @@
   let rolesJson: Role[];
   let publishQueue: Project[];
   let reviewQueue: Project[];
+  let reports: Project[];
 
   async function loadStuff() {
     if ($user.role == "default") {
@@ -22,6 +23,9 @@
 
     let rq = await fetchAuthed("get", "/moderation/queue/review");
     reviewQueue = (await rq.json())["projects"] as Project[];
+
+    let rp = await fetchAuthed("get", "/moderation/queue/review");
+    reports = (await rp.json())["projects"] as Project[];
 
     let r = await fetchAuthed("get", "/user/staff/roles");
     rolesJson = (await r.json())["roles"];
@@ -53,6 +57,12 @@
           ? 'bg-stone-600'
           : 'bg-stone-800'}"
         click="{() => (activePage = 'review_queue')}">Review Queue</Button>
+      <Button
+        style="base"
+        classes="{activePage === 'reports'
+          ? 'bg-stone-600'
+          : 'bg-stone-800'}"
+        click="{() => (activePage = 'reports')}">Reports</Button>
       <Button
         style="base"
         classes="{activePage === 'roles' ? 'bg-stone-600' : 'bg-stone-800'}"
@@ -93,6 +103,22 @@
                 There are {reviewQueue.length} items awaiting approval:
               </p>
               {#each reviewQueue ?? [] as proj}
+                <ProjectComponent project="{proj}" />
+              {/each}
+            {/if}
+          </div>
+        {:else if activePage == "reports"}
+          <div
+            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start">
+            {#if reports.length == 0}
+              <p class=" dark:text-white">
+                You're all caught up! There are no projects in the queue.
+              </p>
+            {:else}
+              <p class=" dark:text-white">
+                There are {reports.length} items awaiting approval:
+              </p>
+              {#each reports ?? [] as proj}
                 <ProjectComponent project="{proj}" />
               {/each}
             {/if}

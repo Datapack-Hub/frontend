@@ -1,8 +1,10 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
   import { categories } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
+  import toast from "svelte-french-toast";
 
   let iconVal: FileList;
   let iconElem: HTMLImageElement;
@@ -21,7 +23,18 @@
       category: "German"
     };
 
-    await fetchAuthed("post", "/projects/create", projData);
+    toast.promise(
+      fetchAuthed("post", `/projects/create`, projData).then(res => {
+        if (res.ok) {
+          goto("/project/" + titleVal.toLowerCase().replaceAll(" ", "-"))
+        }
+      }),
+      {
+        success: "Created project! Redirecting...",
+        loading: "Creating project...",
+        error: "Something went wrong!"
+      }
+    );
   }
 
   function uploadIcon() {
