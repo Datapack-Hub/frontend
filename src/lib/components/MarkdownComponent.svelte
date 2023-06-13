@@ -1,9 +1,7 @@
 <script lang="ts">
   import "highlight.js/styles/github-dark-dimmed.css";
   import DOMPurify from "isomorphic-dompurify";
-  import { marked } from "marked";
   import { onMount } from "svelte";
-  import { markedSmartypants } from "marked-smartypants";
   import { browser } from "$app/environment";
 
   export let source: string | undefined = "";
@@ -12,6 +10,8 @@
 
   onMount(async () => {
     if (browser) {
+      await import { markedSmartypants } from "marked-smartypants";
+      await import { marked } from "marked";
       marked.use(markedSmartypants());
       if (!source) html = "";
       else {

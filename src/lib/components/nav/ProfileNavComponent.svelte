@@ -36,7 +36,9 @@
   $: unreadNotifications = false;
 
   afterNavigate(async () => {
-    await refreshNotifications();
+    if(browser){
+      await refreshNotifications();
+    }
   });
 
   onMount(async () => {
