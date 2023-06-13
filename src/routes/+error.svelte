@@ -21,7 +21,7 @@
 
       case 500:
         message =
-          "You have stumbled above the eternal error. Please don't report this to the staff team, we don't know how to fix this either.";
+          "You have stumbled across the eternal error. Please don't report this to the staff team, we don't know how to fix this either. why does this say undefined -> ";
         break;
 
       default:
