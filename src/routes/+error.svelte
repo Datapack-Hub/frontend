@@ -22,7 +22,7 @@
 
       case 500:
         message =
-          "You have stumbled across the eternal error. Please don't report this to the staff team, we don't know how to fix this either.";
+          "A creeper exploded in our server room, but our Redstone engineers are on the case fixing it, try again in a few minutes.";
         break;
 
       default:
