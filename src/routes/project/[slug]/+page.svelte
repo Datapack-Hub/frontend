@@ -435,26 +435,26 @@
               <div class="grid grid-cols-3 grid-rows-auto gap-3">
                 {#each versions ?? [] as v}
                   {#if bigStitchedVersionList.indexOf(v) >= 0}
+                    {@const mcVersions =
+                      data.project && data.project.latest_version
+                        ? data.project.latest_version.minecraft_versions
+                        : ""}
                     <button
-                      class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 {!data.project?.latest_version?.minecraft_versions
+                      class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 {!mcVersions
                         .split(',')
                         .includes(v)
                         ? 'text-red-500'
                         : 'text-white'}"
                       on:click="{() => pickVersions(v)}">
-                      {#if !data.project?.latest_version?.minecraft_versions
-                        .split(",")
-                        .includes(v)}
+                      {#if !mcVersions.split(",").includes(v)}
                         <IconAlert />
                       {/if}
                       <div
                         class="font-bold flex-grow flex items-center space-x-2">
                         <p>{v}</p>
-                        {#if data.project?.latest_version?.minecraft_versions
-                          .split(",")
-                          .includes(v)}
+                        {#if mcVersions.split(",").includes(v)}
                           <p class="font-thin italic">
-                            {data.project?.latest_version.version_code}
+                            {mcVersions}
                           </p>
                         {/if}
                       </div>
