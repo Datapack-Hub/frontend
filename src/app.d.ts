@@ -91,6 +91,7 @@ declare type Report = {
   message: string;
   reporter: User;
   project: Project;
+  id: number;
 };
 
 /// <reference types="@sveltejs/kit" />
