@@ -12,7 +12,7 @@
     if (browser) {
       const msp =  import("marked-smartypants");
       const marked = await import("marked")
-      marked.marked.use(msp.markedSmartypants());
+      marked.marked.use(msp.markedSmartyPants.markedSmartypants());
       if (!source) html = "";
       else {
         html = await marked.marked.parse(
