@@ -1,10 +1,11 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { getAuthorFromID } from "$lib/globals/functions";
+  import { fetchAuthed, getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import MarkdownComponent from "./MarkdownComponent.svelte";
+  import toast from "svelte-french-toast";
 
   export let project: Project;
   export let report: Report;
@@ -12,14 +13,27 @@
   let author: User;
   let visible = false;
 
+  let me: HTMLDivElement;
+
   (async () => {
     if (browser) author = await getAuthorFromID(project.author);
     visible = true;
   })();
+
+  async function remove() {
+    let rem = await fetchAuthed("delete", "/moderation/remove_report/" + report.id)
+    if(rem.ok){
+      toast.success("Dismissed report!")
+      me.remove()
+    }else{
+      toast.error("Blame Silabear, this didnt work.")
+    }
+  }
 </script>
 
 <div
-  class="w-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
+  class="w-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
+  bind:this={me}>
   <div class="flex items-center">
     <a
       href="/project/{project.url}"
@@ -78,6 +92,6 @@
     <div class="moderation-hl px-2 py-1 rounded-lg">
       <MarkdownComponent source={report.message} />
     </div>
-    <div class="absolute right-0 top-0 p-2"><IconX /></div>
+    <button class="absolute right-0 top-0 p-2" on:click={remove}><IconX /></button>
   </div>
 </div>
