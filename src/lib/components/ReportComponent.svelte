@@ -21,19 +21,22 @@
   })();
 
   async function remove() {
-    let rem = await fetchAuthed("delete", "/moderation/remove_report/" + report.id)
-    if(rem.ok){
-      toast.success("Dismissed report!")
-      me.remove()
-    }else{
-      toast.error("Blame Silabear, this didnt work.")
+    let rem = await fetchAuthed(
+      "delete",
+      "/moderation/remove_report/" + report.id
+    );
+    if (rem.ok) {
+      toast.success("Dismissed report!");
+      me.remove();
+    } else {
+      toast.error("Blame Silabear, this didnt work.");
     }
   }
 </script>
 
 <div
   class="w-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
-  bind:this={me}>
+  bind:this="{me}">
   <div class="flex items-center">
     <a
       href="/project/{project.url}"
@@ -90,8 +93,9 @@
   <div class="moderation mt-2 p-2 rounded-xl relative">
     <b>Reported by {report.reporter.username}:</b>
     <div class="moderation-hl px-2 py-1 rounded-lg">
-      <MarkdownComponent source={report.message} />
+      <MarkdownComponent source="{report.message}" />
     </div>
-    <button class="absolute right-0 top-0 p-2" on:click={remove}><IconX /></button>
+    <button class="absolute right-0 top-0 p-2" on:click="{remove}"
+      ><IconX /></button>
   </div>
 </div>

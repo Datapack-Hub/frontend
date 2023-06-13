@@ -48,7 +48,7 @@
   let del: HTMLDivElement;
 
   let postedModMsg = "";
-  let reportMsg = ""
+  let reportMsg = "";
 
   $: versionMatches =
     selectedVersions.length != 0 && data.versions
@@ -115,8 +115,10 @@
     body = data.project.body;
   }
 
-  async function moderate(action: string, message: string | undefined = undefined) {
-    let modReqData: object= {};
+  async function moderate(
+    action: string,
+  ) {
+    let modReqData: object = {};
     switch (action) {
       case "delete":
         if (postedModMsg.length != 0) {
@@ -160,27 +162,35 @@
     }
 
     toast.promise(
-      fetchAuthed("PATCH","/moderation/project/" + data.project?.ID + "/action", modReqData).then(res => {
-        if(res.ok){
-          if(action == "restore") del.parentElement?.removeChild(del)
+      fetchAuthed(
+        "PATCH",
+        "/moderation/project/" + data.project?.ID + "/action",
+        modReqData
+      ).then(res => {
+        if (res.ok) {
+          if (action == "restore") del.parentElement?.removeChild(del);
         }
       }),
       {
         success: "Moderated project!",
         loading: "Moderating...",
-        error: "Uh oh, something went wrong. If this moderation is urgent, get an admin to run an SQL command."
+        error:
+          "Uh oh, something went wrong. If this moderation is urgent, get an admin to run an SQL command."
       }
     );
   }
 
-  async function report(message: string) {
-    reportModal.close()
+  async function report() {
+    reportModal.close();
     toast.promise(
-      fetchAuthed("post","/projects/id/" + data.project?.ID + "/report", {message: reportMsg}),
+      fetchAuthed("post", "/projects/id/" + data.project?.ID + "/report", {
+        message: reportMsg
+      }),
       {
         success: "Reported project! A moderator will review your report ASAP.",
         loading: "Reporting...",
-        error: "Uh oh, something went wrong. In the meantime, please report this bug on our Discord."
+        error:
+          "Uh oh, something went wrong. In the meantime, please report this bug on our Discord."
       }
     );
   }
@@ -274,26 +284,27 @@
           {/if}
         </div>
         {#if data.project?.mod_message}
-        <div
-          class="mt-4 rounded-xl p-4 moderation dark:text-pearl-lusta-100"
-          id="modmsg"
-          bind:this="{mm}">
-          {#if status && !["disabled", "review_queue"].includes(status)}
-            <button
-              class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
-              on:click="{dismissModMsg}"><IconCross /></button>
-          {/if}
-          <p class=" font-black">Message from Datapack Hub Staff:</p>
-          <p
-            class="prose mb-1 mt-2 rounded-xl moderation-hl p-2 dark:text-stone-300">
-            <MarkdownComponent source="{data.project?.mod_message}" />
-          </p>
-          <p class=" text-xs opacity-50">
-            Only you (and staff) can read this message. Once you've acknowleged
-            it, you can dismiss the message if the project isn't disabled.
-          </p>
-        </div>
-      {/if}
+          <div
+            class="mt-4 rounded-xl p-4 moderation dark:text-pearl-lusta-100"
+            id="modmsg"
+            bind:this="{mm}">
+            {#if status && !["disabled", "review_queue"].includes(status)}
+              <button
+                class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+                on:click="{dismissModMsg}"><IconCross /></button>
+            {/if}
+            <p class=" font-black">Message from Datapack Hub Staff:</p>
+            <p
+              class="prose mb-1 mt-2 rounded-xl moderation-hl p-2 dark:text-stone-300">
+              <MarkdownComponent source="{data.project?.mod_message}" />
+            </p>
+            <p class=" text-xs opacity-50">
+              Only you (and staff) can read this message. Once you've
+              acknowleged it, you can dismiss the message if the project isn't
+              disabled.
+            </p>
+          </div>
+        {/if}
       </div>
     </div>
 
@@ -309,8 +320,8 @@
             on:click="{() => (activePage = 'description')}">Description</button>
           <button
             class="button-base {activePage === 'versions'
-            ? 'bg-pearl-lusta-500 dark:bg-stone-600'
-            : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
+              ? 'bg-pearl-lusta-500 dark:bg-stone-600'
+              : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
             on:click="{() => (activePage = 'versions')}"
             >Version History</button>
         </div>
@@ -360,12 +371,17 @@
       </div>
 
       {#if status == "deleted"}
-      <div class="moderation rounded-xl p-2 mb-2 flex items-center" bind:this={del}>
-        <p class="w-full leading-tight dark:text-white flex-grow m-1">
-          <b>This project is deleted.</b> Only staff can view the project. To restore the project, click the restore button.
-        </p>
-        <button class="bg-orange-500 rounded-md p-1 px-2 text-white" on:click={() => moderate("restore")}>Restore</button>
-      </div>
+        <div
+          class="moderation rounded-xl p-2 mb-2 flex items-center"
+          bind:this="{del}">
+          <p class="w-full leading-tight dark:text-white flex-grow m-1">
+            <b>This project is deleted.</b> Only staff can view the project. To restore
+            the project, click the restore button.
+          </p>
+          <button
+            class="bg-orange-500 rounded-md p-1 px-2 text-white"
+            on:click="{() => moderate('restore')}">Restore</button>
+        </div>
       {/if}
       {#if activePage == "description"}
         <div
@@ -536,7 +552,9 @@
     id="description"
     maxlength="200"
     bind:value="{postedModMsg}"></textarea>
-  <button class="button-primary" on:click="{() => moderate(modModalPage, postedModMsg)}"
+  <button
+    class="button-primary"
+    on:click="{() => moderate(modModalPage, postedModMsg)}"
     >{titleCase(modModalPage)}</button>
 </Modal>
 
@@ -563,7 +581,8 @@
     id="description"
     maxlength="200"
     bind:value="{reportMsg}"></textarea>
-  <button class="button-primary" on:click="{() => report(reportMsg)}">Report</button>
+  <button class="button-primary" on:click="{() => report(reportMsg)}"
+    >Report</button>
 </Modal>
 
 <style lang="postcss">

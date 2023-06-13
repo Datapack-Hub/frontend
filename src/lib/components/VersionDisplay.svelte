@@ -144,7 +144,8 @@
   </div>
   {#if expanded}
     <h2 class="dark:text-white mt-2">Changelog</h2>
-    <div class="w-full rounded-md bg-stone-700/10 dark:bg-stone-900/20 p-2 mb-2">
+    <div
+      class="w-full rounded-md bg-stone-700/10 dark:bg-stone-900/20 p-2 mb-2">
       <MarkdownComponent source="{version.description}" />
     </div>
     <h2 class="dark:text-white">Download this version:</h2>

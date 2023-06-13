@@ -36,7 +36,7 @@
   $: unreadNotifications = false;
 
   afterNavigate(async () => {
-    if(browser){
+    if (browser) {
       await refreshNotifications();
     }
   });
@@ -46,7 +46,7 @@
   });
 
   async function refreshNotifications() {
-    if(browser){
+    if (browser) {
       unreadNotifications = false;
       let notif = await fetchAuthed("get", "/notifs/unread");
 
@@ -98,7 +98,9 @@
         allowHTML: true
       }}">
       <img
-        src="{$user.profile_icon}&size=48"
+        src="{$user.profile_icon}{$user.profile_icon.includes('?')
+          ? '&'
+          : '?'}size=48"
         alt="{$user.username}'s profile picture"
         height="32"
         width="32"

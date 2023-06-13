@@ -6,14 +6,14 @@
   import Navbar from "$lib/components/nav/Navbar.svelte";
   import { authed, isDark, user } from "$lib/globals/stores";
   import { Toaster } from "svelte-french-toast";
-  import "../app.postcss";  
-  import NProgress from 'nprogress'
-  import {navigating} from '$app/stores'
+  import "../app.postcss";
+  import NProgress from "nprogress";
+  import { navigating } from "$app/stores";
 
   NProgress.configure({
-        // Full list: https://github.com/rstacruz/nprogress#configuration
-        minimum: 0.16,
-    })
+    // Full list: https://github.com/rstacruz/nprogress#configuration
+    minimum: 0.16
+  });
 
   $: {
     if ($navigating) {
@@ -33,17 +33,16 @@
 
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? 'dark' : ''} font-brand">
-    <div
-      class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
-      <Navbar />
-      {#if $user.banned}
-        <BannedModal />
-      {/if}
-      <slot />
-    </div>
-    <Footer />
-    <Toaster />
-  {#if (false)}
+  <div class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
+    <Navbar />
+    {#if $user.banned}
+      <BannedModal />
+    {/if}
+    <slot />
+  </div>
+  <Footer />
+  <Toaster />
+  {#if false}
     <div class="fixed left-0 top-0 flex h-screen w-screen bg-stone-900">
       <div
         class="relative m-auto w-1/3 justify-self-center rounded-xl bg-stone-800 p-3 align-middle shadow-md shadow-black/25">

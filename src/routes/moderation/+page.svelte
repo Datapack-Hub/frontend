@@ -60,18 +60,20 @@
         click="{() => (activePage = 'review_queue')}">Review Queue</Button>
       <Button
         style="base"
-        classes="{activePage === 'reports' 
-        ? 'bg-pearl-lusta-500 dark:bg-stone-600'
-        : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
+        classes="{activePage === 'reports'
+          ? 'bg-pearl-lusta-500 dark:bg-stone-600'
+          : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'reports')}">Reports</Button>
       <Button
         style="base"
-        classes="{activePage === 'roles' 
-        ? 'bg-pearl-lusta-500 dark:bg-stone-600'
-        : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
+        classes="{activePage === 'roles'
+          ? 'bg-pearl-lusta-500 dark:bg-stone-600'
+          : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'roles')}">Roles</Button>
-      <Button style="base" classes="bg-pearl-lusta-300 dark:bg-stone-800" click="/moderation/console"
-        >Open console</Button>
+      <Button
+        style="base"
+        classes="bg-pearl-lusta-300 dark:bg-stone-800"
+        click="/moderation/console">Open console</Button>
     </div>
 
     <div use:autoAnimate>

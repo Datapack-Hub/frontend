@@ -11,7 +11,7 @@ export const user = writable({
   id: -1,
   username: "",
   bio: "",
-  profile_icon: "",
+  profile_icon: "logos/dph.svg",
   role: "default" /** For role info, use the `role` store */,
   banned: false
 });

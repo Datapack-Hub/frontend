@@ -62,7 +62,7 @@
     "highlight.js": "^11.8.0",
     "isomorphic-dompurify": "^1.6.0",
     "nprogress": "^0.2.0",
-    "svelte-french-toast": "^1.0.4-beta.0",
+    "svelte-french-toast": "1.0.4-beta.0",
     "svelte-multiselect": "^8.6.2"
   },
   "prettier": {

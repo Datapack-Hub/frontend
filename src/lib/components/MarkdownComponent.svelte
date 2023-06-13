@@ -10,8 +10,8 @@
 
   onMount(async () => {
     if (browser) {
-      const msp =  await import("marked-smartypants");
-      const marked = await import("marked")
+      const msp = await import("marked-smartypants");
+      const marked = await import("marked");
       marked.marked.use(msp.markedSmartypants());
       if (!source) html = "";
       else {
