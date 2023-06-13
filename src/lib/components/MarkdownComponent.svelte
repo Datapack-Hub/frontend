@@ -1,6 +1,4 @@
 <script lang="ts">
-  import "highlight.js/styles/github-dark-dimmed.css";
-  import DOMPurify from "isomorphic-dompurify";
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
 
@@ -10,6 +8,7 @@
 
   onMount(async () => {
     if (browser) {
+      const DOMPurify = await import("isomorphic-dompurify");
       const msp = await import("marked-smartypants");
       const marked = await import("marked");
       marked.marked.use(msp.markedSmartypants());

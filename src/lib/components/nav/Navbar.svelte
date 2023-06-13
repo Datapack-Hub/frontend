@@ -15,8 +15,8 @@
   onMount(() => (showNavItems = true));
 
   $: iconColor = $isDark ? "white" : "black";
-  $: isSmall = innerWidth < 768;
-  $: showNavBG = scrollY > 50 || isSmall;
+  $: isSmall = (innerWidth ?? 769) < 768;
+  $: showNavBG = (scrollY ?? 48) > 50 || isSmall;
 </script>
 
 <svelte:window bind:scrollY="{scrollY}" bind:innerWidth="{innerWidth}" />
