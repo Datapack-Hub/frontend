@@ -7,11 +7,11 @@
     switch ($page.status) {
       case 404:
         message =
-          "Looks like you hit a block in your Minecraft adventure, but don't worry, we've got plenty of datapacks to help you break through. Unfortunately, this page isn't one of them.";
+          "Looks like you hit a block in your adventure, but don't worry, we've got plenty of datapacks to help you break through. Unfortunately, this page isn't one of them :P";
         break;
 
       case 401:
-        message = "No cracked accounts allowed! Please sign in and try again!";
+        message = "No cracked accounts allowed! Please sign in and try again! (\"what is this error even for\" - flyne";
         break;
 
       case 403:
@@ -21,7 +21,7 @@
 
       case 500:
         message =
-          "Oops, a creeper exploded in our server room. Our redstone engineers are on the case rewiring the server to get it working as soon as possible!";
+          "You have stumbled above the eternal error. Please don't report this to the staff team, we don't know how to fix this either.";
         break;
 
       default:
