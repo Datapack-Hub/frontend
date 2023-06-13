@@ -12,7 +12,7 @@
 
       case 401:
         message =
-          'You are logged out, please log back in to enjoy all the luxuries we supply';
+          "You are logged out, please log back in to enjoy all the luxuries we supply";
         break;
 
       case 403:

@@ -71,7 +71,7 @@
     data.versions
       ?.filter(versions => versions.minecraft_versions.split(",").includes(vs))
       .forEach(v => {
-        matches.push(v);
+        matches = [...matches, v];
       });
     if (matches?.length == 0)
       return toast.error("This datapack doesn't support " + vs);
@@ -115,9 +115,7 @@
     body = data.project.body;
   }
 
-  async function moderate(
-    action: string,
-  ) {
+  async function moderate(action: string) {
     let modReqData: object = {};
     switch (action) {
       case "delete":
@@ -479,7 +477,7 @@
               </h2>
             {/if}
           </div>
-          {#if matches?.length != 0}
+          {#if matches.length != 0}
             <div
               class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
               <p class="text-white">Latest version for {pickedVersion}:</p>
@@ -552,9 +550,7 @@
     id="description"
     maxlength="200"
     bind:value="{postedModMsg}"></textarea>
-  <button
-    class="button-primary"
-    on:click="{() => moderate(modModalPage, postedModMsg)}"
+  <button class="button-primary" on:click="{() => moderate(modModalPage)}"
     >{titleCase(modModalPage)}</button>
 </Modal>
 
@@ -581,8 +577,7 @@
     id="description"
     maxlength="200"
     bind:value="{reportMsg}"></textarea>
-  <button class="button-primary" on:click="{() => report(reportMsg)}"
-    >Report</button>
+  <button class="button-primary" on:click="{() => report()}">Report</button>
 </Modal>
 
 <style lang="postcss">
