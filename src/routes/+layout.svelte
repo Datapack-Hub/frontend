@@ -6,7 +6,26 @@
   import Navbar from "$lib/components/nav/Navbar.svelte";
   import { authed, isDark, user } from "$lib/globals/stores";
   import { Toaster } from "svelte-french-toast";
-  import "../app.postcss";
+  import "../app.postcss";  
+  import NProgress from 'nprogress'
+  import {navigating} from '$app/stores'
+
+  // NProgress css
+  import 'nprogress/nprogress.css'
+
+  NProgress.configure({
+        // Full list: https://github.com/rstacruz/nprogress#configuration
+        minimum: 0.16,
+    })
+
+  $: {
+    if ($navigating) {
+      NProgress.start();
+    }
+    if (!$navigating) {
+      NProgress.done();
+    }
+  }
 </script>
 
 <svelte:head>

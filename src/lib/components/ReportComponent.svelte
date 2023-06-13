@@ -73,10 +73,10 @@
       </p>
     </div>
   </div>
-  <div class="bg-red-500/20 mt-2 p-2 rounded-xl relative">
+  <div class="moderation mt-2 p-2 rounded-xl relative">
     <b>Reported by {report.reporter.username}:</b>
-    <div class="bg-red-500/30 px-2 py-1 rounded-lg">
-      <MarkdownComponent source="{report.message}" />
+    <div class="moderation-hl px-2 py-1 rounded-lg">
+      <MarkdownComponent source={report.message} />
     </div>
     <div class="absolute right-0 top-0 p-2"><IconX /></div>
   </div>

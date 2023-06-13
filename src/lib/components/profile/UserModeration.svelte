@@ -273,7 +273,7 @@
     Loading...
   {:then}
     <div class="flex max-w-full justify-center md:justify-start">
-      <div class="w-full rounded-xl bg-red-600/25 p-3">
+      <div class="w-full rounded-xl moderation p-3">
         <h1
           class=" text-base font-medium text-pearl-lusta-950 dark:text-white md:text-lg">
           Moderate {user.username}
