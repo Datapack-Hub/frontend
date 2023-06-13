@@ -4,6 +4,7 @@
   import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";
+  import { browser } from "$app/environment";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
@@ -32,57 +33,59 @@
 
   let random: Project;
   onMount(async () => {
-    let randomReq = await fetch(apiURL + "/projects/random");
-    random = (await randomReq.json()) as Project;
+    if(browser){
+      let randomReq = await fetch(apiURL + "/projects/random");
+      random = (await randomReq.json()) as Project;
 
-    let textWrapper = document.querySelectorAll(".split-text .letters");
-    textWrapper.forEach(el => {
-      el.innerHTML =
-        el.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ?? "";
-    });
-
-    anime
-      .timeline({ loop: true, autoplay: true })
-      .add({
-        targets: "#indexText1 .letter",
-        translateY: ["1.1em", 0],
-        duration: 750,
-        delay: (_el, i) => 50 * i
-      })
-      .add({
-        targets: "#indexText1",
-        opacity: 0,
-        duration: 1000,
-        easing: "easeOutExpo",
-        delay: 1000
-      })
-      .add({
-        targets: "#indexText2 .letter",
-        translateY: ["1.1em", 0],
-        duration: 750,
-        delay: (_el, i) => 50 * i
-      })
-      .add({
-        targets: "#indexText2",
-        opacity: 0,
-        duration: 1000,
-        easing: "easeOutExpo",
-        delay: 1000
-      })
-      .add({
-        targets: "#indexText3 .letter",
-        translateY: ["1.1em", 0],
-        duration: 750,
-        delay: (_el, i) => 50 * i
-      })
-      .add({
-        targets: "#indexText3",
-        opacity: 0,
-        duration: 1000,
-        easing: "easeOutExpo",
-        delay: 1000
+      let textWrapper = document.querySelectorAll(".split-text .letters");
+      textWrapper.forEach(el => {
+        el.innerHTML =
+          el.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ?? "";
       });
-    visible = true;
+
+      anime
+        .timeline({ loop: true, autoplay: true })
+        .add({
+          targets: "#indexText1 .letter",
+          translateY: ["1.1em", 0],
+          duration: 750,
+          delay: (_el, i) => 50 * i
+        })
+        .add({
+          targets: "#indexText1",
+          opacity: 0,
+          duration: 1000,
+          easing: "easeOutExpo",
+          delay: 1000
+        })
+        .add({
+          targets: "#indexText2 .letter",
+          translateY: ["1.1em", 0],
+          duration: 750,
+          delay: (_el, i) => 50 * i
+        })
+        .add({
+          targets: "#indexText2",
+          opacity: 0,
+          duration: 1000,
+          easing: "easeOutExpo",
+          delay: 1000
+        })
+        .add({
+          targets: "#indexText3 .letter",
+          translateY: ["1.1em", 0],
+          duration: 750,
+          delay: (_el, i) => 50 * i
+        })
+        .add({
+          targets: "#indexText3",
+          opacity: 0,
+          duration: 1000,
+          easing: "easeOutExpo",
+          delay: 1000
+        });
+      visible = true;
+    }
   });
 </script>
 
