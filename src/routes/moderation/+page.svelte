@@ -49,24 +49,28 @@
       <Button
         style="base"
         classes="{activePage === 'publish_queue'
-          ? 'bg-stone-600'
-          : 'bg-stone-800'}"
+          ? 'bg-pearl-lusta-500 dark:bg-stone-600'
+          : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'publish_queue')}">Publish Queue</Button>
       <Button
         style="base"
         classes="{activePage === 'review_queue'
-          ? 'bg-stone-600'
-          : 'bg-stone-800'}"
+          ? 'bg-pearl-lusta-500 dark:bg-stone-600'
+          : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'review_queue')}">Review Queue</Button>
       <Button
         style="base"
-        classes="{activePage === 'reports' ? 'bg-stone-600' : 'bg-stone-800'}"
+        classes="{activePage === 'reports' 
+        ? 'bg-pearl-lusta-500 dark:bg-stone-600'
+        : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'reports')}">Reports</Button>
       <Button
         style="base"
-        classes="{activePage === 'roles' ? 'bg-stone-600' : 'bg-stone-800'}"
+        classes="{activePage === 'roles' 
+        ? 'bg-pearl-lusta-500 dark:bg-stone-600'
+        : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'roles')}">Roles</Button>
-      <Button style="base" classes="bg-stone-800" click="/moderation/console"
+      <Button style="base" classes="bg-pearl-lusta-300 dark:bg-stone-800" click="/moderation/console"
         >Open console</Button>
     </div>
 
@@ -108,7 +112,7 @@
           </div>
         {:else if activePage == "reports"}
           <div
-            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start">
+            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
             {#if reports.length == 0}
               <p class=" dark:text-white">
                 You're all caught up! There are no projects in the queue.

@@ -94,7 +94,7 @@
 </script>
 
 <div
-  class="rounded-xl bg-pearl-lusta-200 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-pearl-lusta-100/10 relative">
+  class="rounded-xl bg-pearl-lusta-300 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-pearl-lusta-100/10 relative">
   <div class="flex items-center space-x-3">
     <div class="flex w-1/3 items-center space-x-2">
       <button
@@ -143,11 +143,11 @@
     {/if}
   </div>
   {#if expanded}
-    <h2 class="text-white mt-2">Changelog</h2>
-    <div class="w-full rounded-md bg-stone-700 p-2 mb-2">
+    <h2 class="dark:text-white mt-2">Changelog</h2>
+    <div class="w-full rounded-md bg-stone-700/10 dark:bg-stone-900/20 p-2 mb-2">
       <MarkdownComponent source="{version.description}" />
     </div>
-    <h2 class="text-white">Download this version:</h2>
+    <h2 class="dark:text-white">Download this version:</h2>
     <div class="flex flex-col max-w-fit">
       <button
         on:click="{() => {
@@ -169,7 +169,7 @@
           <p>Required Resourcepack</p></button>
       {/if}
     </div>
-    <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-300">
+    <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-400">
       <IconInfo /><a href="/">How to install a datapack</a>
     </p>
   {/if}

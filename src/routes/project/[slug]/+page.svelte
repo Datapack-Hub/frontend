@@ -39,6 +39,17 @@
   let selectedVersions: string[] = [];
   let pickedVersion: string | undefined = undefined;
 
+  let reportModal: Modal;
+  let modModal: Modal;
+
+  let modModalPage = "delete";
+  let status = data.project?.status;
+  let mm: HTMLDivElement;
+  let del: HTMLDivElement;
+
+  let postedModMsg = "";
+  let reportMsg = ""
+
   $: versionMatches =
     selectedVersions.length != 0 && data.versions
       ? data.versions?.filter(e =>
@@ -71,10 +82,6 @@
     visible = true;
   });
 
-  let reportModal: Modal;
-  let modModal: Modal;
-  let modModalPage = "delete";
-
   async function dismissModMsg() {
     mm.remove();
     let dsm = await fetchAuthed(
@@ -86,9 +93,6 @@
       return toast.success("Deleted the message!");
     }
   }
-
-  let status = data.project?.status;
-  let mm: HTMLDivElement;
 
   async function approve() {
     let p = await fetchAuthed(
@@ -111,11 +115,9 @@
     body = data.project.body;
   }
 
-  let postedModMsg = "";
-  let modReqData: object;
-
-  async function moderate() {
-    switch (modModalPage) {
+  async function moderate(action: string, message: string | undefined = undefined) {
+    let modReqData: object= {};
+    switch (action) {
       case "delete":
         if (postedModMsg.length != 0) {
           modReqData = {
@@ -146,25 +148,41 @@
             action: "write_note",
             message: postedModMsg
           };
-          alert(postedModMsg);
         } else {
           return toast.error("You gotta leave them a message!");
         }
         break;
+      case "restore":
+        modReqData = {
+          action: "restore"
+        };
+        break;
     }
 
-    alert(JSON.stringify(modReqData));
-    let modReq = await fetchAuthed(
-      "PATCH",
-      "/moderation/project/" + data.project?.ID + "/action",
-      modReqData
+    toast.promise(
+      fetchAuthed("PATCH","/moderation/project/" + data.project?.ID + "/action", modReqData).then(res => {
+        if(res.ok){
+          if(action == "restore") del.parentElement?.removeChild(del)
+        }
+      }),
+      {
+        success: "Moderated project!",
+        loading: "Moderating...",
+        error: "Uh oh, something went wrong. If this moderation is urgent, get an admin to run an SQL command."
+      }
     );
-    if (modReq.ok) {
-      toast.success("Moderated project!");
-      modModal.close();
-    } else {
-      toast.error("Something went wrong!");
-    }
+  }
+
+  async function report(message: string) {
+    reportModal.close()
+    toast.promise(
+      fetchAuthed("post","/projects/id/" + data.project?.ID + "/report", {message: reportMsg}),
+      {
+        success: "Reported project! A moderator will review your report ASAP.",
+        loading: "Reporting...",
+        error: "Uh oh, something went wrong. In the meantime, please report this bug on our Discord."
+      }
+    );
   }
 </script>
 
@@ -190,7 +208,7 @@
   <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-4 w-full">
     <!--Project Meta-->
     <div class="flex h-fit w-full lg:w-2/5 xl:w-1/4 flex-col" use:autoAnimate>
-      <div class="my-3 text-sky-300">
+      <div class="my-3 text-sky-300" use:autoAnimate>
         <a href="/projects">&lt; Explore other projects</a>
       </div>
       <div
@@ -255,10 +273,9 @@
             </div>
           {/if}
         </div>
-      </div>
-      {#if data.project?.mod_message}
+        {#if data.project?.mod_message}
         <div
-          class="mt-4 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100"
+          class="mt-4 rounded-xl p-4 moderation dark:text-pearl-lusta-100"
           id="modmsg"
           bind:this="{mm}">
           {#if status && !["disabled", "review_queue"].includes(status)}
@@ -268,7 +285,7 @@
           {/if}
           <p class=" font-black">Message from Datapack Hub Staff:</p>
           <p
-            class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 dark:text-stone-300">
+            class="prose mb-1 mt-2 rounded-xl moderation-hl p-2 dark:text-stone-300">
             <MarkdownComponent source="{data.project?.mod_message}" />
           </p>
           <p class=" text-xs opacity-50">
@@ -277,6 +294,7 @@
           </p>
         </div>
       {/if}
+      </div>
     </div>
 
     <!--Main-->
@@ -286,13 +304,13 @@
         <div class="min-w-fit flex-grow">
           <button
             class="button-base {activePage === 'description'
-              ? 'bg-stone-600'
-              : 'bg-stone-800'}"
+              ? 'bg-pearl-lusta-500 dark:bg-stone-600'
+              : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
             on:click="{() => (activePage = 'description')}">Description</button>
           <button
             class="button-base {activePage === 'versions'
-              ? 'bg-stone-600'
-              : 'bg-stone-800'}"
+            ? 'bg-pearl-lusta-500 dark:bg-stone-600'
+            : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
             on:click="{() => (activePage = 'versions')}"
             >Version History</button>
         </div>
@@ -340,6 +358,15 @@
           class="button-base bg-dph-orange font-bold"
           on:click="{() => (activePage = 'download')}">Download</button>
       </div>
+
+      {#if status == "deleted"}
+      <div class="moderation rounded-xl p-2 mb-2 flex items-center" bind:this={del}>
+        <p class="w-full leading-tight dark:text-white flex-grow m-1">
+          <b>This project is deleted.</b> Only staff can view the project. To restore the project, click the restore button.
+        </p>
+        <button class="bg-orange-500 rounded-md p-1 px-2 text-white" on:click={() => moderate("restore")}>Restore</button>
+      </div>
+      {/if}
       {#if activePage == "description"}
         <div
           class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
@@ -509,7 +536,7 @@
     id="description"
     maxlength="200"
     bind:value="{postedModMsg}"></textarea>
-  <button class="button-primary" on:click="{moderate}"
+  <button class="button-primary" on:click="{() => moderate(modModalPage, postedModMsg)}"
     >{titleCase(modModalPage)}</button>
 </Modal>
 
@@ -535,8 +562,8 @@
     placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
     id="description"
     maxlength="200"
-    bind:value="{postedModMsg}"></textarea>
-  <button class="button-primary" on:click="{moderate}">Report</button>
+    bind:value="{reportMsg}"></textarea>
+  <button class="button-primary" on:click="{() => report(reportMsg)}">Report</button>
 </Modal>
 
 <style lang="postcss">
