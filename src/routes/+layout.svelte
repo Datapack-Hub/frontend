@@ -33,16 +33,18 @@
 
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? 'dark' : ''} font-brand">
-  <div class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
-    <Navbar />
-    {#if $user.banned}
-      <BannedModal />
-    {/if}
-    <slot />
-  </div>
-  <Footer />
-  <Toaster />
-  {#if false}
+  {#if $authed && ["admin", "moderator", "helper"].includes($user.role)}
+    <div
+      class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
+      <Navbar />
+      {#if $user.banned}
+        <BannedModal />
+      {/if}
+      <slot />
+    </div>
+    <Footer />
+    <Toaster />
+  {:else}
     <div class="fixed left-0 top-0 flex h-screen w-screen bg-stone-900">
       <div
         class="relative m-auto w-1/3 justify-self-center rounded-xl bg-stone-800 p-3 align-middle shadow-md shadow-black/25">
