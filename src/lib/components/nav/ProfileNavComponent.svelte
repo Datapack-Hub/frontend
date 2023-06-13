@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
   import { apiURL } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
@@ -43,12 +44,14 @@
   });
 
   async function refreshNotifications() {
-    unreadNotifications = false;
-    let notif = await fetchAuthed("get", "/notifs/unread");
+    if(browser){
+      unreadNotifications = false;
+      let notif = await fetchAuthed("get", "/notifs/unread");
 
-    if (notif.ok) {
-      let notifJson = await notif.json();
-      if (notifJson.count != 0) unreadNotifications = true;
+      if (notif.ok) {
+        let notifJson = await notif.json();
+        if (notifJson.count != 0) unreadNotifications = true;
+      }
     }
   }
 
