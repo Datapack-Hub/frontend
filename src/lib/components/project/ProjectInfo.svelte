@@ -7,12 +7,11 @@
   } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
-  import { fade } from "svelte/transition";
   import toast from "svelte-french-toast";
-
+  import { fade } from "svelte/transition";
   // Componenet imports
-  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconCube from "~icons/tabler/Box.svelte";
+  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconCross from "~icons/tabler/X.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
 

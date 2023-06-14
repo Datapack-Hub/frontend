@@ -1,13 +1,15 @@
 <script lang="ts">
   // Svelte imports
-  import { fetchAuthed, titleCase } from "$lib/globals/functions";
+  import { goto } from "$app/navigation";
   import { versions } from "$lib/globals/consts";
+  import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import toast from "svelte-french-toast";
-  import { goto } from "$app/navigation";
-
-  // Component imports
+// Component imports
+  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
+  import MultiSelect from "svelte-multiselect";
   import IconAlert from "~icons/tabler/AlertTriangle.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconRight from "~icons/tabler/ChevronRight.svelte";
@@ -16,12 +18,9 @@
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
-  import MiniProfileCard from "../profile/MiniProfileCard.svelte";
   import CasualLine from "../CasualLine.svelte";
-  import MultiSelect from "svelte-multiselect";
   import Modal from "../modals/Modal.svelte";
-  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
-  import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
+  import MiniProfileCard from "../profile/MiniProfileCard.svelte";
 
   // Component args
   export let project: Project;

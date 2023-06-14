@@ -1,11 +1,11 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { fetchAuthed, getAuthorFromID } from "$lib/globals/functions";
+  import toast from "svelte-french-toast";
   import { fade } from "svelte/transition";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import MarkdownComponent from "./MarkdownComponent.svelte";
-  import toast from "svelte-french-toast";
 
   export let project: Project;
   export let report: Report;

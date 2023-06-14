@@ -4,15 +4,15 @@
   import toast from "svelte-french-toast";
   import tippy from "sveltejs-tippy";
 
-  import CasualLine from "./CasualLine.svelte";
-  import MarkdownComponent from "./MarkdownComponent.svelte";
-  import Modal from "./modals/Modal.svelte";
+  import CasualLine from "../CasualLine.svelte";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
+  import Modal from "../modals/Modal.svelte";
 
-  import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import IconZIP from "~icons/tabler/Cube.svelte";
-  import IconRP from "~icons/tabler/Sparkles.svelte";
   import IconFile from "~icons/tabler/File.svelte";
   import IconFileFilled from "~icons/tabler/FileFilled.svelte";
+  import IconInfo from "~icons/tabler/HelpCircle.svelte";
+  import IconRP from "~icons/tabler/Sparkles.svelte";
 
   export let version: Version;
   export let expanded = false;
