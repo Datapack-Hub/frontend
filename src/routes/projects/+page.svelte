@@ -1,6 +1,6 @@
 <script lang="ts">
   import CasualLine from "$lib/components/CasualLine.svelte";
-  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
+  import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";
   import debounce from "lodash-es/debounce";

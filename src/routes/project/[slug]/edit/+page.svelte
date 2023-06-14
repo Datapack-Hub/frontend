@@ -8,7 +8,7 @@
   import CasualLine from "$lib/components/CasualLine.svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import VersionDisplay from "$lib/components/VersionDisplay.svelte";
+  import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 
   import { categories, versions } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";

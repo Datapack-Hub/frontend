@@ -1,7 +1,7 @@
 <script lang="ts">
   import Button from "$lib/components/Button.svelte";
   import CasualLine from "$lib/components/CasualLine.svelte";
-  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
+  import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import ProfileCard from "$lib/components/profile/FullProfileCard.svelte";
   import UserModeration from "$lib/components/profile/UserModeration.svelte";
   import { authed, role, user } from "$lib/globals/stores";
