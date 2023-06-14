@@ -1,7 +1,7 @@
 <script lang="ts">
   import { isDark } from "$lib/globals/stores";
   import { onMount } from "svelte";
-  import ColorSchemeSelector from "../ColorSchemeSelector.svelte";
+  import ColorSchemeSelector from "./ColorSchemeSelector.svelte";
   import ProfileNavComponent from "./ProfileNavComponent.svelte";
   import IconCompass from "~icons/tabler/Compass.svelte";
   import IconSchool from "~icons/tabler/School.svelte";

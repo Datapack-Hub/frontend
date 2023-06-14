@@ -21,7 +21,7 @@
   import MultiSelect from "svelte-multiselect";
   import Modal from "../modals/Modal.svelte";
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
-  import VersionDisplay from "$lib/components/VersionDisplay.svelte";
+  import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 
   // Component args
   export let project: Project;

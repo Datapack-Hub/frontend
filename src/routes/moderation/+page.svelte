@@ -1,8 +1,8 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
-  import ProjectComponent from "$lib/components/ProjectComponent.svelte";
-  import ReportComponent from "$lib/components/ReportComponent.svelte";
+  import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
+  import ReportComponent from "$lib/components/project/ReportComponent.svelte";
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
