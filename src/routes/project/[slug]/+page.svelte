@@ -1,33 +1,5 @@
 <script lang="ts">
-  import {
-    fetchAuthed,
-    getAuthorFromID,
-    titleCase
-  } from "$lib/globals/functions";
-  import { fade } from "svelte/transition";
   import type { PageData } from "./$types";
-
-  import IconAlert from "~icons/tabler/AlertTriangle.svelte";
-  import IconTick from "~icons/tabler/Check.svelte";
-  import IconRight from "~icons/tabler/ChevronRight.svelte";
-  import IconFiles from "~icons/tabler/Files.svelte";
-  import IconReport from "~icons/tabler/Flag.svelte";
-  import IconPencil from "~icons/tabler/Pencil.svelte";
-  import IconShield from "~icons/tabler/Shield.svelte";
-  import IconCross from "~icons/tabler/X.svelte";
-
-  import { goto } from "$app/navigation";
-  import CasualLine from "$lib/components/CasualLine.svelte";
-  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
-  import VersionDisplay from "$lib/components/VersionDisplay.svelte";
-  import Modal from "$lib/components/modals/Modal.svelte";
-  import MiniProfileCard from "$lib/components/profile/MiniProfileCard.svelte";
-  import { versions } from "$lib/globals/consts";
-  import { user } from "$lib/globals/stores";
-  import autoAnimate from "@formkit/auto-animate";
-  import { onMount } from "svelte";
-  import toast from "svelte-french-toast";
-  import MultiSelect from "svelte-multiselect";
   import ProjectInfo from "$lib/components/project/ProjectInfo.svelte";
   import ProjectBody from "$lib/components/project/ProjectBody.svelte";
 
