@@ -27,11 +27,13 @@
   <div class="pt-20"></div>
   <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-4 w-full">
     {#if data.project && data.versions && data.roles}
-    <!--Project Meta-->
-    <ProjectInfo project={data.project} />
-    <!--Main-->
-    <ProjectBody project={data.project} dp_versions={data.versions} roles={data.roles} />
+      <!--Project Meta-->
+      <ProjectInfo project="{data.project}" />
+      <!--Main-->
+      <ProjectBody
+        project="{data.project}"
+        dp_versions="{data.versions}"
+        roles="{data.roles}" />
     {/if}
   </div>
 </main>
-

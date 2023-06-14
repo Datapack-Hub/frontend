@@ -1,6 +1,10 @@
 <script lang="ts">
   // Svelte imports
-  import { fetchAuthed, getAuthorFromID, titleCase } from "$lib/globals/functions";
+  import {
+    fetchAuthed,
+    getAuthorFromID,
+    titleCase
+  } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
@@ -40,9 +44,10 @@
   }
 
   // Format the status
-  function formatStatus(status: string){
-    if(status == "review_queue" || status == "publish_queue") return "In Queue";
-    return titleCase(status)
+  function formatStatus(status: string) {
+    if (status == "review_queue" || status == "publish_queue")
+      return "In Queue";
+    return titleCase(status);
   }
 </script>
 
@@ -97,9 +102,7 @@
             <p>{project?.category}</p>
           </span>
           <span class=" dark:text-white"> • </span>
-          <span
-            class="{project.status}"
-            >{formatStatus(project.status)}</span>
+          <span class="{project.status}">{formatStatus(project.status)}</span>
         </div>
       {/if}
     </div>
@@ -119,9 +122,8 @@
           <MarkdownComponent source="{project?.mod_message}" />
         </p>
         <p class=" text-xs opacity-50">
-          Only you (and staff) can read this message. Once you've
-          acknowleged it, you can dismiss the message if the project isn't
-          disabled.
+          Only you (and staff) can read this message. Once you've acknowleged
+          it, you can dismiss the message if the project isn't disabled.
         </p>
       </div>
     {/if}
@@ -130,18 +132,18 @@
 
 <style lang="postcss">
   .live {
-    @apply text-green-500
+    @apply text-green-500;
   }
 
   .disabled .deleted {
-    @apply text-red-500
+    @apply text-red-500;
   }
 
   .review_queue .publish_queue {
-    @apply text-yellow-500
+    @apply text-yellow-500;
   }
 
   .draft .unpublished {
-    @apply text-stone-500
+    @apply text-stone-500;
   }
 </style>

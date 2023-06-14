@@ -1,9 +1,6 @@
 <script lang="ts">
   // Svelte imports
-  import {
-    fetchAuthed,
-    titleCase
-  } from "$lib/globals/functions";
+  import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { versions } from "$lib/globals/consts";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
@@ -65,7 +62,7 @@
   });
 
   function pickVersions(vs: string) {
-    matches = []
+    matches = [];
     pickedVersion = vs;
     dp_versions
       ?.filter(versions => versions.minecraft_versions.split(",").includes(vs))
@@ -184,8 +181,7 @@
         class="button-base {activePage === 'versions'
           ? 'bg-pearl-lusta-500 dark:bg-stone-600'
           : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
-        on:click="{() => (activePage = 'versions')}"
-        >Version History</button>
+        on:click="{() => (activePage = 'versions')}">Version History</button>
     </div>
     <div class="flex space-x-1">
       {#if ["moderator", "admin"].includes($user.role)}
@@ -249,7 +245,8 @@
       class="moderation rounded-xl p-2 mb-2 flex items-center"
       bind:this="{del}">
       <p class="w-full leading-tight dark:text-white flex-grow m-1">
-        <b>This project is awaiting review.</b> A staff member will review your project before it goes public.
+        <b>This project is awaiting review.</b> A staff member will review your project
+        before it goes public.
       </p>
     </div>
   {:else if status == "disabled"}
@@ -257,7 +254,8 @@
       class="moderation rounded-xl p-2 mb-2 flex items-center"
       bind:this="{del}">
       <p class="w-full leading-tight dark:text-white flex-grow m-1">
-        <b>This project is disabled.</b> Please read the mod message, and fix your project before it goes live.
+        <b>This project is disabled.</b> Please read the mod message, and fix your
+        project before it goes live.
       </p>
     </div>
   {/if}
@@ -299,49 +297,46 @@
       {:else}
         <h2 class=" text-xl text-pearl-lusta-950 dark:text-white">
           <b>No versions yet!</b> Why not
-          <a
-            href="/project/{project?.url}/edit"
-            class="text-blue-500 underline">create one</a
+          <a href="/project/{project?.url}/edit" class="text-blue-500 underline"
+            >create one</a
           >?
         </h2>
       {/if}
     </div>
   {:else if activePage == "download"}
     <div class="mb-2 items-center space-y-2">
-      <div
-        class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+      <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
         {#if dp_versions?.length != 0}
           <p class="text-white">Select a Minecraft version:</p>
           <div class="grid grid-cols-3 grid-rows-auto gap-3">
             {#each versions ?? [] as v}
-                  {#if bigStitchedVersionList.indexOf(v) >= 0}
-                    {@const mcVersions =
-                      project && project.latest_version
-                        ? project.latest_version.minecraft_versions
-                        : ""}
-                    <button
-                      class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 {!mcVersions
-                        .split(',')
-                        .includes(v)
-                        ? 'text-red-500'
-                        : 'text-white'}"
-                      on:click="{() => pickVersions(v)}">
-                      {#if !mcVersions.split(",").includes(v)}
-                        <IconAlert />
-                      {/if}
-                      <div
-                        class="font-bold flex-grow flex items-center space-x-2">
-                        <p>{v}</p>
-                        {#if mcVersions.split(",").includes(v)}
-                          <p class="font-thin italic">
-                            {project.latest_version?.version_code}
-                          </p>
-                        {/if}
-                      </div>
-                      <IconRight />
-                    </button>
+              {#if bigStitchedVersionList.indexOf(v) >= 0}
+                {@const mcVersions =
+                  project && project.latest_version
+                    ? project.latest_version.minecraft_versions
+                    : ""}
+                <button
+                  class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 {!mcVersions
+                    .split(',')
+                    .includes(v)
+                    ? 'text-red-500'
+                    : 'text-white'}"
+                  on:click="{() => pickVersions(v)}">
+                  {#if !mcVersions.split(",").includes(v)}
+                    <IconAlert />
                   {/if}
-                {/each}
+                  <div class="font-bold flex-grow flex items-center space-x-2">
+                    <p>{v}</p>
+                    {#if mcVersions.split(",").includes(v)}
+                      <p class="font-thin italic">
+                        {project.latest_version?.version_code}
+                      </p>
+                    {/if}
+                  </div>
+                  <IconRight />
+                </button>
+              {/if}
+            {/each}
           </div>
           <div class="flex space-x-1 items-center mt-2 text-stone-500">
             <IconAlert />
@@ -367,8 +362,7 @@
               expanded="{true}"
               mc_version="{pickedVersion}" />
           </ul>
-          <p
-            class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-400">
+          <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-400">
             <IconFiles />
             <button
               on:click="{() => (activePage = 'versions')}"
