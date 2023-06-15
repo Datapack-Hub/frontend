@@ -2,7 +2,7 @@
   // Svelte imports
   import { goto } from "$app/navigation";
   import { versions } from "$lib/globals/consts";
-  import { fetchAuthed, titleCase } from "$lib/globals/functions";
+  import { fetchAuthed, getAuthorFromID, titleCase } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import toast from "svelte-french-toast";
@@ -21,6 +21,7 @@
   import CasualLine from "../CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import MiniProfileCard from "../profile/MiniProfileCard.svelte";
+  import { onMount } from "svelte";
 
   // Component args
   export let project: Project;
@@ -45,6 +46,10 @@
   if (project?.body) {
     body = project.body;
   }
+
+  onMount(async () => {
+    author = await getAuthorFromID(project?.author);
+  });
 
   // Version filtering
   $: versionMatches =
@@ -89,6 +94,7 @@
   }
 
   async function moderate(action: string) {
+    modModal.close()
     let modReqData: object = {};
     switch (action) {
       case "delete":
@@ -171,7 +177,7 @@
   <!--Buttons-->
   <div class="mb-2 flex space-x-2">
     <div class="min-w-fit flex-grow">
-      <button
+      <!-- <button
         class="button-base {activePage === 'description'
           ? 'bg-pearl-lusta-500 dark:bg-stone-600'
           : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
@@ -180,7 +186,7 @@
         class="button-base {activePage === 'versions'
           ? 'bg-pearl-lusta-500 dark:bg-stone-600'
           : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
-        on:click="{() => (activePage = 'versions')}">Version History</button>
+        on:click="{() => (activePage = 'versions')}">Version History</button> -->
     </div>
     <div class="flex space-x-1">
       {#if ["moderator", "admin"].includes($user.role)}
@@ -268,6 +274,9 @@
   {:else if activePage == "versions"}
     <div
       class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+      <div class="mb-3 text-sky-300" use:autoAnimate>
+        <a href="" on:click={() => activePage = "description"}>&lt;- Back to description</a>
+      </div>
       {#if dp_versions?.length != 0}
         <div class="flex space-x-2 w-full items-center dark:text-white">
           <p class="mr-2">Search by Minecraft version:</p>
@@ -305,6 +314,9 @@
   {:else if activePage == "download"}
     <div class="mb-2 items-center space-y-2">
       <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+        <div class="mb-3 text-sky-300" use:autoAnimate>
+          <a href="" on:click={() => activePage = "description"}>&lt;- Back to description</a>
+        </div>
         {#if dp_versions?.length != 0}
           <p class="text-white">Select a Minecraft version:</p>
           <div class="grid grid-cols-3 grid-rows-auto gap-3">
@@ -336,6 +348,15 @@
                 </button>
               {/if}
             {/each}
+            <button
+              class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 text-white"
+              on:click="{() => activePage = "versions"}">
+              <div class="font-bold flex-grow flex items-center space-x-2">
+                <IconFiles />
+                <p>Show All Versions</p>
+              </div>
+              <IconRight />
+            </button>
           </div>
           <div class="flex space-x-1 items-center mt-2 text-stone-500">
             <IconAlert />
@@ -343,11 +364,11 @@
           </div>
         {:else}
           <h2 class=" text-xl text-pearl-lusta-950 dark:text-white">
-            <b>No versions yet!</b> Why not
+            <b>No versions yet!</b> {#if project.author.id == $user.id}Why not
             <a
               href="/project/{project?.url}/edit"
               class="text-blue-500 underline">create one</a
-            >?
+            >?{/if}
           </h2>
         {/if}
       </div>
@@ -365,7 +386,7 @@
             <IconFiles />
             <button
               on:click="{() => (activePage = 'versions')}"
-              class="cursor-pointer">Show All Versions</button>
+              class="cursor-pointer">Show Version History</button>
           </p>
         </div>
       {/if}

@@ -13,10 +13,13 @@
   import IconFileFilled from "~icons/tabler/FileFilled.svelte";
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import IconRP from "~icons/tabler/Sparkles.svelte";
+  import { fetchAuthed } from "$lib/globals/functions";
 
   export let version: Version;
   export let expanded = false;
   export let mc_version: string | undefined = undefined;
+  export let modifiable: boolean = false;
+  export let project: Project | undefined = undefined
 
   let dlModal: Modal;
 
@@ -91,6 +94,14 @@
         : toast.success("Downloaded file!");
     }
   }
+
+  async function deleteVersion() {
+    toast.promise(fetchAuthed("DELETE",`/versions/project/${project?.ID}/${version.version_code}`),{
+      loading:"Deleting version...",
+      success:"Version deleted! Refresh to see the updates",
+      error:"Error trying to delete project."
+    })
+  }
 </script>
 
 <div
@@ -133,6 +144,13 @@
       </h2>
     {/if}
     {#if !expanded}
+      <button
+        on:click="{() => {
+          deleteVersion();
+        }}"
+        id="#download"
+        class="rounded-xl text-red-500 p-1"
+        >Delete</button>
       <button
         on:click="{() => {
           downloadVersion();

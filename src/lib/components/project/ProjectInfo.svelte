@@ -56,10 +56,7 @@
   </div>
   <div
     class="rounded-xl border-pearl-lusta-200 p-4 mb-2 bg-pearl-lusta-200 dark:bg-pearl-lusta-100/10">
-    <div
-      class="{project?.icon
-        ? 'p-0'
-        : 'h-20 w-20 bg-stone-600 p-4'} mr-6 rounded-xl">
+    <div class="flex space-x-2">
       {#if project?.icon}
         <img
           loading="lazy"
@@ -67,14 +64,17 @@
           alt="{project?.title} icon"
           class="aspect-square w-20 rounded-lg bg-cover" />
       {:else}
-        <IconNoPhoto width="48" height="48" />
+        <div class="bg-stone-600 p-4 rounded-xl dark:text-white">
+          <IconNoPhoto width="48" height="48" />
+        </div>
+
       {/if}
-    </div>
-    <div class="flex-grow">
       <h1
         class="flex items-center text-4xl font-bold text-pearl-lusta-950 dark:text-white">
         {project?.title.trimStart()}
       </h1>
+    </div>
+    <div>
       <h2
         class="mt-2 text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
         {project?.description?.trimStart()}

@@ -457,7 +457,7 @@
           {/if}
           <div class="space-y-2">
             {#each data.versions ?? [] as version}
-              <VersionDisplay version="{version}" />
+              <VersionDisplay version="{version}" modifiable={true} project={data.project} />
             {/each}
           </div>
         </div>
