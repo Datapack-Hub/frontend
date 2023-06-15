@@ -158,6 +158,22 @@
   let descVal = data.project?.description;
   let bodyVal = data.project?.body;
   let catVal = data.project?.category;
+  let iconVal: FileList;
+  let iconElem: HTMLImageElement;
+  let iconB64: string | ArrayBuffer | null | undefined;
+
+  function uploadIcon() {
+    if(iconVal[0].size > 256000) {
+      return toast.error("Icon must be less than 256kb")
+    }
+    let reader = new FileReader();
+
+    iconElem.src = URL.createObjectURL(iconVal[0]);
+    reader.addEventListener("load", e => {
+      iconB64 = e.target?.result;
+    });
+    reader.readAsDataURL(iconVal[0]);
+  }
 
   async function create() {
     if ((titleValue?.length ?? 0) < 4)
@@ -165,12 +181,22 @@
     if ((bodyVal?.length ?? 0) < 101)
       return toast.error("Body must be at least 100 characters");
 
-    let projData = {
-      title: titleValue,
-      description: descVal,
-      body: bodyVal,
-      category: catVal
-    };
+    let projData: {
+      title: string | undefined,
+      description: string | undefined | null,
+      body: string | undefined,
+      category: string | undefined,
+      icon?: string | ArrayBuffer | null | undefined
+      } = {
+        title: titleValue,
+        description: descVal,
+        body: bodyVal,
+        category: catVal
+      };
+
+    if(iconB64) {
+      projData["icon"] = iconB64?.toString()
+    }
 
     let x = await fetchAuthed(
       "post",
@@ -266,25 +292,26 @@
       {#if activePage == "details"}
         <div class="text-center align-middle md:text-start">
           <div class=" rounded-xl bg-stone-800 p-2 pb-2">
-            <!-- Icon -->
-            <p class="align-middle text-dph-orange">Icon</p>
+            <!--meanwhile, bean-->
+            <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+              Icon
+            </p>
             <img
               loading="lazy"
-              src="{data.project?.icon}"
-              alt="Your logo"
+              src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+              alt="Your logo here"
               height="100"
               width="100"
-              class="mr-3 inline-block rounded-2xl" />
-            <label for="icon" class="max-w-100 group inline-block">
-              <span
-                class="cursor-pointer rounded-xl bg-stone-700 p-2 align-middle text-pearl-lusta-950 dark:text-white"
-                >Upload icon</span>
-            </label>
+              class="mr-3 inline-block rounded-2xl"
+              bind:this="{iconElem}" />
+            <label for="icon" class="button-boring">Upload Icon</label>
             <input
+              accept="image/*"
               id="icon"
               type="file"
-              accept="image/jpeg,image/png,image/webp,image/avif"
-              class="hidden" />
+              class="hidden"
+              bind:files="{iconVal}"
+              on:change="{uploadIcon}" />
             <br /><br />
 
             <!-- Title -->

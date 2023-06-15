@@ -43,6 +43,10 @@
           class="hidden text-2xl font-bold text-pearl-lusta-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
           Datapack Hub
         </span>
+        <span
+          class="text-lg font-bold text-white bg-orange-700 px-2 rounded-full">
+          BETA
+        </span>
       </a>
       {#if showNavItems}
         {#if innerWidth > 768}

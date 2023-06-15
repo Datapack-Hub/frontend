@@ -46,6 +46,9 @@
   }
 
   function uploadIcon() {
+    if(iconVal[0].size > 256000) {
+      return toast.error("Icon must be less than 256kb")
+    }
     let reader = new FileReader();
 
     iconElem.src = URL.createObjectURL(iconVal[0]);

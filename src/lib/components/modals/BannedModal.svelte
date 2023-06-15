@@ -37,9 +37,9 @@
 
 {#if $authed && visible}
   <div
-    class="fixed left-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-lg backdrop-brightness-50">
+    class="fixed left-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-3xl backdrop-brightness-50">
     <div
-      class="relative m-auto w-1/2 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
+      class="relative m-auto w-2/3 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
       <a href="/" class="z-20 flex cursor-pointer items-center justify-center">
         <img
           src="/logos/dph.svg"
@@ -54,15 +54,15 @@
       </a>
       <!-- <h1 class=" text-2xl text-pearl-lusta-950 dark:text-white font-regular">You are temporarily banned from Datapack Hub</h1> -->
       <CasualLine />
-      <p class=" text-lg text-pearl-lusta-950 dark:text-white">
-        <b>You are banned from Datapack Hub.</b> The reason is displayed below:
+      <p class="text-lg text-pearl-lusta-950 dark:text-white">
+        <b>You are banned from Datapack Hub.</b> You are not able to upload, edit projects, or interact with the site until your ban has expired. <p class="text-md text-pearl-lusta-950 dark:text-white mt-2">Ban Reason:
       </p>
-      <p class="prose my-2 rounded-xl bg-stone-700 p-2 dark:text-stone-300">
+      <p class="prose mb-2 rounded-xl bg-stone-700 p-2 dark:text-stone-300">
         <MarkdownComponent source="{banReason}" />
       </p>
-      <p class="mt-6 text-pearl-lusta-950 dark:text-white">
+      <p class="mt-3 text-pearl-lusta-950 dark:text-white">
         <b>Your ban will expire:</b>
-        {new Date(expiry).toLocaleString()}. <br /> Until then, wait for the ban
+        {new Date(expiry * 1000).toLocaleString()}. <br /> Until then, wait for the ban
         to expire, and read
         <a href="/rules" class="text-blue-500 underline">our rules</a>.
       </p>

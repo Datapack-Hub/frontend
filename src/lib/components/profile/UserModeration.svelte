@@ -97,17 +97,14 @@
     let exp;
 
     if (permanent.checked) {
-      exp =
-        new Date(
-          new Date().setFullYear(new Date().getFullYear() + 10)
-        ).getTime() / 1000;
+      exp = 36500
     } else {
-      exp = new Date(expiry.value).getTime();
+      exp = expiry.value
     }
 
     let ban = await fetchAuthed("post", `/moderation/ban/${user?.id}`, {
       id: user?.id,
-      expires: exp,
+      expires: parseInt(exp.toString()),
       message: message.value
     });
     if (ban.ok) {
@@ -119,7 +116,7 @@
   }
 
   async function unbanUser() {
-    let unban = await fetchAuthed("delete", `/moderation/ban/${user?.id}`);
+    let unban = await fetchAuthed("DELETE", `/moderation/ban/${user?.id}`);
     if (unban.ok) {
       unbanDialog.close();
       modJson.banned == false;
@@ -139,6 +136,15 @@
     }
   }
   $: iconColor = $isDark ? "white" : "black";
+
+  function disableBan(){
+    const permanent = document.getElementById(
+      "ban-permanent"
+    ) as HTMLInputElement;
+    let expiry = document.getElementById("ban-expiry") as HTMLInputElement;
+    expiry.disabled = false
+    if(permanent.checked) expiry.disabled = true
+  }
 </script>
 
 <Modal bind:this="{warnDialog}">
@@ -220,14 +226,15 @@
     write a message or ban reason to be displayed when they try to log in.
   </p>
   <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
-    Ban Expiry
+    Ban Expiry (days from now)
   </p>
   <input
-    type="date"
+    type="number"
     class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-    id="ban-expiry" />
+    id="ban-expiry"
+    placeholder="i.e 1, 7, 14, 30, 365" />
   <label class=" text-pearl-lusta-950 dark:text-pearl-lusta-100">
-    <input type="checkbox" id="ban-permanent" />
+    <input type="checkbox" id="ban-permanent" on:change="{disableBan}" />
     Permanent?
   </label>
   <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">

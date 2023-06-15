@@ -100,6 +100,8 @@
 <svelte:window bind:innerWidth="{width}" />
 
 <main class="bg-pearl-lusta-100 transition-all dark:bg-stone-900">
+  <div class="pt-20" />
+  <div class="moderation mx-20 dark:text-white p-2 rounded-lg"><b class="text-lg">Datapack Hub is in early beta.</b> <div class="pt-1"/>Many features are incomplete or do not work as expected. In these early stages, there is likely going to be lots of downtime. All projects will stay after the beta period, unless you don't want that.</div>
   <div
     class="flex h-[75vh] w-full -translate-y-20 flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:translate-y-0 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
