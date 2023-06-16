@@ -9,7 +9,7 @@
   import { onMount } from "svelte";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
-  let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" })
+  let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
   let rand = compactNumberFormatter.format(rawRand);
 
   let visible = false;
@@ -92,7 +92,8 @@
 
 <main class="bg-pearl-lusta-100 transition-all dark:bg-stone-900">
   <div class="pt-0 lg:pt-20"></div>
-  <div class="moderation mx-20 dark:text-white p-2 rounded-lg -translate-y-20 lg:translate-y-0">
+  <div
+    class="moderation mx-20 dark:text-white p-2 rounded-lg -translate-y-20 lg:translate-y-0">
     <b class="text-lg">Datapack Hub is in early beta.</b>
     <div class="pt-1"></div>
     Many features are incomplete or do not work as expected. In these early stages,

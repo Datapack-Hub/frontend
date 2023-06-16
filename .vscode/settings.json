@@ -6,12 +6,10 @@
     "interactable",
     "markdownit",
     "Notif",
+    "oboolean",
+    "onumber",
+    "ostring",
     "tabler",
     "tippy"
   ],
-  "commandOnAllFiles.commands": {
-    "Things": {
-      "command": ""
-    }
-  }
 }

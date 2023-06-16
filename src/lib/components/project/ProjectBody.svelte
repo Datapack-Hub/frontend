@@ -22,7 +22,7 @@
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
-  import IconBack from "~icons/tabler/ArrowBack.svelte"
+  import IconBack from "~icons/tabler/ArrowBack.svelte";
   import CasualLine from "../CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import MiniProfileCard from "../profile/MiniProfileCard.svelte";

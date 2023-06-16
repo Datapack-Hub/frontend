@@ -13,7 +13,7 @@
   import IconCube from "~icons/tabler/Box.svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconCross from "~icons/tabler/X.svelte";
-  import IconBack from "~icons/tabler/ArrowBack.svelte"
+  import IconBack from "~icons/tabler/ArrowBack.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import type { Project, User } from "$lib/globals/schema";
 
