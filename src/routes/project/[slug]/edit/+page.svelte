@@ -96,9 +96,10 @@
     };
 
     toast.promise(
-      new Promise((_, reject) => {
+      new Promise((success, reject) => {
         dataReader.addEventListener("load", () => {
           versionData.primary_download = dataReader.result as string;
+          success()
         });
 
         dataReader.addEventListener("error", () => {
