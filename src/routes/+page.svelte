@@ -16,7 +16,7 @@
   let width: number;
   let count = 0;
 
-  let random: Project[];
+  let random: Project[] = [];
 
   onMount(async () => {
     if (browser) {
@@ -91,14 +91,15 @@
 <svelte:window bind:innerWidth="{width}" />
 
 <main class="bg-pearl-lusta-100 transition-all dark:bg-stone-900">
-  <div class="pt-20"></div>
-  <div class="moderation mx-20 dark:text-white p-2 rounded-lg">
+  <div class="pt-0 lg:pt-20"></div>
+  <div class="moderation mx-20 dark:text-white p-2 rounded-lg -translate-y-20 lg:translate-y-0">
     <b class="text-lg">Datapack Hub is in early beta.</b>
     <div class="pt-1"></div>
     Many features are incomplete or do not work as expected. In these early stages,
     there is likely going to be lots of downtime. All projects will stay after the
     beta period, unless you don't want that.
   </div>
+  <div class="pt-20 lg:pt-0"></div>
   <div
     class="flex h-[75vh] w-full -translate-y-20 flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:translate-y-0 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
@@ -119,21 +120,21 @@
         <h1
           id="indexText3"
           class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
-          <span class="letters inline-block text-pink-500">Play</span>
+          <span class="letters inline-block text-rose-500">Play</span>
         </h1>
       </div>
       <h2
         class="w-full text-center text-xl text-pearl-lusta-950 dark:text-pearl-lusta-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{rand}"
-          class="text-gradient bg-gradient-to-br from-pink-600 to-yellow-400 font-bold">
+          class="text-gradient bg-gradient-to-br from-rose-500 to-yellow-500 font-bold">
           {compactNumberFormatter.format(count)}
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>
     </div>
     <div
-      class="mt-8 h-3/4 w-4/5 justify-between space-y-3 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:h-2/3 md:w-1/2">
+      class="mt-8 h-3/4 w-4/5 justify-between space-y-3 bg-stone-800 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:h-2/3 md:w-1/2">
       <h3
         class=" text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center mt-6">
         Featured Projects
@@ -143,10 +144,9 @@
         projects to check out:
       </p>
       <div use:autoAnimate>
-        {#if random}
-          <FeaturedProjectComponent project="{random[0]}" type="random" />
-          <FeaturedProjectComponent project="{random[1]}" type="random" />
-        {/if}
+        {#each random as randProj}
+          <FeaturedProjectComponent project="{randProj}" type="random" />
+        {/each}
       </div>
       <div></div>
     </div>

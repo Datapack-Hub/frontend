@@ -94,7 +94,7 @@
     {#if !data.projects || !(data.projects.length >= 1)}
       <h2 class=" text-pearl-lusta-950 dark:text-white">No results found</h2>
     {:else}
-      <ul class="mx-0 w-full space-y-2 md:mx-3" use:autoAnimate>
+      <ul class="space-y-2 mx-3" use:autoAnimate>
         {#each data.projects as project}
           <!-- uncomment these to see the featured stuff on the thingy thing -->
           <!-- {#if Math.random() < 0.2} -->
