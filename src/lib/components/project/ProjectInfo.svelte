@@ -13,6 +13,7 @@
   import IconCube from "~icons/tabler/Box.svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconCross from "~icons/tabler/X.svelte";
+  import IconBack from "~icons/tabler/ArrowBack.svelte"
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import type { Project, User } from "$lib/globals/schema";
 
@@ -53,7 +54,9 @@
 
 <div class="h-fit w-full lg:w-2/5 xl:w-1/4 flex-col" use:autoAnimate>
   <div class="my-3 text-sky-300" use:autoAnimate>
-    <a href="/projects">&lt; Explore other projects</a>
+    <a href="/projects">
+      <IconBack class="inline" /> Explore other projects
+    </a>
   </div>
   <div
     class="rounded-xl border-pearl-lusta-200 p-4 mb-2 bg-pearl-lusta-200 dark:bg-pearl-lusta-100/10">

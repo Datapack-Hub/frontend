@@ -22,6 +22,7 @@
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
+  import IconBack from "~icons/tabler/ArrowBack.svelte"
   import CasualLine from "../CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import MiniProfileCard from "../profile/MiniProfileCard.svelte";
@@ -282,7 +283,8 @@
       class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
       <div class="mb-3 text-sky-300" use:autoAnimate>
         <Button click="{() => (activePage = 'description')}"
-          >&lt;- Back to description</Button>
+          ><IconBack class="inline" /> - Back to description
+        </Button>
       </div>
       {#if dp_versions?.length != 0}
         <div class="flex space-x-2 w-full items-center dark:text-white">
@@ -323,7 +325,8 @@
       <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
         <div class="mb-3 text-sky-300" use:autoAnimate>
           <Button click="{() => (activePage = 'description')}"
-            >&lt;- Back to description</Button>
+            ><IconBack class="inline" /> - Back to description
+          </Button>
         </div>
         {#if dp_versions?.length != 0}
           <p class="text-white">Select a Minecraft version:</p>
