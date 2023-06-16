@@ -11,7 +11,7 @@
 
   let visible = false;
   let width: number;
-  let count = 0;
+  let amount = 0;
 
   let random: Project[];
 
@@ -19,6 +19,10 @@
     if (browser) {
       let randomReq = await fetch(apiURL + "/projects/random?count=2");
       random = (await randomReq.json())["result"] as Project[];
+
+      let count = await fetch(apiURL + "/projects/count")
+      let countJson = await count.json()
+      amount = countJson.count
 
       let textWrapper = document.querySelectorAll(".split-text .letters");
       textWrapper.forEach(el => {
@@ -101,17 +105,17 @@
         <h1
           id="indexText1"
           class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
-          <span class="letters inline-block text-dph-orange">Explore</span>
+          <span class="letters inline-block text-orange-500">Explore</span>
         </h1>
         <h1
           id="indexText2"
           class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
-          <span class="letters inline-block text-dph-orange">Create</span>
+          <span class="letters inline-block text-red-500">Create</span>
         </h1>
         <h1
           id="indexText3"
           class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
-          <span class="letters inline-block text-dph-orange">Play</span>
+          <span class="letters inline-block text-rose-500">Play</span>
         </h1>
       </div>
       <h2
@@ -119,7 +123,7 @@
         Over <span
           title="{rand}"
           class="text-gradient bg-gradient-to-br from-pink-600 to-yellow-400 font-bold">
-          {count}
+          {Number((amount - 1).toPrecision(1))}
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>
@@ -132,10 +136,10 @@
       </h3>
       <p class="dark:text-pearl-lusta-100 text-center">Featured projects are coming soon! In the meantime, here's some random projects to check out:</p>
       <div use:autoAnimate>
-        {#if random}
+        <!-- {#if random}
           <FeaturedProjectComponent project="{random[0]}" type="random" />
           <FeaturedProjectComponent project="{random[1]}" type="random" />
-        {/if}
+        {/if} -->
       </div>
       <div></div>
     </div>
