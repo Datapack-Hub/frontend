@@ -16,7 +16,7 @@
 </script>
 
 <div
-  class="w-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
+  class="max-w-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
   <div class="flex items-center">
     <a
       href="/project/{project.url}"
@@ -65,7 +65,7 @@
         </div>
       {/if}
       <p
-        class="line-clamp-2 text-sm font-medium text-pearl-lusta-950/40 dark:text-pearl-lusta-100/40 md:text-sm">
+        class="line-clamp-2 max-w-1/2 text-sm font-medium text-pearl-lusta-950/40 dark:text-pearl-lusta-100/40 md:text-sm">
         {project.description}
       </p>
     </div>

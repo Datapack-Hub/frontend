@@ -13,34 +13,12 @@
   let width: number;
   let count = 0;
 
-  let proj: Project;
+  let random: Project[];
 
-  proj = {
-    ID: 1,
-    author: 1,
-    body: "actually very long description",
-    category: "German",
-    description:
-      "This datapack makes dropped items appear realistic as if they were thrown onto the ground!",
-    icon: "https://cdn.discordapp.com/attachments/723984082853298297/1076083669409730590/IMG_2434.png",
-    title: "Realistic Item Drops",
-    type: "datapack",
-    updated: 0,
-    uploaded: 0,
-    url: "realistic-item-drops",
-    status: "live",
-    mod_message: null
-  };
-
-  let random: Project;
   onMount(async () => {
     if (browser) {
-      // TODO: Fix when api is fixed
-      // let countRes = await fetch(apiURL + "/projects/count")
-
-      let randomRes = await fetch(apiURL + "/projects/random");
-      random = (await randomRes.json()) as Project;
-      // count = (await countRes.json() as { count: number }).count
+      let randomReq = await fetch(apiURL + "/projects/random?count=2");
+      random = (await randomReq.json())["result"] as Project[];
 
       let textWrapper = document.querySelectorAll(".split-text .letters");
       textWrapper.forEach(el => {
@@ -147,26 +125,24 @@
       </h2>
     </div>
     <div
-      class="my-8 h-3/4 w-4/5 justify-between space-y-3 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:h-2/3 md:w-1/2">
+      class="mt-8 h-3/4 w-4/5 justify-between space-y-3 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:h-2/3 md:w-1/2">
       <h3
-        class=" text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center my-6">
-        Featured
+        class=" text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center mt-6">
+        Featured Projects
       </h3>
+      <p class="dark:text-pearl-lusta-100 text-center">Featured projects are coming soon! In the meantime, here's some random projects to check out:</p>
       <div use:autoAnimate>
-        {#if visible}
-          <FeaturedProjectComponent project="{proj}" type="popular" />
-          <FeaturedProjectComponent project="{proj}" type="featured" />
-          {#if random}
-            <FeaturedProjectComponent project="{random}" type="random" />
-          {/if}
+        {#if random}
+          <FeaturedProjectComponent project="{random[0]}" type="random" />
+          <FeaturedProjectComponent project="{random[1]}" type="random" />
         {/if}
       </div>
       <div></div>
     </div>
   </div>
-  <div class="h-screen w-full bg-pearl-lusta-200 dark:bg-stone-800">
+  <!-- <div class="h-screen w-full bg-pearl-lusta-200 dark:bg-stone-800">
     <h2>Content here</h2>
-  </div>
+  </div> -->
 </main>
 
 <style lang="postcss">

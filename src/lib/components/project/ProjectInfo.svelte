@@ -50,7 +50,7 @@
   }
 </script>
 
-<div class="flex h-fit w-full lg:w-2/5 xl:w-1/4 flex-col" use:autoAnimate>
+<div class="h-fit w-full lg:w-2/5 xl:w-1/4 flex-col" use:autoAnimate>
   <div class="my-3 text-sky-300" use:autoAnimate>
     <a href="/projects">&lt; Explore other projects</a>
   </div>
@@ -62,7 +62,7 @@
           loading="lazy"
           src="{project?.icon}"
           alt="{project?.title} icon"
-          class="aspect-square w-20 rounded-lg bg-cover" />
+          class="aspect-square w-20 h-20 rounded-lg bg-cover" />
       {:else}
         <div class="bg-stone-600 p-4 rounded-xl dark:text-white">
           <IconNoPhoto width="48" height="48" />
@@ -70,16 +70,16 @@
       {/if}
       <h1
         class="flex items-center text-4xl font-bold text-pearl-lusta-950 dark:text-white">
-        {project?.title.trimStart()}
+        {project?.title}
       </h1>
     </div>
     <div>
       <h2
         class="mt-2 text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
-        {project?.description?.trimStart()}
+        {project?.description}
       </h2>
       {#if visible}
-        <div class="mt-4 flex items-center space-x-2">
+        <div class="mt-4 flex items-center space-x-2 min-w-fit">
           <a
             href="/user/{author?.username}"
             class="flex items-center space-x-2">
