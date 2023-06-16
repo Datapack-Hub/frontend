@@ -1,5 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
+  import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
   import type { Project } from "$lib/globals/schema";
   import { projectSchema } from "$lib/globals/schema";
@@ -8,11 +9,12 @@
   import { onMount } from "svelte";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
-  let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
+  let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" })
+  let rand = compactNumberFormatter.format(rawRand);
 
   let visible = false;
   let width: number;
-  let amount = 0;
+  let count = 0;
 
   let random: Project[];
 
@@ -23,9 +25,8 @@
         .array()
         .parseAsync((await randomReq.json()).result);
 
-      let count = await fetch(apiURL + "/projects/count");
-      let countJson = await count.json();
-      amount = countJson.count;
+      let countRes = await fetch(apiURL + "/projects/count");
+      count = (await countRes.json()).count;
 
       let textWrapper = document.querySelectorAll(".split-text .letters");
       textWrapper.forEach(el => {
@@ -126,7 +127,7 @@
         Over <span
           title="{rand}"
           class="text-gradient bg-gradient-to-br from-pink-600 to-yellow-400 font-bold">
-          {Number((amount - 1).toPrecision(1))}
+          {compactNumberFormatter.format(count)}
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>
@@ -142,10 +143,10 @@
         projects to check out:
       </p>
       <div use:autoAnimate>
-        <!-- {#if random}
+        {#if random}
           <FeaturedProjectComponent project="{random[0]}" type="random" />
           <FeaturedProjectComponent project="{random[1]}" type="random" />
-        {/if} -->
+        {/if}
       </div>
       <div></div>
     </div>
