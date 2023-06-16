@@ -1,10 +1,8 @@
 <script lang="ts">
-  import IconClose from "~icons/tabler/X.svelte";
   import { fly } from "svelte/transition";
-  import autoAnimate from "@formkit/auto-animate";
+  import IconClose from "~icons/tabler/X.svelte";
 
-  let instance: HTMLDialogElement;
-  let visible: boolean = false;
+  let visible = false;
 
   export function open() {
     visible = true;
@@ -23,7 +21,7 @@
       class="relative m-auto w-1/3 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
       <button
         class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
-        on:click="{() => close()}">X</button>
+        on:click="{() => close()}"><IconClose /></button>
       <slot />
     </div>
   </div>

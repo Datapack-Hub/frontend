@@ -8,7 +8,7 @@ export const userSchema = z.object({
       expires: z.number()
     })
   ),
-  banned: z.boolean(),
+  banned: z.optional(z.boolean()),
   bio: z.string(),
   profile_icon: z.string(),
   role: z.string(),
@@ -18,22 +18,24 @@ export const userSchema = z.object({
 export const projectSchema = z.object({
   ID: z.optional(z.number()),
   author: z.number(),
-  body: z.string(),
-  category: z.string(),
-  description: z.optional(z.string()),
-  icon: z.optional(z.string()),
-  mod_message: z.optional(z.string()),
-  status: z.enum([
-    "unpublished",
-    "in_queue",
-    "live",
-    "draft",
-    "disabled",
-    "deleted",
-    "ghost",
-    "publish_queue",
-    "review_queue"
-  ]),
+  body: z.ostring(),
+  category: z.ostring(),
+  description: z.ostring(),
+  icon: z.ostring(),
+  mod_message: z.string().nullish(),
+  status: z.optional(
+    z.enum([
+      "unpublished",
+      "in_queue",
+      "live",
+      "draft",
+      "disabled",
+      "deleted",
+      "ghost",
+      "publish_queue",
+      "review_queue"
+    ])
+  ),
   title: z.string(),
   type: z.enum(["datapack", "url"]),
   url: z.string(),
@@ -49,7 +51,7 @@ export const projectSchema = z.object({
 
 export const notificationSchema = z.object({
   id: z.number(),
-  description: z.optional(z.string()),
+  description: z.ostring(),
   message: z.string(),
   read: z.boolean(),
   type: z.enum(["announcement", "ban", "warn", "default", "rainbow"])
@@ -57,7 +59,7 @@ export const notificationSchema = z.object({
 
 export const roleSchema = z.object({
   name: z.string(),
-  color: z.optional(z.string()),
+  color: z.ostring(),
   verified: z.boolean(),
   permissions: z.array(z.string())
 });
@@ -68,7 +70,7 @@ export const versionSchema = z.object({
   file_name: z.string(),
   minecraft_versions: z.string(),
   primary_download: z.string(),
-  resource_pack_download: z.optional(z.string()),
+  resource_pack_download: z.ostring(),
   version_code: z.string()
 });
 

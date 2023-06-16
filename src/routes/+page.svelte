@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import anime from "animejs";
-  import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
-  import { apiURL } from "$lib/globals/consts";
-  import autoAnimate from "@formkit/auto-animate";
   import { browser } from "$app/environment";
-  import { projectSchema } from "$lib/globals/schema";
+  import { apiURL } from "$lib/globals/consts";
   import type { Project } from "$lib/globals/schema";
+  import { projectSchema } from "$lib/globals/schema";
+  import autoAnimate from "@formkit/auto-animate";
+  import anime from "animejs";
+  import { onMount } from "svelte";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
