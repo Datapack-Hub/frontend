@@ -272,7 +272,7 @@
   {#if activePage == "description"}
     <div
       class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
-      <p class="w-full leading-tight">
+      <p class="w-full leading-tight break-all">
         <MarkdownComponent source="{body.replace('\\n', '\n')}" />
       </p>
     </div>

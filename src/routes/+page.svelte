@@ -11,6 +11,7 @@
 
   let visible = false;
   let width: number;
+  let count = 0;
 
   let proj: Project;
 
@@ -29,13 +30,17 @@
     url: "realistic-item-drops",
     status: "live",
     mod_message: null
-  } as Project;
+  };
 
   let random: Project;
   onMount(async () => {
     if (browser) {
-      let randomReq = await fetch(apiURL + "/projects/random");
-      random = (await randomReq.json()) as Project;
+      // TODO: Fix when api is fixed
+      // let countRes = await fetch(apiURL + "/projects/count")
+
+      let randomRes = await fetch(apiURL + "/projects/random");
+      random = (await randomRes.json()) as Project;
+      // count = (await countRes.json() as { count: number }).count
 
       let textWrapper = document.querySelectorAll(".split-text .letters");
       textWrapper.forEach(el => {
@@ -104,9 +109,9 @@
   <div class="moderation mx-20 dark:text-white p-2 rounded-lg">
     <b class="text-lg">Datapack Hub is in early beta.</b>
     <div class="pt-1"></div>
-    Many features are incomplete or do not work as expected. In these early
-    stages, there is likely going to be lots of downtime. All projects will stay
-    after the beta period, unless you don't want that.
+    Many features are incomplete or do not work as expected. In these early stages,
+    there is likely going to be lots of downtime. All projects will stay after the
+    beta period, unless you don't want that.
   </div>
   <div
     class="flex h-[75vh] w-full -translate-y-20 flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:translate-y-0 md:flex-row md:justify-between md:px-16 lg:px-24">
@@ -134,9 +139,9 @@
       <h2
         class="w-full text-center text-xl text-pearl-lusta-950 dark:text-pearl-lusta-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
-          title="{rawRand.toString()}"
+          title="{rand}"
           class="text-gradient bg-gradient-to-br from-pink-600 to-yellow-400 font-bold">
-          {rand}
+          {count}
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>
