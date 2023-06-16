@@ -3,6 +3,7 @@ import { apiURL } from "$lib/globals/consts";
 import { fetchAuthed } from "$lib/globals/functions";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
+import { projectSchema, roleSchema, versionSchema } from "$lib/globals/schema";
 
 export const load = (async ({ params, fetch }) => {
   if (browser) {
@@ -13,9 +14,11 @@ export const load = (async ({ params, fetch }) => {
     ]);
 
     if ([projectReq, versionsReq, rolesReq].every(r => r.ok)) {
-      const project = (await projectReq.json()) as Project;
-      const versions = (await versionsReq.json()).result as Version[];
-      const roles = (await rolesReq.json()).roles as Role[];
+      const project = projectSchema.parse(await projectReq.json());
+      const versions = versionSchema
+        .array()
+        .parse((await versionsReq.json()).result);
+      const roles = roleSchema.array().parse((await rolesReq.json()).roles);
 
       return {
         project: project,

@@ -30,6 +30,14 @@
 
   export let data: PageData;
 
+  let titleValue = data.project?.title;
+  let descVal = data.project?.description;
+  let bodyVal = data.project?.body;
+  let catVal = data.project?.category;
+  let iconVal: FileList;
+  let iconElem: HTMLImageElement;
+  let iconB64: string | ArrayBuffer | null | undefined;
+
   let createVersion = false;
 
   async function upload() {
@@ -99,54 +107,52 @@
       new Promise((success, reject) => {
         dataReader.addEventListener("load", () => {
           versionData.primary_download = dataReader.result as string;
-          success()
+          success(dataReader.result);
         });
 
         dataReader.addEventListener("error", () => {
           reject("There was an error handling this datapack upload!");
         });
-      }).then(
-        () => {
-          if (v_rp.files?.length == 1) {
-            packReader.readAsDataURL(v_rp.files[0]);
+      })
+        .then(
+          () => {
+            if (v_rp.files?.length == 1) {
+              packReader.readAsDataURL(v_rp.files[0]);
 
-            new Promise((resolve, reject) => {
-              packReader.addEventListener("load", () => {
-                versionData.resource_pack_download =
-                  packReader.result as string;
-                resolve(packReader.result);
-              });
+              new Promise((resolve, reject) => {
+                packReader.addEventListener("load", () => {
+                  versionData.resource_pack_download =
+                    packReader.result as string;
+                  resolve(packReader.result);
+                });
 
-              packReader.addEventListener("error", () => {
-                reject(
-                  "There was an error handling this resource pack upload!"
-                );
-              });
-            }).then(() => {
-              fetchAuthed(
-                "POST",
-                `/versions/new/${data.project?.ID}`,
-                versionData
-              )
-                .then(() => {
-                  toast.success(
-                    "Posted the version! Refresh to see the latest changes."
-                  );
-                  return (createVersion = false);
-                })
-                .catch(err => {
-                  toast.error(
-                    "There was an error uploading the file. Please try again later. If the issue persists, please contact an admin. Error: " +
-                      err
+                packReader.addEventListener("error", () => {
+                  reject(
+                    "There was an error handling this resource pack upload!"
                   );
                 });
-            });
+              });
+            }
+          },
+          err => {
+            return toast.error(err);
           }
-        },
-        err => {
-          return toast.error(err);
-        }
-      ),
+        )
+        .then(() => {
+          fetchAuthed("POST", `/versions/new/${data.project?.ID}`, versionData)
+            .then(() => {
+              toast.success(
+                "Posted the version! Refresh to see the latest changes."
+              );
+              return (createVersion = false);
+            })
+            .catch(err => {
+              toast.error(
+                "There was an error uploading the file. Please try again later. If the issue persists, please contact an admin. Error: " +
+                  err
+              );
+            });
+        }),
       {
         error: "Something went wrong!",
         loading: "Uploading... (this may take a minute)",
@@ -154,14 +160,6 @@
       }
     );
   }
-
-  let titleValue = data.project?.title;
-  let descVal = data.project?.description;
-  let bodyVal = data.project?.body;
-  let catVal = data.project?.category;
-  let iconVal: FileList;
-  let iconElem: HTMLImageElement;
-  let iconB64: string | ArrayBuffer | null | undefined;
 
   function uploadIcon() {
     if (iconVal[0].size > 256000) {

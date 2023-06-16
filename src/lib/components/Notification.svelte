@@ -3,6 +3,7 @@
   import { createEventDispatcher } from "svelte";
   import toast from "svelte-french-toast";
   import IconX from "~icons/tabler/X.svelte";
+  import type { Notif } from "$lib/globals/schema";
 
   const dispatch = createEventDispatcher();
 

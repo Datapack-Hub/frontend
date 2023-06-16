@@ -1,5 +1,6 @@
 <script lang="ts">
   import { titleCase } from "$lib/globals/functions";
+  import type { Role, User } from "$lib/globals/schema";
 
   export let person: User | undefined;
   export let role: Role | undefined;

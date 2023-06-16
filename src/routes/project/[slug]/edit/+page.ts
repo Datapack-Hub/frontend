@@ -2,6 +2,7 @@ import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 import { fetchAuthed } from "$lib/globals/functions";
 import { browser } from "$app/environment";
+import type { Project, User, Version } from "$lib/globals/schema";
 
 export const load = (async ({ params }) => {
   if (browser) {

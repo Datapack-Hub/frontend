@@ -3,6 +3,7 @@
   import { getAuthorFromID } from "$lib/globals/functions";
   import { fade } from "svelte/transition";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
+  import type { Project, User } from "$lib/globals/schema";
 
   export let project: Project;
 

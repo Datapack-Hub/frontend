@@ -5,6 +5,8 @@ import { apiURL } from "$lib/globals/consts";
 import { browser } from "$app/environment";
 import { role } from "$lib/globals/stores";
 import { get } from "svelte/store";
+import { userSchema } from "$lib/globals/schema";
+import type { Role } from "$lib/globals/schema";
 
 export const load = (async ({ params }) => {
   if (browser) {
@@ -17,8 +19,8 @@ export const load = (async ({ params }) => {
     ]);
 
     const [userJSON, meJSON] = await Promise.all([
-      (await user.json()) as User,
-      (await me.json()) as User
+      userSchema.parseAsync(await user.json()),
+      userSchema.parseAsync(await me.json())
     ]);
 
     if ([user, me, roles].every(r => r.ok)) {
@@ -37,7 +39,7 @@ export const load = (async ({ params }) => {
       }
 
       return {
-        profile: userJSON as User,
+        profile: userSchema.parse(userJSON),
         role: profileRole
       };
     }

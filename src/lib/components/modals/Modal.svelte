@@ -4,14 +4,14 @@
   import autoAnimate from "@formkit/auto-animate";
 
   let instance: HTMLDialogElement;
-  let visible: boolean = false
+  let visible: boolean = false;
 
   export function open() {
-    visible = true
+    visible = true;
   }
 
   export function close() {
-    visible = false
+    visible = false;
   }
 </script>
 

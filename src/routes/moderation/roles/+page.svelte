@@ -3,6 +3,7 @@
   import { fetchAuthed, titleCase } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
+  import type { Role } from "$lib/globals/schema";
 
   let rolesJson: Role[];
 
@@ -11,8 +12,8 @@
       goto("/");
     }
 
-    let logs = await fetchAuthed("get", "/user/staff/roles");
-    rolesJson = (await logs.json())["roles"];
+    let roles = await fetchAuthed("get", "/user/staff/roles");
+    rolesJson = (await roles.json())["roles"];
   }
 </script>
 

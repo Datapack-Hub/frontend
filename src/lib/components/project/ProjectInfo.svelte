@@ -14,6 +14,7 @@
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconCross from "~icons/tabler/X.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
+  import type { Project, User } from "$lib/globals/schema";
 
   // Component args
   export let project: Project;
@@ -34,7 +35,7 @@
     mm.remove();
     let dsm = await fetchAuthed(
       "DELETE",
-      "/moderation/project/" + project?.ID.toString() + "/dismiss_message"
+      "/moderation/project/" + project?.ID?.toString() + "/dismiss_message"
     );
     if (dsm.ok) {
       mm.remove();

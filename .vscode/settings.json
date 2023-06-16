@@ -8,5 +8,10 @@
     "Notif",
     "tabler",
     "tippy"
-  ]
+  ],
+  "commandOnAllFiles.commands": {
+    "Things": {
+      "command": ""
+    }
+  }
 }

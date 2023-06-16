@@ -14,6 +14,7 @@
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import IconRP from "~icons/tabler/Sparkles.svelte";
   import { fetchAuthed } from "$lib/globals/functions";
+  import type { Project, Version } from "$lib/globals/schema";
 
   export let version: Version;
   export let expanded = false;
@@ -37,7 +38,11 @@
       return download(version.resource_pack_download, mc_version, false);
   }
 
-  async function download(url: string | null, version: string, rp: boolean) {
+  async function download(
+    url: string | undefined,
+    version: string,
+    rp: boolean
+  ) {
     if (browser && url) {
       let zip = await fetch(url);
       let zipBlob = await zip.blob();

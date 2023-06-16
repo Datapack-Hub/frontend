@@ -27,6 +27,7 @@
   import MiniProfileCard from "../profile/MiniProfileCard.svelte";
   import { onMount } from "svelte";
   import Button from "../Button.svelte";
+  import type { Project, Role, User, Version } from "$lib/globals/schema";
 
   // Component args
   export let project: Project;
@@ -85,7 +86,7 @@
   async function approve() {
     let p = await fetchAuthed(
       "PATCH",
-      "/moderation/project/" + project?.ID.toString() + "/action",
+      "/moderation/project/" + project?.ID?.toString() + "/action",
       {
         action: "publish"
       }
@@ -272,7 +273,7 @@
   {#if activePage == "description"}
     <div
       class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
-      <p class="w-full leading-tight break-all">
+      <p class="w-full leading-tight break-words">
         <MarkdownComponent source="{body.replace('\\n', '\n')}" />
       </p>
     </div>

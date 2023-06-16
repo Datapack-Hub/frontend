@@ -1,17 +1,18 @@
 import { apiURL } from "$lib/globals/consts";
+import { projectSchema } from "$lib/globals/schema";
 import type { PageLoad } from "./$types";
 
 export const load = (async ({ fetch, url }) => {
-  let sp = 1
-  if(typeof url.searchParams.get("page") == "string") {
-    sp = parseInt(url.searchParams.get("page"))
+  let sp = 1;
+  if (url.searchParams.has("page")) {
+    sp = parseInt(url.searchParams.get("page") ?? "1");
   }
   const proj = await fetch(`${apiURL}/projects/?page=${sp}`);
 
   if (proj.ok) {
-    const js = await proj.json()
-    const data = js.result as Project[];
-    const count = parseInt(js.pages)
+    const js = await proj.json();
+    const data = projectSchema.array().parse(js.result);
+    const count = parseInt(js.pages);
 
     return {
       projects: data,
@@ -20,5 +21,8 @@ export const load = (async ({ fetch, url }) => {
     };
   }
 
-  return {};
+  return {
+    page: 0,
+    pages: 0
+  };
 }) satisfies PageLoad;

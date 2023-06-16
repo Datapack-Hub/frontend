@@ -7,12 +7,17 @@
   import type { PageData } from "./$types";
 
   import IconSearch from "~icons/tabler/Search.svelte";
+  import type { Project } from "$lib/globals/schema";
+  import { projectSchema } from "$lib/globals/schema";
 
   let query: string;
+  let dataCopy: Project[];
 
   let search = debounce(async () => {
     let searchResult = await fetch(apiURL + `/projects/search?query=${query}`);
-    data.projects = (await searchResult.json()).result as Project[];
+    dataCopy = await projectSchema
+      .array()
+      .parseAsync((await searchResult.json()).result);
   }, 300);
 
   export let data: PageData;
@@ -45,10 +50,10 @@
       {#if Array(data.pages).length < 5}
         {#each Array(data.pages) as _, i}
           {#if data.page == i + 1}
-          <a
-            href="/projects?page={i + 1}"
-            class="mt-4 h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-            >{i + 1}</a>
+            <a
+              href="/projects?page={i + 1}"
+              class="mt-4 h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+              >{i + 1}</a>
           {:else}
             <a
               href="/projects?page={i + 1}"
@@ -70,18 +75,18 @@
           class="mt-4 h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >{data.page}</a>
         {#if data.pages > data.page}
-        <a
-          href="/projects?page={data.page + 1}"
-          class="mt-4 h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-          >{data.page + 1}</a>
+          <a
+            href="/projects?page={data.page + 1}"
+            class="mt-4 h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+            >{data.page + 1}</a>
         {/if}
         {#if data.pages > data.page + 1}
-        <a
-          href="/projects?page={data.page + 2}"
-          class="mt-4 h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-          >{data.page + 2}</a>
+          <a
+            href="/projects?page={data.page + 2}"
+            class="mt-4 h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+            >{data.page + 2}</a>
         {/if}
-        {/if}
+      {/if}
     </div>
   </div>
   <CasualLine />

@@ -9,6 +9,7 @@
   import IconFeatured from "~icons/tabler/Trophy.svelte";
 
   import tippy from "sveltejs-tippy";
+  import type { Project, User } from "$lib/globals/schema";
 
   export let project: Project;
   export let type: "popular" | "featured" | "random" | "new" = "popular";

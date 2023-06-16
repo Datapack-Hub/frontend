@@ -5,6 +5,7 @@
   import IconSettings from "~icons/tabler/Settings.svelte";
   import Button from "../Button.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
+  import type { User, Role } from "$lib/globals/schema";
 
   export let profile: User | undefined;
   export let profileRole: Role | undefined;

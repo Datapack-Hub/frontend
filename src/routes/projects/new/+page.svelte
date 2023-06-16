@@ -6,6 +6,7 @@
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import toast from "svelte-french-toast";
+  import type { Project } from "$lib/globals/schema";
 
   let iconVal: FileList;
   let iconElem: HTMLImageElement;
@@ -18,7 +19,7 @@
 
   async function create() {
     let projData: Project = {
-      icon: iconB64?.toString() ?? null,
+      icon: iconB64?.toString(),
       type: "datapack",
       url: titleVal.toLowerCase().replaceAll(" ", "-"),
       title: titleVal,
@@ -26,9 +27,7 @@
       body: bodyVal,
       category: catVal,
       author: $user.id,
-      status: "draft",
-      latest_version: null,
-      mod_message: null
+      status: "draft"
     };
 
     toast.promise(

@@ -3,6 +3,8 @@ import { apiURL } from "$lib/globals/consts";
 import { fetchAuthed } from "$lib/globals/functions";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
+import { projectSchema, userSchema } from "$lib/globals/schema";
+import type { Role } from "$lib/globals/schema";
 
 export const load = (async ({ params, fetch }) => {
   if (browser) {
@@ -27,8 +29,8 @@ export const load = (async ({ params, fetch }) => {
     }
 
     const [profileJson, projectJson] = await Promise.all([
-      (await user.json()) as User,
-      (await projects.json()).result as Project[]
+      userSchema.parseAsync(await user.json()),
+      projectSchema.array().parseAsync((await projects.json()).result)
     ]);
 
     const profileRole: Role = (await role.json()).roles.find(

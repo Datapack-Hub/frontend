@@ -6,6 +6,7 @@
   import { onMount } from "svelte";
   import Button from "../Button.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
+  import { userSchema } from "$lib/globals/schema";
 
   let visible = false;
   let banReason: string;
@@ -16,7 +17,7 @@
       let me = await fetchAuthed("get", "/user/me");
 
       if (me.ok) {
-        let meJson = (await me.json()) as User;
+        let meJson = userSchema.parse(await me.json());
 
         if (meJson.banned == true && meJson.banData) {
           banReason = meJson.banData.message;

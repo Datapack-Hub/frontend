@@ -5,6 +5,8 @@
   import { apiURL } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";
   import { browser } from "$app/environment";
+  import { projectSchema } from "$lib/globals/schema";
+  import type { Project } from "$lib/globals/schema";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let rand = Intl.NumberFormat("en", { notation: "compact" }).format(rawRand);
@@ -18,11 +20,13 @@
   onMount(async () => {
     if (browser) {
       let randomReq = await fetch(apiURL + "/projects/random?count=2");
-      random = (await randomReq.json())["result"] as Project[];
+      random = await projectSchema
+        .array()
+        .parseAsync((await randomReq.json()).result);
 
-      let count = await fetch(apiURL + "/projects/count")
-      let countJson = await count.json()
-      amount = countJson.count
+      let count = await fetch(apiURL + "/projects/count");
+      let countJson = await count.json();
+      amount = countJson.count;
 
       let textWrapper = document.querySelectorAll(".split-text .letters");
       textWrapper.forEach(el => {
@@ -134,7 +138,10 @@
         class=" text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center mt-6">
         Featured Projects
       </h3>
-      <p class="dark:text-pearl-lusta-100 text-center">Featured projects are coming soon! In the meantime, here's some random projects to check out:</p>
+      <p class="dark:text-pearl-lusta-100 text-center">
+        Featured projects are coming soon! In the meantime, here's some random
+        projects to check out:
+      </p>
       <div use:autoAnimate>
         <!-- {#if random}
           <FeaturedProjectComponent project="{random[0]}" type="random" />

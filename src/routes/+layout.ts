@@ -2,7 +2,9 @@ import { browser } from "$app/environment";
 import { goto } from "$app/navigation";
 import { apiURL } from "$lib/globals/consts";
 import { fetchAuthed, getCookie, loadColorPref } from "$lib/globals/functions";
+import { roleSchema, userSchema } from "$lib/globals/schema";
 import { authed, role, user } from "$lib/globals/stores";
+import type { Role } from "$lib/globals/schema";
 import type { LayoutLoad } from "./$types";
 
 export const load = (async ({ fetch, url }) => {
@@ -25,13 +27,15 @@ export const load = (async ({ fetch, url }) => {
         fetch(`${apiURL}/user/staff/roles`)
       ]);
 
-      const userJson = (await userRes.json()) as User;
+      const userJson = userSchema.parse(await userRes.json());
 
       user.set(userJson);
       role.set(
-        (await roleRes.json()).roles.find(
-          (v: Role) => v.name == userJson.role
-        ) as Role
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        roleSchema
+          .array()
+          .parse((await roleRes.json()).roles)
+          .find((v: Role) => v.name == userJson.role)!
       );
       authed.set(true);
     }

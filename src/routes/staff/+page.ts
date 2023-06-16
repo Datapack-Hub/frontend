@@ -1,5 +1,6 @@
 import { browser } from "$app/environment";
 import { apiURL } from "$lib/globals/consts";
+import { roleSchema, userSchema } from "$lib/globals/schema.js";
 
 export const load = async ({ fetch }) => {
   if (browser) {
@@ -15,16 +16,16 @@ export const load = async ({ fetch }) => {
     if ([admins, moderators, devs, helpers, prefetchedRoles].every(r => r.ok)) {
       const [adminsJSON, moderatorsJSON, devsJSON, helpersJSON] =
         await Promise.all([
-          (await admins.json()).values as User[],
-          (await moderators.json()).values as User[],
-          (await devs.json()).values as User[],
-          (await helpers.json()).values as User[]
+          userSchema.array().parseAsync((await admins.json()).values),
+          userSchema.array().parseAsync((await moderators.json()).values),
+          userSchema.array().parseAsync((await devs.json()).values),
+          userSchema.array().parseAsync((await helpers.json()).values)
         ]);
 
       const data = adminsJSON.concat(moderatorsJSON, devsJSON, helpersJSON);
       return {
         staff: data,
-        roleData: (await prefetchedRoles.json()).roles as Role[]
+        roleData: roleSchema.array().parse((await prefetchedRoles.json()).roles)
       };
     }
   }

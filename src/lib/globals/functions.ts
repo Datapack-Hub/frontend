@@ -1,3 +1,4 @@
+import type { User } from "$lib/globals/schema";
 import { apiURL } from "./consts";
 import { isDark } from "./stores";
 

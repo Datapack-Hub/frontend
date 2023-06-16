@@ -12,6 +12,7 @@
   import { fetchAuthed } from "../../globals/functions";
   import Button from "../Button.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
+  import type { User } from "$lib/globals/schema";
 
   export let user: User | undefined;
 

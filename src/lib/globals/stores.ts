@@ -1,4 +1,5 @@
-import { writable } from "svelte/store";
+import { writable, type Writable } from "svelte/store";
+import type { Role, User } from "$lib/globals/schema";
 
 export const isDark = writable(true);
 export const authed = writable(false);
@@ -7,7 +8,7 @@ export const authed = writable(false);
  * Store for User Data, this contains all the user's data
  */
 
-export const user = writable({
+export const user: Writable<User> = writable({
   id: -1,
   username: "",
   bio: "",
@@ -19,9 +20,8 @@ export const user = writable({
  * Contains all information about a role
  */
 
-export const role = writable({
+export const role: Writable<Role> = writable({
   name: "default",
-  color: null as string | null,
   verified: false,
   permissions: [] as string[]
 });
