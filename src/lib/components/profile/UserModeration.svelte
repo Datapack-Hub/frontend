@@ -97,9 +97,9 @@
     let exp;
 
     if (permanent.checked) {
-      exp = 36500
+      exp = 36500;
     } else {
-      exp = expiry.value
+      exp = expiry.value;
     }
 
     let ban = await fetchAuthed("post", `/moderation/ban/${user?.id}`, {
@@ -137,13 +137,13 @@
   }
   $: iconColor = $isDark ? "white" : "black";
 
-  function disableBan(){
+  function disableBan() {
     const permanent = document.getElementById(
       "ban-permanent"
     ) as HTMLInputElement;
     let expiry = document.getElementById("ban-expiry") as HTMLInputElement;
-    expiry.disabled = false
-    if(permanent.checked) expiry.disabled = true
+    expiry.disabled = false;
+    if (permanent.checked) expiry.disabled = true;
   }
 </script>
 

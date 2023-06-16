@@ -67,7 +67,6 @@
         <div class="bg-stone-600 p-4 rounded-xl dark:text-white">
           <IconNoPhoto width="48" height="48" />
         </div>
-
       {/if}
       <h1
         class="flex items-center text-4xl font-bold text-pearl-lusta-950 dark:text-white">

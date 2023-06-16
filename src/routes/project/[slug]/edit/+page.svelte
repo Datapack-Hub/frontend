@@ -163,8 +163,8 @@
   let iconB64: string | ArrayBuffer | null | undefined;
 
   function uploadIcon() {
-    if(iconVal[0].size > 256000) {
-      return toast.error("Icon must be less than 256kb")
+    if (iconVal[0].size > 256000) {
+      return toast.error("Icon must be less than 256kb");
     }
     let reader = new FileReader();
 
@@ -182,20 +182,20 @@
       return toast.error("Body must be at least 100 characters");
 
     let projData: {
-      title: string | undefined,
-      description: string | undefined | null,
-      body: string | undefined,
-      category: string | undefined,
-      icon?: string | ArrayBuffer | null | undefined
-      } = {
-        title: titleValue,
-        description: descVal,
-        body: bodyVal,
-        category: catVal
-      };
+      title: string | undefined;
+      description: string | undefined | null;
+      body: string | undefined;
+      category: string | undefined;
+      icon?: string | ArrayBuffer | null | undefined;
+    } = {
+      title: titleValue,
+      description: descVal,
+      body: bodyVal,
+      category: catVal
+    };
 
-    if(iconB64) {
-      projData["icon"] = iconB64?.toString()
+    if (iconB64) {
+      projData["icon"] = iconB64?.toString();
     }
 
     let x = await fetchAuthed(
@@ -293,7 +293,8 @@
         <div class="text-center align-middle md:text-start">
           <div class=" rounded-xl bg-stone-800 p-2 pb-2">
             <!--meanwhile, bean-->
-            <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+            <p
+              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
               Icon
             </p>
             <img
@@ -457,7 +458,10 @@
           {/if}
           <div class="space-y-2">
             {#each data.versions ?? [] as version}
-              <VersionDisplay version="{version}" modifiable={true} project={data.project} />
+              <VersionDisplay
+                version="{version}"
+                modifiable="{true}"
+                project="{data.project}" />
             {/each}
           </div>
         </div>

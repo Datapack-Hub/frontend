@@ -2,11 +2,15 @@
   // Svelte imports
   import { goto } from "$app/navigation";
   import { versions } from "$lib/globals/consts";
-  import { fetchAuthed, getAuthorFromID, titleCase } from "$lib/globals/functions";
+  import {
+    fetchAuthed,
+    getAuthorFromID,
+    titleCase
+  } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import toast from "svelte-french-toast";
-// Component imports
+  // Component imports
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import MultiSelect from "svelte-multiselect";
@@ -22,6 +26,7 @@
   import Modal from "../modals/Modal.svelte";
   import MiniProfileCard from "../profile/MiniProfileCard.svelte";
   import { onMount } from "svelte";
+  import Button from "../Button.svelte";
 
   // Component args
   export let project: Project;
@@ -94,7 +99,7 @@
   }
 
   async function moderate(action: string) {
-    modModal.close()
+    modModal.close();
     let modReqData: object = {};
     switch (action) {
       case "delete":
@@ -275,7 +280,8 @@
     <div
       class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
       <div class="mb-3 text-sky-300" use:autoAnimate>
-        <a href="" on:click={() => activePage = "description"}>&lt;- Back to description</a>
+        <Button click="{() => (activePage = 'description')}"
+          >&lt;- Back to description</Button>
       </div>
       {#if dp_versions?.length != 0}
         <div class="flex space-x-2 w-full items-center dark:text-white">
@@ -315,7 +321,8 @@
     <div class="mb-2 items-center space-y-2">
       <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
         <div class="mb-3 text-sky-300" use:autoAnimate>
-          <a href="" on:click={() => activePage = "description"}>&lt;- Back to description</a>
+          <Button click="{() => (activePage = 'description')}"
+            >&lt;- Back to description</Button>
         </div>
         {#if dp_versions?.length != 0}
           <p class="text-white">Select a Minecraft version:</p>
@@ -350,7 +357,7 @@
             {/each}
             <button
               class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 text-white"
-              on:click="{() => activePage = "versions"}">
+              on:click="{() => (activePage = 'versions')}">
               <div class="font-bold flex-grow flex items-center space-x-2">
                 <IconFiles />
                 <p>Show All Versions</p>
@@ -364,11 +371,12 @@
           </div>
         {:else}
           <h2 class=" text-xl text-pearl-lusta-950 dark:text-white">
-            <b>No versions yet!</b> {#if project.author.id == $user.id}Why not
-            <a
-              href="/project/{project?.url}/edit"
-              class="text-blue-500 underline">create one</a
-            >?{/if}
+            <b>No versions yet!</b>
+            {#if project.author == $user.id}Why not
+              <a
+                href="/project/{project?.url}/edit"
+                class="text-blue-500 underline">create one</a
+              >?{/if}
           </h2>
         {/if}
       </div>
@@ -394,83 +402,85 @@
   {/if}
 </div>
 
-<Modal bind:this="{modModal}">
-  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
-    Moderate {project?.title}
-  </h1>
-  <CasualLine />
-  <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-  <p
-    class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
-    User
-  </p>
-  <MiniProfileCard
-    person="{author}"
-    role="{roles?.find(v => author?.role == v.name)}" />
-  <div class="mb-2 min-w-fit items-center">
+<div class="relative">
+  <Modal bind:this="{modModal}">
+    <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+      Moderate {project?.title}
+    </h1>
+    <CasualLine />
+    <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
     <p
       class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
-      Select Action
+      User
     </p>
-    <button
-      class="button-base {modModalPage === 'delete'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
-      on:click="{() => (modModalPage = 'delete')}">Delete</button>
-    <button
-      class="button-base {modModalPage === 'disable'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
-      on:click="{() => (modModalPage = 'disable')}">Disable</button>
-    <button
-      class="button-base {modModalPage === 'write note'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
-      on:click="{() => (modModalPage = 'write note')}">Write Note</button>
-    <button
-      class="button-base bg-stone-900"
-      on:click="{() => goto('/project/' + project?.url + '/edit')}"
-      >Edit Submission</button>
-  </div>
-  <p
-    class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
-    Moderation Note
-  </p>
-  <textarea
-    class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700"
-    placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
-    id="description"
-    maxlength="200"
-    bind:value="{postedModMsg}"></textarea>
-  <button class="button-primary" on:click="{() => moderate(modModalPage)}"
-    >{titleCase(modModalPage)}</button>
-</Modal>
+    <MiniProfileCard
+      person="{author}"
+      role="{roles?.find(v => author?.role == v.name)}" />
+    <div class="mb-2 min-w-fit items-center">
+      <p
+        class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+        Select Action
+      </p>
+      <button
+        class="button-base {modModalPage === 'delete'
+          ? 'bg-stone-600'
+          : 'bg-stone-900'}"
+        on:click="{() => (modModalPage = 'delete')}">Delete</button>
+      <button
+        class="button-base {modModalPage === 'disable'
+          ? 'bg-stone-600'
+          : 'bg-stone-900'}"
+        on:click="{() => (modModalPage = 'disable')}">Disable</button>
+      <button
+        class="button-base {modModalPage === 'write note'
+          ? 'bg-stone-600'
+          : 'bg-stone-900'}"
+        on:click="{() => (modModalPage = 'write note')}">Write Note</button>
+      <button
+        class="button-base bg-stone-900"
+        on:click="{() => goto('/project/' + project?.url + '/edit')}"
+        >Edit Submission</button>
+    </div>
+    <p
+      class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+      Moderation Note
+    </p>
+    <textarea
+      class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700"
+      placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
+      id="description"
+      maxlength="200"
+      bind:value="{postedModMsg}"></textarea>
+    <button class="button-primary" on:click="{() => moderate(modModalPage)}"
+      >{titleCase(modModalPage)}</button>
+  </Modal>
 
-<Modal bind:this="{reportModal}">
-  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
-    Report {project?.title}
-  </h1>
-  <CasualLine />
-  <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-  <p
-    class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
-    Author
-  </p>
-  <MiniProfileCard
-    person="{author}"
-    role="{roles?.find(v => author?.role == v.name)}" />
-  <p
-    class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
-    Report Message
-  </p>
-  <textarea
-    class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700"
-    placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
-    id="description"
-    maxlength="200"
-    bind:value="{reportMsg}"></textarea>
-  <button class="button-primary" on:click="{() => report()}">Report</button>
-</Modal>
+  <Modal bind:this="{reportModal}">
+    <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+      Report {project?.title}
+    </h1>
+    <CasualLine />
+    <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
+    <p
+      class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+      Author
+    </p>
+    <MiniProfileCard
+      person="{author}"
+      role="{roles?.find(v => author?.role == v.name)}" />
+    <p
+      class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+      Report Message
+    </p>
+    <textarea
+      class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700"
+      placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
+      id="description"
+      maxlength="200"
+      bind:value="{reportMsg}"></textarea>
+    <button class="button-primary" on:click="{() => report()}">Report</button>
+  </Modal>
+</div>
 
 <style lang="postcss">
   :root {

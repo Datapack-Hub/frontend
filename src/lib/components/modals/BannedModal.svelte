@@ -55,15 +55,19 @@
       <!-- <h1 class=" text-2xl text-pearl-lusta-950 dark:text-white font-regular">You are temporarily banned from Datapack Hub</h1> -->
       <CasualLine />
       <p class="text-lg text-pearl-lusta-950 dark:text-white">
-        <b>You are banned from Datapack Hub.</b> You are not able to upload, edit projects, or interact with the site until your ban has expired. <p class="text-md text-pearl-lusta-950 dark:text-white mt-2">Ban Reason:
+        <b>You are banned from Datapack Hub.</b> You are not able to upload, edit
+        projects, or interact with the site until your ban has expired.
+      </p>
+      <p class="text-md text-pearl-lusta-950 dark:text-white mt-2">
+        Ban Reason:
       </p>
       <p class="prose mb-2 rounded-xl bg-stone-700 p-2 dark:text-stone-300">
         <MarkdownComponent source="{banReason}" />
       </p>
       <p class="mt-3 text-pearl-lusta-950 dark:text-white">
         <b>Your ban will expire:</b>
-        {new Date(expiry * 1000).toLocaleString()}. <br /> Until then, wait for the ban
-        to expire, and read
+        {new Date(expiry * 1000).toLocaleString()}. <br /> Until then, wait for
+        the ban to expire, and read
         <a href="/rules" class="text-blue-500 underline">our rules</a>.
       </p>
       <Button classes="mt-4" click="{signOut}">Log Out</Button>

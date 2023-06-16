@@ -18,8 +18,8 @@
   export let version: Version;
   export let expanded = false;
   export let mc_version: string | undefined = undefined;
-  export let modifiable: boolean = false;
-  export let project: Project | undefined = undefined
+  export let modifiable = false;
+  export let project: Project | undefined = undefined;
 
   let dlModal: Modal;
 
@@ -96,11 +96,17 @@
   }
 
   async function deleteVersion() {
-    toast.promise(fetchAuthed("DELETE",`/versions/project/${project?.ID}/${version.version_code}`),{
-      loading:"Deleting version...",
-      success:"Version deleted! Refresh to see the updates",
-      error:"Error trying to delete project."
-    })
+    toast.promise(
+      fetchAuthed(
+        "DELETE",
+        `/versions/project/${project?.ID}/${version.version_code}`
+      ),
+      {
+        loading: "Deleting version...",
+        success: "Version deleted! Refresh to see the updates",
+        error: "Error trying to delete project."
+      }
+    );
   }
 </script>
 
@@ -149,8 +155,7 @@
           deleteVersion();
         }}"
         id="#download"
-        class="rounded-xl text-red-500 p-1"
-        >Delete</button>
+        class="rounded-xl text-red-500 p-1">Delete</button>
       <button
         on:click="{() => {
           downloadVersion();
