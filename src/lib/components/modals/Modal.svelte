@@ -16,16 +16,15 @@
 </script>
 
 {#if visible}
-<div
-  use:autoAnimate
-  in:fly="{{ y: -200, duration: 500 }}"
-  class="absolute justify-self-center bg-transparent backdrop:backdrop-blur-lg backdrop:brightness-75 backdrop:transition-all transition-all w-1/3">
-  <div class="rounded-xl p-3 bg-pearl-lusta-200 dark:bg-stone-800">
-    <form method="dialog">
-      <button class="float-right text-pearl-lusta-950 dark:text-white"
-        ><IconClose /></button>
-    </form>
-    <slot />
+  <div
+    class="fixed left-0 top-0 z-50 flex h-full w-full transform-gpu backdrop-blur-lg">
+    <div
+      in:fly="{{ y: 300 }}"
+      class="relative m-auto w-1/3 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
+      <button
+        class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+        on:click="{() => close()}">X</button>
+      <slot />
+    </div>
   </div>
-</div>
 {/if}
