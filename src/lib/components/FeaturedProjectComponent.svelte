@@ -14,7 +14,7 @@
   export let project: Project;
   export let type: "popular" | "featured" | "random" | "new" = "popular";
 
-  console.log(project)
+  console.log(project);
 
   let hoverMsgs = {
     popular: {
@@ -98,7 +98,9 @@
           {#if project.latest_version}
             <span>•</span>
             <span
-              >{project.latest_version.minecraft_versions.split(",").at(-1)}</span>
+              >{project.latest_version.minecraft_versions
+                .split(",")
+                .at(-1)}</span>
             <span>•</span>
             <span>{project.latest_version.version_code}</span>
           {:else}

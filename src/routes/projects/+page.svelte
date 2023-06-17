@@ -22,7 +22,7 @@
 
   export let data: PageData;
 
-  dataCopy = data.projects
+  dataCopy = data.projects;
 </script>
 
 <svelte:head>

@@ -76,8 +76,7 @@
     {/if}
   </p>
 
-  <p
-    class="mt-8 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-6">
+  <p class="mt-8 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-6">
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
