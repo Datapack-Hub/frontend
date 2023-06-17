@@ -135,7 +135,7 @@
       </h2>
     </div>
     <div
-      class="mt-8 h-3/4 w-4/5 justify-between space-y-3 bg-stone-800 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:h-2/3 md:w-1/2">
+      class="mt-8 h-fit justify-between space-y-3 bg-stone-800 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:w-1/2">
       <h3
         class=" text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center mt-6">
         Featured Projects
