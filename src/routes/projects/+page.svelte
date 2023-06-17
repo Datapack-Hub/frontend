@@ -21,6 +21,8 @@
   }, 300);
 
   export let data: PageData;
+
+  dataCopy = data.projects
 </script>
 
 <svelte:head>
@@ -91,14 +93,14 @@
   </div>
   <CasualLine />
   <div class="py-4 flex flex-col">
-    {#if !data.projects || !(data.projects.length >= 1)}
+    {#if !dataCopy || !(dataCopy.length >= 1)}
       <h2 class=" text-pearl-lusta-950 dark:text-white">No results found</h2>
     {:else}
       <ul class="space-y-2 mx-3" use:autoAnimate>
         <h2 class=" text-pearl-lusta-950 dark:text-white">
-          Showing {data.projects.length} projects:
+          Showing {dataCopy.length} projects:
         </h2>
-        {#each data.projects as project}
+        {#each dataCopy as project}
           <!-- uncomment these to see the featured stuff on the thingy thing -->
           <!-- {#if Math.random() < 0.2} -->
           <!-- <FeaturedProjectComponent project="{project}" /> -->
