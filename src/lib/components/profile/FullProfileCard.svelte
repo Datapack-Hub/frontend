@@ -75,11 +75,12 @@
       </span>
     {/if}
   </p>
-  <p
-    class="mt-8 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-6 leading-tight dark:prose-invert">
+
+  <p class="mt-8 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-6">
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
+
   {#if $authed && $user.id === profile?.id}
     <Button
       style="secondary"

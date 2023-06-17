@@ -62,6 +62,7 @@
   class="mb-3 w-full items-center rounded-xl outline outline-{style} relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
   <div class="flex items-center">
     <a
+      aria-label="Click to go to {project.title}"
       href="/project/{project.url}"
       class="rounded-lg {project.icon
         ? ''
@@ -96,9 +97,9 @@
           {#if project.latest_version}
             <span>•</span>
             <span
-              >{project.latest_version.minecraft_versions.split(",")[
-                project.latest_version.minecraft_versions.split(",").length - 1
-              ]}</span>
+              >{project.latest_version.minecraft_versions
+                .split(",")
+                .at(-1)}</span>
             <span>•</span>
             <span>{project.latest_version.version_code}</span>
           {:else}

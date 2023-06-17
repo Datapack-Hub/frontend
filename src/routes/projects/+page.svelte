@@ -22,7 +22,7 @@
 
   export let data: PageData;
 
-  dataCopy = data.projects
+  dataCopy = data.projects;
 </script>
 
 <svelte:head>
@@ -96,16 +96,18 @@
     {#if !dataCopy || !(dataCopy.length >= 1)}
       <h2 class=" text-pearl-lusta-950 dark:text-white">No results found</h2>
     {:else}
+      <h2 class=" text-pearl-lusta-950 dark:text-white">
+        Showing {dataCopy.length} projects:
+      </h2>
       <ul class="space-y-2 mx-3" use:autoAnimate>
-        <h2 class=" text-pearl-lusta-950 dark:text-white">
-          Showing {dataCopy.length} projects:
-        </h2>
         {#each dataCopy as project}
           <!-- uncomment these to see the featured stuff on the thingy thing -->
           <!-- {#if Math.random() < 0.2} -->
           <!-- <FeaturedProjectComponent project="{project}" /> -->
           <!-- {:else} -->
-          <ProjectComponent project="{project}" />
+          <li>
+            <ProjectComponent project="{project}" />
+          </li>
           <!-- {/if} -->
         {/each}
       </ul>

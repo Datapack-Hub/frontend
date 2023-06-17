@@ -16,10 +16,11 @@ export default defineConfig({
     '/staff',
     '/rules',
     '/user/hoodierocks',
-    '/project/burnttoast',
+    '/project/taglib',
+    '/projects',
+    '/notifications',
     '/'
   ],
-  debug: true,
   hooks: {
     "puppeteer:before-goto": async(page) => {
       await page.setCookie({
