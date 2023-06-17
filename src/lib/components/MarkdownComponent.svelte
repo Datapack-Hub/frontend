@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
+  import { afterNavigate, beforeNavigate } from "$app/navigation";
 
   export let source: string | undefined = "";
 
@@ -12,6 +13,31 @@
       const msp = await import("marked-smartypants");
       const marked = await import("marked");
       marked.marked.use(msp.markedSmartypants());
+      if (!source) html = "";
+      else {
+        html = await marked.marked.parse(
+          DOMPurify.sanitize(source, {
+            FORBID_ATTR: ["style", "class", "placeholder", "src"],
+            FORBID_TAGS: ["canvas", "svg", "iframe", "img"],
+            ALLOWED_TAGS: ["details", "summary"]
+          }),
+          {
+            async: true,
+            breaks: true,
+            gfm: true,
+            mangle: false,
+            headerIds: false
+          }
+        );
+      }
+    }
+  });
+
+  afterNavigate(async () => {
+    if (browser) {
+      const DOMPurify = await import("isomorphic-dompurify");
+      const msp = await import("marked-smartypants");
+      const marked = await import("marked");
       if (!source) html = "";
       else {
         html = await marked.marked.parse(

@@ -14,6 +14,8 @@
   export let project: Project;
   export let type: "popular" | "featured" | "random" | "new" = "popular";
 
+  console.log(project)
+
   let hoverMsgs = {
     popular: {
       content: "This datapack is trending on Datapack Hub",
@@ -96,9 +98,7 @@
           {#if project.latest_version}
             <span>•</span>
             <span
-              >{project.latest_version.minecraft_versions.split(",")[
-                project.latest_version.minecraft_versions.split(",").length - 1
-              ]}</span>
+              >{project.latest_version.minecraft_versions.split(",").at(-1)}</span>
             <span>•</span>
             <span>{project.latest_version.version_code}</span>
           {:else}
