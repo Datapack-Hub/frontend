@@ -23,6 +23,7 @@
 
   let publishModal: Modal;
   let draftModal: Modal;
+  let deleteModal: Modal;
 
   let selected: string[] = [];
   let zipFile: File;
@@ -196,6 +197,19 @@
       let t = await dra.text();
       toast.success(t);
       goto(".");
+    }
+  }
+
+  async function delet() {
+    deleteModal.close();
+    let dra = await fetchAuthed(
+      "post",
+      "/projects/id/" + data.project?.ID + "/remove"
+    );
+    if (dra.ok) {
+      let t = await dra.text();
+      toast.success(t);
+      goto("/");
     }
   }
 </script>
@@ -429,6 +443,10 @@
         </div>
       {/if}
     </div>
+    <button
+      class="button-base mt-2 flex items-center space-x-1 bg-red-600"
+      on:click="{() => deleteModal.open()}"
+      ><IconDraft /><span>Delete {data.project?.title}</span></button>
   </div>
 </main>
 <br />
@@ -467,6 +485,22 @@
   <button
     class="button-base flex items-center space-x-1 bg-stone-600"
     on:click="{draft}"><IconDraft /><span>Draft submission</span></button>
+</Modal>
+
+<Modal bind:this="{deleteModal}">
+  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+    Delete {data.project?.title}
+  </h1>
+  <CasualLine />
+  <p class="mb-2 dark:text-white">
+    Your project is currently {data.project?.status}.
+  </p>
+  <p class="mb-2 dark:text-white">
+    When you delete a project, it will be only viewable by staff, and only if they have reason to do so. If you want to restore a deleted project, please contact a staff member.
+  </p>
+  <button
+    class="button-base flex items-center space-x-1 bg-red-600"
+    on:click="{delet}"><IconDraft /><span>I confirm I understand the above. Delete submission</span></button>
 </Modal>
 
 <style lang="postcss">
