@@ -20,7 +20,7 @@
 
   onMount(async () => {
     if (browser) {
-      let randomReq = await fetch(apiURL + "/projects/random?count=2");
+      let randomReq = await fetch(apiURL + "/projects/random?count=3");
       random = await projectSchema
         .array()
         .parseAsync((await randomReq.json()).result);
