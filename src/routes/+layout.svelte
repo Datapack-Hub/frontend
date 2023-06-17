@@ -25,7 +25,7 @@
 </script>
 
 <svelte:head>
-  {#if authed && ["helper", "moderator", "admin", "beta access"].includes($user.role)}
+  {#if authed && ["helper", "moderator", "admin", "beta access", "verified"].includes($user.role)}
     <title>Coming Soon</title>
   {/if}
 </svelte:head>
