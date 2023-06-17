@@ -15,7 +15,7 @@
 
 {#if visible}
   <div
-    class="fixed left-0 top-0 z-50 flex h-full w-full transform-gpu backdrop-blur-lg">
+    class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-lg">
     <div
       in:fly="{{ y: 300 }}"
       class="relative m-auto w-1/3 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
