@@ -21,7 +21,7 @@
     let projData: Project = {
       icon: iconB64?.toString(),
       type: "datapack",
-      url: titleVal.toLowerCase().replaceAll(" ", "-"),
+      url: titleVal.trim().toLowerCase().replaceAll(" ", "-"),
       title: titleVal,
       description: descVal,
       body: bodyVal,
