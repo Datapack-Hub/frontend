@@ -96,7 +96,6 @@ export const roleSchema = z.object({
 export const versionSchema = z.object({
   name: z.string(),
   description: z.string(),
-  file_name: z.string(),
   minecraft_versions: z.string(),
   primary_download: z.string(),
   resource_pack_download: z.ostring(),
