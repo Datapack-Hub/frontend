@@ -50,9 +50,9 @@
       </a>
       {#if showNavItems}
         {#if innerWidth > 768}
-          <a href="/projects" class="nav_item"> Explore </a>
-          <a href="https://learn.datapackhub.net/" class="nav_item"> Learn </a>
-          <a href="/jam" class="nav_item"> Compete </a>
+          <a href="/projects" class="nav_item "> Explore </a>
+          <a class="nav_item_disabled"> Learn </a>
+          <a class="nav_item_disabled"> Compete </a>
         {:else}
           <a
             href="/projects"
@@ -64,15 +64,13 @@
               style="{{ color: iconColor }}" />
           </a>
           <a
-            href="https://learn.datapackhub.net/"
             aria-label="Link to the Datapack Hub developer wiki"
-            class="nav_item md:pl-6">
+            class="nav_item md:pl-6 text-stone-500">
             <IconSchool height="24" width="24" style="{{ color: iconColor }}" />
           </a>
           <a
-            href="/jam"
             aria-label="Link to the Datapack Hub competitions page"
-            class="nav_item md:pl-6">
+            class="nav_item md:pl-6 text-stone-500">
             <IconSwords height="24" width="24" style="{{ color: iconColor }}" />
           </a>
         {/if}
