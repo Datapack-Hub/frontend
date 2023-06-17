@@ -33,7 +33,7 @@ export const projectSchema = z.object({
   body: z.ostring(),
   category: z.ostring(),
   description: z.ostring(),
-  icon: z.optional(z.string().url()),
+  icon: z.string().url().nullish(),
   mod_message: z.string().nullish(),
   status: z.optional(
     z.enum([
@@ -50,12 +50,7 @@ export const projectSchema = z.object({
   ),
   title: z.string(),
   type: z.enum(["datapack", "url"]),
-  url: z
-    .string()
-    .trim()
-    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
-      message: "Invalid slug"
-    }), // checks for valid slug
+  url: z.string(),
   latest_version: z.optional(
     z.object({
       name: z.string(),

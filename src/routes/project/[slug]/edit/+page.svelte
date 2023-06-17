@@ -58,12 +58,13 @@
     }
   }
 
-  const toBase64 = file => new Promise((resolve, reject) => {
+  const toBase64 = file =>
+    new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => resolve(reader.result);
       reader.onerror = reject;
-  });
+    });
 
   async function uploadVersion() {
     let v_name = (document.getElementById("v_name") as HTMLInputElement).value;
@@ -97,26 +98,22 @@
       squash: v_squash.checked
     };
 
-    let dp = await toBase64(zipFile)
-    versionData.primary_download = dp
+    let dp = await toBase64(zipFile);
+    versionData.primary_download = dp;
 
     if (v_rp.files?.length == 1) {
       let rp = await toBase64(v_rp.files[0]);
-      versionData.resource_pack_download = rp
+      versionData.resource_pack_download = rp;
     }
 
     toast.promise(
-      fetchAuthed(
-        "POST",
-        `/versions/new/${data.project?.ID}`,
-        versionData
-      ),
+      fetchAuthed("POST", `/versions/new/${data.project?.ID}`, versionData),
       {
-        success:"Uploaded! Refresh to see changes.",
-        error:"Something went wrong.",
-        loading:"Uploading file..."
+        success: "Uploaded! Refresh to see changes.",
+        error: "Something went wrong.",
+        loading: "Uploading file..."
       }
-    )
+    );
   }
 
   let titleValue = data.project?.title;

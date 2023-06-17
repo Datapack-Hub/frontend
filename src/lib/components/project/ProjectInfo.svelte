@@ -46,7 +46,7 @@
 
   // Format the status
   function formatStatus(status?: string) {
-    if (status) return ""
+    if (status) return "";
     if (status == "review_queue" || status == "publish_queue")
       return "In Queue";
     return titleCase(status);

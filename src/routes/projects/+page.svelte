@@ -95,7 +95,9 @@
       <h2 class=" text-pearl-lusta-950 dark:text-white">No results found</h2>
     {:else}
       <ul class="space-y-2 mx-3" use:autoAnimate>
-        <h2 class=" text-pearl-lusta-950 dark:text-white">Showing {data.projects.length} projects:</h2>
+        <h2 class=" text-pearl-lusta-950 dark:text-white">
+          Showing {data.projects.length} projects:
+        </h2>
         {#each data.projects as project}
           <!-- uncomment these to see the featured stuff on the thingy thing -->
           <!-- {#if Math.random() < 0.2} -->

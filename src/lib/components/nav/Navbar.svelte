@@ -50,9 +50,9 @@
       </a>
       {#if showNavItems}
         {#if innerWidth > 768}
-          <a href="/projects" class="nav_item "> Explore </a>
-          <a class="nav_item_disabled"> Learn </a>
-          <a class="nav_item_disabled"> Compete </a>
+          <a href="/projects" class="nav_item"> Explore </a>
+          <a aria-disabled="true" class="nav_item_disabled"> Learn </a>
+          <a aria-disabled="true" class="nav_item_disabled"> Compete </a>
         {:else}
           <a
             href="/projects"
