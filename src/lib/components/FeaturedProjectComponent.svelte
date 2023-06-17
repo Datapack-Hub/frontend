@@ -93,10 +93,18 @@
             in:fade="{{ duration: 250 }}">
             {author.username}
           </a>
-          <span>•</span>
-          <span>1.19</span>
-          <span>•</span>
-          <span>Beta 1.1</span>
+          {#if project.latest_version}
+            <span>•</span>
+            <span
+              >{project.latest_version.minecraft_versions.split(",")[
+                project.latest_version.minecraft_versions.split(",").length - 1
+              ]}</span>
+            <span>•</span>
+            <span>{project.latest_version.version_code}</span>
+          {:else}
+            <span>•</span>
+            <span>No published version</span>
+          {/if}
         </div>
       {/if}
       <p
