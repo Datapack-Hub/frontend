@@ -18,7 +18,7 @@
     if (!source) html = "";
     else {
       html = await marked.marked.parse(
-        DOMPurify.sanitize(source, {
+        DOMPurify.sanitize(source.replace("\n", "\\n"), {
           FORBID_ATTR: ["style", "class", "placeholder", "src"],
           FORBID_TAGS: ["canvas", "svg", "iframe", "img"],
           ALLOWED_TAGS: ["details", "summary"]

@@ -14,8 +14,6 @@
   export let project: Project;
   export let type: "popular" | "featured" | "random" | "new" = "popular";
 
-  console.log(project);
-
   let hoverMsgs = {
     popular: {
       content: "This datapack is trending on Datapack Hub",
