@@ -84,7 +84,7 @@
   {#if $authed && $user.id === profile?.id}
     <Button
       style="secondary"
-      click="/user/{$user.username}/edit"
+      click="/settings#profile"
       classes="mt-4 flex w-full items-center">
       <IconSettings
         width="24"
