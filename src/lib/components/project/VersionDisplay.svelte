@@ -83,6 +83,9 @@
         case "1.19.4":
           packFormat = 12;
           break;
+        case "1.20-1.20.2":
+          packFormat = 15;
+          break;
       }
 
       packMcmData["pack"]["pack_format"] = packFormat;

@@ -33,7 +33,15 @@
 
   let createVersion = false;
 
-  async function upload() {
+  let titleValue = data.project?.title;
+  let descVal = data.project?.description;
+  let bodyVal = data.project?.body;
+  let catVal = data.project?.category;
+  let iconVal: FileList;
+  let iconElem: HTMLImageElement;
+  let iconB64: string | ArrayBuffer | null | undefined;
+
+  async function uploadDatapack() {
     if (browser) {
       let inp = document.getElementById("zip") as HTMLInputElement;
       if (inp.files) zipFile = inp.files[0];
@@ -119,13 +127,6 @@
     goto(".");
   }
 
-  let titleValue = data.project?.title;
-  let descVal = data.project?.description;
-  let bodyVal = data.project?.body;
-  let catVal = data.project?.category;
-  let iconVal: FileList;
-  let iconElem: HTMLImageElement;
-  let iconB64: string | ArrayBuffer | null | undefined;
 
   function uploadIcon() {
     if (iconVal[0].size > 256000) {
@@ -277,7 +278,9 @@
             </p>
             <img
               loading="lazy"
-              src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
+              src="{data.project?.icon
+                ? data.project.icon
+                : 'https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg'}"
               alt="Your logo here"
               height="100"
               width="100"
@@ -353,7 +356,7 @@
                 class="hidden"
                 accept=".zip"
                 id="zip"
-                on:input="{upload}" />
+                on:input="{uploadDatapack}" />
               <span class="align-center text-pearl-lusta-950 dark:text-white"
                 >(Supported: *.zip)</span>
               <!-- <p class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">No versions yet!</p> -->
