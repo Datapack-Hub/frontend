@@ -58,7 +58,8 @@ export const projectSchema = z.object({
       minecraft_versions: z.string(),
       version_code: z.string()
     })
-  )
+  ),
+  downloads: z.number()
 });
 
 export const notificationSchema = z.object({
