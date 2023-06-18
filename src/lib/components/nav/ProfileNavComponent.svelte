@@ -4,7 +4,6 @@
   import { apiURL } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
   import { authed, isDark, role, user } from "$lib/globals/stores";
-  import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
   import IconRead from "~icons/tabler/Bell.svelte";
   import IconUnread from "~icons/tabler/BellRinging.svelte";

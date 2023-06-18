@@ -41,7 +41,7 @@
           Datapack Hub
         </span>
         <span
-          class="text-lg font-bold text-white bg-orange-700 px-2 rounded-full">
+          class="text-lg font-bold text-white bg-dph-orange px-2 rounded-full">
           BETA
         </span>
       </a>
@@ -61,10 +61,10 @@
               style="{{ color: iconColor }}" />
           </a>
           <a class="nav_item md:pl-6 text-stone-500">
-            <IconSchool height="24" width="24" style="{{ color: iconColor }}" />
+            <IconSchool height="24" width="24" class="text-neutral-500" />
           </a>
           <a class="nav_item md:pl-6 text-stone-500">
-            <IconSwords height="24" width="24" style="{{ color: iconColor }}" />
+            <IconSwords height="24" width="24" class="text-neutral-500" />
           </a>
         {/if}
       {/if}

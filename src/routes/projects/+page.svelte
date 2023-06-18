@@ -6,27 +6,28 @@
   import debounce from "lodash-es/debounce";
   import type { PageData } from "./$types";
 
-  import IconSearch from "~icons/tabler/Search.svelte";
-  import type { Project } from "$lib/globals/schema";
   import { projectSchema } from "$lib/globals/schema";
+  import IconSearch from "~icons/tabler/Search.svelte";
+
+  export let data: PageData;
 
   let query: string;
-  let dataCopy: Project[];
+  $: dataCopy = data.projects ?? [];
   let sort: string = "Updated";
 
   let search = debounce(async () => {
-    let searchResult = await fetch(apiURL + `/projects/search?query=${query}&sort=${sort.toLowerCase()}`);
+    let searchResult = await fetch(
+      `${apiURL}/projects/search?query=${query}&sort=${sort.toLowerCase()}`
+    );
     dataCopy = await projectSchema
       .array()
       .parseAsync((await searchResult.json()).result);
   }, 300);
 
-  export let data: PageData;
-
-  dataCopy = data.projects;
-
   async function resort() {
-    let searchResult = await fetch(apiURL + `/projects/?sort=${sort.toLowerCase()}`);
+    let searchResult = await fetch(
+      `${apiURL}/projects/?sort=${sort.toLowerCase()}`
+    );
     dataCopy = await projectSchema
       .array()
       .parseAsync((await searchResult.json()).result);
@@ -57,9 +58,9 @@
       <p class="dark:text-white pl-4">Sort By:</p>
       <select
         class="flex w-64 items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 dark:text-white"
-        bind:value={sort}
+        bind:value="{sort}"
         on:change="{resort}">
-        {#each ["Updated","Downloads"] as cat}
+        {#each ["Updated", "Downloads"] as cat}
           <option value="{cat}">
             {cat}
           </option>
@@ -119,16 +120,18 @@
         Showing {dataCopy.length} projects:
       </h2>
       <ul class="space-y-2 mx-3" use:autoAnimate>
-        {#each dataCopy as project}
-          <!-- uncomment these to see the featured stuff on the thingy thing -->
-          <!-- {#if Math.random() < 0.2} -->
-          <!-- <FeaturedProjectComponent project="{project}" /> -->
-          <!-- {:else} -->
-          <li>
-            <ProjectComponent project="{project}" />
-          </li>
-          <!-- {/if} -->
-        {/each}
+        {#key dataCopy}
+          {#each dataCopy as project}
+            <!-- uncomment these to see the featured stuff on the thingy thing -->
+            <!-- {#if Math.random() < 0.2} -->
+            <!-- <FeaturedProjectComponent project="{project}" /> -->
+            <!-- {:else} -->
+            <li>
+              <ProjectComponent project="{project}" />
+            </li>
+            <!-- {/if} -->
+          {/each}
+        {/key}
       </ul>
     {/if}
   </div>

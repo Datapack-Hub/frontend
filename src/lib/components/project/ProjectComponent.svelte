@@ -1,23 +1,20 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
   import { getAuthorFromID } from "$lib/globals/functions";
-  import { fade } from "svelte/transition";
+  import type { Project } from "$lib/globals/schema";
+  import { onMount } from "svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
-  import type { Project, User } from "$lib/globals/schema";
 
   export let project: Project;
 
-  let author: User;
-  let visible = false;
+  $: author = { username: "Loading..." };
 
-  (async () => {
-    if (browser) author = await getAuthorFromID(project.author);
-    visible = true;
-  })();
+  onMount(async () => {
+    author = await getAuthorFromID(project.author);
+  });
 </script>
 
 <div
-  class="w-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white">
+  class="w-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-pearl-lusta-100">
   <div class="flex items-center">
     <a
       href="/project/{project.url}"
@@ -42,31 +39,28 @@
         class=" text-lg hover:underline md:text-xl lg:text-2xl">
         {project.title}
       </a>
-      {#if visible}
-        <div
-          class="flex space-x-2 text-sm text-pearl-lusta-950/40 dark:text-white">
-          <a
-            href="/user/{author.username.toLowerCase()}"
-            class="block dark:hover:text-pearl-lusta-100"
-            in:fade="{{ duration: 250 }}">
-            {author.username}
-          </a>
-          {#if project.latest_version}
-            <span>•</span>
-            <span
-              >{project.latest_version.minecraft_versions.split(",")[
-                project.latest_version.minecraft_versions.split(",").length - 1
-              ]}</span>
-            <span>•</span>
-            <span>{project.latest_version.version_code}</span>
-          {:else}
-            <span>•</span>
-            <span>No versions</span>
-          {/if}
-            <span>•</span>
-            <span>{project.downloads} downloads</span>
-        </div>
-      {/if}
+      <div
+        class="flex space-x-2 text-sm text-pearl-lusta-950/40 dark:text-white">
+        <a
+          href="/user/{author.username.toLowerCase()}"
+          class="block dark:hover:text-pearl-lusta-100">
+          {author.username}
+        </a>
+        {#if project.latest_version}
+          <span>•</span>
+          <span
+            >{project.latest_version.minecraft_versions.split(",")[
+              project.latest_version.minecraft_versions.split(",").length - 1
+            ]}</span>
+          <span>•</span>
+          <span>{project.latest_version.version_code}</span>
+        {:else}
+          <span>•</span>
+          <span>No versions</span>
+        {/if}
+        <span>•</span>
+        <span>{project.downloads} downloads</span>
+      </div>
       <p
         class="line-clamp-2 max-w-1/2 text-xs font-medium text-pearl-lusta-950/40 dark:text-pearl-lusta-100/40 mt-2">
         {project.description}

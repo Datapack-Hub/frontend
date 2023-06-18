@@ -29,7 +29,7 @@
 
 <main
   class="flex flex-col lg:flex-row w-full -translate-y-20 items-center bg-pearl-lusta-100 px-8 transition-all dark:bg-stone-900 md:translate-y-0 md:items-start md:px-16 md:pt-32 lg:px-24">
-  <div class="w-full xl:w-1/2">
+  <div class="w-full lg:w-2/5 xl:w-1/2">
     <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
     {#if $authed && ["moderator", "developer", "admin"].includes($role.name)}
       <UserModeration user="{data.profile}" />

@@ -13,8 +13,11 @@
   // Component imports
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
+  import type { Project, Role, User, Version } from "$lib/globals/schema";
+  import { onMount } from "svelte";
   import MultiSelect from "svelte-multiselect";
   import IconAlert from "~icons/tabler/AlertTriangle.svelte";
+  import IconBack from "~icons/tabler/ArrowBack.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconRight from "~icons/tabler/ChevronRight.svelte";
   import IconFiles from "~icons/tabler/Files.svelte";
@@ -22,13 +25,9 @@
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
-  import IconBack from "~icons/tabler/ArrowBack.svelte";
   import CasualLine from "../CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import MiniProfileCard from "../profile/MiniProfileCard.svelte";
-  import { onMount } from "svelte";
-  import Button from "../Button.svelte";
-  import type { Project, Role, User, Version } from "$lib/globals/schema";
 
   // Component args
   export let project: Project;
@@ -282,9 +281,9 @@
     <div
       class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
       <div class="mb-3 text-sky-300" use:autoAnimate>
-        <a on:click="{() => (activePage = 'description')}"
+        <button on:click="{() => (activePage = 'description')}"
           ><IconBack class="inline" /> - Back to description
-        </a>
+        </button>
       </div>
       {#if dp_versions?.length != 0}
         <div class="flex space-x-2 w-full items-center dark:text-white">
@@ -324,9 +323,9 @@
     <div class="mb-2 items-center space-y-2">
       <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
         <div class="mb-3 text-sky-300" use:autoAnimate>
-          <a on:click="{() => (activePage = 'description')}"
+          <button on:click="{() => (activePage = 'description')}"
             ><IconBack class="inline" /> - Back to description
-          </a>
+          </button>
         </div>
         {#if dp_versions?.length != 0}
           <p class="text-white">Select a Minecraft version:</p>

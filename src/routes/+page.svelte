@@ -93,7 +93,7 @@
 <main class="bg-pearl-lusta-100 transition-all dark:bg-stone-900">
   <div class="pt-0 md:pt-20"></div>
   <div
-    class="moderation mx-24 dark:text-white p-2 -translate-y-20 md:translate-y-0 rounded-lg">
+    class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 -translate-y-20 md:translate-y-0 rounded-lg">
     <b class="text-lg">Datapack Hub is in early beta.</b>
     <div class="pt-1"></div>
     Many features are incomplete or do not work as expected. In these early stages,
