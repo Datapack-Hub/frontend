@@ -55,7 +55,7 @@
         No projects!
       </p>
     {:else}
-      <div class="space-y-2">
+      <div class="space-y-2 pb-2">
         {#each data.projects ?? [] as project}
           <ProjectComponent project="{project}" />
         {/each}
