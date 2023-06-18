@@ -1,15 +1,13 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { getAuthorFromID } from "$lib/globals/functions";
-  import { fade } from "svelte/transition";
 
   import IconRandom from "~icons/tabler/Dice.svelte";
-  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconTrending from "~icons/tabler/TrendingUp.svelte";
   import IconFeatured from "~icons/tabler/Trophy.svelte";
 
-  import tippy from "sveltejs-tippy";
   import type { Project, User } from "$lib/globals/schema";
+  import tippy from "sveltejs-tippy";
   import ProjectComponent from "./project/ProjectComponent.svelte";
 
   export let project: Project;

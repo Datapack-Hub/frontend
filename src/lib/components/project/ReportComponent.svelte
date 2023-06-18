@@ -36,7 +36,7 @@
 </script>
 
 <div
-  class="w-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
+  class="w-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-pearl-lusta-100"
   bind:this="{me}">
   <div class="flex items-center">
     <a
@@ -64,7 +64,7 @@
       </a>
       {#if visible}
         <div
-          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-white">
+          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-pearl-lusta">
           <a
             href="/user/{author.username.toLowerCase()}"
             class="block dark:hover:text-pearl-lusta-100"

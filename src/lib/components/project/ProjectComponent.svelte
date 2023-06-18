@@ -40,7 +40,7 @@
         {project.title}
       </a>
       <div
-        class="flex space-x-2 text-sm text-pearl-lusta-950/40 dark:text-white">
+        class="flex space-x-2 text-sm text-pearl-lusta-950/40 dark:text-pearl-lusta-100">
         <a
           href="/user/{author.username.toLowerCase()}"
           class="block dark:hover:text-pearl-lusta-100">

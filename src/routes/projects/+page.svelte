@@ -13,7 +13,7 @@
 
   let query: string;
   $: dataCopy = data.projects ?? [];
-  let sort: string = "Updated";
+  let sort = "Updated";
 
   let search = debounce(async () => {
     let searchResult = await fetch(
