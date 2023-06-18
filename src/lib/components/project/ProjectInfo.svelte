@@ -52,7 +52,7 @@
   }
 </script>
 
-<div class="h-fit w-full lg:w-2/5 xl:w-1/4 flex-col" use:autoAnimate>
+<div class="h-fit w-full lg:w-2/5 xl:w-1/3 flex-col mr-4" use:autoAnimate>
   <div class="my-3 text-sky-300" use:autoAnimate>
     <a href="/projects">
       <IconBack class="inline" /> Explore other projects
@@ -60,16 +60,15 @@
   </div>
   <div
     class="rounded-xl border-pearl-lusta-200 p-4 mb-2 bg-pearl-lusta-200 dark:bg-pearl-lusta-100/10">
-    <div class="flex space-x-2">
+    <div class="max-w-fit space-y-2">
       {#if project?.icon}
         <img
-          loading="lazy"
           src="{project?.icon}"
           alt="{project?.title} icon"
-          class="aspect-square w-20 h-20 rounded-lg bg-cover" />
+          class="aspect-square w-16 h-16 rounded-lg bg-cover" />
       {:else}
-        <div class="bg-stone-600 p-4 rounded-xl dark:text-white">
-          <IconNoPhoto width="48" height="48" />
+        <div class="bg-stone-600 p-4 w-16 h-16 rounded-xl dark:text-white">
+          <IconNoPhoto width="32" height="32" />
         </div>
       {/if}
       <h1
@@ -93,18 +92,20 @@
               class="max-h-7 rounded-full"
               alt="pfp" />
             <span
-              class=" text-sm md:text-base xl:text-lg text-pearl-lusta-950 transition-all hover:underline dark:text-white"
+              class="text-xs md:text-sm xl:text-base text-pearl-lusta-950 transition-all hover:underline dark:text-white"
               in:fade="{{ duration: 250 }}">
               {author?.username}
             </span>
           </a>
-          <span class=" dark:text-white"> • </span>
-          <span class="flex items-center space-x-1 dark:text-white">
+          <span class="text-xs md:text-sm xl:text-base dark:text-white">•</span>
+          <span
+            class="flex items-center text-xs md:text-sm xl:text-base space-x-1 dark:text-white">
             <IconCube />
             <p>{project?.category}</p>
           </span>
           <span class=" dark:text-white"> • </span>
-          <span class="{project.status}">{formatStatus(project.status)}</span>
+          <span class="{project.status} text-xs md:text-sm xl:text-base"
+            >{formatStatus(project.status)}</span>
         </div>
       {/if}
     </div>

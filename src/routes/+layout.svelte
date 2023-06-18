@@ -35,10 +35,10 @@
   {#if $authed && ["admin", "moderator", "helper", "beta access", "verified"].includes($user.role)}
     <div
       class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
-      <Navbar />
       {#if $user.banned}
         <BannedModal />
       {/if}
+      <Navbar />
       <slot />
     </div>
     <Footer />

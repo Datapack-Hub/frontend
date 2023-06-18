@@ -275,7 +275,7 @@
     <div
       class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
       <p class="w-full leading-tight break-words">
-        <MarkdownComponent source="{body.replace('\\n', '\n')}" />
+        <MarkdownComponent source="{body}" />
       </p>
     </div>
   {:else if activePage == "versions"}

@@ -16,7 +16,7 @@
 
   $: iconColor = $isDark ? "white" : "black";
   $: isSmall = (innerWidth ?? 769) < 768;
-  $: showNavBG = (scrollY ?? 48) > 50 || isSmall;
+  $: showNavBG = (scrollY ?? 34) > 35 || isSmall;
 </script>
 
 <svelte:window bind:scrollY="{scrollY}" bind:innerWidth="{innerWidth}" />
@@ -24,12 +24,9 @@
 <nav
   id="nav"
   class="sticky top-[calc(100%-8rem)] z-40 w-full transition-all md:fixed md:top-0 md:translate-y-0 px-4 sm:px-8 md:px-16 lg:px-24 {showNavBG
-    ? 'bg-pearl-lusta-50 dark:bg-stone-800'
-    : ''}">
-  <div
-    class="flex h-32 w-full flex-row items-center justify-between {showNavBG
-      ? 'shadow-md'
-      : 'shadow-none'} md:h-16">
+    ? 'bg-pearl-lusta-50 dark:bg-stone-800 shadow-md'
+    : 'shadow-none'}">
+  <div class="flex h-32 w-full flex-row items-center justify-between md:h-16">
     <div class="flex items-center">
       <a href="/" class="z-20 flex cursor-pointer items-center space-x-2">
         <img
@@ -40,7 +37,7 @@
           height="32"
           width="32" />
         <span
-          class="hidden text-2xl font-bold text-pearl-lusta-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
+          class="hidden text-2xl font-bold text-pearl-lusta-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 lg:block">
           Datapack Hub
         </span>
         <span
@@ -50,9 +47,9 @@
       </a>
       {#if showNavItems}
         {#if innerWidth > 768}
-          <a href="/projects" class="nav_item"> Explore </a>
-          <a aria-disabled="true" class="nav_item_disabled"> Learn </a>
-          <a aria-disabled="true" class="nav_item_disabled"> Compete </a>
+          <a href="/projects" class="nav_item">Explore</a>
+          <a aria-disabled="true" class="nav_item_disabled">Learn</a>
+          <a aria-disabled="true" class="nav_item_disabled">Compete</a>
         {:else}
           <a
             href="/projects"

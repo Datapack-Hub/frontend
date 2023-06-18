@@ -27,7 +27,7 @@
 <main
   class="-translate-y-20 bg-pearl-lusta-100 px-0 pb-64 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
   <div class="pt-20"></div>
-  <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-4 w-full">
+  <div class="flex flex-col lg:flex-row w-full">
     {#if data.project && data.versions && data.roles}
       <!--Project Meta-->
       <ProjectInfo project="{data.project}" />
