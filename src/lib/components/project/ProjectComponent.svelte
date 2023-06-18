@@ -36,7 +36,7 @@
         <IconNoPhoto width="48" height="48" />
       {/if}
     </a>
-    <div class="ml-4 w-2/3">
+    <div class="ml-4 w-3/4">
       <a
         href="/project/{project.url}"
         class=" text-lg hover:underline md:text-xl lg:text-2xl">
@@ -44,7 +44,7 @@
       </a>
       {#if visible}
         <div
-          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-white">
+          class="flex space-x-2 text-sm text-pearl-lusta-950/40 dark:text-white">
           <a
             href="/user/{author.username.toLowerCase()}"
             class="block dark:hover:text-pearl-lusta-100"
@@ -61,12 +61,12 @@
             <span>{project.latest_version.version_code}</span>
           {:else}
             <span>•</span>
-            <span>No published version</span>
+            <span>No versions</span>
           {/if}
         </div>
       {/if}
       <p
-        class="line-clamp-2 max-w-1/2 text-sm font-medium text-pearl-lusta-950/40 dark:text-pearl-lusta-100/40 md:text-sm">
+        class="line-clamp-2 max-w-1/2 text-xs font-medium text-pearl-lusta-950/40 dark:text-pearl-lusta-100/40 mt-2">
         {project.description}
       </p>
     </div>

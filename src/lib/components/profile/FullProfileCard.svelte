@@ -28,7 +28,7 @@
   };
 </script>
 
-<div class="mb-4 flex max-w-full flex-col items-center md:items-start">
+<div class="mb-4 flex w-full flex-col items-center md:items-start">
   <div class="self-center">
     <img
       loading="lazy"

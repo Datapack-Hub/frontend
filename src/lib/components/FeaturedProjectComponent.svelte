@@ -104,7 +104,7 @@
             <span>{project.latest_version.version_code}</span>
           {:else}
             <span>•</span>
-            <span>No published version</span>
+            <span>No versions</span>
           {/if}
         </div>
       {/if}
