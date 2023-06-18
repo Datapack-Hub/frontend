@@ -63,6 +63,8 @@
             <span>•</span>
             <span>No versions</span>
           {/if}
+            <span>•</span>
+            <span>{project.downloads} downloads</span>
         </div>
       {/if}
       <p

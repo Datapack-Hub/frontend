@@ -14,6 +14,7 @@
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconCross from "~icons/tabler/X.svelte";
   import IconBack from "~icons/tabler/ArrowBack.svelte";
+  import IconDL from "~icons/tabler/Download.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import type { Project, User } from "$lib/globals/schema";
 
@@ -81,6 +82,11 @@
         class="mt-2 text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
         {project?.description}
       </h2>
+      <h1
+        class="flex items-center space-x-2 text-md mt-2 font-medium text-pearl-lusta-950 dark:text-white">
+        <IconDL />
+        <span>{project?.downloads} downloads</span>
+      </h1>
       {#if visible}
         <div class="mt-4 flex items-center space-x-2 min-w-fit">
           <a

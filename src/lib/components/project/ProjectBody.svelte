@@ -282,9 +282,9 @@
     <div
       class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
       <div class="mb-3 text-sky-300" use:autoAnimate>
-        <Button click="{() => (activePage = 'description')}"
+        <a on:click="{() => (activePage = 'description')}"
           ><IconBack class="inline" /> - Back to description
-        </Button>
+        </a>
       </div>
       {#if dp_versions?.length != 0}
         <div class="flex space-x-2 w-full items-center dark:text-white">
@@ -324,9 +324,9 @@
     <div class="mb-2 items-center space-y-2">
       <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
         <div class="mb-3 text-sky-300" use:autoAnimate>
-          <Button click="{() => (activePage = 'description')}"
+          <a on:click="{() => (activePage = 'description')}"
             ><IconBack class="inline" /> - Back to description
-          </Button>
+          </a>
         </div>
         {#if dp_versions?.length != 0}
           <p class="text-white">Select a Minecraft version:</p>

@@ -12,9 +12,10 @@
 
   let query: string;
   let dataCopy: Project[];
+  let sort: string = "Updated";
 
   let search = debounce(async () => {
-    let searchResult = await fetch(apiURL + `/projects/search?query=${query}`);
+    let searchResult = await fetch(apiURL + `/projects/search?query=${query}&sort=${sort.toLowerCase()}`);
     dataCopy = await projectSchema
       .array()
       .parseAsync((await searchResult.json()).result);
@@ -23,6 +24,13 @@
   export let data: PageData;
 
   dataCopy = data.projects;
+
+  async function resort() {
+    let searchResult = await fetch(apiURL + `/projects/?sort=${sort.toLowerCase()}`);
+    dataCopy = await projectSchema
+      .array()
+      .parseAsync((await searchResult.json()).result);
+  }
 </script>
 
 <svelte:head>
@@ -33,7 +41,7 @@
   class="-translate-y-20 items-center pt-0 md:translate-y-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
   <div
     class="my-4 flex flex-col items-center justify-center sm:flex-row md:justify-normal space-x-2">
-    <div class="flex-grow">
+    <div class="flex-grow flex space-x-2 items-center">
       <div
         class="flex w-64 items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700">
         <IconSearch color="white" on:click="{search}" />
@@ -46,6 +54,17 @@
           class="ml-2 bg-pearl-lusta-200 text-pearl-lusta-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
           on:input="{search}" />
       </div>
+      <p class="dark:text-white pl-4">Sort By:</p>
+      <select
+        class="flex w-64 items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 dark:text-white"
+        bind:value={sort}
+        on:change="{resort}">
+        {#each ["Updated","Downloads"] as cat}
+          <option value="{cat}">
+            {cat}
+          </option>
+        {/each}
+      </select>
     </div>
     <div class="flex items-center space-x-1">
       <p class="dark:text-white mr-2">Page:</p>
