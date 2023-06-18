@@ -83,7 +83,7 @@
       {:then}
         {#if activePage == "publish_queue"}
           <div
-            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start">
+            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
             {#if publishQueue.length == 0}
               <p class=" dark:text-white">
                 You're all caught up! There are no projects in the queue.
@@ -99,7 +99,7 @@
           </div>
         {:else if activePage == "review_queue"}
           <div
-            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start"
+            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2"
             use:autoAnimate>
             {#if reviewQueue.length == 0}
               <p class=" dark:text-white">
