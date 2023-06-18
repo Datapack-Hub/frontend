@@ -10,7 +10,9 @@
   <title>{data.project?.title} | Datapack Hub</title>
 
   <meta property="title" content="{data.project?.title}" />
-  <meta property="description" content="{data.project?.description ?? "No Description"}" />
+  <meta
+    property="description"
+    content="{data.project?.description ?? 'No Description'}" />
 
   <meta property="og:title" content="{data.project?.title} | Datapack Hub" />
   <meta property="og:description" content="{data.project?.description}" />

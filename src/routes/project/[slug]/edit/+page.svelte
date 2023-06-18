@@ -59,11 +59,11 @@
     }
   }
 
-  const toBase64 = file =>
-    new Promise((resolve, reject) => {
+  const toBase64 = (file: Blob) =>
+    new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
+      reader.onload = () => resolve(reader.result as string);
       reader.onerror = reject;
     });
 
@@ -107,7 +107,7 @@
       versionData.resource_pack_download = rp;
     }
 
-    toast.promise(
+    await toast.promise(
       fetchAuthed("POST", `/versions/new/${data.project?.ID}`, versionData),
       {
         success: "Uploaded! Refresh to see changes.",
@@ -115,6 +115,8 @@
         loading: "Uploading file..."
       }
     );
+
+    goto(".");
   }
 
   let titleValue = data.project?.title;
@@ -138,7 +140,7 @@
     reader.readAsDataURL(iconVal[0]);
   }
 
-  async function create() {
+  async function update() {
     if ((titleValue?.length ?? 0) < 4)
       return toast.error("Title must be at least 3 characters");
     if ((bodyVal?.length ?? 0) < 101)
@@ -200,7 +202,7 @@
     }
   }
 
-  async function delet() {
+  async function remove() {
     deleteModal.close();
     let dra = await fetchAuthed(
       "post",
@@ -332,7 +334,7 @@
                 </option>
               {/each}
             </select><br /><br />
-            <Button click="{create}">Update Project</Button>
+            <Button click="{update}" wait="{true}">Update Project</Button>
           </div>
         </div>
 
@@ -429,15 +431,13 @@
                   faster in game)
                 </label>
               </div>
-              <Button click="{uploadVersion}">Create Version</Button>
+              <Button click="{uploadVersion}" wait="{true}"
+                >Create Version</Button>
             </div>
           {/if}
           <div class="space-y-2">
             {#each data.versions ?? [] as version}
-              <VersionDisplay
-                version="{version}"
-                modifiable="{true}"
-                project="{data.project}" />
+              <VersionDisplay version="{version}" project="{data.project}" />
             {/each}
           </div>
         </div>
@@ -496,11 +496,16 @@
     Your project is currently {data.project?.status}.
   </p>
   <p class="mb-2 dark:text-white">
-    When you delete a project, it will be only viewable by staff, and only if they have reason to do so. If you want to restore a deleted project, please contact a staff member.
+    When you delete a project, it will be only viewable by staff, and only if
+    they have reason to do so. If you want to restore a deleted project, please
+    contact a staff member.
   </p>
   <button
     class="button-base flex items-center space-x-1 bg-red-600"
-    on:click="{delet}"><IconDraft /><span>I confirm I understand the above. Delete submission</span></button>
+    on:click="{remove}"
+    ><IconDraft /><span
+      >I confirm I understand the above. Delete submission</span
+    ></button>
 </Modal>
 
 <style lang="postcss">

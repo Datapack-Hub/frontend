@@ -63,12 +63,10 @@
               width="24"
               style="{{ color: iconColor }}" />
           </a>
-          <a
-            class="nav_item md:pl-6 text-stone-500">
+          <a class="nav_item md:pl-6 text-stone-500">
             <IconSchool height="24" width="24" style="{{ color: iconColor }}" />
           </a>
-          <a
-            class="nav_item md:pl-6 text-stone-500">
+          <a class="nav_item md:pl-6 text-stone-500">
             <IconSwords height="24" width="24" style="{{ color: iconColor }}" />
           </a>
         {/if}

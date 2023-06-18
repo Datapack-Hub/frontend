@@ -71,7 +71,11 @@
         <IconShield height="24" width="24" color="{iconColor}" />
       </a>
     {/if}
-    <a href="/notifications" class="z-20" aria-label="Click to read notifications" use:tippy="{notificationHoverMsg}">
+    <a
+      href="/notifications"
+      class="z-20"
+      aria-label="Click to read notifications"
+      use:tippy="{notificationHoverMsg}">
       {#if unreadNotifications}
         <IconUnread height="24" width="24" color="{iconColor}" />
       {:else}

@@ -392,7 +392,7 @@
             <VersionDisplay
               version="{matches[0]}"
               expanded="{true}"
-              mc_version="{pickedVersion}" />
+              mcVersion="{pickedVersion}" />
           </ul>
           <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-400">
             <IconFiles />

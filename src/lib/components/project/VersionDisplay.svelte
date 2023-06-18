@@ -15,27 +15,30 @@
   import IconRP from "~icons/tabler/Sparkles.svelte";
   import { fetchAuthed } from "$lib/globals/functions";
   import type { Project, Version } from "$lib/globals/schema";
+  import isArray from "lodash-es/isArray";
 
   export let version: Version;
   export let expanded = false;
-  export let mc_version: string | undefined = undefined;
-  export let modifiable = false;
+  export let mcVersion: string | undefined = undefined;
   export let project: Project | undefined = undefined;
 
+  let properVersion = isArray(version.minecraft_versions.split(","))
+    ? version.minecraft_versions.split(",")
+    : version.minecraft_versions;
   let dlModal: Modal;
 
   function downloadVersion(
     type: "datapack" | "resourcepack" | undefined = undefined
   ) {
-    if (type == undefined || mc_version == undefined) return dlModal.open();
+    if (type == undefined || mcVersion == undefined) return dlModal.open();
     if (type == "datapack")
       return download(
         version.primary_download,
-        mc_version,
+        mcVersion,
         version.resource_pack_download ? true : false
       );
     if (type == "resourcepack")
-      return download(version.resource_pack_download, mc_version, false);
+      return download(version.resource_pack_download, mcVersion, false);
   }
 
   async function download(
@@ -138,9 +141,9 @@
         {version.version_code}
       </h2>
     </div>
-    {#if !mc_version}
+    {#if !mcVersion}
       <h2 class="flex flex-grow space-x-1 text-pearl-lusta-950 dark:text-white">
-        {#each version.minecraft_versions.split(",") ?? [] as mcv}
+        {#each properVersion as mcv}
           <button
             class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
             on:click="{() =>
@@ -186,7 +189,7 @@
         class="button-primary flex items-center space-x-2"
         ><IconZIP />
         <p>Datapack</p>
-        {#if mc_version} <p>(for {mc_version})</p>{/if}</button>
+        {#if mcVersion} <p>(for {mcVersion})</p>{/if}</button>
       {#if version.resource_pack_download}
         <button
           on:click="{() => {
