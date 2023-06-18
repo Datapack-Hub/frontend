@@ -16,7 +16,7 @@
   let reports: Report[];
 
   async function loadStuff() {
-    if ($user.role == "default") {
+    if !(["moderator","admin"].includes($user.role)) {
       goto("/");
     }
 
