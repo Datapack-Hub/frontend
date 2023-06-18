@@ -225,7 +225,7 @@
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="pt-8 text-center text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-4xl">
+      class="pt-8 text-center text-5xl font-bold text-pearl-lusta-950 dark:text-pearl-lusta-100 md:text-start md:text-4xl lg:text-4xl">
       Edit <span class="text-dph-orange">{data.project?.title}</span>
     </h1>
     {#if data.project?.mod_message}
@@ -241,14 +241,14 @@
     <div class="mb-2 mt-2 flex space-x-2">
       <button
         class="{activePage === 'details'
-          ? 'bg-stone-600'
-          : 'bg-stone-800'} button-base"
+          ? 'bg-pearl-lusta-200 dark:bg-stone-600'
+          : 'bg-pearl-lusta-300 dark:bg-stone-800'} button-base"
         on:click="{() => (activePage = 'details')}">Details</button>
       <div class="flex-grow">
         <button
           class="{activePage === 'versions'
-            ? 'bg-stone-600'
-            : 'bg-stone-800'} button-base"
+            ? 'bg-pearl-lusta-200 dark:bg-stone-600'
+            : 'bg-pearl-lusta-300 dark:bg-stone-800'} button-base"
           on:click="{() => (activePage = 'versions')}"
           >Versions ({data.versions?.length})</button>
       </div>
@@ -269,7 +269,7 @@
     <div use:autoAnimate>
       {#if activePage == "details"}
         <div class="text-center align-middle md:text-start">
-          <div class=" rounded-xl bg-stone-800 p-2 pb-2">
+          <div class=" rounded-xl bg-pearl-lusta-200 dark:bg-stone-800 p-2 pb-2">
             <!--meanwhile, bean-->
             <p
               class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
