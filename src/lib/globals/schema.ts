@@ -54,7 +54,7 @@ export const projectSchema = z.object({
   latest_version: z.optional(
     z.object({
       name: z.string(),
-      description: z.string(),
+      description: z.ostring(),
       minecraft_versions: z.string(),
       version_code: z.string()
     })

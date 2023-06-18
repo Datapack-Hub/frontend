@@ -41,10 +41,6 @@
     }
   });
 
-  onMount(async () => {
-    await refreshNotifications();
-  });
-
   async function refreshNotifications() {
     if (browser) {
       unreadNotifications = false;
