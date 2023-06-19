@@ -10,22 +10,20 @@
   export let data: PageData;
 
   let uname: HTMLInputElement;
-  let bio: HTMLTextAreaElement;
+  let bioVal: string | undefined = data.profile?.bio.replaceAll("\\n", "\n");
 
   onMount(() => {
     uname = document.getElementById("username") as HTMLInputElement;
-    bio = document.getElementById("bio") as HTMLTextAreaElement;
   });
 
   async function save() {
-    console.log(data.role?.name);
     let req = {
       username: uname.value,
-      bio: bio.value,
+      bio: bioVal,
       role: data.profile?.role
     };
 
-    if (bio.value.length > 500) {
+    if ((bioVal?.length ?? 0) > 500) {
       return;
     }
 
@@ -36,7 +34,9 @@
         }
         if (data.profile?.id == $user.id) {
           $user.username = uname.value.trim();
-          $user.bio = bio.value.trim();
+          $user.bio =
+            bioVal?.trim() ??
+            "If you see this, something went wrong with bio parsing, message Cobble";
         }
         goto("/user/" + uname.value);
       }),
@@ -47,6 +47,8 @@
       }
     );
   }
+
+  $: remainingCharacters = 500 - (bioVal?.length ?? 0);
 </script>
 
 <svelte:head>
@@ -92,14 +94,11 @@
       <textarea
         class="h-64 w-1/2 resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
         maxlength="500"
-        value="{data.profile?.bio.replaceAll('\\n', '\n')}"
-        id="bio"></textarea>
-      {#key 500 - bio?.value.length}
-        <p
-          class="align-middle text-xs text-pearl-lusta-950 dark:text-pearl-lusta-100">
-          {(500 - bio?.value.length).toString()} characters left
-        </p>
-      {/key}
+        bind:value="{bioVal}"></textarea>
+      <p
+        class="align-middle text-xs text-pearl-lusta-950 dark:text-pearl-lusta-100">
+        {remainingCharacters} characters left
+      </p>
       <br />
       <Button click="{save}" wait="{true}" style="alt" classes="mb-6"
         >Save Changes</Button>

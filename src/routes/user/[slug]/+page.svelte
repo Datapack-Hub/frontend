@@ -13,14 +13,14 @@
 <svelte:head>
   <title>{data.profile?.username} | Datapack Hub</title>
 
-  <meta property="title" content="Silabear | Datapack Hub" />
+  <meta property="title" content="{data.profile?.username} | Datapack Hub" />
   <meta property="description" content="{data.profile?.bio}" />
 
   <meta property="og:title" content="{data.profile?.username} | Datapack Hub" />
   <meta property="og:description" content="{data.profile?.bio}" />
   <meta property="og:type" content="profile" />
 
-  <meta name="og:profile:username" content="Silabear" />
+  <meta name="og:profile:username" content="{data.profile?.username}" />
   <meta name="og:image" content="{data.profile?.profile_icon}" />
   <meta name="og:image:secure_url" content="{data.profile?.profile_icon}" />
   <meta name="og:image:width" content="120" />

@@ -93,7 +93,6 @@
             href="/user/{author?.username}"
             class="flex items-center space-x-2">
             <img
-              loading="lazy"
               src="{author?.profile_icon}?size=32"
               class="max-h-7 rounded-full"
               alt="pfp" />
@@ -139,8 +138,6 @@
   </div>
   <p class="text-stone-600">Project ID: {project?.ID}</p>
 </div>
-
-
 
 <style lang="postcss">
   .live {

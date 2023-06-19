@@ -41,10 +41,10 @@
 <main
   class="-translate-y-20 items-center pt-0 md:translate-y-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
   <div
-    class="my-4 flex flex-col items-center justify-center sm:flex-row md:justify-normal space-x-2">
-    <div class="flex-grow flex space-x-2 items-center">
+    class="my-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-2">
+    <div class="flex-grow flex flex-col sm:flex-row space-x-2 items-center">
       <div
-        class="flex w-64 items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700">
+        class="flex items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 mb-4 mr-0 sm:mr-4">
         <IconSearch color="white" on:click="{search}" />
         <input
           placeholder="Search Datapacks..."
@@ -52,34 +52,36 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class="ml-2 bg-pearl-lusta-200 text-pearl-lusta-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
+          class=" ml-2 bg-pearl-lusta-200 text-pearl-lusta-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
           on:input="{search}" />
       </div>
-      <p class="dark:text-white pl-4">Sort By:</p>
-      <select
-        class="flex w-64 items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 dark:text-white"
-        bind:value="{sort}"
-        on:change="{resort}">
-        {#each ["Updated", "Downloads"] as cat}
-          <option value="{cat}">
-            {cat}
-          </option>
-        {/each}
-      </select>
+      <div class="block sm:flex space-x-2">
+        <p class="dark:text-white text-center">Sort By:</p>
+        <select
+          class="flex h-8 pl-3 items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 dark:text-white"
+          bind:value="{sort}"
+          on:change="{resort}">
+          {#each ["Updated", "Downloads"] as cat}
+            <option value="{cat}">
+              {cat}
+            </option>
+          {/each}
+        </select>
+      </div>
     </div>
-    <div class="flex items-center space-x-1">
+    <div class="flex items-center space-x-1 mt-4 md:mt-0">
       <p class="dark:text-white mr-2">Page:</p>
-      {#if Array(data.pages).length < 5}
+      {#if data.pages < 5}
         {#each Array(data.pages) as _, i}
           {#if data.page == i + 1}
             <a
               href="/projects?page={i + 1}"
-              class="mt-4 h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+              class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
               >{i + 1}</a>
           {:else}
             <a
               href="/projects?page={i + 1}"
-              class="mt-4 h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+              class="h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
               >{i + 1}</a>
           {/if}
         {/each}
@@ -116,7 +118,7 @@
     {#if !dataCopy || !(dataCopy.length >= 1)}
       <h2 class=" text-pearl-lusta-950 dark:text-white">No results found</h2>
     {:else}
-      <h2 class=" text-pearl-lusta-950 dark:text-white">
+      <h2 class=" text-pearl-lusta-950 dark:text-white mx-3">
         Showing {dataCopy.length} projects:
       </h2>
       <ul class="space-y-2 mx-3" use:autoAnimate>
@@ -135,4 +137,5 @@
       </ul>
     {/if}
   </div>
+  <div class="py-16"></div>
 </main>

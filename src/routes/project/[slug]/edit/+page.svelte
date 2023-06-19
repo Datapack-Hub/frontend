@@ -269,14 +269,14 @@
     <div use:autoAnimate>
       {#if activePage == "details"}
         <div class="text-center align-middle md:text-start">
-          <div class=" rounded-xl bg-pearl-lusta-200 dark:bg-stone-800 p-2 pb-2">
+          <div
+            class=" rounded-xl bg-pearl-lusta-200 dark:bg-stone-800 p-2 pb-2">
             <!--meanwhile, bean-->
             <p
               class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
               Icon
             </p>
             <img
-              loading="lazy"
               src="{data.project?.icon
                 ? data.project.icon
                 : 'https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg'}"
