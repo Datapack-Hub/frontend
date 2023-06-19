@@ -9,7 +9,7 @@
   import NProgress from "nprogress";
   import { navigating } from "$app/stores";
 
-  const maintainance = true
+  const maintainance = false
 
   NProgress.configure({
     // Full list: https://github.com/rstacruz/nprogress#configuration

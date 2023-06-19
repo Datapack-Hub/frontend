@@ -137,7 +137,10 @@
       </div>
     {/if}
   </div>
+  <p class="text-stone-600">Project ID: {project?.ID}</p>
 </div>
+
+
 
 <style lang="postcss">
   .live {
