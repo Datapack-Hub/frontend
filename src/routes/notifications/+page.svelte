@@ -12,7 +12,6 @@
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function remove(e: CustomEvent<any>) {
-    localNotifCopy = localNotifCopy?.filter(v => v.id != e.detail.id);
   }
 </script>
 
