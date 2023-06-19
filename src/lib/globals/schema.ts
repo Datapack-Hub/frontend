@@ -38,18 +38,16 @@ export const projectSchema = z.object({
   status: z.optional(
     z.enum([
       "unpublished",
-      "in_queue",
       "live",
       "draft",
       "disabled",
       "deleted",
-      "ghost",
       "publish_queue",
       "review_queue"
     ])
   ),
   title: z.string(),
-  type: z.enum(["datapack", "url"]),
+  type: z.enum(["datapack"]),
   url: z.string(),
   latest_version: z.optional(
     z.object({
