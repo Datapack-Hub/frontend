@@ -11,8 +11,7 @@
   onMount(() => (visible = true));
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function remove(e: CustomEvent<any>) {
-  }
+  function remove(e: CustomEvent<any>) {}
 </script>
 
 <svelte:head>

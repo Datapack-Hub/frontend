@@ -40,11 +40,13 @@ export const versions = [
 export const badges = [
   {
     name: "betatester",
-    description: "Given to people who participated in the initial closed beta of DatapackHub.net",
-    tippy:{
-      content:"<b style=\"font-size:24;\">Beta Tester</b><br />Given to people who participated in the initial closed beta of DatapackHub.net",
-      placement:"top",
-      allowHTML:true
+    description:
+      "Given to people who participated in the initial closed beta of DatapackHub.net",
+    tippy: {
+      content:
+        '<b style="font-size:24;">Beta Tester</b><br />Given to people who participated in the initial closed beta of DatapackHub.net',
+      placement: "top",
+      allowHTML: true
     }
   }
-]
+];

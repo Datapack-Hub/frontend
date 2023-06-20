@@ -34,7 +34,7 @@
   });
 
   function _formatEpochDate(eTS: number | undefined) {
-    return new Date(eTS * 1000).toLocaleDateString()
+    return new Date(eTS * 1000).toLocaleDateString();
   }
 
   // Dismiss the mod message function
@@ -118,10 +118,10 @@
             <IconCube />
             <p>{project?.category}</p>
           </span>
-          <span class=" dark:text-white"> • </span>
-          <span class="{project.status} text-xs md:text-sm xl:text-base"
-            >{formatStatus(project.status)}</span>
         </div>
+        <p class="{project.status} text-xs md:text-sm xl:text-base mt-2">
+          {formatStatus(project.status)}
+        </p>
       {/if}
     </div>
     {#if project?.mod_message}
@@ -163,6 +163,6 @@
   }
 
   .draft .unpublished {
-    @apply text-stone-500;
+    @apply text-stone-500 dark:text-stone-300;
   }
 </style>
