@@ -3,6 +3,7 @@
   import type { Project } from "$lib/globals/schema";
   import { onMount } from "svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
+  import IconDownload from "~icons/tabler/Download.svelte";
 
   export let project: Project;
 
@@ -39,7 +40,7 @@
         {project.title}
       </a>
       <div
-        class="flex space-x-2 text-sm text-pearl-lusta-950/40 dark:text-pearl-lusta-100">
+        class="flex space-x-2 items-center text-sm text-pearl-lusta-950/40 dark:text-pearl-lusta-100">
         <a
           href="/user/{author.username.toLowerCase()}"
           class="block dark:hover:text-pearl-lusta-100">
@@ -56,7 +57,9 @@
           <span>No versions</span>
         {/if}
         <span>•</span>
-        <span>{project.downloads} downloads</span>
+        <span
+          >{project.downloads}<IconDownload
+            class="inline-block h-4 w-4 align-text-top ml-0.5" /></span>
       </div>
       <p
         class="line-clamp-2 max-w-1/2 text-xs font-medium text-pearl-lusta-950/40 dark:text-pearl-lusta-100/40 mt-2">

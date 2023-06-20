@@ -6,6 +6,7 @@
   import IconCompass from "~icons/tabler/Compass.svelte";
   import IconSchool from "~icons/tabler/School.svelte";
   import IconSwords from "~icons/tabler/Swords.svelte";
+  import tippy from "sveltejs-tippy";
 
   let scrollY: number;
   let innerWidth: number;
@@ -23,14 +24,13 @@
 
 <nav
   id="nav"
-  class="sticky top-[calc(100%-8rem)] z-40 w-full transition-all md:fixed md:top-0 md:translate-y-0 px-4 sm:px-8 md:px-16 lg:px-24 {showNavBG
+  class="sticky top-[calc(100%-8rem)] z-40 w-full transition-all md:fixed md:top-0 md:translate-y-0 px-2 sm:px-8 md:px-16 lg:px-24 {showNavBG
     ? 'bg-pearl-lusta-50 dark:bg-stone-800 shadow-md'
     : 'shadow-none'}">
   <div class="flex h-32 w-full flex-row items-center justify-between md:h-16">
-    <div class="flex items-center">
+    <div class="flex items-center mr-2">
       <a href="/" class="z-20 flex cursor-pointer items-center space-x-2">
         <img
-          loading="lazy"
           src="/logos/dph.svg"
           alt="logo"
           class="min-h-8 flex-shrink-0 transition-all hover:brightness-75"
@@ -41,7 +41,7 @@
           Datapack Hub
         </span>
         <span
-          class="text-lg font-bold text-white bg-dph-orange px-2 rounded-full">
+          class="text-sm md:text-lg font-bold text-white bg-dph-orange px-2 rounded-full">
           BETA
         </span>
       </a>
@@ -54,16 +54,17 @@
           <a
             href="/projects"
             aria-label="Link to the Datapack Hub projects page"
-            class="nav_item md:pl-6">
+            class="nav_item"
+            use:tippy="{{ content: 'Explore', placement: 'bottom' }}">
             <IconCompass
               height="24"
               width="24"
               style="{{ color: iconColor }}" />
           </a>
-          <a class="nav_item md:pl-6 text-stone-500">
+          <a class="nav_item_disabled">
             <IconSchool height="24" width="24" class="text-neutral-500" />
           </a>
-          <a class="nav_item md:pl-6 text-stone-500">
+          <a class="nav_item_disabled">
             <IconSwords height="24" width="24" class="text-neutral-500" />
           </a>
         {/if}

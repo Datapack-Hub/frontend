@@ -31,7 +31,6 @@
 <div class="mb-4 flex w-full flex-col items-center md:items-start">
   <div class="self-center">
     <img
-      loading="lazy"
       src="{profile?.profile_icon}"
       alt="{profile?.username}'s profile picture"
       height="128"
@@ -64,7 +63,6 @@
       <span style="color: {profileRole?.color};">
         {#if profileRole?.name == "nerd"}🤓 Nerd
         {:else if profileRole?.name == "admin"}<img
-            loading="lazy"
             src="/logos/dph.svg"
             alt="logo"
             class="inline-block"

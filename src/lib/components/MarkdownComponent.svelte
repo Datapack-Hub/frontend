@@ -20,7 +20,7 @@
       html = await marked.marked.parse(
         DOMPurify.sanitize(source.replace("\n", "\\n"), {
           FORBID_ATTR: ["style", "class", "placeholder", "src"],
-          FORBID_TAGS: ["canvas", "svg", "iframe", "img"],
+          FORBID_TAGS: ["canvas", "svg", "iframe"],
           ALLOWED_TAGS: ["details", "summary"]
         }),
         {

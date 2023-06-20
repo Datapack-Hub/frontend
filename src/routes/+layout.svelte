@@ -9,7 +9,7 @@
   import NProgress from "nprogress";
   import { navigating } from "$app/stores";
 
-  const maintainance = false
+  const maintenance = false;
 
   NProgress.configure({
     // Full list: https://github.com/rstacruz/nprogress#configuration
@@ -27,14 +27,14 @@
 </script>
 
 <svelte:head>
-  {#if authed && ["helper", "moderator", "admin", "beta access", "verified"].includes($user.role)}
+  {#if authed && !["helper", "moderator", "admin", "beta access", "verified"].includes($user.role)}
     <title>Coming Soon</title>
   {/if}
 </svelte:head>
 
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? 'dark' : ''} font-brand">
-  {#if !maintainance || $user.role == "admin"}
+  {#if !maintenance || $user.role == "admin"}
     {#if $authed && ["admin", "moderator", "helper", "beta access", "verified"].includes($user.role)}
       <div
         class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
@@ -84,28 +84,35 @@
       </div>
     {/if}
   {:else}
-  <div class="fixed left-0 top-0 flex h-screen w-screen bg-stone-900 align-middle">
     <div
-      class="relative m-auto w-1/3 justify-self-center rounded-xl bg-stone-800 p-3 align-middle shadow-md shadow-black/25">
-      <div class="flex items-center justify-center">
-        <img
-          src="/logos/dph.svg"
-          alt="logo"
-          class="mr-1 h-8 rounded-full transition-all hover:brightness-75"
-          height="32"
-          width="32" />
-        <span
-          class="hidden text-2xl font-bold text-white transition-colors md:block">
-          Datapack Hub
-        </span>
+      class="fixed left-0 top-0 flex h-screen w-screen bg-stone-900 align-middle">
+      <div
+        class="relative m-auto w-1/3 justify-self-center rounded-xl bg-stone-800 p-3 align-middle shadow-md shadow-black/25">
+        <div class="flex items-center justify-center">
+          <img
+            src="/logos/dph.svg"
+            alt="logo"
+            class="mr-1 h-8 rounded-full transition-all hover:brightness-75"
+            height="32"
+            width="32" />
+          <span
+            class="hidden text-2xl font-bold text-white transition-colors md:block">
+            Datapack Hub
+          </span>
+        </div>
+        <CasualLine />
+        <p class="text-lg text-white font-bold">
+          Datapack Hub is down for maintenance!
+        </p>
+        <p class="text-white mb-2">
+          While we're improving the site, come hang out with us on our <a
+            href="https://discord.gg/aEXsdjjdu4"
+            class=" text-sky-200">Discord</a
+          >!
+        </p>
+        <img alt="poorly drawn maintenance screen" src="/maintenance.avif" />
       </div>
-      <CasualLine />
-      <p class="text-lg text-white font-bold">Datapack Hub is down for maintainance!</p>
-      <p class="text-white mb-2">While we're improving the site, come hang out with us on our <a href="https://discord.gg/aEXsdjjdu4" class=" text-sky-200">Discord</a>!</p>
-      <img src="/maintainance.png"/>
     </div>
-  </div>
-
-    {/if}
+  {/if}
 </div>
 <!-- {/await} -->

@@ -57,18 +57,18 @@
 
 <div class="z-50 ml-3 flex items-center justify-center md:ml-6">
   {#if authed}
-    {#if ["moderator", "developer", "admin"].includes($role.name) && !small}
+    {#if ["moderator", "developer", "admin"].includes($role.name)}
       <a
         href="/moderation"
         aria-label="Moderation"
-        class="z-20 mr-3 md:mr-6"
+        class="z-20 mr-2 md:mr-6"
         use:tippy="{moderationHoverMsg}">
         <IconShield height="24" width="24" color="{iconColor}" />
       </a>
     {/if}
     <a
       href="/notifications"
-      class="z-20"
+      class="z-20 mr-2"
       aria-label="Click to read notifications"
       use:tippy="{notificationHoverMsg}">
       {#if unreadNotifications}
@@ -81,7 +81,7 @@
       <a
         href="/projects/new"
         aria-label="Create Project"
-        class="z-20 ml-3 md:ml-6"
+        class="z-20 ml-2 md:ml-6"
         use:tippy="{newHoverMsg}">
         <IconPlus height="24" width="24" color="{iconColor}" />
       </a>
@@ -103,7 +103,7 @@
         alt="{$user.username}'s profile picture"
         height="32"
         width="32"
-        class="ml-3 rounded-full outline outline-2 outline-offset-2 md:ml-6"
+        class="ml-2 rounded-full outline outline-2 outline-offset-2 md:ml-6"
         style="outline-color:{$role.color ?? '#eab308'};" />
     </a>
   {:else}
