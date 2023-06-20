@@ -9,7 +9,7 @@
   import NProgress from "nprogress";
   import { navigating } from "$app/stores";
 
-  const maintainance = false;
+  const maintenance = false;
 
   NProgress.configure({
     // Full list: https://github.com/rstacruz/nprogress#configuration
@@ -34,7 +34,7 @@
 
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? 'dark' : ''} font-brand">
-  {#if !maintainance || $user.role == "admin"}
+  {#if !maintenance || $user.role == "admin"}
     {#if $authed && ["admin", "moderator", "helper", "beta access", "verified"].includes($user.role)}
       <div
         class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
@@ -110,7 +110,7 @@
             class=" text-sky-200">Discord</a
           >!
         </p>
-        <img alt="poorly drawn maintenance screen" src="/maintenance.png" />
+        <img alt="poorly drawn maintenance screen" src="/maintenance.avif" />
       </div>
     </div>
   {/if}
