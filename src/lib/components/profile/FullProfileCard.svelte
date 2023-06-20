@@ -6,6 +6,7 @@
   import Button from "../Button.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import type { User, Role } from "$lib/globals/schema";
+  import { badges } from "$lib/globals/consts";
 
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
@@ -74,10 +75,21 @@
     {/if}
   </p>
 
-  <p class="mt-8 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-6">
+  <p class="mt-8 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5">
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
+
+  {#if badges}
+  <!-- <div class="mt-4 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5"> -->
+    <h2 class="dark:text-white font-bold mb-1 text-lg mt-4">Badges</h2>
+    <div class="flex space-x-2 p-2 bg-stone-800 rounded-lg w-full">
+      {#each profile?.badges ?? [] as badge}
+      <img src="/badges/{badge}.png" class="h-12 w-12 rounded-lg" use:tippy="{badges.find(i => i.name == badge)?.tippy}"/>
+      {/each}
+    </div>
+  <!-- </div> -->
+  {/if}
 
   {#if $authed && $user.id === profile?.id}
     <Button

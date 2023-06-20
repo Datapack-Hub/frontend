@@ -15,6 +15,7 @@ export const categories = [
   "Utility",
   "Vanilla+"
 ];
+
 export const roles = [
   "admin",
   "moderator",
@@ -35,3 +36,15 @@ export const versions = [
   "1.19.4",
   "1.20"
 ];
+
+export const badges = [
+  {
+    name: "betatester",
+    description: "Given to people who participated in the initial closed beta of DatapackHub.net",
+    tippy:{
+      content:"<b style=\"font-size:24;\">Beta Tester</b><br />Given to people who participated in the initial closed beta of DatapackHub.net",
+      placement:"top",
+      allowHTML:true
+    }
+  }
+]
