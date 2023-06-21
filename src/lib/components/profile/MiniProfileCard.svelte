@@ -1,6 +1,7 @@
 <script lang="ts">
   import { titleCase } from "$lib/globals/functions";
   import type { Role, User } from "$lib/globals/schema";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
 
   export let person: User | undefined;
   export let role: Role | undefined;
@@ -28,7 +29,7 @@
             class="inline-block"
             height="18"
             width="18" /> Datapack Hub Team{/if}</span>
-      <p class="line-clamp-1 dark:text-stone-300">{person?.bio}</p>
+      <MarkdownComponent source={person?.bio} classes={"line-clamp-1"}/>
     </div>
   </div>
 </a>

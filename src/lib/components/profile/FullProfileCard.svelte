@@ -3,6 +3,7 @@
   import { authed, user } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
   import IconSettings from "~icons/tabler/Settings.svelte";
+  import IconBadge from "~icons/tabler/Award.svelte";
   import Button from "../Button.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import type { User, Role } from "$lib/globals/schema";
@@ -82,7 +83,7 @@
 
   {#if badges}
     <!-- <div class="mt-4 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5"> -->
-    <h2 class="dark:text-white font-bold mb-1 text-lg mt-4">Badges</h2>
+    <h2 class="dark:text-white font-bold mb-1 text-lg mt-4"><IconBadge class="inline-block"/> Badges</h2>
     <div class="flex space-x-2 p-2 bg-stone-800 rounded-lg w-full">
       {#each profile?.badges ?? [] as badge}
         <img
