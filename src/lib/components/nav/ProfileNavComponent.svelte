@@ -3,14 +3,12 @@
   import { afterNavigate } from "$app/navigation";
   import { apiURL } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
-  import type { Project } from "$lib/globals/schema";
   import { authed, isDark, role, user } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
   import IconRead from "~icons/tabler/Bell.svelte";
   import IconUnread from "~icons/tabler/BellRinging.svelte";
   import IconPlus from "~icons/tabler/Plus.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
-  import IconShieldOMG from "~icons/tabler/ShieldExclamation.svelte";
 
   export let small: boolean;
 
@@ -54,7 +52,7 @@
     }
   }
 
-  $: iconColor = $isDark ? "white" : "black";
+  $: iconColor = $isDark.value ? "white" : "black";
 </script>
 
 <div class="z-50 ml-3 flex items-center justify-center md:ml-6">

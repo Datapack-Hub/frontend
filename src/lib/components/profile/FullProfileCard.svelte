@@ -86,6 +86,7 @@
     <div class="flex space-x-2 p-2 bg-stone-800 rounded-lg w-full">
       {#each profile?.badges ?? [] as badge}
         <img
+          alt="{badge} badge"
           src="/badges/{badge}.png"
           class="h-12 w-12 rounded-lg"
           use:tippy="{badges.find(i => i.name == badge)?.tippy}" />

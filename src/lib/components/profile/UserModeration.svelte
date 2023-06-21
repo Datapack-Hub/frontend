@@ -136,7 +136,7 @@
       alert(await logout.text());
     }
   }
-  $: iconColor = $isDark ? "white" : "black";
+  $: iconColor = $isDark.value ? "white" : "black";
 
   function disableBan() {
     const permanent = document.getElementById(

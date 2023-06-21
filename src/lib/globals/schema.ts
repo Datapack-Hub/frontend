@@ -72,11 +72,12 @@ export const notificationSchema = z.object({
 
 export const roleSchema = z.object({
   name: z.string(),
-  color: z.optional(
-    z.string().regex(/#([a-f]|[A-F]|[0-9]){3,6}/, {
+  color: z
+    .string()
+    .regex(/#([a-f]|[A-F]|[0-9]){3,6}/, {
       message: "Not a valid colour"
     })
-  ),
+    .nullish(),
   verified: z.boolean(),
   permissions: z.array(
     z.enum([
