@@ -24,7 +24,6 @@
         : 'bg-pearl-lusta-300 p-4 dark:bg-stone-700 dark:text-pearl-lusta-100'}">
       {#if project.icon}
         <img
-          loading="lazy"
           src="{project.icon}"
           alt="{project.title} icon"
           width="96"
@@ -53,8 +52,6 @@
             >{project.latest_version.minecraft_versions.split(",")[
               project.latest_version.minecraft_versions.split(",").length - 1
             ]}</span>
-          <span>•</span>
-          <span>{project.latest_version.version_code}</span>
         {:else}
           <span>•</span>
           <span>No versions</span>

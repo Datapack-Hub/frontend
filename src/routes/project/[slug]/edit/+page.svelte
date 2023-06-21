@@ -38,7 +38,7 @@
   let bodyVal = data.project?.body;
   let catVal = data.project?.category;
   let iconVal: FileList;
-  let iconElem: HTMLImageElement;
+  let iconElement: HTMLImageElement;
   let iconB64: string | ArrayBuffer | null | undefined;
 
   async function uploadDatapack() {
@@ -133,7 +133,7 @@
     }
     let reader = new FileReader();
 
-    iconElem.src = URL.createObjectURL(iconVal[0]);
+    iconElement.src = URL.createObjectURL(iconVal[0]);
     reader.addEventListener("load", e => {
       iconB64 = e.target?.result;
     });
@@ -284,7 +284,7 @@
               height="100"
               width="100"
               class="mr-3 inline-block rounded-2xl"
-              bind:this="{iconElem}" />
+              bind:this="{iconElement}" />
             <label for="icon" class="button-boring">Upload Icon</label>
             <input
               accept="image/*"

@@ -15,6 +15,7 @@
   import IconCross from "~icons/tabler/X.svelte";
   import IconBack from "~icons/tabler/ArrowBack.svelte";
   import IconDL from "~icons/tabler/Download.svelte";
+  import IconUpdate from "~icons/tabler/Refresh.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import type { Project, User } from "$lib/globals/schema";
 
@@ -31,6 +32,10 @@
     author = await getAuthorFromID(project?.author ?? 0);
     visible = true;
   });
+
+  function _formatEpochDate(eTS: number | undefined) {
+    return new Date(eTS * 1000).toLocaleDateString();
+  }
 
   // Dismiss the mod message function
   async function dismissModMsg() {
@@ -87,6 +92,11 @@
         <IconDL />
         <span>{project?.downloads} downloads</span>
       </h1>
+      <h1
+        class="flex items-center space-x-2 text-md mt-2 font-medium text-pearl-lusta-950 dark:text-white">
+        <IconUpdate />
+        <span>Last updated: {_formatEpochDate(project?.updated)}</span>
+      </h1>
       {#if visible}
         <div class="mt-4 flex items-center space-x-2 min-w-fit">
           <a
@@ -108,10 +118,10 @@
             <IconCube />
             <p>{project?.category}</p>
           </span>
-          <span class=" dark:text-white"> • </span>
-          <span class="{project.status} text-xs md:text-sm xl:text-base"
-            >{formatStatus(project.status)}</span>
         </div>
+        <p class="{project.status} text-xs md:text-sm xl:text-base mt-2">
+          {formatStatus(project.status)}
+        </p>
       {/if}
     </div>
     {#if project?.mod_message}
@@ -153,6 +163,6 @@
   }
 
   .draft .unpublished {
-    @apply text-stone-500;
+    @apply text-stone-500 dark:text-stone-300;
   }
 </style>

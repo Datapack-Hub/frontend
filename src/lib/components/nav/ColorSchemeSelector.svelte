@@ -3,13 +3,13 @@
   import { isDark } from "$lib/globals/stores";
 
   let toggle = () => {
-    $isDark = !$isDark;
-    localStorage.setItem("dp_colorPref", $isDark.toString());
+    $isDark.value = !$isDark.value;
+    localStorage.setItem("dp_colorPref", $isDark.value.toString());
   };
 </script>
 
 <div class="z-20">
-  {#if $isDark}
+  {#if $isDark.value}
     <svg
       xmlns="http://www.w3.org/2000/svg"
       on:click="{toggle}"

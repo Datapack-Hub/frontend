@@ -24,7 +24,8 @@ export const userSchema = z.object({
   ]),
   username: z.string().max(32, {
     message: "Username too long"
-  })
+  }),
+  badges: z.optional(z.array(z.string()))
 });
 
 export const projectSchema = z.object({
@@ -57,7 +58,8 @@ export const projectSchema = z.object({
       version_code: z.string()
     })
   ),
-  downloads: z.number()
+  downloads: z.number(),
+  updated: z.optional(z.number())
 });
 
 export const notificationSchema = z.object({
@@ -70,11 +72,12 @@ export const notificationSchema = z.object({
 
 export const roleSchema = z.object({
   name: z.string(),
-  color: z.optional(
-    z.string().regex(/#([a-f]|[A-F]|[0-9]){3,6}/, {
+  color: z
+    .string()
+    .regex(/#([a-f]|[A-F]|[0-9]){3,6}/, {
       message: "Not a valid colour"
     })
-  ),
+    .nullish(),
   verified: z.boolean(),
   permissions: z.array(
     z.enum([

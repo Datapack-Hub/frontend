@@ -6,7 +6,12 @@ import { isDark } from "./stores";
  * Loads the user's preferred color scheme from LocalStorage
  */
 export function loadColorPref() {
-  isDark.set(localStorage.getItem("dp_colorPref") == "true");
+  if (!isDark.set) {
+    isDark.set({
+      value: localStorage.getItem("dp_colorPref") == "true",
+      set: true
+    });
+  }
 }
 
 /**

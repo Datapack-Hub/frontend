@@ -11,9 +11,7 @@
   onMount(() => (visible = true));
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function remove(e: CustomEvent<any>) {
-    localNotifCopy = localNotifCopy?.filter(v => v.id != e.detail.id);
-  }
+  function remove(e: CustomEvent<any>) {}
 </script>
 
 <svelte:head>

@@ -15,7 +15,7 @@
 
   onMount(() => (showNavItems = true));
 
-  $: iconColor = $isDark ? "white" : "black";
+  $: iconColor = $isDark.value ? "white" : "black";
   $: isSmall = (innerWidth ?? 769) < 768;
   $: showNavBG = (scrollY ?? 34) > 35 || isSmall;
 </script>

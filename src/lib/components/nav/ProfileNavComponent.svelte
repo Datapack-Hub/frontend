@@ -52,7 +52,7 @@
     }
   }
 
-  $: iconColor = $isDark ? "white" : "black";
+  $: iconColor = $isDark.value ? "white" : "black";
 </script>
 
 <div class="z-50 ml-3 flex items-center justify-center md:ml-6">
