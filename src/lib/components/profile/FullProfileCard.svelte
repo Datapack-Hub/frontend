@@ -83,7 +83,9 @@
 
   {#if badges}
     <!-- <div class="mt-4 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5"> -->
-    <h2 class="dark:text-white font-bold mb-1 text-lg mt-4"><IconBadge class="inline-block"/> Badges</h2>
+    <h2 class="dark:text-white font-bold mb-1 text-lg mt-4">
+      <IconBadge class="inline-block" /> Badges
+    </h2>
     <div class="flex space-x-2 p-2 bg-stone-800 rounded-lg w-full">
       {#each profile?.badges ?? [] as badge}
         <img

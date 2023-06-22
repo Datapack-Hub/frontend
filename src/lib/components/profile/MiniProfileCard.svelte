@@ -29,7 +29,7 @@
             class="inline-block"
             height="18"
             width="18" /> Datapack Hub Team{/if}</span>
-      <MarkdownComponent source={person?.bio} classes={"line-clamp-1"}/>
+      <MarkdownComponent source="{person?.bio}" classes="{'line-clamp-1'}" />
     </div>
   </div>
 </a>

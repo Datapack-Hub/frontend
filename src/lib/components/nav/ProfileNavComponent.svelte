@@ -68,7 +68,7 @@
     {/if}
     <a
       href="/notifications"
-      class="z-20 mr-2"
+      class="z-20"
       aria-label="Click to read notifications"
       use:tippy="{notificationHoverMsg}">
       {#if unreadNotifications}

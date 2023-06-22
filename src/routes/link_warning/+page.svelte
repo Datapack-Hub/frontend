@@ -6,20 +6,29 @@
   export let data: PageData;
 
   function goBack() {
-    if(browser) {
-      history.back()
+    if (browser) {
+      history.back();
     }
   }
 </script>
 
-<main class="flex items-center justify-between h-screen px-4 sm:px-8 md:px-16 lg:px-24">
-  <img src="/logos/dph.svg" alt="logo" class="w-1/3 p-12">
+<main
+  class="flex items-center justify-between h-screen px-4 sm:px-8 md:px-16 lg:px-24">
+  <img src="/logos/dph.svg" alt="logo" class="w-1/3 p-12" />
   <div class="w-2/3">
-    <h1 class="text-5xl text-pearl-lusta-950 dark:text-pearl-lusta-100 mb-4 font-bold">Stop!</h1>
-    <p class="text-xl text-pearl-lusta-950 dark:text-pearl-lusta-100">You are being redirected to another page. This page may have different privacy policies or may be malicious. Make sure you know that the site is safe before continuing!</p>
+    <h1
+      class="text-5xl text-pearl-lusta-950 dark:text-pearl-lusta-100 mb-4 font-bold">
+      Stop!
+    </h1>
+    <p class="text-xl text-pearl-lusta-950 dark:text-pearl-lusta-100">
+      You are being redirected to another page. This page may have different
+      privacy policies or may be malicious. Make sure you know that the site is
+      safe before continuing!
+    </p>
     <div class="flex w-2/5 justify-between mt-4">
-      <Button click={data.url ?? "https://datapackhub.net"}>Continue to page</Button>
-      <Button click={goBack}>Go Back</Button>
+      <Button click="{data.url ?? 'https://datapackhub.net'}"
+        >Continue to page</Button>
+      <Button click="{goBack}">Go Back</Button>
     </div>
   </div>
 </main>
