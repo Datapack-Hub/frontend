@@ -11,7 +11,7 @@
   import autoAnimate from "@formkit/auto-animate";
   import toast from "svelte-french-toast";
   // Component imports
-  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import MarkdownComponent from "$lib/components/markdown/MarkdownComponent.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import type { Project, Role, User, Version } from "$lib/globals/schema";
   import { onMount } from "svelte";

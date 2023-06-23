@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import MarkdownComponent from "$lib/components/markdown/MarkdownComponent.svelte";
 
   let source = `# Datapack Hub Rules
 We want to make sure that Datapack Hub is safe for everyone to use!

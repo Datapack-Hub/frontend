@@ -11,7 +11,7 @@
   import IconSettings from "~icons/tabler/Settings.svelte";
   import { fetchAuthed } from "../../globals/functions";
   import Button from "../Button.svelte";
-  import MarkdownComponent from "../MarkdownComponent.svelte";
+  import MarkdownComponent from "../markdown/MarkdownComponent.svelte";
   import type { User } from "$lib/globals/schema";
 
   export let user: User | undefined;
