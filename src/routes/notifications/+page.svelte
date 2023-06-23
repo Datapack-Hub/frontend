@@ -9,9 +9,6 @@
   let visible = false;
 
   onMount(() => (visible = true));
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function remove(e: CustomEvent<any>) {}
 </script>
 
 <svelte:head>
@@ -35,9 +32,7 @@
         {/if}
         <ul use:autoAnimate>
           {#each localNotifCopy ?? [] as notification}
-            <Notification
-              on:close="{e => remove(e)}"
-              notification="{notification}" />
+            <Notification notification="{notification}" />
           {/each}
         </ul>
       {/if}

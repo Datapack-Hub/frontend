@@ -4,7 +4,7 @@
   import { afterNavigate } from "$app/navigation";
 
   export let source: string | undefined = "";
-  export let classes: string = "";
+  export let classes = "";
 
   let html = "";
 

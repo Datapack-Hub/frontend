@@ -12,9 +12,11 @@ export const load = (async ({ url }) => {
       return {};
     }
 
-    fetchAuthed("put","/auth/link/discord?code=" + params.get("code")).then(resp => {
-      if(resp.ok) goto("/settings")
-    })
+    fetchAuthed("put", "/auth/link/discord?code=" + params.get("code")).then(
+      resp => {
+        if (resp.ok) goto("/settings");
+      }
+    );
   }
   return {};
-});
+}) satisfies PageLoad;

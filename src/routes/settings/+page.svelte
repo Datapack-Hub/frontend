@@ -11,14 +11,12 @@
   import IconGithub from "~icons/tabler/BrandGithub.svelte";
   import IconDiscord from "~icons/tabler/BrandDiscord.svelte";
 
-
-
   export let data: PageData;
 
   let uname: HTMLInputElement;
   let bioVal: string | undefined = data.profile?.bio.replaceAll("\\n", "\n");
 
-  let activePage: string = "profile";
+  let activePage = "profile";
 
   let remainingCharacters: number;
 
@@ -58,10 +56,9 @@
     );
   }
 
-  function calcRemaining(){
+  function calcRemaining() {
     remainingCharacters = 500 - (bioVal?.length ?? 0);
   }
-
 </script>
 
 <svelte:head>
@@ -96,13 +93,14 @@
         <div
           class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
           <div class="text-center align-middle md:text-start">
-            <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+            <p
+              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
               Username
             </p>
             <p
               class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 opacity-40 text-sm">
-              Your username is used to view your profile. Your username is displayed
-              on your datapacks and more coming soon
+              Your username is used to view your profile. Your username is
+              displayed on your datapacks and more coming soon
             </p>
             <input
               class="h-10 rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
@@ -115,8 +113,8 @@
             </p>
             <p
               class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mb-2 text-sm opacity-40">
-              Your bio is visible for anyone to see, don't store important information
-              in it!
+              Your bio is visible for anyone to see, don't store important
+              information in it!
             </p>
             <textarea
               class="h-64 w-1/2 resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
@@ -132,39 +130,47 @@
               >Save Changes</Button>
           </div>
         </div>
-
       {:else if activePage == "account"}
         <div
           class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
           <div class="text-center align-middle md:text-start">
-            <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+            <p
+              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
               Linked Github
             </p>
             <p
               class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 opacity-40 text-sm">
-              Link your Github account to your Datapack Hub account, and you'll be able to log in with Github.
+              Link your Github account to your Datapack Hub account, and you'll
+              be able to log in with Github.
             </p>
-            <a class="flex rounded-lg p-2 bg-black text-white font-bold space-x-2 items-center w-fit" href="https://github.com/login/oauth/authorize?client_id=8a0527a3da5b002db8c9&redirect_uri=https%3A%2F%2Fdatapackhub.net%2Fsettings%2Fgithub">
+            <a
+              class="flex rounded-lg p-2 bg-black text-white font-bold space-x-2 items-center w-fit"
+              href="https://github.com/login/oauth/authorize?client_id=8a0527a3da5b002db8c9&redirect_uri=https%3A%2F%2Fdatapackhub.net%2Fsettings%2Fgithub">
               <IconGithub />
               <p>Link your Github account</p>
             </a>
-            <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-6">
+            <p
+              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-6">
               Linked Discord
             </p>
             <p
               class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 opacity-40 text-sm">
-              Link your Discord account to your Datapack Hub account, and you'll be able to log in with Discord.
+              Link your Discord account to your Datapack Hub account, and you'll
+              be able to log in with Discord.
             </p>
-            <a class="flex rounded-lg p-2 bg-[#5865F2] text-white font-bold space-x-2 items-center w-fit" href="https://discord.com/api/oauth2/authorize?client_id=1121129295868334220&redirect_uri=https%3A%2F%2Fdatapackhub.net%2Fsettings%2Fdiscord&response_type=code&scope=identify">
+            <a
+              class="flex rounded-lg p-2 bg-[#5865F2] text-white font-bold space-x-2 items-center w-fit"
+              href="https://discord.com/api/oauth2/authorize?client_id=1121129295868334220&redirect_uri=https%3A%2F%2Fdatapackhub.net%2Fsettings%2Fdiscord&response_type=code&scope=identify">
               <IconDiscord />
               <p>Link your Discord account</p>
             </a>
-            <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-6">
+            <p
+              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-6">
               (If you've already linked an account, it'll be re-linked.)
             </p>
           </div>
         </div>
-        {/if}
+      {/if}
     </div>
   </div>
 </main>

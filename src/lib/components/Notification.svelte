@@ -1,24 +1,17 @@
 <script lang="ts">
   import { fetchAuthed } from "$lib/globals/functions";
-  import { createEventDispatcher } from "svelte";
   import toast from "svelte-french-toast";
   import IconX from "~icons/tabler/X.svelte";
   import type { Notif } from "$lib/globals/schema";
 
-  const dispatch = createEventDispatcher();
-
   export let notification: Notif | undefined;
   let visible = true;
 
-  async function removeThis() {
+  async function remove() {
     visible = false;
     let res = await fetchAuthed("DELETE", `/notifs/delete/${notification?.id}`);
 
-    if (res.ok) {
-      dispatch("close", {
-        id: notification?.id
-      });
-    } else {
+    if (!res.ok) {
       visible = true;
     }
 
@@ -39,7 +32,7 @@
     </div>
     <button
       class="closeButton right-0 top-0 h-1 text-pearl-lusta-950 dark:text-white"
-      on:click="{removeThis}"><IconX /></button>
+      on:click="{remove}"><IconX /></button>
   </li>
 {/if}
 

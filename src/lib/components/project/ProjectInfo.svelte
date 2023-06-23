@@ -34,7 +34,7 @@
   });
 
   function _formatEpochDate(eTS: number | undefined) {
-    return new Date(eTS * 1000).toLocaleDateString();
+    return new Date((eTS ?? 0) * 1000).toLocaleDateString();
   }
 
   // Dismiss the mod message function
@@ -48,13 +48,6 @@
       mm.remove();
       return toast.success("Deleted the message!");
     }
-  }
-
-  // Format the status
-  function formatStatus(status?: string) {
-    if (status == "review_queue" || status == "publish_queue")
-      return "In Queue";
-    return titleCase(status);
   }
 </script>
 
@@ -120,15 +113,17 @@
           </span>
         </div>
         <div class="mt-2">
-          {#if ["unpublished","draft"].includes(project.status)}
-          <span class="text-stone-400">•</span>
-          <span class="text-stone-400 font-bold mt-2">{titleCase(project.status)}</span>
+          {#if ["unpublished", "draft"].includes(project.status)}
+            <span class="text-stone-400">•</span>
+            <span class="text-stone-400 font-bold mt-2"
+              >{titleCase(project.status)}</span>
           {:else if ["disabled"].includes(project.status)}
-          <span class="text-red-400">•</span>
-          <span class="text-red-400 font-bold mt-2">{titleCase(project.status.replaceAll("_"," "))}</span>
-          {:else if ["review_queue","publish_queue"].includes(project.status)}
-          <span class="text-yellow-600">•</span>
-          <span class="text-yellow-600 font-bold pt-2">In Queue</span>
+            <span class="text-red-400">•</span>
+            <span class="text-red-400 font-bold mt-2"
+              >{titleCase(project.status.replaceAll("_", " "))}</span>
+          {:else if ["review_queue", "publish_queue"].includes(project.status)}
+            <span class="text-yellow-600">•</span>
+            <span class="text-yellow-600 font-bold pt-2">In Queue</span>
           {/if}
         </div>
       {/if}
@@ -150,8 +145,8 @@
         <MarkdownComponent source="{project?.mod_message}" />
       </p>
       <p class=" text-xs opacity-50">
-        Only you (and staff) can read this message. Once you've acknowleged
-        it, you can dismiss the message if the project isn't disabled.
+        Only you (and staff) can read this message. Once you've acknowleged it,
+        you can dismiss the message if the project isn't disabled.
       </p>
     </div>
   {/if}

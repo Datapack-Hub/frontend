@@ -60,15 +60,17 @@
         <span
           >{project.downloads}<IconDownload
             class="inline-block h-4 w-4 align-text-top ml-0.5" /></span>
-        {#if ["unpublished","draft"].includes(project.status)}
-        <span class="text-stone-400">•</span>
-        <span class="text-stone-400 font-bold">{titleCase(project.status)}</span>
+        {#if ["unpublished", "draft"].includes(project.status)}
+          <span class="text-stone-400">•</span>
+          <span class="text-stone-400 font-bold"
+            >{titleCase(project.status)}</span>
         {:else if ["disabled"].includes(project.status)}
-        <span class="text-red-500">•</span>
-        <span class="text-red-500 font-bold">{titleCase(project.status.replaceAll("_"," "))}</span>
-        {:else if ["review_queue","publish_queue"].includes(project.status)}
-        <span class="text-yellow-600">•</span>
-        <span class="text-yellow-600 font-bold">In Queue</span>
+          <span class="text-red-500">•</span>
+          <span class="text-red-500 font-bold"
+            >{titleCase(project.status.replaceAll("_", " "))}</span>
+        {:else if ["review_queue", "publish_queue"].includes(project.status)}
+          <span class="text-yellow-600">•</span>
+          <span class="text-yellow-600 font-bold">In Queue</span>
         {/if}
       </div>
       <p
