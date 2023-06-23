@@ -15,9 +15,6 @@ const config = {
     vitePreprocess(),
     preprocess({
       postcss: true,
-      scss: {
-        prependData: `@import '${join(__dirname, 'src/variables.scss').replace(/\\/g, '/')}';`
-      }
     }),
   ],
 

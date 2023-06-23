@@ -11,13 +11,6 @@ const config = {
   ],
 	server:{
 		host:"0.0.0.0"
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: "@use \"src/variables.scss\" as *;"
-      }
-    }
   }
 };
 

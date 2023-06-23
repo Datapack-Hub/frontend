@@ -1,5 +1,4 @@
 <script lang="ts">
-
   import IconRandom from "~icons/tabler/Dice.svelte";
   import IconTrending from "~icons/tabler/TrendingUp.svelte";
   import IconFeatured from "~icons/tabler/Trophy.svelte";
