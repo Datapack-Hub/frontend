@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@formkit/auto-animate':
-    specifier: 1.0.0-beta.6
-    version: 1.0.0-beta.6
   '@tailwindcss/typography':
     specifier: ^0.5.9
     version: 0.5.9(tailwindcss@3.3.2)
@@ -34,6 +31,9 @@ dependencies:
     version: 3.21.4
 
 devDependencies:
+  '@formkit/auto-animate':
+    specifier: ^0.7.0
+    version: 0.7.0
   '@iconify-json/tabler':
     specifier: ^1.1.79
     version: 1.1.79
@@ -627,9 +627,9 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@formkit/auto-animate@1.0.0-beta.6:
-    resolution: {integrity: sha512-PVDhLAlr+B4Xb7e+1wozBUWmXa6BFU8xUPR/W/E+TsQhPS1qkAdAsJ25keEnFrcePSnXHrOsh3tiFbEToOzV9w==}
-    dev: false
+  /@formkit/auto-animate@0.7.0:
+    resolution: {integrity: sha512-RczHUr0AhRPssREoNdRjLfk2b/id9/DFnbIq18QM8L7E4zNV3XH+WO480EZ46BQHDEsv76YPJ0JbG2Y2i3GfXw==}
+    dev: true
 
   /@headlessui/vue@1.7.14(vue@3.3.4):
     resolution: {integrity: sha512-aL9U9Sa7wdOzlrfjx6EjMIYNRCma5mngWcWzQBcHFwznpRZ8g/QZ/AYFtRDrZZUw22Ttttja4D7ZRXFwhONewA==}
