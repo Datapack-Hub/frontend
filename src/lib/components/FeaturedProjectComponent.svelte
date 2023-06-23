@@ -1,12 +1,10 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
-  import { getAuthorFromID } from "$lib/globals/functions";
 
   import IconRandom from "~icons/tabler/Dice.svelte";
   import IconTrending from "~icons/tabler/TrendingUp.svelte";
   import IconFeatured from "~icons/tabler/Trophy.svelte";
 
-  import type { Project, User } from "$lib/globals/schema";
+  import type { Project } from "$lib/globals/schema";
   import tippy from "sveltejs-tippy";
   import ProjectComponent from "./project/ProjectComponent.svelte";
 
@@ -47,14 +45,6 @@
       style = "lime-400";
       break;
   }
-
-  let author: User;
-  let visible = false;
-
-  (async () => {
-    if (browser) author = await getAuthorFromID(project.author);
-    visible = true;
-  })();
 </script>
 
 <div

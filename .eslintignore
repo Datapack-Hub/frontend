@@ -13,4 +13,10 @@ package-lock.json
 yarn.lock
 lighthouse
 
+# Ignore configs
+svelte.config.js
+unlighthouse.config.ts
+vite.config.js
+playwright.config.ts
+
 /.vscode

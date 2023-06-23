@@ -29,6 +29,12 @@
       "Verified for their datapacks being high-quality or being active in the community.",
     placement: "top"
   };
+
+  // useless easter egg but funny
+  async function easterEgg() {
+    let noise = new Audio("https://datapackhub.net/the_thing.mp3");
+    noise.play();
+  }
 </script>
 
 <div class="mb-4 flex w-full flex-col items-center md:items-start">
@@ -84,6 +90,9 @@
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
+  {#if profile?.id == 3}
+    <Button click="{easterEgg}">Very Sus Button</Button>
+  {/if}
 
   {#if badges}
     <!-- <div class="mt-4 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5"> -->
