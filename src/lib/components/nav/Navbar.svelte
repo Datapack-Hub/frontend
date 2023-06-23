@@ -48,8 +48,8 @@
       {#if showNavItems}
         {#if innerWidth > 768}
           <a href="/projects" class="nav_item">Explore</a>
-          <a aria-disabled="true" class="nav_item_disabled">Learn</a>
-          <a aria-disabled="true" class="nav_item_disabled">Compete</a>
+          <button inert class="nav_item_disabled">Learn</button>
+          <button inert class="nav_item_disabled">Compete</button>
         {:else}
           <a
             href="/projects"
@@ -61,12 +61,12 @@
               width="24"
               style="{{ color: iconColor }}" />
           </a>
-          <a class="nav_item_disabled">
+          <button inert class="nav_item_disabled">
             <IconSchool height="24" width="24" class="text-neutral-500" />
-          </a>
-          <a class="nav_item_disabled">
+          </button>
+          <button inert class="nav_item_disabled">
             <IconSwords height="24" width="24" class="text-neutral-500" />
-          </a>
+          </button>
         {/if}
       {/if}
     </div>

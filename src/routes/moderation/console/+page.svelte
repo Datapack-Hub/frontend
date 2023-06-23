@@ -64,8 +64,8 @@
           style="height: 92%;">
           <span class="text-lg font-bold">Datapack Hub Console</span><br />
           <span class="text-lg font-normal">Welcome!</span>
-          <!-- eslint-disable-next-line svelte/no-at-html-tags -->
           <!-- refactor this to not require a @html tag in the future -->
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -->
           <ul class="list-none" id="cons">{@html consoleIn}</ul>
         </div>
         <div

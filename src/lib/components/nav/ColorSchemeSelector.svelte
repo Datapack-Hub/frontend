@@ -12,6 +12,8 @@
   {#if $isDark.value}
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      role="button"
+      tabindex="0"
       on:click="{toggle}"
       on:keydown|preventDefault="{k => (k.key == 'T' ? toggle : null)}"
       class="icon icon-tabler icon-tabler-moon-stars ml-0 cursor-pointer hover:brightness-75 md:ml-6"
@@ -25,22 +27,24 @@
       stroke-linecap="round"
       stroke-linejoin="round">
       <path
-        stroke="none"
-        d="M0 0h24v24H0z"
-        fill="none"
-        in:draw="{{ duration: 500, speed: 5 }}"></path>
+      stroke="none"
+      d="M0 0h24v24H0z"
+      fill="none"
+      in:draw="{{ duration: 500, speed: 5 }}"></path>
       <path
-        in:draw="{{ duration: 500, speed: 5 }}"
-        d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+      in:draw="{{ duration: 500, speed: 5 }}"
+      d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
       ></path>
       <path
         in:draw="{{ duration: 500, speed: 5 }}"
         d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"
-      ></path>
-      <path d="M19 11h2m-1 -1v2"></path>
-    </svg>
-  {:else}
-    <svg
+        ></path>
+        <path d="M19 11h2m-1 -1v2"></path>
+      </svg>
+      {:else}
+      <svg
+      role="button"
+      tabindex="0"
       xmlns="http://www.w3.org/2000/svg"
       on:click="{toggle}"
       on:keydown|preventDefault="{k => (k.key == 'T' ? toggle : null)}"
@@ -54,10 +58,10 @@
       stroke-linecap="round"
       stroke-linejoin="round">
       <path
-        in:draw="{{ duration: 500, speed: 5 }}"
-        stroke="none"
-        d="M0 0h24v24H0z"
-        fill="none"></path>
+      in:draw="{{ duration: 500, speed: 5 }}"
+      stroke="none"
+      d="M0 0h24v24H0z"
+      fill="none"></path>
       <path
         in:draw="{{ duration: 500, speed: 5 }}"
         d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"
