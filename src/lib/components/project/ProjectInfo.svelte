@@ -119,9 +119,18 @@
             <p>{project?.category}</p>
           </span>
         </div>
-        <p class="{project.status} text-xs md:text-sm xl:text-base mt-2">
-          {formatStatus(project.status)}
-        </p>
+        <div class="mt-2">
+          {#if ["unpublished","draft"].includes(project.status)}
+          <span class="text-stone-400">•</span>
+          <span class="text-stone-400 font-bold mt-2">{titleCase(project.status)}</span>
+          {:else if ["disabled"].includes(project.status)}
+          <span class="text-red-400">•</span>
+          <span class="text-red-400 font-bold mt-2">{titleCase(project.status.replaceAll("_"," "))}</span>
+          {:else if ["review_queue","publish_queue"].includes(project.status)}
+          <span class="text-yellow-600">•</span>
+          <span class="text-yellow-600 font-bold pt-2">In Queue</span>
+          {/if}
+        </div>
       {/if}
     </div>
   </div>
@@ -148,21 +157,3 @@
   {/if}
   <p class="text-stone-600">Project ID: {project?.ID}</p>
 </div>
-
-<style lang="postcss">
-  .live {
-    @apply text-green-500;
-  }
-
-  .disabled .deleted {
-    @apply text-red-500;
-  }
-
-  .review_queue .publish_queue {
-    @apply text-yellow-500;
-  }
-
-  .draft .unpublished {
-    @apply text-stone-500 dark:text-stone-300;
-  }
-</style>
