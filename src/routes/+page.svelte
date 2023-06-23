@@ -129,7 +129,7 @@
         Over <span
           title="{rand}"
           class="text-gradient bg-gradient-to-br from-rose-500 to-yellow-500 font-bold">
-          {compactNumberFormatter.format(count)}
+          {compactNumberFormatter.format(count -1 )}
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>

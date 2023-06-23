@@ -124,28 +124,28 @@
         </p>
       {/if}
     </div>
-    {#if project?.mod_message}
-      <div
-        class="mt-4 rounded-xl p-4 moderation dark:text-pearl-lusta-100"
-        id="modmsg"
-        bind:this="{mm}">
-        {#if project.status && !["disabled", "review_queue"].includes(project.status)}
-          <button
-            class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
-            on:click="{dismissModMsg}"><IconCross /></button>
-        {/if}
-        <p class=" font-black">Message from Datapack Hub Staff:</p>
-        <p
-          class="prose mb-1 mt-2 rounded-xl moderation-hl p-2 dark:text-stone-300">
-          <MarkdownComponent source="{project?.mod_message}" />
-        </p>
-        <p class=" text-xs opacity-50">
-          Only you (and staff) can read this message. Once you've acknowleged
-          it, you can dismiss the message if the project isn't disabled.
-        </p>
-      </div>
-    {/if}
   </div>
+  {#if project?.mod_message}
+    <div
+      class="mt-4 rounded-xl p-4 moderation dark:text-pearl-lusta-100"
+      id="modmsg"
+      bind:this="{mm}">
+      {#if project.status && !["disabled", "review_queue"].includes(project.status)}
+        <button
+          class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+          on:click="{dismissModMsg}"><IconCross /></button>
+      {/if}
+      <p class=" font-black">Message from Datapack Hub Staff:</p>
+      <p
+        class="prose mb-1 mt-2 rounded-xl moderation-hl p-2 dark:text-stone-300">
+        <MarkdownComponent source="{project?.mod_message}" />
+      </p>
+      <p class=" text-xs opacity-50">
+        Only you (and staff) can read this message. Once you've acknowleged
+        it, you can dismiss the message if the project isn't disabled.
+      </p>
+    </div>
+  {/if}
   <p class="text-stone-600">Project ID: {project?.ID}</p>
 </div>
 
