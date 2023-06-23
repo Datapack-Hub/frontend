@@ -146,7 +146,7 @@
             </p>
             <a class="flex rounded-lg p-2 bg-black text-white font-bold space-x-2 items-center w-fit" href="https://github.com/login/oauth/authorize?client_id=8a0527a3da5b002db8c9&redirect_uri=https%3A%2F%2Fdatapackhub.net%2Fsettings%2Fgithub">
               <IconGithub />
-              <p>Sign In with Github</p>
+              <p>Link your Github account</p>
             </a>
             <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-6">
               Linked Discord
@@ -157,7 +157,7 @@
             </p>
             <a class="flex rounded-lg p-2 bg-[#5865F2] text-white font-bold space-x-2 items-center w-fit" href="https://discord.com/api/oauth2/authorize?client_id=1121129295868334220&redirect_uri=https%3A%2F%2Fdatapackhub.net%2Fsettings%2Fdiscord&response_type=code&scope=identify">
               <IconDiscord />
-              <p>Sign In with Discord</p>
+              <p>Link your Discord account</p>
             </a>
             <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-6">
               (If you've already linked an account, it'll be re-linked.)
