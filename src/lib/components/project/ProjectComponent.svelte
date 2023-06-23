@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getAuthorFromID } from "$lib/globals/functions";
+  import { getAuthorFromID, titleCase } from "$lib/globals/functions";
   import type { Project } from "$lib/globals/schema";
   import { onMount } from "svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
@@ -60,6 +60,16 @@
         <span
           >{project.downloads}<IconDownload
             class="inline-block h-4 w-4 align-text-top ml-0.5" /></span>
+        {#if ["unpublished","draft"].includes(project.status)}
+        <span class="text-stone-400">•</span>
+        <span class="text-stone-400 font-bold">{titleCase(project.status)}</span>
+        {:else if ["disabled"].includes(project.status)}
+        <span class="text-red-500">•</span>
+        <span class="text-red-500 font-bold">{titleCase(project.status.replaceAll("_"," "))}</span>
+        {:else if ["review_queue","publish_queue"].includes(project.status)}
+        <span class="text-yellow-600">•</span>
+        <span class="text-yellow-600 font-bold">In Queue</span>
+        {/if}
       </div>
       <p
         class="line-clamp-2 max-w-1/2 text-xs font-medium text-pearl-lusta-950/40 dark:text-pearl-lusta-100/40 mt-2">

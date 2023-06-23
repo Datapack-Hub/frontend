@@ -77,7 +77,7 @@
     {/if}
   </p>
 
-  <h2 class="dark:text-white font-bold mb-1 text-lgmt-8 flex items-center">
+  <h2 class="dark:text-white font-bold mb-1 text-lg mt-8 flex items-center">
     <IconInfo class="inline-block mr-1" /> About
   </h2>
   <p class="w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5">
