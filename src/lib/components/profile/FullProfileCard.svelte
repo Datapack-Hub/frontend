@@ -4,6 +4,7 @@
   import tippy from "sveltejs-tippy";
   import IconSettings from "~icons/tabler/Settings.svelte";
   import IconBadge from "~icons/tabler/Award.svelte";
+  import IconInfo from "~icons/tabler/InfoCircle.svelte";
   import Button from "../Button.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import type { User, Role } from "$lib/globals/schema";
@@ -76,15 +77,18 @@
     {/if}
   </p>
 
-  <p class="mt-8 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5">
+  <h2 class="dark:text-white font-bold mb-1 text-lgmt-8 flex items-center">
+    <IconInfo class="inline-block mr-1" /> About
+  </h2>
+  <p class="w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5">
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
 
   {#if badges}
     <!-- <div class="mt-4 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5"> -->
-    <h2 class="dark:text-white font-bold mb-1 text-lg mt-4">
-      <IconBadge class="inline-block" /> Badges
+    <h2 class="dark:text-white font-bold mb-1 text-lg mt-4 flex items-center">
+      <IconBadge class="inline-block mr-1" /> Badges
     </h2>
     <div class="flex space-x-2 p-2 bg-stone-800 rounded-lg w-full">
       {#each profile?.badges ?? [] as badge}
