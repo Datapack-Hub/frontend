@@ -10,12 +10,14 @@
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import toast from "svelte-french-toast";
+
   // Component imports
   import MarkdownComponent from "$lib/components/markdown/MarkdownComponent.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import type { Project, Role, User, Version } from "$lib/globals/schema";
   import { onMount } from "svelte";
   import MultiSelect from "svelte-multiselect";
+
   import IconAlert from "~icons/tabler/AlertTriangle.svelte";
   import IconBack from "~icons/tabler/ArrowBack.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
@@ -25,6 +27,8 @@
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
+  import IconConfetti from "~icons/tabler/Confetti.svelte";
+
   import CasualLine from "../CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import MiniProfileCard from "../profile/MiniProfileCard.svelte";
@@ -41,6 +45,7 @@
   let pickedVersion: string | undefined = undefined;
   let reportModal: Modal;
   let modModal: Modal;
+  let featureModal: Modal;
   let modModalPage = "delete";
   let status = project?.status;
   let del: HTMLDivElement;
@@ -52,6 +57,7 @@
   if (project?.body) {
     body = project.body;
   }
+  let featureDur: number;
 
   onMount(async () => {
     author = await getAuthorFromID(project?.author);
@@ -177,6 +183,21 @@
       }
     );
   }
+
+  async function feature() {
+    featureModal.close();
+    toast.promise(
+      fetchAuthed("post", "/projects/id/" + project?.ID + "/feature", {
+        expires: parseInt(reportMsg)
+      }),
+      {
+        success: "Featured project!",
+        loading: "Featuring...",
+        error:
+          "Uh oh, something went wrong."
+      }
+    );
+  }
 </script>
 
 <div use:autoAnimate class="w-full mt-4 lg:w-3/4 lg:mt-0">
@@ -201,6 +222,11 @@
           on:click="{() => {
             modModal.open();
           }}"><IconShield /><span>Moderate</span></button>
+        <button
+          class="button-base flex items-center space-x-1"
+          on:click="{() => {
+            featureModal.open();
+          }}"><IconConfetti /><span>Feature</span></button>
         {#if status == "publish_queue" || (status == "review_queue" && ["moderator", "admin"].includes($user.role))}
           <button
             class="button-base flex items-center space-x-1 bg-green-600"
@@ -482,6 +508,30 @@
       maxlength="200"
       bind:value="{reportMsg}"></textarea>
     <button class="button-primary" on:click="{() => report()}">Report</button>
+  </Modal>
+
+  <Modal bind:this="{featureModal}">
+    <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+      Feature {project?.title}
+    </h1>
+    <CasualLine />
+    <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
+    <p
+      class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+      Author
+    </p>
+    <MiniProfileCard
+      person="{author}"
+      role="{roles?.find(v => author?.role == v.name)}" />
+    <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+        Duration of feature
+      </p>
+    <input
+      type="number"
+      class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+      bind:value={featureDur}
+      placeholder="i.e 1, 7, 14, 30, 365" />
+    <button class="button-primary mt-2" on:click="{() => feature()}">Feature</button>
   </Modal>
 </div>
 
