@@ -274,7 +274,7 @@
     <div
       class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
       <p class="w-full leading-tight break-words">
-        <MarkdownComponent source="{body}" />
+        <MarkdownComponent source="{body}" classes="prose-img:my-0 prose-p:my-0 prose-headings:mb-2 prose-ul:my-3" />
       </p>
     </div>
   {:else if activePage == "versions"}
@@ -304,7 +304,7 @@
         </div>
         <ul use:autoAnimate class="space-y-2">
           {#each versionMatches ?? [] as version}
-            <VersionDisplay version="{version}" project="{project}" />
+            <VersionDisplay version="{version}" />
           {/each}
         </ul>
         <p class="mx-1 mt-2 text-pearl-lusta-950 dark:text-white">
