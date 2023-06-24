@@ -66,5 +66,6 @@
 </script>
 
 <div class="prose dark:prose-invert leading-snug break-words {classes}">
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html html}
 </div>

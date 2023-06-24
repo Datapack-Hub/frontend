@@ -3,7 +3,7 @@
   import { isDark } from "$lib/globals/stores";
 
   let toggle = () => {
-    $isDark.value = !$isDark.value;
+    $isDark = { value: !$isDark.value, set: $isDark.set };
     localStorage.setItem("dp_colorPref", $isDark.value.toString());
   };
 </script>
