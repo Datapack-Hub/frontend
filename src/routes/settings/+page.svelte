@@ -18,7 +18,7 @@
 
   let activePage = "profile";
 
-  let remainingCharacters: number;
+  let remainingCharacters = 500 - (bioVal?.length ?? 0);
 
   onMount(() => {
     uname = document.getElementById("username") as HTMLInputElement;
@@ -173,4 +173,5 @@
       {/if}
     </div>
   </div>
+  <div class="py-16"></div>
 </main>

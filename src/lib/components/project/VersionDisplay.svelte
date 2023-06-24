@@ -16,6 +16,7 @@
   import { fetchAuthed } from "$lib/globals/functions";
   import type { Project, Version } from "$lib/globals/schema";
   import isArray from "lodash-es/isArray";
+  import { user } from "$lib/globals/stores";
 
   export let version: Version;
   export let expanded = false;
@@ -88,7 +89,7 @@
           break;
       }
 
-      packMcmData["pack"]["pack_format"] = packFormat;
+      packMcmData.pack.pack_format = packFormat;
 
       parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
 
@@ -161,12 +162,14 @@
       </h2>
     {/if}
     {#if !expanded}
-      <button
-        on:click="{() => {
-          deleteVersion();
-        }}"
-        id="#download"
-        class="rounded-xl text-red-500 p-1">Delete</button>
+      {#if project?.ID == $user.id}
+        <button
+          on:click="{() => {
+            deleteVersion();
+          }}"
+          id="#download"
+          class="rounded-xl text-red-500 p-1">Delete</button>
+      {/if}
       <button
         on:click="{() => {
           downloadVersion();

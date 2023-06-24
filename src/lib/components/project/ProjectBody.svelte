@@ -304,7 +304,7 @@
         </div>
         <ul use:autoAnimate class="space-y-2">
           {#each versionMatches ?? [] as version}
-            <VersionDisplay version="{version}" />
+            <VersionDisplay version="{version}" project="{project}" />
           {/each}
         </ul>
         <p class="mx-1 mt-2 text-pearl-lusta-950 dark:text-white">
