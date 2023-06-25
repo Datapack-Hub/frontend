@@ -8,12 +8,15 @@
 
   import { projectSchema } from "$lib/globals/schema";
   import IconSearch from "~icons/tabler/Search.svelte";
+  import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
 
   export let data: PageData;
 
   let query: string;
   $: dataCopy = data.projects ?? [];
   let sort = "Updated";
+
+  let featured = data.featured?.splice(0,1)
 
   let search = debounce(async () => {
     let searchResult = await fetch(
@@ -121,7 +124,10 @@
       <h2 class=" text-pearl-lusta-950 dark:text-white mx-3">
         Showing {dataCopy.length} projects:
       </h2>
-      <ul class="space-y-2 mx-3" use:autoAnimate>
+      <ul class="space-y-2 mx-3 mt-2" use:autoAnimate>
+        {#each featured as feat}
+        <FeaturedProjectComponent project="{feat}" type="featured" />
+        {/each}
         {#key dataCopy}
           {#each dataCopy as project}
             <!-- uncomment these to see the featured stuff on the thingy thing -->

@@ -32,10 +32,10 @@
   let style: string;
   switch (type) {
     case "popular":
-      style = "dph-orange";
+      style = "blue-600";
       break;
     case "featured":
-      style = "blue-600";
+      style = "dph-orange";
       break;
     case "random":
       style = "stone-600";

@@ -17,6 +17,25 @@
   let count = 0;
 
   let random: Project[] = [];
+  let featured: Project[] = [];
+
+  function shuffle(array: any[]) {
+    let currentIndex = array.length,  randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
+  }
 
   onMount(async () => {
     if (browser) {
@@ -24,6 +43,14 @@
       random = await projectSchema
         .array()
         .parseAsync((await randomReq.json()).result);
+
+      let featuredReq = await fetch(apiURL + "/projects/featured");
+      featured = await projectSchema
+        .array()
+        .parseAsync((await featuredReq.json()).result);
+
+      featured = shuffle(featured)
+      featured = featured.slice(0, 3)
 
       let countRes = await fetch(apiURL + "/projects/count");
       count = (await countRes.json()).count;
@@ -135,17 +162,16 @@
       </h2>
     </div>
     <div
-      class="mt-8 h-fit justify-between space-y-3 bg-pearl-lusta-200 dark:bg-stone-800 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:w-1/2">
+      class="mt-8 h-fit justify-between space-y-3 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:w-1/2">
       <h3
         class=" text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center mt-6">
         Featured Projects
       </h3>
-      <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center">
-        Featured projects are coming soon! In the meantime, here's some random
-        projects to check out:
-      </p>
       <div use:autoAnimate>
-        {#each random as randProj}
+        {#each featured.splice(0,2) as randProj}
+          <FeaturedProjectComponent project="{randProj}" type="popular" />
+        {/each}
+        {#each random.splice(0,1) as randProj}
           <FeaturedProjectComponent project="{randProj}" type="random" />
         {/each}
       </div>
