@@ -39,7 +39,7 @@
     class="grid grid-flow-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 auto-rows-min styled-scrollbar ml-0 mt-16 lg:ml-12 lg:mt-0 flex-grow">
     <div class="mb-2 flex items-center col-span-1 sm:col-span-2 lg:col-span-1">
       <h1
-        class="flex-grow text-center text-xl font-bold dark:text-white md:text-left">
+        class="flex-grow text-center text-xl font-bold text-pearl-lusta-900 dark:text-pearl-lusta-100 md:text-left">
         {data.profile?.username}'s projects
       </h1>
       {#if data.profile?.id == $user.id}
