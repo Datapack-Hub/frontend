@@ -169,7 +169,7 @@
       </h3>
       <div use:autoAnimate>
         {#each featured.splice(0,2) as randProj}
-          <FeaturedProjectComponent project="{randProj}" type="popular" />
+          <FeaturedProjectComponent project="{randProj}" type="featured" />
         {/each}
         {#each random.splice(0,1) as randProj}
           <FeaturedProjectComponent project="{randProj}" type="random" />
