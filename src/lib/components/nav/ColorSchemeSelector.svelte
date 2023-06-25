@@ -12,7 +12,7 @@
   $: iconSize = small ? 20 : 24
 </script>
 
-<div class="z-20">
+<div class="select-none">
   {#if $isDark.value}
     <svg
       xmlns="http://www.w3.org/2000/svg"
