@@ -27,7 +27,7 @@
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
-  import IconConfetti from "~icons/tabler/Confetti.svelte";
+  import IconConfetti from "~icons/tabler/Award.svelte";
 
   import CasualLine from "../CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
@@ -57,7 +57,7 @@
   if (project?.body) {
     body = project.body;
   }
-  let featureDur: number;
+  let featureDur: string;
 
   onMount(async () => {
     author = await getAuthorFromID(project?.author);
@@ -188,7 +188,7 @@
     featureModal.close();
     toast.promise(
       fetchAuthed("post", "/projects/id/" + project?.ID + "/feature", {
-        expires: parseInt(reportMsg)
+        expires: parseInt(featureDur)
       }),
       {
         success: "Featured project!",
@@ -221,28 +221,28 @@
           class="button-base flex items-center space-x-1"
           on:click="{() => {
             modModal.open();
-          }}"><IconShield /><span>Moderate</span></button>
+          }}"><IconShield /><span class="hidden md:block">Moderate</span></button>
         <button
           class="button-base flex items-center space-x-1"
           on:click="{() => {
             featureModal.open();
-          }}"><IconConfetti /><span>Feature</span></button>
+          }}"><IconConfetti /><span class="hidden md:block">Feature</span></button>
         {#if status == "publish_queue" || (status == "review_queue" && ["moderator", "admin"].includes($user.role))}
           <button
             class="button-base flex items-center space-x-1 bg-green-600"
-            on:click="{approve}"><IconTick /><span>Approve</span></button>
+            on:click="{approve}"><IconTick /><span class="hidden md:block">Approve</span></button>
           <button
             class="button-base flex items-center space-x-1 bg-yellow-600"
             on:click="{() => {
               modModalPage = 'disable';
               modModal.open();
-            }}"><IconPencil /><span>Request Changes</span></button>
+            }}"><IconPencil /><span class="hidden md:block">Request Changes</span></button>
           <button
             class="button-base flex items-center space-x-1 bg-red-600"
             on:click="{() => {
               modModalPage = 'delete';
               modModal.open();
-            }}"><IconCross /><span>Deny</span></button>
+            }}"><IconCross /><span class="hidden md:block">Deny</span></button>
         {/if}
       {/if}
     </div>
@@ -250,7 +250,7 @@
       <a
         class="button-base ml-auto flex items-center space-x-1"
         href="/project/{project?.url}/edit">
-        <IconPencil /><span>Edit</span>
+        <IconPencil /><span class="hidden md:block">Edit</span>
       </a>
     {/if}
     {#if $user.id != project?.author}
@@ -258,7 +258,7 @@
         class="button-base flex items-center space-x-1"
         on:click="{() => {
           reportModal.open();
-        }}"><IconReport /><span>Report</span></button>
+        }}"><IconReport /><span class="hidden md:block">Report</span></button>
     {/if}
     <button
       class="button-base bg-dph-orange font-bold"
