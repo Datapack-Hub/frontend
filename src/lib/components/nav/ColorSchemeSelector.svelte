@@ -2,10 +2,14 @@
   import { draw } from "svelte/transition";
   import { isDark } from "$lib/globals/stores";
 
+  export let small = false
+
   let toggle = () => {
     $isDark = { value: !$isDark.value, set: $isDark.set };
     localStorage.setItem("dp_colorPref", $isDark.value.toString());
   };
+
+  $: iconSize = small ? 20 : 24
 </script>
 
 <div class="z-20">
@@ -17,8 +21,8 @@
       on:click="{toggle}"
       on:keydown|preventDefault="{k => (k.key == 'T' ? toggle : null)}"
       class="icon icon-tabler icon-tabler-moon-stars ml-0 cursor-pointer hover:brightness-75 md:ml-6"
-      width="24"
-      height="24"
+      width="{iconSize}"
+      height="{iconSize}"
       color="white"
       viewBox="0 0 24 24"
       stroke-width="2"
@@ -49,8 +53,8 @@
       on:click="{toggle}"
       on:keydown|preventDefault="{k => (k.key == 'T' ? toggle : null)}"
       class="icon icon-tabler icon-tabler-sun-high ml-0 cursor-pointer hover:brightness-200 md:ml-6"
-      width="24"
-      height="24"
+      width="{iconSize}"
+      height="{iconSize}"
       viewBox="0 0 24 24"
       stroke-width="2"
       stroke="currentColor"

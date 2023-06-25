@@ -18,6 +18,7 @@
   $: iconColor = $isDark.value ? "white" : "black";
   $: isSmall = (innerWidth ?? 769) < 768;
   $: showNavBG = (scrollY ?? 34) > 35 || isSmall;
+  $: iconSize = isSmall ? 20 : 24
 </script>
 
 <svelte:window bind:scrollY="{scrollY}" bind:innerWidth="{innerWidth}" />
@@ -57,21 +58,21 @@
             class="nav_item"
             use:tippy="{{ content: 'Explore', placement: 'bottom' }}">
             <IconCompass
-              height="24"
-              width="24"
+              height="{iconSize}"
+              width="{iconSize}"
               style="{{ color: iconColor }}" />
           </a>
           <button inert class="nav_item_disabled">
-            <IconSchool height="24" width="24" class="text-neutral-500" />
+            <IconSchool height="{iconSize}" width="{iconSize}" class="text-neutral-500" />
           </button>
           <button inert class="nav_item_disabled">
-            <IconSwords height="24" width="24" class="text-neutral-500" />
+            <IconSwords height="{iconSize}" width="{iconSize}" class="text-neutral-500" />
           </button>
         {/if}
       {/if}
     </div>
     <div class="mb-0 flex items-center justify-between">
-      <ColorSchemeSelector />
+      <ColorSchemeSelector small="{isSmall}" />
       <ProfileNavComponent small="{isSmall}" />
     </div>
   </div>

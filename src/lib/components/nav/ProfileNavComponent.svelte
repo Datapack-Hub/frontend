@@ -53,17 +53,18 @@
   }
 
   $: iconColor = $isDark.value ? "white" : "black";
+  $: iconSize = small ? 20 : 24
 </script>
 
 <div class="z-50 ml-3 flex items-center justify-center md:ml-6">
   {#if authed}
-    {#if ["moderator", "developer", "admin"].includes($role.name)}
+    {#if ["moderator", "developer", "admin"].includes($role.name) && !small}
       <a
         href="/moderation"
         aria-label="Moderation"
         class="z-20 mr-2 md:mr-6"
         use:tippy="{moderationHoverMsg}">
-        <IconShield height="24" width="24" color="{iconColor}" />
+        <IconShield height="{iconSize}" width="{iconSize}" color="{iconColor}" />
       </a>
     {/if}
     <a
@@ -72,9 +73,9 @@
       aria-label="Click to read notifications"
       use:tippy="{notificationHoverMsg}">
       {#if unreadNotifications}
-        <IconUnread height="24" width="24" color="{iconColor}" />
+        <IconUnread height="{iconSize}" width="{iconSize}" color="{iconColor}" />
       {:else}
-        <IconRead height="24" width="24" color="{iconColor}" />
+        <IconRead height="{iconSize}" width="{iconSize}" color="{iconColor}" />
       {/if}
     </a>
     {#if !small}
@@ -83,7 +84,7 @@
         aria-label="Create Project"
         class="z-20 ml-2 md:ml-6"
         use:tippy="{newHoverMsg}">
-        <IconPlus height="24" width="24" color="{iconColor}" />
+        <IconPlus height="{iconSize}" width="{iconSize}" color="{iconColor}" />
       </a>
     {/if}
     <a
@@ -101,9 +102,9 @@
           ? '&'
           : '?'}size=48"
         alt="{$user.username}'s profile picture"
-        height="32"
-        width="32"
-        class="ml-2 rounded-full outline outline-2 outline-offset-2 md:ml-6"
+        height="{iconSize}"
+        width="{iconSize}"
+        class="ml-3 rounded-full outline outline-2 outline-offset-2 md:ml-6"
         style="outline-color:{$role.color ?? '#eab308'};" />
     </a>
   {:else}
