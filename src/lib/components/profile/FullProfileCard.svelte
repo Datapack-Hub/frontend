@@ -43,7 +43,7 @@
       src="{profile?.profile_icon}"
       alt="{profile?.username}'s profile picture"
       on:click="{profile?.id == 3 ? play : null}"
-      on:keypress="{e => (e.key && profile?.id == 3) == "Enter" ? play : null}"
+      on:keypress="{e => (e.key == "Enter" && profile?.id == 3) ? play : null}"
       height="128"
       width="128"
       class="rounded-full outline outline-2 outline-offset-4 md:h-24 md:w-24 lg:h-32 lg:w-32"
