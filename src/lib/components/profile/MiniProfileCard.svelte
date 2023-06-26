@@ -28,7 +28,7 @@
             alt="logo"
             class="inline-block"
             height="18"
-            width="18" /> Datapack Hub Team{/if}</span>
+            width="18" />Site Admin{/if}</span>
       <MarkdownComponent source="{person?.bio}" classes="{'line-clamp-1'}" />
     </div>
   </div>

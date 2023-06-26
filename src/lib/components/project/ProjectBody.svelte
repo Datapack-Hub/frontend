@@ -308,7 +308,7 @@
       class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
       <div class="mb-3 text-sky-300" use:autoAnimate>
         <button on:click="{() => (activePage = 'description')}"
-          ><IconBack class="inline" /> - Back to description
+          ><IconBack class="inline" /> Back to description
         </button>
       </div>
       {#if dp_versions?.length != 0}
@@ -350,7 +350,7 @@
       <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
         <div class="mb-3 text-sky-300" use:autoAnimate>
           <button on:click="{() => (activePage = 'description')}"
-            ><IconBack class="inline" /> - Back to description
+            ><IconBack class="inline" /> Back to description
           </button>
         </div>
         {#if dp_versions?.length != 0}

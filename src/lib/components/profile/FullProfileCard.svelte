@@ -70,7 +70,7 @@
             alt="logo"
             class="inline-block"
             height="24"
-            width="24" /> Datapack Hub Team{:else}{titleCase(
+            width="24" /> Site Admin{:else}{titleCase(
             profileRole?.name
           )}{/if}
       </span>

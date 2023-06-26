@@ -1,171 +1,99 @@
 <script lang="ts">
-  import { goto } from "$app/navigation";
-  import Button from "$lib/components/Button.svelte";
-  import { categories } from "$lib/globals/consts";
-  import { fetchAuthed } from "$lib/globals/functions";
-  import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
-  import toast from "svelte-french-toast";
-  import type { Project } from "$lib/globals/schema";
+  import tippy from "sveltejs-tippy";
 
-  let iconVal: FileList;
-  let iconElem: HTMLImageElement;
-  let titleVal = "";
-  let descVal = "";
-  let bodyVal = "";
-  let catVal = ""; // meow?
-  let iconB64: string | ArrayBuffer | null | undefined;
+  let licenses = [
+    {
+      name: "CC0 NoDerivs",
+      description:
+        "This license lets others distribute, remix, adapt, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered. Recommended for maximum dissemination and use of licensed materials. ",
+      licenseLink: ""
+    },
+    { name: "CC1 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
+    { name: "CC2 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
+    { name: "CC3 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
+    { name: "CC4 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
+    { name: "CC5 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
+    { name: "CC6 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
+    { name: "CC7 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
+    { name: "CC8 NoDerivs", description: "Lorem Ipsum", licenseLink: "" }
+  ];
+
+  let selectedLicense = licenses[0].name;
+  $: selectedObject = licenses.find(v => v.name == selectedLicense);
+
   // let cat = document.getElementById("cat") as HTMLSelectElement
 
-  async function create() {
-    let projData: Project = {
-      icon: iconB64?.toString(),
-      type: "datapack",
-      url: titleVal.trim().toLowerCase().replaceAll(" ", "-"),
-      title: titleVal,
-      description: descVal,
-      body: bodyVal,
-      category: catVal,
-      author: $user.id,
-      status: "draft"
-    };
+  // async function create() {
+  //   let projData: Project = {
+  //     icon: iconB64?.toString(),
+  //     type: "datapack",
+  //     url: titleVal.trim().toLowerCase().replaceAll(" ", "-"),
+  //     title: titleVal,
+  //     description: descVal,
+  //     body: bodyVal,
+  //     category: catVal,
+  //     author: $user.id,
+  //     status: "draft"
+  //   };
 
-    toast.promise(
-      fetchAuthed("post", `/projects/create`, projData).then(res => {
-        if (res.ok) {
-          goto("/project/" + titleVal.toLowerCase().replaceAll(" ", "-"));
-        }
-      }),
-      {
-        success: "Created project! Redirecting...",
-        loading: "Creating project...",
-        error: "Something went wrong!"
-      }
-    );
-  }
+  //   toast.promise(
+  //     fetchAuthed("post", `/projects/create`, projData).then(res => {
+  //       if (res.ok) {
+  //         goto("/project/" + titleVal.toLowerCase().replaceAll(" ", "-"));
+  //       }
+  //     }),
+  //     {
+  //       success: "Created project! Redirecting...",
+  //       loading: "Creating project...",
+  //       error: "Something went wrong!"
+  //     }
+  //   );
+  // }
 
-  function uploadIcon() {
-    if (iconVal[0].size > 256000) {
-      return toast.error("Icon must be less than 256kb");
-    }
-    let reader = new FileReader();
+  // function uploadIcon() {
+  //   if (iconVal[0].size > 256000) {
+  //     return toast.error("Icon must be less than 256kb");
+  //   }
+  //   let reader = new FileReader();
 
-    iconElem.src = URL.createObjectURL(iconVal[0]);
-    reader.addEventListener("load", e => {
-      iconB64 = e.target?.result;
-    });
-    reader.readAsDataURL(iconVal[0]);
-  }
+  //   iconElem.src = URL.createObjectURL(iconVal[0]);
+  //   reader.addEventListener("load", e => {
+  //     iconB64 = e.target?.result;
+  //   });
+  //   reader.readAsDataURL(iconVal[0]);
+  // }
 </script>
 
 <svelte:head>
   <title>Create Project | Datapack Hub</title>
 </svelte:head>
 
-<main
-  class="bg-new-white-200 relative px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
-  <div
-    class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-16">
-    <h1
-      class="pt-8 text-center text-5xl font-bold text-pearl-lusta-950 dark:text-white md:pt-20 md:text-start md:text-4xl lg:text-4xl">
-      Create New <span class="text-dph-orange">Datapack</span>
-    </h1>
-    <div class="text-center align-middle md:text-start">
-      <p class="pb-4 text-pearl-lusta-950/60 dark:text-white/60">
-        Before starting, please read the Site Rules. <b
-          >Only upload content that you made yourself or have permission to
-          distribute.</b>
-      </p>
-
-      <div
-        class="rounded-xl bg-pearl-lusta-200 p-2 pb-2 dark:bg-stone-800"
-        use:autoAnimate>
-        <!-- Icon -->
-        <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
-          Icon
-        </p>
-        <img
-          src="https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg"
-          alt="Your logo here"
-          height="100"
-          width="100"
-          class="mr-3 inline-block rounded-2xl"
-          bind:this="{iconElem}" />
-        <label for="icon" class="button-boring">Upload Icon</label>
-        <input
-          accept="image/*"
-          id="icon"
-          type="file"
-          class="hidden"
-          bind:files="{iconVal}"
-          on:change="{uploadIcon}" />
-        <br /><br />
-
-        <!-- Title -->
-        <p
-          class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
-          Title
-        </p>
-        <input
-          class="input-base override-input-outline h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2"
-          placeholder="Title"
-          bind:value="{titleVal}"
-          maxlength="50" /><br /><br />
-
-        <!-- Short Description -->
-        <p
-          class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
-          Short Description
-        </p>
-        <textarea
-          class="input-base override-input-outline h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2"
-          placeholder="This short description is used for social media embeds and the listing page."
-          id="description"
-          bind:value="{descVal}"
-          maxlength="200"></textarea
-        ><br /><br />
-
-        <!-- Long Description -->
-        <p
-          class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
-          Long Description (supports markdown)
-        </p>
-        <textarea
-          class="input-base override-input-outline h-96 w-full resize-none rounded-md bg-pearl-lusta-300 p-2"
-          placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
-          bind:value="{bodyVal}"
-          maxlength="10000"></textarea
-        ><br /><br />
-
-        <!-- Category -->
-        <p class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
-          Category
-        </p>
-        <select
-          class="input-base override-input-outline w-1/4 rounded-md bg-pearl-lusta-300 p-2 text-lg"
-          bind:value="{catVal}"
-          id="cat">
-          {#each categories as cat}
-            <option value="{cat}">
-              {cat}
-            </option>
-          {/each}
-        </select><br /><br />
-
-        <p class="align-middle dark:text-pearl-lusta-100">
-          You'll be able to edit more project details once you've created the
-          project.
-        </p>
-
-        <Button style="alt" click="{create}">Create Project</Button>
-      </div>
-    </div>
-  </div>
+<main class="pt-20 grid grid-cols-3 gap-3 px-8 sm:px-16 md:px-32 lg:px-64">
+  <h1 class="col-span-3 text-pearl-lusta-100 text-2xl">WARNING, THIS NEW PAGE DOES NOT WORK YET, SORRY FOR THE INCONVENIENCE</h1>
+  <p class="text-pearl-lusta-100 col-span-3">Datapack Name</p>
+  <input type="text" maxlength="35" class="input" />
+  <p class="text-pearl-lusta-100 col-span-3 pt-3">Summary</p>
+  <textarea maxlength="200" class="input resize-none h-32"></textarea>
+  <p class="text-pearl-lusta-100 col-span-3 pt-3">Description</p>
+  <textarea maxlength="2000" class="input resize-none h-64 col-span-2"
+  ></textarea>
+  <p class="text-pearl-lusta-100 col-span-3 pt-3">Description</p>
+  <select
+    class="input"
+    use:autoAnimate
+    use:tippy="{{ content: selectedObject?.description, placement: 'top' }}"
+    bind:value="{selectedLicense}">
+    {#each licenses as license}
+      <option value="{license.name}">
+        {license.name}
+      </option>
+    {/each}
+  </select>
 </main>
-<br />
 
 <style lang="postcss">
-  .input-base {
-    @apply text-pearl-lusta-950 transition-all placeholder:text-pearl-lusta-950/40 hover:placeholder:text-pearl-lusta-950/60 dark:bg-stone-700 dark:text-pearl-lusta-100 dark:placeholder:text-pearl-lusta-100/40 dark:hover:placeholder:text-pearl-lusta-100/60;
+  .input {
+    @apply bg-stone-800 rounded-lg border-2 border-stone-700 p-2 focus:border-dph-orange outline-none text-opacity-60 focus:text-opacity-100 text-pearl-lusta-100 transition-all;
   }
 </style>
