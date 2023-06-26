@@ -33,7 +33,7 @@
 </svelte:head>
 
 <!-- {#await pageLoad() then} -->
-<div class="{$isDark.value ? 'dark' : ''} font-brand">
+<div class="{$isDark ? 'dark' : ''} font-brand">
   {#if !maintenance || $user.role == "admin"}
     {#if $authed && ["admin", "moderator", "helper", "beta access", "verified"].includes($user.role)}
       <div

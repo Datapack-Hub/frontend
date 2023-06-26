@@ -6,12 +6,7 @@ import { isDark } from "./stores";
  * Loads the user's preferred color scheme from LocalStorage
  */
 export function loadColorPref() {
-  if (!isDark.set) {
-    isDark.set({
-      value: localStorage.getItem("dp_colorPref") == "true",
-      set: true
-    });
-  }
+  isDark.set(localStorage.getItem("dp_colorPref") === "true");
 }
 
 /**
@@ -72,6 +67,12 @@ export async function removeCookie(name: string) {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
+/**
+ * Title cases a string
+ *
+ * @param str string to title case
+ * @returns a string in title case (This Is A Title Case String)
+ */
 export function titleCase(str: string | undefined): string {
   if (str == undefined) return "null";
   return str

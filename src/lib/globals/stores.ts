@@ -1,7 +1,7 @@
 import { writable, type Writable } from "svelte/store";
 import type { Role, User } from "$lib/globals/schema";
 
-export const isDark = writable({ value: true, set: false });
+export const isDark = writable(true);
 export const authed = writable(false);
 
 /**

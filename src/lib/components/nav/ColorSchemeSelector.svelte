@@ -5,15 +5,15 @@
   export let small = false;
 
   let toggle = () => {
-    $isDark = { value: !$isDark.value, set: $isDark.set };
-    localStorage.setItem("dp_colorPref", $isDark.value.toString());
+    $isDark = !$isDark;
+    localStorage.setItem("dp_colorPref", $isDark.toString());
   };
 
   $: iconSize = small ? 20 : 24;
 </script>
 
 <div class="select-none">
-  {#if $isDark.value}
+  {#if $isDark}
     <svg
       xmlns="http://www.w3.org/2000/svg"
       role="button"
