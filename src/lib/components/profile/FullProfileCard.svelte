@@ -29,6 +29,12 @@
       "Verified for their datapacks being high-quality or being active in the community.",
     placement: "top"
   };
+
+  // easter egg :)
+  async function play() {
+    let audio = new Audio("/sus.mp3");
+    await audio.play()
+  }
 </script>
 
 <div class="mb-4 flex w-full flex-col items-center md:items-start">
@@ -100,6 +106,9 @@
       {/each}
     </div>
     <!-- </div> -->
+  {/if}
+  {#if profile?.id == 3}
+    <Button click={play} wait>📮</Button>
   {/if}
 
   {#if $authed && $user.id === profile?.id}
