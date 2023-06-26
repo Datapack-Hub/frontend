@@ -18,7 +18,7 @@
   $: iconColor = $isDark.value ? "white" : "black";
   $: isSmall = (innerWidth ?? 769) < 768;
   $: showNavBG = (scrollY ?? 34) > 35 || isSmall;
-  $: iconSize = isSmall ? 20 : 24
+  $: iconSize = isSmall ? 20 : 24;
 </script>
 
 <svelte:window bind:scrollY="{scrollY}" bind:innerWidth="{innerWidth}" />
@@ -63,10 +63,16 @@
               style="{{ color: iconColor }}" />
           </a>
           <button inert class="nav_item_disabled">
-            <IconSchool height="{iconSize}" width="{iconSize}" class="text-neutral-500" />
+            <IconSchool
+              height="{iconSize}"
+              width="{iconSize}"
+              class="text-neutral-500" />
           </button>
           <button inert class="nav_item_disabled">
-            <IconSwords height="{iconSize}" width="{iconSize}" class="text-neutral-500" />
+            <IconSwords
+              height="{iconSize}"
+              width="{iconSize}"
+              class="text-neutral-500" />
           </button>
         {/if}
       {/if}

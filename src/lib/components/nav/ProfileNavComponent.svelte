@@ -53,7 +53,7 @@
   }
 
   $: iconColor = $isDark.value ? "white" : "black";
-  $: iconSize = small ? 20 : 24
+  $: iconSize = small ? 20 : 24;
 </script>
 
 <div class="z-50 ml-3 flex items-center justify-center md:ml-6">
@@ -64,7 +64,10 @@
         aria-label="Moderation"
         class="z-20 mr-2 md:mr-6"
         use:tippy="{moderationHoverMsg}">
-        <IconShield height="{iconSize}" width="{iconSize}" color="{iconColor}" />
+        <IconShield
+          height="{iconSize}"
+          width="{iconSize}"
+          color="{iconColor}" />
       </a>
     {/if}
     <a
@@ -73,7 +76,10 @@
       aria-label="Click to read notifications"
       use:tippy="{notificationHoverMsg}">
       {#if unreadNotifications}
-        <IconUnread height="{iconSize}" width="{iconSize}" color="{iconColor}" />
+        <IconUnread
+          height="{iconSize}"
+          width="{iconSize}"
+          color="{iconColor}" />
       {:else}
         <IconRead height="{iconSize}" width="{iconSize}" color="{iconColor}" />
       {/if}

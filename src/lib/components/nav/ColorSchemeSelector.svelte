@@ -2,14 +2,14 @@
   import { draw } from "svelte/transition";
   import { isDark } from "$lib/globals/stores";
 
-  export let small = false
+  export let small = false;
 
   let toggle = () => {
     $isDark = { value: !$isDark.value, set: $isDark.set };
     localStorage.setItem("dp_colorPref", $isDark.value.toString());
   };
 
-  $: iconSize = small ? 20 : 24
+  $: iconSize = small ? 20 : 24;
 </script>
 
 <div class="select-none">

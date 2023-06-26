@@ -1,6 +1,5 @@
 <script lang="ts">
   import autoAnimate from "@formkit/auto-animate";
-  import tippy from "sveltejs-tippy";
 
   import IconAttr from "~icons/tabler/At.svelte";
   import IconSA from "~icons/tabler/Repeat.svelte";
@@ -9,26 +8,6 @@
   import IconEdit from "~icons/tabler/Pencil.svelte";
   import IconNoIcon from "~icons/tabler/Polaroid.svelte";
   import Button from "$lib/components/Button.svelte";
-
-  let licenses = [
-    {
-      name: "CC0 NoDerivs",
-      description:
-        "This license lets others distribute, remix, adapt, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered. Recommended for maximum dissemination and use of licensed materials. ",
-      licenseLink: ""
-    },
-    { name: "CC1 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
-    { name: "CC2 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
-    { name: "CC3 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
-    { name: "CC4 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
-    { name: "CC5 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
-    { name: "CC6 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
-    { name: "CC7 NoDerivs", description: "Lorem Ipsum", licenseLink: "" },
-    { name: "CC8 NoDerivs", description: "Lorem Ipsum", licenseLink: "" }
-  ];
-
-  let selectedLicense = licenses[0].name;
-  $: selectedObject = licenses.find(v => v.name == selectedLicense);
 
   // let cat = document.getElementById("cat") as HTMLSelectElement
 
@@ -160,13 +139,5 @@
 <style lang="postcss">
   .input {
     @apply bg-stone-800 rounded-lg border-2 border-stone-700 p-2 focus:border-dph-orange outline-none text-opacity-60 focus:text-opacity-100 text-pearl-lusta-100 transition-all w-full placeholder:italic placeholder:text-stone-500;
-  }
-
-  .picker-selected {
-    @apply border-orange-500 bg-orange-500/10;
-  }
-
-  .picker-selected > h1 {
-    @apply text-pearl-lusta-200;
   }
 </style>

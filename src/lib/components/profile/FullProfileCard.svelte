@@ -70,9 +70,7 @@
             alt="logo"
             class="inline-block"
             height="24"
-            width="24" /> Site Admin{:else}{titleCase(
-            profileRole?.name
-          )}{/if}
+            width="24" /> Site Admin{:else}{titleCase(profileRole?.name)}{/if}
       </span>
     {/if}
   </p>
@@ -87,10 +85,12 @@
 
   {#if badges}
     <!-- <div class="mt-4 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5"> -->
-    <h2 class="dark:text-pearl-lusta-100 font-bold mb-1 text-lg mt-4 flex items-center">
+    <h2
+      class="dark:text-pearl-lusta-100 font-bold mb-1 text-lg mt-4 flex items-center">
       <IconBadge class="inline-block mr-1" /> Badges
     </h2>
-    <div class="flex space-x-2 p-2 bg-pearl-lusta-300 dark:bg-stone-800 rounded-lg w-full">
+    <div
+      class="flex space-x-2 p-2 bg-pearl-lusta-300 dark:bg-stone-800 rounded-lg w-full">
       {#each profile?.badges ?? [] as badge}
         <img
           alt="{badge} badge"

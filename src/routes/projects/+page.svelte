@@ -16,7 +16,7 @@
   $: dataCopy = data.projects ?? [];
   let sort = "Updated";
 
-  let featured = data.featured?.splice(0,1)
+  let featured = data.featured?.splice(0, 1);
 
   let search = debounce(async () => {
     let searchResult = await fetch(
@@ -126,7 +126,7 @@
       </h2>
       <ul class="space-y-2 mx-3 mt-2" use:autoAnimate>
         {#each featured as feat}
-        <FeaturedProjectComponent project="{feat}" type="featured" />
+          <FeaturedProjectComponent project="{feat}" type="featured" />
         {/each}
         {#key dataCopy}
           {#each dataCopy as project}

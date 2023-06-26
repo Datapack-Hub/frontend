@@ -193,8 +193,7 @@
       {
         success: "Featured project!",
         loading: "Featuring...",
-        error:
-          "Uh oh, something went wrong."
+        error: "Uh oh, something went wrong."
       }
     );
   }
@@ -221,22 +220,27 @@
           class="button-base flex items-center space-x-1"
           on:click="{() => {
             modModal.open();
-          }}"><IconShield /><span class="hidden md:block">Moderate</span></button>
+          }}"
+          ><IconShield /><span class="hidden md:block">Moderate</span></button>
         <button
           class="button-base flex items-center space-x-1"
           on:click="{() => {
             featureModal.open();
-          }}"><IconConfetti /><span class="hidden md:block">Feature</span></button>
+          }}"
+          ><IconConfetti /><span class="hidden md:block">Feature</span></button>
         {#if status == "publish_queue" || (status == "review_queue" && ["moderator", "admin"].includes($user.role))}
           <button
             class="button-base flex items-center space-x-1 bg-green-600"
-            on:click="{approve}"><IconTick /><span class="hidden md:block">Approve</span></button>
+            on:click="{approve}"
+            ><IconTick /><span class="hidden md:block">Approve</span></button>
           <button
             class="button-base flex items-center space-x-1 bg-yellow-600"
             on:click="{() => {
               modModalPage = 'disable';
               modModal.open();
-            }}"><IconPencil /><span class="hidden md:block">Request Changes</span></button>
+            }}"
+            ><IconPencil /><span class="hidden md:block">Request Changes</span
+            ></button>
           <button
             class="button-base flex items-center space-x-1 bg-red-600"
             on:click="{() => {
@@ -300,7 +304,9 @@
     <div
       class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
       <p class="w-full leading-tight break-words">
-        <MarkdownComponent source="{body}" classes="prose-img:my-0 prose-p:my-0 prose-headings:mb-2 prose-ul:my-3" />
+        <MarkdownComponent
+          source="{body}"
+          classes="prose-img:my-0 prose-p:my-0 prose-headings:mb-2 prose-ul:my-3" />
       </p>
     </div>
   {:else if activePage == "versions"}
@@ -524,14 +530,15 @@
       person="{author}"
       role="{roles?.find(v => author?.role == v.name)}" />
     <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
-        Duration of feature
-      </p>
+      Duration of feature
+    </p>
     <input
       type="number"
       class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-      bind:value={featureDur}
+      bind:value="{featureDur}"
       placeholder="i.e 1, 7, 14, 30, 365" />
-    <button class="button-primary mt-2" on:click="{() => feature()}">Feature</button>
+    <button class="button-primary mt-2" on:click="{() => feature()}"
+      >Feature</button>
   </Modal>
 </div>
 

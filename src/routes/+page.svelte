@@ -20,18 +20,20 @@
   let featured: Project[] = [];
 
   function shuffle(array: any[]) {
-    let currentIndex = array.length,  randomIndex;
+    let currentIndex = array.length,
+      randomIndex;
 
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
-
       // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
 
       // And swap it with the current element.
       [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+        array[randomIndex],
+        array[currentIndex]
+      ];
     }
 
     return array;
@@ -49,8 +51,8 @@
         .array()
         .parseAsync((await featuredReq.json()).result);
 
-      featured = shuffle(featured)
-      featured = featured.slice(0, 3)
+      featured = shuffle(featured);
+      featured = featured.slice(0, 3);
 
       let countRes = await fetch(apiURL + "/projects/count");
       count = (await countRes.json()).count;
@@ -168,10 +170,10 @@
         Featured Projects
       </h3>
       <div use:autoAnimate>
-        {#each featured.splice(0,2) as randProj}
+        {#each featured.splice(0, 2) as randProj}
           <FeaturedProjectComponent project="{randProj}" type="featured" />
         {/each}
-        {#each random.splice(0,1) as randProj}
+        {#each random.splice(0, 1) as randProj}
           <FeaturedProjectComponent project="{randProj}" type="random" />
         {/each}
       </div>
