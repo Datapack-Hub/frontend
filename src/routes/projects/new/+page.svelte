@@ -6,7 +6,7 @@
   import IconNC from "~icons/tabler/CoinOff.svelte";
   import IconND from "~icons/tabler/CoinOff.svelte";
   import IconEdit from "~icons/tabler/Pencil.svelte";
-  import IconNoIcon from "~icons/tabler/Polaroid.svelte";
+  import IconNoIcon from "~icons/tabler/Upload.svelte";
   import Button from "$lib/components/Button.svelte";
 
   // let cat = document.getElementById("cat") as HTMLSelectElement
@@ -56,13 +56,13 @@
   <title>Create Project | Datapack Hub</title>
 </svelte:head>
 
-<main class="pt-20 grid grid-cols-3 gap-2 px-8 sm:px-16 md:px-32 lg:px-64 pb-3">
+<main class="pt-20 grid grid-cols-3 gap-2 px-4 sm:px-8 md:px-16 lg:px-24 pb-3">
   <h1 class="col-span-3 text-pearl-lusta-100 text-3xl font-bold mb-4">
     Create New Datapack
   </h1>
-  <div class="col-span-2 flex items-center justify-between space-x-3">
+  <div class="col-span-3 lg:col-span-2 flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row">
     <div
-      class="bg-stone-700 flex items-center h-full aspect-square justify-center rounded-xl dark:text-white">
+      class="bg-stone-700 flex items-center h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
       <IconNoIcon class="h-1/2 w-1/2" />
     </div>
     <div class="w-full">
@@ -74,14 +74,14 @@
   </div>
 
   <p class="text-pearl-lusta-100 col-span-3 pt-3">Summary</p>
-  <textarea maxlength="200" class="input resize-none h-32"></textarea>
+  <textarea maxlength="200" class="input resize-none h-32 col-span-2 lg:col-span-1"></textarea>
   <p class="text-pearl-lusta-100 col-span-3 pt-3">Description</p>
-  <textarea maxlength="2000" class="input resize-none h-64 col-span-2"
+  <textarea maxlength="2000" class="input resize-none h-64 col-span-3 lg:col-span-2"
   ></textarea>
   <p class="text-pearl-lusta-100 col-span-3 pt-3">
     CC Licence (click to select)
   </p>
-  <div class="grid grid-cols-2 gap-3" use:autoAnimate>
+  <div class="grid grid-cols-2 gap-3 col-span-3 md:col-span-2 lg:col-span-1" use:autoAnimate>
     <div class="input">
       <h1 class="flex items-center space-x-2">
         <IconAttr />
@@ -134,6 +134,7 @@
     </div>
   </div>
   <Button classes="col-span-3 w-fit mt-4">Create Project</Button>
+  <div class="py-16"></div>
 </main>
 
 <style lang="postcss">
