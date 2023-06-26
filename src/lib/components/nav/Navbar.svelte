@@ -18,31 +18,33 @@
   $: iconColor = $isDark.value ? "white" : "black";
   $: isSmall = (innerWidth ?? 769) < 768;
   $: showNavBG = (scrollY ?? 34) > 35 || isSmall;
-  $: iconSize = isSmall ? 20 : 24;
+  $: iconSize = isSmall ? 24 : 32;
 </script>
 
 <svelte:window bind:scrollY="{scrollY}" bind:innerWidth="{innerWidth}" />
 
 <nav
   id="nav"
-  class="sticky top-[calc(100%-8rem)] z-40 w-full transition-all md:fixed md:top-0 md:translate-y-0 px-2 sm:px-8 md:px-16 lg:px-24 {showNavBG
+  class="{isSmall
+    ? 'bottom-0'
+    : 'top-0'} z-40 w-full transition-all fixed md:translate-y-0 px-2 sm:px-8 md:px-16 lg:px-24 {showNavBG
     ? 'bg-pearl-lusta-50 dark:bg-stone-800 shadow-md'
     : 'shadow-none'}">
-  <div class="flex h-32 w-full flex-row items-center justify-between md:h-16">
+  <div class="flex h-16 w-full flex-row items-center justify-between md:h-16">
     <div class="flex items-center mr-2">
       <a href="/" class="z-20 flex cursor-pointer items-center space-x-2">
         <img
           src="/logos/dph.svg"
           alt="logo"
           class="min-h-8 flex-shrink-0 transition-all hover:brightness-75"
-          height="32"
-          width="32" />
+          height="{iconSize}"
+          width="{iconSize}" />
         <span
           class="hidden text-2xl font-bold text-pearl-lusta-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 lg:block">
           Datapack Hub
         </span>
         <span
-          class="text-sm md:text-lg font-bold text-white bg-dph-orange px-2 rounded-full">
+          class="text-xs md:text-lg font-bold text-white bg-dph-orange px-2 rounded-full">
           BETA
         </span>
       </a>

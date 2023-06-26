@@ -1,12 +1,10 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
-  import { apiURL } from "$lib/globals/consts";
-  import type { Project } from "$lib/globals/schema";
-  import { projectSchema } from "$lib/globals/schema";
+  import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import autoAnimate from "@formkit/auto-animate";
   import anime from "animejs";
   import { onMount } from "svelte";
+  import type { PageData } from "./$types";
 
   let rawRand = Math.floor(Math.random() * 10_000_000);
   let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
@@ -14,49 +12,11 @@
 
   let visible = false;
   let width: number;
-  let count = 0;
 
-  let random: Project[] = [];
-  let featured: Project[] = [];
-
-  function shuffle(array: any[]) {
-    let currentIndex = array.length,
-      randomIndex;
-
-    // While there remain elements to shuffle.
-    while (currentIndex != 0) {
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex]
-      ];
-    }
-
-    return array;
-  }
+  export let data: PageData;
 
   onMount(async () => {
     if (browser) {
-      let randomReq = await fetch(apiURL + "/projects/random?count=3");
-      random = await projectSchema
-        .array()
-        .parseAsync((await randomReq.json()).result);
-
-      let featuredReq = await fetch(apiURL + "/projects/featured");
-      featured = await projectSchema
-        .array()
-        .parseAsync((await featuredReq.json()).result);
-
-      featured = shuffle(featured);
-      featured = featured.slice(0, 3);
-
-      let countRes = await fetch(apiURL + "/projects/count");
-      count = (await countRes.json()).count;
-
       let textWrapper = document.querySelectorAll(".split-text .letters");
       textWrapper.forEach(el => {
         el.innerHTML =
@@ -158,7 +118,7 @@
         Over <span
           title="{rand}"
           class="text-gradient bg-gradient-to-br from-rose-500 to-yellow-500 font-bold">
-          {compactNumberFormatter.format(count - 1)}
+          {compactNumberFormatter.format(data.count - 1)}
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>
@@ -170,10 +130,10 @@
         Featured Projects
       </h3>
       <div use:autoAnimate>
-        {#each featured.splice(0, 2) as randProj}
+        {#each data.featured.splice(0, 2) as randProj}
           <FeaturedProjectComponent project="{randProj}" type="featured" />
         {/each}
-        {#each random.splice(0, 1) as randProj}
+        {#each data.random.splice(0, 1) as randProj}
           <FeaturedProjectComponent project="{randProj}" type="random" />
         {/each}
       </div>

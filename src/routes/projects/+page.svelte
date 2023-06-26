@@ -8,7 +8,7 @@
 
   import { projectSchema } from "$lib/globals/schema";
   import IconSearch from "~icons/tabler/Search.svelte";
-  import FeaturedProjectComponent from "$lib/components/FeaturedProjectComponent.svelte";
+  import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
 
   export let data: PageData;
 

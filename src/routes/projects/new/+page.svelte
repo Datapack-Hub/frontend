@@ -8,6 +8,9 @@
   import IconEdit from "~icons/tabler/Pencil.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import Button from "$lib/components/Button.svelte";
+  import { categories } from "$lib/globals/consts";
+  import Category from "$lib/components/Category.svelte";
+  import { writable } from "svelte/store";
 
   // let cat = document.getElementById("cat") as HTMLSelectElement
 
@@ -50,6 +53,8 @@
   //   });
   //   reader.readAsDataURL(iconVal[0]);
   // }
+
+  let categoryCount = writable(0);
 </script>
 
 <svelte:head>
@@ -60,28 +65,44 @@
   <h1 class="col-span-3 text-pearl-lusta-100 text-3xl font-bold mb-4">
     Create New Datapack
   </h1>
-  <div class="col-span-3 lg:col-span-2 flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row">
+  <div
+    class="col-span-3 lg:col-span-2 flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row">
     <div
       class="bg-stone-700 flex items-center h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
       <IconNoIcon class="h-1/2 w-1/2" />
     </div>
     <div class="w-full">
       <p class="text-pearl-lusta-100 col-span-3 mb-2">Title</p>
-      <input type="text" placeholder="Super Cool Datapack" maxlength="35" class="input" />
+      <input
+        type="text"
+        placeholder="Super Cool Datapack"
+        maxlength="35"
+        class="input" />
       <p class="text-pearl-lusta-100 col-span-3 mt-4 mb-2">URL</p>
-      <input type="text" placeholder="slug-for-your-pack" maxlength="35" class="input" />
+      <input
+        type="text"
+        placeholder="slug-for-your-pack"
+        maxlength="35"
+        class="input" />
     </div>
   </div>
 
   <p class="text-pearl-lusta-100 col-span-3 pt-3">Summary</p>
-  <textarea placeholder="A short description of your pack" maxlength="200" class="input resize-none h-32 col-span-2 lg:col-span-1"></textarea>
+  <textarea
+    placeholder="A short description of your pack"
+    maxlength="200"
+    class="input resize-none h-32 col-span-2 lg:col-span-1"></textarea>
   <p class="text-pearl-lusta-100 col-span-3 pt-3">Description</p>
-  <textarea placeholder="Details about your project" maxlength="2000" class="input resize-none h-64 col-span-3 lg:col-span-2"
-  ></textarea>
+  <textarea
+    placeholder="Details about your project"
+    maxlength="2000"
+    class="input resize-none h-64 col-span-3 lg:col-span-2"></textarea>
   <p class="text-pearl-lusta-100 col-span-3 pt-3">
     CC Licence (click to select)
   </p>
-  <div class="grid grid-cols-2 gap-3 col-span-3 md:col-span-2 lg:col-span-1" use:autoAnimate>
+  <div
+    class="grid grid-cols-2 gap-3 col-span-3 md:col-span-2 lg:col-span-1"
+    use:autoAnimate>
     <div class="input cursor-pointer">
       <h1 class="flex items-center space-x-2">
         <IconAttr />
@@ -132,6 +153,13 @@
         class="input"
         placeholder="https://example.com/my-custom-licence.md" />
     </div>
+  </div>
+  <p class="text-pearl-lusta-100 col-span-3">Categories</p>
+  <div
+    class="border-2 border-stone-700 bg-stone-800 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 col-span-3 md:col-span-2 rounded-lg">
+    {#each categories as cat}
+      <Category category="{cat}" counter="{categoryCount}" />
+    {/each}
   </div>
   <Button classes="col-span-3 w-fit mt-4">Create Project</Button>
   <div class="py-16"></div>

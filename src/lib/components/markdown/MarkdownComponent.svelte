@@ -20,6 +20,7 @@
 
     return marked.marked(
       DOMPurify.sanitize(
+        // eslint-disable-next-line no-misleading-character-class
         str.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""),
         {
           FORBID_ATTR: ["style", "class", "placeholder", "src"],

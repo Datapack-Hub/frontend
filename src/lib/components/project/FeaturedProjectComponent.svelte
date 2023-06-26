@@ -5,7 +5,7 @@
 
   import type { Project } from "$lib/globals/schema";
   import tippy from "sveltejs-tippy";
-  import ProjectComponent from "./project/ProjectComponent.svelte";
+  import ProjectComponent from "./ProjectComponent.svelte";
 
   export let project: Project;
   export let type: "popular" | "featured" | "random" | "new" = "popular";
