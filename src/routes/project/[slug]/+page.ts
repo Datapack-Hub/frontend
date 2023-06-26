@@ -37,5 +37,4 @@ export const load = (async ({ params, fetch }) => {
       });
     }
   }
-  return {};
 }) satisfies PageLoad;

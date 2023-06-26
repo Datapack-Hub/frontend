@@ -2,6 +2,7 @@
   import type { PageData } from "./$types";
   import ProjectInfo from "$lib/components/project/ProjectInfo.svelte";
   import ProjectBody from "$lib/components/project/ProjectBody.svelte";
+  import { getAuthorFromID } from "$lib/globals/functions";
 
   export let data: PageData;
 </script>
@@ -17,7 +18,6 @@
   <meta property="og:title" content="{data.project?.title} | Datapack Hub" />
   <meta property="og:description" content="{data.project?.description}" />
 
-  <meta name="og:profile:username" content="Silabear" />
   <meta name="og:image" content="{data.project?.icon}" />
   <meta name="og:image:secure_url" content="{data.project?.icon}" />
   <meta name="og:image:width" content="120" />

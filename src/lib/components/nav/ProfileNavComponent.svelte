@@ -99,7 +99,7 @@
       <img
         src="{$user.profile_icon}{$user.profile_icon.includes('?')
           ? '&'
-          : '?'}size=48"
+          : '?'}size=36"
         alt="{$user.username}'s profile picture"
         height="24"
         width="24"
