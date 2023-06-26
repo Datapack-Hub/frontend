@@ -33,7 +33,7 @@
   // easter egg :)
   async function play() {
     let audio = new Audio("/sus.mp3");
-    await audio.play()
+    await audio.play();
   }
 </script>
 
@@ -43,7 +43,7 @@
       src="{profile?.profile_icon}"
       alt="{profile?.username}'s profile picture"
       on:click="{profile?.id == 3 ? play : null}"
-      on:keypress="{e => (e.key == "Enter" && profile?.id == 3) ? play : null}"
+      on:keypress="{e => (e.key == 'Enter' && profile?.id == 3 ? play : null)}"
       height="128"
       width="128"
       class="rounded-full outline outline-2 outline-offset-4 md:h-24 md:w-24 lg:h-32 lg:w-32"
@@ -55,13 +55,13 @@
     {profile?.username}
     {#if ["moderator", "developer", "admin"].includes(profileRole?.name ?? "")}
       <span
-        class="material-icons align-middle text-lg text-orange-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
+        class="material-icons text-lg text-orange-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
         use:tippy="{orangeVerifiedHover}">verified</span
       >{:else if profile?.role == "helper"}<span
-        class="material-icons align-middle text-lg text-blue-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
+        class="material-icons text-lg text-blue-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
         use:tippy="{blueVerifiedHover}">verified</span
       >{:else if profile?.role == "verified"}<span
-        class="material-icons align-middle text-lg text-emerald-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
+        class="material-icons text-lg text-emerald-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
         use:tippy="{emeraldVerifiedHover}"
         >verified
       </span>
@@ -71,12 +71,12 @@
   <p
     class="mt-1 w-full text-center align-middle font-semibold text-pearl-lusta-950 dark:text-white sm:text-base md:text-lg">
     {#if profileRole?.name != "default"}
-      <span style="color: {profileRole?.color};">
-        {#if profileRole?.name == "nerd"}🤓 Nerd
+      <span class="flex items-center justify-center" style="color: {profileRole?.color};">
+        {#if profileRole?.name == "nerd"}🤓
         {:else if profileRole?.name == "admin"}<img
             src="/logos/dph.svg"
             alt="logo"
-            class="inline-block"
+            class="inline-block mr-2"
             height="24"
             width="24" /> Site Admin{:else}{titleCase(profileRole?.name)}{/if}
       </span>
