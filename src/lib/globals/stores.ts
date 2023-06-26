@@ -3,6 +3,7 @@ import type { Role, User } from "$lib/globals/schema";
 
 export const isDark = writable(true);
 export const authed = writable(false);
+export const tokenWarningShown = writable(false);
 
 /**
  * Store for User Data, this contains all the user's data

@@ -4,7 +4,7 @@ import { apiURL } from "$lib/globals/consts";
 import { fetchAuthed, getCookie, loadColorPref } from "$lib/globals/functions";
 import type { Role } from "$lib/globals/schema";
 import { roleSchema, userSchema } from "$lib/globals/schema";
-import { authed, role, user } from "$lib/globals/stores";
+import { authed, role, tokenWarningShown, user } from "$lib/globals/stores";
 import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
 
@@ -44,5 +44,12 @@ export const load = (async ({ fetch, url }) => {
     }
 
     loadColorPref();
+
+    if (!get(tokenWarningShown)) {
+      console.log("%cSTOP!", "color: #ff631a; font-size: 72pt; font-weight: 800;")
+      console.log("%cPasting anything into the console could get your account stolen. Only use this if you know what you're doing!", "font-size: 18pt;")
+      console.log("%c(Unless you do know what you're doing, then maybe you should join us 😁).", "font-size: 6pt;")
+      tokenWarningShown.set(true)
+    }
   }
 }) satisfies LayoutLoad;
