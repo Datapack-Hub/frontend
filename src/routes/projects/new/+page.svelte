@@ -67,22 +67,22 @@
     </div>
     <div class="w-full">
       <p class="text-pearl-lusta-100 col-span-3 mb-2">Title</p>
-      <input type="text" maxlength="35" class="input" />
+      <input type="text" placeholder="Super Cool Datapack" maxlength="35" class="input" />
       <p class="text-pearl-lusta-100 col-span-3 mt-4 mb-2">URL</p>
-      <input type="text" maxlength="35" class="input" />
+      <input type="text" placeholder="slug-for-your-pack" maxlength="35" class="input" />
     </div>
   </div>
 
   <p class="text-pearl-lusta-100 col-span-3 pt-3">Summary</p>
-  <textarea maxlength="200" class="input resize-none h-32 col-span-2 lg:col-span-1"></textarea>
+  <textarea placeholder="A short description of your pack" maxlength="200" class="input resize-none h-32 col-span-2 lg:col-span-1"></textarea>
   <p class="text-pearl-lusta-100 col-span-3 pt-3">Description</p>
-  <textarea maxlength="2000" class="input resize-none h-64 col-span-3 lg:col-span-2"
+  <textarea placeholder="Details about your project" maxlength="2000" class="input resize-none h-64 col-span-3 lg:col-span-2"
   ></textarea>
   <p class="text-pearl-lusta-100 col-span-3 pt-3">
     CC Licence (click to select)
   </p>
   <div class="grid grid-cols-2 gap-3 col-span-3 md:col-span-2 lg:col-span-1" use:autoAnimate>
-    <div class="input">
+    <div class="input cursor-pointer">
       <h1 class="flex items-center space-x-2">
         <IconAttr />
         <p class="font-bold">Attribution</p>
@@ -92,7 +92,7 @@
         to you, the creator.
       </p>
     </div>
-    <div class="input">
+    <div class="input cursor-pointer">
       <h1 class="flex items-center space-x-2">
         <IconSA />
         <p class="font-bold">ShareAlike</p>
@@ -102,7 +102,7 @@
         distribute it under the same licence.
       </p>
     </div>
-    <div class="input">
+    <div class="input cursor-pointer">
       <h1 class="flex items-center space-x-2">
         <IconNC />
         <p class="font-bold">NonCommercial</p>
@@ -112,7 +112,7 @@
         purposes.
       </p>
     </div>
-    <div class="input p-3">
+    <div class="input cursor-pointer p-3">
       <h1 class="flex items-center space-x-2">
         <IconND />
         <p class="font-bold">NoDeriatives</p>
