@@ -14,6 +14,7 @@
 </script>
 
 {#if visible}
+<div class="absolute">
   <div
     class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-lg">
     <div
@@ -25,4 +26,6 @@
       <slot />
     </div>
   </div>
+</div>
+
 {/if}
