@@ -14,18 +14,17 @@
 </script>
 
 {#if visible}
-<div class="absolute">
-  <div
-    class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-lg">
+  <div class="absolute">
     <div
-      in:fly="{{ y: 300 }}"
-      class="relative m-auto w-1/3 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
-      <button
-        class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
-        on:click="{() => close()}"><IconClose /></button>
-      <slot />
+      class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-lg">
+      <div
+        in:fly="{{ y: 300 }}"
+        class="relative m-auto w-1/3 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
+        <button
+          class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+          on:click="{() => close()}"><IconClose /></button>
+        <slot />
+      </div>
     </div>
   </div>
-</div>
-
 {/if}

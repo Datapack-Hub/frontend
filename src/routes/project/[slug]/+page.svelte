@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
-  import ProjectInfo from "$lib/components/project/ProjectInfo.svelte";
   import ProjectBody from "$lib/components/project/ProjectBody.svelte";
-  import { getAuthorFromID } from "$lib/globals/functions";
+  import ProjectInfo from "$lib/components/project/ProjectInfo.svelte";
+  import type { PageData } from "./$types";
 
   export let data: PageData;
 </script>
@@ -25,7 +24,7 @@
 </svelte:head>
 
 <main
-  class="-translate-y-20 bg-pearl-lusta-100 px-0 pb-64 transition-all dark:bg-stone-900 sm:px-8 md:translate-y-0 md:px-16 lg:px-24">
+  class=" bg-pearl-lusta-100 px-0 pb-64 transition-all dark:bg-stone-900 sm:px-8 md:px-16 lg:px-24">
   <div class="md:pt-20"></div>
   <div class="flex flex-col lg:flex-row w-full px-4">
     {#if data.project && data.versions && data.roles}

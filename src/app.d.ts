@@ -27,12 +27,5 @@ declare module "sveltejs-tippy";
 declare module "marked-linkify-it";
 declare module "marked-smartypants";
 
-declare type Report = {
-  message: string;
-  reporter: User;
-  project: Project;
-  id: number;
-};
-
 /// <reference types="@sveltejs/kit" />
 /// <reference types="unplugin-icons/types/svelte" />

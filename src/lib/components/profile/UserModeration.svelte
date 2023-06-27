@@ -160,10 +160,8 @@
   <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Warn Message
   </p>
-  <textarea
-    class="input h-32 resize-none"
-    placeholder="..."
-    id="warn-message"></textarea>
+  <textarea class="input h-32 resize-none" placeholder="..." id="warn-message"
+  ></textarea>
   <Button click="{async () => await warn()}">Warn {user?.username}</Button>
 </Modal>
 
@@ -201,10 +199,7 @@
     class="mt-2 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Notification Type
   </label>
-  <select
-    name="notif-type"
-    id="notif-type"
-    class="input mb-2">
+  <select name="notif-type" id="notif-type" class="input mb-2">
     <option value="default">Default</option>
     <option value="important">Important</option>
     <option value="announcement">Announcement</option>
@@ -292,12 +287,12 @@
             <button
               class="mt-1 flex w-full items-center rounded-md bg-red-600 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => {
-                if (modJson['banned']) open(unbanDialog);
+                if (modJson.banned) open(unbanDialog);
                 else open(banDialog);
               }}">
               <IconBan height="32" width="32" color="{iconColor}" class="p-1" />
-              {#if modJson["banned"]}Unban (expires {new Date(
-                  modJson["banExpiry"]
+              {#if modJson.banned}Unban (expires {new Date(
+                  modJson.banExpiry
                 ).toDateString()}){:else}Ban{/if}
             </button>
             <button
@@ -351,7 +346,7 @@
               <b>ID: </b>
               {user.id}
             </p>
-            {#if modJson["banned"]}
+            {#if modJson.banned}
               <p class=" text-pearl-lusta-950 dark:text-white">
                 <b>Banned</b>
               </p>

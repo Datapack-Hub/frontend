@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { titleCase } from "$lib/globals/functions";
   import { authed, user } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
   import IconSettings from "~icons/tabler/Settings.svelte";
@@ -9,6 +8,7 @@
   import MarkdownComponent from "../markdown/MarkdownComponent.svelte";
   import type { User, Role } from "$lib/globals/schema";
   import { badges } from "$lib/globals/consts";
+  import { title } from "radash";
 
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
@@ -37,7 +37,8 @@
   }
 </script>
 
-<div class="mb-4 flex w-full flex-col items-center md:items-start">
+<div
+  class="mb-4 flex w-full flex-col mt-16 md:mt-0 items-center md:items-start">
   <div class="self-center">
     <img
       src="{profile?.profile_icon}"
@@ -71,14 +72,18 @@
   <p
     class="mt-1 w-full text-center align-middle font-semibold text-pearl-lusta-950 dark:text-white sm:text-base md:text-lg">
     {#if profileRole?.name != "default"}
-      <span class="flex items-center justify-center" style="color: {profileRole?.color};">
+      <span
+        class="flex items-center justify-center"
+        style="color: {profileRole?.color};">
         {#if profileRole?.name == "nerd"}🤓
         {:else if profileRole?.name == "admin"}<img
             src="/logos/dph.svg"
             alt="logo"
             class="inline-block mr-2"
             height="24"
-            width="24" /> Datapack Hub Team{:else}{titleCase(profileRole?.name)}{/if}
+            width="24" /> Datapack Hub Team{:else}{title(
+            profileRole?.name
+          )}{/if}
       </span>
     {/if}
   </p>

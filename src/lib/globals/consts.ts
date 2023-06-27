@@ -1,4 +1,5 @@
 export const apiURL = "https://api.datapackhub.net";
+
 export const categories = [
   "Adventure",
   "Magic",
@@ -51,7 +52,7 @@ export const badges = [
   },
   {
     name: "contributor",
-    description: "Devlopers and contributors",
+    description: "Developers and contributors",
     tippy: {
       content:
         '<b style="font-size:24;">Contributor</b><br />Have helped in the development of the site, whether that is through Github or development tasks.',

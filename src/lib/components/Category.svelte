@@ -13,7 +13,7 @@
     if (clicked) $counter++;
     else $counter--;
     if ($counter > 3) {
-      toast.error("Max: 3 categories")
+      toast.error("Max: 3 categories");
       clicked = false;
       $counter--;
     }
@@ -25,6 +25,6 @@
     ? 'bg-dph-orange hover:brightness-75'
     : 'hover:bg-dph-orange bg-stone-700'} m-1.5 p-2 rounded-lg text-pearl-lusta-100 transition-all"
   on:click="{toggle}"
-  on:keypress="{e => (e.key == 'ENTER' ? toggle : () => {})}">
+  on:keypress="{e => (e.key == 'ENTER' ? toggle : null)}">
   <p>{category}</p>
 </div>

@@ -17,10 +17,11 @@
   <img src="/logos/dph.svg" alt="logo" class="w-1/3 p-12" />
   <div class="w-2/3">
     <h1
-      class="text-5xl text-pearl-lusta-950 dark:text-pearl-lusta-100 mb-4 font-bold">
+      class="text-3xl md:text-4xl lg:text-5xl text-pearl-lusta-950 dark:text-pearl-lusta-100 mb-4 font-bold">
       Stop!
     </h1>
-    <p class="text-xl text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    <p
+      class="text-base md:text-lg lg:text-xl text-pearl-lusta-950 dark:text-pearl-lusta-100">
       You are being redirected to another page. This page may have different
       privacy policies or may be malicious. Make sure you know that the site is
       safe before continuing!

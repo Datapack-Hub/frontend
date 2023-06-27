@@ -66,20 +66,3 @@ export function getCookie(cookieName: string): string | null {
 export async function removeCookie(name: string) {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
-
-/**
- * Title cases a string
- *
- * @param str string to title case
- * @returns a string in title case (This Is A Title Case String)
- */
-export function titleCase(str: string | undefined): string {
-  if (str == undefined) return "null";
-  return str
-    .toLowerCase()
-    .split(" ")
-    .map(word => {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(" ");
-}

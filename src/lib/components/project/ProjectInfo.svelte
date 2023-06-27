@@ -1,10 +1,6 @@
 <script lang="ts">
   // Svelte imports
-  import {
-    fetchAuthed,
-    getAuthorFromID,
-    titleCase
-  } from "$lib/globals/functions";
+  import { fetchAuthed, getAuthorFromID } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
   import toast from "svelte-french-toast";
@@ -18,6 +14,7 @@
   import IconUpdate from "~icons/tabler/Refresh.svelte";
   import MarkdownComponent from "../markdown/MarkdownComponent.svelte";
   import type { Project, User } from "$lib/globals/schema";
+  import { title } from "radash";
 
   // Component args
   export let project: Project;
@@ -116,11 +113,11 @@
           {#if ["unpublished", "draft"].includes(project.status)}
             <span class="text-stone-400">•</span>
             <span class="text-stone-400 font-bold mt-2"
-              >{titleCase(project.status)}</span>
+              >{title(project.status)}</span>
           {:else if ["disabled"].includes(project.status)}
             <span class="text-red-400">•</span>
             <span class="text-red-400 font-bold mt-2"
-              >{titleCase(project.status.replaceAll("_", " "))}</span>
+              >{title(project.status.replaceAll("_", " "))}</span>
           {:else if ["review_queue", "publish_queue"].includes(project.status)}
             <span class="text-yellow-600">•</span>
             <span class="text-yellow-600 font-bold pt-2">In Queue</span>

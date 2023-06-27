@@ -15,8 +15,8 @@
   import IconRP from "~icons/tabler/Sparkles.svelte";
   import { fetchAuthed } from "$lib/globals/functions";
   import type { Project, Version } from "$lib/globals/schema";
-  import isArray from "lodash-es/isArray";
   import { user } from "$lib/globals/stores";
+  import { isArray } from "radash";
 
   export let version: Version;
   export let expanded = false;

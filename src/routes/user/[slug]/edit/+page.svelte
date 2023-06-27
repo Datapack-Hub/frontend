@@ -1,12 +1,13 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { roles } from "$lib/globals/consts";
-  import { fetchAuthed, titleCase } from "$lib/globals/functions";
+  import { fetchAuthed } from "$lib/globals/functions";
   import { authed, user } from "$lib/globals/stores";
   import { onMount } from "svelte";
   import toast from "svelte-french-toast";
   import type { PageData } from "./$types";
   import Button from "$lib/components/Button.svelte";
+  import { title } from "radash";
 
   export let data: PageData;
 
@@ -56,7 +57,7 @@
 </svelte:head>
 
 <main
-  class="-translate-y-20 bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 md:translate-y-0 lg:px-32 xl:px-64">
+  class=" bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -102,7 +103,7 @@
             >{data.profile?.role}</option>
           {#each roles as r}
             {#if r != data.profile?.role}
-              <option value="{r}" selected>{titleCase(r)}</option>
+              <option value="{r}" selected>{title(r)}</option>
             {/if}
           {/each}
         </select><br /><br />

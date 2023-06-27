@@ -2,11 +2,7 @@
   // Svelte imports
   import { goto } from "$app/navigation";
   import { versions } from "$lib/globals/consts";
-  import {
-    fetchAuthed,
-    getAuthorFromID,
-    titleCase
-  } from "$lib/globals/functions";
+  import { fetchAuthed, getAuthorFromID } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import toast from "svelte-french-toast";
@@ -32,6 +28,7 @@
   import CasualLine from "../CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import MiniProfileCard from "../profile/MiniProfileCard.svelte";
+  import { title } from "radash";
 
   // Component args
   export let project: Project;
@@ -487,7 +484,7 @@
       maxlength="200"
       bind:value="{postedModMsg}"></textarea>
     <button class="button-primary" on:click="{() => moderate(modModalPage)}"
-      >{titleCase(modModalPage)}</button>
+      >{title(modModalPage)}</button>
   </Modal>
 
   <Modal bind:this="{reportModal}">

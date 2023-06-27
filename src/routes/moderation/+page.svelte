@@ -3,10 +3,12 @@
   import Button from "$lib/components/Button.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import ReportComponent from "$lib/components/project/ReportComponent.svelte";
-  import { fetchAuthed, titleCase } from "$lib/globals/functions";
+  import { fetchAuthed } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
-  import type { Role, Project } from "$lib/globals/schema";
+  import type { Role, Project, Report } from "$lib/globals/schema";
+  import { parallel, title } from "radash";
+  import { apiURL } from "$lib/globals/consts";
 
   let activePage = "publish_queue";
 
@@ -18,19 +20,26 @@
   async function loadStuff() {
     if (!["moderator", "admin"].includes($user.role)) {
       goto("/");
+      return;
     }
 
-    let pq = await fetchAuthed("get", "/moderation/queue/publish");
-    publishQueue = (await pq.json())["projects"] as Project[];
+    let [pq, rq, rp, r] = await parallel(
+      2,
+      await Promise.all([
+        fetchAuthed("get", "/moderation/queue/publish"),
+        fetchAuthed("get", "/moderation/queue/report"),
+        fetchAuthed("get", "/moderation/queue/review"),
+        fetch(apiURL + "/user/staff/roles")
+      ]),
+      async res => {
+        return await res.json();
+      }
+    );
 
-    let rq = await fetchAuthed("get", "/moderation/queue/review");
-    reviewQueue = (await rq.json())["projects"] as Project[];
-
-    let rp = await fetchAuthed("get", "/moderation/queue/report");
-    reports = (await rp.json())["reports"] as Report[];
-
-    let r = await fetchAuthed("get", "/user/staff/roles");
-    rolesJson = (await r.json())["roles"];
+    publishQueue = pq.projects;
+    reviewQueue = rq.projects;
+    reports = rp.reports;
+    rolesJson = r.roles;
   }
 </script>
 
@@ -39,7 +48,7 @@
 </svelte:head>
 
 <main
-  class="-translate-y-20 bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 md:translate-y-0 lg:px-32 xl:px-64">
+  class=" bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -150,7 +159,7 @@
                     ><p
                       style="color: {i.color};"
                       class="text-pearl-lusta-950 dark:text-white">
-                      ⬤ {titleCase(i.name)}
+                      ⬤ {title(i.name)}
                     </p></td>
                   <td class="text-pearl-lusta-950 dark:text-white"
                     >{#if i.permissions.length != 0}{i.permissions.join(

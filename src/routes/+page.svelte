@@ -82,7 +82,7 @@
 <main class="bg-pearl-lusta-100 transition-all dark:bg-stone-900">
   <div class="pt-0 md:pt-20"></div>
   <div
-    class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 -translate-y-20 md:translate-y-0 rounded-lg">
+    class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 rounded-lg">
     <b class="text-lg">Datapack Hub is in early beta.</b>
     <div class="pt-1"></div>
     Many features are incomplete or do not work as expected. In these early stages,
@@ -91,7 +91,7 @@
   </div>
   <div class="pt-20 lg:pt-0"></div>
   <div
-    class="flex h-[75vh] w-full -translate-y-20 flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:translate-y-0 md:flex-row md:justify-between md:px-16 lg:px-24">
+    class="flex h-[75vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
       <div
         class="relative mb-4 h-36 w-full md:mb-0 {visible

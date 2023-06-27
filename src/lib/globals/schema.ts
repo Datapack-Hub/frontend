@@ -36,17 +36,15 @@ export const projectSchema = z.object({
   description: z.ostring(),
   icon: z.string().url().nullish(),
   mod_message: z.string().nullish(),
-  status: z.optional(
-    z.enum([
-      "unpublished",
-      "live",
-      "draft",
-      "disabled",
-      "deleted",
-      "publish_queue",
-      "review_queue"
-    ])
-  ),
+  status: z.optional(z.enum([
+    "unpublished",
+    "live",
+    "draft",
+    "disabled",
+    "deleted",
+    "publish_queue",
+    "review_queue"
+  ])),
   title: z.string(),
   type: z.enum(["datapack"]),
   url: z.string(),
@@ -99,8 +97,16 @@ export const versionSchema = z.object({
   version_code: z.string()
 });
 
+export const reportSchema = z.object({
+  id: z.number(),
+  message: z.string(),
+  project: z.object(projectSchema.shape),
+  reporter: z.object(userSchema.shape)
+});
+
 export type User = z.infer<typeof userSchema>;
 export type Project = z.infer<typeof projectSchema>;
 export type Notif = z.infer<typeof notificationSchema>;
 export type Role = z.infer<typeof roleSchema>;
 export type Version = z.infer<typeof versionSchema>;
+export type Report = z.infer<typeof reportSchema>;

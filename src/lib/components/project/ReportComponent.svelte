@@ -6,7 +6,7 @@
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import MarkdownComponent from "../markdown/MarkdownComponent.svelte";
-  import type { Project, User } from "$lib/globals/schema";
+  import type { Project, User, Report } from "$lib/globals/schema";
 
   export let project: Project;
   export let report: Report;

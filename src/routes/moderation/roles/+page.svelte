@@ -1,9 +1,10 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { fetchAuthed, titleCase } from "$lib/globals/functions";
+  import { fetchAuthed } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import type { Role } from "$lib/globals/schema";
+  import { title } from "radash";
 
   let rolesJson: Role[];
 
@@ -44,7 +45,7 @@
               ><p
                 style="color: {i.color};"
                 class="text-pearl-lusta-950 dark:text-white">
-                ⬤ {titleCase(i.name)}
+                ⬤ {title(i.name)}
               </p></td>
             <td class="text-pearl-lusta-950 dark:text-white"
               >{#if i.permissions.length != 0}{i.permissions.join(

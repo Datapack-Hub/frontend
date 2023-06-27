@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { titleCase } from "$lib/globals/functions";
   import type { Role, User } from "$lib/globals/schema";
+  import { title } from "radash";
   import MarkdownComponent from "../markdown/MarkdownComponent.svelte";
 
   export let person: User | undefined;
@@ -22,7 +22,7 @@
           {person?.username}
         </h1></a>
       <span class=" font-bold" style="color:{role?.color};"
-        >{#if person?.role != "admin"}{titleCase(person?.role)}{:else}<img
+        >{#if person?.role != "admin"}{title(person?.role)}{:else}<img
             loading="lazy"
             src="/logos/dph.svg"
             alt="logo"

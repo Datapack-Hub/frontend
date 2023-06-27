@@ -65,7 +65,8 @@
   <h1 class="col-span-3 text-pearl-lusta-100 text-3xl font-bold mb-4">
     Create New Datapack
   </h1>
-  <div class=" grid grid-cols-3 gap-2 rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
+  <div
+    class=" grid grid-cols-3 gap-2 rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
     <div
       class="col-span-3 lg:col-span-2 flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row">
       <div

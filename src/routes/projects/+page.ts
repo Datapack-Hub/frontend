@@ -1,7 +1,7 @@
 import { apiURL } from "$lib/globals/consts";
 import { projectSchema } from "$lib/globals/schema";
 import type { PageLoad } from "./$types";
-import { shuffle } from "lodash-es";
+import { shuffle } from "radash";
 
 export const load = (async ({ fetch, url }) => {
   let sp = 1;

@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { getAuthorFromID, titleCase } from "$lib/globals/functions";
+  import { getAuthorFromID } from "$lib/globals/functions";
   import type { Project } from "$lib/globals/schema";
   import { onMount } from "svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconDownload from "~icons/tabler/Download.svelte";
+  import { title } from "radash";
 
   export let project: Project;
 
@@ -62,12 +63,11 @@
             class="inline-block h-4 w-4 align-text-top ml-0.5" /></span>
         {#if ["unpublished", "draft"].includes(project.status)}
           <span class="text-stone-400">•</span>
-          <span class="text-stone-400 font-bold"
-            >{titleCase(project.status)}</span>
+          <span class="text-stone-400 font-bold">{title(project.status)}</span>
         {:else if ["disabled"].includes(project.status)}
           <span class="text-red-500">•</span>
           <span class="text-red-500 font-bold"
-            >{titleCase(project.status.replaceAll("_", " "))}</span>
+            >{title(project.status.replaceAll("_", " "))}</span>
         {:else if ["review_queue", "publish_queue"].includes(project.status)}
           <span class="text-yellow-600">•</span>
           <span class="text-yellow-600 font-bold">In Queue</span>

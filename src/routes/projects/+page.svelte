@@ -3,12 +3,12 @@
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";
-  import debounce from "lodash-es/debounce";
   import type { PageData } from "./$types";
 
   import { projectSchema } from "$lib/globals/schema";
   import IconSearch from "~icons/tabler/Search.svelte";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
+  import { debounce } from "radash";
 
   export let data: PageData;
 
@@ -18,14 +18,14 @@
 
   let featured = data.featured?.splice(0, 1);
 
-  let search = debounce(async () => {
+  let search = debounce({ delay: 300 }, async () => {
     let searchResult = await fetch(
       `${apiURL}/projects/search?query=${query}&sort=${sort.toLowerCase()}`
     );
     dataCopy = await projectSchema
       .array()
       .parseAsync((await searchResult.json()).result);
-  }, 300);
+  });
 
   async function resort() {
     let searchResult = await fetch(
@@ -42,7 +42,7 @@
 </svelte:head>
 
 <main
-  class="-translate-y-20 items-center pt-0 md:translate-y-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
+  class=" items-center pt-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
   <div
     class="my-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-2">
     <div class="flex-grow flex flex-col sm:flex-row space-x-2 items-center">
@@ -125,7 +125,7 @@
         Showing {dataCopy.length} projects:
       </h2>
       <ul class="space-y-2 mx-3 mt-2" use:autoAnimate>
-        {#each featured as feat}
+        {#each featured ?? [] as feat}
           <FeaturedProjectComponent project="{feat}" type="featured" />
         {/each}
         {#key dataCopy}
