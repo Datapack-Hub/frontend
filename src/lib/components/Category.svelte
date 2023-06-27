@@ -1,4 +1,5 @@
 <script lang="ts">
+  import toast from "svelte-french-toast";
   import type { Writable } from "svelte/store";
 
   export let category = "";
@@ -12,6 +13,7 @@
     if (clicked) $counter++;
     else $counter--;
     if ($counter > 3) {
+      toast.error("Max: 3 categories")
       clicked = false;
       $counter--;
     }
