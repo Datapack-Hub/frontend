@@ -45,9 +45,8 @@
         <li><a href="https://twitter.com/DatapackHub">Twitter</a></li>
       </ul>
       <ul class="w-1/3 text-center text-pearl-lusta-950 dark:text-white">
-        <li><a href="/rules">Guidelines</a></li>
+        <li><a href="/rules">Rules</a></li>
         <li><a href="/privacy">Privacy</a></li>
-        <li><a href="/terms">Terms</a></li>
       </ul>
     </div>
   </div>

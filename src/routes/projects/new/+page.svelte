@@ -166,9 +166,3 @@
   </div>
   <div class="py-16"></div>
 </main>
-
-<style lang="postcss">
-  .input {
-    @apply bg-stone-800 rounded-lg border-2 border-stone-700 p-2 focus:border-dph-orange outline-none text-opacity-60 focus:text-opacity-100 text-pearl-lusta-100 transition-all w-full placeholder:italic placeholder:text-stone-500;
-  }
-</style>

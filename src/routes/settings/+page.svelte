@@ -103,7 +103,7 @@
               displayed on your datapacks and more coming soon
             </p>
             <input
-              class="h-10 rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
+              class="input"
               value="{data.profile?.username}"
               maxlength="32"
               id="username" />
@@ -117,7 +117,7 @@
               information in it!
             </p>
             <textarea
-              class="h-64 w-1/2 resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-800 dark:text-white"
+              class="input h-80 resize-none"
               maxlength="500"
               bind:value="{bioVal}"
               on:keypress="{calcRemaining}"></textarea>
@@ -126,7 +126,7 @@
               {remainingCharacters} characters left
             </p>
             <br />
-            <Button click="{save}" wait="{true}" style="alt" classes="mb-6"
+            <Button click="{save}" wait="{true}"
               >Save Changes</Button>
           </div>
         </div>
