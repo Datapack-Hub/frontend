@@ -11,7 +11,9 @@ futureDate.setTime(futureDate.getTime() + (24*60*60*1000))
 export default defineConfig({
   // example
   site: 'datapackhub.net',
-  scanner: { exclude: ['/moderation/*'] },
+  scanner: {
+    throttle: true,
+  },
   urls: [ //TODO: Add a sitemap.xml so i dont have to do this
     '/staff',
     '/rules',
@@ -19,19 +21,18 @@ export default defineConfig({
     '/project/taglib',
     '/projects',
     '/notifications',
+    '/moderation',
+    '/moderation/console',
+    '/jam',
+    '/privacy',
+    '/settings',
     '/'
   ],
-  hooks: {
-    "puppeteer:before-goto": async(page) => {
-      await page.setCookie({
-        name: "dph_token",
-        value: token ?? "",
-        expires: futureDate.getTime(),
-        secure: true,
-        domain: "datapackhub.net",
-        path: "/"
-      });
-    }
-  },
+  cookies: [{
+    name: "dph_token",
+    value: token ?? "",
+    domain: "datapackhub.net",
+    path: "/",
+  }],
   outputPath: './lighthouse'
 })
