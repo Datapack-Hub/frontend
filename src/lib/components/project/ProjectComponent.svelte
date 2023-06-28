@@ -10,6 +10,8 @@
 
   $: author = { username: "Loading..." };
 
+  let status = project.status ?? "unpublished";
+
   onMount(async () => {
     author = await getAuthorFromID(project.author);
   });
@@ -61,14 +63,14 @@
         <span
           >{project.downloads}<IconDownload
             class="inline-block h-4 w-4 align-text-top ml-0.5" /></span>
-        {#if ["unpublished", "draft"].includes(project.status)}
+        {#if ["unpublished", "draft"].includes(status)}
           <span class="text-stone-400">•</span>
-          <span class="text-stone-400 font-bold">{title(project.status)}</span>
-        {:else if ["disabled"].includes(project.status)}
+          <span class="text-stone-400 font-bold">{title(status)}</span>
+        {:else if ["disabled"].includes(status)}
           <span class="text-red-500">•</span>
           <span class="text-red-500 font-bold"
-            >{title(project.status.replaceAll("_", " "))}</span>
-        {:else if ["review_queue", "publish_queue"].includes(project.status)}
+            >{title(status.replaceAll("_", " "))}</span>
+        {:else if ["review_queue", "publish_queue"].includes(status)}
           <span class="text-yellow-600">•</span>
           <span class="text-yellow-600 font-bold">In Queue</span>
         {/if}

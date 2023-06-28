@@ -36,15 +36,17 @@ export const projectSchema = z.object({
   description: z.ostring(),
   icon: z.string().url().nullish(),
   mod_message: z.string().nullish(),
-  status: z.optional(z.enum([
-    "unpublished",
-    "live",
-    "draft",
-    "disabled",
-    "deleted",
-    "publish_queue",
-    "review_queue"
-  ])),
+  status: z.optional(
+    z.enum([
+      "unpublished",
+      "live",
+      "draft",
+      "disabled",
+      "deleted",
+      "publish_queue",
+      "review_queue"
+    ])
+  ),
   title: z.string(),
   type: z.enum(["datapack"]),
   url: z.string(),

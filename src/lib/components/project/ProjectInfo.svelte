@@ -23,6 +23,7 @@
   let visible = false;
   let author: User;
   let mm: HTMLDivElement;
+  let status = project.status ?? "unpublished";
 
   // Get author data on load
   onMount(async () => {
@@ -110,15 +111,14 @@
           </span>
         </div>
         <div class="mt-2">
-          {#if ["unpublished", "draft"].includes(project.status)}
+          {#if ["unpublished", "draft"].includes(status)}
             <span class="text-stone-400">•</span>
-            <span class="text-stone-400 font-bold mt-2"
-              >{title(project.status)}</span>
-          {:else if ["disabled"].includes(project.status)}
+            <span class="text-stone-400 font-bold mt-2">{title(status)}</span>
+          {:else if ["disabled"].includes(status)}
             <span class="text-red-400">•</span>
             <span class="text-red-400 font-bold mt-2"
-              >{title(project.status.replaceAll("_", " "))}</span>
-          {:else if ["review_queue", "publish_queue"].includes(project.status)}
+              >{title(status.replaceAll("_", " "))}</span>
+          {:else if ["review_queue", "publish_queue"].includes(status)}
             <span class="text-yellow-600">•</span>
             <span class="text-yellow-600 font-bold pt-2">In Queue</span>
           {/if}
@@ -131,7 +131,7 @@
       class="mt-4 rounded-xl p-4 moderation dark:text-pearl-lusta-100"
       id="modmsg"
       bind:this="{mm}">
-      {#if project.status && !["disabled", "review_queue"].includes(project.status)}
+      {#if status && !["disabled", "review_queue"].includes(status)}
         <button
           class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
           on:click="{dismissModMsg}"><IconCross /></button>

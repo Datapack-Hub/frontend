@@ -130,10 +130,6 @@
         {/each}
         {#key dataCopy}
           {#each dataCopy as project}
-            <!-- uncomment these to see the featured stuff on the thingy thing -->
-            <!-- {#if Math.random() < 0.2} -->
-            <!-- <FeaturedProjectComponent project="{project}" /> -->
-            <!-- {:else} -->
             <li>
               <ProjectComponent project="{project}" />
             </li>

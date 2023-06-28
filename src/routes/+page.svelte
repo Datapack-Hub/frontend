@@ -6,9 +6,7 @@
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
 
-  let rawRand = Math.floor(Math.random() * 10_000_000);
   let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
-  let rand = compactNumberFormatter.format(rawRand);
 
   let visible = false;
   let width: number;
@@ -116,7 +114,7 @@
       <h2
         class="w-full text-center text-xl text-pearl-lusta-950 dark:text-pearl-lusta-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
-          title="{rand}"
+          title="{(data.count - 1).toString()}"
           class="text-gradient bg-gradient-to-br from-rose-500 to-yellow-500 font-bold">
           {compactNumberFormatter.format(data.count - 1)}
         </span>
