@@ -19,7 +19,7 @@
   class="bg-pearl-lusta-100 transition-all dark:bg-stone-900 lg:px-16 xl:px-32">
   <div class="flex-col items-center md:flex-row md:items-start">
     <h1
-      class="pt-8 pb-2 text-center text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-5xl lg:text-6xl">
+      class="pt-24 pb-2 text-center text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-5xl lg:text-6xl">
       Notifications
     </h1>
     <div use:autoAnimate>

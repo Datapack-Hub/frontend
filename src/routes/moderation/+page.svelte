@@ -35,11 +35,11 @@
         return await res.json();
       }
     );
-
     publishQueue = pq.projects;
     reviewQueue = rq.projects;
     reports = rp.reports;
     rolesJson = r.roles;
+
   }
 </script>
 
