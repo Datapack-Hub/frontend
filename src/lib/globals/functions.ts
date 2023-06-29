@@ -1,4 +1,4 @@
-import type { User } from "$lib/globals/schema";
+import { userSchema, type User } from "$lib/globals/schema";
 import { apiURL } from "./consts";
 import { isDark } from "./stores";
 
@@ -17,7 +17,7 @@ export function loadColorPref() {
  */
 export async function getAuthorFromID(authorID: number): Promise<User> {
   const data = await fetch(apiURL + `/user/id/${authorID}`);
-  return (await data.json()) as User;
+  return userSchema.parse(await data.json());
 }
 
 /**

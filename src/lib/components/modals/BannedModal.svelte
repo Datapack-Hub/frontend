@@ -19,7 +19,7 @@
       if (me.ok) {
         let meJson = userSchema.parse(await me.json());
 
-        if (meJson.banned == true && meJson.banData) {
+        if (meJson.banned && meJson.banData) {
           banReason = meJson.banData.message;
           expiry = meJson.banData.expires;
           visible = true;

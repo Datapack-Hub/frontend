@@ -1,8 +1,12 @@
+import { browser } from "$app/environment";
+import { fetchAuthed } from "$lib/globals/functions";
+import {
+  projectSchema,
+  versionSchema,
+  type User
+} from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import { fetchAuthed } from "$lib/globals/functions";
-import { browser } from "$app/environment";
-import type { Project, User, Version } from "$lib/globals/schema";
 
 export const load = (async ({ params }) => {
   if (browser) {
@@ -15,7 +19,7 @@ export const load = (async ({ params }) => {
       });
     }
 
-    const projectJson = (await projectReq.json()) as Project;
+    const projectJson = projectSchema.parse(await projectReq.json());
     const meReq = await fetchAuthed("get", "/user/me");
 
     if (meReq.status == 401) {
@@ -26,18 +30,21 @@ export const load = (async ({ params }) => {
       });
     }
 
-    const meJson = (await meReq.json()) as User;
+    const me = (await meReq.json()) as User;
     if (
-      meJson.id == projectJson.author ||
-      ["admin", "moderator"].includes(meJson.role)
+      me.id == projectJson.author ||
+      ["admin", "moderator"].includes(me.role)
     ) {
-      const versionsReq = (
-        await (
-          await fetchAuthed("get", "/versions/project/" + projectJson.ID)
-        ).json()
-      ).result as Version[];
+      const project = await fetchAuthed(
+        "get",
+        "/versions/project/" + projectJson.ID
+      );
+
+      const versionsReq = versionSchema
+        .array()
+        .parse((await project.json()).result);
       return {
-        project: projectJson,
+        project: project,
         versions: versionsReq
       };
     }

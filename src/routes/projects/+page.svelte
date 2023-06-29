@@ -44,7 +44,7 @@
 <main
   class=" items-center pt-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
   <div
-    class="my-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-2">
+    class="py-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-2">
     <div class="flex-grow flex flex-col sm:flex-row space-x-2 items-center">
       <div
         class="flex items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 mr-0 sm:mr-4">

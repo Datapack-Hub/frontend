@@ -4,11 +4,17 @@
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import ReportComponent from "$lib/components/project/ReportComponent.svelte";
   import { fetchAuthed } from "$lib/globals/functions";
+  import {
+    projectSchema,
+    type Project,
+    type Report,
+    type Role,
+    reportSchema,
+    roleSchema
+  } from "$lib/globals/schema";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
-  import type { Role, Project, Report } from "$lib/globals/schema";
   import { parallel, title } from "radash";
-  import { apiURL } from "$lib/globals/consts";
 
   let activePage = "publish_queue";
 
@@ -20,26 +26,25 @@
   async function loadStuff() {
     if (!["moderator", "admin"].includes($user.role)) {
       goto("/");
-      return;
     }
 
     let [pq, rq, rp, r] = await parallel(
       2,
       await Promise.all([
         fetchAuthed("get", "/moderation/queue/publish"),
-        fetchAuthed("get", "/moderation/queue/report"),
         fetchAuthed("get", "/moderation/queue/review"),
-        fetch(apiURL + "/user/staff/roles")
+        fetchAuthed("get", "/moderation/queue/report"),
+        fetchAuthed("get", "/user/staff/roles")
       ]),
       async res => {
-        return await res.json();
+        return res.json();
       }
     );
-    publishQueue = pq.projects;
-    reviewQueue = rq.projects;
-    reports = rp.reports;
-    rolesJson = r.roles;
 
+    publishQueue = projectSchema.array().parse(pq.projects);
+    reviewQueue = projectSchema.array().parse(rq.projects);
+    reports = reportSchema.array().parse(rp.reports);
+    rolesJson = roleSchema.array().parse(r.roles);
   }
 </script>
 
