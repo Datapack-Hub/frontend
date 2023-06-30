@@ -44,7 +44,7 @@ export const load = (async ({ params }) => {
         .array()
         .parse((await project.json()).result);
       return {
-        project: project,
+        project: projectJson,
         versions: versionsReq
       };
     }
