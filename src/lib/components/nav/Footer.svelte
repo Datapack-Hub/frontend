@@ -7,6 +7,8 @@
         loading="lazy"
         src="/logos/dph.svg"
         alt="logo"
+        height="48"
+        width="48"
         class="h-12 w-full lg:w-auto" />
       <p
         class="hidden w-full text-center text-2xl font-bold text-pearl-lusta-950 dark:text-white lg:block lg:text-left">
