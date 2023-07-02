@@ -478,7 +478,7 @@
       Moderation Note
     </p>
     <textarea
-      class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700"
+      class="input-base no-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700"
       placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
       id="description"
       maxlength="200"
@@ -505,7 +505,7 @@
       Report Message
     </p>
     <textarea
-      class="input-base override-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700"
+      class="input-base no-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700"
       placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
       id="description"
       maxlength="200"
