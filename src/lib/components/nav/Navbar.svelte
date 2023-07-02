@@ -28,7 +28,7 @@
   class="{isSmall
     ? 'bottom-0'
     : 'top-0'} z-40 w-full transition-all fixed px-2 sm:px-8 md:px-16 lg:px-24 {showNavBG
-    ? 'bg-pearl-lusta-50 dark:bg-stone-800 shadow-md'
+    ? 'bg-pearl-lusta-100/90 dark:bg-stone-900/90 shadow-md'
     : 'shadow-none'}">
   <div class="flex h-16 w-full flex-row items-center justify-between md:h-16">
     <div class="flex items-center mr-2">

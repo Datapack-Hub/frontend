@@ -50,7 +50,7 @@
     if (browser && url) {
       let zip = await fetch(url);
       let zipBlob = await zip.blob();
-      let parsedZip: any;
+      let parsedZip;
 
       try {
         parsedZip = await loadAsync(zipBlob);

@@ -12,7 +12,7 @@ export default defineConfig({
   // example
   site: 'datapackhub.net',
   scanner: {
-    throttle: true
+    device: 'desktop'
   },
   urls: [ //TODO: Add a sitemap.xml so i dont have to do this
     '/staff',
@@ -34,5 +34,5 @@ export default defineConfig({
     domain: "datapackhub.net",
     path: "/",
   }],
-  outputPath: './lighthouse'
+  outputPath: './lighthouse',
 })
