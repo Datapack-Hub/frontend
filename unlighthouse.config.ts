@@ -12,12 +12,12 @@ export default defineConfig({
   // example
   site: 'datapackhub.net',
   scanner: {
-    throttle: true,
+    throttle: true
   },
   urls: [ //TODO: Add a sitemap.xml so i dont have to do this
     '/staff',
     '/rules',
-    '/user/hoodierocks',
+    '/user/silabear',
     '/project/taglib',
     '/projects',
     '/notifications',

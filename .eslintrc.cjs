@@ -29,6 +29,7 @@ module.exports = {
   env: {
     browser: true,
     es2020: true,
+    es6: true,
     node: true
   },
 };

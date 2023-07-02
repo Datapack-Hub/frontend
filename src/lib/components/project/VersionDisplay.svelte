@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import JSZip from "jszip";
+  import { loadAsync } from "jszip";
   import toast from "svelte-french-toast";
   import tippy from "sveltejs-tippy";
 
@@ -50,10 +50,10 @@
     if (browser && url) {
       let zip = await fetch(url);
       let zipBlob = await zip.blob();
-      let parsedZip: JSZip;
+      let parsedZip: any;
 
       try {
-        parsedZip = await JSZip.loadAsync(zipBlob);
+        parsedZip = await loadAsync(zipBlob);
       } catch (er) {
         return toast.error("something bad happened");
       }

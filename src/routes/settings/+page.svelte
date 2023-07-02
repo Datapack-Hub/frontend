@@ -3,30 +3,25 @@
   import Button from "$lib/components/Button.svelte";
   import { fetchAuthed } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
-  import { onMount } from "svelte";
+  import autoAnimate from "@formkit/auto-animate";
   import toast from "svelte-french-toast";
   import type { PageData } from "./$types";
-  import autoAnimate from "@formkit/auto-animate";
 
-  import IconGithub from "~icons/tabler/BrandGithub.svelte";
   import IconDiscord from "~icons/tabler/BrandDiscord.svelte";
+  import IconGithub from "~icons/tabler/BrandGithub.svelte";
 
   export let data: PageData;
 
-  let uname: HTMLInputElement;
+  let usernameElement: HTMLInputElement;
   let bioVal: string | undefined = data.profile?.bio.replaceAll("\\n", "\n");
 
   let activePage = "profile";
 
   let remainingCharacters = 500 - (bioVal?.length ?? 0);
 
-  onMount(() => {
-    uname = document.getElementById("username") as HTMLInputElement;
-  });
-
   async function save() {
     let req = {
-      username: uname.value,
+      username: usernameElement.value,
       bio: bioVal,
       role: data.profile?.role
     };
@@ -41,12 +36,12 @@
           return res.text().then(txt => alert(txt));
         }
         if (data.profile?.id == $user.id) {
-          $user.username = uname.value.trim();
+          $user.username = usernameElement.value.trim();
           $user.bio =
             bioVal?.trim() ??
             "If you see this, something went wrong with bio parsing, message Cobble";
         }
-        goto("/user/" + uname.value);
+        goto("/user/" + $user.username);
       }),
       {
         success: "Profile saved!",
@@ -106,7 +101,7 @@
               class="input"
               value="{data.profile?.username}"
               maxlength="32"
-              id="username" />
+              bind:this="{usernameElement}" />
             <p
               class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-6">
               Bio

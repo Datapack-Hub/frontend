@@ -14,7 +14,7 @@
   import { fetchAuthed } from "$lib/globals/functions";
 
   import autoAnimate from "@formkit/auto-animate";
-  import JSZip from "jszip";
+  import { loadAsync } from "jszip";
   import toast from "svelte-french-toast";
   import MultiSelect from "svelte-multiselect";
 
@@ -52,10 +52,8 @@
         return;
       }
 
-      let jsZip = new JSZip();
-
       if (zipFile) {
-        let zip = await jsZip.loadAsync(zipFile);
+        let zip = await loadAsync(zipFile);
         if (zip.file("pack.mcmeta") == null) {
           return toast.error("Missing pack.mcmeta");
         }

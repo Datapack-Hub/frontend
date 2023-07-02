@@ -94,9 +94,11 @@
             href="/user/{author?.username}"
             class="flex items-center space-x-2">
             <img
-              src="{author?.profile_icon}?size=32"
-              class="max-h-7 rounded-full"
-              alt="pfp" />
+              src="{author?.profile_icon}?size=48"
+              class="max-h-8 rounded-full"
+              width="32"
+              height="32"
+              alt="{author?.username}'s profile picture" />
             <span
               class="text-xs md:text-sm xl:text-base text-pearl-lusta-950 transition-all hover:underline dark:text-white"
               in:fade="{{ duration: 250 }}">
