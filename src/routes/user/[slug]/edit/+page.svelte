@@ -33,18 +33,20 @@
     }
 
     toast.promise(
-      fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, req).then(res => {
-        if (!res.ok) {
-          return res.text().then(txt => alert(txt));
-        }
-        if (data.profile?.id == $user.id) {
-          $user.username = uname.value;
-          $user.bio = bio.value;
-        }
-        goto("/user/" + uname.value);
-      }).catch(err => {
-        console.error(err)
-      }),
+      fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, req)
+        .then(res => {
+          if (!res.ok) {
+            return res.text().then(txt => alert(txt));
+          }
+          if (data.profile?.id == $user.id) {
+            $user.username = uname.value;
+            $user.bio = bio.value;
+          }
+          goto("/user/" + uname.value);
+        })
+        .catch(err => {
+          console.error(err);
+        }),
       {
         success: "Profile saved!",
         loading: "Saving...",

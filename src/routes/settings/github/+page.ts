@@ -12,7 +12,10 @@ export const load = (async ({ url }) => {
       return {};
     }
 
-    const res = await fetchAuthed("put", "/auth/link/github?code=" + params.get("code"))
+    const res = await fetchAuthed(
+      "put",
+      "/auth/link/github?code=" + params.get("code")
+    );
     if (res.ok) goto("/settings");
   }
   return {};

@@ -1,10 +1,6 @@
 import { browser } from "$app/environment";
 import { fetchAuthed } from "$lib/globals/functions";
-import {
-  projectSchema,
-  versionSchema,
-  type User
-} from "$lib/globals/schema";
+import { projectSchema, versionSchema, type User } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 
