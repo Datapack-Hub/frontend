@@ -1,12 +1,12 @@
 import { apiURL } from "$lib/globals/consts";
 import { projectSchema } from "$lib/globals/schema";
-import type { PageLoad } from "./$types";
 import { shuffle } from "radash";
+import type { PageLoad } from "./$types";
 
 export const load = (async ({ fetch, url }) => {
+  const params = url.searchParams;
   let sp = 1;
-  if (url.searchParams.has("page"))
-    sp = parseInt(url.searchParams.get("page") ?? "1");
+  if (params.has("page")) sp = parseInt(params.get("page") ?? "1");
   const projectsReq = await fetch(`${apiURL}/projects/?page=${sp}`);
   const featuredReq = await fetch(`${apiURL}/projects/featured`);
 

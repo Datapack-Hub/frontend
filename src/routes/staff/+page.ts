@@ -1,7 +1,8 @@
 import { apiURL } from "$lib/globals/consts";
 import { roleSchema, userSchema } from "$lib/globals/schema.js";
+import type { PageLoad } from "./$types";
 
-export const load = async ({ fetch }) => {
+export const load = (async ({ fetch }) => {
   const [admins, moderators, devs, helpers, prefetchedRoles] =
     await Promise.all([
       fetch(`${apiURL}/user/staff/admin`),
@@ -26,4 +27,4 @@ export const load = async ({ fetch }) => {
       roleData: roleSchema.array().parse((await prefetchedRoles.json()).roles)
     };
   }
-};
+}) satisfies PageLoad;

@@ -21,11 +21,11 @@ export async function getAuthorFromID(authorID: number): Promise<User> {
 }
 
 /**
- * Fetches data with the user's token
+ * Fetches data using the user's token
  *
  * @param method HTTP method to use
- * @param url The URL
- * @param data Data to send
+ * @param url
+ * @param data JSON data in body
  * @returns an HTTP response
  */
 export async function fetchAuthed(
