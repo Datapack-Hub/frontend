@@ -8,7 +8,7 @@
   import { projectSchema } from "$lib/globals/schema";
   import IconSearch from "~icons/tabler/Search.svelte";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
-  import { debounce } from "radash";
+  import { debounce, list } from "radash";
 
   export let data: PageData;
 
@@ -75,15 +75,15 @@
     <div class="flex items-center space-x-1 mt-4 md:mt-0">
       <p class="dark:text-white mr-2">Page:</p>
       {#if data.pages < 5}
-        {#each Array(data.pages) as _, i}
-          {#if data.page == i + 1}
+        {#each list(data.pages - 1) as i}
+          {#if data.page == i}
             <a
-              href="/projects?page={i + 1}"
+              href="/projects?page={i}"
               class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
               >{i + 1}</a>
           {:else}
             <a
-              href="/projects?page={i + 1}"
+              href="/projects?page={i}"
               class="h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
               >{i + 1}</a>
           {/if}

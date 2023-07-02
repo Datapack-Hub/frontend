@@ -57,6 +57,7 @@
     if (!browser) {
       return;
     }
+
     const msp = await import("marked-smartypants");
     const marked = await import("marked");
 

@@ -42,6 +42,8 @@
           $user.bio = bio.value;
         }
         goto("/user/" + uname.value);
+      }).catch(err => {
+        console.error(err)
       }),
       {
         success: "Profile saved!",

@@ -12,11 +12,8 @@ export const load = (async ({ url }) => {
       return {};
     }
 
-    fetchAuthed("put", "/auth/link/discord?code=" + params.get("code")).then(
-      resp => {
-        if (resp.ok) goto("/settings");
-      }
-    );
+    const res = await fetchAuthed("put", "/auth/link/discord?code=" + params.get("code"))
+    if (res.ok) goto("/settings");
   }
   return {};
 }) satisfies PageLoad;

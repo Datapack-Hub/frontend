@@ -28,9 +28,9 @@
     }
   });
 
-  function signOut() {
+  async function signOut() {
     if (browser) {
-      removeCookie("dph_token");
+      await removeCookie("dph_token")
       location.replace("/");
     }
   }

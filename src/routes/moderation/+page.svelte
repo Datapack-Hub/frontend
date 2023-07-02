@@ -36,8 +36,8 @@
         fetchAuthed("get", "/moderation/queue/report"),
         fetchAuthed("get", "/user/staff/roles")
       ]),
-      async res => {
-        return res.json();
+      async (res: Response) => {
+        return await res.json();
       }
     );
 

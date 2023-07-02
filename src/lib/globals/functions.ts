@@ -39,12 +39,12 @@ export async function fetchAuthed(
     method: method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
-      Authorization: `Basic ${await getCookie("dph_token")}`,
+      Authorization: `Basic ${getCookie("dph_token")}`,
       ...headers
     }
   });
 
-  if (resp.status == 498) removeCookie("dph_token");
+  if (resp.status == 498) await removeCookie("dph_token");
 
   return resp;
 }

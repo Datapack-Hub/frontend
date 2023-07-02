@@ -8,7 +8,8 @@ module.exports = {
     {
       files: ['*.svelte'], parser: 'svelte-eslint-parser', parserOptions: {
         parser: '@typescript-eslint/parser'
-    } },
+      }
+    },
     { files: ['*.ts', '*.svelte'], rules: { "no-undef": "off" } }
   ],
   settings: {
@@ -19,6 +20,11 @@ module.exports = {
     sourceType: 'module',
     ecmaVersion: 2020,
     extraFileExtensions: ['.svelte']
+  },
+  rules: {
+    // "@typescript-eslint/no-floating-promises": "error",
+    "@typescript-eslint/await-thenable": "error",
+    "@typescript-eslint/no-misused-promises": "error",
   },
   env: {
     browser: true,

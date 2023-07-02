@@ -34,9 +34,9 @@
 
   $: unreadNotifications = false;
 
-  afterNavigate(async () => {
+  afterNavigate(() => {
     if (browser) {
-      await refreshNotifications();
+      refreshNotifications().catch(err => console.error(err));
     }
   });
 

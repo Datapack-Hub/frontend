@@ -14,7 +14,7 @@
         Promise.resolve(click()).then(() => (buttonBind.disabled = false));
       }
     } else {
-      if (typeof click != "string") click();
+      if (typeof click != "string") await click();
     }
   }
 </script>
