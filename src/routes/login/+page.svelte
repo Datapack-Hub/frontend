@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CasualLine from "$lib/components/CasualLine.svelte";
+  import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import IconGithub from "~icons/tabler/BrandGithub.svelte";
   import IconDiscord from "~icons/tabler/BrandDiscord.svelte";
   import { authed, user } from "$lib/globals/stores";

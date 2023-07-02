@@ -7,9 +7,9 @@
   import IconND from "~icons/tabler/CoinOff.svelte";
   import IconEdit from "~icons/tabler/Pencil.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
-  import Button from "$lib/components/Button.svelte";
+  import Button from "$lib/components/decorative/Button.svelte";
   import { categories } from "$lib/globals/consts";
-  import Category from "$lib/components/Category.svelte";
+  import Category from "$lib/components/project/Category.svelte";
   import { writable } from "svelte/store";
 
   // let cat = document.getElementById("cat") as HTMLSelectElement

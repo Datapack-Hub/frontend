@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import CasualLine from "$lib/components/CasualLine.svelte";
+  import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
   import { isDark } from "$lib/globals/stores";
   import toast from "svelte-french-toast";
@@ -10,8 +10,8 @@
   import IconMessage from "~icons/tabler/MailForward.svelte";
   import IconSettings from "~icons/tabler/Settings.svelte";
   import { fetchAuthed } from "../../globals/functions";
-  import Button from "../Button.svelte";
-  import MarkdownComponent from "../markdown/MarkdownComponent.svelte";
+  import Button from "../decorative/Button.svelte";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
   import type { User } from "$lib/globals/schema";
 
   export let user: User | undefined;

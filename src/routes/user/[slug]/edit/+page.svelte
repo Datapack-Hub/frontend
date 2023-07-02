@@ -6,7 +6,7 @@
   import { onMount } from "svelte";
   import toast from "svelte-french-toast";
   import type { PageData } from "./$types";
-  import Button from "$lib/components/Button.svelte";
+  import Button from "$lib/components/decorative/Button.svelte";
   import { title } from "radash";
 
   export let data: PageData;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CasualLine from "$lib/components/CasualLine.svelte";
+  import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import BannedModal from "$lib/components/modals/BannedModal.svelte";
   import Footer from "$lib/components/nav/Footer.svelte";
   import Navbar from "$lib/components/nav/Navbar.svelte";

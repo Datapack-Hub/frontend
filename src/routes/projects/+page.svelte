@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CasualLine from "$lib/components/CasualLine.svelte";
+  import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import { apiURL } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";

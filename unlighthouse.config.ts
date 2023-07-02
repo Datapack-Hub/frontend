@@ -11,7 +11,7 @@ futureDate.setTime(futureDate.getTime() + (24*60*60*1000))
 export default defineConfig({
   // example
   site: 'datapackhub.net',
-  urls: [ //TODO: Add a sitemap.xml so i dont have to do this
+  urls: [ //TODO: Add a sitemap.xml
     '/staff',
     '/rules',
     '/user/silabear',

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import Button from "$lib/components/Button.svelte";
+  import Button from "$lib/components/decorative/Button.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import ReportComponent from "$lib/components/project/ReportComponent.svelte";
   import { fetchAuthed } from "$lib/globals/functions";

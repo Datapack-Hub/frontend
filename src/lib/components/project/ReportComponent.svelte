@@ -5,7 +5,7 @@
   import { fade } from "svelte/transition";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconX from "~icons/tabler/X.svelte";
-  import MarkdownComponent from "../markdown/MarkdownComponent.svelte";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
   import type { Project, User, Report } from "$lib/globals/schema";
 
   export let project: Project;

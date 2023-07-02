@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Button from "$lib/components/Button.svelte";
-  import CasualLine from "$lib/components/CasualLine.svelte";
+  import Button from "$lib/components/decorative/Button.svelte";
+  import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import ProfileCard from "$lib/components/profile/FullProfileCard.svelte";
   import UserModeration from "$lib/components/profile/UserModeration.svelte";

@@ -8,7 +8,7 @@
   import toast from "svelte-french-toast";
 
   // Component imports
-  import MarkdownComponent from "$lib/components/markdown/MarkdownComponent.svelte";
+  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import type { Project, Role, User, Version } from "$lib/globals/schema";
   import { onMount } from "svelte";
@@ -25,7 +25,7 @@
   import IconCross from "~icons/tabler/X.svelte";
   import IconConfetti from "~icons/tabler/Award.svelte";
 
-  import CasualLine from "../CasualLine.svelte";
+  import CasualLine from "../decorative/CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import MiniProfileCard from "../profile/MiniProfileCard.svelte";
   import { title } from "radash";

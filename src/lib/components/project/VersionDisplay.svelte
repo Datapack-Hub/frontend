@@ -4,8 +4,8 @@
   import toast from "svelte-french-toast";
   import tippy from "sveltejs-tippy";
 
-  import CasualLine from "../CasualLine.svelte";
-  import MarkdownComponent from "../markdown/MarkdownComponent.svelte";
+  import CasualLine from "../decorative/CasualLine.svelte";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
   import Modal from "../modals/Modal.svelte";
 
   import IconZIP from "~icons/tabler/Cube.svelte";

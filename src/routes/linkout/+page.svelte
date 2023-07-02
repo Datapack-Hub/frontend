@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import Button from "$lib/components/Button.svelte";
+  import Button from "$lib/components/decorative/Button.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;

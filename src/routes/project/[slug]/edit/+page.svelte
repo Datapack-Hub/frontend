@@ -4,9 +4,9 @@
   import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
 
-  import Button from "$lib/components/Button.svelte";
-  import CasualLine from "$lib/components/CasualLine.svelte";
-  import MarkdownComponent from "$lib/components/markdown/MarkdownComponent.svelte";
+  import Button from "$lib/components/decorative/Button.svelte";
+  import CasualLine from "$lib/components/decorative/CasualLine.svelte";
+  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 

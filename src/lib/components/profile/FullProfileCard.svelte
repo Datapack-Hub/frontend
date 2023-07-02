@@ -4,8 +4,8 @@
   import IconSettings from "~icons/tabler/Settings.svelte";
   import IconBadge from "~icons/tabler/Award.svelte";
   import IconInfo from "~icons/tabler/InfoCircle.svelte";
-  import Button from "../Button.svelte";
-  import MarkdownComponent from "../markdown/MarkdownComponent.svelte";
+  import Button from "../decorative/Button.svelte";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
   import type { User, Role } from "$lib/globals/schema";
   import { badges } from "$lib/globals/consts";
   import { title } from "radash";
