@@ -1,7 +1,7 @@
 import { apiURL } from "$lib/globals/consts";
 import { projectSchema } from "$lib/globals/schema";
-import type { PageLoad } from "./$types";
 import { shuffle } from "radash";
+import type { PageLoad } from "./$types";
 
 export const load = (async ({ fetch }) => {
   const randomReq = await fetch(apiURL + "/projects/random?count=3");
