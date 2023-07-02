@@ -21,6 +21,9 @@
 </script>
 
 <div
+  role="checkbox"
+  aria-checked="{clicked}"
+  tabindex="0"
   class="{clicked
     ? 'bg-dph-orange hover:brightness-75'
     : 'hover:bg-dph-orange bg-stone-700'} m-1.5 p-2 rounded-lg text-pearl-lusta-100 transition-all"
