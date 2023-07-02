@@ -32,6 +32,7 @@
           alt="{project.title} icon"
           width="96"
           height="96"
+          loading="lazy"
           class="aspect-square w-20 rounded-lg bg-cover" />
       {:else}
         <IconNoPhoto width="48" height="48" />
