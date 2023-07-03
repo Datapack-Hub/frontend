@@ -161,7 +161,7 @@
         {/each}
       </h2>
     {/if}
-    {#if !expanded}
+    {#if !expanded && !mcVersion}
       {#if project?.ID == $user.id}
         <button
           on:click="{() => {
