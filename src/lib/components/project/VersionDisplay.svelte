@@ -208,7 +208,7 @@
       {/if}
     </div>
     <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-400">
-      <IconInfo /><a href="/">How to install a datapack</a>
+      <IconInfo /><a href="/install">How to install a datapack</a>
     </p>
   {/if}
 </div>
@@ -265,6 +265,6 @@
   {/if}
   <CasualLine />
   <p class="flex items-center space-x-1 pr-1 text-sm text-sky-300">
-    <IconInfo /><a href="/">How to install a datapack</a>
+    <IconInfo /><a href="/install">How to install a datapack</a>
   </p>
 </Modal>
