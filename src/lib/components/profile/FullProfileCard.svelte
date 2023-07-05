@@ -40,7 +40,6 @@
 <div
   class="mb-4 flex w-full flex-col mt-16 md:mt-0 items-center md:items-start">
   <div class="self-center">
-    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <img
       src="{profile?.profile_icon}"
       alt="{profile?.username}'s profile picture"

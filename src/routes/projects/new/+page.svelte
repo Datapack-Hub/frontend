@@ -1,54 +1,75 @@
 <script lang="ts">
   import autoAnimate from "@formkit/auto-animate";
 
-  import { afterNavigate } from "$app/navigation";
+  import { afterNavigate, goto } from "$app/navigation";
   import Button from "$lib/components/decorative/Button.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import { categories } from "$lib/globals/consts";
+  import type { Project } from "$lib/globals/schema";
+  import { dash } from "radash";
   import { onMount } from "svelte";
   import toast from "svelte-french-toast";
-  import { writable } from "svelte/store";
+  import { writable, type Writable } from "svelte/store";
   import IconAttr from "~icons/tabler/At.svelte";
-  import { default as IconNC, default as IconND } from "~icons/tabler/CoinOff.svelte";
+  import {
+    default as IconNC,
+    default as IconND
+  } from "~icons/tabler/CoinOff.svelte";
   import IconEdit from "~icons/tabler/Pencil.svelte";
   import IconSA from "~icons/tabler/Repeat.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
+  import { fetchAuthed } from "$lib/globals/functions";
+  import { user } from "$lib/globals/stores";
 
   let iconB64: string | ArrayBuffer | null | undefined;
   let iconVal: FileList;
   let iconImg: string;
+  let title: string;
+  let description: string;
+  let body: string;
+  let category: Writable<string[]> = writable([]);
 
   // let dependencies: Project[] = [];
   // let dependencyNames: string[] = [""];
 
-  // let cat = document.getElementById("cat") as HTMLSelectElement
+  onMount(() => {
+    $category = [];
+  });
 
-  // async function create() {
-  //   let projData: Project = {
-  //     icon: iconB64?.toString(),
-  //     type: "datapack",
-  //     url: titleVal.trim().toLowerCase().replaceAll(" ", "-"),
-  //     title: titleVal,
-  //     description: descVal,
-  //     body: bodyVal,
-  //     category: catVal,
-  //     author: $user.id,
-  //     status: "draft"
-  //   };
+  afterNavigate(() => {
+    $category = [];
+  });
 
-  //   toast.promise(
-  //     fetchAuthed("post", `/projects/create`, projData).then(res => {
-  //       if (res.ok) {
-  //         goto("/project/" + titleVal.toLowerCase().replaceAll(" ", "-"));
-  //       }
-  //     }),
-  //     {
-  //       success: "Created project! Redirecting...",
-  //       loading: "Creating project...",
-  //       error: "Something went wrong!"
-  //     }
-  //   );
-  // }
+  function maxCategoriesReached() {
+    toast.error("Max Categories Reached");
+  }
+
+  async function create() {
+    let projData: Project = {
+      icon: iconB64?.toString(),
+      type: "datapack",
+      url: dash(title.trim()),
+      title: title,
+      description: description,
+      body: body,
+      category: $category[0],
+      author: $user.id,
+      status: "draft"
+    };
+
+    toast.promise(
+      fetchAuthed("post", `/projects/create`, projData).then(res => {
+        if (res.ok) {
+          goto("/project/" + title.toLowerCase().replaceAll(" ", "-"));
+        }
+      }),
+      {
+        success: "Created project! Redirecting...",
+        loading: "Creating project...",
+        error: "Something went wrong!"
+      }
+    );
+  }
 
   function uploadIcon() {
     if (iconVal[0].size > 256000) {
@@ -62,20 +83,6 @@
       iconB64 = e.target?.result;
       iconImg = URL.createObjectURL(iconVal[0]);
     });
-  }
-
-  let categoryCount = writable([]);
-
-  onMount(() => {
-    $categoryCount = [];
-  });
-
-  afterNavigate(() => {
-    $categoryCount = [];
-  });
-
-  function maxCategoriesReached() {
-    toast.error("Max Categories Reached");
   }
 
   // function dependencyHandler(v: string, i: number) {
@@ -220,7 +227,7 @@
       {#each categories as cat}
         <ToggleBoxes
           value="{cat}"
-          selected="{categoryCount}"
+          selected="{category}"
           on:fail="{maxCategoriesReached}" />
       {/each}
     </div>
@@ -251,7 +258,8 @@
         </div>
       {/each}
     </div> -->
-    <Button classes="col-span-3 w-fit mt-4">Create Project</Button>
+    <Button classes="col-span-3 w-fit mt-4" click="{create}"
+      >Create Project</Button>
   </div>
   <div class="py-16"></div>
 </main>

@@ -9,21 +9,20 @@
 
   let clicked = false;
 
-  let dispatch = createEventDispatcher()
+  let dispatch = createEventDispatcher();
 
   // way more complex than needed
   function toggleClicked() {
     if ($selected.length < limit) {
       clicked = !clicked;
       selected.update(arr => toggle(arr, value));
-      return
+      return;
     }
 
     clicked = false;
     selected.update(arr => arr.filter(v => v != value));
-    dispatch("fail")
+    dispatch("fail");
   }
-
 </script>
 
 <div

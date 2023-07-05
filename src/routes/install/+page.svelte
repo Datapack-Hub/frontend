@@ -160,8 +160,10 @@
             class="w-2/3" />
 
           <p class="pt-4">
-            <b>4. Run /reload (or /minecraft:reload on Bukkit based servers).</b> You can do this using the server console, or in
-            the chat if you join the server (and have OP.)
+            <b
+              >4. Run /reload (or /minecraft:reload on Bukkit based servers).</b>
+            You can do this using the server console, or in the chat if you join
+            the server (and have OP.)
           </p>
           <img
             src="https://cdn.discordapp.com/attachments/723984082853298297/1125493215739527178/image.png"
