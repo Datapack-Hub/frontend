@@ -1,4 +1,4 @@
-import { browser } from "$app/environment";
+import { browser, dev } from "$app/environment";
 import { goto } from "$app/navigation";
 import { apiURL } from "$lib/globals/consts";
 import { fetchAuthed, getCookie, loadColorPref } from "$lib/globals/functions";
@@ -43,7 +43,9 @@ export const load = (async ({ fetch, url }) => {
       authed.set(true);
     }
 
-    if (!get(consoleWarned)) {
+    loadColorPref();
+
+    if (!dev && !get(consoleWarned)) {
       console.log(
         "%cSTOP!",
         "color: #ff631a; font-size: 72pt; font-weight: 800;"

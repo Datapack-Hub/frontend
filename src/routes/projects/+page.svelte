@@ -12,7 +12,7 @@
 
   export let data: PageData;
 
-  console.log(data.pages)
+  console.log(data.pages);
 
   let query: string;
   $: dataCopy = data.projects ?? [];
@@ -78,19 +78,19 @@
       <p class="dark:text-white mr-2">Page:</p>
       {#if data.pages < 5}
         {#key data.page}
-        {#each list(data.pages - 1) as i}
-          {#if data.page == i + 1}
-            <a
-              href="/projects?page={i + 1}"
-              class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-              >{i + 1}</a>
-          {:else}
-            <a
-              href="/projects?page={i + 1}"
-              class="h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-              >{i + 1}</a>
-          {/if}
-        {/each}
+          {#each list(data.pages - 1) as i}
+            {#if data.page == i + 1}
+              <a
+                href="/projects?page={i + 1}"
+                class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+                >{i + 1}</a>
+            {:else}
+              <a
+                href="/projects?page={i + 1}"
+                class="h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+                >{i + 1}</a>
+            {/if}
+          {/each}
         {/key}
       {:else}
         <a
