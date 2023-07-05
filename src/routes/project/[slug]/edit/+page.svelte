@@ -2,7 +2,7 @@
   import type { PageData } from "./$types";
 
   import { browser } from "$app/environment";
-  import { goto } from "$app/navigation";
+  import { afterNavigate, goto } from "$app/navigation";
 
   import Button from "$lib/components/decorative/Button.svelte";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
@@ -20,6 +20,17 @@
 
   import IconTick from "~icons/tabler/Check.svelte";
   import IconDraft from "~icons/tabler/FileOff.svelte";
+  import IconAttr from "~icons/tabler/At.svelte";
+  import {
+    default as IconNC,
+    default as IconND
+  } from "~icons/tabler/CoinOff.svelte";
+  import IconEdit from "~icons/tabler/Pencil.svelte";
+  import IconSA from "~icons/tabler/Repeat.svelte";
+  import IconNoIcon from "~icons/tabler/Upload.svelte";
+  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
+  import { onMount } from "svelte";
+  import { type Writable, writable } from "svelte/store";
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -33,13 +44,31 @@
 
   let createVersion = false;
 
-  let titleValue = data.project?.title;
+  let titleVal = data.project?.title;
   let descVal = data.project?.description;
   let bodyVal = data.project?.body;
   let catVal = data.project?.category;
+  let slug = data.project?.url;
   let iconVal: FileList;
-  let iconElement: HTMLImageElement;
   let iconB64: string | ArrayBuffer | null | undefined;
+  let iconImg: string;
+
+  let category: Writable<string[]> = writable([]);
+
+  // let dependencies: Project[] = [];
+  // let dependencyNames: string[] = [""];
+
+  onMount(() => {
+    $category = [];
+  });
+
+  afterNavigate(() => {
+    $category = [];
+  });
+
+  function maxCategoriesReached() {
+    toast.error("Max Categories Reached");
+  }
 
   async function uploadDatapack() {
     if (browser) {
@@ -131,15 +160,16 @@
     }
     let reader = new FileReader();
 
-    iconElement.src = URL.createObjectURL(iconVal[0]);
+    reader.readAsDataURL(iconVal[0]);
+
     reader.addEventListener("load", e => {
       iconB64 = e.target?.result;
+      iconImg = URL.createObjectURL(iconVal[0]);
     });
-    reader.readAsDataURL(iconVal[0]);
   }
 
   async function update() {
-    if ((titleValue?.length ?? 0) < 4)
+    if ((titleVal?.length ?? 0) < 4)
       return toast.error("Title must be at least 3 characters");
     if ((bodyVal?.length ?? 0) < 101)
       return toast.error("Body must be at least 100 characters");
@@ -151,7 +181,7 @@
       category: string | undefined;
       icon?: string | ArrayBuffer | null | undefined;
     } = {
-      title: titleValue,
+      title: titleVal,
       description: descVal,
       body: bodyVal,
       category: catVal
@@ -266,78 +296,155 @@
     <!-- DETAILS-->
     <div use:autoAnimate>
       {#if activePage == "details"}
-        <div class="text-center align-middle md:text-start">
+        <div
+          class="grid grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2">
           <div
-            class=" rounded-xl bg-pearl-lusta-200 dark:bg-stone-800 p-2 pb-2">
-            <!--meanwhile, bean-->
-            <p
-              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
-              Icon
-            </p>
-            <img
-              src="{data.project?.icon
-                ? data.project.icon
-                : 'https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg'}"
-              alt="Your logo here"
-              height="100"
-              width="100"
-              class="mr-3 inline-block rounded-2xl"
-              bind:this="{iconElement}" />
-            <label for="icon" class="button-boring">Upload Icon</label>
-            <input
-              accept="image/*"
-              id="icon"
-              type="file"
-              class="hidden"
-              bind:files="{iconVal}"
-              on:change="{uploadIcon}" />
-            <br /><br />
-
-            <!-- Title -->
-            <p class="align-middle text-dph-orange">Title</p>
-            <input
-              class="h-10 w-1/2 rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-              placeholder="Title"
-              maxlength="50"
-              id="title"
-              bind:value="{titleValue}" /><br /><br />
-
-            <!-- Short Description -->
-            <p class="align-middle text-dph-orange">Short Description</p>
-            <textarea
-              class="h-24 w-3/4 resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-              placeholder="This short description is used for social media embeds and the listing page."
-              id="desc"
-              maxlength="200"
-              bind:value="{descVal}"></textarea
-            ><br /><br />
-
-            <!-- Long Description -->
-            <p class="align-middle text-dph-orange">
-              Long Description (supports markdown)
-            </p>
-            <textarea
-              class="h-96 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-              placeholder="Use the long description to tell people how to use your datapack, what it does, etc."
-              id="body"
-              bind:value="{bodyVal}"
-              maxlength="10000"></textarea
-            ><br /><br />
-            <!-- Category -->
-            <p class="align-middle text-dph-orange">Category</p>
-            <select
-              class="bg-new-white-300 w-1/4 rounded-md p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
-              bind:value="{catVal}">
-              {#each categories as cat}
-                <option value="{cat}">
-                  {cat}
-                </option>
-              {/each}
-            </select><br /><br />
-            <Button click="{update}" wait="{true}">Update Project</Button>
+            class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2 xl:col-span-1">
+            <div
+              class="bg-stone-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
+              <label class="w-full h-full flex items-center justify-center">
+                <img
+                  src="{iconImg}"
+                  alt="Your Icon"
+                  class="aspect-square overflow-clip w-full h-full rounded-xl {iconVal
+                    ? 'block'
+                    : 'hidden'}" />
+                <input
+                  bind:files="{iconVal}"
+                  on:change="{uploadIcon}"
+                  type="file"
+                  class="hidden" />
+                <IconNoIcon
+                  class="h-1/2 w-1/2 {iconVal ? 'hidden' : 'block'}" />
+              </label>
+            </div>
+            <div class="w-full">
+              <p class="text-pearl-lusta-100 mb-2">Title</p>
+              <input
+                type="text"
+                placeholder="Super Cool Datapack"
+                maxlength="35"
+                bind:value="{titleVal}"
+                class="input" />
+              <p class="text-pearl-lusta-100 col-span-2 mt-4 mb-2">URL</p>
+              <input
+                type="text"
+                placeholder="slug-for-your-pack"
+                maxlength="35"
+                bind:value="{slug}"
+                class="input" />
+            </div>
           </div>
-        </div>
 
+          <p class="text-pearl-lusta-100 col-span-3 pt-3">Summary</p>
+          <textarea
+            placeholder="A short description of your pack"
+            maxlength="200"
+            bind:value="{descVal}"
+            class="input resize-none h-32 col-span-2 xl:col-span-1"></textarea>
+          <p class="text-pearl-lusta-100 col-span-3 pt-3">Description</p>
+          <textarea
+            placeholder="Details about your project"
+            maxlength="2000"
+            bind:value="{bodyVal}"
+            class="input resize-none h-64 col-span-2 xl:col-span-1"></textarea>
+          <p class="text-pearl-lusta-100 col-span-3 pt-3">
+            CC Licence (click to select)
+          </p>
+          <p class="text-pearl-lusta-100/20 col-span-3">WIP, does not work!</p>
+          <div
+            class="grid grid-cols-2 gap-3 col-span-2 md:col-span-2 lg:col-span-1"
+            use:autoAnimate>
+            <div class="input cursor-pointer">
+              <h1 class="flex items-center space-x-2">
+                <IconAttr />
+                <p class="font-bold">Attribution</p>
+              </h1>
+              <p class="text-xs">
+                If people use, redistribute, or modify your work, credit must be
+                given to you, the creator.
+              </p>
+            </div>
+            <div class="input cursor-pointer">
+              <h1 class="flex items-center space-x-2">
+                <IconSA />
+                <p class="font-bold">ShareAlike</p>
+              </h1>
+              <p class="text-xs">
+                If someone remixes, transforms, or builds upon your work, they
+                have to distribute it under the same licence.
+              </p>
+            </div>
+            <div class="input cursor-pointer">
+              <h1 class="flex items-center space-x-2">
+                <IconNC />
+                <p class="font-bold">NonCommercial</p>
+              </h1>
+              <p class="text-xs">
+                People can't use your work to make money or for other commercial
+                purposes.
+              </p>
+            </div>
+            <div class="input cursor-pointer p-3">
+              <h1 class="flex items-center space-x-2">
+                <IconND />
+                <p class="font-bold">NoDeriatives</p>
+              </h1>
+              <p class="text-xs">
+                If someone remixes, transforms, or builds upon your work, they
+                can't distribute it.
+              </p>
+            </div>
+            <div class="input p-3 col-span-2 space-y-1">
+              <h1 class="flex items-center space-x-2">
+                <IconEdit />
+                <p class="font-bold">Custom</p>
+              </h1>
+              <input
+                type="text"
+                class="input"
+                placeholder="https://example.com/my-custom-licence.md" />
+            </div>
+          </div>
+          <p class="text-pearl-lusta-100 col-span-3">Categories</p>
+          <div
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 rounded-lg">
+            {#each categories as cat}
+              <ToggleBoxes
+                value="{cat}"
+                selected="{category}"
+                on:fail="{maxCategoriesReached}" />
+            {/each}
+          </div>
+          <div class="col-span-3"></div>
+          <!--I've been creating this for like 4 days just to realize its not even for this page-->
+          <!-- <p class="text-pearl-lusta-100 col-span-3">Dependencies</p>
+    <div
+      class="space-y-3 bg-stone-800/50 rounded-lg border-2 border-stone-700 p-3"
+      use:autoAnimate>
+      {#each dependencyNames as _, i}
+        <p class="text-pearl-lusta-100 pb-3">
+          <IconLink class="inline-block" /> Dependency URL
+        </p>
+        <div class="flex items-center">
+          <span class="input">
+            https://datapackhub.net/project/<AutoAdjustableInput
+              classes="bg-stone-800 outline-none"
+              on:change="{e => dependencyHandler(e.detail, i)}" />
+          </span>
+          {#if dependencies[i]}
+            <img
+              src="{dependencies[i].icon}"
+              alt="{dependencies[i].title}'s icon"
+              height="48"
+              width="48"
+              class="ml-3 rounded-lg aspect-square" />
+          {/if}
+        </div>
+      {/each}
+    </div> -->
+          <Button classes="col-span-3 w-fit mt-4">Create Project</Button>
+        </div>
         <!-- VERSIONS-->
       {:else if activePage == "versions"}
         <div class="text-center align-middle md:text-start">
