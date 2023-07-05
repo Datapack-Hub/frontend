@@ -18,19 +18,19 @@
   import toast from "svelte-french-toast";
   import MultiSelect from "svelte-multiselect";
 
-  import IconTick from "~icons/tabler/Check.svelte";
-  import IconDraft from "~icons/tabler/FileOff.svelte";
+  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
+  import { onMount } from "svelte";
+  import { writable, type Writable } from "svelte/store";
   import IconAttr from "~icons/tabler/At.svelte";
+  import IconTick from "~icons/tabler/Check.svelte";
   import {
     default as IconNC,
     default as IconND
   } from "~icons/tabler/CoinOff.svelte";
+  import IconDraft from "~icons/tabler/FileOff.svelte";
   import IconEdit from "~icons/tabler/Pencil.svelte";
   import IconSA from "~icons/tabler/Repeat.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
-  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
-  import { onMount } from "svelte";
-  import { type Writable, writable } from "svelte/store";
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -341,19 +341,19 @@
             placeholder="A short description of your pack"
             maxlength="200"
             bind:value="{descVal}"
-            class="input resize-none h-32 col-span-2 xl:col-span-1"></textarea>
+            class="input resize-none h-32 col-span-2"></textarea>
           <p class="text-pearl-lusta-100 col-span-3 pt-3">Description</p>
           <textarea
             placeholder="Details about your project"
             maxlength="2000"
             bind:value="{bodyVal}"
-            class="input resize-none h-64 col-span-2 xl:col-span-1"></textarea>
+            class="input resize-none h-64 col-span-2"></textarea>
           <p class="text-pearl-lusta-100 col-span-3 pt-3">
             CC Licence (click to select)
           </p>
           <p class="text-pearl-lusta-100/20 col-span-3">WIP, does not work!</p>
           <div
-            class="grid grid-cols-2 gap-3 col-span-2 md:col-span-2 lg:col-span-1"
+            class="grid grid-cols-2 gap-3 col-span-2 lg:col-span-1"
             use:autoAnimate>
             <div class="input cursor-pointer">
               <h1 class="flex items-center space-x-2">
@@ -408,7 +408,7 @@
           </div>
           <p class="text-pearl-lusta-100 col-span-3">Categories</p>
           <div
-            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 rounded-lg">
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 rounded-lg col-span-2">
             {#each categories as cat}
               <ToggleBoxes
                 value="{cat}"
@@ -443,7 +443,8 @@
         </div>
       {/each}
     </div> -->
-          <Button classes="col-span-3 w-fit mt-4">Create Project</Button>
+          <Button classes="col-span-3 w-fit mt-4" click="{update}"
+            >Update Project</Button>
         </div>
         <!-- VERSIONS-->
       {:else if activePage == "versions"}

@@ -118,7 +118,7 @@
     Create New Datapack
   </h1>
   <div
-    class="grid grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2">
+    class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2">
     <div
       class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2 xl:col-span-1">
       <div
@@ -161,19 +161,19 @@
       placeholder="A short description of your pack"
       maxlength="200"
       bind:value="{description}"
-      class="input resize-none h-32 col-span-2 xl:col-span-1"></textarea>
+      class="input resize-none h-32 col-span-2"></textarea>
     <p class="text-pearl-lusta-100 col-span-3 pt-3">Description</p>
     <textarea
       placeholder="Details about your project"
       maxlength="2000"
       bind:value="{body}"
-      class="input resize-none h-64 col-span-2 xl:col-span-1"></textarea>
+      class="input resize-none h-64 col-span-2"></textarea>
     <p class="text-pearl-lusta-100 col-span-3 pt-3">
       CC Licence (click to select)
     </p>
     <p class="text-pearl-lusta-100/20 col-span-3">WIP, does not work!</p>
     <div
-      class="grid grid-cols-2 gap-3 col-span-2 md:col-span-2 lg:col-span-1"
+      class="grid grid-cols-2 gap-3 col-span-2 lg:col-span-1"
       use:autoAnimate>
       <div class="input cursor-pointer">
         <h1 class="flex items-center space-x-2">
@@ -228,7 +228,7 @@
     </div>
     <p class="text-pearl-lusta-100 col-span-3">Categories</p>
     <div
-      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 rounded-lg">
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 rounded-lg col-span-2">
       {#each categories as cat}
         <ToggleBoxes
           value="{cat}"
@@ -236,7 +236,6 @@
           on:fail="{maxCategoriesReached}" />
       {/each}
     </div>
-    <div class="col-span-3"></div>
     <!--I've been creating this for like 4 days just to realize its not even for this page-->
     <!-- <p class="text-pearl-lusta-100 col-span-3">Dependencies</p>
     <div
