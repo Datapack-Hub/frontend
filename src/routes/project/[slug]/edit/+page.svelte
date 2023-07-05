@@ -502,7 +502,7 @@
                 Changelog (supports markdown!)
               </p>
               <textarea
-                class="h-36 w-3/4 input"
+                class="h-36 w-full md:w-3/4 input"
                 placeholder="This update changes..."
                 id="v_changelog"
                 maxlength="2000"></textarea>

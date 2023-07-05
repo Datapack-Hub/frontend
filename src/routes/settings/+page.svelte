@@ -112,10 +112,10 @@
               information in it!
             </p>
             <textarea
-              class="input h-80 resize-none"
+              class="input w-1/2 h-80 resize-none"
               maxlength="500"
               bind:value="{bioVal}"
-              on:keypress="{calcRemaining}"></textarea>
+              on:input="{calcRemaining}"></textarea>
             <p
               class="align-middle text-xs text-pearl-lusta-950 dark:text-pearl-lusta-100">
               {remainingCharacters} characters left
