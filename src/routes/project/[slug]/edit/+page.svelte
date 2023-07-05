@@ -297,7 +297,7 @@
     <div use:autoAnimate>
       {#if activePage == "details"}
         <div
-          class="grid grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2">
+          class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2">
           <div
             class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2 xl:col-span-1">
             <div
