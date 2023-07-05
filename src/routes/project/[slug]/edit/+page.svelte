@@ -10,7 +10,7 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 
-  import { categories, versions } from "$lib/globals/consts";
+  import { apiURL, categories, versions } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
 
   import autoAnimate from "@formkit/auto-animate";
@@ -18,7 +18,9 @@
   import toast from "svelte-french-toast";
   import MultiSelect from "svelte-multiselect";
 
+  import AutoAdjustableInput from "$lib/components/utility/AutoAdjustableInput.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
+  import { projectSchema, type Project } from "$lib/globals/schema";
   import { onMount } from "svelte";
   import { writable, type Writable } from "svelte/store";
   import IconAttr from "~icons/tabler/At.svelte";
@@ -28,6 +30,7 @@
     default as IconND
   } from "~icons/tabler/CoinOff.svelte";
   import IconDraft from "~icons/tabler/FileOff.svelte";
+  import IconLink from "~icons/tabler/Link.svelte";
   import IconEdit from "~icons/tabler/Pencil.svelte";
   import IconSA from "~icons/tabler/Repeat.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
@@ -38,7 +41,7 @@
 
   let selected: string[] = [];
   let zipFile: File;
-  let activePage = "details";
+  let activePage = "versions";
 
   export let data: PageData;
 
@@ -55,8 +58,8 @@
 
   let category: Writable<string[]> = writable([]);
 
-  // let dependencies: Project[] = [];
-  // let dependencyNames: string[] = [""];
+  let dependencies: Project[] = [];
+  let dependencyNames: string[] = [""];
 
   onMount(() => {
     $category = [];
@@ -242,6 +245,28 @@
       goto("/");
     }
   }
+
+  function dependencyHandler(v: string, i: number) {
+    dependencyNames[i] = v;
+    dependencyNames[i + 1] = "";
+    dependencyNames = [...dependencyNames.slice(0, 4)];
+    resolveDependency(v, i);
+  }
+
+  async function resolveDependency(v: string, i: number) {
+    let search = await fetch(`${apiURL}/projects/search?query=${v}`);
+    let projects = projectSchema.array().parse((await search.json()).result);
+    console.log("ping");
+    console.log(projects);
+    console.log(v.split("/")[5]);
+
+    projects.forEach(project => {
+      console.log(project);
+      if (project.url == v) {
+        dependencies[i] = project;
+      }
+    });
+  }
 </script>
 
 <svelte:head>
@@ -249,7 +274,7 @@
 </svelte:head>
 
 <main
-  class="relative bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class="relative bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 sm:px-8 lg:px-16 xl:px-24">
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -297,7 +322,7 @@
     <div use:autoAnimate>
       {#if activePage == "details"}
         <div
-          class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2">
+          class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2 bg-stone-800">
           <div
             class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2 xl:col-span-1">
             <div
@@ -325,14 +350,14 @@
                 placeholder="Super Cool Datapack"
                 maxlength="35"
                 bind:value="{titleVal}"
-                class="input" />
+                class="input w-full" />
               <p class="text-pearl-lusta-100 col-span-2 mt-4 mb-2">URL</p>
               <input
                 type="text"
                 placeholder="slug-for-your-pack"
                 maxlength="35"
                 bind:value="{slug}"
-                class="input" />
+                class="input w-full" />
             </div>
           </div>
 
@@ -402,7 +427,7 @@
               </h1>
               <input
                 type="text"
-                class="input"
+                class="input w-full"
                 placeholder="https://example.com/my-custom-licence.md" />
             </div>
           </div>
@@ -417,41 +442,14 @@
             {/each}
           </div>
           <div class="col-span-3"></div>
-          <!--I've been creating this for like 4 days just to realize its not even for this page-->
-          <!-- <p class="text-pearl-lusta-100 col-span-3">Dependencies</p>
-    <div
-      class="space-y-3 bg-stone-800/50 rounded-lg border-2 border-stone-700 p-3"
-      use:autoAnimate>
-      {#each dependencyNames as _, i}
-        <p class="text-pearl-lusta-100 pb-3">
-          <IconLink class="inline-block" /> Dependency URL
-        </p>
-        <div class="flex items-center">
-          <span class="input">
-            https://datapackhub.net/project/<AutoAdjustableInput
-              classes="bg-stone-800 outline-none"
-              on:change="{e => dependencyHandler(e.detail, i)}" />
-          </span>
-          {#if dependencies[i]}
-            <img
-              src="{dependencies[i].icon}"
-              alt="{dependencies[i].title}'s icon"
-              height="48"
-              width="48"
-              class="ml-3 rounded-lg aspect-square" />
-          {/if}
-        </div>
-      {/each}
-    </div> -->
           <Button classes="col-span-3 w-fit mt-4" click="{update}"
             >Update Project</Button>
         </div>
         <!-- VERSIONS-->
       {:else if activePage == "versions"}
-        <div class="text-center align-middle md:text-start">
+        <div class="text-center align-middle md:text-start w-full lg:w-1/2">
           {#if createVersion == false}
-            <div
-              class="my-2 flex space-x-2 rounded-xl bg-pearl-lusta-200 p-2 py-3 dark:bg-stone-800">
+            <div class="my-2 flex space-x-2">
               <label for="zip" class="max-w-100">
                 <span class="button-primary cursor-pointer"
                   >Upload datapack file</span>
@@ -468,8 +466,7 @@
             </div>
           {:else}
             {@const ver = (Math.random() * 10).toFixed(1)}
-            <div
-              class="my-2 rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800">
+            <div class="bg-stone-800 p-3 rounded-lg">
               <button
                 class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
                 on:click="{() => (createVersion = false)}">X</button>
@@ -480,56 +477,85 @@
 
               <div class="flex space-x-4">
                 <p
-                  class="w-1/2 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                  class="w-3/4 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
                   Version Name
                 </p>
                 <p
-                  class="w-1/2 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                  class="w-1/4 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
                   Version Number
                 </p>
               </div>
-              <div class="flex space-x-2">
+              <div class="flex space-x-3">
                 <input
-                  class="mb-4 h-10 w-1/2 rounded-md bg-pearl-lusta-300 p-2 text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
+                  class="input w-3/4"
                   placeholder="{data.project?.title} v{ver}"
                   maxlength="50"
                   id="v_name" />
                 <input
-                  class="mb-4 h-10 w-1/6 rounded-md bg-pearl-lusta-300 p-2 text-lg text-pearl-lusta-950 placeholder:text-pearl-lusta-100 dark:bg-stone-700 dark:text-white"
+                  class="input w-1/4"
                   placeholder="v{ver}"
                   maxlength="15"
                   id="v_code" />
               </div>
 
               <p
-                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
                 Changelog (supports markdown!)
               </p>
               <textarea
-                class="mb-4 h-36 w-3/4 resize-none rounded-md bg-pearl-lusta-300 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+                class="h-36 w-3/4 input"
                 placeholder="This update changes..."
                 id="v_changelog"
                 maxlength="2000"></textarea>
 
               <p
-                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
-                Minecraft Versions
+                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
+                Compatible Minecraft Versions
               </p>
-              <MultiSelect
-                bind:selected="{selected}"
-                options="{versions}"
-                liSelectedClass="liSelectedClass" />
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 gap-3 rounded-lg col-span-2">
+                {#each categories as cat}
+                  <ToggleBoxes
+                    value="{cat}"
+                    selected="{category}"
+                    on:fail="{maxCategoriesReached}" />
+                {/each}
+              </div>
               <p class="mb-4"></p>
-
+              <!--I've been creating this for like 4 days just to realize its not even for this page-->
+              <p class="text-pearl-lusta-100 col-span-3">Dependencies</p>
+              <div
+                class="space-y-3 bg-stone-800/50 rounded-lg border-2 border-stone-700 p-3"
+                use:autoAnimate>
+                {#each dependencyNames as _, i}
+                  <p class="text-pearl-lusta-100">
+                    <IconLink class="inline-block" /> Dependency URL
+                  </p>
+                  <div class="flex items-center">
+                    <span class="input w-full">
+                      https://datapackhub.net/project/<AutoAdjustableInput
+                        classes="bg-stone-800 text-pearl-lusta-100 outline-none"
+                        on:change="{e => dependencyHandler(e.detail, i)}" />
+                    </span>
+                    {#if dependencies[i]}
+                      <img
+                        src="{dependencies[i].icon}"
+                        alt="{dependencies[i].title}'s icon"
+                        height="48"
+                        width="48"
+                        class="ml-3 rounded-lg aspect-square" />
+                    {/if}
+                  </div>
+                {/each}
+              </div>
               <p
-                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-3">
                 Resource Pack Download (optional)
               </p>
               <input
                 type="file"
                 id="v_rp"
-                class="mb-4 rounded-xl bg-pearl-lusta-300 p-2 text-pearl-lusta-950 dark:bg-stone-700 dark:text-white" />
-              <p></p>
+                class="mb-4 input" />
               <div class=" mb-4">
                 <input name="squash" id="squash" type="checkbox" />
                 <label
@@ -618,11 +644,11 @@
 
 <style lang="postcss">
   :root {
-    --sms-bg: theme(colors.stone.700);
-    --sms-border: 0px solid theme(colors.stone.700);
+    --sms-bg: theme(colors.stone.800);
+    --sms-border: 2px solid theme(colors.stone.700);
     --sms-selected-bg: theme(colors.stone.700);
     --sms-remove-btn-hover-bg: theme(colors.orange.500);
-    --sms-options-bg: theme(colors.stone.700);
-    --sms-text-color: theme(colors.white);
+    --sms-options-bg: theme(colors.stone.800);
+    --sms-text-color: theme(colors.pearl-lusta.100);
   }
 </style>

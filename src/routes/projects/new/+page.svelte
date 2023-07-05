@@ -145,14 +145,14 @@
           placeholder="Super Cool Datapack"
           maxlength="35"
           bind:value="{title}"
-          class="input" />
+          class="input w-full" />
         <p class="text-pearl-lusta-100 col-span-2 mt-4 mb-2">URL</p>
         <input
           type="text"
           placeholder="slug-for-your-pack"
           maxlength="35"
           bind:value="{slug}"
-          class="input" />
+          class="input w-full" />
       </div>
     </div>
 
@@ -222,7 +222,7 @@
         </h1>
         <input
           type="text"
-          class="input"
+          class="input w-full"
           placeholder="https://example.com/my-custom-licence.md" />
       </div>
     </div>
