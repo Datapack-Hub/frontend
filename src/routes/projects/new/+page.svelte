@@ -27,6 +27,7 @@
   let title: string;
   let description: string;
   let body: string;
+  let slug: string; // unused for rn
   let category: Writable<string[]> = writable([]);
 
   // let dependencies: Project[] = [];
@@ -143,12 +144,14 @@
           type="text"
           placeholder="Super Cool Datapack"
           maxlength="35"
+          bind:value="{title}"
           class="input" />
         <p class="text-pearl-lusta-100 col-span-2 mt-4 mb-2">URL</p>
         <input
           type="text"
           placeholder="slug-for-your-pack"
           maxlength="35"
+          bind:value="{slug}"
           class="input" />
       </div>
     </div>
@@ -157,11 +160,13 @@
     <textarea
       placeholder="A short description of your pack"
       maxlength="200"
+      bind:value="{description}"
       class="input resize-none h-32 col-span-2 xl:col-span-1"></textarea>
     <p class="text-pearl-lusta-100 col-span-3 pt-3">Description</p>
     <textarea
       placeholder="Details about your project"
       maxlength="2000"
+      bind:value="{body}"
       class="input resize-none h-64 col-span-2 xl:col-span-1"></textarea>
     <p class="text-pearl-lusta-100 col-span-3 pt-3">
       CC Licence (click to select)
