@@ -27,7 +27,7 @@ export const roles = [
   "default"
 ];
 
-export const versions = [
+export const minecraftVersions = [
   "1.13-1.14.4",
   "1.15-1.16.1",
   "1.16.2-1.16.5",

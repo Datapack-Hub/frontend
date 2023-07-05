@@ -10,13 +10,12 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 
-  import { apiURL, categories, versions } from "$lib/globals/consts";
+  import { apiURL, categories, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
 
   import autoAnimate from "@formkit/auto-animate";
   import { loadAsync } from "jszip";
   import toast from "svelte-french-toast";
-  import MultiSelect from "svelte-multiselect";
 
   import AutoAdjustableInput from "$lib/components/utility/AutoAdjustableInput.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
@@ -514,7 +513,7 @@
               </p>
               <div
                 class="grid grid-cols-2 md:grid-cols-3 gap-3 rounded-lg col-span-2">
-                {#each categories as cat}
+                {#each minecraftVersions as cat}
                   <ToggleBoxes
                     value="{cat}"
                     selected="{category}"
@@ -552,10 +551,7 @@
                 class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-3">
                 Resource Pack Download (optional)
               </p>
-              <input
-                type="file"
-                id="v_rp"
-                class="mb-4 input" />
+              <input type="file" id="v_rp" class="mb-4 input" />
               <div class=" mb-4">
                 <input name="squash" id="squash" type="checkbox" />
                 <label

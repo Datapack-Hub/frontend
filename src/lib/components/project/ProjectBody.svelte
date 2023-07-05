@@ -1,7 +1,7 @@
 <script lang="ts">
   // Svelte imports
   import { goto } from "$app/navigation";
-  import { versions } from "$lib/globals/consts";
+  import { minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed, getAuthorFromID } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
@@ -319,7 +319,7 @@
           <p class="mr-2">Search by Minecraft version:</p>
           <MultiSelect
             bind:selected="{selectedVersions}"
-            options="{versions}" />
+            options="{minecraftVersions}" />
         </div>
         <div class="mx-3 flex space-x-3 mt-4">
           <h2
@@ -359,7 +359,7 @@
         {#if dp_versions?.length != 0}
           <p class="text-white">Select a Minecraft version:</p>
           <div class="grid grid-cols-3 grid-rows-auto gap-3">
-            {#each versions ?? [] as v}
+            {#each minecraftVersions ?? [] as v}
               {#if bigStitchedVersionList.indexOf(v) >= 0}
                 {@const mcVersions =
                   project && project.latest_version
