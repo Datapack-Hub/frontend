@@ -25,7 +25,7 @@ export const userSchema = z.object({
   username: z.string().max(32, {
     message: "Username too long"
   }),
-  badges: z.optional(z.array(z.string()))
+  badges: z.array(z.string()).nullish()
 });
 
 export const projectSchema = z.object({
