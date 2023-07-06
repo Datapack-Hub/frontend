@@ -5,7 +5,9 @@
   import Button from "$lib/components/decorative/Button.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import { categories } from "$lib/globals/consts";
+  import { fetchAuthed } from "$lib/globals/functions";
   import type { Project } from "$lib/globals/schema";
+  import { user } from "$lib/globals/stores";
   import { dash } from "radash";
   import { onMount } from "svelte";
   import toast from "svelte-french-toast";
@@ -18,8 +20,6 @@
   import IconEdit from "~icons/tabler/Pencil.svelte";
   import IconSA from "~icons/tabler/Repeat.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
-  import { fetchAuthed } from "$lib/globals/functions";
-  import { user } from "$lib/globals/stores";
 
   let iconB64: string | ArrayBuffer | null | undefined;
   let iconVal: FileList;
@@ -29,9 +29,6 @@
   let body: string;
   let slug: string; // unused for rn
   let category: Writable<string[]> = writable([]);
-
-  // let dependencies: Project[] = [];
-  // let dependencyNames: string[] = [""];
 
   onMount(() => {
     $category = [];
@@ -76,37 +73,22 @@
     if (iconVal[0].size > 256000) {
       return toast.error("Icon must be less than 256kb");
     }
+
+    if (
+      !["png", "jpg", "webp", "gif", "avif"].includes(
+        iconVal[0].name.split(".").at(-1)?.toLowerCase() ?? "null"
+      )
+    ) {
+      return toast.error("Unsupported file type")
+    }
+
     let reader = new FileReader();
-
     reader.readAsDataURL(iconVal[0]);
-
     reader.addEventListener("load", e => {
       iconB64 = e.target?.result;
       iconImg = URL.createObjectURL(iconVal[0]);
     });
   }
-
-  // function dependencyHandler(v: string, i: number) {
-  //   dependencyNames[i] = v;
-  //   dependencyNames[i + 1] = "";
-  //   dependencyNames = [...dependencyNames.slice(0, 4)];
-  //   resolveDependency(v, i);
-  // }
-
-  // async function resolveDependency(v: string, i: number) {
-  //   let search = await fetch(`${apiURL}/projects/search?query=${v}`);
-  //   let projects = projectSchema.array().parse((await search.json()).result);
-  //   console.log("ping");
-  //   console.log(projects);
-  //   console.log(v.split("/")[5]);
-
-  //   projects.forEach(project => {
-  //     console.log(project);
-  //     if (project.url == v) {
-  //       dependencies[i] = project;
-  //     }
-  //   });
-  // }
 </script>
 
 <svelte:head>
@@ -134,6 +116,7 @@
             bind:files="{iconVal}"
             on:change="{uploadIcon}"
             type="file"
+            accept="image/*"
             class="hidden" />
           <IconNoIcon class="h-1/2 w-1/2 {iconVal ? 'hidden' : 'block'}" />
         </label>
@@ -236,32 +219,6 @@
           on:fail="{maxCategoriesReached}" />
       {/each}
     </div>
-    <!--I've been creating this for like 4 days just to realize its not even for this page-->
-    <!-- <p class="text-pearl-lusta-100 col-span-3">Dependencies</p>
-    <div
-      class="space-y-3 bg-stone-800/50 rounded-lg border-2 border-stone-700 p-3"
-      use:autoAnimate>
-      {#each dependencyNames as _, i}
-        <p class="text-pearl-lusta-100 pb-3">
-          <IconLink class="inline-block" /> Dependency URL
-        </p>
-        <div class="flex items-center">
-          <span class="input">
-            https://datapackhub.net/project/<AutoAdjustableInput
-              classes="bg-stone-800 outline-none"
-              on:change="{e => dependencyHandler(e.detail, i)}" />
-          </span>
-          {#if dependencies[i]}
-            <img
-              src="{dependencies[i].icon}"
-              alt="{dependencies[i].title}'s icon"
-              height="48"
-              width="48"
-              class="ml-3 rounded-lg aspect-square" />
-          {/if}
-        </div>
-      {/each}
-    </div> -->
     <Button classes="col-span-3 w-fit mt-4" click="{create}"
       >Create Project</Button>
   </div>

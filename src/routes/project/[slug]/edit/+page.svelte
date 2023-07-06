@@ -160,6 +160,15 @@
     if (iconVal[0].size > 256000) {
       return toast.error("Icon must be less than 256kb");
     }
+
+    if (
+      !["png", "jpg", "webp", "gif", "avif"].includes(
+        iconVal[0].name.split(".").at(-1)?.toLowerCase() ?? "null"
+      )
+    ) {
+      return toast.error("Unsupported file type");
+    }
+
     let reader = new FileReader();
 
     reader.readAsDataURL(iconVal[0]);
@@ -247,7 +256,7 @@
 
   function dependencyHandler(v: string, i: number) {
     dependencyNames[i] = v;
-    dependencyNames[i + 1] = "";
+    if (dependencyNames.length == i) dependencyNames[i + 1] = "";
     dependencyNames = [...dependencyNames.slice(0, 4)];
     resolveDependency(v, i);
   }
@@ -255,9 +264,6 @@
   async function resolveDependency(v: string, i: number) {
     let search = await fetch(`${apiURL}/projects/search?query=${v}`);
     let projects = projectSchema.array().parse((await search.json()).result);
-    console.log("ping");
-    console.log(projects);
-    console.log(v.split("/")[5]);
 
     projects.forEach(project => {
       console.log(project);
@@ -337,6 +343,7 @@
                   bind:files="{iconVal}"
                   on:change="{uploadIcon}"
                   type="file"
+                  accept="image/*"
                   class="hidden" />
                 <IconNoIcon
                   class="h-1/2 w-1/2 {iconVal ? 'hidden' : 'block'}" />
@@ -551,7 +558,7 @@
                 class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-3">
                 Resource Pack Download (optional)
               </p>
-              <input type="file" id="v_rp" class="mb-4 input" />
+              <input type="file" accept=".zip" id="v_rp" class="mb-4 input" />
               <div class=" mb-4">
                 <input name="squash" id="squash" type="checkbox" />
                 <label
