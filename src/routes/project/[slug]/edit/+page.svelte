@@ -33,6 +33,8 @@
   import IconEdit from "~icons/tabler/Pencil.svelte";
   import IconSA from "~icons/tabler/Repeat.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
+  import IconDelete from "~icons/tabler/Trash.svelte";
+
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -321,6 +323,10 @@
           on:click="{() => draftModal.open()}"
           ><IconDraft /><span>Draft submission</span></button>
       {/if}
+      <button
+          class="button-base flex items-center space-x-1 bg-red-600"
+          on:click="{() => deleteModal.open()}"
+          ><IconDelete /></button>
     </div>
 
     <!-- DETAILS-->
@@ -453,12 +459,13 @@
         </div>
         <!-- VERSIONS-->
       {:else if activePage == "versions"}
-        <div class="text-center align-middle md:text-start w-full lg:w-1/2">
+      <div class="bg-stone-800 p-3 rounded-xl">
+        <div class="text-center align-middle md:text-start w-full">
           {#if createVersion == false}
-            <div class="my-2 flex space-x-2">
+            <div class="my-2 mb-4 flex space-x-2">
               <label for="zip" class="max-w-100">
                 <span class="button-primary cursor-pointer"
-                  >Upload datapack file</span>
+                  >Upload New Version</span>
               </label>
               <input
                 type="file"
@@ -470,9 +477,14 @@
                 >(Supported: *.zip)</span>
               <!-- <p class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">No versions yet!</p> -->
             </div>
+          <div class="space-y-2">
+            {#each data.versions ?? [] as version}
+              <VersionDisplay version="{version}" project="{data.project}" />
+            {/each}
+          </div>
           {:else}
             {@const ver = (Math.random() * 10).toFixed(1)}
-            <div class="bg-stone-800 p-3 rounded-lg">
+            <div>
               <button
                 class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
                 on:click="{() => (createVersion = false)}">X</button>
@@ -572,18 +584,10 @@
                 >Create Version</Button>
             </div>
           {/if}
-          <div class="space-y-2">
-            {#each data.versions ?? [] as version}
-              <VersionDisplay version="{version}" project="{data.project}" />
-            {/each}
-          </div>
         </div>
+      </div>
       {/if}
     </div>
-    <button
-      class="button-base mt-2 flex items-center space-x-1 bg-red-600"
-      on:click="{() => deleteModal.open()}"
-      ><IconDraft /><span>Delete {data.project?.title}</span></button>
   </div>
 </main>
 <br />
