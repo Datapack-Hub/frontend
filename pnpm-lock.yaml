@@ -20,9 +20,6 @@ dependencies:
   nprogress:
     specifier: ^0.2.0
     version: 0.2.0
-  svelte-french-toast:
-    specifier: ^1.1.0
-    version: 1.1.0(svelte@4.0.5)
   svelte-multiselect:
     specifier: ^10.0.0
     version: 10.0.0
@@ -121,6 +118,9 @@ devDependencies:
   svelte-preprocess:
     specifier: ^5.0.4
     version: 5.0.4(@babel/core@7.22.8)(postcss-load-config@4.0.1)(postcss@8.4.25)(svelte@4.0.5)(typescript@5.1.6)
+  svelte-sonner:
+    specifier: ^0.0.13
+    version: 0.0.13(svelte@4.0.5)
   sveltejs-tippy:
     specifier: ^3.0.0
     version: 3.0.0
@@ -5407,15 +5407,6 @@ packages:
       svelte: 4.0.5
     dev: true
 
-  /svelte-french-toast@1.1.0(svelte@4.0.5):
-    resolution: {integrity: sha512-OWlOJD0iqZpL4apMbtsbSZKYukBz9CuME2KoW/zzHfFWVImXVH5zAiCmUU4N0OSPo9fY34TZKIL/5+Sbt5KkPA==}
-    peerDependencies:
-      svelte: ^3.57.0 || ^4.0.0
-    dependencies:
-      svelte: 4.0.5
-      svelte-writable-derived: 3.1.0(svelte@4.0.5)
-    dev: false
-
   /svelte-hmr@0.15.2(svelte@4.0.5):
     resolution: {integrity: sha512-q/bAruCvFLwvNbeE1x3n37TYFb3mTBJ6TrCq6p2CoFbSTNhDE9oAtEfpy+wmc9So8AG0Tja+X0/mJzX9tSfvIg==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -5481,13 +5472,13 @@ packages:
       typescript: 5.1.6
     dev: true
 
-  /svelte-writable-derived@3.1.0(svelte@4.0.5):
-    resolution: {integrity: sha512-cTvaVFNIJ036vSDIyPxJYivKC7ZLtcFOPm1Iq6qWBDo1fOHzfk6ZSbwaKrxhjgy52Rbl5IHzRcWgos6Zqn9/rg==}
+  /svelte-sonner@0.0.13(svelte@4.0.5):
+    resolution: {integrity: sha512-3ymctveAYPZotP2qcmdOIE5+G5Qwic2wH7IpnFhwmfX29L51T0cEUICj6nbgWkKYA90GcVFkSj5/7d7OCbD1qA==}
     peerDependencies:
-      svelte: ^3.2.1 || ^4.0.0-next.1
+      svelte: ^4.0.0
     dependencies:
       svelte: 4.0.5
-    dev: false
+    dev: true
 
   /svelte@4.0.5:
     resolution: {integrity: sha512-PHKPWP1wiWHBtsE57nCb8xiWB3Ht7/3Kvi3jac0XIxUM2rep8alO7YoAtgWeGD7++tFy46krilOrPW0mG3Dx+A==}

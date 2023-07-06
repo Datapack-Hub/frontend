@@ -10,7 +10,7 @@
   import { user } from "$lib/globals/stores";
   import { dash } from "radash";
   import { onMount } from "svelte";
-  import toast from "svelte-french-toast";
+  import { toast } from "svelte-sonner";
   import { writable, type Writable } from "svelte/store";
   import IconAttr from "~icons/tabler/At.svelte";
   import {
@@ -79,7 +79,7 @@
         iconVal[0].name.split(".").at(-1)?.toLowerCase() ?? "null"
       )
     ) {
-      return toast.error("Unsupported file type")
+      return toast.error("Unsupported file type");
     }
 
     let reader = new FileReader();

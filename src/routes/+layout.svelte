@@ -4,7 +4,7 @@
   import Footer from "$lib/components/nav/Footer.svelte";
   import Navbar from "$lib/components/nav/Navbar.svelte";
   import { authed, isDark, user } from "$lib/globals/stores";
-  import { Toaster } from "svelte-french-toast";
+  import { Toaster } from "svelte-sonner";
   import "../app.postcss";
   import NProgress from "nprogress";
   import { navigating } from "$app/stores";
@@ -44,8 +44,8 @@
         <Navbar />
         <slot />
       </div>
+      <Toaster theme="dark" />
       <Footer />
-      <Toaster />
     {:else}
       <div class="fixed left-0 top-0 flex h-screen w-screen bg-stone-900">
         <div

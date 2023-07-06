@@ -4,7 +4,7 @@
   import { fetchAuthed } from "$lib/globals/functions";
   import { authed, user } from "$lib/globals/stores";
   import { onMount } from "svelte";
-  import toast from "svelte-french-toast";
+  import { toast } from "svelte-sonner";
   import type { PageData } from "./$types";
   import Button from "$lib/components/decorative/Button.svelte";
   import { title } from "radash";

@@ -4,7 +4,7 @@
   import { fetchAuthed } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
-  import toast from "svelte-french-toast";
+  import { toast } from "svelte-sonner";
   import type { PageData } from "./$types";
 
   import IconDiscord from "~icons/tabler/BrandDiscord.svelte";

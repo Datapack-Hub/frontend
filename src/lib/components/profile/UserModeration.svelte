@@ -3,7 +3,7 @@
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
   import { isDark } from "$lib/globals/stores";
-  import toast from "svelte-french-toast";
+  import { toast } from "svelte-sonner";
   import IconWarn from "~icons/tabler/AlertTriangle.svelte";
   import IconBan from "~icons/tabler/Ban.svelte";
   import IconLogOut from "~icons/tabler/Logout.svelte";

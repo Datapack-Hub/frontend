@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { loadAsync } from "jszip";
-  import toast from "svelte-french-toast";
+  import { toast } from "svelte-sonner";
   import tippy from "sveltejs-tippy";
 
   import CasualLine from "../decorative/CasualLine.svelte";

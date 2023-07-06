@@ -5,7 +5,7 @@
   import { fetchAuthed, getAuthorFromID } from "$lib/globals/functions";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
-  import toast from "svelte-french-toast";
+  import { toast } from "svelte-sonner";
 
   // Component imports
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";

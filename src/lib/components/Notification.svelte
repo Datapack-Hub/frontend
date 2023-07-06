@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fetchAuthed } from "$lib/globals/functions";
-  import toast from "svelte-french-toast";
+  import { toast } from "svelte-sonner";
   import IconX from "~icons/tabler/X.svelte";
   import type { Notif } from "$lib/globals/schema";
 
@@ -9,13 +9,21 @@
 
   async function remove() {
     visible = false;
-    let res = await fetchAuthed("DELETE", `/notifs/delete/${notification?.id}`);
-
-    if (!res.ok) {
-      visible = true;
-    }
-
-    toast.success("Removed notification!");
+    toast.promise(
+      fetchAuthed("DELETE", `/notifs/delete/${notification?.id}`).then(res => {
+        if (!res.ok) {
+          visible = true;
+        }
+      }).catch(err => {
+        visible = true;
+        console.error(err)
+      }),
+      {
+        success: "Removed Notification!",
+        error: "Something went wrong 😵",
+        loading: "Removing..."
+      }
+    );
   }
 </script>
 

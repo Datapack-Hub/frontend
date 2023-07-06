@@ -3,7 +3,7 @@
   import { fetchAuthed, getAuthorFromID } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
-  import toast from "svelte-french-toast";
+  import { toast } from "svelte-sonner";
   import { fade } from "svelte/transition";
   // Componenet imports
   import IconCube from "~icons/tabler/Box.svelte";

@@ -15,7 +15,7 @@
 
   import autoAnimate from "@formkit/auto-animate";
   import { loadAsync } from "jszip";
-  import toast from "svelte-french-toast";
+  import { toast } from "svelte-sonner";
 
   import AutoAdjustableInput from "$lib/components/utility/AutoAdjustableInput.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
