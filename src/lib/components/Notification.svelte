@@ -10,14 +10,16 @@
   async function remove() {
     visible = false;
     toast.promise(
-      fetchAuthed("DELETE", `/notifs/delete/${notification?.id}`).then(res => {
-        if (!res.ok) {
+      fetchAuthed("DELETE", `/notifs/delete/${notification?.id}`)
+        .then(res => {
+          if (!res.ok) {
+            visible = true;
+          }
+        })
+        .catch(err => {
           visible = true;
-        }
-      }).catch(err => {
-        visible = true;
-        console.error(err)
-      }),
+          console.error(err);
+        }),
       {
         success: "Removed Notification!",
         error: "Something went wrong 😵",
@@ -43,11 +45,6 @@
       on:click="{remove}"><IconX /></button>
   </li>
 {/if}
-
-<!-- <ToastContainer placement="bottom-right" let:data>
-  <FlatToast data="{data}" />
-  Provider template for your toasts
-</ToastContainer> -->
 
 <style lang="postcss">
   /* @HoodieRocks can you fix this so it works on light mode too */

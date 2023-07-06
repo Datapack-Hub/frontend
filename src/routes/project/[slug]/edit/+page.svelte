@@ -35,7 +35,6 @@
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
 
-
   let publishModal: Modal;
   let draftModal: Modal;
   let deleteModal: Modal;
@@ -324,9 +323,8 @@
           ><IconDraft /><span>Draft submission</span></button>
       {/if}
       <button
-          class="button-base flex items-center space-x-1 bg-red-600"
-          on:click="{() => deleteModal.open()}"
-          ><IconDelete /></button>
+        class="button-base flex items-center space-x-1 bg-red-600"
+        on:click="{() => deleteModal.open()}"><IconDelete /></button>
     </div>
 
     <!-- DETAILS-->
@@ -459,133 +457,135 @@
         </div>
         <!-- VERSIONS-->
       {:else if activePage == "versions"}
-      <div class="bg-stone-800 p-3 rounded-xl">
-        <div class="text-center align-middle md:text-start w-full">
-          {#if createVersion == false}
-            <div class="my-2 mb-4 flex space-x-2">
-              <label for="zip" class="max-w-100">
-                <span class="button-primary cursor-pointer"
-                  >Upload New Version</span>
-              </label>
-              <input
-                type="file"
-                class="hidden"
-                accept=".zip"
-                id="zip"
-                on:input="{uploadDatapack}" />
-              <span class="align-center text-pearl-lusta-950 dark:text-white"
-                >(Supported: *.zip)</span>
-              <!-- <p class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">No versions yet!</p> -->
-            </div>
-          <div class="space-y-2">
-            {#each data.versions ?? [] as version}
-              <VersionDisplay version="{version}" project="{data.project}" />
-            {/each}
-          </div>
-          {:else}
-            {@const ver = (Math.random() * 10).toFixed(1)}
-            <div>
-              <button
-                class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
-                on:click="{() => (createVersion = false)}">X</button>
-              <h2
-                class="mb-2 text-xl font-bold text-pearl-lusta-950 dark:text-white">
-                Creating new Version
-              </h2>
-
-              <div class="flex space-x-4">
-                <p
-                  class="w-3/4 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
-                  Version Name
-                </p>
-                <p
-                  class="w-1/4 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
-                  Version Number
-                </p>
-              </div>
-              <div class="flex space-x-3">
-                <input
-                  class="input w-3/4"
-                  placeholder="{data.project?.title} v{ver}"
-                  maxlength="50"
-                  id="v_name" />
-                <input
-                  class="input w-1/4"
-                  placeholder="v{ver}"
-                  maxlength="15"
-                  id="v_code" />
-              </div>
-
-              <p
-                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
-                Changelog (supports markdown!)
-              </p>
-              <textarea
-                class="h-36 w-full md:w-3/4 input"
-                placeholder="This update changes..."
-                id="v_changelog"
-                maxlength="2000"></textarea>
-
-              <p
-                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
-                Compatible Minecraft Versions
-              </p>
-              <div
-                class="grid grid-cols-2 md:grid-cols-3 gap-3 rounded-lg col-span-2">
-                {#each minecraftVersions as cat}
-                  <ToggleBoxes
-                    value="{cat}"
-                    selected="{category}"
-                    on:fail="{maxCategoriesReached}" />
-                {/each}
-              </div>
-              <p class="mb-4"></p>
-              <!--I've been creating this for like 4 days just to realize its not even for this page-->
-              <p class="text-pearl-lusta-100 col-span-3">Dependencies</p>
-              <div
-                class="space-y-3 bg-stone-800/50 rounded-lg border-2 border-stone-700 p-3"
-                use:autoAnimate>
-                {#each dependencyNames as _, i}
-                  <p class="text-pearl-lusta-100">
-                    <IconLink class="inline-block" /> Dependency URL
-                  </p>
-                  <div class="flex items-center">
-                    <span class="input w-full">
-                      https://datapackhub.net/project/<AutoAdjustableInput
-                        classes="bg-stone-800 text-pearl-lusta-100 outline-none"
-                        on:change="{e => dependencyHandler(e.detail, i)}" />
-                    </span>
-                    {#if dependencies[i]}
-                      <img
-                        src="{dependencies[i].icon}"
-                        alt="{dependencies[i].title}'s icon"
-                        height="48"
-                        width="48"
-                        class="ml-3 rounded-lg aspect-square" />
-                    {/if}
-                  </div>
-                {/each}
-              </div>
-              <p
-                class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-3">
-                Resource Pack Download (optional)
-              </p>
-              <input type="file" accept=".zip" id="v_rp" class="mb-4 input" />
-              <div class=" mb-4">
-                <input name="squash" id="squash" type="checkbox" />
-                <label
-                  for="squash"
-                  class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
-                  Squash datapack. (This compresses the zip file, making it load
-                  faster in game)
+        <div class="bg-stone-800 p-3 rounded-xl">
+          <div class="text-center align-middle md:text-start w-full">
+            {#if createVersion == false}
+              <div class="my-2 mb-4 flex space-x-2">
+                <label for="zip" class="max-w-100">
+                  <span class="button-primary cursor-pointer"
+                    >Upload New Version</span>
                 </label>
+                <input
+                  type="file"
+                  class="hidden"
+                  accept=".zip"
+                  id="zip"
+                  on:input="{uploadDatapack}" />
+                <span class="align-center text-pearl-lusta-950 dark:text-white"
+                  >(Supported: *.zip)</span>
+                <!-- <p class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">No versions yet!</p> -->
               </div>
-              <Button click="{uploadVersion}" wait="{true}"
-                >Create Version</Button>
-            </div>
-          {/if}
+              <div class="space-y-2">
+                {#each data.versions ?? [] as version}
+                  <VersionDisplay
+                    version="{version}"
+                    project="{data.project}" />
+                {/each}
+              </div>
+            {:else}
+              {@const ver = (Math.random() * 10).toFixed(1)}
+              <div>
+                <button
+                  class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+                  on:click="{() => (createVersion = false)}">X</button>
+                <h2
+                  class="mb-2 text-xl font-bold text-pearl-lusta-950 dark:text-white">
+                  Creating new Version
+                </h2>
+
+                <div class="flex space-x-4">
+                  <p
+                    class="w-3/4 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                    Version Name
+                  </p>
+                  <p
+                    class="w-1/4 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                    Version Number
+                  </p>
+                </div>
+                <div class="flex space-x-3">
+                  <input
+                    class="input w-3/4"
+                    placeholder="{data.project?.title} v{ver}"
+                    maxlength="50"
+                    id="v_name" />
+                  <input
+                    class="input w-1/4"
+                    placeholder="v{ver}"
+                    maxlength="15"
+                    id="v_code" />
+                </div>
+
+                <p
+                  class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
+                  Changelog (supports markdown!)
+                </p>
+                <textarea
+                  class="h-36 w-full md:w-3/4 input"
+                  placeholder="This update changes..."
+                  id="v_changelog"
+                  maxlength="2000"></textarea>
+
+                <p
+                  class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
+                  Compatible Minecraft Versions
+                </p>
+                <div
+                  class="grid grid-cols-2 md:grid-cols-3 gap-3 rounded-lg col-span-2">
+                  {#each minecraftVersions as cat}
+                    <ToggleBoxes
+                      value="{cat}"
+                      selected="{category}"
+                      on:fail="{maxCategoriesReached}" />
+                  {/each}
+                </div>
+                <p class="mb-4"></p>
+                <!--I've been creating this for like 4 days just to realize its not even for this page-->
+                <p class="text-pearl-lusta-100 col-span-3">Dependencies</p>
+                <div
+                  class="space-y-3 bg-stone-800/50 rounded-lg border-2 border-stone-700 p-3"
+                  use:autoAnimate>
+                  {#each dependencyNames as _, i}
+                    <p class="text-pearl-lusta-100">
+                      <IconLink class="inline-block" /> Dependency URL
+                    </p>
+                    <div class="flex items-center">
+                      <span class="input w-full">
+                        https://datapackhub.net/project/<AutoAdjustableInput
+                          classes="bg-stone-800 text-pearl-lusta-100 outline-none"
+                          on:change="{e => dependencyHandler(e.detail, i)}" />
+                      </span>
+                      {#if dependencies[i]}
+                        <img
+                          src="{dependencies[i].icon}"
+                          alt="{dependencies[i].title}'s icon"
+                          height="48"
+                          width="48"
+                          class="ml-3 rounded-lg aspect-square" />
+                      {/if}
+                    </div>
+                  {/each}
+                </div>
+                <p
+                  class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-3">
+                  Resource Pack Download (optional)
+                </p>
+                <input type="file" accept=".zip" id="v_rp" class="mb-4 input" />
+                <div class=" mb-4">
+                  <input name="squash" id="squash" type="checkbox" />
+                  <label
+                    for="squash"
+                    class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                    Squash datapack. (This compresses the zip file, making it
+                    load faster in game)
+                  </label>
+                </div>
+                <Button click="{uploadVersion}" wait="{true}"
+                  >Create Version</Button>
+              </div>
+            {/if}
+          </div>
         </div>
-      </div>
       {/if}
     </div>
   </div>
