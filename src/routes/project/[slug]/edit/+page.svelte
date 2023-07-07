@@ -468,7 +468,7 @@
             {/each}
           </div>
           <div class="col-span-3"></div>
-          <Button classes="col-span-3 w-fit mt-4" click="{update}" wait={true}
+          <Button classes="col-span-3 w-fit mt-4" click="{update}" wait="{true}"
             >Update Project</Button>
         </div>
         <!-- VERSIONS-->
@@ -599,7 +599,7 @@
                     load faster in game)
                   </label>
                 </div>
-                <Button click="{uploadVersion}" wait={true}
+                <Button click="{uploadVersion}" wait="{true}"
                   >Create Version</Button>
               </div>
             {/if}

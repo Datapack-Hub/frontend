@@ -38,7 +38,7 @@
       style = "dph-orange";
       break;
     case "random":
-      style = "stone-500";
+      style = "stone-600";
       break;
     case "new":
       style = "lime-400";

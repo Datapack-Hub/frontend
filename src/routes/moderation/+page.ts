@@ -5,7 +5,7 @@ import { get } from "svelte/store";
 import type { PageLoad } from "./$types";
 
 export const load = (async () => {
-  if (browser && !get(role).permissions.includes("EDIT_USER")) {
+  if (browser && get(role).name == "default") {
     goto("/");
   }
 }) satisfies PageLoad;

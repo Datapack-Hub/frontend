@@ -17,6 +17,7 @@
   import type { Project, Version } from "$lib/globals/schema";
   import { user } from "$lib/globals/stores";
   import { isArray } from "radash";
+  import Button from "../decorative/Button.svelte";
 
   export let version: Version;
   export let expanded = false;
@@ -28,10 +29,10 @@
     : version.minecraft_versions;
   let dlModal: Modal;
 
-  function downloadVersion(
+  function openDownloadModal(
     type: "datapack" | "resourcepack" | undefined = undefined
   ) {
-    if (type == undefined || mcVersion == undefined) return dlModal.open();
+    if (!type || !mcVersion) return dlModal.open();
     if (type == "datapack")
       return download(
         version.primary_download,
@@ -84,7 +85,7 @@
         case "1.19.4":
           packFormat = 12;
           break;
-        case "1.20-1.20.2":
+        case "1.20-1.20.1":
           packFormat = 15;
           break;
       }
@@ -148,16 +149,16 @@
     {#if !mcVersion}
       <h2 class="flex flex-grow space-x-1 text-pearl-lusta-950 dark:text-white">
         {#each properVersion as mcv}
-          <button
-            class="rounded-lg border-2 border-dph-orange bg-dph-orange/25 px-1"
-            on:click="{() =>
+          <Button
+            wait="{true}"
+            click="{() =>
               download(
                 version.primary_download,
                 mcv,
                 version.resource_pack_download ? true : false
               )}">
             {mcv}
-          </button>
+          </Button>
         {/each}
       </h2>
     {/if}
@@ -167,16 +168,12 @@
           on:click="{() => {
             deleteVersion();
           }}"
-          id="#download"
           class="rounded-xl text-red-500 p-1">Delete</button>
       {/if}
-      <button
-        on:click="{() => {
-          downloadVersion();
-        }}"
-        id="#download"
-        class="rounded-xl bg-dph-orange p-1 px-2 text-pearl-lusta-950 dark:text-white"
-        >Download</button>
+      <Button
+        click="{() => {
+          openDownloadModal();
+        }}">Download</Button>
     {/if}
   </div>
   {#if expanded}
@@ -187,24 +184,23 @@
     </div>
     <h2 class="dark:text-white">Download this version:</h2>
     <div class="flex flex-col max-w-fit">
-      <button
-        on:click="{() => {
-          downloadVersion('datapack');
+      <Button
+        click="{() => {
+          openDownloadModal('datapack');
         }}"
-        id="#download"
-        class="button-primary flex items-center space-x-2"
+        classes="flex items-center space-x-2"
         ><IconZIP />
         <p>Datapack</p>
-        {#if mcVersion} <p>(for {mcVersion})</p>{/if}</button>
+        {#if mcVersion} <p>(for {mcVersion})</p>{/if}</Button>
       {#if version.resource_pack_download}
-        <button
-          on:click="{() => {
-            downloadVersion('resourcepack');
+        <Button
+          click="{() => {
+            openDownloadModal('resourcepack');
           }}"
-          id="#download"
-          class="button-secondary flex items-center space-x-2 mt-2"
+          style="secondary"
+          classes="flex items-center space-x-2 mt-2"
           ><IconRP />
-          <p>Required Resourcepack</p></button>
+          <p>Required Resourcepack</p></Button>
       {/if}
     </div>
     <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-400">
@@ -234,15 +230,15 @@
   </div>
   <div class="my-2 flex space-x-2 text-pearl-lusta-950 dark:text-white">
     {#each version?.minecraft_versions.split(",") ?? [] as mcv}
-      <button
-        class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 hover:scale-102"
-        on:click="{() => {
+      <Button
+        wait="{true}"
+        click="{() => {
           download(
             version?.primary_download,
             mcv,
             version?.resource_pack_download ? true : false
           );
-        }}">{mcv}</button>
+        }}">{mcv}</Button>
     {/each}
   </div>
   <p class="pr-1 text-xs italic text-pearl-lusta-950 dark:text-white">
@@ -256,9 +252,7 @@
       This datapack also has a resource pack which you need to download!
     </p>
     <div class="my-2 flex">
-      <a
-        href="{version?.resource_pack_download}"
-        class="cursor-pointer rounded-lg border-2 border-dph-orange bg-dph-orange/25 p-1 px-2 text-pearl-lusta-950 hover:scale-102 dark:text-white">
+      <a href="{version?.resource_pack_download}" class="button-primary">
         Download Resource Pack
       </a>
     </div>

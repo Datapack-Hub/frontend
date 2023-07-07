@@ -25,12 +25,12 @@ export const load = (async ({ params, fetch }) => {
         .parse((await versionsReq.json()).result);
       const roles = roleSchema.array().parse((await rolesReq.json()).roles);
 
-      const commentsreq = await fetch(
+      const commentsReq = await fetch(
         `${apiURL}/comments/thread/${project.ID}`
       );
       const comments = commentSchema
         .array()
-        .parse((await commentsreq.json()).result);
+        .parse((await commentsReq.json()).result);
 
       return {
         project: project,

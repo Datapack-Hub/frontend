@@ -1,10 +1,10 @@
 import { browser } from "$app/environment";
 import { apiURL } from "$lib/globals/consts";
 import { fetchAuthed } from "$lib/globals/functions";
+import type { Role } from "$lib/globals/schema";
+import { projectSchema, userSchema } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import { projectSchema, userSchema } from "$lib/globals/schema";
-import type { Role } from "$lib/globals/schema";
 
 export const load = (async ({ params, fetch }) => {
   if (browser) {

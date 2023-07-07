@@ -2,11 +2,15 @@ import { browser } from "$app/environment";
 import { fetchAuthed } from "$lib/globals/functions";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import type { Notif } from "$lib/globals/schema";
+import {
+  notificationSchema as notifSchema,
+  type Notif
+} from "$lib/globals/schema";
 
 export const load = (async () => {
   if (browser) {
     const unread = await fetchAuthed("get", "/notifs/");
+
     if (!unread.ok) {
       throw error(unread.status, {
         message: unread.statusText,
@@ -14,9 +18,8 @@ export const load = (async () => {
       });
     }
 
-    const notificationsJSON = (await unread.json()).result as Notif[];
     return {
-      notifications: notificationsJSON
+      notifications: notifSchema.array().parse((await unread.json()).result)
     };
   }
 }) satisfies PageLoad;
