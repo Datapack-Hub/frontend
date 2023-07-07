@@ -39,7 +39,7 @@
   <img src={comment.author.profile_icon} class="rounded-full h-12"/>
   <div>
     <div class="flex items-baseline space-x-1">
-      <p class="dark:text-white font-bold">{comment.author.username}</p>
+      <a class="dark:text-white font-bold hover:underline" href="/user/{comment.author.username}">{comment.author.username}</a>
       <p class="text-xs dark:text-neutral-400">{new Date(comment.sent * 1000).toLocaleDateString()}</p>
     </div>
 
@@ -55,7 +55,7 @@
           <img src="{reply.author.profile_icon}" class="rounded-full h-6" />
           <div>
             <div class="flex items-baseline space-x-1">
-              <p class="dark:text-white font-bold">{reply.author.username}</p>
+              <a class="dark:text-white font-bold hover:underline" href="/user/{reply.author.username}">{reply.author.username}</a>
               <p class="text-xs dark:text-neutral-400">{new Date(reply.sent * 1000).toLocaleDateString()}</p>
             </div>
             <p class="dark:text-neutral-200 text-sm">{reply.message}</p>
