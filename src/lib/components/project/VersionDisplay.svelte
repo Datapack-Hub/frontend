@@ -107,8 +107,8 @@
     }
   }
 
-  async function deleteVersion() {
-    await toast.promise(
+  function deleteVersion() {
+    toast.promise(
       fetchAuthed(
         "DELETE",
         `/versions/project/${project?.ID}/${version.version_code}`

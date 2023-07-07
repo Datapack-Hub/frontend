@@ -145,7 +145,7 @@
       versionData.resource_pack_download = rp;
     }
 
-    await toast.promise(
+    toast.promise(
       fetchAuthed("POST", `/versions/new/${data.project?.ID}`, versionData),
       {
         success: "Uploaded! Refresh to see changes.",
@@ -335,7 +335,7 @@
           <div
             class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2 xl:col-span-1">
             <div
-              class="bg-stone-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
+              class="bg-pearl-lusta-300 dark:bg-stone-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
               <label class="w-full h-full flex items-center justify-center">
                 <img
                   src="{iconImg}"
@@ -354,14 +354,19 @@
               </label>
             </div>
             <div class="w-full">
-              <p class="text-pearl-lusta-100 mb-2">Title</p>
+              <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100 mb-2">
+                Title
+              </p>
               <input
                 type="text"
                 placeholder="Super Cool Datapack"
                 maxlength="35"
                 bind:value="{titleVal}"
                 class="input w-full" />
-              <p class="text-pearl-lusta-100 col-span-2 mt-4 mb-2">URL</p>
+              <p
+                class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-2 mt-4 mb-2">
+                URL
+              </p>
               <input
                 type="text"
                 placeholder="slug-for-your-pack"
@@ -371,22 +376,32 @@
             </div>
           </div>
 
-          <p class="text-pearl-lusta-100 col-span-3 pt-3">Summary</p>
+          <p
+            class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
+            Summary
+          </p>
           <textarea
             placeholder="A short description of your pack"
             maxlength="200"
             bind:value="{descVal}"
             class="input resize-none h-32 col-span-2"></textarea>
-          <p class="text-pearl-lusta-100 col-span-3 pt-3">Description</p>
+          <p
+            class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
+            Description
+          </p>
           <textarea
             placeholder="Details about your project"
             maxlength="2000"
             bind:value="{bodyVal}"
             class="input resize-none h-64 col-span-2"></textarea>
-          <p class="text-pearl-lusta-100 col-span-3 pt-3">
+          <p
+            class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
             CC Licence (click to select)
           </p>
-          <p class="text-pearl-lusta-100/20 col-span-3">WIP, does not work!</p>
+          <p
+            class="text-pearl-lusta-950 dark:text-pearl-lusta-100/20 col-span-3">
+            WIP, does not work!
+          </p>
           <div
             class="grid grid-cols-2 gap-3 col-span-2 lg:col-span-1"
             use:autoAnimate>
@@ -441,7 +456,9 @@
                 placeholder="https://example.com/my-custom-licence.md" />
             </div>
           </div>
-          <p class="text-pearl-lusta-100 col-span-3">Categories</p>
+          <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3">
+            Categories
+          </p>
           <div
             class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 rounded-lg col-span-2">
             {#each categories as cat}
@@ -541,12 +558,15 @@
                 </div>
                 <p class="mb-4"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->
-                <p class="text-pearl-lusta-100 col-span-3">Dependencies</p>
+                <p
+                  class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3">
+                  Dependencies
+                </p>
                 <div
                   class="space-y-3 bg-stone-800/50 rounded-lg border-2 border-stone-700 p-3"
                   use:autoAnimate>
                   {#each dependencyNames as _, i}
-                    <p class="text-pearl-lusta-100">
+                    <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100">
                       <IconLink class="inline-block" /> Dependency URL
                     </p>
                     <div class="flex items-center">

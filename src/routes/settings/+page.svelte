@@ -30,7 +30,7 @@
       return;
     }
 
-    await toast.promise(
+    toast.promise(
       fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, req).then(res => {
         if (!res.ok) {
           return res.text().then(txt => alert(txt));

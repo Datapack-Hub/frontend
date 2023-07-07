@@ -66,11 +66,7 @@
     ) as HTMLTextAreaElement;
     const type = document.getElementById("notif-type") as HTMLSelectElement;
 
-    if (
-      typeof message == "undefined" ||
-      typeof content == "undefined" ||
-      typeof type == "undefined"
-    )
+    if (!message || !content || !type)
       return alert("Make sure all fields are filled in!");
 
     let sent = await fetchAuthed("post", `/notifs/send/${user?.id}`, {
@@ -160,8 +156,10 @@
   <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Warn Message
   </p>
-  <textarea class="input h-32 resize-none" placeholder="..." id="warn-message"
-  ></textarea>
+  <textarea
+    class="input w-full h-32 resize-none"
+    placeholder="..."
+    id="warn-message"></textarea>
   <Button click="{async () => await warn()}">Warn {user?.username}</Button>
 </Modal>
 
@@ -180,7 +178,7 @@
     Notification Message
   </label>
   <input
-    class="input"
+    class="input w-full"
     placeholder="Your cake is burning!"
     name="notif-message"
     id="notif-message" />
@@ -190,7 +188,7 @@
     Notification Body
   </label>
   <textarea
-    class="input h-48 resize-none"
+    class="input w-full h-48 resize-none"
     placeholder="Just a quick reminder that your cake which you forgot about has been in the oven for 10 minutes too long."
     name="notif-content"
     id="notif-content"></textarea>
@@ -199,7 +197,7 @@
     class="mt-2 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
     Notification Type
   </label>
-  <select name="notif-type" id="notif-type" class="input mb-2">
+  <select name="notif-type" id="notif-type" class="input w-full mb-2">
     <option value="default">Default</option>
     <option value="important">Important</option>
     <option value="announcement">Announcement</option>
@@ -226,7 +224,7 @@
   </p>
   <input
     type="number"
-    class="input"
+    class="input w-full"
     id="ban-expiry"
     placeholder="i.e 1, 7, 14, 30, 365" />
   <label class=" text-pearl-lusta-950 dark:text-pearl-lusta-100">
@@ -237,7 +235,7 @@
     Ban Message (supports markdown)
   </p>
   <textarea
-    class="input h-48 resize-none"
+    class="input w-full h-48 resize-none"
     placeholder="Burning cake after being **repeatedly told** to stop"
     id="ban-message"></textarea>
   <Button click="{async () => await banUser()}">Ban {user?.username}</Button>

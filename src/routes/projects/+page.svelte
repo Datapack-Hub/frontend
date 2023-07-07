@@ -9,6 +9,7 @@
   import IconSearch from "~icons/tabler/Search.svelte";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import { debounce, list } from "radash";
+  import { isDark } from "$lib/globals/stores";
 
   export let data: PageData;
 
@@ -50,7 +51,7 @@
     <div class="flex-grow flex flex-col sm:flex-row space-x-2 items-center">
       <div
         class="flex items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 mr-0 sm:mr-4">
-        <IconSearch color="white" on:click="{search}" />
+        <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
         <input
           placeholder="Search Datapacks..."
           type="text"
