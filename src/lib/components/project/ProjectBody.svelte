@@ -10,7 +10,14 @@
   // Component imports
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
-  import { commentSchema, type Project, type Role, type User, type Version } from "$lib/globals/schema";
+  import {
+    commentSchema,
+    type DPHComment,
+    type Project,
+    type Role,
+    type User,
+    type Version
+  } from "$lib/globals/schema";
   import { onMount } from "svelte";
   import MultiSelect from "svelte-multiselect";
 
@@ -24,13 +31,16 @@
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
   import IconConfetti from "~icons/tabler/Award.svelte";
+  import IconMessage from "~icons/tabler/Message.svelte";
+  import IconDescription from "~icons/tabler/AlignLeft.svelte";
+  import IconDownload from "~icons/tabler/Download.svelte";
 
   import CasualLine from "../decorative/CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import MiniProfileCard from "../profile/MiniProfileCard.svelte";
   import { title } from "radash";
   import Comment from "./Comment.svelte";
-  import { z } from "zod";
+  import Button from "../decorative/Button.svelte";
 
   // Component args
   export let project: Project;
@@ -54,11 +64,13 @@
   let matches: Version[] = [];
   let bigStitchedVersionList: string;
   let body = "";
+  let featureDur: string;
+  let comment: string;
+  let innerWidth: number;
+
   if (project?.body) {
     body = project.body;
   }
-  let featureDur: string;
-  let comment: string;
 
   onMount(async () => {
     author = await getAuthorFromID(project?.author);
@@ -199,41 +211,67 @@
     );
   }
 
-  async function post_comment() {
-    if(comment.length == 0){
-      return toast.error("Comment field is empty!")
+  async function postComment() {
+    if (comment.length == 0) {
+      return toast.error("Comment field is empty!");
     }
-    const cmt = await fetchAuthed("POST",`/comments/thread/${project.ID}/post`,{
-      message:comment
-    })
-    if(cmt.ok) {
-      toast.success("Everything was fine!")
-      let new_comments = await fetch(apiURL + "/comments/thread/" + project.ID)
-      let new_comments_parsed = commentSchema.array().parse((await new_comments.json()).result)
-      comments = new_comments_parsed
-      comment = ""
-      return;
-    }
-    return toast.error("There was an error.")
+    toast.promise(
+      fetchAuthed("POST", `/comments/thread/${project.ID}/post`, {
+        message: comment
+      }).then(async res => {
+        if (res.ok) {
+          let newComments = await fetch(
+            apiURL + "/comments/thread/" + project.ID
+          );
+          let parsedComments = commentSchema
+            .array()
+            .parse((await newComments.json()).result);
+          comments = parsedComments;
+          comment = "";
+          return;
+        }
+      }),
+      {
+        success: "Comment posted successfully!",
+        error: "Something went wrong!",
+        loading: "Posting..."
+      }
+    );
   }
+
+  $: isSmall = innerWidth < 768;
 </script>
+
+<svelte:window bind:innerWidth="{innerWidth}" />
 
 <div use:autoAnimate class="w-full mt-4 lg:w-3/4 lg:mt-0">
   <!--Buttons-->
-  <div class="mb-2 flex space-x-2">
-    <div class="min-w-fit flex-grow">
+  <div class="mb-2 flex items-center justify-between space-x-2">
+    <div class="space-x-1.5">
       <button
         class="button-base {activePage === 'description'
           ? 'bg-pearl-lusta-500 dark:bg-stone-600'
           : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
-        on:click="{() => (activePage = 'description')}">Description</button>
+        on:click="{() => (activePage = 'description')}">
+        {#if !isSmall}
+          Description
+        {:else}
+          <IconDescription />
+        {/if}
+      </button>
       <button
         class="button-base {activePage === 'comments'
           ? 'bg-pearl-lusta-500 dark:bg-stone-600'
           : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
-        on:click="{() => (activePage = 'comments')}">Comments</button>
+        on:click="{() => (activePage = 'comments')}">
+        {#if !isSmall}
+          Comments
+        {:else}
+          <IconMessage />
+        {/if}
+      </button>
     </div>
-    <div class="flex space-x-1">
+    <div class="flex space-x-1.5">
       {#if ["moderator", "admin"].includes($user.role)}
         <button
           class="button-base flex items-center space-x-1"
@@ -268,24 +306,28 @@
             }}"><IconCross /><span class="hidden md:block">Deny</span></button>
         {/if}
       {/if}
+      {#if $user.id == project?.author}
+        <a
+          class="button-base ml-auto flex items-center space-x-1"
+          href="/project/{project?.url}/edit">
+          <IconPencil /><span class="hidden md:block">Edit</span>
+        </a>
+      {/if}
+      {#if $user.id != project?.author}
+        <button
+          class="button-base flex items-center space-x-1"
+          on:click="{() => {
+            reportModal.open();
+          }}"><IconReport /><span class="hidden md:block">Report</span></button>
+      {/if}
+      <Button click="{() => (activePage = 'download')}">
+        {#if !isSmall}
+          Download
+        {:else}
+          <IconDownload />
+        {/if}
+      </Button>
     </div>
-    {#if $user.id == project?.author}
-      <a
-        class="button-base ml-auto flex items-center space-x-1"
-        href="/project/{project?.url}/edit">
-        <IconPencil /><span class="hidden md:block">Edit</span>
-      </a>
-    {/if}
-    {#if $user.id != project?.author}
-      <button
-        class="button-base flex items-center space-x-1"
-        on:click="{() => {
-          reportModal.open();
-        }}"><IconReport /><span class="hidden md:block">Report</span></button>
-    {/if}
-    <button
-      class="button-base bg-dph-orange font-bold"
-      on:click="{() => (activePage = 'download')}">Download</button>
   </div>
 
   {#if status == "deleted"}
@@ -409,15 +451,13 @@
                 </button>
               {/if}
             {/each}
-            <button
-              class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 text-white"
-              on:click="{() => (activePage = 'versions')}">
+            <Button style="boring" click="{() => (activePage = 'versions')}">
               <div class="font-bold flex-grow flex items-center space-x-2">
                 <IconFiles />
                 <p>Show All Versions</p>
               </div>
               <IconRight />
-            </button>
+            </Button>
           </div>
           <div class="flex space-x-1 items-center mt-2 text-stone-500">
             <IconAlert />
@@ -458,16 +498,22 @@
       <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
         <div class="space-y-2" use:autoAnimate>
           {#if $authed}
-          <div class="flex items-center space-x-2" use:autoAnimate>
-            <img src="{$user.profile_icon}" class="h-8 rounded-full " />
-            <input class="input w-4/5" placeholder="Write a comment on {project.title}" bind:value="{comment}"/>
-            <button class="button-base bg-dph-orange p-1" on:click={post_comment}>Post</button>
-          </div>
-          {#key comments}
-            {#each comments as cmt}
-            <Comment comment={cmt} project={project} />
-            {/each}
-          {/key}
+            <div class="flex items-center space-x-2" use:autoAnimate>
+              <img
+                src="{$user.profile_icon}"
+                alt="Your profile icon"
+                class="h-8 rounded-full" />
+              <input
+                class="input w-4/5"
+                placeholder="Write a comment on {project.title}"
+                bind:value="{comment}" />
+              <Button wait="{true}" click="{postComment}">Post</Button>
+            </div>
+            {#key comments}
+              {#each comments as cmt}
+                <Comment comment="{cmt}" project="{project}" />
+              {/each}
+            {/key}
           {/if}
           <!-- <Comment /> -->
         </div>
@@ -543,8 +589,8 @@
       id="description"
       maxlength="200"
       bind:value="{postedModMsg}"></textarea>
-    <button class="button-primary" on:click="{() => moderate(modModalPage)}"
-      >{title(modModalPage)}</button>
+    <Button click="{() => moderate(modModalPage)}"
+      >{title(modModalPage)}</Button>
   </Modal>
 
   <Modal bind:this="{reportModal}">
@@ -570,7 +616,7 @@
       id="description"
       maxlength="200"
       bind:value="{reportMsg}"></textarea>
-    <button class="button-primary" on:click="{() => report()}">Report</button>
+    <Button click="{() => report()}">Report</Button>
   </Modal>
 
   <Modal bind:this="{featureModal}">
@@ -594,8 +640,7 @@
       class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
       bind:value="{featureDur}"
       placeholder="i.e 1, 7, 14, 30, 365" />
-    <button class="button-primary mt-2" on:click="{() => feature()}"
-      >Feature</button>
+    <Button classes="mt-2" on:click="{() => feature()}">Feature</Button>
   </Modal>
 </div>
 

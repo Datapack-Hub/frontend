@@ -111,12 +111,14 @@ export const commentSchema = z.object({
   message: z.string(),
   author: z.object(userSchema.shape),
   sent: z.number(),
-  replies: z.array(z.object({
-    id: z.number(),
-    message: z.string(),
-    author: z.object(userSchema.shape),
-    sent: z.number()
-  }))
+  replies: z.array(
+    z.object({
+      id: z.number(),
+      message: z.string(),
+      author: z.object(userSchema.shape),
+      sent: z.number()
+    })
+  )
 });
 
 export type User = z.infer<typeof userSchema>;
