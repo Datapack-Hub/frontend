@@ -35,7 +35,7 @@ export async function fetchAuthed(
   headers: HeadersInit | undefined = undefined
 ): Promise<Response> {
   // what is going on here
-  const resp = await fetch(`${apiURL}${url}`, {
+  const res = await fetch(`${apiURL}${url}`, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
@@ -44,13 +44,13 @@ export async function fetchAuthed(
     }
   });
 
-  if (resp.status == 498) await removeCookie("dph_token");
+  if (res.status == 498) await removeCookie("dph_token");
 
-  if (!resp.ok) {
-    Promise.reject(resp.statusText);
+  if (!res.ok) {
+    Promise.reject(res.statusText);
   }
 
-  return resp;
+  return res;
 }
 
 export function getCookie(cookieName: string): string | null {

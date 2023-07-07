@@ -37,7 +37,7 @@ const config = {
     "outline-blue-600",
     "bg-blue-600",
     "outline-stone-600",
-    "bg-stone-600",
+    "bg-stone-500",
     "text-green-500",
     "text-red-500",
     "text-yellow-500",

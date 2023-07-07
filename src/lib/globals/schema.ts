@@ -58,8 +58,8 @@ export const projectSchema = z.object({
       version_code: z.string()
     })
   ),
-  downloads: z.optional(z.number()),
-  updated: z.optional(z.number())
+  downloads: z.onumber(),
+  updated: z.onumber()
 });
 
 export const notificationSchema = z.object({
