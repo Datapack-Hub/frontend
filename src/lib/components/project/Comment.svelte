@@ -10,11 +10,12 @@
   import { toast } from "svelte-sonner";
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
+  import Button from "../decorative/Button.svelte";
 
   export let comment: DPHComment;
   export let project: Project;
-  let replyMsg: string;
 
+  let replyMsg: string;
   let showReplies = false;
 
   async function reply() {
@@ -30,7 +31,7 @@
       }
     );
     if (cmt.ok) {
-      toast.success("Everything was fine!");
+      toast.success("Comment posted!");
       let newComment = await fetch(apiURL + "/comments/id/" + comment.id);
       let parsedComments = commentSchema.parse(await newComment.json());
       comment = parsedComments;
@@ -100,10 +101,7 @@
                 bind:value="{replyMsg}"
                 class="p-1 rounded-md dark:bg-stone-800 px-2 text-white focus:transition-all"
                 placeholder="Leave a reply" />
-              <button
-                on:click="{reply}"
-                class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102"
-                >Post</button>
+              <Button wait="{true}" click="{reply}">Post</Button>
             </div>
           </div>
         {/if}
@@ -117,10 +115,7 @@
             bind:value="{replyMsg}"
             class="p-1 rounded-md dark:bg-stone-800 px-2 text-white focus:transition-all"
             placeholder="Leave the first reply" />
-          <button
-            on:click="{reply}"
-            class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102"
-            >Post</button>
+          <Button wait="{true}" click="{reply}">Post</Button>
         </div>
       {/if}
     </div>

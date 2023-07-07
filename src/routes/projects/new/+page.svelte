@@ -233,7 +233,7 @@
           on:fail="{maxCategoriesReached}" />
       {/each}
     </div>
-    <Button classes="col-span-3 w-fit mt-4" click="{create}"
+    <Button classes="col-span-3 w-fit mt-4" click="{create}" wait={true}
       >Create Project</Button>
   </div>
   <div class="py-16"></div>
