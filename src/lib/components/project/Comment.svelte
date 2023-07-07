@@ -48,7 +48,7 @@
       alt="{comment.author.username}'s profile icon"
       class="rounded-full h-12" />
     <div>
-      <p class="dark:text-white font-bold">{comment.author.username}</p>
+      <a href="/user/{comment.author.username}" class="dark:text-white font-bold">{comment.author.username}</a>
       <p class="dark:text-neutral-200 text-sm">{comment.message}</p>
       {#if !showReplies}
         <button
@@ -68,7 +68,7 @@
                 alt="{reply.author.username}'s profile icon"
                 class="rounded-full h-6" />
               <div>
-                <p class="dark:text-white font-bold">{reply.author.username}</p>
+                <a href="/user/{reply.author.username}" class="dark:text-white font-bold">{reply.author.username}</a>
                 <p class="dark:text-neutral-200 text-sm">{reply.message}</p>
               </div>
             </div>
