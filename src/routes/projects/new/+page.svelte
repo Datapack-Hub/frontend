@@ -60,7 +60,7 @@
         if (res.ok) {
           goto("/project/" + title.toLowerCase().replaceAll(" ", "-"));
         }
-      }),
+      }).catch(err => console.error(err)),
       {
         success: "Created project! Redirecting...",
         loading: "Creating project...",

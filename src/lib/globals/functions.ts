@@ -46,6 +46,10 @@ export async function fetchAuthed(
 
   if (resp.status == 498) await removeCookie("dph_token");
 
+  if (!resp.ok) {
+    Promise.reject(resp.statusText)
+  }
+
   return resp;
 }
 
