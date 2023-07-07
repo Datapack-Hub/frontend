@@ -13,8 +13,6 @@
 
   export let data: PageData;
 
-  console.log(data.pages);
-
   let query: string;
   $: dataCopy = data.projects ?? [];
   let sort = "Updated";

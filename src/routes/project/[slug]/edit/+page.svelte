@@ -41,7 +41,7 @@
 
   let selected: string[] = [];
   let zipFile: File;
-  let activePage = "versions";
+  let activePage = "details";
 
   export let data: PageData;
 
@@ -267,7 +267,6 @@
     let projects = projectSchema.array().parse((await search.json()).result);
 
     projects.forEach(project => {
-      console.log(project);
       if (project.url == v) {
         dependencies[i] = project;
       }
@@ -331,7 +330,7 @@
     <div use:autoAnimate>
       {#if activePage == "details"}
         <div
-          class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2 bg-stone-800">
+          class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2 bg-pearl-lusta-200 dark:bg-stone-800">
           <div
             class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2 xl:col-span-1">
             <div
@@ -474,7 +473,7 @@
         </div>
         <!-- VERSIONS-->
       {:else if activePage == "versions"}
-        <div class="bg-stone-800 p-3 rounded-xl">
+        <div class="bg-pearl-lusta-200 dark:bg-stone-800 p-3 rounded-xl">
           <div class="text-center align-middle md:text-start w-full">
             {#if createVersion == false}
               <div class="my-2 mb-4 flex space-x-2">
