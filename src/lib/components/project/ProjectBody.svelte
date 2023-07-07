@@ -1,16 +1,16 @@
 <script lang="ts">
   // Svelte imports
   import { goto } from "$app/navigation";
-  import { minecraftVersions } from "$lib/globals/consts";
+  import { apiURL, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed, getAuthorFromID } from "$lib/globals/functions";
-  import { user } from "$lib/globals/stores";
+  import { authed, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
 
   // Component imports
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
-  import type { Project, Role, User, Version } from "$lib/globals/schema";
+  import { commentSchema, type Project, type Role, type User, type Version } from "$lib/globals/schema";
   import { onMount } from "svelte";
   import MultiSelect from "svelte-multiselect";
 
@@ -29,11 +29,14 @@
   import Modal from "../modals/Modal.svelte";
   import MiniProfileCard from "../profile/MiniProfileCard.svelte";
   import { title } from "radash";
+  import Comment from "./Comment.svelte";
+  import { z } from "zod";
 
   // Component args
   export let project: Project;
   export let dp_versions: Version[];
   export let roles: Role[];
+  export let comments: DPHComment[];
 
   // Local vars
   let activePage = "description";
@@ -55,6 +58,7 @@
     body = project.body;
   }
   let featureDur: string;
+  let comment: string;
 
   onMount(async () => {
     author = await getAuthorFromID(project?.author);
@@ -194,22 +198,40 @@
       }
     );
   }
+
+  async function post_comment() {
+    if(comment.length == 0){
+      return toast.error("Comment field is empty!")
+    }
+    const cmt = await fetchAuthed("POST",`/comments/thread/${project.ID}/post`,{
+      message:comment
+    })
+    if(cmt.ok) {
+      toast.success("Everything was fine!")
+      let new_comments = await fetch(apiURL + "/comments/thread/" + project.ID)
+      let new_comments_parsed = commentSchema.array().parse((await new_comments.json()).result)
+      comments = new_comments_parsed
+      comment = ""
+      return;
+    }
+    return toast.error("There was an error.")
+  }
 </script>
 
 <div use:autoAnimate class="w-full mt-4 lg:w-3/4 lg:mt-0">
   <!--Buttons-->
   <div class="mb-2 flex space-x-2">
     <div class="min-w-fit flex-grow">
-      <!-- <button
+      <button
         class="button-base {activePage === 'description'
           ? 'bg-pearl-lusta-500 dark:bg-stone-600'
           : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
         on:click="{() => (activePage = 'description')}">Description</button>
       <button
-        class="button-base {activePage === 'versions'
+        class="button-base {activePage === 'comments'
           ? 'bg-pearl-lusta-500 dark:bg-stone-600'
           : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
-        on:click="{() => (activePage = 'versions')}">Version History</button> -->
+        on:click="{() => (activePage = 'comments')}">Comments</button>
     </div>
     <div class="flex space-x-1">
       {#if ["moderator", "admin"].includes($user.role)}
@@ -411,6 +433,44 @@
               >?{/if}
           </h2>
         {/if}
+      </div>
+      {#if matches.length != 0}
+        <div
+          class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+          <p class="text-white">Latest version for {pickedVersion}:</p>
+          <ul use:autoAnimate class="space-y-2">
+            <VersionDisplay
+              version="{matches[0]}"
+              expanded="{true}"
+              mcVersion="{pickedVersion}" />
+          </ul>
+          <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-400">
+            <IconFiles />
+            <button
+              on:click="{() => (activePage = 'versions')}"
+              class="cursor-pointer">Show Version History</button>
+          </p>
+        </div>
+      {/if}
+    </div>
+  {:else if activePage == "comments"}
+    <div class="mb-2 items-center space-y-2">
+      <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+        <div class="space-y-2" use:autoAnimate>
+          {#if $authed}
+          <div class="flex items-center space-x-2" use:autoAnimate>
+            <img src="{$user.profile_icon}" class="h-8 rounded-full " />
+            <input class="input w-4/5" placeholder="Write a comment on {project.title}" bind:value="{comment}"/>
+            <button class="button-base bg-dph-orange p-1" on:click={post_comment}>Post</button>
+          </div>
+          {#key comments}
+            {#each comments as cmt}
+            <Comment comment={cmt} project={project} />
+            {/each}
+          {/key}
+          {/if}
+          <!-- <Comment /> -->
+        </div>
       </div>
       {#if matches.length != 0}
         <div

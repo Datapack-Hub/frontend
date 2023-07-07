@@ -34,7 +34,8 @@
       <ProjectBody
         project="{data.project}"
         dp_versions="{data.versions}"
-        roles="{data.roles}" />
+        roles="{data.roles}"
+        comments="{data.comments}" />
     {/if}
   </div>
 </main>

@@ -106,9 +106,23 @@ export const reportSchema = z.object({
   reporter: z.object(userSchema.shape)
 });
 
+export const commentSchema = z.object({
+  id: z.number(),
+  message: z.string(),
+  author: z.object(userSchema.shape),
+  sent: z.number(),
+  replies: z.array(z.object({
+    id: z.number(),
+    message: z.string(),
+    author: z.object(userSchema.shape),
+    sent: z.number()
+  }))
+});
+
 export type User = z.infer<typeof userSchema>;
 export type Project = z.infer<typeof projectSchema>;
 export type Notif = z.infer<typeof notificationSchema>;
 export type Role = z.infer<typeof roleSchema>;
 export type Version = z.infer<typeof versionSchema>;
 export type Report = z.infer<typeof reportSchema>;
+export type DPHComment = z.infer<typeof commentSchema>;

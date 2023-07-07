@@ -3,7 +3,7 @@ import { apiURL } from "$lib/globals/consts";
 import { fetchAuthed } from "$lib/globals/functions";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import { projectSchema, roleSchema, versionSchema } from "$lib/globals/schema";
+import { commentSchema, projectSchema, roleSchema, versionSchema } from "$lib/globals/schema";
 
 export const load = (async ({ params, fetch }) => {
   if (browser) {
@@ -20,10 +20,14 @@ export const load = (async ({ params, fetch }) => {
         .parse((await versionsReq.json()).result);
       const roles = roleSchema.array().parse((await rolesReq.json()).roles);
 
+      const commentsreq = await fetch(`${apiURL}/comments/thread/${project.ID}`)
+      const comments = commentSchema.array().parse((await commentsreq.json()).result)
+
       return {
         project: project,
         versions: versions,
-        roles: roles
+        roles: roles,
+        comments: comments
       };
     } else if (projectReq.status == 404) {
       throw error(404, {
