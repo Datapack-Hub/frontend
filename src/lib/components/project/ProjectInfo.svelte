@@ -64,7 +64,8 @@
           alt="{project?.title} icon"
           class="aspect-square w-16 h-16 rounded-lg bg-cover" />
       {:else}
-        <div class="bg-pearl-lusta-300 dark:bg-stone-700 p-4 w-16 h-16 rounded-xl dark:text-white">
+        <div
+          class="bg-pearl-lusta-300 dark:bg-stone-700 p-4 w-16 h-16 rounded-xl dark:text-white">
           <IconNoPhoto width="32" height="32" />
         </div>
       {/if}

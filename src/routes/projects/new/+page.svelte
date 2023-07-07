@@ -56,11 +56,13 @@
     };
 
     toast.promise(
-      fetchAuthed("post", `/projects/create`, projData).then(res => {
-        if (res.ok) {
-          goto("/project/" + title.toLowerCase().replaceAll(" ", "-"));
-        }
-      }).catch(err => console.error(err)),
+      fetchAuthed("post", `/projects/create`, projData)
+        .then(res => {
+          if (res.ok) {
+            goto("/project/" + title.toLowerCase().replaceAll(" ", "-"));
+          }
+        })
+        .catch(err => console.error(err)),
       {
         success: "Created project! Redirecting...",
         loading: "Creating project...",
