@@ -14,6 +14,7 @@
   import IconEdit from "~icons/tabler/Edit.svelte";
   import Button from "../decorative/Button.svelte";
   import autoAnimate from "@formkit/auto-animate";
+  import Reply from "./Reply.svelte";
 
   export let comment: DPHComment;
   export let project: Project;
@@ -89,24 +90,7 @@
             ><IconDexpand /><span>Hide Replies</span></button>
           <div id="replies" class="">
             {#each comment.replies ?? [] as reply}
-              <div class="flex space-x-1 mt-3">
-                <img
-                  src="{reply.author.profile_icon}"
-                  alt="{reply.author}'s profile"
-                  class="rounded-full h-6" />
-                <div>
-                  <div class="flex items-baseline space-x-1">
-                    <a
-                      class="dark:text-white font-bold hover:underline"
-                      href="/user/{reply.author.username}"
-                      >{reply.author.username}</a>
-                    <p class="text-xs dark:text-neutral-400">
-                      {new Date(reply.sent * 1000).toLocaleDateString()}
-                    </p>
-                  </div>
-                  <p class="dark:text-neutral-200 text-sm">{reply.message}</p>
-                </div>
-              </div>
+              <Reply reply={reply} />
             {/each}
 
         <div class="flex items-center space-x-2 mt-3">
