@@ -26,6 +26,10 @@
       privacy policies or may be malicious. Make sure you know that the site is
       safe before continuing!
     </p>
+    <p
+      class="text-sm md:text-base lg:text-lg text-pearl-lusta-950/60 dark:text-pearl-lusta-100/60">
+      URL: {data.url}
+    </p>
     <div class="flex w-2/3 md:w-1/2 lg:w-2/5 justify-between mt-4">
       <Button click="{data.url ?? 'https://datapackhub.net'}"
         >Continue to page</Button>

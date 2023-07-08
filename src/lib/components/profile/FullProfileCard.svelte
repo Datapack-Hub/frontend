@@ -9,6 +9,7 @@
   import type { User, Role } from "$lib/globals/schema";
   import { badges } from "$lib/globals/consts";
   import { title } from "radash";
+  import IconVerified from "../decorative/IconVerified.svelte";
 
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
@@ -56,16 +57,15 @@
     class="mt-4 w-full text-center text-4xl font-bold text-pearl-lusta-950 dark:text-white md:text-3xl lg:text-4xl">
     {profile?.username}
     {#if ["moderator", "developer", "admin"].includes(profileRole?.name ?? "")}
-      <span
-        class="material-icons text-lg text-orange-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
-        use:tippy="{orangeVerifiedHover}">verified</span
+      <span class="text-dph-orange icon" use:tippy="{orangeVerifiedHover}"
+        ><IconVerified /></span
       >{:else if profile?.role == "helper"}<span
-        class="material-icons text-lg text-blue-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
-        use:tippy="{blueVerifiedHover}">verified</span
+        class="text-blue-500 icon"
+        use:tippy="{blueVerifiedHover}"><IconVerified /></span
       >{:else if profile?.role == "verified"}<span
-        class="material-icons text-lg text-emerald-500 transition-all hover:scale-125 md:text-xl lg:text-2xl"
+        class="text-emerald-500 icon"
         use:tippy="{emeraldVerifiedHover}"
-        >verified
+        ><IconVerified />
       </span>
     {/if}
   </p>
@@ -129,3 +129,9 @@
     </Button>
   {/if}
 </div>
+
+<style lang="postcss">
+  .icon {
+    @apply inline-block align-middle text-lg transition-all hover:scale-125 md:text-xl lg:text-2xl;
+  }
+</style>
