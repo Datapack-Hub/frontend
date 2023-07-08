@@ -68,7 +68,7 @@
 
 {#if visible}
 {#key comment}
-<div class="dark:bg-pearl-lusta-100/10 p-2 rounded-xl w-full flex space-x-2 relative">
+<div class="dark:bg-stone-800 p-2 rounded-xl w-full flex space-x-2 relative">
   <img src={comment.author.profile_icon} class="rounded-full h-12"/>
   <div>
     <div class="flex items-baseline space-x-1">
@@ -95,7 +95,7 @@
 
         <div class="flex items-center space-x-2 mt-3">
           <img src={$user.profile_icon} class="rounded-full h-8"/>
-          <input bind:value={replymessage} class="p-1 rounded-md dark:bg-stone-800 px-2 text-white focus:transition-all" placeholder="Leave a reply"/>
+          <input bind:value={replymessage} class="p-1 rounded-md dark:bg-stone-900 px-2 text-white focus:transition-all" placeholder="Leave a reply"/>
           <button on:click={reply} class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50" disabled={wait}>Post</button>
         </div>
       </div>
@@ -103,7 +103,7 @@
     {:else}
       <div class="flex items-center space-x-2 mt-3">
         <img src={$user.profile_icon} class="rounded-full h-8"/>
-        <input bind:value={replymessage} class="p-1 rounded-md dark:bg-stone-800 px-2 text-white focus:transition-all" placeholder="Leave the first reply"/>
+        <input bind:value={replymessage} class="p-1 rounded-md dark:bg-stone-900 px-2 text-white focus:transition-all" placeholder="Leave the first reply"/>
         <button on:click={reply} class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50" disabled={wait}>Post</button>
       </div>
     {/if}
