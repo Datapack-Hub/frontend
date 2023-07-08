@@ -3,6 +3,7 @@
   import { toast } from "svelte-sonner";
   import IconX from "~icons/tabler/X.svelte";
   import type { Notif } from "$lib/globals/schema";
+  import MarkdownComponent from "./MarkdownComponent.svelte";
 
   export let notification: Notif | undefined;
   let visible = true;
@@ -36,9 +37,7 @@
       <h1 class=" text-xl font-bold {notification?.type}-text">
         {#if notification?.read == false}• {/if}{notification?.message}
       </h1>
-      <p class=" text-pearl-lusta-950 dark:text-white">
-        {notification?.description}
-      </p>
+      <MarkdownComponent source={notification?.description} />
     </div>
     <button
       class="closeButton right-0 top-0 h-1 text-pearl-lusta-950 dark:text-white"
