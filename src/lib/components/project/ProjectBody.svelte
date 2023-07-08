@@ -505,7 +505,7 @@
                 class="h-8 rounded-full" />
               <input
                 class="input w-4/5"
-                placeholder="Write a comment on {project.title}"
+                placeholder="Write a comment on {project.title} (markdown supported!)"
                 bind:value="{comment}" />
               <Button wait="{true}" click="{postComment}">Post</Button>
             </div>
