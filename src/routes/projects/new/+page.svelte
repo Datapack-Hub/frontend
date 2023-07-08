@@ -20,6 +20,7 @@
   import IconEdit from "~icons/tabler/Pencil.svelte";
   import IconSA from "~icons/tabler/Repeat.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
+  import MarkdownEditor from "$lib/components/MarkdownEditor.svelte";
 
   let iconB64: string | ArrayBuffer | null | undefined;
   let iconVal: FileList;
@@ -156,11 +157,7 @@
     <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
       Description
     </p>
-    <textarea
-      placeholder="Details about your project"
-      maxlength="2000"
-      bind:value="{body}"
-      class="input resize-none h-64 col-span-2"></textarea>
+    <MarkdownEditor on:change={e => body = e.detail} classes="col-span-2 resize-none"/>
     <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
       CC Licence (click to select)
     </p>

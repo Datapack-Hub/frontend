@@ -34,6 +34,7 @@
   import IconSA from "~icons/tabler/Repeat.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
+  import MarkdownEditor from "$lib/components/MarkdownEditor.svelte";
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -57,6 +58,8 @@
   let iconImg: string;
 
   let category: Writable<string[]> = writable([]);
+
+  let v_changelog = ""
 
   let dependencies: Project[] = [];
   let dependencyNames: string[] = [""];
@@ -108,9 +111,6 @@
   async function uploadVersion() {
     let v_name = (document.getElementById("v_name") as HTMLInputElement).value;
     let v_code = (document.getElementById("v_code") as HTMLInputElement).value;
-    let v_changelog = (
-      document.getElementById("v_changelog") as HTMLInputElement
-    ).value;
     let v_rp = document.getElementById("v_rp") as HTMLInputElement;
     let v_squash = document.getElementById("squash") as HTMLInputElement;
 
@@ -388,11 +388,7 @@
             class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
             Description
           </p>
-          <textarea
-            placeholder="Details about your project"
-            maxlength="2000"
-            bind:value="{bodyVal}"
-            class="input resize-none h-64 col-span-2"></textarea>
+          <MarkdownEditor classes="input resize-none h-64 col-span-2" on:change={e => bodyVal = e.detail} />
           <p
             class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
             CC Licence (click to select)
@@ -536,11 +532,7 @@
                   class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
                   Changelog (supports markdown!)
                 </p>
-                <textarea
-                  class="h-36 w-full md:w-3/4 input"
-                  placeholder="This update changes..."
-                  id="v_changelog"
-                  maxlength="2000"></textarea>
+                <MarkdownEditor on:change={e => v_changelog = e.detail} classes="h-36 w-full md:w-3/4 input" />
 
                 <p
                   class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
