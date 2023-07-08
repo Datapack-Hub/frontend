@@ -14,8 +14,8 @@
 
 <main
   class="flex items-center justify-between h-screen px-4 sm:px-8 md:px-16 lg:px-24">
-  <img src="/logos/dph.svg" alt="logo" class="w-1/3 p-12" />
-  <div class="w-2/3">
+  <img src="/logos/dph.svg" alt="logo" class="w-1/4 p-12" />
+  <div class="w-3/4">
     <h1
       class="text-3xl md:text-4xl lg:text-5xl text-pearl-lusta-950 dark:text-pearl-lusta-100 mb-4 font-bold">
       Stop!
@@ -26,7 +26,7 @@
       privacy policies or may be malicious. Make sure you know that the site is
       safe before continuing!
     </p>
-    <div class="flex w-2/5 justify-between mt-4">
+    <div class="flex w-2/3 md:w-1/2 lg:w-2/5 justify-between mt-4">
       <Button click="{data.url ?? 'https://datapackhub.net'}"
         >Continue to page</Button>
       <Button click="{goBack}">Go Back</Button>
