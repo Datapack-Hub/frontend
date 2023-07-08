@@ -6,6 +6,7 @@
   import { authed, isDark, user } from "$lib/globals/stores";
   import { Toaster } from "svelte-sonner";
   import "../app.postcss";
+  import "../fonts.postcss";
   import NProgress from "nprogress";
   import { navigating } from "$app/stores";
 
