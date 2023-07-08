@@ -114,9 +114,9 @@
             </p>
             <MarkdownEditor
               classes="input w-1/2 h-80 resize-none"
-              maxEditorLength={500}
+              maxEditorLength="{500}"
               bind:content="{bioVal}"
-              on:input="{calcRemaining}"/>
+              on:input="{calcRemaining}" />
             <p
               class="align-middle text-xs text-pearl-lusta-950 dark:text-pearl-lusta-100">
               {remainingCharacters} characters left

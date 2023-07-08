@@ -5,11 +5,11 @@
   import autoAnimate from "@formkit/auto-animate";
   import type { PageData } from "./$types";
 
-  import { projectSchema } from "$lib/globals/schema";
-  import IconSearch from "~icons/tabler/Search.svelte";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
-  import { debounce, list } from "radash";
+  import { projectSchema } from "$lib/globals/schema";
   import { isDark } from "$lib/globals/stores";
+  import { debounce } from "radash";
+  import IconSearch from "~icons/tabler/Search.svelte";
 
   export let data: PageData;
 

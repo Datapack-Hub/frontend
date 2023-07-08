@@ -59,7 +59,7 @@
 
   let category: Writable<string[]> = writable([]);
 
-  let v_changelog = ""
+  let v_changelog = "";
 
   let dependencies: Project[] = [];
   let dependencyNames: string[] = [""];
@@ -388,7 +388,9 @@
             class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
             Description
           </p>
-          <MarkdownEditor classes="input resize-none h-64 col-span-2" bind:content={bodyVal} />
+          <MarkdownEditor
+            classes="input resize-none h-64 col-span-2"
+            bind:content="{bodyVal}" />
           <p
             class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
             CC Licence (click to select)
@@ -532,7 +534,9 @@
                   class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
                   Changelog (supports markdown!)
                 </p>
-                <MarkdownEditor bind:content={v_changelog} classes="h-36 w-full md:w-3/4 input" />
+                <MarkdownEditor
+                  bind:content="{v_changelog}"
+                  classes="h-36 w-full md:w-3/4 input" />
 
                 <p
                   class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
