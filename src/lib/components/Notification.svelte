@@ -35,9 +35,9 @@
     class="flex w-full {notification?.type}-background testNotif my-2 rounded-xl p-4">
     <div class="flex-auto">
       <h1 class=" text-xl font-bold {notification?.type}-text">
-        {#if notification?.read == false}• {/if}{notification?.message}
+        {#if notification?.read == 0}• {/if}{notification?.message}
       </h1>
-      <MarkdownComponent source={notification?.description} />
+      <MarkdownComponent source="{notification?.description}" />
     </div>
     <button
       class="closeButton right-0 top-0 h-1 text-pearl-lusta-950 dark:text-white"

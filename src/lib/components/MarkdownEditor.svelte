@@ -1,8 +1,7 @@
 <script lang="ts">
-  import { fly } from "svelte/transition";
-  import MarkdownComponent from "./MarkdownComponent.svelte";
-  import { createEventDispatcher } from "svelte";
   import autoAnimate from "@formkit/auto-animate";
+  import { createEventDispatcher } from "svelte";
+  import MarkdownComponent from "./MarkdownComponent.svelte";
 
   export let maxEditorLength = 2000;
   export let classes = "";

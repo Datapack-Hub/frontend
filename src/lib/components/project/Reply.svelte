@@ -13,66 +13,70 @@
   let visible = true;
 
   export let reply: {
-    id: number,
-    message: string,
-    author: User,
-    sent: number
-  }
+    id: number;
+    message: string;
+    author: User;
+    sent: number;
+  };
 
   async function del() {
-    visible = false
-    const cmt = await fetchAuthed(
-      "DELETE",
-      `/comments/id/${reply.id}`
-    );
+    visible = false;
+    const cmt = await fetchAuthed("DELETE", `/comments/id/${reply.id}`);
     if (cmt.ok) {
       return toast.success("Comment removed!");
     }
-    visible = true
+    visible = true;
     return toast.error("There was an error.");
   }
 </script>
 
 {#if visible}
-<div class="flex space-x-1 mt-3 group relative max-w-fit">
-  <img
-    src="{reply.author.profile_icon}"
-    alt="{reply.author}'s profile"
-    class="rounded-full h-6" />
-  <div>
-    <div class="flex items-baseline space-x-1">
-      <a
-        class="dark:text-white font-bold hover:underline"
-        href="/user/{reply.author.username}"
-        >{reply.author.username}</a>
-      <p class="text-xs dark:text-neutral-400">
-        {new Date(reply.sent * 1000).toLocaleDateString()}
-      </p>
-      {#if $user.id == reply.author.id || ["admin","moderator"].includes($user.role)}
-      <a class="cursor-pointer justify-self-bottom dark:text-neutral-400 h-4" on:click={() => expanded = !expanded}>
-        {#if !expanded}
-        <IconExpand/>
-        {:else}
-        <IconDexpand/>
+  <div class="flex space-x-1 mt-3 group relative max-w-fit">
+    <img
+      src="{reply.author.profile_icon}"
+      alt="{reply.author}'s profile"
+      class="rounded-full h-6" />
+    <div>
+      <div class="flex items-baseline space-x-1">
+        <a
+          class="dark:text-white font-bold hover:underline"
+          href="/user/{reply.author.username}">{reply.author.username}</a>
+        <p class="text-xs dark:text-neutral-400">
+          {new Date(reply.sent * 1000).toLocaleDateString()}
+        </p>
+        {#if $user.id == reply.author.id || ["admin", "moderator"].includes($user.role)}
+          <button
+            role="checkbox"
+            aria-checked="{expanded}"
+            class="cursor-pointer justify-self-bottom dark:text-neutral-400 h-4"
+            on:click="{() => (expanded = !expanded)}">
+            {#if !expanded}
+              <IconExpand />
+            {:else}
+              <IconDexpand />
+            {/if}
+          </button>
         {/if}
-      </a>
-      {/if}
+      </div>
+      <MarkdownComponent
+        source="{reply.message}"
+        classes="dark:text-neutral-200 text-sm" />
     </div>
-    <MarkdownComponent source={reply.message} classes="dark:text-neutral-200 text-sm" />
-  </div>
-  {#if expanded}
-  <div class="absolute right-0 top-2 p-2 text-white">
-    <div class="p-2 bg-stone-500 rounded-lg space-y-1">
-      <a class="flex items-center space-x-1 cursor-pointer" on:click={del}>
-        <IconDelete />
-        <p>Delete</p>
-      </a>
-      <!-- <div class="flex items-center space-x-1">
+    {#if expanded}
+      <div class="absolute right-0 top-2 p-2 text-white">
+        <div class="p-2 bg-stone-500 rounded-lg space-y-1">
+          <button
+            class="flex items-center space-x-1 cursor-pointer"
+            on:click="{del}">
+            <IconDelete />
+            <p>Delete</p>
+          </button>
+          <!-- <div class="flex items-center space-x-1">
         <IconEdit />
         <p>Edit</p>
       </div> -->
-    </div>
+        </div>
+      </div>
+    {/if}
   </div>
-  {/if}
-</div>
 {/if}

@@ -99,13 +99,12 @@
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
 
-  <h2
-    class="dark:text-pearl-lusta-100 mb-1 text-md mt-4 flex items-center">
-    <IconTime class="inline-block mr-1" /> <b class="mr-2">Joined: </b>we forgor, at least they're here now 🦆
+  <h2 class="dark:text-pearl-lusta-100 mb-1 text-md mt-4 flex items-center">
+    <IconTime class="inline-block mr-1" /> <b class="mr-2">Joined: </b>we
+    forgor, at least they're here now 🦆
   </h2>
 
-  <h2
-    class="dark:text-pearl-lusta-100 mb-1 text-md flex items-center">
+  <h2 class="dark:text-pearl-lusta-100 mb-1 text-md flex items-center">
     <IconDL class="inline-block mr-1" /> <b class="mr-2">Downloads: </b>123
   </h2>
 
