@@ -7,6 +7,7 @@
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
 
   let expanded = false;
   let visible = true;
@@ -57,7 +58,7 @@
       </a>
       {/if}
     </div>
-    <p class="dark:text-neutral-200 text-sm">{reply.message}</p>
+    <MarkdownComponent source={reply.message} classes="dark:text-neutral-200 text-sm" />
   </div>
   {#if expanded}
   <div class="absolute right-0 top-2 p-2 text-white">
