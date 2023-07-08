@@ -4,6 +4,8 @@
   import IconSettings from "~icons/tabler/Settings.svelte";
   import IconBadge from "~icons/tabler/Award.svelte";
   import IconInfo from "~icons/tabler/InfoCircle.svelte";
+  import IconTime from "~icons/tabler/Clock.svelte";
+  import IconDL from "~icons/tabler/Download.svelte";
   import Button from "../decorative/Button.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import type { User, Role } from "$lib/globals/schema";
@@ -96,6 +98,16 @@
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
+
+  <h2
+    class="dark:text-pearl-lusta-100 mb-1 text-md mt-4 flex items-center">
+    <IconTime class="inline-block mr-1" /> <b class="mr-2">Joined: </b>we forgor, at least they're here now 🦆
+  </h2>
+
+  <h2
+    class="dark:text-pearl-lusta-100 mb-1 text-md flex items-center">
+    <IconDL class="inline-block mr-1" /> <b class="mr-2">Downloads: </b>123
+  </h2>
 
   {#if badges}
     <!-- <div class="mt-4 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5"> -->
