@@ -9,6 +9,7 @@
 
   import IconDiscord from "~icons/tabler/BrandDiscord.svelte";
   import IconGithub from "~icons/tabler/BrandGithub.svelte";
+  import MarkdownEditor from "$lib/components/MarkdownEditor.svelte";
 
   export let data: PageData;
 
@@ -111,11 +112,11 @@
               Your bio is visible for anyone to see, don't store important
               information in it!
             </p>
-            <textarea
-              class="input w-1/2 h-80 resize-none"
-              maxlength="500"
-              bind:value="{bioVal}"
-              on:input="{calcRemaining}"></textarea>
+            <MarkdownEditor
+              classes="input w-1/2 h-80 resize-none"
+              maxEditorLength={500}
+              bind:content="{bioVal}"
+              on:input="{calcRemaining}"/>
             <p
               class="align-middle text-xs text-pearl-lusta-950 dark:text-pearl-lusta-100">
               {remainingCharacters} characters left

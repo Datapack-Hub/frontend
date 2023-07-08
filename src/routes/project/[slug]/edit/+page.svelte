@@ -388,7 +388,7 @@
             class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
             Description
           </p>
-          <MarkdownEditor classes="input resize-none h-64 col-span-2" on:change={e => bodyVal = e.detail} />
+          <MarkdownEditor classes="input resize-none h-64 col-span-2" bind:content={bodyVal} />
           <p
             class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
             CC Licence (click to select)
@@ -532,7 +532,7 @@
                   class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
                   Changelog (supports markdown!)
                 </p>
-                <MarkdownEditor on:change={e => v_changelog = e.detail} classes="h-36 w-full md:w-3/4 input" />
+                <MarkdownEditor bind:content={v_changelog} classes="h-36 w-full md:w-3/4 input" />
 
                 <p
                   class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">

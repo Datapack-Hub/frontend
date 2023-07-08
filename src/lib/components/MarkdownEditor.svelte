@@ -5,14 +5,14 @@
 
   export let maxEditorLength = 2000
   export let classes = ""
+  export let content = ""
 
   let tab = "editor"
-  let content = ""
 
   let dispatch = createEventDispatcher()
 
-  function change() {
-    dispatch("change", content)
+  function input() {
+    dispatch("input", content)
   }
 </script>
 
@@ -28,7 +28,7 @@
 
   {#if tab === "editor"}
     <div transition:fly={{x: -320}}>
-      <textarea bind:value={content} maxlength="{maxEditorLength}" on:change={change} class="input w-full h-64"></textarea>
+      <textarea bind:value={content} maxlength="{maxEditorLength}" on:input="{input}" class="input w-full h-64"></textarea>
     </div>
   {:else}
     <div transition:fly={{x: -320}} class="input w-full">

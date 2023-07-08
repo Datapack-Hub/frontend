@@ -157,7 +157,7 @@
     <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
       Description
     </p>
-    <MarkdownEditor on:change={e => body = e.detail} classes="col-span-2 resize-none"/>
+    <MarkdownEditor bind:content={body} classes="col-span-2 resize-none"/>
     <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
       CC Licence (click to select)
     </p>
