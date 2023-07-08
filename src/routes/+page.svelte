@@ -13,7 +13,7 @@
 
   export let data: PageData;
 
-  onMount(async () => {
+  onMount(() => {
     if (browser) {
       let textWrapper = document.querySelectorAll(".split-text .letters");
       textWrapper.forEach(el => {
