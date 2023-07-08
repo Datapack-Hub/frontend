@@ -66,7 +66,7 @@ export const notificationSchema = z.object({
   id: z.number(),
   description: z.ostring(),
   message: z.string(),
-  read: z.boolean(),
+  read: z.number(),
   type: z.enum(["announcement", "ban", "warn", "default", "rainbow"])
 });
 
