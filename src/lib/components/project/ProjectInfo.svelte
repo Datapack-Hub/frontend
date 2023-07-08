@@ -50,7 +50,7 @@
 </script>
 
 <div class="h-fit w-full lg:w-2/5 xl:w-1/3 flex-col mr-4" use:autoAnimate>
-  <div class="my-3 text-sky-300" use:autoAnimate>
+  <div class="my-3 mb-4 text-sky-300" use:autoAnimate>
     <a href="/projects">
       <IconBack class="inline" /> Explore other projects
     </a>
