@@ -1,11 +1,8 @@
 import { browser } from "$app/environment";
 import { fetchAuthed } from "$lib/globals/functions";
+import { notificationSchema as notifSchema } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import {
-  notificationSchema as notifSchema,
-  type Notif
-} from "$lib/globals/schema";
 
 export const load = (async () => {
   if (browser) {

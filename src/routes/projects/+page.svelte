@@ -75,47 +75,33 @@
     </div>
     <div class="flex items-center space-x-1 mt-4 md:mt-0">
       <p class="dark:text-white mr-2">Page:</p>
-      {#if data.pages < 5}
-        {#key data.page}
-          {#each list(data.pages - 1) as i}
-            {#if data.page == i + 1}
-              <a
-                href="/projects?page={i + 1}"
-                class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-                >{i + 1}</a>
-            {:else}
-              <a
-                href="/projects?page={i + 1}"
-                class="h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-                >{i + 1}</a>
-            {/if}
-          {/each}
-        {/key}
-      {:else}
+      {#if data.page - 2 > 1}
         <a
           href="/projects?page={data.page - 2}"
-          class="mt-4 h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >{data.page - 2}</a>
+      {/if}
+      {#if data.page - 1 > 1}
         <a
           href="/projects?page={data.page - 1}"
-          class="mt-4 h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >{data.page - 1}</a>
+      {/if}
+      <a
+        href="/projects?page={data.page}"
+        class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+        >{data.page}</a>
+      {#if data.page + 1 < data.pages}
         <a
-          href="/projects?page={data.page}"
-          class="mt-4 h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-          >{data.page}</a>
-        {#if data.pages > data.page}
-          <a
-            href="/projects?page={data.page + 1}"
-            class="mt-4 h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-            >{data.page + 1}</a>
-        {/if}
-        {#if data.pages > data.page + 1}
-          <a
-            href="/projects?page={data.page + 2}"
-            class="mt-4 h-8 w-8 rounded-md bg-dph-orange/25 hover:bg-dph-orange/40 p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-            >{data.page + 2}</a>
-        {/if}
+          href="/projects?page={data.page + 1}"
+          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          >{data.page + 1}</a>
+      {/if}
+      {#if data.page + 2 < data.pages}
+        <a
+          href="/projects?page={data.page + 2}"
+          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          >{data.page + 2}</a>
       {/if}
     </div>
   </div>

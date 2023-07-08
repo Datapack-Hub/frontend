@@ -16,17 +16,14 @@ export const load = (async ({ fetch }) => {
     async res => await res.json()
   );
 
-  if ([admins, moderators, devs, helpers, prefetchedRoles].every(r => r.ok)) {
-    const [adminsJSON, moderatorsJSON, devsJSON, helpersJSON] = await parallel(
-      4,
-      [admins.values, moderators.values, devs.values, helpers.values],
-      async users => await userSchema.array().parseAsync(users)
-    );
+  const [adminsJSON, moderatorsJSON, devsJSON, helpersJSON] = await parallel(
+    4,
+    [admins.values, moderators.values, devs.values, helpers.values],
+    async users => await userSchema.array().parseAsync(users)
+  );
 
-    const data = adminsJSON.concat(moderatorsJSON, devsJSON, helpersJSON);
-    return {
-      staff: data,
-      roleData: roleSchema.array().parse(prefetchedRoles.roles)
-    };
-  }
+  return {
+    staff: adminsJSON.concat(moderatorsJSON, devsJSON, helpersJSON),
+    roleData: roleSchema.array().parse(prefetchedRoles.roles)
+  };
 }) satisfies PageLoad;

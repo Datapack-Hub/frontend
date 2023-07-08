@@ -4,7 +4,7 @@ import { role } from "$lib/globals/stores";
 import { get } from "svelte/store";
 import type { PageLoad } from "./$types";
 
-export const load = (async ({ fetch }) => {
+export const load = (async () => {
   if (browser && !get(role).permissions.includes("USE_CONSOLE")) {
     goto("/");
   }

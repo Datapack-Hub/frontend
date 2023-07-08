@@ -24,7 +24,6 @@ declare namespace App {
 }
 
 declare module "sveltejs-tippy";
-declare module "marked-linkify-it";
 declare module "marked-smartypants";
 
 /// <reference types="@sveltejs/kit" />
