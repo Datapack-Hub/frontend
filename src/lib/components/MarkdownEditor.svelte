@@ -2,6 +2,7 @@
   import { fly } from "svelte/transition";
   import MarkdownComponent from "./MarkdownComponent.svelte";
   import { createEventDispatcher } from "svelte";
+  import autoAnimate from "@formkit/auto-animate";
 
   export let maxEditorLength = 2000;
   export let classes = "";
@@ -16,7 +17,7 @@
   }
 </script>
 
-<div class="{classes}">
+<div class="{classes} h-fit" use:autoAnimate>
   <div class="flex items-center space-x-1.5 mb-3">
     <button
       class="button-base {tab === 'editor' ? 'bg-stone-600' : 'bg-stone-800'}"
@@ -27,7 +28,7 @@
   </div>
 
   {#if tab === "editor"}
-    <div transition:fly="{{ x: -320 }}">
+    <div>
       <textarea
         bind:value="{content}"
         maxlength="{maxEditorLength}"
@@ -35,7 +36,7 @@
         class="input w-full h-64"></textarea>
     </div>
   {:else}
-    <div transition:fly="{{ x: -320 }}" class="input w-full">
+    <div class="input w-full">
       <MarkdownComponent source="{content}" />
     </div>
   {/if}

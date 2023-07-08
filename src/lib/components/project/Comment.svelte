@@ -15,6 +15,7 @@
   import Button from "../decorative/Button.svelte";
   import autoAnimate from "@formkit/auto-animate";
   import Reply from "./Reply.svelte";
+  import MarkdownComponent from "../MarkdownComponent.svelte";
 
   export let comment: DPHComment;
   export let project: Project;
@@ -76,7 +77,7 @@
       <p class="text-xs dark:text-neutral-400">{new Date(comment.sent * 1000).toLocaleDateString()}</p>
     </div>
 
-      <p class="dark:text-neutral-200 text-sm">{comment.message}</p>
+      <MarkdownComponent source={comment.message} classes="text-sm" />
       {#if comment.replies.length != 0}
         {#if !showReplies}
           <button
@@ -119,7 +120,7 @@
     </a>
     {#if expanded}
     <div class="p-2 bg-stone-500 rounded-lg space-y-1">
-      <a class="flex items-center space-x-1 cursor-pointer" on:click={del}>
+      <a class="flex items-center space-x-1 p-1 px-2 cursor-pointer rounded-lg hover:bg-stone-400" on:click={del}>
         <IconDelete />
         <p>Delete</p>
       </a>
