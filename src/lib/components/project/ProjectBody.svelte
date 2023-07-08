@@ -518,24 +518,6 @@
           <!-- <Comment /> -->
         </div>
       </div>
-      {#if matches.length != 0}
-        <div
-          class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
-          <p class="text-white">Latest version for {pickedVersion}:</p>
-          <ul use:autoAnimate class="space-y-2">
-            <VersionDisplay
-              version="{matches[0]}"
-              expanded="{true}"
-              mcVersion="{pickedVersion}" />
-          </ul>
-          <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-400">
-            <IconFiles />
-            <button
-              on:click="{() => (activePage = 'versions')}"
-              class="cursor-pointer">Show Version History</button>
-          </p>
-        </div>
-      {/if}
     </div>
   {/if}
 </div>
