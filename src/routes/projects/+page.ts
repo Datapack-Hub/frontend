@@ -22,7 +22,7 @@ export const load = (async ({ fetch, url }) => {
   return {
     projects: data,
     pages: count,
-    featured: shuffle(featured),
+    featured: shuffle(projectSchema.array().parse(featured)),
     page: page
   };
 }) satisfies PageLoad;

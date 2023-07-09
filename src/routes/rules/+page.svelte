@@ -7,6 +7,7 @@
 
 <svelte:head>
   <title>Rules | Datapack Hub</title>
+  <meta name="description" content="Our site rules">
 </svelte:head>
 
 <main

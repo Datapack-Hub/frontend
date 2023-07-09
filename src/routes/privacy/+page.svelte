@@ -6,7 +6,8 @@
 </script>
 
 <svelte:head>
-  <title>Rules | Datapack Hub</title>
+  <title>Privacy | Datapack Hub</title>
+  <meta name="description" content="Our privacy policy">
 </svelte:head>
 
 <main

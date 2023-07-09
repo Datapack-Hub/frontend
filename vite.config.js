@@ -6,11 +6,14 @@ const config = {
   plugins: [
     sveltekit(),
     Icons({
-     compiler: 'svelte'
+      compiler: 'svelte'
     })
   ],
-	server:{
-		host:"0.0.0.0"
+  server: {
+    host: "0.0.0.0"
+  },
+  build: {
+    cssMinify: "lightningcss"
   }
 };
 

@@ -37,10 +37,12 @@
 
   import CasualLine from "../decorative/CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
-  import MiniProfileCard from "../profile/UserCard.svelte";
+  import UserCard from "../user/UserCard.svelte";
   import { title } from "radash";
   import Comment from "./Comment.svelte";
   import Button from "../decorative/Button.svelte";
+
+  // we need to split this up more or something jeez
 
   // Component args
   export let project: Project;
@@ -533,7 +535,7 @@
       class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
       User
     </p>
-    <MiniProfileCard
+    <UserCard
       person="{author}"
       role="{roles?.find(v => author?.role == v.name)}" />
     <div class="mb-2 min-w-fit items-center">
@@ -585,7 +587,7 @@
       class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
       Author
     </p>
-    <MiniProfileCard
+    <UserCard
       person="{author}"
       role="{roles?.find(v => author?.role == v.name)}" />
     <p
@@ -611,7 +613,7 @@
       class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
       Author
     </p>
-    <MiniProfileCard
+    <UserCard
       person="{author}"
       role="{roles?.find(v => author?.role == v.name)}" />
     <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
