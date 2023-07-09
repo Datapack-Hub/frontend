@@ -13,7 +13,7 @@ const config = {
     host: "0.0.0.0"
   },
   build: {
-    cssMinify: "lightningcss"
+    cssMinify: "lightningcss",
   }
 };
 

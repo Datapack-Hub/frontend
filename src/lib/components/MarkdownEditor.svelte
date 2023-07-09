@@ -3,16 +3,22 @@
   import { createEventDispatcher } from "svelte";
   import MarkdownComponent from "./MarkdownComponent.svelte";
 
-  export let maxEditorLength = 2000;
+  export let maxEditorLength = 1e4;
   export let classes = "";
   export let content = "";
 
   let tab = "editor";
+  let remainingCharacters = maxEditorLength - content.length;
 
   let dispatch = createEventDispatcher();
 
+  function calcRemaining() {
+    remainingCharacters = maxEditorLength - content.length;
+  }
+
   function input() {
     dispatch("input", content);
+    calcRemaining();
   }
 </script>
 
@@ -33,6 +39,10 @@
         maxlength="{maxEditorLength}"
         on:input="{input}"
         class="input w-full h-64"></textarea>
+      <p
+        class="align-middle text-xs text-pearl-lusta-950 dark:text-pearl-lusta-100">
+        {remainingCharacters} characters left
+      </p>
     </div>
   {:else}
     <div class="input w-full">

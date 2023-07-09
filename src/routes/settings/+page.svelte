@@ -51,10 +51,6 @@
       }
     );
   }
-
-  function calcRemaining() {
-    remainingCharacters = 500 - (bioVal?.length ?? 0);
-  }
 </script>
 
 <svelte:head>
@@ -117,10 +113,6 @@
               maxEditorLength="{500}"
               bind:content="{bioVal}"
               on:input="{calcRemaining}" />
-            <p
-              class="align-middle text-xs text-pearl-lusta-950 dark:text-pearl-lusta-100">
-              {remainingCharacters} characters left
-            </p>
             <br />
             <Button click="{save}" wait="{true}">Save Changes</Button>
           </div>
