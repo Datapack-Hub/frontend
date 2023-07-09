@@ -10,12 +10,16 @@
   import { isDark } from "$lib/globals/stores";
   import { debounce } from "radash";
   import IconSearch from "~icons/tabler/Search.svelte";
+  import IconList from "~icons/tabler/LayoutList.svelte";
+  import IconGrid from "~icons/tabler/LayoutGrid.svelte";
 
   export let data: PageData;
 
   let query: string;
   $: dataCopy = data.projects ?? [];
   let sort = "Updated";
+
+  let layout = "list"
 
   let featured = data.featured?.splice(0, 1);
 
@@ -46,9 +50,9 @@
   class=" items-center pt-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
   <div
     class="py-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-2">
-    <div class="flex-grow flex flex-col sm:flex-row space-x-2 items-center">
+    <div class="flex-grow flex flex-col sm:flex-row space-x-4 items-center">
       <div
-        class="flex items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 mr-0 sm:mr-4">
+        class="flex items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
         <input
           placeholder="Search Datapacks..."
@@ -73,7 +77,23 @@
         </select>
       </div>
     </div>
-    <div class="flex items-center space-x-1 mt-4 md:mt-0">
+    <div class="flex items-center space-x-4 mt-4 md:mt-0">
+      <div class="block mt-2 sm:mt-0 sm:flex space-x-1 items-center">
+        <p class="dark:text-white text-center mr-2">Layout:</p>
+        <a
+          on:click="{() => layout = "list"}"
+          class="h-8 w-8 rounded-md {layout === 'list'
+          ? 'bg-dph-orange'
+          : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
+          <IconList /></a>
+        <a
+          on:click="{() => layout = "grid"}"
+          class="h-8 w-8 rounded-md {layout === 'grid'
+          ? 'bg-dph-orange'
+          : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
+          <IconGrid /></a>
+      </div>
+      <div class="block mt-2 sm:mt-0 sm:flex space-x-1 items-center">
       <p class="dark:text-white mr-2">Page:</p>
       {#if data.page - 2 > 1}
         <a
@@ -103,6 +123,7 @@
           class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
           >{data.page + 2}</a>
       {/if}
+      </div>
     </div>
   </div>
   <CasualLine />
@@ -118,12 +139,16 @@
           <FeaturedProjectComponent project="{feat}" type="featured" />
         {/each}
         {#key dataCopy}
+        <div class="{layout === 'list'
+        ? 'space-y-2'
+        : 'grid grid-cols-2 gap-2'}" use:autoAnimate>
           {#each dataCopy as project}
             <li>
               <ProjectComponent project="{project}" />
             </li>
             <!-- {/if} -->
           {/each}
+        </div>
         {/key}
       </ul>
     {/if}
