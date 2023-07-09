@@ -500,7 +500,7 @@
       <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
         <div class="space-y-2" use:autoAnimate>
           {#if $authed}
-            <div class="flex items-center space-x-2" use:autoAnimate>
+            <form class="flex items-center space-x-2" on:submit="{postComment}">
               <img
                 src="{$user.profile_icon}"
                 alt="Your profile icon"
@@ -509,8 +509,12 @@
                 class="input w-4/5"
                 placeholder="Write a comment on {project.title} (markdown supported!)"
                 bind:value="{comment}" />
-              <Button wait="{true}" click="{postComment}">Post</Button>
-            </div>
+              <Button
+                wait="{true}"
+                click="{postComment}"
+                formCompat="{true}"
+                formText="{'Post'}" />
+            </form>
             {#key comments}
               {#each comments as cmt}
                 <Comment comment="{cmt}" project="{project}" />

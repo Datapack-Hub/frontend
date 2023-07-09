@@ -11,6 +11,10 @@
 
   let expanded = false;
   let visible = true;
+  let formatter = Intl.DateTimeFormat("en", {
+    timeStyle: "short",
+    dateStyle: "short"
+  });
 
   export let reply: {
     id: number;
@@ -31,7 +35,7 @@
 </script>
 
 {#if visible}
-  <div class="flex space-x-1 mt-3 group relative max-w-fit">
+  <li class="flex space-x-1 mt-3 relative w-full">
     <img
       src="{reply.author.profile_icon}"
       alt="{reply.author}'s profile"
@@ -42,41 +46,46 @@
           class="dark:text-white font-bold hover:underline"
           href="/user/{reply.author.username}">{reply.author.username}</a>
         <p class="text-xs dark:text-neutral-400">
-          {new Date(reply.sent * 1000).toLocaleDateString()}
+          {formatter.format(new Date(reply.sent * 1000))}
         </p>
         {#if $user.id == reply.author.id || $role.permissions.includes("DELETE_CONTENT")}
-          <button
-            role="checkbox"
-            aria-checked="{expanded}"
-            class="cursor-pointer justify-self-bottom dark:text-neutral-400 h-4"
-            on:click="{() => (expanded = !expanded)}">
-            {#if !expanded}
-              <IconExpand />
-            {:else}
-              <IconDexpand />
+          <div class="absolute right-0 p-2 text-white">
+            <button
+              role="checkbox"
+              aria-checked="{expanded}"
+              class="cursor-pointer"
+              on:click="{() => (expanded = !expanded)}">
+              {#if !expanded}
+                <IconExpand
+                  class="ml-auto"
+                  on:keypress="{() => (expanded = true)}" />
+              {:else}
+                <IconDexpand
+                  class="ml-auto"
+                  on:keypress="{() => (expanded = true)}" />
+              {/if}
+            </button>
+            {#if expanded}
+              <div
+                class="absolute right-0 top-8 p-2 bg-stone-600 rounded-lg space-y-1">
+                <button
+                  class="flex items-center space-x-1 p-0.5 px-1 cursor-pointer rounded-lg hover:bg-stone-600 text-xs"
+                  on:click="{del}">
+                  <IconDelete />
+                  <p>Delete</p>
+                </button>
+                <!-- <div class="flex items-center space-x-1">
+        <IconEdit />
+        <p>Edit</p>
+      </div> -->
+              </div>
             {/if}
-          </button>
+          </div>
         {/if}
       </div>
       <MarkdownComponent
         source="{reply.message}"
         classes="dark:text-neutral-200 text-sm" />
     </div>
-    {#if expanded}
-      <div class="absolute -right-4 top-4 p-2 text-white">
-        <div class="p-2 bg-stone-600 rounded-lg space-y-1">
-          <button
-            class="flex items-center space-x-1 cursor-pointer text-xs"
-            on:click="{del}">
-            <IconDelete />
-            <p>Delete</p>
-          </button>
-          <!-- <div class="flex items-center space-x-1">
-        <IconEdit />
-        <p>Edit</p>
-      </div> -->
-        </div>
-      </div>
-    {/if}
-  </div>
+  </li>
 {/if}

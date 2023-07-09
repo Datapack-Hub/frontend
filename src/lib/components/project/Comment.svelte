@@ -22,6 +22,10 @@
   let expanded = false;
   let wait = false;
   let visible = true;
+  let formatter = Intl.DateTimeFormat("en", {
+    timeStyle: "short",
+    dateStyle: "short"
+  });
 
   async function reply() {
     wait = true;
@@ -75,7 +79,7 @@
             class="dark:text-white font-bold hover:underline"
             href="/user/{comment.author.username}">{comment.author.username}</a>
           <p class="text-xs dark:text-neutral-400">
-            {new Date(comment.sent * 1000).toLocaleDateString()}
+            {formatter.format(new Date(comment.sent * 1000))}
           </p>
         </div>
 
@@ -91,25 +95,32 @@
               class="text-blue-400 font-bold mt-1 flex items-center space-x-1 cursor-pointer"
               on:click="{() => (showReplies = false)}"
               ><IconDexpand /><span>Hide Replies</span></button>
-            <div id="replies" class="">
-              {#each comment.replies ?? [] as reply}
-                <Reply reply="{reply}" />
-              {/each}
+            <div>
+              <ul class="w-full">
+                {#each comment.replies ?? [] as reply}
+                  <Reply reply="{reply}" />
+                {/each}
+              </ul>
 
-              <div class="flex items-center space-x-2 mt-3">
+              <form
+                class="flex items-center space-x-2 mt-3"
+                on:submit="{reply}">
                 <img
                   src="{$user.profile_icon}"
                   alt="Your profile"
                   class="rounded-full h-8" />
                 <input
                   bind:value="{replyMsg}"
+                  type="text"
                   class="p-1 rounded-md dark:bg-stone-900 px-2 text-white focus:transition-all"
                   placeholder="Leave a reply" />
-                <button
+                <input
                   on:click="{reply}"
+                  type="submit"
                   class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50"
-                  disabled="{wait}">Post</button>
-              </div>
+                  disabled="{wait}"
+                  value="Post" />
+              </form>
             </div>
           {/if}
         {:else}
@@ -120,6 +131,7 @@
               class="rounded-full h-8" />
             <input
               bind:value="{replyMsg}"
+              type="text"
               class="p-1 rounded-md dark:bg-stone-900 px-2 text-white focus:transition-all"
               placeholder="Leave the first reply" />
             <button
