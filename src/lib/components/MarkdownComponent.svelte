@@ -15,7 +15,10 @@
     const renderer = new marked.Renderer();
 
     renderer.link = (href, _, text) => {
-      return `<a href="https://datapackhub.net/linkout?url=${href}" target="_blank">${text}</a>`;
+      if (!href?.startsWith("https://datapackhub.net"))
+      {return `<a href="https://datapackhub.net/linkout?url=${href}" target="_blank">${text}</a>`}
+      else
+      {return `<a href="${href}" target="_blank">${text}</a>`}
     };
 
     return marked.marked(
