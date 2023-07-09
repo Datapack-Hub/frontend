@@ -6,7 +6,7 @@
     type DPHComment,
     type Project
   } from "$lib/globals/schema";
-  import { user } from "$lib/globals/stores";
+  import { role, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
@@ -69,7 +69,7 @@
         src="{comment.author.profile_icon}"
         alt="{comment.author.username}'s profile"
         class="rounded-full h-12" />
-      <div>
+      <div class="w-full">
         <div class="flex items-baseline space-x-1">
           <a
             class="dark:text-white font-bold hover:underline"
@@ -129,8 +129,8 @@
           </div>
         {/if}
       </div>
-      {#if $user.id == comment.author.id || ["admin", "moderator"].includes($user.role)}
-        <div class="absolute right-0 top-0 p-2 text-white">
+      {#if $user.id == comment.author.id || $role.permissions.includes("DELETE_CONTENT")}
+        <div class="relative right-0 p-2 text-white">
           <button
             role="checkbox"
             aria-checked="{expanded}"
@@ -147,9 +147,10 @@
             {/if}
           </button>
           {#if expanded}
-            <div class="p-2 bg-stone-500 rounded-lg space-y-1">
+            <div
+              class="absolute right-0 top-8 p-2 bg-stone-600 rounded-lg space-y-1">
               <button
-                class="flex items-center space-x-1 p-1 px-2 cursor-pointer rounded-lg hover:bg-stone-400"
+                class="flex items-center space-x-1 p-0.5 px-1 cursor-pointer rounded-lg hover:bg-stone-600 text-xs"
                 on:click="{del}">
                 <IconDelete />
                 <p>Delete</p>

@@ -2,8 +2,8 @@
   import Button from "$lib/components/decorative/Button.svelte";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
-  import ProfileCard from "$lib/components/profile/FullProfileCard.svelte";
-  import UserModeration from "$lib/components/profile/UserModeration.svelte";
+  import ProfileCard from "$lib/components/user/UserProfile.svelte";
+  import UserModeration from "$lib/components/user/UserModeration.svelte";
   import { authed, role, user } from "$lib/globals/stores";
   import type { PageData } from "./$types";
 
@@ -53,7 +53,7 @@
     {#if data.projects?.length == 0}
       <p
         class="mt-24 text-center text-3xl text-pearl-lusta-950/40 dark:text-white/40 md:mt-48 col-span-2">
-        No projects!
+        No projects here...
       </p>
     {:else}
       {#each data.projects ?? [] as project}

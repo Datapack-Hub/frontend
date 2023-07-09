@@ -1,18 +1,16 @@
 <script lang="ts">
-  import { goto } from "$app/navigation";
   import Button from "$lib/components/decorative/Button.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import ReportComponent from "$lib/components/project/ReportComponent.svelte";
   import { fetchAuthed } from "$lib/globals/functions";
   import {
     projectSchema,
+    reportSchema,
+    roleSchema,
     type Project,
     type Report,
-    type Role,
-    reportSchema,
-    roleSchema
+    type Role
   } from "$lib/globals/schema";
-  import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { parallel, title } from "radash";
 
@@ -24,10 +22,6 @@
   let reports: Report[];
 
   async function loadStuff() {
-    if (!["moderator", "admin"].includes($user.role)) {
-      goto("/");
-    }
-
     let [pq, rq, rp, r] = await parallel(
       2,
       await Promise.all([
@@ -100,7 +94,8 @@
             class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
             {#if publishQueue.length == 0}
               <p class=" dark:text-white">
-                You're all caught up! There are no projects in the queue.
+                You're all caught up! There are no projects in the publish
+                queue.
               </p>
             {:else}
               <p class=" dark:text-white">
@@ -117,7 +112,7 @@
             use:autoAnimate>
             {#if reviewQueue.length == 0}
               <p class=" dark:text-white">
-                You're all caught up! There are no projects in the queue.
+                You're all caught up! There are no projects awaiting review.
               </p>
             {:else}
               <p class=" dark:text-white">
@@ -133,7 +128,7 @@
             class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
             {#if reports.length == 0}
               <p class=" dark:text-white">
-                You're all caught up! There are no projects in the queue.
+                You're all caught up! There are no reports in the queue.
               </p>
             {:else}
               <p class=" dark:text-white">
@@ -167,9 +162,9 @@
                       ⬤ {title(i.name)}
                     </p></td>
                   <td class="text-pearl-lusta-950 dark:text-white"
-                    >{#if i.permissions.length != 0}{i.permissions.join(
-                        " | "
-                      )}{:else}None{/if}</td>
+                    >{#if i.permissions.length != 0}{i.permissions
+                        .map(p => title(p.toLowerCase()))
+                        .join(", ")}{:else}None{/if}</td>
                 </tr>
               {/each}
             </table>

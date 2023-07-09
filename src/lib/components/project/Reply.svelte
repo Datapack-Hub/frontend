@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fetchAuthed } from "$lib/globals/functions";
   import type { User } from "$lib/globals/schema";
-  import { user } from "$lib/globals/stores";
+  import { role, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
 
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
@@ -44,7 +44,7 @@
         <p class="text-xs dark:text-neutral-400">
           {new Date(reply.sent * 1000).toLocaleDateString()}
         </p>
-        {#if $user.id == reply.author.id || ["admin", "moderator"].includes($user.role)}
+        {#if $user.id == reply.author.id || $role.permissions.includes("DELETE_CONTENT")}
           <button
             role="checkbox"
             aria-checked="{expanded}"
@@ -63,10 +63,10 @@
         classes="dark:text-neutral-200 text-sm" />
     </div>
     {#if expanded}
-      <div class="absolute right-0 top-2 p-2 text-white">
-        <div class="p-2 bg-stone-500 rounded-lg space-y-1">
+      <div class="absolute -right-4 top-4 p-2 text-white">
+        <div class="p-2 bg-stone-600 rounded-lg space-y-1">
           <button
-            class="flex items-center space-x-1 cursor-pointer"
+            class="flex items-center space-x-1 cursor-pointer text-xs"
             on:click="{del}">
             <IconDelete />
             <p>Delete</p>

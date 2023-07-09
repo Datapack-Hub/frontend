@@ -37,7 +37,7 @@
 
   import CasualLine from "../decorative/CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
-  import MiniProfileCard from "../profile/MiniProfileCard.svelte";
+  import MiniProfileCard from "../profile/UserCard.svelte";
   import { title } from "radash";
   import Comment from "./Comment.svelte";
   import Button from "../decorative/Button.svelte";
@@ -622,7 +622,7 @@
       class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
       bind:value="{featureDur}"
       placeholder="i.e 1, 7, 14, 30, 365" />
-    <Button classes="mt-2" on:click="{() => feature()}">Feature</Button>
+    <Button classes="mt-2" click="{() => feature()}">Feature</Button>
   </Modal>
 </div>
 
