@@ -19,7 +19,7 @@
   $: dataCopy = data.projects ?? [];
   let sort = "Updated";
 
-  let layout = "list"
+  let layout = localStorage.getItem("preferred_layout") || "list"
 
   let featured = data.featured?.splice(0, 1);
 
@@ -81,13 +81,13 @@
       <div class="block mt-2 sm:mt-0 sm:flex space-x-1 items-center">
         <p class="dark:text-white text-center mr-2">Layout:</p>
         <a
-          on:click="{() => layout = "list"}"
+          on:click="{() => {layout = "list"; localStorage.setItem("preferred_layout","list")}}"
           class="h-8 w-8 rounded-md {layout === 'list'
           ? 'bg-dph-orange'
           : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
           <IconList /></a>
         <a
-          on:click="{() => layout = "grid"}"
+          on:click="{() => {layout = "grid"; localStorage.setItem("preferred_layout","grid")}}"
           class="h-8 w-8 rounded-md {layout === 'grid'
           ? 'bg-dph-orange'
           : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
