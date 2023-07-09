@@ -18,8 +18,6 @@
 
   let activePage = "profile";
 
-  let remainingCharacters = 500 - (bioVal?.length ?? 0);
-
   async function save() {
     let req = {
       username: usernameElement.value,
@@ -111,8 +109,7 @@
             <MarkdownEditor
               classes="input w-1/2 h-80 resize-none"
               maxEditorLength="{500}"
-              bind:content="{bioVal}"
-              on:input="{calcRemaining}" />
+              bind:content="{bioVal}" />
             <br />
             <Button click="{save}" wait="{true}">Save Changes</Button>
           </div>

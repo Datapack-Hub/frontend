@@ -7,7 +7,7 @@
 
 <svelte:head>
   <title>Privacy | Datapack Hub</title>
-  <meta name="description" content="Our privacy policy">
+  <meta name="description" content="Our privacy policy" />
 </svelte:head>
 
 <main
