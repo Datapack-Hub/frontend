@@ -107,7 +107,7 @@
               information in it!
             </p>
             <MarkdownEditor
-              classes="input w-1/2 h-80 resize-none"
+              classes="w-1/2 h-80 resize-none"
               maxEditorLength="{500}"
               bind:content="{bioVal}" />
             <br />
