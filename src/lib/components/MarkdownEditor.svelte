@@ -1,7 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import MarkdownComponent from "./MarkdownComponent.svelte";
-  import { fly } from "svelte/transition";
 
   export let maxEditorLength = 1e4;
   export let classes = "";
@@ -33,7 +32,7 @@
   </div>
 
   {#if tab === "editor"}
-    <div transition:fly={{x: -320}}>
+    <div>
       <textarea
         bind:value="{content}"
         maxlength="{maxEditorLength}"
@@ -45,7 +44,7 @@
       </p>
     </div>
   {:else}
-    <div class="input w-full" transition:fly={{x: -320}}>
+    <div class="input w-full">
       <MarkdownComponent source="{content}" />
     </div>
   {/if}
