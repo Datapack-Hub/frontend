@@ -31,7 +31,7 @@
   tabindex="0"
   class="{clicked
     ? 'border-dph-orange hover:brightness-75 bg-dph-orange/40 dark:bg-dph-orange/20'
-    : 'hover:border-dph-orange border-pearl-lusta-400 bg-pearl-lusta-300 dark:border-stone-700 dark:bg-stone-800'} border-2 p-2 rounded-lg text-pearl-lusta-950 dark:text-pearl-lusta-100 select-none cursor-pointer transition-all"
+    : 'hover:border-dph-orange dark:hover:border-dph-orange border-pearl-lusta-400 bg-pearl-lusta-300 dark:border-stone-700 dark:bg-stone-800'} border-2 p-2 rounded-lg text-pearl-lusta-950 dark:text-pearl-lusta-100 select-none cursor-pointer transition-all"
   on:click="{toggleClicked}"
   on:keypress="{e => (e.key == 'ENTER' ? toggleClicked : null)}">
   <p>
