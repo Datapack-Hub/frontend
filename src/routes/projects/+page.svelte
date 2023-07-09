@@ -141,7 +141,7 @@
         {#key dataCopy}
         <div class="{layout === 'list'
         ? 'space-y-2'
-        : 'grid grid-cols-2 gap-2'}" use:autoAnimate>
+        : 'grid grid-cols-3 gap-2'}" use:autoAnimate>
           {#each dataCopy as project}
             <li>
               <ProjectComponent project="{project}" />
