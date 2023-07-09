@@ -389,7 +389,7 @@
             Description
           </p>
           <MarkdownEditor
-            classes="input resize-none h-64 col-span-2"
+            classes="resize-none h-64 col-span-2"
             bind:content="{bodyVal}" />
           <p
             class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
