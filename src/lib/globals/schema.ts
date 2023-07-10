@@ -67,7 +67,7 @@ export const notificationSchema = z.object({
   description: z.ostring(),
   message: z.string(),
   read: z.number(),
-  type: z.enum(["announcement", "ban", "warn", "default", "rainbow"])
+  type: z.enum(["announcement", "ban", "warn", "default", "important", "rainbow"])
 });
 
 export const roleSchema = z.object({
