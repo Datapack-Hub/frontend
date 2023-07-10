@@ -19,7 +19,7 @@
   $: dataCopy = data.projects ?? [];
   let sort = "Updated";
 
-  let layout = localStorage.getItem("preferred_layout") || "list"
+  let layout = localStorage.getItem("preferred_layout") || "list";
 
   let featured = data.featured?.splice(0, 1);
 
@@ -47,7 +47,7 @@
 </svelte:head>
 
 <main
-  class=" items-center pt-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
+  class="items-center pt-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
   <div
     class="py-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-2">
     <div class="flex-grow flex flex-col sm:flex-row space-x-4 items-center">
@@ -80,49 +80,55 @@
     <div class="flex items-center space-x-4 mt-4 md:mt-0">
       <div class="block mt-2 sm:mt-0 sm:flex space-x-1 items-center">
         <p class="dark:text-white text-center mr-2">Layout:</p>
-        <a
-          on:click="{() => {layout = "list"; localStorage.setItem("preferred_layout","list")}}"
+        <button
+          on:click="{() => {
+            layout = 'list';
+            localStorage.setItem('preferred_layout', 'list');
+          }}"
           class="h-8 w-8 rounded-md {layout === 'list'
-          ? 'bg-dph-orange'
-          : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
-          <IconList /></a>
-        <a
-          on:click="{() => {layout = "grid"; localStorage.setItem("preferred_layout","grid")}}"
+            ? 'bg-dph-orange'
+            : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
+          <IconList /></button>
+        <button
+          on:click="{() => {
+            layout = 'grid';
+            localStorage.setItem('preferred_layout', 'grid');
+          }}"
           class="h-8 w-8 rounded-md {layout === 'grid'
-          ? 'bg-dph-orange'
-          : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
-          <IconGrid /></a>
+            ? 'bg-dph-orange'
+            : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
+          <IconGrid /></button>
       </div>
       <div class="block mt-2 sm:mt-0 sm:flex space-x-1 items-center">
-      <p class="dark:text-white mr-2">Page:</p>
-      {#if data.page - 2 > 1}
+        <p class="dark:text-white mr-2">Page:</p>
+        {#if data.page - 2 > 1}
+          <a
+            href="/projects?page={data.page - 2}"
+            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+            >{data.page - 2}</a>
+        {/if}
+        {#if data.page - 1 > 1}
+          <a
+            href="/projects?page={data.page - 1}"
+            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+            >{data.page - 1}</a>
+        {/if}
         <a
-          href="/projects?page={data.page - 2}"
+          href="/projects?page={data.page}"
           class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-          >{data.page - 2}</a>
-      {/if}
-      {#if data.page - 1 > 1}
-        <a
-          href="/projects?page={data.page - 1}"
-          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-          >{data.page - 1}</a>
-      {/if}
-      <a
-        href="/projects?page={data.page}"
-        class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-        >{data.page}</a>
-      {#if data.page + 1 < data.pages}
-        <a
-          href="/projects?page={data.page + 1}"
-          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-          >{data.page + 1}</a>
-      {/if}
-      {#if data.page + 2 < data.pages}
-        <a
-          href="/projects?page={data.page + 2}"
-          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
-          >{data.page + 2}</a>
-      {/if}
+          >{data.page}</a>
+        {#if data.page + 1 < data.pages}
+          <a
+            href="/projects?page={data.page + 1}"
+            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+            >{data.page + 1}</a>
+        {/if}
+        {#if data.page + 2 < data.pages}
+          <a
+            href="/projects?page={data.page + 2}"
+            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+            >{data.page + 2}</a>
+        {/if}
       </div>
     </div>
   </div>
@@ -139,16 +145,18 @@
           <FeaturedProjectComponent project="{feat}" type="featured" />
         {/each}
         {#key dataCopy}
-        <div class="{layout === 'list'
-        ? 'space-y-2'
-        : 'grid grid-cols-3 gap-2'}" use:autoAnimate>
-          {#each dataCopy as project}
-            <li>
-              <ProjectComponent project="{project}" />
-            </li>
-            <!-- {/if} -->
-          {/each}
-        </div>
+          <div
+            class="{layout === 'list'
+              ? 'space-y-2'
+              : 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2'}"
+            use:autoAnimate>
+            {#each dataCopy as project}
+              <li>
+                <ProjectComponent project="{project}" />
+              </li>
+              <!-- {/if} -->
+            {/each}
+          </div>
         {/key}
       </ul>
     {/if}
