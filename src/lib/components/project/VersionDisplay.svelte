@@ -18,6 +18,7 @@
   import { user } from "$lib/globals/stores";
   import { isArray } from "radash";
   import Button from "../decorative/Button.svelte";
+  import { goto } from "$app/navigation";
 
   export let version: Version;
   export let expanded = false;
@@ -116,10 +117,11 @@
       ),
       {
         loading: "Deleting version...",
-        success: "Version deleted! Refresh to see the updates",
+        success: "Version deleted! Refreshing...",
         error: "Error trying to delete project."
       }
     );
+    goto("/")
   }
 </script>
 

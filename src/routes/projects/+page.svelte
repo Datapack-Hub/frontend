@@ -17,10 +17,10 @@
 
   let query: string;
   let sort = "Updated";
-  let innerWidth = 0
+  let innerWidth = 0;
 
   $: dataCopy = data.projects ?? [];
-  $: isSmall = innerWidth > 768
+  $: isSmall = innerWidth > 768;
 
   let layout = localStorage.getItem("preferred_layout") || "list";
 
@@ -43,10 +43,9 @@
       .array()
       .parseAsync((await searchResult.json()).result);
   }
-
 </script>
 
-<svelte:window bind:innerWidth />
+<svelte:window bind:innerWidth="{innerWidth}" />
 
 <svelte:head>
   <title>Projects | Datapack Hub</title>

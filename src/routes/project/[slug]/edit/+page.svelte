@@ -148,7 +148,7 @@
     toast.promise(
       fetchAuthed("POST", `/versions/new/${data.project?.ID}`, versionData),
       {
-        success: "Uploaded! Refresh to see changes.",
+        success: "Uploaded! Refreshing...",
         error: "Something went wrong.",
         loading: "Uploading file..."
       }
