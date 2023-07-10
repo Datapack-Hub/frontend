@@ -47,9 +47,9 @@
       return;
     }
     const msp = await import("marked-smartypants");
-    const marked = await import("marked");
+    const { marked } = await import("marked");
 
-    marked.marked.use(msp.markedSmartypants());
+    marked.use(msp.markedSmartypants());
 
     if (!source) html = "";
     else {
@@ -57,19 +57,14 @@
     }
   });
 
-  afterNavigate(async () => {
+  afterNavigate(() => {
     if (!browser) {
       return;
     }
 
-    const msp = await import("marked-smartypants");
-    const marked = await import("marked");
-
-    marked.marked.use(msp.markedSmartypants());
-
     if (!source) html = "";
     else {
-      html = await renderMarkdown(source);
+      renderMarkdown(source).then(v => (html = v));
     }
   });
 </script>

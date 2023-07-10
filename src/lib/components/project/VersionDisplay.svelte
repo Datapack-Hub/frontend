@@ -121,7 +121,7 @@
         error: "Error trying to delete project."
       }
     );
-    goto("/")
+    goto("/");
   }
 </script>
 

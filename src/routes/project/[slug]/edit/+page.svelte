@@ -35,6 +35,7 @@
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
   import MarkdownEditor from "$lib/components/MarkdownEditor.svelte";
+  import { list } from "radash";
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -536,7 +537,7 @@
                 </p>
                 <MarkdownEditor
                   bind:content="{v_changelog}"
-                  classes="h-36 w-full md:w-3/4 input" />
+                  classes="h-36 w-full md:w-3/4" />
 
                 <p
                   class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
@@ -558,16 +559,16 @@
                   Dependencies
                 </p>
                 <div
-                  class="space-y-3 bg-stone-800/50 rounded-lg border-2 border-stone-700 p-3"
+                  class="space-y-3 bg-pearl-lusta-300 dark:bg-stone-800/50 rounded-lg border-2 border-pearl-lusta-400 dark:border-stone-700 p-3 w-1/2"
                   use:autoAnimate>
-                  {#each dependencyNames as _, i}
+                  {#each list(dependencies.length) as i}
                     <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100">
                       <IconLink class="inline-block" /> Dependency URL
                     </p>
                     <div class="flex items-center">
                       <span class="input w-full">
                         https://datapackhub.net/project/<AutoAdjustableInput
-                          classes="bg-stone-800 text-pearl-lusta-100 outline-none"
+                          classes="bg-pearl-lusta-300 dark:bg-stone-800 text-pearl-lusta-100 outline-none"
                           on:change="{e => dependencyHandler(e.detail, i)}" />
                       </span>
                       {#if dependencies[i]}
