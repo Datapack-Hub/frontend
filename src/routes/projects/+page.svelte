@@ -16,8 +16,11 @@
   export let data: PageData;
 
   let query: string;
-  $: dataCopy = data.projects ?? [];
   let sort = "Updated";
+  let innerWidth = 0
+
+  $: dataCopy = data.projects ?? [];
+  $: isSmall = innerWidth > 768
 
   let layout = localStorage.getItem("preferred_layout") || "list";
 
@@ -40,7 +43,10 @@
       .array()
       .parseAsync((await searchResult.json()).result);
   }
+
 </script>
+
+<svelte:window bind:innerWidth />
 
 <svelte:head>
   <title>Projects | Datapack Hub</title>
@@ -78,27 +84,29 @@
       </div>
     </div>
     <div class="flex items-center space-x-4 mt-4 md:mt-0">
-      <div class="block mt-2 sm:mt-0 sm:flex space-x-1 items-center">
-        <p class="dark:text-white text-center mr-2">Layout:</p>
-        <button
-          on:click="{() => {
-            layout = 'list';
-            localStorage.setItem('preferred_layout', 'list');
-          }}"
-          class="h-8 w-8 rounded-md {layout === 'list'
-            ? 'bg-dph-orange'
-            : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
-          <IconList /></button>
-        <button
-          on:click="{() => {
-            layout = 'grid';
-            localStorage.setItem('preferred_layout', 'grid');
-          }}"
-          class="h-8 w-8 rounded-md {layout === 'grid'
-            ? 'bg-dph-orange'
-            : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
-          <IconGrid /></button>
-      </div>
+      {#if isSmall}
+        <div class="block mt-2 sm:mt-0 sm:flex space-x-1 items-center">
+          <p class="dark:text-white text-center mr-2">Layout:</p>
+          <button
+            on:click="{() => {
+              layout = 'list';
+              localStorage.setItem('preferred_layout', 'list');
+            }}"
+            class="h-8 w-8 rounded-md {layout === 'list'
+              ? 'bg-dph-orange'
+              : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
+            <IconList /></button>
+          <button
+            on:click="{() => {
+              layout = 'grid';
+              localStorage.setItem('preferred_layout', 'grid');
+            }}"
+            class="h-8 w-8 rounded-md {layout === 'grid'
+              ? 'bg-dph-orange'
+              : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
+            <IconGrid /></button>
+        </div>
+      {/if}
       <div class="block mt-2 sm:mt-0 sm:flex space-x-1 items-center">
         <p class="dark:text-white mr-2">Page:</p>
         {#if data.page - 2 > 1}
