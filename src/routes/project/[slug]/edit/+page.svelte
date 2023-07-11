@@ -362,6 +362,7 @@
                 placeholder="Super Cool Datapack"
                 maxlength="35"
                 bind:value="{titleVal}"
+                aria-required="true"
                 class="input w-full" />
               <p
                 class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-2 mt-4 mb-2">

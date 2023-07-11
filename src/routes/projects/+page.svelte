@@ -12,6 +12,7 @@
   import IconSearch from "~icons/tabler/Search.svelte";
   import IconList from "~icons/tabler/LayoutList.svelte";
   import IconGrid from "~icons/tabler/LayoutGrid.svelte";
+  import { browser } from "$app/environment";
 
   export let data: PageData;
 
@@ -22,7 +23,9 @@
   $: dataCopy = data.projects ?? [];
   $: isSmall = innerWidth > 768;
 
-  let layout = localStorage.getItem("preferred_layout") || "list";
+  let layout = browser
+    ? localStorage.getItem("preferred_layout") || "list"
+    : "list";
 
   let featured = data.featured?.splice(0, 1);
 

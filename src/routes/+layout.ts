@@ -24,7 +24,7 @@ export const load = (async ({ fetch, url }) => {
 
     const token = getCookie("dph_token");
 
-    if (token && get(user).id == -1) {
+    if (token != null && get(user).id == -1) {
       const [userRes, roleRes] = await Promise.all([
         fetchAuthed("get", "/user/me"),
         fetch(`${apiURL}/user/staff/roles`)
@@ -40,8 +40,10 @@ export const load = (async ({ fetch, url }) => {
           .parse((await roleRes.json()).roles)
           .find((v: Role) => v.name == userJson.role)!
       );
+
       authed.set(true);
     }
+    console.log(get(authed));
 
     loadColorPref();
 

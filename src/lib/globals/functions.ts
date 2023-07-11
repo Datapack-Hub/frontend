@@ -35,6 +35,7 @@ export async function fetchAuthed(
   headers: HeadersInit | undefined = undefined
 ): Promise<Response> {
   // what is going on here
+
   const res = await fetch(`${apiURL}${url}`, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,
@@ -46,7 +47,7 @@ export async function fetchAuthed(
 
   if (res.status == 498) await removeCookie("dph_token");
 
-  if (!res.ok) {
+  if (!res.ok && res.status != 498) {
     Promise.reject(res.statusText);
   }
 

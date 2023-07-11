@@ -131,6 +131,8 @@
           type="text"
           placeholder="Super Cool Datapack"
           maxlength="35"
+          required
+          aria-required="true"
           bind:value="{title}"
           class="input w-full" />
         <p

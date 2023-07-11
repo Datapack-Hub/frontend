@@ -1,7 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
-  import { apiURL } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
   import { authed, isDark, role, user } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
@@ -35,13 +34,13 @@
   $: unreadNotifications = false;
 
   afterNavigate(() => {
-    if (browser) {
+    if (browser && $authed) {
       refreshNotifications().catch(err => console.error(err));
     }
   });
 
   async function refreshNotifications() {
-    if (browser) {
+    if (browser && $authed) {
       unreadNotifications = false;
       let notif = await fetchAuthed("get", "/notifs/unread");
 
@@ -56,7 +55,7 @@
 </script>
 
 <div class="z-50 ml-3 flex items-center justify-center md:ml-6">
-  {#if authed}
+  {#if $authed}
     {#if ["moderator", "developer", "admin"].includes($role.name) && !small}
       <a
         href="/moderation"
@@ -109,9 +108,9 @@
   {:else}
     <a
       id="sign_in"
-      click="{apiURL}/auth/login"
-      aria-label="Button to sign in via GitHub"
-      class="button-alt"
+      href="/login"
+      aria-label="Button to sign in"
+      class="button-secondary"
       use:tippy="{signInHoverMsg}">
       Sign in
     </a>

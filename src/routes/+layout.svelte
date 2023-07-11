@@ -9,6 +9,7 @@
   import "../fonts.postcss";
   import NProgress from "nprogress";
   import { navigating } from "$app/stores";
+  import { dev } from "$app/environment";
 
   const maintenance = false;
 
@@ -36,7 +37,7 @@
 <!-- {#await pageLoad() then} -->
 <div class="{$isDark ? 'dark' : ''} font-brand">
   {#if !maintenance || $user.role == "admin"}
-    {#if $authed && ["admin", "moderator", "helper", "beta access", "verified"].includes($user.role)}
+    {#if dev || ($authed && ["admin", "moderator", "helper", "beta access", "verified"].includes($user.role))}
       <div
         class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
         {#if $user.banned}
