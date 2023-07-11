@@ -37,18 +37,45 @@
     <!-- put header content here -->
     <div class="flex w-full text-center">
       <ul class="w-1/3 text-center text-pearl-lusta-950 dark:text-white">
-        <li><a href="https://discord.gg/aEXsdjjdu4">Community Discord</a></li>
-        <li><a href="/staff">Staff Team</a></li>
-        <li><a href="/staff">About us</a></li>
+        <li>
+          <a
+            class="hover:brightness-75 transition-all"
+            href="https://discord.gg/aEXsdjjdu4">Community Discord</a>
+        </li>
+        <li>
+          <a class="hover:brightness-75 transition-all" href="/staff"
+            >Staff Team</a>
+        </li>
+        <li>
+          <a class="hover:brightness-75 transition-all" href="/staff"
+            >About us</a>
+        </li>
       </ul>
       <ul class="w-1/3 text-center text-pearl-lusta-950 dark:text-white">
-        <li><a href="https://discord.gg/aEXsdjjdu4">Discord</a></li>
-        <li><a href="https://github.com/Datapack-Hub">GitHub</a></li>
-        <li><a href="https://twitter.com/DatapackHub">Twitter</a></li>
+        <li>
+          <a
+            class="hover:brightness-75 transition-all"
+            href="https://discord.gg/aEXsdjjdu4">Discord</a>
+        </li>
+        <li>
+          <a
+            class="hover:brightness-75 transition-all"
+            href="https://github.com/Datapack-Hub">GitHub</a>
+        </li>
+        <li>
+          <a
+            class="hover:brightness-75 transition-all"
+            href="https://twitter.com/DatapackHub">Twitter</a>
+        </li>
       </ul>
       <ul class="w-1/3 text-center text-pearl-lusta-950 dark:text-white">
-        <li><a href="/rules">Rules</a></li>
-        <li><a href="/privacy">Privacy</a></li>
+        <li>
+          <a class="hover:brightness-75 transition-all" href="/rules">Rules</a>
+        </li>
+        <li>
+          <a class="hover:brightness-75 transition-all" href="/privacy"
+            >Privacy</a>
+        </li>
       </ul>
     </div>
   </div>

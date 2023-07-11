@@ -45,7 +45,7 @@
   <div class="self-center">
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <img
-      src="{profile?.profile_icon}"
+      src="{profile?.profile_icon}&size=160"
       alt="{profile?.username}'s profile picture"
       on:click="{profile?.id == 3 ? play : null}"
       on:keypress="{e => (e.key == 'Enter' && profile?.id == 3 ? play : null)}"

@@ -23,6 +23,8 @@ export default defineConfig({
     '/jam',
     '/privacy',
     '/settings',
+    '/install',
+    '/login',
     '/'
   ],
   cookies: [{
