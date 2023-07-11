@@ -365,7 +365,7 @@
   {/if}
   {#if activePage == "description"}
     <div
-      class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+      class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-50/10">
       <p class="w-full leading-tight break-words">
         <MarkdownComponent
           source="{body}"
@@ -374,7 +374,7 @@
     </div>
   {:else if activePage == "versions"}
     <div
-      class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+      class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-50/10">
       <div class="mb-3 text-sky-300" use:autoAnimate>
         <button on:click="{() => (activePage = 'description')}"
           ><IconBack class="inline" /> Back to description
@@ -416,7 +416,7 @@
     </div>
   {:else if activePage == "download"}
     <div class="mb-2 items-center space-y-2">
-      <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+      <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-50/10">
         <div class="mb-3 text-sky-300" use:autoAnimate>
           <button on:click="{() => (activePage = 'description')}"
             ><IconBack class="inline" /> Back to description
@@ -478,7 +478,7 @@
       </div>
       {#if matches.length != 0}
         <div
-          class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+          class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-50/10">
           <p class="text-white">Latest version for {pickedVersion}:</p>
           <ul use:autoAnimate class="space-y-2">
             <VersionDisplay
@@ -497,7 +497,7 @@
     </div>
   {:else if activePage == "comments"}
     <div class="mb-2 items-center space-y-2">
-      <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-100/10">
+      <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-50/10">
         <div class="space-y-2" use:autoAnimate>
           {#if $authed}
             <form class="flex items-center space-x-2" on:submit="{postComment}">

@@ -39,7 +39,7 @@
   {#if !maintenance || $user.role == "admin"}
     {#if dev || ($authed && ["admin", "moderator", "helper", "beta access", "verified"].includes($user.role))}
       <div
-        class="min-h-screen bg-pearl-lusta-100 transition-all dark:bg-stone-900">
+        class="min-h-screen bg-pearl-lusta-50 transition-all dark:bg-stone-900">
         {#if $user.banned}
           <BannedModal />
         {/if}

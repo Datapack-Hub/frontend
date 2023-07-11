@@ -126,7 +126,7 @@
 </script>
 
 <div
-  class="rounded-xl bg-pearl-lusta-300 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-pearl-lusta-100/10 relative">
+  class="rounded-xl bg-pearl-lusta-300 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-pearl-lusta-50/10 relative">
   <div class="flex items-center space-x-3">
     <div class="flex w-1/3 items-center space-x-2">
       <button

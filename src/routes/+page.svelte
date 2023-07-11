@@ -77,7 +77,7 @@
 
 <svelte:window bind:innerWidth="{width}" />
 
-<main class="bg-pearl-lusta-100 transition-all dark:bg-stone-900">
+<main class="bg-pearl-lusta-50 transition-all dark:bg-stone-900">
   <div class="pt-0 md:pt-20"></div>
   <div
     class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 rounded-lg">

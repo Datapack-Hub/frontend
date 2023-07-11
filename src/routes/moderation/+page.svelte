@@ -47,7 +47,7 @@
 </svelte:head>
 
 <main
-  class=" bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class=" bg-pearl-lusta-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -91,7 +91,7 @@
       {:then}
         {#if activePage == "publish_queue"}
           <div
-            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
+            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-50/10 md:text-start space-y-2">
             {#if publishQueue.length == 0}
               <p class=" dark:text-white">
                 You're all caught up! There are no projects in the publish
@@ -108,7 +108,7 @@
           </div>
         {:else if activePage == "review_queue"}
           <div
-            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2"
+            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-50/10 md:text-start space-y-2"
             use:autoAnimate>
             {#if reviewQueue.length == 0}
               <p class=" dark:text-white">
@@ -125,7 +125,7 @@
           </div>
         {:else if activePage == "reports"}
           <div
-            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
+            class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-50/10 md:text-start space-y-2">
             {#if reports.length == 0}
               <p class=" dark:text-white">
                 You're all caught up! There are no reports in the queue.

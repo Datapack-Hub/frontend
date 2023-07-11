@@ -56,7 +56,7 @@
     </a>
   </div>
   <div
-    class="rounded-xl border-pearl-lusta-200 p-4 mb-2 bg-pearl-lusta-200 dark:bg-pearl-lusta-100/10">
+    class="rounded-xl border-pearl-lusta-200 p-4 mb-2 bg-pearl-lusta-200 dark:bg-pearl-lusta-50/10">
     <div class="max-w-fit items-center space-x-2 flex">
       {#if project?.icon}
         <img

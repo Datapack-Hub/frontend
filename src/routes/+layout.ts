@@ -43,7 +43,6 @@ export const load = (async ({ fetch, url }) => {
 
       authed.set(true);
     }
-    console.log(get(authed));
 
     loadColorPref();
 

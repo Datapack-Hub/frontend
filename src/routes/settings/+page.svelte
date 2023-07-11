@@ -57,7 +57,7 @@
 </svelte:head>
 
 <main
-  class=" bg-pearl-lusta-100 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class=" bg-pearl-lusta-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -82,7 +82,7 @@
     <div use:autoAnimate>
       {#if activePage == "profile"}
         <div
-          class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
+          class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-50/10 md:text-start space-y-2">
           <div class="text-center align-middle md:text-start">
             <p
               class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
@@ -117,7 +117,7 @@
         </div>
       {:else if activePage == "account"}
         <div
-          class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-100/10 md:text-start space-y-2">
+          class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-50/10 md:text-start space-y-2">
           <div class="text-center align-middle md:text-start">
             <p
               class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
