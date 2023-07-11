@@ -9,7 +9,15 @@
   import IconDelete from "~icons/tabler/Trash.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
 
-  export let userRole: Role | undefined;
+  export let roles: Role[];
+  export let reply: {
+    id: number;
+    message: string;
+    author: User;
+    sent: number;
+  };
+
+  let userRole = roles.find(v => v.name == reply.author.role);
 
   let expanded = false;
   let visible = true;
@@ -18,12 +26,6 @@
     dateStyle: "short"
   });
 
-  export let reply: {
-    id: number;
-    message: string;
-    author: User;
-    sent: number;
-  };
 
   async function del() {
     visible = false;

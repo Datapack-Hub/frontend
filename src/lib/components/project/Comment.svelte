@@ -103,7 +103,7 @@
             <div>
               <ul class="w-full">
                 {#each comment.replies ?? [] as reply}
-                  <Reply userRole={userRole} reply="{reply}" />
+                  <Reply {roles} reply="{reply}" />
                 {/each}
               </ul>
 
