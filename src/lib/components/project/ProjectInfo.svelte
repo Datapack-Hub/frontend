@@ -24,16 +24,16 @@
   let author: User;
   let mm: HTMLDivElement;
   let status = project.status ?? "unpublished";
+  let formatter = Intl.DateTimeFormat("en", {
+    dateStyle: "short",
+    timeStyle: "medium"
+  });
 
   // Get author data on load
   onMount(async () => {
     author = await getAuthorFromID(project?.author ?? 0);
     visible = true;
   });
-
-  function _formatEpochDate(eTS: number | undefined) {
-    return new Date((eTS ?? 0) * 1000).toLocaleDateString();
-  }
 
   // Dismiss the mod message function
   async function dismissModMsg() {
@@ -89,7 +89,7 @@
       <h1
         class="flex items-center space-x-2 text-md mt-2 font-medium text-pearl-lusta-950 dark:text-white">
         <IconUpdate />
-        <span>Last updated: {_formatEpochDate(project?.updated)}</span>
+        <span>Last updated: {formatter.format(project?.updated)}</span>
       </h1>
       {#if visible}
         <div class="mt-4 flex items-center space-x-2 min-w-fit">

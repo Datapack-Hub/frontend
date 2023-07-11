@@ -279,22 +279,26 @@
       {#if ["moderator", "admin"].includes($user.role)}
         <button
           class="button-base flex items-center space-x-1"
+          aria-label="Moderate"
           on:click="{() => {
             modModal.open();
           }}"
           ><IconShield /><span class="hidden md:block">Moderate</span></button>
         <button
+          aria-label="Feature"
           class="button-base flex items-center space-x-1"
           on:click="{() => {
             featureModal.open();
           }}"
           ><IconConfetti /><span class="hidden md:block">Feature</span></button>
-        {#if status == "publish_queue" || (status == "review_queue" && ["moderator", "admin"].includes($user.role))}
+        {#if status == "publish_queue" || status == "review_queue"}
           <button
+            aria-label="Approve"
             class="button-base flex items-center space-x-1 bg-green-600"
             on:click="{approve}"
             ><IconTick /><span class="hidden md:block">Approve</span></button>
           <button
+            aria-label="Request Changes"
             class="button-base flex items-center space-x-1 bg-yellow-600"
             on:click="{() => {
               modModalPage = 'disable';
@@ -303,6 +307,7 @@
             ><IconPencil /><span class="hidden md:block">Request Changes</span
             ></button>
           <button
+            aria-label="Deny"
             class="button-base flex items-center space-x-1 bg-red-600"
             on:click="{() => {
               modModalPage = 'delete';
@@ -312,6 +317,7 @@
       {/if}
       {#if $user.id == project?.author}
         <a
+          aria-label="Edit"
           class="button-base ml-auto flex items-center space-x-1"
           href="/project/{project?.url}/edit">
           <IconPencil /><span class="hidden md:block">Edit</span>
@@ -319,6 +325,7 @@
       {/if}
       {#if $user.id != project?.author}
         <button
+          aria-label="Report"
           class="button-base flex items-center space-x-1"
           on:click="{() => {
             reportModal.open();

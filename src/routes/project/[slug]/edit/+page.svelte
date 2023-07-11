@@ -14,7 +14,6 @@
   import { fetchAuthed } from "$lib/globals/functions";
 
   import autoAnimate from "@formkit/auto-animate";
-  import { loadAsync } from "jszip";
   import { toast } from "svelte-sonner";
 
   import AutoAdjustableInput from "$lib/components/utility/AutoAdjustableInput.svelte";
@@ -89,6 +88,7 @@
       }
 
       if (zipFile) {
+        let { loadAsync } = await import("jszip");
         let zip = await loadAsync(zipFile);
         if (zip.file("pack.mcmeta") == null) {
           return toast.error("Missing pack.mcmeta");

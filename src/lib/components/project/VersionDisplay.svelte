@@ -1,6 +1,5 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { loadAsync } from "jszip";
   import { toast } from "svelte-sonner";
   import tippy from "sveltejs-tippy";
 
@@ -55,9 +54,10 @@
       let parsedZip;
 
       try {
+        let { loadAsync } = await import("jszip");
         parsedZip = await loadAsync(zipBlob);
       } catch (er) {
-        return toast.error("something bad happened");
+        return toast.error("Something bad happened");
       }
 
       let packMcm = await parsedZip.files["pack.mcmeta"].async("text");

@@ -15,7 +15,7 @@
     content="{data.project?.description ?? 'No Description'}" />
 
   <meta property="og:title" content="{data.project?.title} | Datapack Hub" />
-  <meta property="og:description" content="{data.project?.description}" />
+  <meta property="og:description" content="{data.project?.description ?? 'No Description'}" />
 
   <meta name="og:image" content="{data.project?.icon}" />
   <meta name="og:image:secure_url" content="{data.project?.icon}" />
