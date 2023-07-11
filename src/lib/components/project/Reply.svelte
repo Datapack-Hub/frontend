@@ -41,7 +41,7 @@
 {#if visible}
   <li class="flex space-x-1 mt-3 relative w-full">
     <img
-      src="{reply.author.profile_icon}"
+      src="{reply.author.profile_icon}&size=32"
       alt="{reply.author}'s profile"
       class="rounded-full h-6" />
     <div>

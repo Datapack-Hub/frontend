@@ -74,7 +74,7 @@
     <div
       class="dark:bg-stone-800 p-2 rounded-xl w-full flex space-x-2 relative">
       <img
-        src="{comment.author.profile_icon}"
+        src="{comment.author.profile_icon}&size=64"
         alt="{comment.author.username}'s profile"
         class="rounded-full h-12" />
       <div class="w-full">
