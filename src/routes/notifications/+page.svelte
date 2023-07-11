@@ -13,6 +13,7 @@
 
 <svelte:head>
   <title>Notifications | Datapack Hub</title>
+  <meta name="description" content="View your notifications" />
 </svelte:head>
 
 <main

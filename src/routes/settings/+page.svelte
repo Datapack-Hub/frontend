@@ -53,6 +53,7 @@
 
 <svelte:head>
   <title>Profile Settings | Datapack Hub</title>
+  <meta name="description" content="Your profile settings" />
 </svelte:head>
 
 <main

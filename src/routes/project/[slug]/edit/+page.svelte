@@ -362,7 +362,7 @@
                 placeholder="Super Cool Datapack"
                 maxlength="35"
                 bind:value="{titleVal}"
-                aria-required="true"
+                required
                 class="input w-full" />
               <p
                 class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-2 mt-4 mb-2">
@@ -522,10 +522,12 @@
                 <div class="flex space-x-3">
                   <input
                     class="input w-3/4"
+                    required
                     placeholder="{data.project?.title} v{ver}"
                     maxlength="50"
                     id="v_name" />
                   <input
+                    required
                     class="input w-1/4"
                     placeholder="v{ver}"
                     maxlength="15"

@@ -507,6 +507,7 @@
                 class="h-8 rounded-full" />
               <input
                 class="input w-4/5"
+                required
                 placeholder="Write a comment on {project.title} (markdown supported!)"
                 bind:value="{comment}" />
               <Button
@@ -517,7 +518,7 @@
             </form>
             {#key comments}
               {#each comments as cmt}
-                <Comment {roles} comment="{cmt}" project="{project}" />
+                <Comment roles="{roles}" comment="{cmt}" project="{project}" />
               {/each}
             {/key}
           {/if}
@@ -625,6 +626,7 @@
     </p>
     <input
       type="number"
+      required
       class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
       bind:value="{featureDur}"
       placeholder="i.e 1, 7, 14, 30, 365" />

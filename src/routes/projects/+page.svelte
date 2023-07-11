@@ -52,6 +52,7 @@
 
 <svelte:head>
   <title>Projects | Datapack Hub</title>
+  <meta name="description" content="Explore all our datapacks" />
 </svelte:head>
 
 <main
@@ -64,7 +65,7 @@
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
         <input
           placeholder="Search Datapacks..."
-          type="text"
+          type="search"
           bind:value="{query}"
           id="query"
           maxlength="75"

@@ -26,7 +26,6 @@
     dateStyle: "short"
   });
 
-
   async function del() {
     visible = false;
     const cmt = await fetchAuthed("DELETE", `/comments/id/${reply.id}`);

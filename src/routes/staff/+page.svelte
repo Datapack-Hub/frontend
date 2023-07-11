@@ -12,6 +12,7 @@
 
 <svelte:head>
   <title>Staff Team | Datapack Hub</title>
+  <meta name="description" content="Our amazing staff team protecting you!" />
 </svelte:head>
 
 <main

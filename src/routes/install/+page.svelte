@@ -7,6 +7,7 @@
 
 <svelte:head>
   <title>Installation | Datapack Hub</title>
+  <meta name="description" content="Learn how to install Datapacks" />
 </svelte:head>
 
 <main

@@ -24,11 +24,13 @@
 <div class="{classes} h-fit">
   <div class="flex items-center space-x-1.5 mb-3">
     <button
+      role="tab"
       class="button-base {tab === 'editor'
         ? 'bg-pearl-lusta-400 dark:bg-stone-500'
         : 'bg-pearl-lusta-300 dark:bg-stone-700'}"
       on:click="{() => (tab = 'editor')}">Edit</button>
     <button
+      role="tab"
       class="button-base {tab === 'preview'
         ? 'bg-pearl-lusta-400 dark:bg-stone-500'
         : 'bg-pearl-lusta-300 dark:bg-stone-700'}"

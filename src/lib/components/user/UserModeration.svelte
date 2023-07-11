@@ -178,6 +178,7 @@
     Notification Message
   </label>
   <input
+    required
     class="input w-full"
     placeholder="Your cake is burning!"
     name="notif-message"
@@ -223,6 +224,7 @@
     Ban Expiry (days from now)
   </p>
   <input
+    required
     type="number"
     class="input w-full"
     id="ban-expiry"

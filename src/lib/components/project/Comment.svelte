@@ -103,7 +103,7 @@
             <div>
               <ul class="w-full">
                 {#each comment.replies ?? [] as reply}
-                  <Reply {roles} reply="{reply}" />
+                  <Reply roles="{roles}" reply="{reply}" />
                 {/each}
               </ul>
 
@@ -117,6 +117,7 @@
                 <input
                   bind:value="{replyMsg}"
                   type="text"
+                  required
                   class="p-1 rounded-md dark:bg-stone-900 px-2 text-white focus:transition-all"
                   placeholder="Leave a reply" />
                 <input
@@ -137,6 +138,7 @@
             <input
               bind:value="{replyMsg}"
               type="text"
+              required
               class="p-1 rounded-md dark:bg-stone-900 px-2 text-white focus:transition-all"
               placeholder="Leave the first reply" />
             <button

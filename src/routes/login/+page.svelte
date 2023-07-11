@@ -6,7 +6,8 @@
 </script>
 
 <svelte:head>
-  <title>Sign In | Datapack Hub</title>
+  <title>Log In | Datapack Hub</title>
+  <meta name="description" content="Log into Discord or GitHub" />
 </svelte:head>
 
 <div class="right-0 top-0 flex h-screen transform-gpu">
