@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fetchAuthed } from "$lib/globals/functions";
-  import type { User } from "$lib/globals/schema";
+  import type { Role, User } from "$lib/globals/schema";
   import { role, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
 
@@ -8,6 +8,8 @@
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
+
+  export let userRole: Role | undefined;
 
   let expanded = false;
   let visible = true;
@@ -43,7 +45,8 @@
     <div>
       <div class="flex items-baseline space-x-1">
         <a
-          class="dark:text-white font-bold hover:underline"
+          class="font-bold hover:underline"
+          style="color: {userRole?.color};"
           href="/user/{reply.author.username}">{reply.author.username}</a>
         <p class="text-xs dark:text-neutral-400">
           {formatter.format(new Date(reply.sent * 1000))}

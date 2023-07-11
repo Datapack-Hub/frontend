@@ -4,7 +4,8 @@
   import {
     commentSchema,
     type DPHComment,
-    type Project
+    type Project,
+    type Role
   } from "$lib/globals/schema";
   import { role, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
@@ -16,6 +17,9 @@
 
   export let comment: DPHComment;
   export let project: Project;
+  export let roles: Role[];
+
+  let userRole = roles.find(v => v.name == comment.author.role);
 
   let replyMsg: string;
   let showReplies = false;
@@ -76,7 +80,8 @@
       <div class="w-full">
         <div class="flex items-baseline space-x-1">
           <a
-            class="dark:text-white font-bold hover:underline"
+            class="font-bold hover:underline"
+            style="color: {userRole?.color};"
             href="/user/{comment.author.username}">{comment.author.username}</a>
           <p class="text-xs dark:text-neutral-400">
             {formatter.format(new Date(comment.sent * 1000))}
@@ -98,7 +103,7 @@
             <div>
               <ul class="w-full">
                 {#each comment.replies ?? [] as reply}
-                  <Reply reply="{reply}" />
+                  <Reply userRole={userRole} reply="{reply}" />
                 {/each}
               </ul>
 
