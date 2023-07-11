@@ -45,7 +45,7 @@ export async function fetchAuthed(
     }
   });
 
-  if (res.status == 498) await removeCookie("dph_token");
+  if (res.status == 498) removeCookie("dph_token");
 
   if (!res.ok && res.status != 498) {
     Promise.reject(res.statusText);
@@ -68,6 +68,6 @@ export function getCookie(cookieName: string): string | null {
   return null;
 }
 
-export async function removeCookie(name: string) {
+export function removeCookie(name: string) {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }

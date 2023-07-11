@@ -59,7 +59,7 @@
     {#if ["moderator", "developer", "admin"].includes($role.name) && !small}
       <a
         href="/moderation"
-        aria-label="Moderation"
+        aria-label="Moderation page"
         class="z-20 mr-2 md:mr-6"
         use:tippy="{moderationHoverMsg}">
         <IconShield height="24" width="24" color="{iconColor}" />
@@ -68,7 +68,7 @@
     <a
       href="/notifications"
       class="z-20"
-      aria-label="Click to read notifications"
+      aria-label="Notifications page"
       use:tippy="{notificationHoverMsg}">
       {#if unreadNotifications}
         <IconUnread height="24" width="24" color="{iconColor}" />
@@ -79,13 +79,14 @@
     {#if !small}
       <a
         href="/projects/new"
-        aria-label="Create Project"
+        aria-label="Create Project page"
         class="z-20 ml-2 md:ml-6"
         use:tippy="{newHoverMsg}">
         <IconPlus height="24" width="24" color="{iconColor}" />
       </a>
     {/if}
     <a
+      aria-label="Your profile"
       href="/user/{$user.username}"
       use:tippy="{{
         content:

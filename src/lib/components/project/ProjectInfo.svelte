@@ -62,7 +62,9 @@
         <img
           src="{project?.icon}"
           alt="{project?.title} icon"
-          class="aspect-square w-16 h-16 rounded-lg bg-cover" />
+          class="aspect-square w-16 h-16 rounded-lg bg-cover"
+          width="64"
+          height="64" />
       {:else}
         <div
           class="bg-pearl-lusta-300 dark:bg-stone-700 p-4 w-16 h-16 rounded-xl dark:text-white">

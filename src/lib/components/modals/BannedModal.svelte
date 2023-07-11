@@ -30,7 +30,7 @@
 
   async function signOut() {
     if (browser) {
-      await removeCookie("dph_token");
+      removeCookie("dph_token");
       location.replace("/");
     }
   }

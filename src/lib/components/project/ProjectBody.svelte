@@ -254,7 +254,8 @@
         class="button-base {activePage === 'description'
           ? 'bg-pearl-lusta-500 dark:bg-stone-600'
           : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
-        on:click="{() => (activePage = 'description')}">
+        on:click="{() => (activePage = 'description')}"
+        aria-label="Description">
         {#if !isSmall}
           Description
         {:else}
@@ -265,7 +266,8 @@
         class="button-base {activePage === 'comments'
           ? 'bg-pearl-lusta-500 dark:bg-stone-600'
           : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
-        on:click="{() => (activePage = 'comments')}">
+        on:click="{() => (activePage = 'comments')}"
+        aria-label="Comments">
         {#if !isSmall}
           Comments
         {:else}
@@ -322,7 +324,7 @@
             reportModal.open();
           }}"><IconReport /><span class="hidden md:block">Report</span></button>
       {/if}
-      <Button click="{() => (activePage = 'download')}">
+      <Button label="Download" click="{() => (activePage = 'download')}">
         {#if !isSmall}
           Download
         {:else}
@@ -531,7 +533,7 @@
 
 <div class="relative">
   <Modal bind:this="{modModal}">
-    <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+    <h1 class="text-xl font-bold text-pearl-lusta-950 dark:text-white">
       Moderate {project?.title}
     </h1>
     <CasualLine />

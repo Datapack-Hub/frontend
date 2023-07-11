@@ -56,7 +56,7 @@
         {:else}
           <a
             href="/projects"
-            aria-label="Link to the Datapack Hub projects page"
+            aria-label="Projects page"
             class="nav_item"
             use:tippy="{{ content: 'Explore', placement: 'bottom' }}">
             <IconCompass
@@ -64,13 +64,13 @@
               width="{iconSize}"
               style="{{ color: iconColor }}" />
           </a>
-          <button inert class="nav_item_disabled">
+          <button inert class="nav_item_disabled" aria-label="Learn page">
             <IconSchool
               height="{iconSize}"
               width="{iconSize}"
               class="text-neutral-500" />
           </button>
-          <button inert class="nav_item_disabled">
+          <button inert class="nav_item_disabled" aria-label="Compete page">
             <IconSwords
               height="{iconSize}"
               width="{iconSize}"

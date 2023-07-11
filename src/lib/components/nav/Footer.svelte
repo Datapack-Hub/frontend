@@ -24,15 +24,15 @@
   <div class="hidden lg:block"></div>
   <div class="w-full md:w-1/2">
     <div class="flex w-full text-center">
-      <h3 class="mb-4 w-1/3 text-center text-xl font-bold text-orange-500">
+      <p class="mb-4 w-1/3 text-center text-xl font-bold text-orange-500">
         Support
-      </h3>
-      <h3 class="mb-4 w-1/3 text-center text-xl font-bold text-orange-500">
+      </p>
+      <p class="mb-4 w-1/3 text-center text-xl font-bold text-orange-500">
         Socials
-      </h3>
-      <h3 class="mb-4 w-1/3 text-center text-xl font-bold text-orange-500">
+      </p>
+      <p class="mb-4 w-1/3 text-center text-xl font-bold text-orange-500">
         Policies
-      </h3>
+      </p>
     </div>
     <!-- put header content here -->
     <div class="flex w-full text-center">

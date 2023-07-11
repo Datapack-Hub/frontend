@@ -7,6 +7,7 @@
   export let wait = false;
   export let formCompat = false;
   export let formText = "";
+  export let label = "";
 
   let buttonBind: HTMLButtonElement;
 
@@ -24,12 +25,13 @@
 </script>
 
 {#if typeof click == "string"}
-  <a href="{click}" class="button-{style} {classes}">
+  <a href="{click}" aria-label="{label}" class="button-{style} {classes}">
     <slot />
   </a>
 {:else if formCompat}
   <input
     type="submit"
+    aria-label="{label}"
     class="button-{style} {classes} disabled:bg-opacity-40"
     value="{formText}"
     on:click="{buttonClick}" />
@@ -37,6 +39,7 @@
   <button
     bind:this="{buttonBind}"
     on:click="{buttonClick}"
+    aria-label="{label}"
     class="button-{style} {classes} disabled:bg-opacity-40">
     <slot />
   </button>
