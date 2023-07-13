@@ -191,13 +191,13 @@
       title: string | undefined;
       description: string | undefined | null;
       body: string | undefined;
-      category: string | undefined;
+      category: string[] | undefined;
       icon?: string | ArrayBuffer | null | undefined;
     } = {
       title: titleVal,
       description: descVal,
       body: bodyVal,
-      category: catVal
+      category: [catVal ?? "German"]
     };
 
     if (iconB64) {
