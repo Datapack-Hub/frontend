@@ -63,7 +63,9 @@
   "prettier": {
     "arrowParens": "avoid",
     "bracketSameLine": true,
+    "svelteAllowShorthand": true,
     "semi": true,
+    "singleQuote": false,
     "svelteStrictMode": true,
     "svelteIndentScriptAndStyle": true,
     "svelteSortOrder": "scripts-options-markup-styles",
