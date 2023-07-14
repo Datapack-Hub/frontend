@@ -9,7 +9,7 @@
   import IconLogOut from "~icons/tabler/Logout.svelte";
   import IconMessage from "~icons/tabler/MailForward.svelte";
   import IconSettings from "~icons/tabler/Settings.svelte";
-  import IconWarn from "~icons/tabler/toast.errorTriangle.svelte";
+  import IconWarn from "~icons/tabler/AlertTriangle.svelte";
   import { fetchAuthed } from "../../globals/functions";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import Button from "../decorative/Button.svelte";
