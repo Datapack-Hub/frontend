@@ -2,17 +2,17 @@
   import { browser } from "$app/environment";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { isDark } from "$lib/globals/stores";
+  import type { User } from "$lib/globals/schema";
+  import { isDark, role } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
-  import IconWarn from "~icons/tabler/AlertTriangle.svelte";
   import IconBan from "~icons/tabler/Ban.svelte";
   import IconLogOut from "~icons/tabler/Logout.svelte";
   import IconMessage from "~icons/tabler/MailForward.svelte";
   import IconSettings from "~icons/tabler/Settings.svelte";
+  import IconWarn from "~icons/tabler/toast.errorTriangle.svelte";
   import { fetchAuthed } from "../../globals/functions";
-  import Button from "../decorative/Button.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
-  import type { User } from "$lib/globals/schema";
+  import Button from "../decorative/Button.svelte";
 
   export let user: User | undefined;
 
@@ -35,8 +35,8 @@
     }
   }
 
-  function open(me: Modal) {
-    me.open();
+  function open(mod: Modal) {
+    mod.open();
   }
 
   async function warn() {
@@ -44,16 +44,17 @@
       "warn-message"
     ) as HTMLTextAreaElement;
 
-    let warnt = await fetchAuthed("post", `/notifs/send/${user?.id}`, {
+    let warnRes = await fetchAuthed("post", `/notifs/send/${user?.id}`, {
       type: "important",
       message: "Warning",
       description: msgTxt.value
     });
-    if (warnt.ok) {
+
+    if (warnRes.ok) {
       warnDialog.close();
       toast.success(`Warned ${user?.username}!`);
     } else {
-      alert(await warnt.text());
+      toast.error(await warnRes.text());
     }
   }
 
@@ -66,20 +67,23 @@
     ) as HTMLTextAreaElement;
     const type = document.getElementById("notif-type") as HTMLSelectElement;
 
-    if (!message || !content || !type)
-      return alert("Make sure all fields are filled in!");
+    if ([message.value, content.value].every(v => v.length > 0)) {
+      toast.error("Make sure all fields are filled");
+      return;
+    }
 
     let sent = await fetchAuthed("post", `/notifs/send/${user?.id}`, {
       type: type.value,
       message: message.value,
       description: content.value
     });
-    if (sent.ok) {
-      notifDialog.close();
-      toast.success(`Sent a notification to ${user?.username}!`);
-    } else {
-      alert(await sent.text());
+
+    if (!sent.ok) {
+      toast.error(await sent.text());
+      return;
     }
+    notifDialog.close();
+    toast.success(`Sent a notification to ${user?.username}!`);
   }
 
   async function banUser() {
@@ -91,48 +95,45 @@
       "ban-permanent"
     ) as HTMLInputElement;
 
-    let exp;
-
-    if (permanent.checked) {
-      exp = 36500;
-    } else {
-      exp = expiry.value;
-    }
+    let exp = parseInt(expiry.value);
+    if (permanent.checked) exp = 36500;
 
     let ban = await fetchAuthed("post", `/moderation/ban/${user?.id}`, {
       id: user?.id,
-      expires: parseInt(exp.toString()),
+      expires: exp,
       message: message.value
     });
-    if (ban.ok) {
-      banDialog.close();
-      toast.success(`${user?.username} is now banned!`);
-    } else {
-      alert(await ban.text());
+    if (!ban.ok) {
+      toast.error(await ban.text());
+      return;
     }
+
+    banDialog.close();
+    toast.success(`${user?.username} is now banned!`);
   }
 
   async function unbanUser() {
     let unban = await fetchAuthed("DELETE", `/moderation/ban/${user?.id}`);
-    if (unban.ok) {
-      unbanDialog.close();
-      modJson.banned == false;
-      toast.success(`${user?.username} is now unbanned.`);
-    } else {
-      alert(await unban.text());
+    if (!unban.ok) {
+      toast.error(await unban.text());
+      return;
     }
+
+    unbanDialog.close();
+    modJson.banned == false;
+    toast.success(`${user?.username} is now unbanned.`);
   }
 
   async function logOutUser() {
     let logout = await fetchAuthed("post", `/moderation/log_out/${user?.id}`);
-    if (logout.ok) {
-      logOutDialog.close();
-      toast.success(`${user?.username} is now logged out of their account.`);
-    } else {
-      alert(await logout.text());
+    if (!logout.ok) {
+      toast.error(await logout.text());
+      return;
     }
+
+    logOutDialog.close();
+    toast.success(`${user?.username} is now logged out of their account.`);
   }
-  $: iconColor = $isDark ? "white" : "black";
 
   function disableBan() {
     const permanent = document.getElementById(
@@ -142,7 +143,97 @@
     expiry.disabled = false;
     if (permanent.checked) expiry.disabled = true;
   }
+
+  $: iconColor = $isDark ? "white" : "black";
 </script>
+
+{#if user && ["admin", "moderator", "helper"].includes($role.name)}
+  {#await loadData()}
+    <p class="text-pearl-lusta-950 dark:text-white">Loading...</p>
+  {:then}
+    <div class="flex max-w-full justify-center md:justify-start">
+      <div class="w-full rounded-xl moderation p-3">
+        <h1
+          class=" text-base font-medium text-pearl-lusta-950 dark:text-white md:text-lg">
+          Moderate {user.username}
+        </h1>
+        <CasualLine />
+        <div class="xs:flex-col md:flex">
+          <div class="md:w-2/3">
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-red-600 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              on:click="{() => {
+                if (modJson.banned) open(unbanDialog);
+                else open(banDialog);
+              }}">
+              <IconBan height="32" width="32" color="{iconColor}" class="p-1" />
+              {#if modJson.banned}Unban (expires {new Date(
+                  modJson.banExpiry
+                ).toDateString()}){:else}Ban{/if}
+            </button>
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-orange-600 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              on:click="{() => open(warnDialog)}">
+              <IconWarn
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
+              Warn
+            </button>
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              id="send_notif"
+              on:click="{() => open(notifDialog)}">
+              <IconMessage
+                color="{iconColor}"
+                class="p-1"
+                height="32"
+                width="32" />
+              Send a Notification
+            </button>
+            <a
+              href="/user/{user?.username}/edit"
+              class="mt-1 flex w-full items-center rounded-md bg-green-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
+              <IconSettings
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
+              Edit Profile Details
+            </a>
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-sky-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              on:click="{() => open(logOutDialog)}">
+              <IconLogOut
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
+              Log User Out
+            </button>
+          </div>
+          <div class="w-1/3 pl-2">
+            <p
+              class="mt-6 text-xl font-extrabold text-pearl-lusta-950 dark:text-white md:mt-0">
+              User Info
+            </p>
+            <p class=" text-pearl-lusta-950 dark:text-white">
+              <b>ID: </b>
+              {user.id}
+            </p>
+            {#if modJson.banned}
+              <p class=" text-pearl-lusta-950 dark:text-white">
+                <b>Banned</b>
+              </p>
+            {/if}
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+  {/await}
+{/if}
 
 <Modal bind:this="{warnDialog}">
   <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
@@ -270,91 +361,3 @@
   </p>
   <Button click="{async () => await logOutUser()}">Log them out!</Button>
 </Modal>
-
-{#if user}
-  {#await loadData()}
-    Loading...
-  {:then}
-    <div class="flex max-w-full justify-center md:justify-start">
-      <div class="w-full rounded-xl moderation p-3">
-        <h1
-          class=" text-base font-medium text-pearl-lusta-950 dark:text-white md:text-lg">
-          Moderate {user.username}
-        </h1>
-        <CasualLine />
-        <div class="xs:flex-col md:flex">
-          <div class="md:w-2/3">
-            <button
-              class="mt-1 flex w-full items-center rounded-md bg-red-600 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
-              on:click="{() => {
-                if (modJson.banned) open(unbanDialog);
-                else open(banDialog);
-              }}">
-              <IconBan height="32" width="32" color="{iconColor}" class="p-1" />
-              {#if modJson.banned}Unban (expires {new Date(
-                  modJson.banExpiry
-                ).toDateString()}){:else}Ban{/if}
-            </button>
-            <button
-              class="mt-1 flex w-full items-center rounded-md bg-orange-600 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
-              on:click="{() => open(warnDialog)}">
-              <IconWarn
-                height="32"
-                width="32"
-                color="{iconColor}"
-                class="p-1" />
-              Warn
-            </button>
-            <button
-              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
-              id="send_notif"
-              on:click="{() => open(notifDialog)}">
-              <IconMessage
-                color="{iconColor}"
-                class="p-1"
-                height="32"
-                width="32" />
-              Send a Notification
-            </button>
-            <a
-              href="/user/{user?.username}/edit"
-              class="mt-1 flex w-full items-center rounded-md bg-green-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
-              <IconSettings
-                height="32"
-                width="32"
-                color="{iconColor}"
-                class="p-1" />
-              Edit Profile Details
-            </a>
-            <button
-              class="mt-1 flex w-full items-center rounded-md bg-sky-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
-              on:click="{() => open(logOutDialog)}">
-              <IconLogOut
-                height="32"
-                width="32"
-                color="{iconColor}"
-                class="p-1" />
-              Log User Out
-            </button>
-          </div>
-          <div class="w-1/3 pl-2">
-            <p
-              class="mt-6 text-xl font-extrabold text-pearl-lusta-950 dark:text-white md:mt-0">
-              User Info
-            </p>
-            <p class=" text-pearl-lusta-950 dark:text-white">
-              <b>ID: </b>
-              {user.id}
-            </p>
-            {#if modJson.banned}
-              <p class=" text-pearl-lusta-950 dark:text-white">
-                <b>Banned</b>
-              </p>
-            {/if}
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-  {/await}
-{/if}

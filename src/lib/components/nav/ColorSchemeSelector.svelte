@@ -12,7 +12,7 @@
   $: iconSize = small ? 20 : 24;
 </script>
 
-<div class="select-none" role="checkbox" aria-checked="{$isDark}">
+<div class="select-none" role="checkbox" aria-checked="{$isDark}" aria-label="dark mode toggle">
   {#if $isDark}
     <svg
       xmlns="http://www.w3.org/2000/svg"
