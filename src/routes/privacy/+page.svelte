@@ -11,7 +11,7 @@
 </svelte:head>
 
 <main
-  class="bg-pearl-lusta-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class="bg-gray-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div class="pt-20"></div>
   <MarkdownComponent source="{data.policy}" />
   <div class="pb-10"></div>

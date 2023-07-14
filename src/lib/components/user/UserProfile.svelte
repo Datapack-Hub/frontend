@@ -56,7 +56,7 @@
   </div>
 
   <p
-    class="mt-4 w-full text-center text-4xl font-bold text-pearl-lusta-950 dark:text-white md:text-3xl lg:text-4xl">
+    class="mt-4 w-full text-center text-4xl font-bold text-slate-950 dark:text-white md:text-3xl lg:text-4xl">
     {profile?.username}
     {#if ["moderator", "developer", "admin"].includes(profileRole?.name ?? "")}
       <span class="text-dph-orange icon" use:tippy="{orangeVerifiedHover}"
@@ -73,7 +73,7 @@
   </p>
 
   <p
-    class="mt-1 w-full text-center align-middle font-semibold text-pearl-lusta-950 dark:text-white sm:text-base md:text-lg">
+    class="mt-1 w-full text-center align-middle font-semibold text-slate-950 dark:text-white sm:text-base md:text-lg">
     {#if profileRole?.name != "default"}
       <span
         class="flex items-center justify-center"
@@ -94,29 +94,29 @@
   <h2 class="dark:text-white font-bold mb-1 text-lg mt-8 flex items-center">
     <IconInfo class="inline-block mr-1" /> About
   </h2>
-  <p class="w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5">
+  <p class="w-full rounded-xl bg-gray-300 dark:bg-stone-800 p-5">
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
 
-  <h2 class="dark:text-pearl-lusta-100 mb-1 text-md mt-4 flex items-center">
+  <h2 class="dark:text-slate-100 mb-1 text-md mt-4 flex items-center">
     <IconTime class="inline-block mr-1" /> <b class="mr-2">Joined: </b>we
     forgor, at least they're here now 🦆
   </h2>
 
-  <h2 class="dark:text-pearl-lusta-100 mb-1 text-md flex items-center">
+  <h2 class="dark:text-slate-100 mb-1 text-md flex items-center">
     <IconDL class="inline-block mr-1" />
     <b class="mr-2">Total Downloads: </b>123
   </h2>
 
   {#if badges}
-    <!-- <div class="mt-4 w-full rounded-xl bg-pearl-lusta-300 dark:bg-stone-800 p-5"> -->
+    <!-- <div class="mt-4 w-full rounded-xl bg-gray-300 dark:bg-stone-800 p-5"> -->
     <h2
-      class="dark:text-pearl-lusta-100 font-bold mb-1 text-lg mt-4 flex items-center">
+      class="dark:text-slate-100 font-bold mb-1 text-lg mt-4 flex items-center">
       <IconBadge class="inline-block mr-1" /> Badges
     </h2>
     <div
-      class="flex space-x-2 p-2 bg-pearl-lusta-300 dark:bg-stone-800 rounded-lg w-full">
+      class="flex space-x-2 p-2 bg-gray-300 dark:bg-stone-800 rounded-lg w-full">
       {#each profile?.badges ?? [] as badge}
         <img
           alt="{badge} badge"

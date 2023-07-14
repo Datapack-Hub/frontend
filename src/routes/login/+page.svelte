@@ -24,11 +24,11 @@
           height="32"
           width="32" />
         <span
-          class="hidden text-2xl font-bold text-pearl-lusta-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
+          class="hidden text-2xl font-bold text-slate-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
           Sign In
         </span>
       </a>
-      <!-- <h1 class=" text-2xl text-pearl-lusta-950 dark:text-white font-regular">You are temporarily banned from Datapack Hub</h1> -->
+      <!-- <h1 class=" text-2xl text-slate-950 dark:text-white font-regular">You are temporarily banned from Datapack Hub</h1> -->
       <CasualLine />
       <p class="dark:text-white">Use a sign in option below.</p>
       <p class="mb-2 dark:text-neutral-500 text-sm">

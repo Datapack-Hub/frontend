@@ -252,8 +252,8 @@
     <div class="space-x-1.5">
       <button
         class="button-base {activePage === 'description'
-          ? 'bg-pearl-lusta-500 dark:bg-stone-600'
-          : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
+          ? 'bg-gray-500 dark:bg-stone-600'
+          : 'bg-gray-300 dark:bg-stone-800'}"
         on:click="{() => (activePage = 'description')}"
         aria-label="Description">
         {#if !isSmall}
@@ -264,8 +264,8 @@
       </button>
       <button
         class="button-base {activePage === 'comments'
-          ? 'bg-pearl-lusta-500 dark:bg-stone-600'
-          : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
+          ? 'bg-gray-500 dark:bg-stone-600'
+          : 'bg-gray-300 dark:bg-stone-800'}"
         on:click="{() => (activePage = 'comments')}"
         aria-label="Comments">
         {#if !isSmall}
@@ -373,8 +373,7 @@
     </div>
   {/if}
   {#if activePage == "description"}
-    <div
-      class="w-full rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-50/10">
+    <div class="w-full rounded-xl bg-gray-200 p-3 dark:bg-gray-50/10">
       <p class="w-full leading-tight break-words">
         <MarkdownComponent
           source="{body}"
@@ -383,7 +382,7 @@
     </div>
   {:else if activePage == "versions"}
     <div
-      class="mb-2 items-center rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-50/10">
+      class="mb-2 items-center rounded-xl bg-gray-200 p-3 dark:bg-gray-50/10">
       <div class="mb-3 text-sky-300" use:autoAnimate>
         <button on:click="{() => (activePage = 'description')}"
           ><IconBack class="inline" /> Back to description
@@ -397,12 +396,11 @@
             options="{minecraftVersions}" />
         </div>
         <div class="mx-3 flex space-x-3 mt-4">
-          <h2
-            class="w-1/3 text-xl font-black text-pearl-lusta-950 dark:text-white">
+          <h2 class="w-1/3 text-xl font-black text-slate-950 dark:text-white">
             Name
           </h2>
           <h2
-            class="flex-grow text-xl font-black text-pearl-lusta-950 dark:text-white">
+            class="flex-grow text-xl font-black text-slate-950 dark:text-white">
             Minecraft versions
           </h2>
         </div>
@@ -411,11 +409,11 @@
             <VersionDisplay version="{version}" />
           {/each}
         </ul>
-        <p class="mx-1 mt-2 text-pearl-lusta-950 dark:text-white">
+        <p class="mx-1 mt-2 text-slate-950 dark:text-white">
           (Showing {versionMatches?.length} versions)
         </p>
       {:else}
-        <h2 class=" text-xl text-pearl-lusta-950 dark:text-white">
+        <h2 class=" text-xl text-slate-950 dark:text-white">
           <b>No versions yet!</b> Why not
           <a href="/project/{project?.url}/edit" class="text-blue-500 underline"
             >create one</a
@@ -425,7 +423,7 @@
     </div>
   {:else if activePage == "download"}
     <div class="mb-2 items-center space-y-2">
-      <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-50/10">
+      <div class="rounded-xl bg-gray-200 p-3 dark:bg-gray-50/10">
         <div class="mb-3 text-sky-300" use:autoAnimate>
           <button on:click="{() => (activePage = 'description')}"
             ><IconBack class="inline" /> Back to description
@@ -475,7 +473,7 @@
             <p>means the datapack version is outdated</p>
           </div>
         {:else}
-          <h2 class=" text-xl text-pearl-lusta-950 dark:text-white">
+          <h2 class=" text-xl text-slate-950 dark:text-white">
             <b>No versions yet!</b>
             {#if project.author == $user.id}Why not
               <a
@@ -486,8 +484,7 @@
         {/if}
       </div>
       {#if matches.length != 0}
-        <div
-          class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-50/10">
+        <div class="rounded-xl bg-gray-200 p-3 dark:bg-gray-50/10">
           <p class="text-white">Latest version for {pickedVersion}:</p>
           <ul use:autoAnimate class="space-y-2">
             <VersionDisplay
@@ -506,7 +503,7 @@
     </div>
   {:else if activePage == "comments"}
     <div class="mb-2 items-center space-y-2">
-      <div class="rounded-xl bg-pearl-lusta-200 p-3 dark:bg-pearl-lusta-50/10">
+      <div class="rounded-xl bg-gray-200 p-3 dark:bg-gray-50/10">
         <div class="space-y-2" use:autoAnimate>
           {#if $authed}
             <form class="flex items-center space-x-2" on:submit="{postComment}">
@@ -540,21 +537,17 @@
 
 <div class="relative">
   <Modal bind:this="{modModal}">
-    <h1 class="text-xl font-bold text-pearl-lusta-950 dark:text-white">
+    <h1 class="text-xl font-bold text-slate-950 dark:text-white">
       Moderate {project?.title}
     </h1>
     <CasualLine />
     <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-    <p
-      class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
-      User
-    </p>
+    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
     <UserCard
       person="{author}"
       role="{roles?.find(v => author?.role == v.name)}" />
     <div class="mb-2 min-w-fit items-center">
-      <p
-        class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+      <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
         Select Action
       </p>
       <button
@@ -577,12 +570,11 @@
         on:click="{() => goto('/project/' + project?.url + '/edit')}"
         >Edit Submission</button>
     </div>
-    <p
-      class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
       Moderation Note
     </p>
     <textarea
-      class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700"
+      class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-gray-300 p-2 dark:bg-stone-700"
       placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
       id="description"
       maxlength="200"
@@ -592,24 +584,22 @@
   </Modal>
 
   <Modal bind:this="{reportModal}">
-    <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+    <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
       Report {project?.title}
     </h1>
     <CasualLine />
     <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-    <p
-      class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
       Author
     </p>
     <UserCard
       person="{author}"
       role="{roles?.find(v => author?.role == v.name)}" />
-    <p
-      class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
       Report Message
     </p>
     <textarea
-      class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-pearl-lusta-300 p-2 dark:bg-stone-700"
+      class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-gray-300 p-2 dark:bg-stone-700"
       placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
       id="description"
       maxlength="200"
@@ -618,25 +608,24 @@
   </Modal>
 
   <Modal bind:this="{featureModal}">
-    <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+    <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
       Feature {project?.title}
     </h1>
     <CasualLine />
     <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-    <p
-      class="align-middle text-lg text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
       Author
     </p>
     <UserCard
       person="{author}"
       role="{roles?.find(v => author?.role == v.name)}" />
-    <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
       Duration of feature
     </p>
     <input
       type="number"
       required
-      class="h-8 w-full resize-none rounded-md bg-pearl-lusta-200 p-2 text-lg text-pearl-lusta-950 dark:bg-stone-700 dark:text-white"
+      class="h-8 w-full resize-none rounded-md bg-gray-200 p-2 text-lg text-slate-950 dark:bg-stone-700 dark:text-white"
       bind:value="{featureDur}"
       placeholder="i.e 1, 7, 14, 30, 365" />
     <Button classes="mt-2" click="{() => feature()}">Feature</Button>

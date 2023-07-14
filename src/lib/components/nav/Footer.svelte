@@ -1,5 +1,5 @@
 <footer
-  class="flex h-[30rem] flex-col items-center justify-evenly border-t-2 border-pearl-lusta-50 bg-pearl-lusta-50 px-8 dark:border-stone-700 dark:bg-stone-900 lg:h-64 lg:flex-row lg:justify-between md:px-16 lg:px-24"
+  class="flex h-[30rem] flex-col items-center justify-evenly border-t-2 border-slate-50 bg-gray-50 px-8 dark:border-stone-700 dark:bg-stone-900 lg:h-64 lg:flex-row lg:justify-between md:px-16 lg:px-24"
   id="footer">
   <div>
     <div class="flex items-center space-x-2">
@@ -11,12 +11,12 @@
         width="48"
         class="h-12 w-full lg:w-auto" />
       <p
-        class="hidden w-full text-center text-2xl font-bold text-pearl-lusta-950 dark:text-white lg:block lg:text-left">
+        class="hidden w-full text-center text-2xl font-bold text-slate-950 dark:text-white lg:block lg:text-left">
         Datapack Hub
       </p>
     </div>
     <p
-      class="mt-4 text-center text-sm font-light text-pearl-lusta-950/25 dark:text-white/25 lg:text-left">
+      class="mt-4 text-center text-sm font-light text-slate-950/25 dark:text-white/25 lg:text-left">
       Copyright © 2023 Datapack Hub<br />Not an official Minecraft product. Not
       approved by or associated with Mojang Studios
     </p>
@@ -36,7 +36,7 @@
     </div>
     <!-- put header content here -->
     <div class="flex w-full text-center">
-      <ul class="w-1/3 text-center text-pearl-lusta-950 dark:text-white">
+      <ul class="w-1/3 text-center text-slate-950 dark:text-white">
         <li>
           <a
             class="hover:brightness-75 transition-all"
@@ -51,7 +51,7 @@
             >About us</a>
         </li>
       </ul>
-      <ul class="w-1/3 text-center text-pearl-lusta-950 dark:text-white">
+      <ul class="w-1/3 text-center text-slate-950 dark:text-white">
         <li>
           <a
             class="hover:brightness-75 transition-all"
@@ -68,7 +68,7 @@
             href="https://twitter.com/DatapackHub">Twitter</a>
         </li>
       </ul>
-      <ul class="w-1/3 text-center text-pearl-lusta-950 dark:text-white">
+      <ul class="w-1/3 text-center text-slate-950 dark:text-white">
         <li>
           <a class="hover:brightness-75 transition-all" href="/rules">Rules</a>
         </li>

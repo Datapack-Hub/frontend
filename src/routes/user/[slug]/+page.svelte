@@ -28,7 +28,7 @@
 </svelte:head>
 
 <main
-  class="flex flex-col lg:flex-row w-full items-center bg-pearl-lusta-50 px-8 transition-all dark:bg-stone-900 md:items-start md:px-16 md:pt-32 lg:px-24">
+  class="flex flex-col lg:flex-row w-full items-center bg-gray-50 px-8 transition-all dark:bg-stone-900 md:items-start md:px-16 md:pt-32 lg:px-24">
   <div class="w-full lg:w-2/5 xl:w-1/3">
     <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
     {#if $authed && ["moderator", "developer", "admin"].includes($role.name)}
@@ -39,7 +39,7 @@
     class="grid grid-flow-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 auto-rows-min styled-scrollbar ml-0 mt-16 lg:ml-12 lg:mt-0 flex-grow">
     <div class="mb-2 flex items-center col-span-1 sm:col-span-2 lg:col-span-1">
       <h1
-        class="flex-grow text-center text-xl font-bold text-pearl-lusta-900 dark:text-pearl-lusta-100 md:text-left">
+        class="flex-grow text-center text-xl font-bold text-slate-900 dark:text-slate-100 md:text-left">
         {data.profile?.username}'s projects
       </h1>
       {#if data.profile?.id == $user.id}
@@ -52,7 +52,7 @@
     </div>
     {#if data.projects?.length == 0}
       <p
-        class="mt-24 text-center text-3xl text-pearl-lusta-950/40 dark:text-white/40 md:mt-48 col-span-2">
+        class="mt-24 text-center text-3xl text-slate-950/40 dark:text-white/40 md:mt-48 col-span-2">
         No projects here...
       </p>
     {:else}

@@ -40,7 +40,7 @@
       <MarkdownComponent source="{notification?.description}" />
     </div>
     <button
-      class="closeButton right-0 top-0 h-1 text-pearl-lusta-950 dark:text-white"
+      class="closeButton right-0 top-0 h-1 text-slate-950 dark:text-white"
       on:click="{remove}"><IconX /></button>
   </li>
 {/if}
@@ -48,10 +48,10 @@
 <style lang="postcss">
   /* @HoodieRocks can you fix this so it works on light mode too */
   .default-text {
-    @apply text-pearl-lusta-950 dark:text-white;
+    @apply text-slate-950 dark:text-white;
   }
   .default-background {
-    @apply bg-pearl-lusta-200 dark:bg-stone-800;
+    @apply bg-gray-200 dark:bg-stone-800;
   }
 
   .important-text {

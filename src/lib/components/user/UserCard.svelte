@@ -8,8 +8,7 @@
 </script>
 
 <a href="/user/{person?.username.toLowerCase()}">
-  <div
-    class="my-2 flex w-full rounded-xl bg-pearl-lusta-200 p-2 dark:bg-stone-800">
+  <div class="my-2 flex w-full rounded-xl bg-gray-200 p-2 dark:bg-stone-800">
     <img
       loading="lazy"
       src="{person?.profile_icon}?size=64"
@@ -17,8 +16,7 @@
       class="float-left mr-2 h-16 w-16 rounded-full" />
     <div>
       <a href="/user/{person?.username.toLowerCase()}"
-        ><h1
-          class="mr-2 text-xl font-bold text-pearl-lusta-950 dark:text-white">
+        ><h1 class="mr-2 text-xl font-bold text-slate-950 dark:text-white">
           {person?.username}
         </h1></a>
       <span class=" font-bold" style="color:{role?.color};"

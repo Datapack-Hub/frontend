@@ -149,19 +149,19 @@
 
 {#if user && ["admin", "moderator", "helper"].includes($role.name)}
   {#await loadData()}
-    <p class="text-pearl-lusta-950 dark:text-white">Loading...</p>
+    <p class="text-slate-950 dark:text-white">Loading...</p>
   {:then}
     <div class="flex max-w-full justify-center md:justify-start">
       <div class="w-full rounded-xl moderation p-3">
         <h1
-          class=" text-base font-medium text-pearl-lusta-950 dark:text-white md:text-lg">
+          class=" text-base font-medium text-slate-950 dark:text-white md:text-lg">
           Moderate {user.username}
         </h1>
         <CasualLine />
         <div class="xs:flex-col md:flex">
           <div class="md:w-2/3">
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-red-600 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-red-600 p-1 text-left text-slate-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => {
                 if (modJson.banned) open(unbanDialog);
                 else open(banDialog);
@@ -172,7 +172,7 @@
                 ).toDateString()}){:else}Ban{/if}
             </button>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-orange-600 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-orange-600 p-1 text-left text-slate-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(warnDialog)}">
               <IconWarn
                 height="32"
@@ -182,7 +182,7 @@
               Warn
             </button>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-yellow-500 p-1 text-left text-slate-950 transition-all hover:scale-102 dark:text-white"
               id="send_notif"
               on:click="{() => open(notifDialog)}">
               <IconMessage
@@ -194,7 +194,7 @@
             </button>
             <a
               href="/user/{user?.username}/edit"
-              class="mt-1 flex w-full items-center rounded-md bg-green-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white">
+              class="mt-1 flex w-full items-center rounded-md bg-green-500 p-1 text-left text-slate-950 transition-all hover:scale-102 dark:text-white">
               <IconSettings
                 height="32"
                 width="32"
@@ -203,7 +203,7 @@
               Edit Profile Details
             </a>
             <button
-              class="mt-1 flex w-full items-center rounded-md bg-sky-500 p-1 text-left text-pearl-lusta-950 transition-all hover:scale-102 dark:text-white"
+              class="mt-1 flex w-full items-center rounded-md bg-sky-500 p-1 text-left text-slate-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(logOutDialog)}">
               <IconLogOut
                 height="32"
@@ -215,15 +215,15 @@
           </div>
           <div class="w-1/3 pl-2">
             <p
-              class="mt-6 text-xl font-extrabold text-pearl-lusta-950 dark:text-white md:mt-0">
+              class="mt-6 text-xl font-extrabold text-slate-950 dark:text-white md:mt-0">
               User Info
             </p>
-            <p class=" text-pearl-lusta-950 dark:text-white">
+            <p class=" text-slate-950 dark:text-white">
               <b>ID: </b>
               {user.id}
             </p>
             {#if modJson.banned}
-              <p class=" text-pearl-lusta-950 dark:text-white">
+              <p class=" text-slate-950 dark:text-white">
                 <b>Banned</b>
               </p>
             {/if}
@@ -236,15 +236,15 @@
 {/if}
 
 <Modal bind:this="{warnDialog}">
-  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Warn {user?.username}
   </h1>
   <CasualLine />
-  <p class=" text-pearl-lusta-950 dark:text-white">
+  <p class=" text-slate-950 dark:text-white">
     This message is sent to the user as a notification. Always be professional,
     even when they are not.
   </p>
-  <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+  <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
     Warn Message
   </p>
   <textarea
@@ -255,17 +255,17 @@
 </Modal>
 
 <Modal bind:this="{notifDialog}">
-  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Notify {user?.username}
   </h1>
   <CasualLine />
-  <p class=" text-pearl-lusta-950 dark:text-white">
+  <p class=" text-slate-950 dark:text-white">
     Send an anonymous notification (unless you put your name down) to the user.
     For warnings, use the Warn button.
   </p>
   <label
     for="notif-message"
-    class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    class="mt-3 align-middle text-slate-950 dark:text-slate-100">
     Notification Message
   </label>
   <input
@@ -276,7 +276,7 @@
     id="notif-message" />
   <label
     for="notif-content"
-    class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    class="mt-3 align-middle text-slate-950 dark:text-slate-100">
     Notification Body
   </label>
   <textarea
@@ -286,7 +286,7 @@
     id="notif-content"></textarea>
   <label
     for="notif-type"
-    class="mt-2 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+    class="mt-2 align-middle text-slate-950 dark:text-slate-100">
     Notification Type
   </label>
   <select name="notif-type" id="notif-type" class="input w-full mb-2">
@@ -298,20 +298,20 @@
   <button
     on:click="{async () => await sendNotif()}"
     id="send_notif_btn"
-    class="rounded-md bg-dph-orange p-2 text-base font-bold text-pearl-lusta-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="rounded-md bg-dph-orange p-2 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Send</button>
 </Modal>
 
 <Modal bind:this="{banDialog}">
-  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Ban {user?.username}
   </h1>
   <CasualLine />
-  <p class=" text-pearl-lusta-950 dark:text-white">
+  <p class=" text-slate-950 dark:text-white">
     Banning a user prevents them from interacting with the website. You can
     write a message or ban reason to be displayed when they try to log in.
   </p>
-  <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+  <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
     Ban Expiry (days from now)
   </p>
   <input
@@ -320,11 +320,11 @@
     class="input w-full"
     id="ban-expiry"
     placeholder="i.e 1, 7, 14, 30, 365" />
-  <label class=" text-pearl-lusta-950 dark:text-pearl-lusta-100">
+  <label class=" text-slate-950 dark:text-slate-100">
     <input type="checkbox" id="ban-permanent" on:change="{disableBan}" />
     Permanent?
   </label>
-  <p class="mt-3 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+  <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
     Ban Message (supports markdown)
   </p>
   <textarea
@@ -335,27 +335,27 @@
 </Modal>
 
 <Modal bind:this="{unbanDialog}">
-  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Unban {user?.username}
   </h1>
   <CasualLine />
-  <p class=" text-pearl-lusta-950 dark:text-white">
+  <p class=" text-slate-950 dark:text-white">
     {user?.username} has been banned for the following reason:
   </p>
   <p class="my-2 rounded-xl bg-stone-700 p-2 dark:text-stone-300">
     <MarkdownComponent source="" />
   </p>
-  <p class=" text-pearl-lusta-950 dark:text-white">
+  <p class=" text-slate-950 dark:text-white">
     Unban them to end their ban early.
   </p>
   <Button click="{async () => await unbanUser()}">Log them out!</Button>
 </Modal>
 <Modal bind:this="{logOutDialog}">
-  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Log {user?.username} out
   </h1>
   <CasualLine />
-  <p class=" text-pearl-lusta-950 dark:text-white">
+  <p class=" text-slate-950 dark:text-white">
     This will log {user?.username} out of all their signed-in devices, and generate
     them a new token. They will need to sign in again.
   </p>

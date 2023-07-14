@@ -280,16 +280,16 @@
 </svelte:head>
 
 <main
-  class="relative bg-pearl-lusta-50 px-4 transition-all dark:bg-stone-900 sm:px-8 lg:px-16 xl:px-24">
+  class="relative bg-gray-50 px-4 transition-all dark:bg-stone-900 sm:px-8 lg:px-16 xl:px-24">
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="pt-8 text-center text-5xl font-bold text-pearl-lusta-950 dark:text-pearl-lusta-100 md:text-start md:text-4xl lg:text-4xl">
+      class="pt-8 text-center text-5xl font-bold text-slate-950 dark:text-slate-100 md:text-start md:text-4xl lg:text-4xl">
       Edit <span class="text-dph-orange">{data.project?.title}</span>
     </h1>
     {#if data.project?.mod_message}
       <div
-        class="mt-2 rounded-xl bg-pearl-lusta-200 p-4 dark:bg-red-500/20 dark:text-pearl-lusta-100">
+        class="mt-2 rounded-xl bg-gray-200 p-4 dark:bg-red-500/20 dark:text-slate-100">
         <p class=" font-black">Message from Datapack Hub Staff:</p>
         <p
           class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 dark:text-stone-300">
@@ -300,14 +300,14 @@
     <div class="mb-2 mt-2 flex space-x-2">
       <button
         class="{activePage === 'details'
-          ? 'bg-pearl-lusta-200 dark:bg-stone-600'
-          : 'bg-pearl-lusta-300 dark:bg-stone-800'} button-base"
+          ? 'bg-gray-200 dark:bg-stone-600'
+          : 'bg-gray-300 dark:bg-stone-800'} button-base"
         on:click="{() => (activePage = 'details')}">Details</button>
       <div class="flex-grow">
         <button
           class="{activePage === 'versions'
-            ? 'bg-pearl-lusta-200 dark:bg-stone-600'
-            : 'bg-pearl-lusta-300 dark:bg-stone-800'} button-base"
+            ? 'bg-gray-200 dark:bg-stone-600'
+            : 'bg-gray-300 dark:bg-stone-800'} button-base"
           on:click="{() => (activePage = 'versions')}"
           >Versions ({data.versions?.length})</button>
       </div>
@@ -331,11 +331,11 @@
     <div use:autoAnimate>
       {#if activePage == "details"}
         <div
-          class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2 bg-pearl-lusta-200 dark:bg-stone-800">
+          class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2 bg-gray-200 dark:bg-stone-800">
           <div
             class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2 xl:col-span-1">
             <div
-              class="bg-pearl-lusta-300 dark:bg-stone-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
+              class="bg-gray-300 dark:bg-stone-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
               <label class="w-full h-full flex items-center justify-center">
                 <img
                   src="{iconImg}"
@@ -354,9 +354,7 @@
               </label>
             </div>
             <div class="w-full">
-              <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100 mb-2">
-                Title
-              </p>
+              <p class="text-slate-950 dark:text-slate-100 mb-2">Title</p>
               <input
                 type="text"
                 placeholder="Super Cool Datapack"
@@ -365,7 +363,7 @@
                 required
                 class="input w-full" />
               <p
-                class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-2 mt-4 mb-2">
+                class="text-slate-950 dark:text-slate-100 col-span-2 mt-4 mb-2">
                 URL
               </p>
               <input
@@ -377,8 +375,7 @@
             </div>
           </div>
 
-          <p
-            class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
+          <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
             Summary
           </p>
           <textarea
@@ -386,19 +383,16 @@
             maxlength="200"
             bind:value="{descVal}"
             class="input resize-none h-32 col-span-2"></textarea>
-          <p
-            class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
+          <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
             Description
           </p>
           <MarkdownEditor
             classes="resize-none h-64 col-span-2"
             bind:content="{bodyVal}" />
-          <p
-            class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3 pt-3">
+          <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
             CC Licence (click to select)
           </p>
-          <p
-            class="text-pearl-lusta-950 dark:text-pearl-lusta-100/20 col-span-3">
+          <p class="text-slate-950 dark:text-slate-100/20 col-span-3">
             WIP, does not work!
           </p>
           <div
@@ -455,7 +449,7 @@
                 placeholder="https://example.com/my-custom-licence.md" />
             </div>
           </div>
-          <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3">
+          <p class="text-slate-950 dark:text-slate-100 col-span-3">
             Categories
           </p>
           <div
@@ -473,7 +467,7 @@
         </div>
         <!-- VERSIONS-->
       {:else if activePage == "versions"}
-        <div class="bg-pearl-lusta-200 dark:bg-stone-800 p-3 rounded-xl">
+        <div class="bg-gray-200 dark:bg-stone-800 p-3 rounded-xl">
           <div class="text-center align-middle md:text-start w-full">
             {#if createVersion == false}
               <div class="my-2 mb-4 flex space-x-2">
@@ -487,9 +481,9 @@
                   accept=".zip"
                   id="zip"
                   on:input="{uploadDatapack}" />
-                <span class="align-center text-pearl-lusta-950 dark:text-white"
+                <span class="align-center text-slate-950 dark:text-white"
                   >(Supported: *.zip)</span>
-                <!-- <p class="align-middle  text-pearl-lusta-950 dark:text-pearl-lusta-100">No versions yet!</p> -->
+                <!-- <p class="align-middle  text-slate-950 dark:text-slate-100">No versions yet!</p> -->
               </div>
               <div class="space-y-2">
                 {#each data.versions ?? [] as version}
@@ -502,20 +496,20 @@
               {@const ver = (Math.random() * 10).toFixed(1)}
               <div>
                 <button
-                  class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+                  class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
                   on:click="{() => (createVersion = false)}">X</button>
                 <h2
-                  class="mb-2 text-xl font-bold text-pearl-lusta-950 dark:text-white">
+                  class="mb-2 text-xl font-bold text-slate-950 dark:text-white">
                   Creating new Version
                 </h2>
 
                 <div class="flex space-x-4">
                   <p
-                    class="w-3/4 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                    class="w-3/4 align-middle text-slate-950 dark:text-slate-100">
                     Version Name
                   </p>
                   <p
-                    class="w-1/4 align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                    class="w-1/4 align-middle text-slate-950 dark:text-slate-100">
                     Version Number
                   </p>
                 </div>
@@ -534,16 +528,14 @@
                     id="v_code" />
                 </div>
 
-                <p
-                  class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
+                <p class="align-middle text-slate-950 dark:text-slate-100 mt-4">
                   Changelog (supports markdown!)
                 </p>
                 <MarkdownEditor
                   bind:content="{v_changelog}"
                   classes="h-36 w-full md:w-3/4" />
 
-                <p
-                  class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-4">
+                <p class="align-middle text-slate-950 dark:text-slate-100 mt-4">
                   Compatible Minecraft Versions
                 </p>
                 <div
@@ -557,21 +549,20 @@
                 </div>
                 <p class="mb-4"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->
-                <p
-                  class="text-pearl-lusta-950 dark:text-pearl-lusta-100 col-span-3">
+                <p class="text-slate-950 dark:text-slate-100 col-span-3">
                   Dependencies
                 </p>
                 <div
-                  class="space-y-3 bg-pearl-lusta-300 dark:bg-stone-800/50 rounded-lg border-2 border-pearl-lusta-400 dark:border-stone-700 p-3 w-1/2"
+                  class="space-y-3 bg-gray-300 dark:bg-stone-800/50 rounded-lg border-2 border-slate-400 dark:border-stone-700 p-3 w-1/2"
                   use:autoAnimate>
                   {#each list(dependencies.length) as i}
-                    <p class="text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                    <p class="text-slate-950 dark:text-slate-100">
                       <IconLink class="inline-block" /> Dependency URL
                     </p>
                     <div class="flex items-center">
                       <span class="input w-full">
                         https://datapackhub.net/project/<AutoAdjustableInput
-                          classes="bg-pearl-lusta-300 dark:bg-stone-800 text-pearl-lusta-100 outline-none"
+                          classes="bg-gray-300 dark:bg-stone-800 text-slate-100 outline-none"
                           on:change="{e => dependencyHandler(e.detail, i)}" />
                       </span>
                       {#if dependencies[i]}
@@ -585,8 +576,7 @@
                     </div>
                   {/each}
                 </div>
-                <p
-                  class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-3">
+                <p class="align-middle text-slate-950 dark:text-slate-100 mt-3">
                   Resource Pack Download (optional)
                 </p>
                 <input type="file" accept=".zip" id="v_rp" class="mb-4 input" />
@@ -594,7 +584,7 @@
                   <input name="squash" id="squash" type="checkbox" />
                   <label
                     for="squash"
-                    class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+                    class="align-middle text-slate-950 dark:text-slate-100">
                     Squash datapack. (This compresses the zip file, making it
                     load faster in game)
                   </label>
@@ -612,7 +602,7 @@
 <br />
 
 <Modal bind:this="{publishModal}">
-  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Publish {data.project?.title}
   </h1>
   <CasualLine />
@@ -630,7 +620,7 @@
 </Modal>
 
 <Modal bind:this="{draftModal}">
-  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Draft {data.project?.title}
   </h1>
   <CasualLine />
@@ -648,7 +638,7 @@
 </Modal>
 
 <Modal bind:this="{deleteModal}">
-  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Delete {data.project?.title}
   </h1>
   <CasualLine />
@@ -675,6 +665,6 @@
     --sms-selected-bg: theme(colors.stone.700);
     --sms-remove-btn-hover-bg: theme(colors.orange.500);
     --sms-options-bg: theme(colors.stone.800);
-    --sms-text-color: theme(colors.pearl-lusta.100);
+    --sms-text-color: theme(colors.slate.100);
   }
 </style>

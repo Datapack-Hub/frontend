@@ -77,7 +77,7 @@
 
 <svelte:window bind:innerWidth="{width}" />
 
-<main class="bg-pearl-lusta-50 transition-all dark:bg-stone-900">
+<main class="bg-gray-50 transition-all dark:bg-stone-900">
   <div class="pt-0 md:pt-20"></div>
   <div
     class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 rounded-lg">
@@ -112,7 +112,7 @@
         </h1>
       </div>
       <h2
-        class="w-full text-center text-xl text-pearl-lusta-950 dark:text-pearl-lusta-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
+        class="w-full text-center text-xl text-slate-950 dark:text-slate-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{(data.count - 1).toString()}"
           class="text-gradient bg-gradient-to-br from-rose-500 to-yellow-500 font-bold">
@@ -124,7 +124,7 @@
     <div
       class="mt-8 h-fit justify-between space-y-3 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:w-1/2">
       <h3
-        class=" text-2xl font-medium text-pearl-lusta-950 dark:text-pearl-lusta-100 text-center mt-6">
+        class=" text-2xl font-medium text-slate-950 dark:text-slate-100 text-center mt-6">
         Featured Projects
       </h3>
       <div use:autoAnimate>
@@ -139,7 +139,7 @@
     </div>
   </div>
   <div class="py-64"></div>
-  <!-- <div class="h-screen w-full bg-pearl-lusta-200 dark:bg-stone-800">
+  <!-- <div class="h-screen w-full bg-gray-200 dark:bg-stone-800">
     <h2>Content here</h2>
   </div> -->
 </main>

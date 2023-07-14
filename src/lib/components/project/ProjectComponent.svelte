@@ -19,13 +19,13 @@
 </script>
 
 <div
-  class="w-full h-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-pearl-lusta-100">
+  class="w-full h-full items-center rounded-xl relative bg-gray-200 p-3 text-slate-950 dark:bg-stone-800 dark:text-slate-100">
   <div class="flex items-center">
     <a
       href="/project/{project.url}"
       class="rounded-lg {project.icon
         ? ''
-        : 'bg-pearl-lusta-300 p-4 dark:bg-stone-700 dark:text-pearl-lusta-100'}">
+        : 'bg-gray-300 p-4 dark:bg-stone-700 dark:text-slate-100'}">
       {#if project.icon}
         <img
           src="{project.icon}"
@@ -45,10 +45,10 @@
         {project.title}
       </a>
       <div
-        class="flex space-x-2 items-center text-sm text-pearl-lusta-950/40 dark:text-pearl-lusta-100">
+        class="flex space-x-2 items-center text-sm text-slate-950/40 dark:text-slate-100">
         <a
           href="/user/{author.username.toLowerCase()}"
-          class="block dark:hover:text-pearl-lusta-100">
+          class="block dark:hover:text-slate-100">
           {author.username}
         </a>
         {#if project.latest_version}
@@ -80,7 +80,7 @@
         {/if}
       </div>
       <p
-        class="line-clamp-2 max-w-1/2 text-xs font-medium text-pearl-lusta-950/40 dark:text-pearl-lusta-100/40 mt-2">
+        class="line-clamp-2 max-w-1/2 text-xs font-medium text-slate-950/40 dark:text-slate-100/40 mt-2">
         {project.description}
       </p>
     </div>

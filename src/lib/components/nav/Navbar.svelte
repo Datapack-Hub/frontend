@@ -28,7 +28,7 @@
   class="{isSmall
     ? 'bottom-0'
     : 'top-0'} z-40 w-full transition-all transform-gpu fixed px-2 sm:px-8 md:px-16 lg:px-24 {showNavBG
-    ? 'bg-pearl-lusta-50/80 dark:bg-stone-800/80 backdrop-blur shadow-md'
+    ? 'bg-gray-50/80 dark:bg-stone-800/80 backdrop-blur shadow-md'
     : 'shadow-none'}">
   <div class="flex h-16 w-full flex-row items-center justify-between md:h-16">
     <div class="flex items-center mr-2">
@@ -40,7 +40,7 @@
           height="{iconSize}"
           width="{iconSize}" />
         <span
-          class="hidden text-2xl font-bold text-pearl-lusta-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 lg:block">
+          class="hidden text-2xl font-bold text-slate-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 lg:block">
           Datapack Hub
         </span>
         <span

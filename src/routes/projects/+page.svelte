@@ -61,7 +61,7 @@
     class="py-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-2">
     <div class="flex-grow flex flex-col sm:flex-row space-x-4 items-center">
       <div
-        class="flex items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700">
+        class="flex items-center rounded-full bg-gray-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
         <input
           placeholder="Search Datapacks..."
@@ -69,13 +69,13 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class=" ml-2 bg-pearl-lusta-200 text-pearl-lusta-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
+          class=" ml-2 bg-gray-200 text-slate-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
           on:input="{search}" />
       </div>
       <div class="block mt-2 sm:mt-0 sm:flex space-x-2 items-center">
         <p class="dark:text-white text-center">Sort By:</p>
         <select
-          class="flex h-8 pl-3 items-center rounded-full bg-pearl-lusta-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 dark:text-white"
+          class="flex h-8 pl-3 items-center rounded-full bg-gray-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 dark:text-white"
           bind:value="{sort}"
           on:change="{resort}">
           {#each ["Updated", "Downloads"] as cat}
@@ -97,7 +97,7 @@
             }}"
             class="h-8 w-8 rounded-md {layout === 'list'
               ? 'bg-dph-orange'
-              : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
+              : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0 flex items-center justify-center">
             <IconList /></button>
           <button
             on:click="{() => {
@@ -106,7 +106,7 @@
             }}"
             class="h-8 w-8 rounded-md {layout === 'grid'
               ? 'bg-dph-orange'
-              : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0 flex items-center justify-center">
+              : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0 flex items-center justify-center">
             <IconGrid /></button>
         </div>
       {/if}
@@ -115,29 +115,29 @@
         {#if data.page - 2 > 1}
           <a
             href="/projects?page={data.page - 2}"
-            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
             >{data.page - 2}</a>
         {/if}
         {#if data.page - 1 > 1}
           <a
             href="/projects?page={data.page - 1}"
-            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
             >{data.page - 1}</a>
         {/if}
         <a
           href="/projects?page={data.page}"
-          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
           >{data.page}</a>
         {#if data.page + 1 < data.pages}
           <a
             href="/projects?page={data.page + 1}"
-            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
             >{data.page + 1}</a>
         {/if}
         {#if data.page + 2 < data.pages}
           <a
             href="/projects?page={data.page + 2}"
-            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-pearl-lusta-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
             >{data.page + 2}</a>
         {/if}
       </div>
@@ -146,9 +146,9 @@
   <CasualLine />
   <div class="py-4 flex flex-col">
     {#if !dataCopy || !(dataCopy.length >= 1)}
-      <h2 class=" text-pearl-lusta-950 dark:text-white">No results found</h2>
+      <h2 class=" text-slate-950 dark:text-white">No results found</h2>
     {:else}
-      <h2 class=" text-pearl-lusta-950 dark:text-white mx-3">
+      <h2 class=" text-slate-950 dark:text-white mx-3">
         Showing {dataCopy.length} projects:
       </h2>
       <ul class="space-y-2 mx-3 mt-2" use:autoAnimate>

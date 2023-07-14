@@ -36,14 +36,14 @@
 </script>
 
 <div
-  class="w-full items-center rounded-xl relative bg-pearl-lusta-200 p-3 text-pearl-lusta-950 dark:bg-stone-800 dark:text-pearl-lusta-100"
+  class="w-full items-center rounded-xl relative bg-gray-200 p-3 text-slate-950 dark:bg-stone-800 dark:text-slate-100"
   bind:this="{me}">
   <div class="flex items-center">
     <a
       href="/project/{project.url}"
       class="rounded-lg {project.icon
         ? ''
-        : 'bg-pearl-lusta-300 p-4 dark:bg-stone-700 dark:text-pearl-lusta-100'}">
+        : 'bg-gray-300 p-4 dark:bg-stone-700 dark:text-slate-100'}">
       {#if project.icon}
         <img
           loading="lazy"
@@ -63,11 +63,10 @@
         {project.title}
       </a>
       {#if visible}
-        <div
-          class="flex space-x-2 text-md text-pearl-lusta-950/40 dark:text-pearl-lusta">
+        <div class="flex space-x-2 text-md text-slate-950/40 dark:text-slate">
           <a
             href="/user/{author.username.toLowerCase()}"
-            class="block dark:hover:text-pearl-lusta-100"
+            class="block dark:hover:text-slate-100"
             in:fade="{{ duration: 250 }}">
             {author.username}
           </a>
@@ -86,7 +85,7 @@
         </div>
       {/if}
       <p
-        class="line-clamp-2 text-sm font-medium text-pearl-lusta-950/40 dark:text-pearl-lusta-100/40 md:text-sm">
+        class="line-clamp-2 text-sm font-medium text-slate-950/40 dark:text-slate-100/40 md:text-sm">
         {project.description}
       </p>
     </div>

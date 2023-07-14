@@ -26,14 +26,14 @@
     <button
       role="tab"
       class="button-base {tab === 'editor'
-        ? 'bg-pearl-lusta-400 dark:bg-stone-500'
-        : 'bg-pearl-lusta-300 dark:bg-stone-700'}"
+        ? 'bg-gray-400 dark:bg-stone-500'
+        : 'bg-gray-300 dark:bg-stone-700'}"
       on:click="{() => (tab = 'editor')}">Edit</button>
     <button
       role="tab"
       class="button-base {tab === 'preview'
-        ? 'bg-pearl-lusta-400 dark:bg-stone-500'
-        : 'bg-pearl-lusta-300 dark:bg-stone-700'}"
+        ? 'bg-gray-400 dark:bg-stone-500'
+        : 'bg-gray-300 dark:bg-stone-700'}"
       on:click="{() => (tab = 'preview')}">Preview</button>
   </div>
 
@@ -44,8 +44,7 @@
         maxlength="{maxEditorLength}"
         on:input="{input}"
         class="input w-full h-64"></textarea>
-      <p
-        class="align-middle text-xs text-pearl-lusta-950 dark:text-pearl-lusta-100">
+      <p class="align-middle text-xs text-slate-950 dark:text-slate-100">
         {remainingCharacters} characters left
       </p>
     </div>

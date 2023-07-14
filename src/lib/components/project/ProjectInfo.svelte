@@ -56,7 +56,7 @@
     </a>
   </div>
   <div
-    class="rounded-xl border-pearl-lusta-200 p-4 mb-2 bg-pearl-lusta-200 dark:bg-pearl-lusta-50/10">
+    class="rounded-xl border-slate-200 p-4 mb-2 bg-gray-200 dark:bg-gray-50/10">
     <div class="max-w-fit items-center space-x-2 flex">
       {#if project?.icon}
         <img
@@ -67,27 +67,27 @@
           height="64" />
       {:else}
         <div
-          class="bg-pearl-lusta-300 dark:bg-stone-700 p-4 w-16 h-16 rounded-xl dark:text-white">
+          class="bg-gray-300 dark:bg-stone-700 p-4 w-16 h-16 rounded-xl dark:text-white">
           <IconNoPhoto width="32" height="32" />
         </div>
       {/if}
       <h1
-        class="flex items-center text-4xl font-bold text-pearl-lusta-950 dark:text-white">
+        class="flex items-center text-4xl font-bold text-slate-950 dark:text-white">
         {project?.title}
       </h1>
     </div>
     <div>
       <h2
-        class="mt-2 text-base text-pearl-lusta-950/60 transition-all dark:text-white/60">
+        class="mt-2 text-base text-slate-950/60 transition-all dark:text-white/60">
         {project?.description}
       </h2>
       <h1
-        class="flex items-center space-x-2 text-md mt-2 font-medium text-pearl-lusta-950 dark:text-white">
+        class="flex items-center space-x-2 text-md mt-2 font-medium text-slate-950 dark:text-white">
         <IconDL />
         <span>{project?.downloads} downloads</span>
       </h1>
       <h1
-        class="flex items-center space-x-2 text-md mt-2 font-medium text-pearl-lusta-950 dark:text-white">
+        class="flex items-center space-x-2 text-md mt-2 font-medium text-slate-950 dark:text-white">
         <IconUpdate />
         <span>Last updated: {formatter.format(project?.updated)}</span>
       </h1>
@@ -103,7 +103,7 @@
               height="32"
               alt="{author?.username}'s profile picture" />
             <span
-              class="text-xs md:text-sm xl:text-base text-pearl-lusta-950 transition-all hover:underline dark:text-white"
+              class="text-xs md:text-sm xl:text-base text-slate-950 transition-all hover:underline dark:text-white"
               in:fade="{{ duration: 250 }}">
               {author?.username}
             </span>
@@ -133,12 +133,12 @@
   </div>
   {#if project?.mod_message}
     <div
-      class="mt-4 rounded-xl p-4 moderation dark:text-pearl-lusta-100"
+      class="mt-4 rounded-xl p-4 moderation dark:text-slate-100"
       id="modmsg"
       bind:this="{mm}">
       {#if status && !["disabled", "review_queue"].includes(status)}
         <button
-          class="float-right cursor-pointer select-none font-black text-pearl-lusta-950 dark:text-white"
+          class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
           on:click="{dismissModMsg}"><IconCross /></button>
       {/if}
       <p class=" font-black">Message from Datapack Hub Staff:</p>

@@ -126,11 +126,11 @@
 </script>
 
 <div
-  class="rounded-xl bg-pearl-lusta-300 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-pearl-lusta-50/10 relative">
+  class="rounded-xl bg-gray-300 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-gray-50/10 relative">
   <div class="flex items-center space-x-3">
     <div class="flex w-1/3 items-center space-x-2">
       <button
-        class="text-xl font-bold text-pearl-lusta-950 dark:text-white flex items-center space-x-1"
+        class="text-xl font-bold text-slate-950 dark:text-white flex items-center space-x-1"
         on:click="{() => {
           if (expanded == false) {
             expanded = true;
@@ -143,13 +143,12 @@
         {/if}
         <p>{version.name}</p>
       </button>
-      <h2
-        class="text-base font-thin italic text-pearl-lusta-950 dark:text-white">
+      <h2 class="text-base font-thin italic text-slate-950 dark:text-white">
         {version.version_code}
       </h2>
     </div>
     {#if !mcVersion}
-      <h2 class="flex flex-grow space-x-1 text-pearl-lusta-950 dark:text-white">
+      <h2 class="flex flex-grow space-x-1 text-slate-950 dark:text-white">
         {#each properVersion as mcv}
           <Button
             wait="{true}"
@@ -212,12 +211,11 @@
 </div>
 
 <Modal bind:this="{dlModal}">
-  <h1 class=" text-xl font-bold text-pearl-lusta-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Download Version: {version?.name ?? "Undefined"}
   </h1>
   <CasualLine />
-  <div
-    class="items-middle flex items-center text-pearl-lusta-950 dark:text-white">
+  <div class="items-middle flex items-center text-slate-950 dark:text-white">
     <p class="pr-1">
       Select a valid Minecraft version below to download the datapack.
     </p>
@@ -230,7 +228,7 @@
       <IconInfo />
     </div>
   </div>
-  <div class="my-2 flex space-x-2 text-pearl-lusta-950 dark:text-white">
+  <div class="my-2 flex space-x-2 text-slate-950 dark:text-white">
     {#each version?.minecraft_versions.split(",") ?? [] as mcv}
       <Button
         wait="{true}"
@@ -243,14 +241,14 @@
         }}">{mcv}</Button>
     {/each}
   </div>
-  <p class="pr-1 text-xs italic text-pearl-lusta-950 dark:text-white">
+  <p class="pr-1 text-xs italic text-slate-950 dark:text-white">
     If your version is not listed above, then this datapack is not supported for
     your version.
   </p>
 
   {#if version?.resource_pack_download}
     <CasualLine />
-    <p class="pr-1 text-pearl-lusta-950 dark:text-white">
+    <p class="pr-1 text-slate-950 dark:text-white">
       This datapack also has a resource pack which you need to download!
     </p>
     <div class="my-2 flex">

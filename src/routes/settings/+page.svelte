@@ -57,39 +57,38 @@
 </svelte:head>
 
 <main
-  class=" bg-pearl-lusta-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class=" bg-gray-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="my-3 pb-2 text-center text-5xl font-bold text-pearl-lusta-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="my-3 pb-2 text-center text-5xl font-bold text-slate-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Settings
     </h1>
     <div class="mb-2 flex space-x-2">
       <Button
         style="base"
         classes="{activePage === 'profile'
-          ? 'bg-pearl-lusta-500 dark:bg-stone-600'
-          : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
+          ? 'bg-gray-500 dark:bg-stone-600'
+          : 'bg-gray-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'profile')}">Profile</Button>
       <Button
         style="base"
         classes="{activePage === 'account'
-          ? 'bg-pearl-lusta-500 dark:bg-stone-600'
-          : 'bg-pearl-lusta-300 dark:bg-stone-800'}"
+          ? 'bg-gray-500 dark:bg-stone-600'
+          : 'bg-gray-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'account')}">Account</Button>
     </div>
 
     <div use:autoAnimate>
       {#if activePage == "profile"}
         <div
-          class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-50/10 md:text-start space-y-2">
+          class="rounded-xl bg-gray-200 p-3 text-center align-middle dark:bg-gray-50/10 md:text-start space-y-2">
           <div class="text-center align-middle md:text-start">
-            <p
-              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+            <p class="align-middle text-slate-950 dark:text-slate-100">
               Username
             </p>
             <p
-              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 opacity-40 text-sm">
+              class="align-middle text-slate-950 dark:text-slate-100 opacity-40 text-sm">
               Your username is used to view your profile. Your username is
               displayed on your datapacks and more coming soon
             </p>
@@ -98,12 +97,11 @@
               value="{data.profile?.username}"
               maxlength="32"
               bind:this="{usernameElement}" />
-            <p
-              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-6">
+            <p class="align-middle text-slate-950 dark:text-slate-100 mt-6">
               Bio
             </p>
             <p
-              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mb-2 text-sm opacity-40">
+              class="align-middle text-slate-950 dark:text-slate-100 mb-2 text-sm opacity-40">
               Your bio is visible for anyone to see, don't store important
               information in it!
             </p>
@@ -117,14 +115,13 @@
         </div>
       {:else if activePage == "account"}
         <div
-          class="rounded-xl bg-pearl-lusta-200 p-3 text-center align-middle dark:bg-pearl-lusta-50/10 md:text-start space-y-2">
+          class="rounded-xl bg-gray-200 p-3 text-center align-middle dark:bg-gray-50/10 md:text-start space-y-2">
           <div class="text-center align-middle md:text-start">
-            <p
-              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100">
+            <p class="align-middle text-slate-950 dark:text-slate-100">
               Linked Github
             </p>
             <p
-              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 opacity-40 text-sm">
+              class="align-middle text-slate-950 dark:text-slate-100 opacity-40 text-sm">
               Link your Github account to your Datapack Hub account, and you'll
               be able to log in with Github.
             </p>
@@ -134,12 +131,11 @@
               <IconGithub />
               <p>Link your Github account</p>
             </a>
-            <p
-              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-6">
+            <p class="align-middle text-slate-950 dark:text-slate-100 mt-6">
               Linked Discord
             </p>
             <p
-              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 opacity-40 text-sm">
+              class="align-middle text-slate-950 dark:text-slate-100 opacity-40 text-sm">
               Link your Discord account to your Datapack Hub account, and you'll
               be able to log in with Discord.
             </p>
@@ -149,8 +145,7 @@
               <IconDiscord />
               <p>Link your Discord account</p>
             </a>
-            <p
-              class="align-middle text-pearl-lusta-950 dark:text-pearl-lusta-100 mt-6">
+            <p class="align-middle text-slate-950 dark:text-slate-100 mt-6">
               (If you've already linked an account, it'll be re-linked.)
             </p>
           </div>
