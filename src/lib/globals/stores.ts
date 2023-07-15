@@ -6,14 +6,14 @@ export const authed = writable(false);
 export const consoleWarned = writable(false);
 
 /**
- * Store for User Data, this contains all the user's data
+ * Store for User Data
  */
 export const user: Writable<User> = writable({
   id: -1,
   username: "",
   bio: "",
   profile_icon: "logos/dph.svg",
-  role: "default" /** For role info, use the `role` store */,
+  role: "default" /** For role info, use the `$role` store */,
   banned: false
 });
 

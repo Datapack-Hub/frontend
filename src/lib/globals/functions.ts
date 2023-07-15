@@ -45,9 +45,9 @@ export async function fetchAuthed(
     }
   });
 
-  if (res.status == 498) removeCookie("dph_token");
+  if (res.status == 401) removeCookie("dph_token");
 
-  if (!res.ok && res.status != 498) {
+  if (!res.ok && res.status != 401) {
     Promise.reject(res.statusText);
   }
 
