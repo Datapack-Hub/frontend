@@ -11,7 +11,7 @@
 </svelte:head>
 
 <main
-  class=" bg-gray-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class=" bg-slate-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div class="w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
       class="my-3 pb-2 text-center text-5xl font-bold text-slate-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
@@ -21,34 +21,34 @@
       <Button
         style="base"
         classes="{activePage === 'new'
-          ? 'bg-gray-500 dark:bg-stone-600'
-          : 'bg-gray-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-stone-600'
+          : 'bg-slate-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'new')}">Installing to a new world</Button>
       <Button
         style="base"
         classes="{activePage === 'existing'
-          ? 'bg-gray-500 dark:bg-stone-600'
-          : 'bg-gray-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-stone-600'
+          : 'bg-slate-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'existing')}"
         >Installing to an existing world</Button>
       <Button
         style="base"
         classes="{activePage === 'server'
-          ? 'bg-gray-500 dark:bg-stone-600'
-          : 'bg-gray-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-stone-600'
+          : 'bg-slate-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'server')}">Installing to a server</Button>
       <Button
         style="base"
         classes="{activePage === 'realm'
-          ? 'bg-gray-500 dark:bg-stone-600'
-          : 'bg-gray-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-stone-600'
+          : 'bg-slate-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'realm')}">Installing to a realm</Button>
     </div>
 
     <div use:autoAnimate>
       {#if activePage == "new"}
         <div
-          class="rounded-xl bg-gray-200 p-3 text-center align-middle dark:bg-gray-50/10 md:text-start space-y-2 dark:text-white">
+          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2 dark:text-white">
           <p>
             <b>1. Go to the Create New World screen.</b> Make sure you're using the
             Minecraft Java edition and that you have the right version selected.
@@ -88,7 +88,7 @@
         </div>
       {:else if activePage == "existing"}
         <div
-          class="rounded-xl bg-gray-200 p-3 text-center align-middle dark:bg-gray-50/10 md:text-start space-y-2 dark:text-white">
+          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2 dark:text-white">
           <p class="font-bold">1. Find your world, and hit Edit</p>
           <img
             src="https://cdn.discordapp.com/attachments/723984082853298297/1125493410279727144/image.png"
@@ -128,7 +128,7 @@
         </div>
       {:else if activePage == "server"}
         <div
-          class="rounded-xl bg-gray-200 p-3 text-center align-middle dark:bg-gray-50/10 md:text-start space-y-2 dark:text-white">
+          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2 dark:text-white">
           <p class="text-red-500 font-bold">
             Note - some datapacks won't be compatible with server software such
             as Bukkit, Spigot, or plugins like EssentialsX.
@@ -173,7 +173,7 @@
         </div>
       {:else if activePage == "realm"}
         <div
-          class="rounded-xl bg-gray-200 p-3 text-center align-middle dark:bg-gray-50/10 md:text-start space-y-2 dark:text-white">
+          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2 dark:text-white">
           <p class="font-bold">1. Download the world from your realm</p>
         </div>
       {/if}

@@ -107,7 +107,7 @@
     <div
       class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2 xl:col-span-1">
       <div
-        class="bg-gray-300 dark:bg-stone-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
+        class="bg-slate-300 dark:bg-stone-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
         <label class="w-full h-full flex items-center justify-center">
           <img
             src="{iconImg}"

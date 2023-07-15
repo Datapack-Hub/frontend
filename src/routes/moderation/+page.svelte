@@ -47,7 +47,7 @@
 </svelte:head>
 
 <main
-  class=" bg-gray-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class=" bg-slate-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -58,30 +58,30 @@
       <Button
         style="base"
         classes="{activePage === 'publish_queue'
-          ? 'bg-gray-500 dark:bg-stone-600'
-          : 'bg-gray-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-stone-600'
+          : 'bg-slate-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'publish_queue')}">Publish Queue</Button>
       <Button
         style="base"
         classes="{activePage === 'review_queue'
-          ? 'bg-gray-500 dark:bg-stone-600'
-          : 'bg-gray-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-stone-600'
+          : 'bg-slate-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'review_queue')}">Review Queue</Button>
       <Button
         style="base"
         classes="{activePage === 'reports'
-          ? 'bg-gray-500 dark:bg-stone-600'
-          : 'bg-gray-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-stone-600'
+          : 'bg-slate-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'reports')}">Reports</Button>
       <Button
         style="base"
         classes="{activePage === 'roles'
-          ? 'bg-gray-500 dark:bg-stone-600'
-          : 'bg-gray-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-stone-600'
+          : 'bg-slate-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'roles')}">Roles</Button>
       <Button
         style="base"
-        classes="bg-gray-300 dark:bg-stone-800"
+        classes="bg-slate-300 dark:bg-stone-800"
         click="/moderation/console">Open console</Button>
     </div>
 
@@ -91,7 +91,7 @@
       {:then}
         {#if activePage == "publish_queue"}
           <div
-            class="rounded-xl bg-gray-200 p-3 text-center align-middle dark:bg-gray-50/10 md:text-start space-y-2">
+            class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
             {#if publishQueue.length == 0}
               <p class=" dark:text-white">
                 You're all caught up! There are no projects in the publish
@@ -108,7 +108,7 @@
           </div>
         {:else if activePage == "review_queue"}
           <div
-            class="rounded-xl bg-gray-200 p-3 text-center align-middle dark:bg-gray-50/10 md:text-start space-y-2"
+            class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2"
             use:autoAnimate>
             {#if reviewQueue.length == 0}
               <p class=" dark:text-white">
@@ -125,7 +125,7 @@
           </div>
         {:else if activePage == "reports"}
           <div
-            class="rounded-xl bg-gray-200 p-3 text-center align-middle dark:bg-gray-50/10 md:text-start space-y-2">
+            class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
             {#if reports.length == 0}
               <p class=" dark:text-white">
                 You're all caught up! There are no reports in the queue.

@@ -1,5 +1,5 @@
 <footer
-  class="flex h-[30rem] flex-col items-center justify-evenly border-t-2 border-slate-50 bg-gray-50 px-8 dark:border-stone-700 dark:bg-stone-900 lg:h-64 lg:flex-row lg:justify-between md:px-16 lg:px-24"
+  class="flex h-[30rem] flex-col items-center justify-evenly border-t-2 border-slate-50 bg-slate-50 px-8 dark:border-stone-700 dark:bg-stone-900 lg:h-64 lg:flex-row lg:justify-between md:px-16 lg:px-24"
   id="footer">
   <div>
     <div class="flex items-center space-x-2">

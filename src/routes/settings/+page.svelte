@@ -57,7 +57,7 @@
 </svelte:head>
 
 <main
-  class=" bg-gray-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class=" bg-slate-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -68,21 +68,21 @@
       <Button
         style="base"
         classes="{activePage === 'profile'
-          ? 'bg-gray-500 dark:bg-stone-600'
-          : 'bg-gray-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-stone-600'
+          : 'bg-slate-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'profile')}">Profile</Button>
       <Button
         style="base"
         classes="{activePage === 'account'
-          ? 'bg-gray-500 dark:bg-stone-600'
-          : 'bg-gray-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-stone-600'
+          : 'bg-slate-300 dark:bg-stone-800'}"
         click="{() => (activePage = 'account')}">Account</Button>
     </div>
 
     <div use:autoAnimate>
       {#if activePage == "profile"}
         <div
-          class="rounded-xl bg-gray-200 p-3 text-center align-middle dark:bg-gray-50/10 md:text-start space-y-2">
+          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
           <div class="text-center align-middle md:text-start">
             <p class="align-middle text-slate-950 dark:text-slate-100">
               Username
@@ -115,7 +115,7 @@
         </div>
       {:else if activePage == "account"}
         <div
-          class="rounded-xl bg-gray-200 p-3 text-center align-middle dark:bg-gray-50/10 md:text-start space-y-2">
+          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
           <div class="text-center align-middle md:text-start">
             <p class="align-middle text-slate-950 dark:text-slate-100">
               Linked Github

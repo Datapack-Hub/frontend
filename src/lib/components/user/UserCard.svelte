@@ -8,7 +8,7 @@
 </script>
 
 <a href="/user/{person?.username.toLowerCase()}">
-  <div class="my-2 flex w-full rounded-xl bg-gray-200 p-2 dark:bg-stone-800">
+  <div class="my-2 flex w-full rounded-xl bg-slate-200 p-2 dark:bg-stone-800">
     <img
       loading="lazy"
       src="{person?.profile_icon}?size=64"

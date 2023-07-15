@@ -51,7 +51,7 @@
     @apply text-slate-950 dark:text-white;
   }
   .default-background {
-    @apply bg-gray-200 dark:bg-stone-800;
+    @apply bg-slate-200 dark:bg-stone-800;
   }
 
   .important-text {

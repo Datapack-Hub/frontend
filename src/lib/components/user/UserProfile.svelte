@@ -94,7 +94,7 @@
   <h2 class="dark:text-white font-bold mb-1 text-lg mt-8 flex items-center">
     <IconInfo class="inline-block mr-1" /> About
   </h2>
-  <p class="w-full rounded-xl bg-gray-300 dark:bg-stone-800 p-5">
+  <p class="w-full rounded-xl bg-slate-300 dark:bg-stone-800 p-5">
     <MarkdownComponent
       source="{profile?.bio.replaceAll('\\n', '\n').replaceAll('![', '[')}" />
   </p>
@@ -110,13 +110,13 @@
   </h2>
 
   {#if badges}
-    <!-- <div class="mt-4 w-full rounded-xl bg-gray-300 dark:bg-stone-800 p-5"> -->
+    <!-- <div class="mt-4 w-full rounded-xl bg-slate-300 dark:bg-stone-800 p-5"> -->
     <h2
       class="dark:text-slate-100 font-bold mb-1 text-lg mt-4 flex items-center">
       <IconBadge class="inline-block mr-1" /> Badges
     </h2>
     <div
-      class="flex space-x-2 p-2 bg-gray-300 dark:bg-stone-800 rounded-lg w-full">
+      class="flex space-x-2 p-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
       {#each profile?.badges ?? [] as badge}
         <img
           alt="{badge} badge"

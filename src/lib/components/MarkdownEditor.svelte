@@ -26,14 +26,14 @@
     <button
       role="tab"
       class="button-base {tab === 'editor'
-        ? 'bg-gray-400 dark:bg-stone-500'
-        : 'bg-gray-300 dark:bg-stone-700'}"
+        ? 'bg-slate-400 dark:bg-stone-500'
+        : 'bg-slate-300 dark:bg-stone-700'}"
       on:click="{() => (tab = 'editor')}">Edit</button>
     <button
       role="tab"
       class="button-base {tab === 'preview'
-        ? 'bg-gray-400 dark:bg-stone-500'
-        : 'bg-gray-300 dark:bg-stone-700'}"
+        ? 'bg-slate-400 dark:bg-stone-500'
+        : 'bg-slate-300 dark:bg-stone-700'}"
       on:click="{() => (tab = 'preview')}">Preview</button>
   </div>
 

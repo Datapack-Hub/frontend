@@ -56,7 +56,7 @@
     </a>
   </div>
   <div
-    class="rounded-xl border-slate-200 p-4 mb-2 bg-gray-200 dark:bg-gray-50/10">
+    class="rounded-xl border-slate-200 p-4 mb-2 bg-slate-200 dark:bg-slate-50/10">
     <div class="max-w-fit items-center space-x-2 flex">
       {#if project?.icon}
         <img
@@ -67,7 +67,7 @@
           height="64" />
       {:else}
         <div
-          class="bg-gray-300 dark:bg-stone-700 p-4 w-16 h-16 rounded-xl dark:text-white">
+          class="bg-slate-300 dark:bg-stone-700 p-4 w-16 h-16 rounded-xl dark:text-white">
           <IconNoPhoto width="32" height="32" />
         </div>
       {/if}

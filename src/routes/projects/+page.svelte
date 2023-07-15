@@ -61,7 +61,7 @@
     class="py-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-2">
     <div class="flex-grow flex flex-col sm:flex-row space-x-4 items-center">
       <div
-        class="flex items-center rounded-full bg-gray-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700">
+        class="flex items-center rounded-full bg-slate-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
         <input
           placeholder="Search Datapacks..."
@@ -69,13 +69,13 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class=" ml-2 bg-gray-200 text-slate-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
+          class=" ml-2 bg-slate-200 text-slate-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
           on:input="{search}" />
       </div>
       <div class="block mt-2 sm:mt-0 sm:flex space-x-2 items-center">
         <p class="dark:text-white text-center">Sort By:</p>
         <select
-          class="flex h-8 pl-3 items-center rounded-full bg-gray-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 dark:text-white"
+          class="flex h-8 pl-3 items-center rounded-full bg-slate-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 dark:text-white"
           bind:value="{sort}"
           on:change="{resort}">
           {#each ["Updated", "Downloads"] as cat}
