@@ -19,6 +19,7 @@
   let query: string;
   let sort = "Updated";
   let innerWidth = 0;
+  let searchTime = 0;
 
   $: dataCopy = data.projects ?? [];
   $: isSmall = innerWidth > 768;
@@ -33,15 +34,18 @@
     let searchResult = await fetch(
       `${apiURL}/projects/search?query=${query}&sort=${sort.toLowerCase()}`
     );
-    dataCopy = await projectSchema
-      .array()
-      .parseAsync((await searchResult.json()).result);
+
+    let search = await searchResult.json();
+    searchTime = search.time;
+
+    dataCopy = await projectSchema.array().parseAsync(search.result);
   });
 
   async function resort() {
     let searchResult = await fetch(
       `${apiURL}/projects/?sort=${sort.toLowerCase()}`
     );
+
     dataCopy = await projectSchema
       .array()
       .parseAsync((await searchResult.json()).result);
@@ -149,7 +153,11 @@
       <h2 class=" text-slate-950 dark:text-white">No results found</h2>
     {:else}
       <h2 class=" text-slate-950 dark:text-white mx-3">
-        Showing {dataCopy.length} projects:
+        {#if query != "" && searchTime <= 0}
+          Showing {dataCopy.length} projects
+        {:else}
+          Took {searchTime.toFixed(3)} seconds to find {dataCopy.length} project{dataCopy.length == 1 ? "" : "s"}
+        {/if}
       </h2>
       <ul class="space-y-2 mx-3 mt-2" use:autoAnimate>
         {#each featured ?? [] as feat}
