@@ -51,8 +51,6 @@
   let titleVal = data.project?.title;
   let descVal = data.project?.description;
   let bodyVal = data.project?.body;
-  let catVal = data.project?.category;
-  let slug = data.project?.url;
   let iconVal: FileList;
   let iconB64: string | ArrayBuffer | null | undefined;
   let iconImg: string;
@@ -197,7 +195,8 @@
       title: titleVal,
       description: descVal,
       body: bodyVal,
-      category: [catVal ?? "German"]
+      category: $category.length == 0 ? data.project?.category : $category,
+      icon: iconB64
     };
 
     if (iconB64) {
