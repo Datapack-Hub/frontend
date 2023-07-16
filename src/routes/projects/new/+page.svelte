@@ -51,7 +51,7 @@
       title: title,
       description: description,
       body: body,
-      category: $category[0],
+      category: $category,
       author: $user.id,
       status: "draft"
     };

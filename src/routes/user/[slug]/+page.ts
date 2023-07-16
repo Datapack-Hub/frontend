@@ -40,7 +40,7 @@ export const load = (async ({ params, fetch }) => {
     let downloads: number = 0;
 
     projectJson.forEach(i => {
-      if(i.downloads){
+      if (i.downloads) {
         downloads = downloads + i.downloads;
       }
     });
