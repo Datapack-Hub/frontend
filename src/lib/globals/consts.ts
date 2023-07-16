@@ -2,19 +2,19 @@ export const apiURL = "https://api.datapackhub.net";
 
 export const categories = [
   "Adventure",
+  "Cosmetics",
+  "Cursed",
+  "German",
+  "Items & Blocks",
   "Magic",
   "Minecraft, but",
-  "Cursed",
-  "World Generation",
-  "Tools & Equipment",
-  "German",
-  "Recipe",
-  "Quality of Life",
-  "Items & Blocks",
-  "Cosmetics",
   "Miscellaneous",
+  "Quality of Life",
+  "Recipe",
+  "Tools & Equipment",
   "Utility",
-  "Vanilla+"
+  "Vanilla+",
+  "World Generation"
 ];
 
 export const roles = [
@@ -51,10 +51,10 @@ export const badges = [
   },
   {
     name: "contributor",
-    description: "Developers and contributors",
+    description: "Developers and Contributors",
     tippy: {
       content:
-        '<b style="font-size:24;">Contributor</b><br />Have helped in the development of the site, whether that is through Github or development tasks.',
+        '<b style="font-size:24;">Contributor</b><br />Helped in the development of the site, whether that is through GitHub or development tasks.',
       placement: "top",
       allowHTML: true
     }

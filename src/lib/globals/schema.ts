@@ -115,8 +115,8 @@ export const reportSchema = z.object({
 
 export const commentSchema = z.object({
   id: z.number(),
-  message: z.string(),
   author: z.object(userSchema.shape),
+  message: z.string(),
   sent: z.number(),
   replies: z.array(
     z.object({

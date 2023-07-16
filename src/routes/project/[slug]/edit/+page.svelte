@@ -362,16 +362,6 @@
                 bind:value="{titleVal}"
                 required
                 class="input w-full" />
-              <p
-                class="text-slate-950 dark:text-slate-100 col-span-2 mt-4 mb-2">
-                URL
-              </p>
-              <input
-                type="text"
-                placeholder="slug-for-your-pack"
-                maxlength="35"
-                bind:value="{slug}"
-                class="input w-full" />
             </div>
           </div>
 

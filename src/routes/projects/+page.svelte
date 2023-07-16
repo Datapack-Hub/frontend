@@ -156,7 +156,10 @@
         {#if query != "" && searchTime <= 0}
           Showing {dataCopy.length} projects
         {:else}
-          Took {searchTime.toFixed(3)} seconds to find {dataCopy.length} project{dataCopy.length == 1 ? "" : "s"}
+          Took {searchTime.toFixed(3)} seconds to find {dataCopy.length} project{dataCopy.length ==
+          1
+            ? ""
+            : "s"}
         {/if}
       </h2>
       <ul class="space-y-2 mx-3 mt-2" use:autoAnimate>
