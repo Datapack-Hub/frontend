@@ -32,7 +32,7 @@ export const projectSchema = z.object({
   ID: z.onumber(),
   author: z.number(),
   body: z.ostring(),
-  category: z.array(z.string()),
+  category: z.optional(z.array(z.string())),
   description: z.ostring(),
   icon: z.string().url().nullish(),
   mod_message: z.string().nullish(),
