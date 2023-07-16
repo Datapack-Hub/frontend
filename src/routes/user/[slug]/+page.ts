@@ -37,10 +37,19 @@ export const load = (async ({ params, fetch }) => {
       (v: Role) => v.name == profileJson?.role
     );
 
+    let downloads: number = 0;
+
+    projectJson.forEach(i => {
+      if(i.downloads){
+        downloads = downloads + i.downloads;
+      }
+    });
+
     return {
       profile: profileJson,
       projects: projectJson,
-      role: profileRole
+      role: profileRole,
+      downloads: downloads
     };
   }
 }) satisfies PageLoad;

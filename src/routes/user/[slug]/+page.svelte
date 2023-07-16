@@ -30,7 +30,7 @@
 <main
   class="flex flex-col lg:flex-row w-full items-center bg-slate-50 px-8 transition-all dark:bg-stone-900 md:items-start md:px-16 md:pt-32 lg:px-24">
   <div class="w-full lg:w-2/5 xl:w-1/3">
-    <ProfileCard profile="{data.profile}" profileRole="{data.role}" />
+    <ProfileCard profile="{data.profile}" profileRole="{data.role}" downloads={data.downloads} />
     {#if $authed && ["moderator", "developer", "admin"].includes($role.name)}
       <UserModeration user="{data.profile}" />
     {/if}

@@ -15,6 +15,7 @@
 
   export let profile: User | undefined;
   export let profileRole: Role | undefined;
+  export let downloads: number;
 
   let orangeVerifiedHover = {
     content: "Verified for being part of the Datapack Hub staff team.",
@@ -106,7 +107,7 @@
 
   <h2 class="dark:text-slate-100 mb-1 text-md flex items-center">
     <IconDL class="inline-block mr-1" />
-    <b class="mr-2">Total Downloads: </b>123
+    <b class="mr-2">Total Downloads: </b>{downloads}
   </h2>
 
   {#if badges}
