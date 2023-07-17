@@ -1,6 +1,7 @@
-import { userSchema, type User } from "$lib/globals/schema";
+import { userSchema, type User, type Role } from "$lib/globals/schema";
+import { get } from "svelte/store";
 import { apiURL } from "./consts";
-import { isDark } from "./stores";
+import { authed, isDark } from "./stores";
 
 /**
  * Loads the user's preferred color scheme from LocalStorage
@@ -70,4 +71,11 @@ export function getCookie(cookieName: string): string | null {
 
 export function removeCookie(name: string) {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
+
+export function isModOrAbove(role: Role | undefined) {
+  return (
+    get(authed) &&
+    ["moderator", "developer", "admin"].includes(role?.name ?? "")
+  );
 }

@@ -52,4 +52,8 @@ export const load = (async ({ params, fetch }) => {
       downloads: downloads
     };
   }
+
+  return {
+    downloads: 0
+  };
 }) satisfies PageLoad;

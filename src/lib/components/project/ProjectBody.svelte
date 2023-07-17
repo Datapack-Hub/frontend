@@ -2,8 +2,12 @@
   // Svelte imports
   import { goto } from "$app/navigation";
   import { apiURL, minecraftVersions } from "$lib/globals/consts";
-  import { fetchAuthed, getAuthorFromID } from "$lib/globals/functions";
-  import { authed, user } from "$lib/globals/stores";
+  import {
+    fetchAuthed,
+    getAuthorFromID,
+    isModOrAbove
+  } from "$lib/globals/functions";
+  import { authed, role, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
 
@@ -276,7 +280,7 @@
       </button>
     </div>
     <div class="flex space-x-1.5">
-      {#if ["moderator", "admin"].includes($user.role)}
+      {#if isModOrAbove($role)}
         <button
           class="button-base flex items-center space-x-1"
           aria-label="Moderate"

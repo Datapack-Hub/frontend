@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
-  import { fetchAuthed } from "$lib/globals/functions";
+  import { fetchAuthed, isModOrAbove } from "$lib/globals/functions";
   import { authed, isDark, role, user } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
   import IconRead from "~icons/tabler/Bell.svelte";
@@ -56,7 +56,7 @@
 
 <div class="z-50 ml-3 flex items-center justify-center md:ml-6">
   {#if $authed}
-    {#if ["moderator", "developer", "admin"].includes($role.name) && !small}
+    {#if isModOrAbove($role) && !small}
       <a
         href="/moderation"
         aria-label="Moderation page"

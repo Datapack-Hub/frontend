@@ -13,6 +13,8 @@
   import { fetchAuthed } from "../../globals/functions";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import Button from "../decorative/Button.svelte";
+  import { MultiSelect } from "svelte-multiselect";
+  import { badges } from "$lib/globals/consts";
 
   export let user: User | undefined;
 
@@ -21,6 +23,9 @@
   let banDialog: Modal;
   let unbanDialog: Modal;
   let logOutDialog: Modal;
+  let addBadgesDialog: Modal;
+
+  let badgeState = user?.badges ?? [];
 
   let modJson: { banned: boolean; banExpiry: number; banMessage: string } = {
     banned: false,
@@ -135,6 +140,20 @@
     toast.success(`${user?.username} is now logged out of their account.`);
   }
 
+  async function submitBadgeChanges() {
+    let badgeRes = await fetchAuthed("POST", `/user/badges/${user?.id}`, {
+      badges: badgeState
+    });
+
+    if (!badgeRes.ok) {
+      toast.error(await badgeRes.text());
+      return;
+    }
+
+    addBadgesDialog.close();
+    toast.success(`${user?.username}'s badges have now been edited.`);
+  }
+
   function disableBan() {
     const permanent = document.getElementById(
       "ban-permanent"
@@ -211,6 +230,16 @@
                 color="{iconColor}"
                 class="p-1" />
               Log User Out
+            </button>
+            <button
+              class="mt-1 flex w-full items-center rounded-md bg-indigo-500 p-1 text-left text-slate-950 transition-all hover:scale-102 dark:text-white"
+              on:click="{() => open(addBadgesDialog)}">
+              <IconLogOut
+                height="32"
+                width="32"
+                color="{iconColor}"
+                class="p-1" />
+              Edit Badges
             </button>
           </div>
           <div class="w-1/3 pl-2">
@@ -360,4 +389,18 @@
     them a new token. They will need to sign in again.
   </p>
   <Button click="{async () => await logOutUser()}">Log them out!</Button>
+</Modal>
+<Modal bind:this="{addBadgesDialog}">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
+    Edit {user?.username}'s badges
+  </h1>
+  <CasualLine />
+  <div class="my-4">
+    <h2 class="text-slate-950 dark:text-white mb-2">Badges</h2>
+    <MultiSelect
+      options="{badges.map(v => v.name)}"
+      bind:selected="{badgeState}" />
+  </div>
+  <Button click="{async () => await submitBadgeChanges()}"
+    >Submit Changes</Button>
 </Modal>

@@ -2,12 +2,45 @@
   import Button from "$lib/components/decorative/Button.svelte";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
-  import ProfileCard from "$lib/components/user/UserProfile.svelte";
   import UserModeration from "$lib/components/user/UserModeration.svelte";
   import { authed, role, user } from "$lib/globals/stores";
   import type { PageData } from "./$types";
+  import tippy from "sveltejs-tippy";
+  import IconSettings from "~icons/tabler/Settings.svelte";
+  import IconBadge from "~icons/tabler/Award.svelte";
+  import IconInfo from "~icons/tabler/InfoCircle.svelte";
+  import IconTime from "~icons/tabler/Clock.svelte";
+  import IconDL from "~icons/tabler/Download.svelte";
+  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import { badges } from "$lib/globals/consts";
+  import { title } from "radash";
+  import IconVerified from "$lib/components/decorative/IconVerified.svelte";
+  import { isModOrAbove } from "$lib/globals/functions";
 
   export let data: PageData;
+
+  let orangeVerifiedHover = {
+    content: "Verified for being part of the Datapack Hub staff team.",
+    placement: "top"
+  };
+
+  let blueVerifiedHover = {
+    content:
+      "Verified for being known for helping others with their datapacks.",
+    placement: "top"
+  };
+
+  let emeraldVerifiedHover = {
+    content:
+      "Verified for their datapacks being high-quality or being active in the community.",
+    placement: "top"
+  };
+
+  // easter egg :)
+  async function play() {
+    let audio = new Audio("/sus.mp3");
+    await audio.play();
+  }
 </script>
 
 <svelte:head>
@@ -30,11 +63,110 @@
 <main
   class="flex flex-col lg:flex-row w-full items-center bg-slate-50 px-8 transition-all dark:bg-stone-900 md:items-start md:px-16 md:pt-32 lg:px-24">
   <div class="w-full lg:w-2/5 xl:w-1/3">
-    <ProfileCard
-      profile="{data.profile}"
-      profileRole="{data.role}"
-      downloads="{data.downloads}" />
-    {#if $authed && ["moderator", "developer", "admin"].includes($role.name)}
+    <div
+      class="mb-4 flex w-full flex-col mt-16 md:mt-0 items-center md:items-start">
+      <div class="self-center">
+        <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+        <img
+          src="{data.profile?.profile_icon}&size=160"
+          alt="{data.profile?.username}'s profile picture"
+          on:click="{data.profile?.id == 3 ? play : null}"
+          on:keypress="{e =>
+            e.key == 'Enter' && data.profile?.id == 3 ? play : null}"
+          height="128"
+          width="128"
+          class="rounded-full outline outline-2 outline-offset-4 md:h-24 md:w-24 lg:h-32 lg:w-32"
+          style="outline-color:{data.role?.color};" />
+      </div>
+      <p
+        class="mt-4 w-full text-center text-4xl font-bold text-slate-950 dark:text-white md:text-3xl lg:text-4xl">
+        {data.profile?.username}
+        {#if isModOrAbove(data.role)}
+          <span class="text-dph-orange icon" use:tippy="{orangeVerifiedHover}"
+            ><IconVerified /></span
+          >{:else if data.profile?.role == "helper"}<span
+            class="text-blue-500 icon"
+            use:tippy="{blueVerifiedHover}"><IconVerified /></span
+          >{:else if data.profile?.role == "verified"}<span
+            class="text-emerald-500 icon"
+            use:tippy="{emeraldVerifiedHover}"
+            ><IconVerified />
+          </span>
+        {/if}
+      </p>
+      <p
+        class="mt-1 w-full text-center align-middle font-semibold text-slate-950 dark:text-white sm:text-base md:text-lg">
+        {#if data.role?.name != "default"}
+          <span
+            class="flex items-center justify-center"
+            style="color: {data.role?.color};">
+            {#if data.role?.name == "nerd"}🤓
+            {:else if data.role?.name == "admin"}<img
+                src="/logos/dph.svg"
+                alt="logo"
+                class="inline-block mr-2"
+                height="24"
+                width="24" /> Datapack Hub Team{:else}{title(
+                data.role?.name
+              )}{/if}
+          </span>
+        {/if}
+      </p>
+      <h2 class="dark:text-white font-bold mb-1 text-lg mt-8 flex items-center">
+        <IconInfo class="inline-block mr-1" /> About
+      </h2>
+      <p class="w-full rounded-xl bg-slate-300 dark:bg-stone-800 p-5">
+        <MarkdownComponent
+          source="{data.profile?.bio
+            .replaceAll('\\n', '\n')
+            .replaceAll('![', '[')}" />
+      </p>
+
+      <h2 class="dark:text-slate-100 mb-1 text-md mt-4 flex items-center">
+        <IconTime class="inline-block mr-1" /> <b class="mr-2">Joined: </b>we
+        forgor, at least they're here now 🦆
+      </h2>
+
+      <h2 class="dark:text-slate-100 mb-1 text-md flex items-center">
+        <IconDL class="inline-block mr-1" />
+        <b class="mr-2">Total Downloads: </b>{data.downloads}
+      </h2>
+
+      <!-- <div class="mt-4 w-full rounded-xl bg-slate-300 dark:bg-stone-800 p-5"> -->
+      <div class="flex items-center justify-between">
+        <h2
+          class="dark:text-slate-100 font-bold mb-1 text-lg mt-4 flex items-center">
+          <IconBadge class="inline-block mr-1" /> Badges
+        </h2>
+      </div>
+      <div
+        class="flex space-x-2 p-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full min-h-[3rem]">
+        {#if data.profile?.badges?.length != 0}
+          {#each data.profile?.badges ?? [] as badge}
+            <img
+              alt="{badge} badge"
+              src="/badges/{badge}.png"
+              class="h-12 w-12 rounded-lg"
+              use:tippy="{badges.find(i => i.name == badge)?.tippy}" />
+          {/each}
+        {/if}
+      </div>
+      <!-- </div> -->
+
+      {#if $authed && $user.id === data.profile?.id}
+        <Button
+          style="secondary"
+          click="/settings#profile"
+          classes="mt-4 flex w-full items-center">
+          <IconSettings
+            width="24"
+            height="24"
+            class="float-left mr-2 stroke-blue-400" />
+          Profile Settings
+        </Button>
+      {/if}
+    </div>
+    {#if isModOrAbove($role)}
       <UserModeration user="{data.profile}" />
     {/if}
   </div>
@@ -66,3 +198,9 @@
   </div>
   <div class="mb-16"></div>
 </main>
+
+<style lang="postcss">
+  .icon {
+    @apply inline-block align-middle text-lg transition-all hover:scale-125 md:text-xl lg:text-2xl;
+  }
+</style>
