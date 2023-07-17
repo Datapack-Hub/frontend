@@ -57,7 +57,7 @@
       <p class="dark:text-white">
         Silly {$user.username}, you're already signed in!
       </p>
-      <a href="/" class="text-blue-500">back to home (click)</a>
+      <a href="/" class="text-blue-500">Go back to home</a>
     {/if}
   </div>
 </div>
