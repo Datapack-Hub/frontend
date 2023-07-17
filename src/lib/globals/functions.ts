@@ -37,18 +37,20 @@ export async function fetchAuthed(
 ): Promise<Response> {
   // what is going on here
 
+  const cookie = getCookie("dph_token");
+
   const res = await fetch(`${apiURL}${url}`, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
-      Authorization: `Basic ${getCookie("dph_token")}`,
+      ...(cookie != null ? { Authorization: `Basic ${cookie}` } : undefined),
       ...headers
     }
   });
 
   if (res.status == 401) removeCookie("dph_token");
 
-  if (!res.ok && res.status != 401) {
+  if (!res.ok) {
     Promise.reject(res.statusText);
   }
 

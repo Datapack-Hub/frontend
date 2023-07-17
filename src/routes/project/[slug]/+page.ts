@@ -45,8 +45,8 @@ export const load = (async ({ params, fetch }) => {
       });
     } else {
       throw error(projectReq.status, {
-        message: "Unexpected error",
-        description: "Something unexpected happen, try again later"
+        message: "Unexpected error"
+        // description: "Something unexpected happen, try again later"
       });
     }
   }

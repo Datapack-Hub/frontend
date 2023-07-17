@@ -6,7 +6,7 @@
 declare namespace App {
   interface Error {
     message: string;
-    description: string;
+    description?: string;
   }
 
   // interface Locals {}
