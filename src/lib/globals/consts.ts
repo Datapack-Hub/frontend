@@ -58,5 +58,15 @@ export const badges = [
       placement: "top",
       allowHTML: true
     }
+  },
+  {
+    name: "downloads-1000",
+    description: "1000 Downloads",
+    tippy: {
+      content:
+        '<b style="font-size:24;">1K Downloads</b><br />Awarded to people who have received over 1,000 total downloads',
+      placement: "top",
+      allowHTML: true
+    }
   }
 ];
