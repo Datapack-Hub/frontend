@@ -90,7 +90,7 @@ export const badges = [
     }
   },
   {
-    name: "bug-finder",
+    name: "bugfinder",
     description: "Bug finder",
     tippy: {
       content:
