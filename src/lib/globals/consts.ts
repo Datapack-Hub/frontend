@@ -69,7 +69,7 @@ export const badges = [
       allowHTML: true
     }
   },
-    {
+  {
     name: "downloads-5000",
     description: "5000 Downloads",
     tippy: {
@@ -79,7 +79,7 @@ export const badges = [
       allowHTML: true
     }
   },
-    {
+  {
     name: "downloads-10000",
     description: "10,000 Downloads",
     tippy: {
@@ -89,7 +89,7 @@ export const badges = [
       allowHTML: true
     }
   },
-    {
+  {
     name: "bug-finder",
     description: "Bug finder",
     tippy: {
@@ -99,7 +99,7 @@ export const badges = [
       allowHTML: true
     }
   },
-    {
+  {
     name: "nerd",
     description: "Nerd",
     tippy: {
