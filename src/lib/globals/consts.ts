@@ -68,5 +68,35 @@ export const badges = [
       placement: "top",
       allowHTML: true
     }
+  },
+    {
+    name: "downloads-5000",
+    description: "5000 Downloads",
+    tippy: {
+      content:
+        '<b style="font-size:24;">5K Downloads</b><br />Awarded to people who have received over 5,000 total downloads',
+      placement: "top",
+      allowHTML: true
+    }
+  },
+    {
+    name: "downloads-10000",
+    description: "10,000 Downloads",
+    tippy: {
+      content:
+        '<b style="font-size:24;">10K Downloads</b><br />Awarded to people who have received over 10,000 total downloads',
+      placement: "top",
+      allowHTML: true
+    }
+  },
+    {
+    name: "bug-finder",
+    description: "Bug finder",
+    tippy: {
+      content:
+        '<b style="font-size:24;">Bug Finder</b><br />Helped find a bug in Datapack Hub',
+      placement: "top",
+      allowHTML: true
+    }
   }
 ];
