@@ -11,9 +11,6 @@ dependencies:
   '@types/dompurify':
     specifier: ^3.0.2
     version: 3.0.2
-  lightningcss:
-    specifier: ^1.21.5
-    version: 1.21.5
   svelte-multiselect:
     specifier: ^10.0.0
     version: 10.0.0
@@ -73,6 +70,9 @@ devDependencies:
   jszip:
     specifier: ^3.10.1
     version: 3.10.1
+  lightningcss:
+    specifier: ^1.21.5
+    version: 1.21.5
   marked:
     specifier: ^5.1.1
     version: 5.1.1
@@ -2105,6 +2105,7 @@ packages:
     resolution: {integrity: sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==}
     engines: {node: '>=0.10'}
     hasBin: true
+    dev: true
 
   /devalue@4.3.2:
     resolution: {integrity: sha512-KqFl6pOgOW+Y6wJgu80rHpo2/3H07vr8ntR9rkkFIRETewbf5GaYYcakYfiKz89K+sLsuPkQIZaXDMjUObZwWg==}
@@ -3224,6 +3225,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /lightningcss-darwin-x64@1.21.5:
@@ -3232,6 +3234,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /lightningcss-linux-arm-gnueabihf@1.21.5:
@@ -3240,6 +3243,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /lightningcss-linux-arm64-gnu@1.21.5:
@@ -3248,6 +3252,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /lightningcss-linux-arm64-musl@1.21.5:
@@ -3256,6 +3261,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /lightningcss-linux-x64-gnu@1.21.5:
@@ -3264,6 +3270,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /lightningcss-linux-x64-musl@1.21.5:
@@ -3272,6 +3279,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /lightningcss-win32-x64-msvc@1.21.5:
@@ -3280,6 +3288,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /lightningcss@1.21.5:
@@ -3296,6 +3305,7 @@ packages:
       lightningcss-linux-x64-gnu: 1.21.5
       lightningcss-linux-x64-musl: 1.21.5
       lightningcss-win32-x64-msvc: 1.21.5
+    dev: true
 
   /lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}

@@ -32,6 +32,7 @@
     "eslint-plugin-svelte": "^2.32.2",
     "isomorphic-dompurify": "^1.8.0",
     "jszip": "^3.10.1",
+    "lightningcss": "^1.21.5",
     "marked": "^5.1.1",
     "marked-smartypants": "^1.0.2",
     "nprogress": "^0.2.0",
@@ -58,7 +59,6 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.9",
     "@types/dompurify": "^3.0.2",
-    "lightningcss": "^1.21.5",
     "svelte-multiselect": "^10.0.0"
   },
   "prettier": {
