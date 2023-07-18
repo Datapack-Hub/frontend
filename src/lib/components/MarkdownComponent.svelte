@@ -5,12 +5,13 @@
 
   export let source: string | undefined = "";
   export let classes = "";
+  export let limitedMode = false;
 
   let html = "";
 
   async function renderMarkdown(str: string) {
     const DOMPurify = await import("isomorphic-dompurify");
-    const marked = await import("marked");
+    const { marked } = await import("marked");
 
     const renderer = new marked.Renderer();
 
@@ -22,7 +23,13 @@
       }
     };
 
-    return marked.marked(
+    if (limitedMode) {
+      renderer.image = (_href, _title, text) => text;
+    }
+
+    let compileFunc = limitedMode ? marked.parseInline : marked.parse;
+
+    return compileFunc(
       DOMPurify.sanitize(
         // eslint-disable-next-line no-misleading-character-class
         str.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""),

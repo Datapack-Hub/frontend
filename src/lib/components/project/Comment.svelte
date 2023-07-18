@@ -88,7 +88,10 @@
           </p>
         </div>
 
-        <MarkdownComponent source="{comment.message}" classes="text-sm" />
+        <MarkdownComponent
+          limitedMode="{true}"
+          source="{comment.message}"
+          classes="text-sm" />
         {#if comment.replies.length != 0}
           {#if !showReplies}
             <button
