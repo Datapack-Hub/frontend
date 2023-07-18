@@ -98,5 +98,15 @@ export const badges = [
       placement: "top",
       allowHTML: true
     }
+  },
+    {
+    name: "nerd",
+    description: "Nerd",
+    tippy: {
+      content:
+        '<b style="font-size:24;">Nerd</b><br />Given to people who successfully manage to annoy Flynecraft enough into giving them the badge',
+      placement: "top",
+      allowHTML: true
+    }
   }
 ];
