@@ -9,13 +9,13 @@
   export let formText = "";
   export let label = "";
 
-  let buttonBind: HTMLButtonElement;
+  let disabled = false;
 
   async function buttonClick() {
     if (wait) {
-      buttonBind.disabled = true;
+      disabled = true;
       if (typeof click != "undefined" && typeof click != "string") {
-        Promise.resolve(click()).then(() => (buttonBind.disabled = false));
+        Promise.resolve(click()).then(() => (disabled = false));
       }
     } else {
       if (typeof click != "undefined" && typeof click != "string")
@@ -32,12 +32,12 @@
   <input
     type="submit"
     aria-label="{label}"
+    disabled="{disabled}"
     class="button-{style} {classes} disabled:bg-opacity-40"
     value="{formText}"
     on:click="{buttonClick}" />
 {:else}
   <button
-    bind:this="{buttonBind}"
     on:click="{buttonClick}"
     aria-label="{label}"
     class="button-{style} {classes} disabled:bg-opacity-40">

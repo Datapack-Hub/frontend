@@ -7,7 +7,8 @@ import { authed, isDark } from "./stores";
  * Loads the user's preferred color scheme from LocalStorage
  */
 export function loadColorPref() {
-  isDark.set(localStorage.getItem("dp_colorPref") === "true");
+  const color = localStorage.getItem("dp_colorPref");
+  isDark.set(color != null && color === "true");
 }
 
 /**
