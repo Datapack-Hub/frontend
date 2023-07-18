@@ -10,6 +10,7 @@
   import IconMessage from "~icons/tabler/MailForward.svelte";
   import IconSettings from "~icons/tabler/Settings.svelte";
   import IconWarn from "~icons/tabler/AlertTriangle.svelte";
+  import IconTags from "~icons/tabler/Tags.svelte";
   import { fetchAuthed } from "../../globals/functions";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import Button from "../decorative/Button.svelte";
@@ -141,7 +142,7 @@
   }
 
   async function submitBadgeChanges() {
-    let badgeRes = await fetchAuthed("POST", `/user/badges/${user?.id}`, {
+    let badgeRes = await fetchAuthed("PATCH", `/user/badges/${user?.id}`, {
       badges: badgeState
     });
 
@@ -234,7 +235,7 @@
             <button
               class="mt-1 flex w-full items-center rounded-md bg-indigo-500 p-1 text-left text-slate-950 transition-all hover:scale-102 dark:text-white"
               on:click="{() => open(addBadgesDialog)}">
-              <IconLogOut
+              <IconTags
                 height="32"
                 width="32"
                 color="{iconColor}"
