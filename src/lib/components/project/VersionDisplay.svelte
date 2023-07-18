@@ -191,8 +191,8 @@
         }}"
         classes="flex items-center space-x-2"
         ><IconZIP />
-        <p>Datapack</p>
-        {#if mcVersion} <p>(for {mcVersion})</p>{/if}</Button>
+        <span data-test-clickable-label="datapack">Datapack</span>
+        {#if mcVersion} <span>(for {mcVersion})</span>{/if}</Button>
       {#if version.resource_pack_download}
         <Button
           click="{() => {

@@ -1,7 +1,9 @@
 import { expect, test } from "@playwright/test";
 import { config } from "dotenv";
 
-config();
+test.beforeAll(() => {
+  config();
+})
 
 test.beforeEach(async ({ page }) => {
   const token = process.env.UNLIGHTHOUSE_DPH_TOKEN;
@@ -28,7 +30,7 @@ test("projects load", async ({ page }) => {
 });
 
 test("project can be located and fetched", async ({ page }) => {
-  const res = await page.goto("/project/realistic-item-drops/");
+  const res = await page.goto("/project/taglib/");
   expect(res?.status()).toEqual(200);
 });
 

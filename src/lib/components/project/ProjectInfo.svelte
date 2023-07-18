@@ -89,7 +89,7 @@
       <h1
         class="flex items-center space-x-2 text-md mt-2 font-medium text-slate-950 dark:text-white">
         <IconUpdate />
-        <span>Last updated: {formatter.format(project?.updated * 100)}</span>
+        <span>Last updated: {formatter.format(project?.updated * 1000)}</span>
       </h1>
       {#if visible}
         <div class="mt-4 flex items-center space-x-2 min-w-fit">

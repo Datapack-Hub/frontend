@@ -443,6 +443,7 @@
                     ? project.latest_version.minecraft_versions
                     : ""}
                 <button
+                  data-test-btn="{v}"
                   class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 {!mcVersions
                     .split(',')
                     .includes(v)
@@ -489,7 +490,7 @@
       </div>
       {#if matches.length != 0}
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-slate-50/10">
-          <p class="text-white">Latest version for {pickedVersion}:</p>
+          <p class="text-white MB-6">Latest version for {pickedVersion}:</p>
           <ul use:autoAnimate class="space-y-2">
             <VersionDisplay
               version="{matches[0]}"
