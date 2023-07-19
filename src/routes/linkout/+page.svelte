@@ -1,15 +1,8 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
   import Button from "$lib/components/decorative/Button.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;
-
-  function goBack() {
-    if (browser) {
-      history.back();
-    }
-  }
 </script>
 
 <main
@@ -33,7 +26,7 @@
     <div class="flex w-2/3 md:w-1/2 lg:w-2/5 justify-between mt-4">
       <Button click="{data.url ?? 'https://datapackhub.net'}"
         >Continue to page</Button>
-      <Button click="{goBack}">Go Back</Button>
+      <Button click="{() => history.back()}">Go Back</Button>
     </div>
   </div>
 </main>

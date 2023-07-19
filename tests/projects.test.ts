@@ -30,9 +30,10 @@ test("project page tabs work", async ({ page }) => {
 
   let pageContent = await page.content()
 
+  // go through all tabs and see if they respond at all
   for (const tab of tabs) {
     await tab.click()
-    await page.waitForLoadState("load", {timeout: 1000})
+    await page.waitForLoadState("load", { timeout: 1000 })
     const currentContent = await page.content()
     expect(currentContent).not.toEqual(pageContent)
     pageContent = currentContent
@@ -43,17 +44,23 @@ test("project downloads work", async ({ page }) => {
   await page.goto("/project/hexenwerk/");
 
   const downloadBtn = page.getByLabel("Download")
+
   await downloadBtn.waitFor({ timeout: 1000 })
   await downloadBtn.click()
 
-  const button = page.locator('[data-test-btn="1.19.4"]')
-  await button.waitFor({ timeout: 1000 })
-  await button.click()
+  // get button labeled 1.19.4
+  const versionBtn = page.locator('[data-test-btn="1.19.4"]')
+
+  await versionBtn.waitFor({ timeout: 1000 })
+  await versionBtn.click()
 
   const downloadPromise = page.waitForEvent("download")
+  // get actual download button
   const actualDownload = page.locator('[data-test-clickable-label="datapack"]')
+
   await actualDownload.waitFor({ timeout: 1000 })
   await actualDownload.click()
+
   const download = await downloadPromise
   await download.saveAs("test-results/downloads/hexenwerk.zip")
 });

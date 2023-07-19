@@ -73,7 +73,7 @@
     ) as HTMLTextAreaElement;
     const type = document.getElementById("notif-type") as HTMLSelectElement;
 
-    if ([message.value, content.value].every(v => v.length > 0)) {
+    if (![message.value, content.value].every(v => v.length > 0)) {
       toast.error("Make sure all fields are filled");
       return;
     }

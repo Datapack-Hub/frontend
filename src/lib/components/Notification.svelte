@@ -34,7 +34,7 @@
   <li
     class="flex w-full {notification?.type}-background testNotif my-2 rounded-xl p-4">
     <div class="flex-auto">
-      <h1 class=" text-xl font-bold {notification?.type}-text">
+      <h1 class="text-xl font-bold {notification?.type}-text">
         {#if notification?.read == 0}• {/if}{notification?.message}
       </h1>
       <MarkdownComponent source="{notification?.description}" />

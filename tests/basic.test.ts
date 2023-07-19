@@ -19,22 +19,28 @@ test.beforeEach(async ({ page }) => {
   }
 });
 
-test("page loads", async ({ page }) => {
-  const res = await page.goto("/");
-  expect(res?.status()).toEqual(200);
-});
+test("all pages load", async ({ page }) => {
+  const pages = [
+    '/staff',
+    '/rules',
+    '/user/silabear',
+    '/project/taglib',
+    '/projects',
+    '/notifications',
+    '/moderation',
+    '/moderation/console',
+    '/jam',
+    '/privacy',
+    '/settings',
+    '/install',
+    '/login',
+    '/'
+  ]
 
-test("projects load", async ({ page }) => {
-  const res = await page.goto("/projects");
-  expect(res?.status()).toEqual(200);
-});
-
-test("project can be located and fetched", async ({ page }) => {
-  const res = await page.goto("/project/taglib/");
-  expect(res?.status()).toEqual(200);
-});
-
-test("user can be fetched and located", async ({ page }) => {
-  const res = await page.goto("/user/silabear/");
-  expect(res?.status()).toEqual(200);
+  for (const p of pages) {
+    await test.step(`testing if ${p} loads properly`, async () => {
+      const res = await page.goto(p);
+      expect(res?.status()).toEqual(200);
+    })
+  }
 });
