@@ -9,6 +9,8 @@
 <svelte:head>
   <title>{data.project?.title} | Datapack Hub</title>
 
+  
+
   <meta property="title" content="{data.project?.title}" />
   <meta
     property="description"

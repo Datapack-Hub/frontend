@@ -92,7 +92,7 @@
       : dp_versions;
 
   dp_versions?.forEach(item => {
-    bigStitchedVersionList = bigStitchedVersionList + item.minecraft_versions;
+    bigStitchedVersionList += item.minecraft_versions;
   });
 
   function pickVersions(vs: string) {

@@ -19,11 +19,11 @@ export const load = (async ({ params, fetch }) => {
     ]);
 
     if ([projectReq, versionsReq, rolesReq].every(r => r.ok)) {
-      const project = projectSchema.parse(await projectReq.json());
-      const versions = versionSchema
-        .array()
-        .parse((await versionsReq.json()).result);
-      const roles = roleSchema.array().parse((await rolesReq.json()).roles);
+      const [project, versions, roles] = await Promise.all([
+        projectSchema.parseAsync(await projectReq.json()),
+        versionSchema.array().parseAsync((await versionsReq.json()).result),
+        roleSchema.array().parseAsync((await rolesReq.json()).roles)
+      ])
 
       const commentsReq = await fetch(`${API}/comments/thread/${project.ID}`);
       const comments = commentSchema
