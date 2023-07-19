@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.0.2
     version: 3.0.2
   svelte-multiselect:
-    specifier: ^10.0.0
-    version: 10.0.0
+    specifier: ^10.1.0
+    version: 10.1.0
 
 devDependencies:
   '@formkit/auto-animate':
@@ -1616,7 +1616,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001516
-      electron-to-chromium: 1.4.463
+      electron-to-chromium: 1.4.464
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.9)
     dev: true
@@ -2193,8 +2193,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium@1.4.463:
-    resolution: {integrity: sha512-fT3hvdUWLjDbaTGzyOjng/CQhQJSQP8ThO3XZAoaxHvHo2kUXiRQVMj9M235l8uDFiNPsPa6KHT1p3RaR6ugRw==}
+  /electron-to-chromium@1.4.464:
+    resolution: {integrity: sha512-guZ84yoou4+ILNdj0XEbmGs6DEWj6zpVOWYpY09GU66yEb0DSYvP/biBPzHn0GuW/3RC/pnaYNUWlQE1fJYtgA==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -4601,8 +4601,8 @@ packages:
       svelte: 4.0.5
     dev: true
 
-  /svelte-multiselect@10.0.0:
-    resolution: {integrity: sha512-4daATYM4E4pqVeJ6wvNS9oLwp6dqr+E/sMESwDDSia+8cQZclbqlXO/+we+KE+zp8eXg+xOGPVY3n2+BOD3EjQ==}
+  /svelte-multiselect@10.1.0:
+    resolution: {integrity: sha512-zL16kwO13c5pkT6jgDxY1WXMSfH7z2EO3VI78I57AjYIM2u+XYaz1KUlfNOkQTmgVcVj7PmSF9xzXKMtf1xxCQ==}
     dependencies:
       svelte: 4.0.5
     dev: false

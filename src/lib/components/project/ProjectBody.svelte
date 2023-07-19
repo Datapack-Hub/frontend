@@ -10,7 +10,6 @@
   import { authed, role, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
-
   // Component imports
   import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
@@ -26,25 +25,25 @@
   import MultiSelect from "svelte-multiselect";
 
   import IconAlert from "~icons/tabler/AlertTriangle.svelte";
+  import IconDescription from "~icons/tabler/AlignLeft.svelte";
   import IconBack from "~icons/tabler/ArrowBack.svelte";
+  import IconConfetti from "~icons/tabler/Award.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconRight from "~icons/tabler/ChevronRight.svelte";
+  import IconDownload from "~icons/tabler/Download.svelte";
   import IconFiles from "~icons/tabler/Files.svelte";
   import IconReport from "~icons/tabler/Flag.svelte";
+  import IconMessage from "~icons/tabler/Message.svelte";
   import IconPencil from "~icons/tabler/Pencil.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
-  import IconConfetti from "~icons/tabler/Award.svelte";
-  import IconMessage from "~icons/tabler/Message.svelte";
-  import IconDescription from "~icons/tabler/AlignLeft.svelte";
-  import IconDownload from "~icons/tabler/Download.svelte";
 
+  import { title } from "radash";
+  import Button from "../decorative/Button.svelte";
   import CasualLine from "../decorative/CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import UserCard from "../user/UserCard.svelte";
-  import { title } from "radash";
   import Comment from "./Comment.svelte";
-  import Button from "../decorative/Button.svelte";
 
   // we need to split this up more or something jeez
 

@@ -1,15 +1,16 @@
 <script lang="ts">
+  import "../app.postcss";
+  import "../fonts.postcss";
+
+  import { dev } from "$app/environment";
+  import { navigating } from "$app/stores";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import BannedModal from "$lib/components/modals/BannedModal.svelte";
   import Footer from "$lib/components/nav/Footer.svelte";
   import Navbar from "$lib/components/nav/Navbar.svelte";
   import { authed, isDark, user } from "$lib/globals/stores";
-  import { Toaster } from "svelte-sonner";
-  import "../app.postcss";
-  import "../fonts.postcss";
   import NProgress from "nprogress";
-  import { navigating } from "$app/stores";
-  import { dev } from "$app/environment";
+  import { Toaster } from "svelte-sonner";
 
   const maintenance = false;
 

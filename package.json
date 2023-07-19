@@ -59,7 +59,7 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.9",
     "@types/dompurify": "^3.0.2",
-    "svelte-multiselect": "^10.0.0"
+    "svelte-multiselect": "^10.1.0"
   },
   "prettier": {
     "arrowParens": "avoid",
