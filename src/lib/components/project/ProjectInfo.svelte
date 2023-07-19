@@ -98,7 +98,7 @@
             href="/user/{author?.username}"
             class="flex items-center space-x-2">
             <img
-              src="{author?.profile_icon}?size=48"
+              src="{author?.profile_icon}?size=32"
               class="max-h-8 rounded-full"
               width="32"
               height="32"

@@ -23,7 +23,7 @@ export const load = (async ({ params, fetch }) => {
         projectSchema.parseAsync(await projectReq.json()),
         versionSchema.array().parseAsync((await versionsReq.json()).result),
         roleSchema.array().parseAsync((await rolesReq.json()).roles)
-      ])
+      ]);
 
       const commentsReq = await fetch(`${API}/comments/thread/${project.ID}`);
       const comments = commentSchema
