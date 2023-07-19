@@ -30,7 +30,7 @@
       toast.success("Dismissed report!");
       me.remove();
     } else {
-      toast.error("Blame Silabear, this didnt work.");
+      toast.error("Blame Silabear, this didn't work.");
     }
   }
 </script>

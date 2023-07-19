@@ -10,10 +10,10 @@
   let html = "";
 
   async function renderMarkdown(str: string) {
-    const DOMPurify = await import("isomorphic-dompurify");
-    const { marked } = await import("marked");
+    const { sanitize } = await import("isomorphic-dompurify");
+    const { Renderer, marked } = await import("marked");
 
-    const renderer = new marked.Renderer();
+    const renderer = new Renderer();
 
     renderer.link = (href, _, text) => {
       if (!href?.startsWith("https://datapackhub.net")) {
@@ -30,7 +30,7 @@
     let compileFunc = limitedMode ? marked.parseInline : marked.parse;
 
     return compileFunc(
-      DOMPurify.sanitize(
+      sanitize(
         // eslint-disable-next-line no-misleading-character-class
         str.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""),
         {
@@ -42,9 +42,7 @@
       {
         renderer: renderer,
         async: true,
-        breaks: true,
-        mangle: false,
-        headerIds: false
+        breaks: true
       }
     );
   }

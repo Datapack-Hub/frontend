@@ -15,18 +15,24 @@
       alt="{person?.username}'s profile picture"
       class="float-left mr-2 h-16 w-16 rounded-full" />
     <div>
-      <a href="/user/{person?.username.toLowerCase()}"
-        ><h1 class="mr-2 text-xl font-bold text-slate-950 dark:text-white">
+      <a href="/user/{person?.username.toLowerCase()}">
+        <h1 class="mr-2 text-xl font-bold text-slate-950 dark:text-white">
           {person?.username}
-        </h1></a>
-      <span class=" font-bold" style="color:{role?.color};"
-        >{#if person?.role != "admin"}{title(person?.role)}{:else}<img
+        </h1>
+      </a>
+      <span class=" font-bold" style="color:{role?.color};">
+        {#if person?.role != "admin"}
+          {title(person?.role)}
+        {:else}
+          <img
             loading="lazy"
             src="/logos/dph.svg"
             alt="logo"
             class="inline-block"
             height="18"
-            width="18" />Datapack Hub Team{/if}</span>
+            width="18" />Datapack Hub Team
+        {/if}
+      </span>
       <MarkdownComponent source="{person?.bio}" classes="{'line-clamp-1'}" />
     </div>
   </div>

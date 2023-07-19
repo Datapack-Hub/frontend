@@ -37,7 +37,9 @@
       <h1 class="text-xl font-bold {notification?.type}-text">
         {#if notification?.read == 0}• {/if}{notification?.message}
       </h1>
-      <MarkdownComponent source="{notification?.description}" />
+      <MarkdownComponent
+        limitedMode="{true}"
+        source="{notification?.description}" />
     </div>
     <button
       class="closeButton right-0 top-0 h-1 text-slate-950 dark:text-white"
@@ -72,6 +74,6 @@
     @apply text-white;
   }
   .rainbow-background {
-    @apply bg-gradient-to-r from-red-500/75 via-green-500/75 via-orange-500/75 via-yellow-500/75 to-blue-500/75;
+    @apply bg-gradient-to-r from-red-500/75 via-green-500/75 to-purple-500/75;
   }
 </style>

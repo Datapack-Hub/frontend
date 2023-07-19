@@ -2,6 +2,7 @@ import { userSchema, type User, type Role } from "$lib/globals/schema";
 import { get } from "svelte/store";
 import { API } from "./consts";
 import { authed, isDark } from "./stores";
+import { memo, range } from "radash";
 
 /**
  * Loads the user's preferred color scheme from LocalStorage
@@ -54,10 +55,10 @@ export async function fetchAuthed(
   return res;
 }
 
-export function getCookie(cookieName: string): string | null {
+export const getCookie = memo((cookieName: string): string | null => {
   const cookies = document.cookie.split(";");
 
-  for (let i = 0; i < cookies.length; i++) {
+  for (const i of range(cookies.length)) {
     const cookie = cookies[i].trim();
 
     if (cookie.startsWith(cookieName + "=")) {
@@ -66,7 +67,7 @@ export function getCookie(cookieName: string): string | null {
   }
 
   return null;
-}
+})
 
 export function removeCookie(name: string) {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;

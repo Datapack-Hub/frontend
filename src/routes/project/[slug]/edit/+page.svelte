@@ -257,7 +257,7 @@
 
   function dependencyHandler(v: string, i: number) {
     dependencyNames[i] = v;
-    if (dependencyNames.length == i) dependencyNames[i + 1] = "";
+    if (dependencyNames.length == i) dependencyNames.push("");
     dependencyNames = [...dependencyNames.slice(0, 4)];
     resolveDependency(v, i);
   }

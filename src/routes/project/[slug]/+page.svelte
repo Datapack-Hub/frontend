@@ -35,7 +35,7 @@
       <!--Main-->
       <ProjectBody
         project="{data.project}"
-        dp_versions="{data.versions}"
+        datapackVersions="{data.versions}"
         roles="{data.roles}"
         comments="{data.comments}" />
     {/if}

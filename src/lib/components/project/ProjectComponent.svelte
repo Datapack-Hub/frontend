@@ -4,7 +4,7 @@
   import { onMount } from "svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconDownload from "~icons/tabler/Download.svelte";
-  import { title } from "radash";
+  import { last, title } from "radash";
 
   export let project: Project;
   export let showStatus = false;
@@ -53,10 +53,9 @@
         </a>
         {#if project.latest_version}
           <span>•</span>
-          <span
-            >{project.latest_version.minecraft_versions.split(",")[
-              project.latest_version.minecraft_versions.split(",").length - 1
-            ]}</span>
+          <span>
+            {last(project.latest_version.minecraft_versions.split(","))}
+          </span>
         {:else}
           <span>•</span>
           <span>No versions</span>

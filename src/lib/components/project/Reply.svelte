@@ -50,7 +50,7 @@
           style="color: {userRole?.color};"
           href="/user/{reply.author.username}">{reply.author.username}</a>
         <p class="text-xs dark:text-neutral-400">
-          {formatter.format(new Date(reply.sent * 1000))}
+          {formatter.format(reply.sent * 1000)}
         </p>
         {#if $user.id == reply.author.id || $role.permissions.includes("DELETE_CONTENT")}
           <div class="absolute right-0 p-2 text-white">

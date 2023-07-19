@@ -49,7 +49,7 @@
 
   // Component args
   export let project: Project;
-  export let dp_versions: Version[];
+  export let datapackVersions: Version[];
   export let roles: Role[];
   export let comments: DPHComment[];
 
@@ -67,7 +67,7 @@
   let postedModMsg = "";
   let reportMsg = "";
   let matches: Version[] = [];
-  let bigStitchedVersionList: string;
+  let stitchedVersions: string;
   let body = "";
   let featureDur: string;
   let comment: string;
@@ -83,22 +83,22 @@
 
   // Version filtering
   $: versionMatches =
-    selectedVersions.length != 0 && dp_versions
-      ? dp_versions?.filter(e =>
-          e.minecraft_versions
+    selectedVersions.length !== 0 && typeof datapackVersions !== "undefined"
+      ? datapackVersions.filter(dp =>
+          dp.minecraft_versions
             .split(",")
-            .some(v => selectedVersions.includes(v))
+            .some(version => selectedVersions.includes(version))
         )
-      : dp_versions;
+      : datapackVersions;
 
-  dp_versions?.forEach(item => {
-    bigStitchedVersionList += item.minecraft_versions;
+  datapackVersions?.forEach(item => {
+    stitchedVersions += item.minecraft_versions;
   });
 
   function pickVersions(vs: string) {
     matches = [];
     pickedVersion = vs;
-    dp_versions
+    datapackVersions
       ?.filter(versions => versions.minecraft_versions.split(",").includes(vs))
       .forEach(v => {
         matches = [...matches, v];
@@ -389,7 +389,7 @@
           ><IconBack class="inline" /> Back to description
         </button>
       </div>
-      {#if dp_versions?.length != 0}
+      {#if datapackVersions?.length != 0}
         <div class="flex space-x-2 w-full items-center dark:text-white">
           <p class="mr-2">Search by Minecraft version:</p>
           <MultiSelect
@@ -430,29 +430,25 @@
             ><IconBack class="inline" /> Back to description
           </button>
         </div>
-        {#if dp_versions?.length != 0}
+        {#if datapackVersions?.length != 0}
           <p class="text-white">Select a Minecraft version:</p>
           <div class="grid grid-cols-3 grid-rows-auto gap-3">
             {#each minecraftVersions ?? [] as v}
-              {#if bigStitchedVersionList.indexOf(v) >= 0}
-                {@const mcVersions =
-                  project && project.latest_version
-                    ? project.latest_version.minecraft_versions
-                    : ""}
+              {#if stitchedVersions.indexOf(v) >= 0}
+                {@const mcVersions = project?.latest_version
+                  ? project.latest_version.minecraft_versions.split(",")
+                  : []}
                 <button
                   data-test-btn="{v}"
-                  class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 {!mcVersions
-                    .split(',')
-                    .includes(v)
-                    ? 'text-red-500'
-                    : 'text-white'}"
+                  class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2
+                  {!mcVersions.includes(v) ? ' text-red-500' : ' text-white'}"
                   on:click="{() => pickVersions(v)}">
-                  {#if !mcVersions.split(",").includes(v)}
+                  {#if !mcVersions.includes(v)}
                     <IconAlert />
                   {/if}
                   <div class="font-bold flex-grow flex items-center space-x-2">
                     <p>{v}</p>
-                    {#if mcVersions.split(",").includes(v)}
+                    {#if mcVersions.includes(v)}
                       <p class="font-thin italic">
                         {project.latest_version?.version_code}
                       </p>
