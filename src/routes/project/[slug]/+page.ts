@@ -1,5 +1,5 @@
 import { browser } from "$app/environment";
-import { apiURL } from "$lib/globals/consts";
+import { API } from "$lib/globals/consts";
 import { fetchAuthed } from "$lib/globals/functions";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
@@ -15,7 +15,7 @@ export const load = (async ({ params, fetch }) => {
     const [projectReq, versionsReq, rolesReq] = await Promise.all([
       fetchAuthed("get", `/projects/get/${params.slug}`),
       fetchAuthed("get", `/versions/project/url/${params.slug}`),
-      fetch(`${apiURL}/user/staff/roles`)
+      fetch(`${API}/user/staff/roles`)
     ]);
 
     if ([projectReq, versionsReq, rolesReq].every(r => r.ok)) {
@@ -25,9 +25,7 @@ export const load = (async ({ params, fetch }) => {
         .parse((await versionsReq.json()).result);
       const roles = roleSchema.array().parse((await rolesReq.json()).roles);
 
-      const commentsReq = await fetch(
-        `${apiURL}/comments/thread/${project.ID}`
-      );
+      const commentsReq = await fetch(`${API}/comments/thread/${project.ID}`);
       const comments = commentSchema
         .array()
         .parse((await commentsReq.json()).result);

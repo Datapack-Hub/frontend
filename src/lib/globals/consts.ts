@@ -1,4 +1,4 @@
-export const apiURL = "https://api.datapackhub.net";
+export const API = "https://api.datapackhub.net";
 
 export const categories = [
   "Adventure",

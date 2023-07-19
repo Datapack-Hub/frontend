@@ -10,7 +10,7 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 
-  import { apiURL, categories, minecraftVersions } from "$lib/globals/consts";
+  import { API, categories, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
 
   import autoAnimate from "@formkit/auto-animate";
@@ -263,7 +263,7 @@
   }
 
   async function resolveDependency(v: string, i: number) {
-    let search = await fetch(`${apiURL}/projects/search?query=${v}`);
+    let search = await fetch(`${API}/projects/search?query=${v}`);
     let projects = projectSchema.array().parse((await search.json()).result);
 
     projects.forEach(project => {

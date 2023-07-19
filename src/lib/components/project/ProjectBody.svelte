@@ -1,7 +1,7 @@
 <script lang="ts">
   // Svelte imports
   import { goto } from "$app/navigation";
-  import { apiURL, minecraftVersions } from "$lib/globals/consts";
+  import { API, minecraftVersions } from "$lib/globals/consts";
   import {
     fetchAuthed,
     getAuthorFromID,
@@ -225,9 +225,7 @@
         message: comment
       }).then(async res => {
         if (res.ok) {
-          let newComments = await fetch(
-            apiURL + "/comments/thread/" + project.ID
-          );
+          let newComments = await fetch(API + "/comments/thread/" + project.ID);
           let parsedComments = commentSchema
             .array()
             .parse((await newComments.json()).result);

@@ -1,7 +1,7 @@
 <script lang="ts">
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
-  import { apiURL } from "$lib/globals/consts";
+  import { API } from "$lib/globals/consts";
   import autoAnimate from "@formkit/auto-animate";
   import type { PageData } from "./$types";
 
@@ -32,7 +32,7 @@
 
   let search = debounce({ delay: 300 }, async () => {
     let searchResult = await fetch(
-      `${apiURL}/projects/search?query=${query}&sort=${sort.toLowerCase()}`
+      `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}`
     );
 
     let search = await searchResult.json();
@@ -43,7 +43,7 @@
 
   async function resort() {
     let searchResult = await fetch(
-      `${apiURL}/projects/?sort=${sort.toLowerCase()}`
+      `${API}/projects/?sort=${sort.toLowerCase()}`
     );
 
     dataCopy = await projectSchema

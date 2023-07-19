@@ -1,4 +1,4 @@
-import { apiURL } from "$lib/globals/consts";
+import { API } from "$lib/globals/consts";
 import { projectSchema } from "$lib/globals/schema";
 import { parallel, shuffle } from "radash";
 import type { PageLoad } from "./$types";
@@ -10,8 +10,8 @@ export const load = (async ({ fetch, url }) => {
   const [projects, featured] = await parallel(
     2,
     await Promise.all([
-      fetch(`${apiURL}/projects/?page=${page}`),
-      fetch(`${apiURL}/projects/featured`)
+      fetch(`${API}/projects/?page=${page}`),
+      fetch(`${API}/projects/featured`)
     ]),
     async res => (await res.json()).result
   );

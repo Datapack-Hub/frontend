@@ -1,7 +1,7 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 import { fetchAuthed } from "$lib/globals/functions";
-import { apiURL } from "$lib/globals/consts";
+import { API } from "$lib/globals/consts";
 import { browser } from "$app/environment";
 import { role } from "$lib/globals/stores";
 import { get } from "svelte/store";
@@ -15,7 +15,7 @@ export const load = (async ({ params }) => {
     const [user, me, roles] = await Promise.all([
       fetchAuthed("get", "/user/" + params.slug),
       fetchAuthed("get", "/user/me"),
-      fetch(`${apiURL}/user/staff/roles`)
+      fetch(`${API}/user/staff/roles`)
     ]);
 
     const [userJSON, meJSON] = await Promise.all([

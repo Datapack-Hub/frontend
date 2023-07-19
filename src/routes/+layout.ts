@@ -1,6 +1,6 @@
 import { browser, dev } from "$app/environment";
 import { goto } from "$app/navigation";
-import { apiURL } from "$lib/globals/consts";
+import { API } from "$lib/globals/consts";
 import { fetchAuthed, getCookie, loadColorPref } from "$lib/globals/functions";
 import type { Role } from "$lib/globals/schema";
 import { roleSchema, userSchema } from "$lib/globals/schema";
@@ -27,7 +27,7 @@ export const load = (async ({ fetch, url }) => {
     if (token != null && get(user).id == -1) {
       const [userRes, roleRes] = await Promise.all([
         fetchAuthed("get", "/user/me"),
-        fetch(`${apiURL}/user/staff/roles`)
+        fetch(`${API}/user/staff/roles`)
       ]);
 
       const userJson = userSchema.parse(await userRes.json());

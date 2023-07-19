@@ -1,6 +1,6 @@
 import { userSchema, type User, type Role } from "$lib/globals/schema";
 import { get } from "svelte/store";
-import { apiURL } from "./consts";
+import { API } from "./consts";
 import { authed, isDark } from "./stores";
 
 /**
@@ -18,7 +18,7 @@ export function loadColorPref() {
  * @returns username of the author
  */
 export async function getAuthorFromID(authorID: number): Promise<User> {
-  const data = await fetch(apiURL + `/user/id/${authorID}`);
+  const data = await fetch(API + `/user/id/${authorID}`);
   return userSchema.parse(await data.json());
 }
 
@@ -39,7 +39,7 @@ export async function fetchAuthed(
   const cookie = getCookie("dph_token");
 
   // what is going on here
-  const res = await fetch(`${apiURL}${url}`, {
+  const res = await fetch(`${API}${url}`, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {

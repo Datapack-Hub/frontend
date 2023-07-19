@@ -1,17 +1,18 @@
 import { browser } from "$app/environment";
-import { apiURL } from "$lib/globals/consts";
+import { API } from "$lib/globals/consts";
 import { fetchAuthed } from "$lib/globals/functions";
 import type { Role } from "$lib/globals/schema";
 import { projectSchema, userSchema } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
+import { sum } from "radash";
 
 export const load = (async ({ params, fetch }) => {
   if (browser) {
     const [user, projects, role] = await Promise.all([
-      fetch(`${apiURL}/user/${params.slug}`),
+      fetch(`${API}/user/${params.slug}`),
       fetchAuthed("get", `/user/${params.slug}/projects`),
-      fetch(`${apiURL}/user/staff/roles`)
+      fetch(`${API}/user/staff/roles`)
     ]);
 
     if (user.status == 404) {
@@ -37,13 +38,7 @@ export const load = (async ({ params, fetch }) => {
       (v: Role) => v.name == profileJson?.role
     );
 
-    let downloads: number = 0;
-
-    projectJson.forEach(i => {
-      if (i.downloads) {
-        downloads = downloads + i.downloads;
-      }
-    });
+    const downloads: number = sum(projectJson, p => p.downloads ?? 0);
 
     return {
       profile: profileJson,

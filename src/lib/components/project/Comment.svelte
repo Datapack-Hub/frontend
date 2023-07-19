@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { apiURL } from "$lib/globals/consts";
+  import { API } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
   import {
     commentSchema,
@@ -47,7 +47,7 @@
     );
     if (cmt.ok) {
       toast.success("Comment posted!");
-      let newComment = await fetch(apiURL + "/comments/id/" + comment.id);
+      let newComment = await fetch(API + "/comments/id/" + comment.id);
       let parsedComments = commentSchema.parse(await newComment.json());
       comment = parsedComments;
       replyMsg = "";
