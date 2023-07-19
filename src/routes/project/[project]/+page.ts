@@ -13,8 +13,8 @@ import {
 export const load = (async ({ params, fetch }) => {
   if (browser) {
     const [projectReq, versionsReq, rolesReq] = await Promise.all([
-      fetchAuthed("get", `/projects/get/${params.slug}`),
-      fetchAuthed("get", `/versions/project/url/${params.slug}`),
+      fetchAuthed("get", `/projects/get/${params.project}`),
+      fetchAuthed("get", `/versions/project/url/${params.project}`),
       fetch(`${API}/user/staff/roles`)
     ]);
 

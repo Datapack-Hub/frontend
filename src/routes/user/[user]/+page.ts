@@ -10,8 +10,8 @@ import { sum } from "radash";
 export const load = (async ({ params, fetch }) => {
   if (browser) {
     const [user, projects, role] = await Promise.all([
-      fetch(`${API}/user/${params.slug}`),
-      fetchAuthed("get", `/user/${params.slug}/projects`),
+      fetch(`${API}/user/${params.user}`),
+      fetchAuthed("get", `/user/${params.user}/projects`),
       fetch(`${API}/user/staff/roles`)
     ]);
 

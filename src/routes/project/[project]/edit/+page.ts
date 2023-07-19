@@ -6,7 +6,7 @@ import type { PageLoad } from "./$types";
 
 export const load = (async ({ params }) => {
   if (browser) {
-    const projectReq = await fetchAuthed("get", "/projects/get/" + params.slug);
+    const projectReq = await fetchAuthed("get", "/projects/get/" + params.project);
 
     if (projectReq.status == 404) {
       throw error(404, {

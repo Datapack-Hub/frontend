@@ -13,7 +13,7 @@ export const load = (async ({ params }) => {
     const defaultRole = get(role);
 
     const [user, me, roles] = await Promise.all([
-      fetchAuthed("get", "/user/" + params.slug),
+      fetchAuthed("get", "/user/" + params.user),
       fetchAuthed("get", "/user/me"),
       fetch(`${API}/user/staff/roles`)
     ]);
