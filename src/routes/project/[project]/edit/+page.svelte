@@ -648,7 +648,7 @@
 <style lang="postcss">
   :root {
     --sms-bg: theme(colors.stone.800);
-    --sms-border: 2px solid theme(colors.stone.700);
+    --sms-border: 2px solid theme(colors.stone.200);
     --sms-selected-bg: theme(colors.stone.700);
     --sms-remove-btn-hover-bg: theme(colors.orange.500);
     --sms-options-bg: theme(colors.stone.800);

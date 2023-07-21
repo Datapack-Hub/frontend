@@ -150,16 +150,16 @@
     {#if !mcVersion}
       <h2 class="flex flex-grow space-x-1 text-slate-950 dark:text-white">
         {#each properVersion as mcv}
-          <Button
-            wait="{true}"
-            click="{() =>
+          <button
+          class="rounded-md bg-dph-orange p-1 px-2"
+            on:click="{() =>
               download(
                 version.primary_download,
                 mcv,
                 version.resource_pack_download ? true : false
               )}">
             {mcv}
-          </Button>
+            </button>
         {/each}
       </h2>
     {/if}
