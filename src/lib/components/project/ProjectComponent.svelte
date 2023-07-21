@@ -20,12 +20,12 @@
 
 <div
   class="w-full h-full items-center rounded-xl relative bg-slate-200 p-3 text-slate-950 dark:bg-stone-800 dark:text-slate-100">
-  <div class="flex items-center">
+  <div class="flex items-top">
     <a
       href="/project/{project.url}"
       class="rounded-lg {project.icon
         ? ''
-        : 'bg-slate-300 p-4 dark:bg-stone-700 dark:text-slate-100'}">
+        : 'bg-slate-300 p-4 dark:bg-stone-700 dark:text-slate-100'} items-start">
       {#if project.icon}
         <img
           src="{project.icon}"

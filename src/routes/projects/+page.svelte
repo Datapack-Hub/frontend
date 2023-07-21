@@ -28,7 +28,7 @@
     ? localStorage.getItem("preferred_layout") || "list"
     : "list";
 
-  let featured = data.featured?.splice(0, 1);
+  let featured = data.featured?.splice(0, 2);
 
   let search = debounce({ delay: 300 }, async () => {
     let searchResult = await fetch(
@@ -64,6 +64,7 @@
   class="items-center pt-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
   <div
     class="py-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-2">
+    <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
     <div class="flex-grow flex flex-col sm:flex-row space-x-4 items-center">
       <div
         class="flex items-center rounded-full bg-slate-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700">
@@ -74,7 +75,7 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class=" ml-2 bg-slate-200 text-slate-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white"
+          class="ml-2 bg-slate-200 text-slate-950 placeholder:text-stone-400 focus:outline-none dark:bg-stone-700 dark:text-white focus:w-80"
           on:input="{search}" />
       </div>
       <div class="block mt-2 sm:mt-0 sm:flex space-x-2 items-center">
@@ -164,9 +165,13 @@
         {/if}
       </h2>
       <ul class="space-y-2 mx-3 mt-2" use:autoAnimate>
-        {#each featured ?? [] as feat}
-          <FeaturedProjectComponent project="{feat}" type="featured" />
-        {/each}
+        <div
+          class="grid grid-cols-2 gap-3"
+          use:autoAnimate>
+          {#each featured ?? [] as feat}
+            <FeaturedProjectComponent project="{feat}" type="featured" />
+          {/each}
+        </div>
         {#key dataCopy}
           <div
             class="{layout === 'list'
