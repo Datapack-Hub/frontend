@@ -57,7 +57,6 @@
   let iconImg: string;
 
   let category: Writable<string[]> = writable([]);
-  let newVersionVersions: string[] = [];
 
   let v_changelog = "";
 
@@ -143,15 +142,17 @@
     }
 
     toast.promise(
-      fetchAuthed("POST", `/versions/new/${data.project?.ID}`, versionData),
+      fetchAuthed(
+        "POST",
+        `/versions/new/${data.project?.ID}`,
+        versionData
+      ).then(() => goto(".")),
       {
         success: "Uploaded! Refreshing...",
         error: "Something went wrong.",
         loading: "Uploading file..."
       }
     );
-
-    goto(".");
   }
 
   function uploadIcon() {
@@ -531,7 +532,7 @@
                   <MultiSelect
                     options="{minecraftVersions}"
                     minSelect="{1}"
-                    selected="{selected}" />
+                    bind:selected="{selected}" />
                 </div>
                 <p class="mb-4"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->
