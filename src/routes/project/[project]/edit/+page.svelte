@@ -531,7 +531,7 @@
                   <MultiSelect
                     options="{minecraftVersions}"
                     minSelect="{1}"
-                    selected="{selected}" />
+                    bind:selected="{selected}" />
                 </div>
                 <p class="mb-4"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->
@@ -647,7 +647,7 @@
 <style lang="postcss">
   :root {
     --sms-bg: theme(colors.stone.800);
-    --sms-border: 2px solid theme(colors.stone.700);
+    --sms-border: 2px solid theme(colors.stone.200);
     --sms-selected-bg: theme(colors.stone.700);
     --sms-remove-btn-hover-bg: theme(colors.orange.500);
     --sms-options-bg: theme(colors.stone.800);

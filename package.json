@@ -31,7 +31,6 @@
     "eslint-plugin-svelte": "^2.32.2",
     "isomorphic-dompurify": "^1.8.0",
     "jszip": "^3.10.1",
-    "lightningcss": "^1.21.5",
     "marked": "^5.1.1",
     "marked-smartypants": "^1.0.2",
     "nprogress": "^0.2.0",
@@ -49,8 +48,7 @@
     "typescript": "^5.1.6",
     "unlighthouse": "^0.9.0",
     "unplugin-icons": "^0.16.5",
-    "vite": "^4.4.4",
-    "vite-plugin-lightningcss": "^0.0.5"
+    "vite": "^4.4.4"
   },
   "type": "module",
   "dependencies": {
