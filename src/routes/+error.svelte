@@ -37,6 +37,7 @@
 </svelte:head>
 
 <main
+  id="main-content"
   class="flex h-screen w-full flex-col items-center justify-center bg-slate-50 transition-colors dark:bg-stone-900 md:flex-row md:justify-start px-4 sm:px-8 md:px-16 lg:px-24">
   <p
     class="mb-8 w-full text-center font-console text-8xl font-bold text-slate-950 dark:text-white md:mb-0 md:w-1/2 md:text-9xl lg:text-[10rem] xl:text-[12rem]">

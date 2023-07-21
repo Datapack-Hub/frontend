@@ -98,7 +98,7 @@
   <title>Create Project | Datapack Hub</title>
 </svelte:head>
 
-<main class="pt-20 px-4 sm:px-8 md:px-16 lg:px-24 pb-3">
+<main id="main-content" class="pt-20 px-4 sm:px-8 md:px-16 lg:px-24 pb-3">
   <h1 class="text-slate-950 dark:text-slate-100 text-3xl font-bold mb-4">
     Create New Datapack
   </h1>

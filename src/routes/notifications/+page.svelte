@@ -17,6 +17,7 @@
 </svelte:head>
 
 <main
+  id="main-content"
   class="bg-slate-50 transition-all dark:bg-stone-900 h-full px-4 sm:px-8 md:px-16 lg:px-24">
   <div class="flex-col items-center md:flex-row md:items-start">
     <h1

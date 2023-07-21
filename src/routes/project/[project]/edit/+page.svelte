@@ -57,7 +57,7 @@
   let iconImg: string;
 
   let category: Writable<string[]> = writable([]);
-  let newVersionVersions: string[] = []
+  let newVersionVersions: string[] = [];
 
   let v_changelog = "";
 
@@ -115,16 +115,12 @@
     let v_rp = document.getElementById("v_rp") as HTMLInputElement;
     let v_squash = document.getElementById("squash") as HTMLInputElement;
 
-    if (!v_name)
-      return toast.error("Please make sure you give a version name!");
-    if (!v_code)
-      return toast.error("Please make sure you give a version number!");
+    if (!v_name) return toast("Please make sure you give a version name!");
+    if (!v_code) return toast("Please make sure you give a version number!");
     if (!v_changelog)
-      return toast.error("Please make sure you give a version changelog!");
+      return toast("Please make sure you give a version changelog!");
     if (selected.length == 0) {
-      return toast.error(
-        "Please select at least one compatible Minecraft version!"
-      );
+      return toast("Please select at least one compatible Minecraft version!");
     }
 
     let versionData = {
@@ -281,6 +277,7 @@
 </svelte:head>
 
 <main
+  id="main-content"
   class="relative bg-slate-50 px-4 transition-all dark:bg-stone-900 sm:px-8 lg:px-16 xl:px-24">
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
@@ -531,7 +528,10 @@
                 </p>
                 <div
                   class="grid grid-cols-2 md:grid-cols-3 gap-3 rounded-lg col-span-2">
-                  <MultiSelect options={minecraftVersions} minSelect={1} {selected} />
+                  <MultiSelect
+                    options="{minecraftVersions}"
+                    minSelect="{1}"
+                    selected="{selected}" />
                 </div>
                 <p class="mb-4"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->

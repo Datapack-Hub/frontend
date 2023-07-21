@@ -23,7 +23,7 @@
 
 <svelte:window bind:scrollY="{scrollY}" bind:innerWidth="{innerWidth}" />
 
-<nav
+<header
   id="nav"
   class="{isSmall
     ? 'bottom-0'
@@ -31,7 +31,10 @@
     ? 'bg-slate-50/80 dark:bg-stone-800/80 backdrop-blur shadow-md'
     : 'shadow-none'}">
   <div class="flex h-16 w-full flex-row items-center justify-between md:h-16">
-    <div class="flex items-center mr-2">
+
+    <a href="#main-content" class="invert absolute opacity-0 focus:opacity-100 transition-opacity select-none cursor-default left-1/2">Jump to Main Content</a>
+
+    <nav class="flex items-center mr-2">
       <a href="/" class="z-20 flex cursor-pointer items-center space-x-2">
         <img
           src="/logos/dph.svg"
@@ -78,10 +81,10 @@
           </button>
         {/if}
       {/if}
-    </div>
+    </nav>
     <div class="mb-0 flex items-center justify-between">
       <ColorSchemeSelector small="{isSmall}" />
       <ProfileNavComponent small="{isSmall}" />
     </div>
   </div>
-</nav>
+</header>

@@ -60,6 +60,7 @@
 </svelte:head>
 
 <main
+  id="main-content"
   class="items-center pt-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
   <div
     class="py-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-2">

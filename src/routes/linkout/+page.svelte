@@ -6,6 +6,7 @@
 </script>
 
 <main
+  id="main-content"
   class="flex items-center justify-between h-screen px-4 sm:px-8 md:px-16 lg:px-24">
   <img src="/logos/dph.svg" alt="logo" class="w-1/4 p-12" />
   <div class="w-3/4">
