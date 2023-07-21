@@ -17,7 +17,6 @@
   import { toast } from "svelte-sonner";
 
   import AutoAdjustableInput from "$lib/components/utility/AutoAdjustableInput.svelte";
-  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import { projectSchema, type Project } from "$lib/globals/schema";
   import { onMount } from "svelte";
   import { writable, type Writable } from "svelte/store";
@@ -35,6 +34,8 @@
   import IconDelete from "~icons/tabler/Trash.svelte";
   import MarkdownEditor from "$lib/components/MarkdownEditor.svelte";
   import { list } from "radash";
+  import { MultiSelect } from "svelte-multiselect";
+  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -56,6 +57,7 @@
   let iconImg: string;
 
   let category: Writable<string[]> = writable([]);
+  let newVersionVersions: string[] = []
 
   let v_changelog = "";
 
@@ -529,12 +531,7 @@
                 </p>
                 <div
                   class="grid grid-cols-2 md:grid-cols-3 gap-3 rounded-lg col-span-2">
-                  {#each minecraftVersions as cat}
-                    <ToggleBoxes
-                      value="{cat}"
-                      selected="{category}"
-                      on:fail="{maxCategoriesReached}" />
-                  {/each}
+                  <MultiSelect options={minecraftVersions} minSelect={1} {selected} />
                 </div>
                 <p class="mb-4"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->
