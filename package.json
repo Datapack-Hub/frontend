@@ -9,7 +9,7 @@
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "format": "prettier --cache src --write --plugin-search-dir=. ./src/**/*.{svelte,ts}",
+    "format": "prettier --cache src --write ./src/**/*.{svelte,ts}",
     "lighthouse": "unlighthouse --config unlighthouse.config.ts",
     "lint": "eslint . --cache"
   },
@@ -26,20 +26,20 @@
     "@typescript-eslint/parser": "^6.1.0",
     "animejs": "^3.2.1",
     "dotenv": "^16.3.1",
-    "esbuild": "^0.18.14",
+    "esbuild": "^0.18.15",
     "eslint": "^8.45.0",
-    "eslint-plugin-svelte": "^2.32.2",
+    "eslint-plugin-svelte": "^2.32.4",
     "isomorphic-dompurify": "^1.8.0",
     "jszip": "^3.10.1",
     "marked": "^5.1.1",
     "marked-smartypants": "^1.0.2",
     "nprogress": "^0.2.0",
-    "postcss": "^8.4.26",
+    "postcss": "^8.4.27",
     "postcss-load-config": "^4.0.1",
-    "prettier": "^2.8.8",
-    "prettier-plugin-svelte": "^2.10.1",
+    "prettier": "^3.0.0",
+    "prettier-plugin-svelte": "^3.0.0",
     "radash": "^11.0.0",
-    "svelte": "^4.0.5",
+    "svelte": "^4.1.1",
     "svelte-check": "^3.4.6",
     "svelte-preprocess": "^5.0.4",
     "svelte-sonner": "^0.1.2",
@@ -48,7 +48,7 @@
     "typescript": "^5.1.6",
     "unlighthouse": "^0.9.0",
     "unplugin-icons": "^0.16.5",
-    "vite": "^4.4.4"
+    "vite": "^4.4.6"
   },
   "type": "module",
   "dependencies": {
@@ -70,8 +70,7 @@
     "trailingComma": "none",
     "plugins": [
       "prettier-plugin-svelte"
-    ],
-    "pluginSearchDirs": false
+    ]
   },
   "engineStrict": true
 }

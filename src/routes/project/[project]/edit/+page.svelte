@@ -476,9 +476,7 @@
               </div>
               <div class="space-y-2">
                 {#each data.versions ?? [] as version}
-                  <VersionDisplay
-                    version="{version}"
-                    project="{data.project}" />
+                  <VersionDisplay {version} project="{data.project}" />
                 {/each}
               </div>
             {:else}
@@ -532,7 +530,7 @@
                   <MultiSelect
                     options="{minecraftVersions}"
                     minSelect="{1}"
-                    bind:selected="{selected}" />
+                    bind:selected />
                 </div>
                 <p class="mb-4"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->

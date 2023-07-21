@@ -48,7 +48,7 @@
 
 <div
   class="mb-3 w-full items-center rounded-xl outline outline-{style} relative bg-slate-200 text-slate-950 dark:bg-stone-800 dark:text-white">
-  <ProjectComponent project="{project}" />
+  <ProjectComponent {project} />
   <div
     class="absolute right-3 top-0 bg-{style} flex space-x-1 rounded-b-md px-2 py-0.5 text-xs"
     use:tippy="{hoverMsgs[type]}">

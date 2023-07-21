@@ -245,7 +245,7 @@
   $: isSmall = innerWidth < 768;
 </script>
 
-<svelte:window bind:innerWidth="{innerWidth}" />
+<svelte:window bind:innerWidth />
 
 <div use:autoAnimate class="w-full mt-4 lg:w-3/4 lg:mt-0">
   <!--Buttons-->
@@ -407,7 +407,7 @@
         </div>
         <ul use:autoAnimate class="space-y-2">
           {#each versionMatches ?? [] as version}
-            <VersionDisplay version="{version}" />
+            <VersionDisplay {version} />
           {/each}
         </ul>
         <p class="mx-1 mt-2 text-slate-950 dark:text-white">
@@ -522,7 +522,7 @@
             </form>
             {#key comments}
               {#each comments as cmt}
-                <Comment roles="{roles}" comment="{cmt}" project="{project}" />
+                <Comment {roles} comment="{cmt}" {project} />
               {/each}
             {/key}
           {/if}

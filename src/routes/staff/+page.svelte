@@ -32,7 +32,7 @@
       {#each data.staff ?? [] as person, i}
         <div in:fly="{{ x: -200, duration: 500, delay: i * 75 }}">
           <UserCard
-            person="{person}"
+            {person}
             role="{data.roleData?.find(v => person.role == v.name)}" />
         </div>
       {/each}

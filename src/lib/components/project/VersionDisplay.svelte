@@ -151,7 +151,7 @@
       <h2 class="flex flex-grow space-x-1 text-slate-950 dark:text-white">
         {#each properVersion as mcv}
           <button
-          class="rounded-md bg-dph-orange p-1 px-2"
+            class="rounded-md bg-dph-orange p-1 px-2"
             on:click="{() =>
               download(
                 version.primary_download,
@@ -159,7 +159,7 @@
                 version.resource_pack_download ? true : false
               )}">
             {mcv}
-            </button>
+          </button>
         {/each}
       </h2>
     {/if}
@@ -192,7 +192,8 @@
         classes="flex items-center space-x-2"
         ><IconZIP />
         <span data-test-clickable-label="datapack">Datapack</span>
-        {#if mcVersion} <span>(for {mcVersion})</span>{/if}</Button>
+        {#if mcVersion}
+          <span>(for {mcVersion})</span>{/if}</Button>
       {#if version.resource_pack_download}
         <Button
           click="{() => {

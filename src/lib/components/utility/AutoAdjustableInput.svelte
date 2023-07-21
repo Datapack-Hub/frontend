@@ -14,7 +14,7 @@
 <input
   type="text"
   class="{classes}"
-  bind:value="{value}"
+  bind:value
   style="max-width: {value.length + 1 ?? 10}ch;"
   autocorrect="false"
   on:change="{e => deploy(e.currentTarget.value)}" />

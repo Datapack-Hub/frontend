@@ -50,7 +50,7 @@
   <title>Datapack Hub Console</title>
 </svelte:head>
 
-<svelte:window bind:innerWidth="{innerWidth}" />
+<svelte:window bind:innerWidth />
 
 <main id="main-content" class="bg-stone-900 px-4 transition-all">
   {#if $user.role != "default" && $authed}

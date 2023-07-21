@@ -32,7 +32,7 @@
   <input
     type="submit"
     aria-label="{label}"
-    disabled="{disabled}"
+    {disabled}
     class="button-{style} {classes} disabled:bg-opacity-40"
     value="{formText}"
     on:click="{buttonClick}" />

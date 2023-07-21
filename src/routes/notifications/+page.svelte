@@ -35,7 +35,7 @@
         {/if}
         <ul use:autoAnimate>
           {#each localNotifCopy ?? [] as notification}
-            <Notification notification="{notification}" />
+            <Notification {notification} />
           {/each}
         </ul>
       {/if}

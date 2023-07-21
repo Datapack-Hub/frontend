@@ -52,7 +52,7 @@
   }
 </script>
 
-<svelte:window bind:innerWidth="{innerWidth}" />
+<svelte:window bind:innerWidth />
 
 <svelte:head>
   <title>Projects | Datapack Hub</title>
@@ -175,7 +175,7 @@
             use:autoAnimate>
             {#each dataCopy as project}
               <li>
-                <ProjectComponent project="{project}" />
+                <ProjectComponent {project} />
               </li>
               <!-- {/if} -->
             {/each}

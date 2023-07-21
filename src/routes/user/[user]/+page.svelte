@@ -193,7 +193,7 @@
       </p>
     {:else}
       {#each data.projects ?? [] as project}
-        <ProjectComponent project="{project}" />
+        <ProjectComponent {project} />
       {/each}
     {/if}
   </div>
