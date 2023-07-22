@@ -52,7 +52,7 @@
       description: description,
       body: body,
       category: $category,
-      author: $user.id,
+      author: $user,
       status: "draft"
     };
 

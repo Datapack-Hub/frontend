@@ -2,10 +2,7 @@
   // Svelte imports
   import { goto } from "$app/navigation";
   import { API, minecraftVersions } from "$lib/globals/consts";
-  import {
-    fetchAuthed,
-    isModOrAbove
-  } from "$lib/globals/functions";
+  import { fetchAuthed, isModOrAbove } from "$lib/globals/functions";
   import { authed, role, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
@@ -17,10 +14,8 @@
     type DPHComment,
     type Project,
     type Role,
-    type User,
     type Version
   } from "$lib/globals/schema";
-  import { onMount } from "svelte";
   import MultiSelect from "svelte-multiselect";
   import tippy from "sveltejs-tippy";
 
@@ -55,7 +50,6 @@
 
   // Local vars
   let activePage = "description";
-  let author: User;
   let selectedVersions: string[] = [];
   let pickedVersion: string | undefined = undefined;
   let reportModal: Modal;
@@ -76,10 +70,6 @@
   if (project?.body) {
     body = project.body;
   }
-
-  onMount(async () => {
-    author = project?.author;
-  });
 
   // Version filtering
   $: versionMatches =
@@ -295,7 +285,7 @@
       {/if}
       {#if isModOrAbove($role)}
         {#if status == "publish_queue" || status == "review_queue"}
-          <p class="dark:text-white">Review: </p>
+          <p class="dark:text-white">Review:</p>
           <button
             aria-label="Approve"
             class="button-base flex items-center space-x-1 bg-green-600"
@@ -319,7 +309,8 @@
               modModalPage = 'delete';
               modModal.open();
             }}"
-            use:tippy="{{ content: 'Deny', placement: 'bottom' }}"><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>
+            use:tippy="{{ content: 'Deny', placement: 'bottom' }}"
+            ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>
         {/if}
         {#if status == "live"}
           <button
@@ -328,8 +319,9 @@
             on:click="{() => {
               featureModal.open();
             }}"
-            ><IconConfetti /><span class="hidden md:block">Feature</span></button>
-          {/if}
+            ><IconConfetti /><span class="hidden md:block">Feature</span
+            ></button>
+        {/if}
         <button
           class="button-base flex items-center space-x-1"
           aria-label="Moderate"
@@ -549,8 +541,8 @@
     <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
     <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
     <UserCard
-      person="{author}"
-      role="{roles?.find(v => author?.role == v.name)}" />
+      person="{project.author}"
+      role="{roles?.find(v => project.author?.role == v.name)}" />
     <div class="mb-2 min-w-fit items-center">
       <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
         Select Action
@@ -598,8 +590,8 @@
       Author
     </p>
     <UserCard
-      person="{author}"
-      role="{roles?.find(v => author?.role == v.name)}" />
+      person="{project.author}"
+      role="{roles?.find(v => project.author?.role == v.name)}" />
     <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
       Report Message
     </p>
@@ -622,8 +614,8 @@
       Author
     </p>
     <UserCard
-      person="{author}"
-      role="{roles?.find(v => author?.role == v.name)}" />
+      person="{project.author}"
+      role="{roles?.find(v => project.author?.role == v.name)}" />
     <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
       Duration of feature
     </p>

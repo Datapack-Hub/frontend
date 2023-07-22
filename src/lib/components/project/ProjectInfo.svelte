@@ -1,6 +1,6 @@
 <script lang="ts">
   // Svelte imports
-  import { fetchAuthed, getAuthorFromID } from "$lib/globals/functions";
+  import { fetchAuthed } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
   import { toast } from "svelte-sonner";

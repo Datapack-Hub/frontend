@@ -1,26 +1,13 @@
 <script lang="ts">
-  import { getAuthorFromID } from "$lib/globals/functions";
   import type { Project } from "$lib/globals/schema";
-  import { onMount } from "svelte";
-  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
-  import IconDownload from "~icons/tabler/Download.svelte";
   import { last, title } from "radash";
-  import { afterNavigate } from "$app/navigation";
+  import IconDownload from "~icons/tabler/Download.svelte";
+  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
 
   export let project: Project;
   export let showStatus = false;
 
-  $: author = { username: "Loading..." };
-
   let status = project.status ?? "unpublished";
-
-  onMount(async () => {
-    author = project.author;
-  });
-
-  afterNavigate(() => {
-    getAuthorFromID(project.author).then(a => author = a);
-  })
 </script>
 
 <div
@@ -52,9 +39,9 @@
       <div
         class="flex space-x-2 items-center text-sm text-slate-950/40 dark:text-slate-100">
         <a
-          href="/user/{author.username.toLowerCase()}"
+          href="/user/{project.author.username.toLowerCase()}"
           class="block dark:hover:text-slate-100">
-          {author.username}
+          {project.author.username}
         </a>
         {#if project.latest_version}
           <span>•</span>

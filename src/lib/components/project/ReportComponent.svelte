@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
-  import { fetchAuthed, getAuthorFromID } from "$lib/globals/functions";
+  import { fetchAuthed } from "$lib/globals/functions";
+  import type { Project, Report, User } from "$lib/globals/schema";
   import { toast } from "svelte-sonner";
   import { fade } from "svelte/transition";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
-  import type { Project, User, Report } from "$lib/globals/schema";
 
   export let project: Project;
   export let report: Report;
@@ -17,7 +16,6 @@
   let me: HTMLDivElement;
 
   (async () => {
-    author = project.author
     visible = true;
   })();
 

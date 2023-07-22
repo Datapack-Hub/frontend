@@ -1,8 +1,8 @@
-import { userSchema, type User, type Role } from "$lib/globals/schema";
+import type { Role } from "$lib/globals/schema";
+import { memo, range } from "radash";
 import { get } from "svelte/store";
 import { API } from "./consts";
 import { authed, isDark } from "./stores";
-import { memo, range } from "radash";
 
 /**
  * Loads the user's preferred color scheme from LocalStorage
@@ -10,17 +10,6 @@ import { memo, range } from "radash";
 export function loadColorPref() {
   const color = localStorage.getItem("dp_colorPref");
   isDark.set(color != null && color === "true");
-}
-
-/**
- * Gets a username from ID
- *
- * @param authorID ID of the author
- * @returns username of the author
- */
-export async function getAuthorFromID(authorID: number): Promise<User> {
-  const data = await fetch(API + `/user/id/${authorID}`);
-  return userSchema.parse(await data.json());
 }
 
 /**
