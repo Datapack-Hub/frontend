@@ -30,7 +30,7 @@ export const userSchema = z.object({
 
 export const projectSchema = z.object({
   ID: z.onumber(),
-  author: z.number(),
+  author: z.object(userSchema.shape),
   body: z.ostring(),
   category: z.optional(z.array(z.string())),
   description: z.ostring(),

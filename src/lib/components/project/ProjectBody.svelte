@@ -4,7 +4,6 @@
   import { API, minecraftVersions } from "$lib/globals/consts";
   import {
     fetchAuthed,
-    getAuthorFromID,
     isModOrAbove
   } from "$lib/globals/functions";
   import { authed, role, user } from "$lib/globals/stores";
@@ -79,7 +78,7 @@
   }
 
   onMount(async () => {
-    author = await getAuthorFromID(project?.author);
+    author = project?.author;
   });
 
   // Version filtering
@@ -278,7 +277,7 @@
       </button>
     </div>
     <div class="flex space-x-1.5 items-center">
-      {#if $user.id == project?.author}
+      {#if $user.id == project?.author.id}
         <a
           aria-label="Edit"
           class="button-base ml-auto flex items-center space-x-1"
@@ -286,7 +285,7 @@
           <IconPencil /><span class="hidden md:block">Edit</span>
         </a>
       {/if}
-      {#if $user.id != project?.author && status == "live"}
+      {#if $user.id != project?.author.id && status == "live"}
         <button
           aria-label="Report"
           class="button-base flex items-center space-x-1"
@@ -481,7 +480,7 @@
         {:else}
           <h2 class=" text-xl text-slate-950 dark:text-white">
             <b>No versions yet!</b>
-            {#if project.author == $user.id}Why not
+            {#if project.author.id == $user.id}Why not
               <a
                 href="/project/{project?.url}/edit"
                 class="text-blue-500 underline">create one</a

@@ -15,7 +15,7 @@
   let status = project.status ?? "unpublished";
 
   onMount(async () => {
-    author = await getAuthorFromID(project.author);
+    author = project.author;
   });
 
   afterNavigate(() => {

@@ -31,7 +31,7 @@
 
   // Get author data on load
   onMount(async () => {
-    author = await getAuthorFromID(project?.author ?? 0);
+    author = project?.author;
     visible = true;
   });
 

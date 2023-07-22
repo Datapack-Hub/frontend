@@ -17,7 +17,7 @@
   let me: HTMLDivElement;
 
   (async () => {
-    if (browser) author = await getAuthorFromID(project.author);
+    author = project.author
     visible = true;
   })();
 
