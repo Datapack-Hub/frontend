@@ -5,6 +5,7 @@
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconDownload from "~icons/tabler/Download.svelte";
   import { last, title } from "radash";
+  import { afterNavigate } from "$app/navigation";
 
   export let project: Project;
   export let showStatus = false;
@@ -16,6 +17,10 @@
   onMount(async () => {
     author = await getAuthorFromID(project.author);
   });
+
+  afterNavigate(() => {
+    getAuthorFromID(project.author).then(a => author = a);
+  })
 </script>
 
 <div
