@@ -23,6 +23,7 @@
   } from "$lib/globals/schema";
   import { onMount } from "svelte";
   import MultiSelect from "svelte-multiselect";
+  import tippy from "sveltejs-tippy";
 
   import IconAlert from "~icons/tabler/AlertTriangle.svelte";
   import IconDescription from "~icons/tabler/AlignLeft.svelte";
@@ -276,46 +277,7 @@
         {/if}
       </button>
     </div>
-    <div class="flex space-x-1.5">
-      {#if isModOrAbove($role)}
-        <button
-          class="button-base flex items-center space-x-1"
-          aria-label="Moderate"
-          on:click="{() => {
-            modModal.open();
-          }}"
-          ><IconShield /><span class="hidden md:block">Moderate</span></button>
-        <button
-          aria-label="Feature"
-          class="button-base flex items-center space-x-1"
-          on:click="{() => {
-            featureModal.open();
-          }}"
-          ><IconConfetti /><span class="hidden md:block">Feature</span></button>
-        {#if status == "publish_queue" || status == "review_queue"}
-          <button
-            aria-label="Approve"
-            class="button-base flex items-center space-x-1 bg-green-600"
-            on:click="{approve}"
-            ><IconTick /><span class="hidden md:block">Approve</span></button>
-          <button
-            aria-label="Request Changes"
-            class="button-base flex items-center space-x-1 bg-yellow-600"
-            on:click="{() => {
-              modModalPage = 'disable';
-              modModal.open();
-            }}"
-            ><IconPencil /><span class="hidden md:block">Request Changes</span
-            ></button>
-          <button
-            aria-label="Deny"
-            class="button-base flex items-center space-x-1 bg-red-600"
-            on:click="{() => {
-              modModalPage = 'delete';
-              modModal.open();
-            }}"><IconCross /><span class="hidden md:block">Deny</span></button>
-        {/if}
-      {/if}
+    <div class="flex space-x-1.5 items-center">
       {#if $user.id == project?.author}
         <a
           aria-label="Edit"
@@ -324,13 +286,59 @@
           <IconPencil /><span class="hidden md:block">Edit</span>
         </a>
       {/if}
-      {#if $user.id != project?.author}
+      {#if $user.id != project?.author && status == "live"}
         <button
           aria-label="Report"
           class="button-base flex items-center space-x-1"
           on:click="{() => {
             reportModal.open();
           }}"><IconReport /><span class="hidden md:block">Report</span></button>
+      {/if}
+      {#if isModOrAbove($role)}
+        {#if status == "publish_queue" || status == "review_queue"}
+          <p class="dark:text-white">Review: </p>
+          <button
+            aria-label="Approve"
+            class="button-base flex items-center space-x-1 bg-green-600"
+            on:click="{approve}"
+            use:tippy="{{ content: 'Approve', placement: 'bottom' }}"
+            ><IconTick /><!--<span class="hidden md:block">Approve</span>--></button>
+          <button
+            aria-label="Request Changes"
+            class="button-base flex items-center space-x-1 bg-yellow-600"
+            on:click="{() => {
+              modModalPage = 'disable';
+              modModal.open();
+            }}"
+            use:tippy="{{ content: 'Request Changes', placement: 'bottom' }}"
+            ><IconPencil /><!--<span class="hidden md:block">Request Changes</span
+            >--></button>
+          <button
+            aria-label="Deny"
+            class="button-base flex items-center space-x-1 bg-red-600"
+            on:click="{() => {
+              modModalPage = 'delete';
+              modModal.open();
+            }}"
+            use:tippy="{{ content: 'Deny', placement: 'bottom' }}"><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>
+        {/if}
+        {#if status == "live"}
+          <button
+            aria-label="Feature"
+            class="button-base flex items-center space-x-1"
+            on:click="{() => {
+              featureModal.open();
+            }}"
+            ><IconConfetti /><span class="hidden md:block">Feature</span></button>
+          {/if}
+        <button
+          class="button-base flex items-center space-x-1"
+          aria-label="Moderate"
+          on:click="{() => {
+            modModal.open();
+          }}"
+          use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
+          ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
       {/if}
       <Button label="Download" click="{() => (activePage = 'download')}">
         {#if !isSmall}
@@ -572,7 +580,7 @@
       Moderation Note
     </p>
     <textarea
-      class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-slate-300 p-2 dark:bg-stone-700"
+      class="input w-full h-48 resize-none"
       placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
       id="description"
       maxlength="200"
