@@ -31,7 +31,9 @@ export const role: Writable<Role> = writable({
  * Contains all information about all roles
  */
 export const siteRoles = readable<Role[]>([], function start(set) {
-	fetch(`${API}/user/staff/roles`).then(resp => resp.json().then(parsed => {
-    set(roleSchema.array().parse(parsed.roles))
-  }))
+  fetch(`${API}/user/staff/roles`).then(resp =>
+    resp.json().then(parsed => {
+      set(roleSchema.array().parse(parsed.roles));
+    })
+  );
 });

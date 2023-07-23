@@ -12,7 +12,7 @@
 
   let status = project.status ?? "unpublished";
 
-  let author = project.author
+  let author = project.author;
 </script>
 
 <div
@@ -43,7 +43,7 @@
       </a>
       <div
         class="flex space-x-2 items-center text-sm text-slate-950/40 dark:text-slate-100">
-        <img src={author.profile_icon} class="h-6 rounded-full"/>
+        <img src="{author.profile_icon}" class="h-6 rounded-full" />
         <a
           href="/user/{author.username.toLowerCase()}"
           class="block"
