@@ -266,7 +266,7 @@
         {/if}
       </button>
     </div>
-    <div class="flex space-x-1.5 items-center">
+    <div class="flex space-x-1.5">
       {#if $user.id == project?.author.id}
         <a
           aria-label="Edit"
@@ -285,7 +285,6 @@
       {/if}
       {#if isModOrAbove($role)}
         {#if status == "publish_queue" || status == "review_queue"}
-          <p class="dark:text-white">Review:</p>
           <button
             aria-label="Approve"
             class="button-base flex items-center space-x-1 bg-green-600"
@@ -311,6 +310,14 @@
             }}"
             use:tippy="{{ content: 'Deny', placement: 'bottom' }}"
             ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>
+          <button
+            class="button-base space-x-1"
+            aria-label="Moderate"
+            on:click="{() => {
+              modModal.open();
+            }}"
+            use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
+            ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
         {/if}
         {#if status == "live"}
           <button
@@ -322,14 +329,6 @@
             ><IconConfetti /><span class="hidden md:block">Feature</span
             ></button>
         {/if}
-        <button
-          class="button-base flex items-center space-x-1"
-          aria-label="Moderate"
-          on:click="{() => {
-            modModal.open();
-          }}"
-          use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
-          ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
       {/if}
       <Button label="Download" click="{() => (activePage = 'download')}">
         {#if !isSmall}
@@ -338,6 +337,16 @@
           <IconDownload />
         {/if}
       </Button>
+      {#if isModOrAbove($role) && !(status == "publish_queue" || status == "review_queue")}
+        <button
+        class="button-base space-x-1 bg-red-600"
+        aria-label="Moderate"
+        on:click="{() => {
+          modModal.open();
+        }}"
+        use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
+        ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
+      {/if}
     </div>
   </div>
 
