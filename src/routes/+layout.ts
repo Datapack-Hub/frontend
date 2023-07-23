@@ -4,13 +4,7 @@ import { API } from "$lib/globals/consts";
 import { fetchAuthed, getCookie, loadColorPref } from "$lib/globals/functions";
 import type { Role } from "$lib/globals/schema";
 import { roleSchema, userSchema } from "$lib/globals/schema";
-import {
-  authed,
-  consoleWarned,
-  role,
-  siteRoles,
-  user
-} from "$lib/globals/stores";
+import { authed, consoleWarned, roleInfo, user } from "$lib/globals/stores";
 import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
 
@@ -39,7 +33,7 @@ export const load = (async ({ fetch, url }) => {
       const userJson = userSchema.parse(await userRes.json());
 
       user.set(userJson);
-      role.set(
+      roleInfo.set(
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         roleSchema
           .array()

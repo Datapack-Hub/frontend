@@ -3,7 +3,7 @@
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
   import type { User } from "$lib/globals/schema";
-  import { isDark, role } from "$lib/globals/stores";
+  import { isDark, roleInfo } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
   import IconBan from "~icons/tabler/Ban.svelte";
   import IconLogOut from "~icons/tabler/Logout.svelte";
@@ -167,7 +167,7 @@
   $: iconColor = $isDark ? "white" : "black";
 </script>
 
-{#if user && ["admin", "moderator", "helper"].includes($role.name)}
+{#if user && ["admin", "moderator", "helper"].includes($roleInfo.name)}
   {#await loadData()}
     <p class="text-slate-950 dark:text-white">Loading...</p>
   {:then}

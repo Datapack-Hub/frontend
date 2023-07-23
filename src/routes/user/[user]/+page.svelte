@@ -3,7 +3,7 @@
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import UserModeration from "$lib/components/user/UserModeration.svelte";
-  import { authed, role, user } from "$lib/globals/stores";
+  import { authed, roleInfo, user } from "$lib/globals/stores";
   import type { PageData } from "./$types";
   import tippy from "sveltejs-tippy";
   import IconSettings from "~icons/tabler/Settings.svelte";
@@ -167,7 +167,7 @@
         </Button>
       {/if}
     </div>
-    {#if isModOrAbove($role)}
+    {#if isModOrAbove($roleInfo)}
       <UserModeration user="{data.profile}" />
     {/if}
   </div>

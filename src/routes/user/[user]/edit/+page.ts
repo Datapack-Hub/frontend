@@ -3,14 +3,14 @@ import type { PageLoad } from "./$types";
 import { fetchAuthed } from "$lib/globals/functions";
 import { API } from "$lib/globals/consts";
 import { browser } from "$app/environment";
-import { role } from "$lib/globals/stores";
+import { roleInfo } from "$lib/globals/stores";
 import { get } from "svelte/store";
 import { userSchema } from "$lib/globals/schema";
 import type { Role } from "$lib/globals/schema";
 
 export const load = (async ({ params }) => {
   if (browser) {
-    const defaultRole = get(role);
+    const defaultRole = get(roleInfo);
 
     const [user, me, roles] = await Promise.all([
       fetchAuthed("get", "/user/" + params.user),

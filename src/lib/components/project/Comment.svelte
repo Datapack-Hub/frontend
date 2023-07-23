@@ -4,10 +4,9 @@
   import {
     commentSchema,
     type DPHComment,
-    type Project,
-    type Role
+    type Project
   } from "$lib/globals/schema";
-  import { role, siteRoles, user } from "$lib/globals/stores";
+  import { roleInfo, roles, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
@@ -18,7 +17,7 @@
   export let comment: DPHComment;
   export let project: Project;
 
-  let userRole = $siteRoles.find(v => v.name == comment.author.role);
+  let userRole = $roles.find(v => v.name == comment.author.role);
 
   let replyMsg: string;
   let showReplies = false;
@@ -150,7 +149,7 @@
           </div>
         {/if}
       </div>
-      {#if $user.id == comment.author.id || $role.permissions.includes("DELETE_CONTENT")}
+      {#if $user.id == comment.author.id || $roleInfo.permissions.includes("DELETE_CONTENT")}
         <div class="relative right-0 p-2 text-white">
           <button
             role="checkbox"

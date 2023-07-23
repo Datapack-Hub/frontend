@@ -33,7 +33,7 @@
   <div class="flex h-16 w-full flex-row items-center justify-between md:h-16">
     <a
       href="#main-content"
-      class="invert absolute opacity-0 focus:opacity-100 transition-opacity select-none cursor-default left-1/2"
+      class="invert absolute transition-transform select-none cursor-default left-1/2 -translate-x-1/2 translate-y-16 md:-translate-y-16 focus:translate-y-0"
       >Jump to Main Content</a>
 
     <nav class="flex items-center mr-2">

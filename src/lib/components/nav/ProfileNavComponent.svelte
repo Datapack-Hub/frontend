@@ -2,7 +2,7 @@
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
   import { fetchAuthed, isModOrAbove } from "$lib/globals/functions";
-  import { authed, isDark, role, user } from "$lib/globals/stores";
+  import { authed, isDark, roleInfo, user } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
   import IconRead from "~icons/tabler/Bell.svelte";
   import IconUnread from "~icons/tabler/BellRinging.svelte";
@@ -56,7 +56,7 @@
 
 <div class="z-50 ml-3 flex items-center justify-center md:ml-6">
   {#if $authed}
-    {#if isModOrAbove($role) && !small}
+    {#if isModOrAbove($roleInfo) && !small}
       <a
         href="/moderation"
         aria-label="Moderation page"
@@ -104,7 +104,7 @@
         height="24"
         width="24"
         class="ml-3 rounded-full outline outline-2 outline-offset-2 md:ml-6"
-        style="outline-color:{$role.color ?? '#eab308'};" />
+        style="outline-color:{$roleInfo.color ?? '#eab308'};" />
     </a>
   {:else}
     <a

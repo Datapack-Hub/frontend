@@ -3,7 +3,7 @@
   import { goto } from "$app/navigation";
   import { API, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed, isModOrAbove } from "$lib/globals/functions";
-  import { authed, role, user } from "$lib/globals/stores";
+  import { authed, roleInfo, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
   // Component imports
@@ -283,7 +283,7 @@
             reportModal.open();
           }}"><IconReport /><span class="hidden md:block">Report</span></button>
       {/if}
-      {#if isModOrAbove($role)}
+      {#if isModOrAbove($roleInfo)}
         {#if status == "publish_queue" || status == "review_queue"}
           <button
             aria-label="Approve"
@@ -337,7 +337,7 @@
           <IconDownload />
         {/if}
       </Button>
-      {#if isModOrAbove($role) && !(status == "publish_queue" || status == "review_queue")}
+      {#if isModOrAbove($roleInfo) && !(status == "publish_queue" || status == "review_queue")}
         <button
           class="button-base space-x-1 bg-red-600"
           aria-label="Moderate"

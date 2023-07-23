@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fetchAuthed } from "$lib/globals/functions";
-  import type { Role, User } from "$lib/globals/schema";
-  import { role, user, siteRoles } from "$lib/globals/stores";
+  import type { User } from "$lib/globals/schema";
+  import { roleInfo, roles, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
 
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
@@ -16,7 +16,7 @@
     sent: number;
   };
 
-  let userRole = $siteRoles.find(v => v.name == reply.author.role);
+  let userRole = $roles.find(v => v.name == reply.author.role);
 
   let expanded = false;
   let visible = true;
@@ -51,7 +51,7 @@
         <p class="text-xs dark:text-neutral-400">
           {formatter.format(reply.sent * 1000)}
         </p>
-        {#if $user.id == reply.author.id || $role.permissions.includes("DELETE_CONTENT")}
+        {#if $user.id == reply.author.id || $roleInfo.permissions.includes("DELETE_CONTENT")}
           <div class="absolute right-0 p-2 text-white">
             <button
               role="checkbox"
