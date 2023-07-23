@@ -1,14 +1,11 @@
 import { browser, dev } from "$app/environment";
 import { goto } from "$app/navigation";
-import { API } from "$lib/globals/consts";
-import { fetchAuthed, getCookie, loadColorPref } from "$lib/globals/functions";
-import type { Role } from "$lib/globals/schema";
-import { roleSchema, userSchema } from "$lib/globals/schema";
+import { loadColorPref } from "$lib/globals/functions";
 import { authed, consoleWarned, roleInfo, user } from "$lib/globals/stores";
 import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
 
-export const load = (async ({ fetch, url }) => {
+export const load = (async ({ url, data }) => {
   const params = url.searchParams;
 
   if (browser) {
@@ -21,29 +18,6 @@ export const load = (async ({ fetch, url }) => {
 
       goto("/");
     }
-
-    const token = getCookie("dph_token");
-
-    if (token != null && get(user).id == -1) {
-      const [userRes, roleRes] = await Promise.all([
-        fetchAuthed("get", "/user/me"),
-        fetch(`${API}/user/staff/roles`)
-      ]);
-
-      const userJson = userSchema.parse(await userRes.json());
-
-      user.set(userJson);
-      roleInfo.set(
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        roleSchema
-          .array()
-          .parse((await roleRes.json()).roles)
-          .find((v: Role) => v.name == userJson.role)!
-      );
-      authed.set(true);
-    }
-
-    loadColorPref();
 
     if (!dev && !get(consoleWarned)) {
       console.log(
@@ -61,6 +35,11 @@ export const load = (async ({ fetch, url }) => {
       consoleWarned.set(true);
     }
 
+    if (typeof data.role !== "undefined" && typeof data.user !== "undefined") {
+      user.set(data.user)
+      roleInfo.set(data.role)
+      authed.set(true)
+    }
     loadColorPref();
   }
 }) satisfies LayoutLoad;

@@ -7,6 +7,7 @@
   import IconSchool from "~icons/tabler/School.svelte";
   import IconSwords from "~icons/tabler/Swords.svelte";
   import tippy from "sveltejs-tippy";
+  import type { User } from "$lib/globals/schema";
 
   let scrollY: number;
   let innerWidth: number;

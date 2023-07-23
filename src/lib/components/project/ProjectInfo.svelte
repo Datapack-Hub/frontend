@@ -94,7 +94,7 @@
         </span>
       </h1>
       {#if visible}
-        <div class="mt-4 flex items-center space-x-2 min-w-fit">
+        <div class="mt-4 flex items-center space-x-2 min-w-fit mb-4">
           <a
             href="/user/{author?.username}"
             class="flex items-center space-x-2">
@@ -110,13 +110,14 @@
               {author?.username}
             </span>
           </a>
-          <span class="text-xs md:text-sm xl:text-base dark:text-white">•</span>
+        </div>
+        {#each project.category ?? [] as cat}
           <span
             class="flex items-center text-xs md:text-sm xl:text-base space-x-1 dark:text-white">
             <IconCube />
-            <p>{project?.category}</p>
+            <p>{cat}</p>
           </span>
-        </div>
+        {/each}
         <div class="mt-2">
           {#if ["unpublished", "draft"].includes(status)}
             <span class="text-stone-400">•</span>

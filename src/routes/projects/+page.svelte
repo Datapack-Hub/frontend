@@ -9,9 +9,9 @@
   import { projectSchema } from "$lib/globals/schema";
   import { isDark } from "$lib/globals/stores";
   import { debounce } from "radash";
-  import IconSearch from "~icons/tabler/Search.svelte";
-  import IconList from "~icons/tabler/LayoutList.svelte";
   import IconGrid from "~icons/tabler/LayoutGrid.svelte";
+  import IconList from "~icons/tabler/LayoutList.svelte";
+  import IconSearch from "~icons/tabler/Search.svelte";
   import { browser } from "$app/environment";
 
   export let data: PageData;
@@ -20,13 +20,12 @@
   let sort = "Updated";
   let innerWidth = 0;
   let searchTime = 0;
-
-  $: dataCopy = data.projects ?? [];
-  $: isSmall = innerWidth > 768;
-
   let layout = browser
     ? localStorage.getItem("preferred_layout") || "list"
     : "list";
+
+  $: dataCopy = data.projects ?? [];
+  $: isSmall = innerWidth > 768;
 
   let featured = data.featured?.splice(0, 2);
 

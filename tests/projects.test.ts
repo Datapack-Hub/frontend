@@ -42,7 +42,7 @@ test("project page tabs work", async ({ page }) => {
 });
 
 test("project downloads work", async ({ page }) => {
-  await page.goto("/project/hexenwerk/", {timeout: 3000});
+  await page.goto("/project/hexenwerk/", { timeout: 3000 });
 
   const downloadBtn = page.getByLabel("Download")
 
