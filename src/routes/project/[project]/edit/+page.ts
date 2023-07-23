@@ -30,7 +30,10 @@ export const load = (async ({ params }) => {
     }
 
     const me = (await meReq.json()) as User;
-    if (me.id == projectJson.author.id || ["admin", "moderator"].includes(me.role)) {
+    if (
+      me.id == projectJson.author.id ||
+      ["admin", "moderator"].includes(me.role)
+    ) {
       const project = await fetchAuthed(
         "get",
         "/versions/project/" + projectJson.ID
