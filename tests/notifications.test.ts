@@ -29,7 +29,7 @@ test("notifications can be removed", async ({ page }) => {
   const res = await page.waitForResponse(async (res) => {
     const parts = res.url().split("/")
     return parts[3].includes("notifs")
-  })
+  }, {timeout: 1000})
 
   // skip when no notifs exist
   if((await res.json()).result.length == 0) {
