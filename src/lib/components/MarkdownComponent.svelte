@@ -42,7 +42,8 @@
       {
         renderer: renderer,
         async: true,
-        breaks: true
+        breaks: true,
+        mangle: false
       }
     );
   }
