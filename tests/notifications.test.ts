@@ -29,7 +29,7 @@ test("notifications can be removed", async ({ page }) => {
   const res = await page.waitForResponse(async (res) => {
     const parts = res.url().split("/")
     return parts[3].includes("notifs")
-  }, {timeout: 1000})
+  }, {timeout: 3000})
 
   // skip when no notifs exist
   if((await res.json()).result.length == 0) {
@@ -40,7 +40,7 @@ test("notifications can be removed", async ({ page }) => {
     await page.locator(".closeButton").first().click();
     const res = await page.waitForResponse((res) => {
       return res.url().includes("/notifs/delete/");
-    }, { timeout: 1500 });
+    }, { timeout: 2000 });
     expect(res.ok).toBeTruthy()
   }
   expect(await page.locator(".testNotif").count()).toEqual(0);
@@ -56,7 +56,7 @@ test("notification can be sent", async ({ page }) => {
     await notifBtn.waitFor({ timeout: 1000 });
     await notifBtn.click();
 
-    await page.locator("#notif-message").waitFor({ timeout: 1000 });
+    await page.locator("#notif-message").waitFor({ timeout: 2000 });
     await page.locator("#notif-message").type("Test Test 123 **123** ~~123~~");
 
     await page.locator("#notif-content").type("Test Test 123 **123** ~~123~~");

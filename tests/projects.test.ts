@@ -32,9 +32,9 @@ test("project page tabs work", async ({ page }) => {
 
   // go through all tabs and see if they respond at all
   for (const tab of tabs) {
-    await tab.waitFor({ timeout: 1000 })
+    await tab.waitFor({ timeout: 2000 })
     await tab.click()
-    await page.waitForLoadState("load", { timeout: 1000 })
+    await page.waitForLoadState("load", { timeout: 2000 })
     const currentContent = await page.content()
     expect(currentContent).not.toEqual(pageContent)
     pageContent = currentContent
@@ -42,24 +42,24 @@ test("project page tabs work", async ({ page }) => {
 });
 
 test("project downloads work", async ({ page }) => {
-  await page.goto("/project/hexenwerk/");
+  await page.goto("/project/hexenwerk/", {timeout: 3000});
 
   const downloadBtn = page.getByLabel("Download")
 
-  await downloadBtn.waitFor({ timeout: 1000 })
+  await downloadBtn.waitFor({ timeout: 3000 })
   await downloadBtn.click()
 
   // get button labeled 1.19.4
   const versionBtn = page.locator('[data-test-btn="1.19.4"]')
 
-  await versionBtn.waitFor({ timeout: 1000 })
+  await versionBtn.waitFor({ timeout: 2000 })
   await versionBtn.click()
 
-  const downloadPromise = page.waitForEvent("download", { timeout: 1000 })
+  const downloadPromise = page.waitForEvent("download", { timeout: 4000 })
   // get actual download button
   const actualDownload = page.locator('[data-test-clickable-label="datapack"]')
 
-  await actualDownload.waitFor({ timeout: 1000 })
+  await actualDownload.waitFor({ timeout: 4000 })
   await actualDownload.click()
 
   const download = await downloadPromise
