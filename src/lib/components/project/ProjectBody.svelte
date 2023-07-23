@@ -339,13 +339,13 @@
       </Button>
       {#if isModOrAbove($role) && !(status == "publish_queue" || status == "review_queue")}
         <button
-        class="button-base space-x-1 bg-red-600"
-        aria-label="Moderate"
-        on:click="{() => {
-          modModal.open();
-        }}"
-        use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
-        ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
+          class="button-base space-x-1 bg-red-600"
+          aria-label="Moderate"
+          on:click="{() => {
+            modModal.open();
+          }}"
+          use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
+          ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
       {/if}
     </div>
   </div>
