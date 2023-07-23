@@ -20,18 +20,19 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("project can be located and fetched", async ({ page }) => {
-  const res = await page.goto("/project/hexenwerk/");
+  const res = await page.goto("/project/hexenwerk/", { timeout: 1000 });
   expect(res?.status()).toEqual(200);
 });
 
 test("project page tabs work", async ({ page }) => {
-  await page.goto("/project/hexenwerk/");
+  await page.goto("/project/hexenwerk/", { timeout: 1500 });
   const tabs = [page.getByLabel("Description"), page.getByLabel("Comments"), page.getByLabel("Download")]
 
   let pageContent = await page.content()
 
   // go through all tabs and see if they respond at all
   for (const tab of tabs) {
+    await tab.waitFor({ timeout: 1000 })
     await tab.click()
     await page.waitForLoadState("load", { timeout: 1000 })
     const currentContent = await page.content()
@@ -54,7 +55,7 @@ test("project downloads work", async ({ page }) => {
   await versionBtn.waitFor({ timeout: 1000 })
   await versionBtn.click()
 
-  const downloadPromise = page.waitForEvent("download")
+  const downloadPromise = page.waitForEvent("download", { timeout: 1000 })
   // get actual download button
   const actualDownload = page.locator('[data-test-clickable-label="datapack"]')
 

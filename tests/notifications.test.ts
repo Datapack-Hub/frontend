@@ -22,7 +22,7 @@ test.beforeEach(async ({ page }) => {
 
 test("notifications can be removed", async ({ page }) => {
   // check if it sent
-  await page.goto("/notifications");
+  await page.goto("/notifications", { timeout: 1000 });
 
 
   // attempts to match "https://api.datapackhub.net/notifs" with no sub-routes
@@ -40,7 +40,7 @@ test("notifications can be removed", async ({ page }) => {
     await page.locator(".closeButton").first().click();
     const res = await page.waitForResponse((res) => {
       return res.url().includes("/notifs/delete/");
-    });
+    }, { timeout: 1500 });
     expect(res.ok).toBeTruthy()
   }
   expect(await page.locator(".testNotif").count()).toEqual(0);
@@ -53,10 +53,10 @@ test("notification can be sent", async ({ page }) => {
   await test.step("send notification", async () => {
 
     const notifBtn = page.locator("#send_notif")
-    await notifBtn.waitFor();
+    await notifBtn.waitFor({ timeout: 1000 });
     await notifBtn.click();
 
-    await page.locator("#notif-message").waitFor();
+    await page.locator("#notif-message").waitFor({ timeout: 1000 });
     await page.locator("#notif-message").type("Test Test 123 **123** ~~123~~");
 
     await page.locator("#notif-content").type("Test Test 123 **123** ~~123~~");
@@ -74,9 +74,8 @@ test("notification can be sent", async ({ page }) => {
 
   await test.step("go to page", async () => {
     // check if it sent
-    await page.goto("/notifications");
-    await page.locator(".testNotif").first().waitFor();
+    await page.goto("/notifications", { timeout: 1000 });
+    await page.locator(".testNotif").first().waitFor({ timeout: 1500 });
+    expect(await page.locator(".testNotif").count()).toBeGreaterThan(0);
   });
-
-  expect(await page.locator(".testNotif").count()).toBeGreaterThan(0);
 });

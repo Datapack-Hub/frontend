@@ -39,7 +39,7 @@ test("all pages load", async ({ page }) => {
 
   for (const p of pages) {
     await test.step(`testing if ${p} loads properly`, async () => {
-      const res = await page.goto(p);
+      const res = await page.goto(p, { timeout: 3000 });
       expect(res?.status()).toEqual(200);
     })
   }
