@@ -1,13 +1,12 @@
 <script lang="ts">
   import { isDark } from "$lib/globals/stores";
   import { onMount } from "svelte";
-  import ColorSchemeSelector from "./ColorSchemeSelector.svelte";
-  import ProfileNavComponent from "./ProfileNavComponent.svelte";
+  import tippy from "sveltejs-tippy";
   import IconCompass from "~icons/tabler/Compass.svelte";
   import IconSchool from "~icons/tabler/School.svelte";
   import IconSwords from "~icons/tabler/Swords.svelte";
-  import tippy from "sveltejs-tippy";
-  import type { User } from "$lib/globals/schema";
+  import ColorSchemeSelector from "./ColorSchemeSelector.svelte";
+  import ProfileNavComponent from "./ProfileNavComponent.svelte";
 
   let scrollY: number;
   let innerWidth: number;
