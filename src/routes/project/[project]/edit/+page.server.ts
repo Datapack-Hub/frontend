@@ -6,7 +6,8 @@ import type { PageServerLoad } from "./$types";
 export const load = (async ({ params, cookies }) => {
   const projectReq = await serverFetchAuthed(
     "get",
-    "/projects/get/" + params.project
+    "/projects/get/" + params.project,
+    cookies
   );
 
   if (projectReq.status == 404) {
