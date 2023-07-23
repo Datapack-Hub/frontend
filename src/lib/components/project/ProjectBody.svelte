@@ -521,7 +521,7 @@
             </form>
             {#key comments}
               {#each comments as cmt}
-                <Comment {roles} comment="{cmt}" {project} />
+                <Comment comment="{cmt}" {project} />
               {/each}
             {/key}
           {/if}

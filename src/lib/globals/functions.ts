@@ -46,8 +46,8 @@ export async function fetchAuthed(
 
 export const getCookie = memo((cookieName: string): string | null => {
   const cookies = document.cookie.split(";");
-
-  for (const i of range(cookies.length)) {
+  if(cookies.length == 0) return null
+  for (const i of range(cookies.length - 1)) {
     const cookie = cookies[i].trim();
 
     if (cookie.startsWith(cookieName + "=")) {

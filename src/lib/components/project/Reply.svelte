@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fetchAuthed } from "$lib/globals/functions";
   import type { Role, User } from "$lib/globals/schema";
-  import { role, user } from "$lib/globals/stores";
+  import { role, user, siteRoles } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
 
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
@@ -9,7 +9,6 @@
   import IconDelete from "~icons/tabler/Trash.svelte";
   import MarkdownComponent from "../MarkdownComponent.svelte";
 
-  export let roles: Role[];
   export let reply: {
     id: number;
     message: string;
@@ -17,7 +16,7 @@
     sent: number;
   };
 
-  let userRole = roles.find(v => v.name == reply.author.role);
+  let userRole = $siteRoles.find(v => v.name == reply.author.role);
 
   let expanded = false;
   let visible = true;

@@ -111,7 +111,7 @@
       id="sign_in"
       href="/login"
       aria-label="Button to sign in"
-      class="button-secondary"
+      class="button-primary"
       use:tippy="{signInHoverMsg}">
       Sign in
     </a>

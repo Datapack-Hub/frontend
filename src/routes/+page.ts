@@ -4,12 +4,13 @@ import { parallel, shuffle } from "radash";
 import type { PageLoad } from "./$types";
 
 export const load = (async ({ fetch }) => {
-  const [randomJson, featuredJson, countJson] = await parallel(
+  const [randomJson, featuredJson, countJson, rolesJson] = await parallel(
     3,
     await Promise.all([
       fetch(API + "/projects/random?count=3"),
       fetch(API + "/projects/featured"),
-      fetch(API + "/projects/count")
+      fetch(API + "/projects/count"),
+      fetch(API + "/user/staff/roles")
     ]),
     async res => await res.json()
   );

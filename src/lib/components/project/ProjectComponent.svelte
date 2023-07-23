@@ -1,13 +1,18 @@
 <script lang="ts">
-  import type { Project } from "$lib/globals/schema";
-  import { last, title } from "radash";
-  import IconDownload from "~icons/tabler/Download.svelte";
+  import type { Project, Role } from "$lib/globals/schema";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
+  import IconDownload from "~icons/tabler/Download.svelte";
+  import { last, title } from "radash";
+  import { siteRoles } from "$lib/globals/stores";
 
   export let project: Project;
   export let showStatus = false;
 
+  let userRole = $siteRoles.find(v => v.name == project.author.role);
+
   let status = project.status ?? "unpublished";
+
+  let author = project.author
 </script>
 
 <div
@@ -38,10 +43,12 @@
       </a>
       <div
         class="flex space-x-2 items-center text-sm text-slate-950/40 dark:text-slate-100">
+        <img src={author.profile_icon} class="h-6 rounded-full"/>
         <a
-          href="/user/{project.author.username.toLowerCase()}"
-          class="block dark:hover:text-slate-100">
-          {project.author.username}
+          href="/user/{author.username.toLowerCase()}"
+          class="block"
+          style="color: {userRole?.color}">
+          {author.username}
         </a>
         {#if project.latest_version}
           <span>•</span>

@@ -7,7 +7,7 @@
     type Project,
     type Role
   } from "$lib/globals/schema";
-  import { role, user } from "$lib/globals/stores";
+  import { role, siteRoles, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
@@ -17,9 +17,8 @@
 
   export let comment: DPHComment;
   export let project: Project;
-  export let roles: Role[];
 
-  let userRole = roles.find(v => v.name == comment.author.role);
+  let userRole = $siteRoles.find(v => v.name == comment.author.role);
 
   let replyMsg: string;
   let showReplies = false;
@@ -106,7 +105,7 @@
             <div>
               <ul class="w-full">
                 {#each comment.replies ?? [] as reply}
-                  <Reply {roles} {reply} />
+                  <Reply {reply} />
                 {/each}
               </ul>
 
