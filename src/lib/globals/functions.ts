@@ -30,8 +30,7 @@ export async function serverFetchAuthed(
   data: object | undefined = undefined,
   headers: HeadersInit | undefined = undefined
 ): Promise<Response> {
-
-  const cookie = cookies.get("dph_token")
+  const cookie = cookies.get("dph_token");
 
   // what is going on here
   const res = await fetch(`${API}${url}`, {
@@ -82,7 +81,7 @@ export async function fetchAuthed(
 }
 
 export const getCookie = memo((cookieName: string): string | null => {
-  if(!browser) return null
+  if (!browser) return null;
   const cookies = document.cookie.split(";");
   if (cookies.length == 0) return null;
   for (const i of range(cookies.length - 1)) {

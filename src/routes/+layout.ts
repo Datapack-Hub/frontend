@@ -36,9 +36,9 @@ export const load = (async ({ url, data }) => {
     }
 
     if (typeof data.role !== "undefined" && typeof data.user !== "undefined") {
-      user.set(data.user)
-      roleInfo.set(data.role)
-      authed.set(true)
+      user.set(data.user);
+      roleInfo.set(data.role);
+      authed.set(true);
     }
     loadColorPref();
   }
