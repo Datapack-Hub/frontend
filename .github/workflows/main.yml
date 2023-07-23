@@ -12,7 +12,7 @@ concurrency:
 jobs:
   format:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v3.5.2
       - uses: pnpm/action-setup@v2
@@ -32,8 +32,9 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4.16.0
         with:
           commit_message: "Apply formatting"
-  lint:
-    runs-on: ubuntu-latest
+  check:
+    runs-on: ubuntu-latets
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v3.5.2
       - uses: pnpm/action-setup@v2
@@ -47,14 +48,12 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm i
-      - name: Run eslint
+      - name: Run check
         run: |
-          pnpm lint --fix
-      - uses: stefanzweifel/git-auto-commit-action@v4.16.0
-        with:
-          commit_message: "Apply linting"
+          pnpm check
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 4
     steps:
       - uses: actions/checkout@v3.5.2
       - uses: pnpm/action-setup@v2
