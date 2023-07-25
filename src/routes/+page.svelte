@@ -5,7 +5,7 @@
   import anime from "animejs";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
-  import IconDiscord from "~icons/tabler/BrandDiscord.svelte"
+  import IconDiscord from "~icons/tabler/BrandDiscord.svelte";
 
   let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
 
@@ -186,18 +186,29 @@
         ...And More!
       </li>
     </ul>
-    <Button click="/projects" style="alt" classes="fadeTextAnime">Explore our Collection</Button>
+    <Button click="/projects" style="alt" classes="fadeTextAnime"
+      >Explore our Collection</Button>
   </div>
   <div class="py-32 flex items-center flex-col">
     <h1 class="fadeTextAnime text-white w-full text-center text-5xl">
       Join our community
     </h1>
-    <p class="text-center text-white w-2/3 mt-6">Join our Discord server to get help with the website, support for making datapacks, and to be a part of the community!</p>
+    <p class="text-center text-white w-2/3 mt-6">
+      Join our Discord server to get help with the website, support for making
+      datapacks, and to be a part of the community!
+    </p>
     <a
-          class="flex rounded-lg p-2 bg-[#5865F2] text-white font-bold items-center mt-6"
-          href="https://api.datapackhub.net/auth/login/discord">
-          <p><img src="/logos/discord-white.svg" alt="discord logo" class="inline-block mr-2" height="16" width="16">Join us now!</p>
-        </a>
+      class="flex rounded-lg p-2 bg-[#5865F2] text-white font-bold items-center mt-6"
+      href="https://api.datapackhub.net/auth/login/discord">
+      <p>
+        <img
+          src="/logos/discord-white.svg"
+          alt="discord logo"
+          class="inline-block mr-2"
+          height="16"
+          width="16" />Join us now!
+      </p>
+    </a>
   </div>
 </main>
 
