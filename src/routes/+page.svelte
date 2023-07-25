@@ -157,29 +157,29 @@
     </div>
   </div>
   <div
-    class="w-full bg-stone-800 h-[60vh] flex flex-col justify-center items-center">
-    <h1 class="fadeTextAnime text-white w-full text-center text-7xl">
+    class="w-full bg-stone-800 py-48 flex flex-col justify-center items-center">
+    <h1 class="fadeTextAnime text-white w-full text-center text-4xl lg:text-5xl xl:text-6xl">
       The Go-To Platform for Datapacks
     </h1>
     <ul class="mt-6">
       <li
-        class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light">
+        class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
         Automatic Pack Optimization
       </li>
       <li
-        class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light">
+        class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
         No more "made for an older version"
       </li>
       <li
-        class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light">
+        class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
         Strong Moderation
       </li>
       <li
-        class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light">
+        class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
         Engaging, growing community
       </li>
       <li
-        class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light">
+        class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
         Project featuring
       </li>
       <li class="opacity-0 fadeTextAnime text-white text-3xl my-4 font-light">
@@ -190,10 +190,10 @@
       >Explore our Collection</Button>
   </div>
   <div class="py-32 flex items-center flex-col">
-    <h1 class="fadeTextAnime text-white w-full text-center text-5xl">
+    <h1 class="fadeTextAnime text-white w-full text-center text-3xl lg:text-4xl xl:text-5xl">
       Join our community
     </h1>
-    <p class="text-center text-white w-2/3 mt-6">
+    <p class="fadeTextAnime text-center text-white w-2/3 mt-6">
       Join our Discord server to get help with the website, support for making
       datapacks, and to be a part of the community!
     </p>
