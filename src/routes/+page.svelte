@@ -249,7 +249,8 @@
         class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
         Project featuring
       </li>
-      <li class="opacity-0 fadeTextAnime text-white text-3xl my-4 font-light text-center">
+      <li
+        class="opacity-0 fadeTextAnime text-white text-3xl my-4 font-light text-center">
         ...And More!
       </li>
     </ul>
