@@ -131,6 +131,7 @@
       primary_download: "",
       resource_pack_download: "",
       squash: v_squash.checked
+      // dependencies // <-- uncomment to implement
     };
 
     let dp = await toBase64(zipFile);

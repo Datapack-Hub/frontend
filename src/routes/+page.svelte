@@ -5,7 +5,7 @@
   import anime from "animejs";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
-  import IconDiscord from "~icons/tabler/BrandDiscord.svelte";
+  import IconX from "~icons/tabler/X.svelte";
 
   let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
 
@@ -72,7 +72,7 @@
             autoplay: true,
             targets: entry.target,
             opacity: 1,
-            delay: (i + 1) * 200
+            delay: (i + 1) * 50
           });
         } else {
           anime({ autoplay: true, targets: entry.target, opacity: 0 });
@@ -157,11 +157,89 @@
     </div>
   </div>
   <div
-    class="w-full bg-stone-800 py-48 flex flex-col justify-center items-center">
+    class="w-full bg-stone-800/20 py-48 flex flex-col justify-center items-center">
     <h1
       class="fadeTextAnime text-white w-full text-center text-4xl lg:text-5xl xl:text-6xl">
       The Go-To Platform for Datapacks
     </h1>
+    <div class="flex w-1/2 space-x-4 mt-12">
+      <div class="p-4 bg-stone-800 rounded-lg w-1/2">
+        <h2
+          class="opacity-0 fadeTextAnime text-white text-lg lg:text-xl xl:text-2xl">
+          No more "made for an older version"
+        </h2>
+        <p class="fadeTextAnime text-white text-lg my-4 font-light">
+          Datapack Hub automatically converts your pack version to the requested
+          version
+        </p>
+        <div class="bg-stone-900 rounded-lg p-4">
+          <div
+            class="flex items-center justify-between bg-stone-800 rounded-t-md p-2 m-4 text-stone-500">
+            <p>pack.mcmeta</p>
+            <IconX />
+          </div>
+          <div
+            class="text-stone-500 font-mono bg-stone-800 m-4 px-4 rounded-b-md">
+            <pre>
+              <!--DO NOT INDENT!!!-->
+&lbrace;
+  "pack": &lbrace;
+      "pack_format": <span class="text-red-500">10</span> -&gt; <span
+                class="text-green-500 fadeTextAnime">15</span
+              >,
+      "description": "The timmy pack!"
+    &rbrace;
+&rbrace;
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col space-y-4 w-1/2">
+        <div class="p-4 bg-stone-800 rounded-lg w-full h-1/2">
+          <h2
+            class="opacity-0 fadeTextAnime text-white text-lg lg:text-xl xl:text-2xl">
+            Strong Moderation
+          </h2>
+          <p class="fadeTextAnime text-white text-lg my-4 font-light">
+            Our team of intelligent admins, moderators and helpers watch over
+            the site for naughty people
+          </p>
+          <div class="bg-stone-900 rounded-lg p-4 relative">
+            {#each data.staff as staff, i}
+              <a href="/user/{staff.username}">
+                <img
+                  src="{staff.profile_icon}&size=64"
+                  alt="{staff.username}'s profile"
+                  title="{staff.username}"
+                  class="h-12 absolute rounded-md hover:brightness-75 transition-all fadeTextAnime"
+                  style="left: {i * 36 + 16}px;" />
+              </a>
+            {/each}
+            <div class="h-12"></div>
+          </div>
+        </div>
+        <div class="p-4 bg-stone-800 rounded-lg w-full h-1/2">
+          <h2
+            class="opacity-0 fadeTextAnime text-white text-lg lg:text-xl xl:text-2xl">
+            Awesome Community
+          </h2>
+          <p class="fadeTextAnime text-white text-lg my-4 font-light">
+            Join our Discord server to get help with the website, support for
+            making datapacks, and to be a part of the community!
+          </p>
+          <a
+            class="rounded-lg p-2 bg-[#5865F2] text-white font-bold"
+            href="https://discord.gg/aEXsdjjdu4">
+            <img
+              src="/logos/discord-white.svg"
+              alt="discord logo"
+              class="inline-block mr-2"
+              height="16"
+              width="16" />Join us now!
+          </a>
+        </div>
+      </div>
+    </div>
     <ul class="mt-6">
       <li
         class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
@@ -169,48 +247,14 @@
       </li>
       <li
         class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
-        No more "made for an older version"
-      </li>
-      <li
-        class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
-        Strong Moderation
-      </li>
-      <li
-        class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
-        Engaging, growing community
-      </li>
-      <li
-        class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
         Project featuring
       </li>
-      <li class="opacity-0 fadeTextAnime text-white text-3xl my-4 font-light">
+      <li class="opacity-0 fadeTextAnime text-white text-3xl my-4 font-light text-center">
         ...And More!
       </li>
     </ul>
     <Button click="/projects" style="alt" classes="fadeTextAnime"
       >Explore our Collection</Button>
-  </div>
-  <div class="py-32 flex items-center flex-col">
-    <h1
-      class="fadeTextAnime text-white w-full text-center text-3xl lg:text-4xl xl:text-5xl">
-      Join our community
-    </h1>
-    <p class="fadeTextAnime text-center text-white w-2/3 mt-6">
-      Join our Discord server to get help with the website, support for making
-      datapacks, and to be a part of the community!
-    </p>
-    <a
-      class="flex rounded-lg p-2 bg-[#5865F2] text-white font-bold items-center mt-6"
-      href="https://api.datapackhub.net/auth/login/discord">
-      <p>
-        <img
-          src="/logos/discord-white.svg"
-          alt="discord logo"
-          class="inline-block mr-2"
-          height="16"
-          width="16" />Join us now!
-      </p>
-    </a>
   </div>
 </main>
 

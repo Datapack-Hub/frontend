@@ -3,6 +3,7 @@
   import UserCard from "$lib/components/user/UserCard.svelte";
   import { fly } from "svelte/transition";
   import { onMount } from "svelte";
+  import { roles } from "$lib/globals/stores";
 
   export let data: PageData;
 
@@ -33,7 +34,7 @@
         <div in:fly="{{ x: -200, duration: 500, delay: i * 75 }}">
           <UserCard
             {person}
-            role="{data.roleData?.find(v => person.role == v.name)}" />
+            role="{$roles?.find(v => person.role == v.name)}" />
         </div>
       {/each}
     {/if}
