@@ -17,69 +17,73 @@
   export let data: PageData;
 
   onMount(() => {
-      let cyclingTextWrapper = document.querySelectorAll(".split-text .letters");
-      cyclingTextWrapper.forEach(el => {
-        el.innerHTML =
-          el.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ??
-          "";
+    let cyclingTextWrapper = document.querySelectorAll(".split-text .letters");
+    cyclingTextWrapper.forEach(el => {
+      el.innerHTML =
+        el.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ?? "";
+    });
+
+    let fadingTextElems = document.querySelectorAll(".fadeTextAnime");
+
+    anime
+      .timeline({ loop: true, autoplay: true })
+      .add({
+        targets: "#indexText1 .letter",
+        translateY: ["1.1em", 0],
+        duration: 750,
+        delay: (_el, i) => 50 * i
+      })
+      .add({
+        targets: "#indexText1",
+        opacity: 0,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+      })
+      .add({
+        targets: "#indexText2 .letter",
+        translateY: ["1.1em", 0],
+        duration: 750,
+        delay: (_el, i) => 50 * i
+      })
+      .add({
+        targets: "#indexText2",
+        opacity: 0,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+      })
+      .add({
+        targets: "#indexText3 .letter",
+        translateY: ["1.1em", 0],
+        duration: 750,
+        delay: (_el, i) => 50 * i
+      })
+      .add({
+        targets: "#indexText3",
+        opacity: 0,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
       });
 
-      let fadingTextElems = document.querySelectorAll(".fadeTextAnime")
+    let intersect = new IntersectionObserver(e => {
+      e.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          anime({
+            autoplay: true,
+            targets: entry.target,
+            opacity: 1,
+            delay: (i + 1) * 200
+          });
+        } else {
+          anime({ autoplay: true, targets: entry.target, opacity: 0 });
+        }
+      });
+    });
 
-      anime
-        .timeline({ loop: true, autoplay: true })
-        .add({
-          targets: "#indexText1 .letter",
-          translateY: ["1.1em", 0],
-          duration: 750,
-          delay: (_el, i) => 50 * i
-        })
-        .add({
-          targets: "#indexText1",
-          opacity: 0,
-          duration: 1000,
-          easing: "easeOutExpo",
-          delay: 1000
-        })
-        .add({
-          targets: "#indexText2 .letter",
-          translateY: ["1.1em", 0],
-          duration: 750,
-          delay: (_el, i) => 50 * i
-        })
-        .add({
-          targets: "#indexText2",
-          opacity: 0,
-          duration: 1000,
-          easing: "easeOutExpo",
-          delay: 1000
-        })
-        .add({
-          targets: "#indexText3 .letter",
-          translateY: ["1.1em", 0],
-          duration: 750,
-          delay: (_el, i) => 50 * i
-        })
-        .add({
-          targets: "#indexText3",
-          opacity: 0,
-          duration: 1000,
-          easing: "easeOutExpo",
-          delay: 1000
-        });
-
-      let intersect = new IntersectionObserver(e => {
-        e.forEach((entry, i) => {
-          if(entry.isIntersecting) {
-            anime({autoplay: true, targets: entry.target, opacity: 1, delay: (i + 1) * 200})
-          } else {
-            anime({autoplay: true, targets: entry.target, opacity: 0})
-          }
-        })
-      })
-
-      fadingTextElems.forEach(e => intersect.observe(e))
-      visible = true;
+    fadingTextElems.forEach(e => intersect.observe(e));
+    visible = true;
   });
 </script>
 
@@ -92,11 +96,13 @@
 
 <svelte:window bind:innerWidth="{width}" />
 
-<main id="main-content" class="bg-slate-50 transition-all dark:bg-stone-900 h-full">
+<main
+  id="main-content"
+  class="bg-slate-50 transition-all dark:bg-stone-900 h-full">
   <div class="pt-0 md:pt-20"></div>
   <div
     class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 rounded-lg">
-    <b class="text-lg mb-2">Datapack Hub is in early beta.</b><br>
+    <b class="text-lg mb-2">Datapack Hub is in early beta.</b><br />
     Many features are incomplete or do not work as expected. In these early stages,
     there is likely going to be lots of downtime. All projects will stay after the
     beta period, unless you don't want that.
@@ -152,14 +158,37 @@
       <div></div>
     </div>
   </div>
-  <div class="w-full bg-stone-800 h-[55vh] flex flex-col justify-center items-center">
-    <h1 class="fadeTextAnime text-white w-full text-center text-7xl">The Go-To Platform for Datapacks</h1>
+  <div
+    class="w-full bg-stone-800 h-[55vh] flex flex-col justify-center items-center">
+    <h1 class="fadeTextAnime text-white w-full text-center text-7xl">
+      The Go-To Platform for Datapacks
+    </h1>
     <ul class="mt-6">
-      <li class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light" transition:fade={{easing: quintInOut, delay:200}}>Automatic Optimization</li>
-      <li class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light" transition:fade={{easing: quintInOut, delay:400}}>No in-game incompatibilities</li>
-      <li class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light" transition:fade={{easing: quintInOut, delay:600}}>Human Moderation</li>
-      <li class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light" transition:fade={{easing: quintInOut, delay:800}}>Project features</li>
-      <li class="opacity-0 fadeTextAnime text-white text-3xl my-4 font-light" transition:fade={{easing: quintInOut, delay:1000}}>...And More!</li>
+      <li
+        class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light"
+        transition:fade="{{ easing: quintInOut, delay: 200 }}">
+        Automatic Optimization
+      </li>
+      <li
+        class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light"
+        transition:fade="{{ easing: quintInOut, delay: 400 }}">
+        No in-game incompatibilities
+      </li>
+      <li
+        class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light"
+        transition:fade="{{ easing: quintInOut, delay: 600 }}">
+        Human Moderation
+      </li>
+      <li
+        class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light"
+        transition:fade="{{ easing: quintInOut, delay: 800 }}">
+        Project features
+      </li>
+      <li
+        class="opacity-0 fadeTextAnime text-white text-3xl my-4 font-light"
+        transition:fade="{{ easing: quintInOut, delay: 1000 }}">
+        ...And More!
+      </li>
     </ul>
   </div>
   <!-- <div class="w-full text-center">
