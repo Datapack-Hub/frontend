@@ -21,8 +21,7 @@ export const load = (async ({ fetch }) => {
       fetch(`${API}/user/staff/admin`),
       fetch(`${API}/user/staff/moderator`),
       fetch(`${API}/user/staff/developer`),
-      fetch(`${API}/user/staff/helper`),
-      fetch(`${API}/user/staff/roles`)
+      fetch(`${API}/user/staff/helper`)
     ]),
     async res => await res.json()
   );
