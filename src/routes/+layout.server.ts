@@ -16,15 +16,15 @@ export const load = (async ({ cookies }) => {
       async res => await res.json()
     );
 
-    const userJson = userSchema.parse(userRes);
+    const user = userSchema.parse(userRes);
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const role = roleSchema
       .array()
       .parse(roleRes.roles)
-      .find((v: Role) => v.name == userJson.role)!;
+      .find((v: Role) => v.name == user.role)!;
 
     return {
-      user: userJson,
+      user,
       role
     };
   }

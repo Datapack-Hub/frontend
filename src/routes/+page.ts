@@ -7,17 +7,18 @@ export const load = (async ({ fetch }) => {
   const [
     randomJson,
     featuredJson,
-    countJson,
-    admins,
-    moderators,
-    devs,
-    helpers
+    count,
+    adminsRes,
+    modRes,
+    devRes,
+    helperRes
   ] = await parallel(
-    7,
+    3,
     await Promise.all([
       fetch(`${API}/projects/random?count=3`),
       fetch(`${API}/projects/featured`),
       fetch(`${API}/projects/count`),
+      // staff
       fetch(`${API}/user/staff/admin`),
       fetch(`${API}/user/staff/moderator`),
       fetch(`${API}/user/staff/developer`),
@@ -26,9 +27,9 @@ export const load = (async ({ fetch }) => {
     async res => await res.json()
   );
 
-  const [adminsJSON, moderatorsJSON, devsJSON, helpersJSON] = await parallel(
+  const [admins, mods, devs, helpers] = await parallel(
     4,
-    [admins.values, moderators.values, devs.values, helpers.values],
+    [adminsRes.values, modRes.values, devRes.values, helperRes.values],
     async users => await userSchema.array().parseAsync(users)
   );
 
@@ -39,9 +40,9 @@ export const load = (async ({ fetch }) => {
   featured = featured.slice(0, 3);
 
   return {
-    random: random,
-    featured: featured,
-    count: countJson.count,
-    staff: adminsJSON.concat(moderatorsJSON, devsJSON, helpersJSON)
+    random,
+    featured,
+    count: count.count,
+    staff: admins.concat(mods, devs, helpers)
   };
 }) satisfies PageLoad;
