@@ -56,8 +56,8 @@ export const projectSchema = z.object({
   }),
   downloads: z.number(),
   updated: z.number(),
-  licence: z.ostring().nullish(),
-  dependencies: z.optional(z.array(z.string())).nullish()
+  licence: z.string().nullish(),
+  dependencies: z.array(z.string()).nullish()
 });
 
 export const notificationSchema = z.object({

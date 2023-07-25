@@ -99,9 +99,9 @@ export function removeCookie(name: string) {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
-export function isModOrAbove(role: Role | undefined) {
+export const isModOrAbove = memo((role: Role | undefined) => {
   return (
     get(authed) &&
     ["moderator", "developer", "admin"].includes(role?.name ?? "")
   );
-}
+})

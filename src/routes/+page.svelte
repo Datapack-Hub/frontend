@@ -4,8 +4,8 @@
   import autoAnimate from "@formkit/auto-animate";
   import anime from "animejs";
   import { onMount } from "svelte";
-  import type { PageData } from "./$types";
   import IconX from "~icons/tabler/X.svelte";
+  import type { PageData } from "./$types";
 
   let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
 
@@ -211,6 +211,7 @@
                   src="{staff.profile_icon}&size=64"
                   alt="{staff.username}'s profile"
                   title="{staff.username}"
+                  loading="lazy"
                   class="h-12 absolute rounded-md hover:brightness-75 transition-all fadeTextAnime"
                   style="left: {i * 36 + 16}px;" />
               </a>
