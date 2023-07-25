@@ -39,6 +39,7 @@
   import Modal from "../modals/Modal.svelte";
   import UserCard from "../user/UserCard.svelte";
   import Comment from "./Comment.svelte";
+  import BhAdvert from "../BHAdvert.svelte";
 
   // we need to split this up more or something jeez
 
@@ -349,6 +350,8 @@
       {/if}
     </div>
   </div>
+
+  <BhAdvert />
 
   {#if status == "deleted"}
     <div

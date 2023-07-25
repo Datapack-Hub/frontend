@@ -5,6 +5,7 @@
   import anime from "animejs";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
+  import IconSearch from "~icons/tabler/Search.svelte";
 
   let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
 
@@ -137,10 +138,20 @@
       <div></div>
     </div>
   </div>
-  <div class="py-64"></div>
-  <!-- <div class="h-screen w-full bg-slate-200 dark:bg-stone-800">
-    <h2>Content here</h2>
+  <!-- <div class="w-full text-center">
+    <div
+      class="input flex text-center w-2/3 rounded-full px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 items-center">
+      <IconSearch color="white" />
+      <input
+        placeholder="Search Datapacks..."
+        type="search"
+        id="query"
+        maxlength="75"
+        class="ml-2 w-full text-slate-950 placeholder:text-stone-400 bg-slate-300 dark:bg-stone-800 focus:outline-none dark:text-white focus:w-80"
+        />
+    </div>
   </div> -->
+
 </main>
 
 <style lang="postcss">

@@ -29,37 +29,35 @@ export const userSchema = z.object({
 });
 
 export const projectSchema = z.object({
-  ID: z.onumber(),
+  ID: z.number(),
   author: z.object(userSchema.shape),
-  body: z.ostring(),
+  body: z.string(),
   category: z.optional(z.array(z.string())),
-  description: z.ostring(),
+  description: z.string(),
   icon: z.string().url().nullish(),
   mod_message: z.string().nullish(),
-  status: z.optional(
-    z.enum([
-      "unpublished",
-      "live",
-      "draft",
-      "disabled",
-      "deleted",
-      "publish_queue",
-      "review_queue"
-    ])
-  ),
+  status: z.enum([
+    "unpublished",
+    "live",
+    "draft",
+    "disabled",
+    "deleted",
+    "publish_queue",
+    "review_queue"
+  ]),
   title: z.string(),
   type: z.enum(["datapack"]),
   url: z.string(),
-  latest_version: z.optional(
-    z.object({
-      name: z.string(),
-      description: z.ostring(),
-      minecraft_versions: z.string(),
-      version_code: z.string()
-    })
-  ),
-  downloads: z.onumber(),
-  updated: z.onumber()
+  latest_version: z.object({
+    name: z.string(),
+    description: z.ostring(),
+    minecraft_versions: z.string(),
+    version_code: z.string()
+  }),
+  downloads: z.number(),
+  updated: z.number(),
+  licence: z.ostring().nullish(),
+  dependencies: z.optional(z.array(z.string())).nullish()
 });
 
 export const notificationSchema = z.object({

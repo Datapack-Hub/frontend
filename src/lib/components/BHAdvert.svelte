@@ -1,0 +1,6 @@
+<a href="https://bisecthosting.com/silabear">
+  <div class="rounded-xl bg-slate-200 p-3 dark:bg-blue-500/25 hover:dark:bg-blue-500/30 hover:scale-101 transition-all mb-2 flex space-x-3 items-center">
+    <img src="/logos/bh.svg" class="h-6"/>
+    <p class="dark:text-white text-sm">Want to play this datapack with friends? <b><u>Bisect Hosting</u></b> is the official reccomended Minecraft server host of Datapack Hub!</p>
+  </div>
+</a>
