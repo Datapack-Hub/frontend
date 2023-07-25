@@ -18,7 +18,7 @@
   import { MultiSelect } from "svelte-multiselect";
   import { badges } from "$lib/globals/consts";
   import UserCard from "./UserCard.svelte";
-  import { goto } from "$app/navigation";
+  import { goto, invalidateAll } from "$app/navigation";
 
   export let user: User | undefined;
 
@@ -159,6 +159,7 @@
 
     addBadgesDialog.close();
     toast.success(`${user?.username}'s badges have now been edited.`);
+    await invalidateAll()
   }
 
   function disableBan() {
@@ -169,8 +170,6 @@
     expiry.disabled = false;
     if (permanent.checked) expiry.disabled = true;
   }
-
-  $: iconColor = $isDark ? "white" : "black";
 </script>
 
 {#if user && ["admin", "moderator", "helper"].includes($roleInfo.name)}
@@ -190,7 +189,7 @@
   {/await}
 {/if}
 
-<Modal bind:this="{modModal}" wide>
+<Modal bind:this="{modModal}">
   <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Moderate {user?.username}
   </h1>

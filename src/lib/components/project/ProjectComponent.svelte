@@ -44,9 +44,9 @@
       <div
         class="flex space-x-2 items-center text-xs text-slate-950/40 dark:text-slate-100">
         <img
-          src="{author.profile_icon}"
+          src="{author.profile_icon}&size=32"
           alt="{author.username}'s profile"
-          class="h-6 rounded-full" />
+          class="h-6 rounded-full" height="24" width="24" />
         <a
           href="/user/{author.username.toLowerCase()}"
           class="block"
