@@ -104,4 +104,4 @@ export const isModOrAbove = memo((role: Role | undefined) => {
     get(authed) &&
     ["moderator", "developer", "admin"].includes(role?.name ?? "")
   );
-})
+});
