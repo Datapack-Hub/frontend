@@ -158,7 +158,8 @@
   </div>
   <div
     class="w-full bg-stone-800 py-48 flex flex-col justify-center items-center">
-    <h1 class="fadeTextAnime text-white w-full text-center text-4xl lg:text-5xl xl:text-6xl">
+    <h1
+      class="fadeTextAnime text-white w-full text-center text-4xl lg:text-5xl xl:text-6xl">
       The Go-To Platform for Datapacks
     </h1>
     <ul class="mt-6">
@@ -190,7 +191,8 @@
       >Explore our Collection</Button>
   </div>
   <div class="py-32 flex items-center flex-col">
-    <h1 class="fadeTextAnime text-white w-full text-center text-3xl lg:text-4xl xl:text-5xl">
+    <h1
+      class="fadeTextAnime text-white w-full text-center text-3xl lg:text-4xl xl:text-5xl">
       Join our community
     </h1>
     <p class="fadeTextAnime text-center text-white w-2/3 mt-6">
