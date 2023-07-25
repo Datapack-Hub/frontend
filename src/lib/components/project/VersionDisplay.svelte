@@ -48,10 +48,9 @@
     mcVersionCode: string,
     rp: boolean
   ) {
-
-    console.log(url)
-    console.log(mcVersionCode)
-    console.log(version)
+    console.log(url);
+    console.log(mcVersionCode);
+    console.log(version);
 
     if (browser && url) {
       let zip = await fetch(url);
@@ -136,7 +135,7 @@
     <div class="flex w-1/3 items-center space-x-2">
       <button
         class="text-xl font-bold text-slate-950 dark:text-white flex items-center space-x-1"
-        on:click="{() => expanded = !expanded}">
+        on:click="{() => (expanded = !expanded)}">
         {#if !expanded}
           <IconFile />
         {:else}
@@ -157,7 +156,7 @@
               download(
                 version.primary_download,
                 mcv,
-                typeof version.resource_pack_download !== "undefined"
+                typeof version.resource_pack_download !== 'undefined'
               )}">
             {mcv}
           </button>

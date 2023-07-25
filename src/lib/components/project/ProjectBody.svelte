@@ -584,8 +584,7 @@
     id="description"
     maxlength="200"
     bind:value="{postedModMsg}"></textarea>
-  <Button click="{() => moderate(modModalPage)}"
-    >{title(modModalPage)}</Button>
+  <Button click="{() => moderate(modModalPage)}">{title(modModalPage)}</Button>
 </Modal>
 
 <Modal bind:this="{reportModal}">
@@ -594,9 +593,7 @@
   </h1>
   <CasualLine />
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
-    Author
-  </p>
+  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">Author</p>
   <UserCard
     person="{project.author}"
     role="{roles?.find(v => project.author?.role == v.name)}" />
@@ -618,9 +615,7 @@
   </h1>
   <CasualLine />
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
-    Author
-  </p>
+  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">Author</p>
   <UserCard
     person="{project.author}"
     role="{roles?.find(v => project.author?.role == v.name)}" />
