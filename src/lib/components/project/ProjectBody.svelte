@@ -541,102 +541,100 @@
   {/if}
 </div>
 
-<div class="relative">
-  <Modal bind:this="{modModal}">
-    <h1 class="text-xl font-bold text-slate-950 dark:text-white">
-      Moderate {project?.title}
-    </h1>
-    <CasualLine />
-    <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
-    <UserCard
-      person="{project.author}"
-      role="{roles?.find(v => project.author?.role == v.name)}" />
-    <div class="mb-2 min-w-fit items-center">
-      <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
-        Select Action
-      </p>
-      <button
-        class="button-base {modModalPage === 'delete'
-          ? 'bg-stone-600'
-          : 'bg-stone-900'}"
-        on:click="{() => (modModalPage = 'delete')}">Delete</button>
-      <button
-        class="button-base {modModalPage === 'disable'
-          ? 'bg-stone-600'
-          : 'bg-stone-900'}"
-        on:click="{() => (modModalPage = 'disable')}">Disable</button>
-      <button
-        class="button-base {modModalPage === 'write note'
-          ? 'bg-stone-600'
-          : 'bg-stone-900'}"
-        on:click="{() => (modModalPage = 'write note')}">Write Note</button>
-      <button
-        class="button-base bg-stone-900"
-        on:click="{() => goto('/project/' + project?.url + '/edit')}"
-        >Edit Submission</button>
-    </div>
+<Modal bind:this="{modModal}">
+  <h1 class="text-xl font-bold text-slate-950 dark:text-white">
+    Moderate {project?.title}
+  </h1>
+  <CasualLine />
+  <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
+  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
+  <UserCard
+    person="{project.author}"
+    role="{roles?.find(v => project.author?.role == v.name)}" />
+  <div class="mb-2 min-w-fit items-center">
     <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
-      Moderation Note
+      Select Action
     </p>
-    <textarea
-      class="input w-full h-48 resize-none"
-      placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
-      id="description"
-      maxlength="200"
-      bind:value="{postedModMsg}"></textarea>
-    <Button click="{() => moderate(modModalPage)}"
-      >{title(modModalPage)}</Button>
-  </Modal>
+    <button
+      class="button-base {modModalPage === 'delete'
+        ? 'bg-stone-600'
+        : 'bg-stone-900'}"
+      on:click="{() => (modModalPage = 'delete')}">Delete</button>
+    <button
+      class="button-base {modModalPage === 'disable'
+        ? 'bg-stone-600'
+        : 'bg-stone-900'}"
+      on:click="{() => (modModalPage = 'disable')}">Disable</button>
+    <button
+      class="button-base {modModalPage === 'write note'
+        ? 'bg-stone-600'
+        : 'bg-stone-900'}"
+      on:click="{() => (modModalPage = 'write note')}">Write Note</button>
+    <button
+      class="button-base bg-stone-900"
+      on:click="{() => goto('/project/' + project?.url + '/edit')}"
+      >Edit Submission</button>
+  </div>
+  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
+    Moderation Note
+  </p>
+  <textarea
+    class="input w-full h-48 resize-none"
+    placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
+    id="description"
+    maxlength="200"
+    bind:value="{postedModMsg}"></textarea>
+  <Button click="{() => moderate(modModalPage)}"
+    >{title(modModalPage)}</Button>
+</Modal>
 
-  <Modal bind:this="{reportModal}">
-    <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
-      Report {project?.title}
-    </h1>
-    <CasualLine />
-    <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
-      Author
-    </p>
-    <UserCard
-      person="{project.author}"
-      role="{roles?.find(v => project.author?.role == v.name)}" />
-    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
-      Report Message
-    </p>
-    <textarea
-      class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-slate-300 p-2 dark:bg-stone-700"
-      placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
-      id="description"
-      maxlength="200"
-      bind:value="{reportMsg}"></textarea>
-    <Button click="{() => report()}">Report</Button>
-  </Modal>
+<Modal bind:this="{reportModal}">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
+    Report {project?.title}
+  </h1>
+  <CasualLine />
+  <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
+  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
+    Author
+  </p>
+  <UserCard
+    person="{project.author}"
+    role="{roles?.find(v => project.author?.role == v.name)}" />
+  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
+    Report Message
+  </p>
+  <textarea
+    class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-slate-300 p-2 dark:bg-stone-700"
+    placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
+    id="description"
+    maxlength="200"
+    bind:value="{reportMsg}"></textarea>
+  <Button click="{() => report()}">Report</Button>
+</Modal>
 
-  <Modal bind:this="{featureModal}">
-    <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
-      Feature {project?.title}
-    </h1>
-    <CasualLine />
-    <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
-      Author
-    </p>
-    <UserCard
-      person="{project.author}"
-      role="{roles?.find(v => project.author?.role == v.name)}" />
-    <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
-      Duration of feature
-    </p>
-    <input
-      type="number"
-      required
-      class="h-8 w-full resize-none rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-stone-700 dark:text-white"
-      bind:value="{featureDur}"
-      placeholder="i.e 1, 7, 14, 30, 365" />
-    <Button classes="mt-2" click="{() => feature()}">Feature</Button>
-  </Modal>
-</div>
+<Modal bind:this="{featureModal}">
+  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
+    Feature {project?.title}
+  </h1>
+  <CasualLine />
+  <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
+  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
+    Author
+  </p>
+  <UserCard
+    person="{project.author}"
+    role="{roles?.find(v => project.author?.role == v.name)}" />
+  <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+    Duration of feature
+  </p>
+  <input
+    type="number"
+    required
+    class="h-8 w-full resize-none rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-stone-700 dark:text-white"
+    bind:value="{featureDur}"
+    placeholder="i.e 1, 7, 14, 30, 365" />
+  <Button classes="mt-2" click="{() => feature()}">Feature</Button>
+</Modal>
 
 <style lang="postcss">
   :root {

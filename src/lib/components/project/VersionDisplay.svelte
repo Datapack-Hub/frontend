@@ -45,9 +45,14 @@
 
   async function download(
     url: string | undefined,
-    version: string,
+    mcVersionCode: string,
     rp: boolean
   ) {
+
+    console.log(url)
+    console.log(mcVersionCode)
+    console.log(version)
+
     if (browser && url) {
       let zip = await fetch(url);
       let zipBlob = await zip.blob();
@@ -64,7 +69,7 @@
       let packMcmData = JSON.parse(packMcm);
       let packFormat;
 
-      switch (version) {
+      switch (mcVersionCode) {
         case "1.13-1.14.4":
           packFormat = 4;
           break;
@@ -131,24 +136,20 @@
     <div class="flex w-1/3 items-center space-x-2">
       <button
         class="text-xl font-bold text-slate-950 dark:text-white flex items-center space-x-1"
-        on:click="{() => {
-          if (expanded == false) {
-            expanded = true;
-          } else expanded = false;
-        }}">
+        on:click="{() => expanded = !expanded}">
         {#if !expanded}
           <IconFile />
         {:else}
           <IconFileFilled />
         {/if}
-        <p>{version.name}</p>
+        <h2>{version.name}</h2>
       </button>
-      <h2 class="text-base font-thin italic text-slate-950 dark:text-white">
+      <h3 class="text-base font-thin italic text-slate-950 dark:text-white">
         {version.version_code}
-      </h2>
+      </h3>
     </div>
     {#if !mcVersion}
-      <h2 class="flex flex-grow space-x-1 text-slate-950 dark:text-white">
+      <h3 class="flex flex-grow space-x-1 text-slate-950 dark:text-white">
         {#each properVersion as mcv}
           <button
             class="rounded-md bg-dph-orange p-1 px-2"
@@ -156,12 +157,12 @@
               download(
                 version.primary_download,
                 mcv,
-                version.resource_pack_download ? true : false
+                typeof version.resource_pack_download !== "undefined"
               )}">
             {mcv}
           </button>
         {/each}
-      </h2>
+      </h3>
     {/if}
     {#if !expanded && !mcVersion}
       {#if project?.ID == $user.id}
