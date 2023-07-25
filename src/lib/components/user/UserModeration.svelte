@@ -159,7 +159,7 @@
 
     addBadgesDialog.close();
     toast.success(`${user?.username}'s badges have now been edited.`);
-    await invalidateAll()
+    await invalidateAll();
   }
 
   function disableBan() {

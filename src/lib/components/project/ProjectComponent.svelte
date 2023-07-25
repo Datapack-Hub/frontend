@@ -46,7 +46,9 @@
         <img
           src="{author.profile_icon}&size=32"
           alt="{author.username}'s profile"
-          class="h-6 rounded-full" height="24" width="24" />
+          class="h-6 rounded-full"
+          height="24"
+          width="24" />
         <a
           href="/user/{author.username.toLowerCase()}"
           class="block"

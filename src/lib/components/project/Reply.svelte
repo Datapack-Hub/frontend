@@ -41,7 +41,9 @@
     <img
       src="{reply.author.profile_icon}&size=32"
       alt="{reply.author}'s profile"
-      class="rounded-full h-6" height="24" width="24" />
+      class="rounded-full h-6"
+      height="24"
+      width="24" />
     <div>
       <div class="flex items-baseline space-x-1">
         <a
