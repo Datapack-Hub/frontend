@@ -3,10 +3,9 @@
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import autoAnimate from "@formkit/auto-animate";
   import anime from "animejs";
-  import { onDestroy, onMount } from "svelte";
-  import { quintInOut } from "svelte/easing";
-  import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
   import type { PageData } from "./$types";
+  import IconDiscord from "~icons/tabler/BrandDiscord.svelte"
 
   let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
 
@@ -158,46 +157,48 @@
     </div>
   </div>
   <div
-    class="w-full bg-stone-800 h-[55vh] flex flex-col justify-center items-center">
+    class="w-full bg-stone-800 h-[60vh] flex flex-col justify-center items-center">
     <h1 class="fadeTextAnime text-white w-full text-center text-7xl">
       The Go-To Platform for Datapacks
     </h1>
     <ul class="mt-6">
       <li
         class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light">
-        Automatic Optimization
+        Automatic Pack Optimization
       </li>
       <li
         class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light">
-        No in-game incompatibilities
+        No more "made for an older version"
       </li>
       <li
         class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light">
-        Human Moderation
+        Strong Moderation
       </li>
       <li
         class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light">
-        Project features
+        Engaging, growing community
+      </li>
+      <li
+        class="opacity-0 fadeTextAnime list-disc text-white text-3xl my-4 font-light">
+        Project featuring
       </li>
       <li class="opacity-0 fadeTextAnime text-white text-3xl my-4 font-light">
         ...And More!
       </li>
     </ul>
-    <Button click="/projects" style="alt">Explore our Collection</Button>
+    <Button click="/projects" style="alt" classes="fadeTextAnime">Explore our Collection</Button>
   </div>
-  <!-- <div class="w-full text-center">
-    <div
-      class="input flex text-center w-2/3 rounded-full px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 items-center">
-      <IconSearch color="white" />
-      <input
-        placeholder="Search Datapacks..."
-        type="search"
-        id="query"
-        maxlength="75"
-        class="ml-2 w-full text-slate-950 placeholder:text-stone-400 bg-slate-300 dark:bg-stone-800 focus:outline-none dark:text-white focus:w-80"
-        />
-    </div>
-  </div> -->
+  <div class="py-32 flex items-center flex-col">
+    <h1 class="fadeTextAnime text-white w-full text-center text-5xl">
+      Join our community
+    </h1>
+    <p class="text-center text-white w-2/3 mt-6">Join our Discord server to get help with the website, support for making datapacks, and to be a part of the community!</p>
+    <a
+          class="flex rounded-lg p-2 bg-[#5865F2] text-white font-bold items-center mt-6"
+          href="https://api.datapackhub.net/auth/login/discord">
+          <p><img src="/logos/discord-white.svg" alt="discord logo" class="inline-block mr-2" height="16" width="16">Join us now!</p>
+        </a>
+  </div>
 </main>
 
 <style lang="postcss">
