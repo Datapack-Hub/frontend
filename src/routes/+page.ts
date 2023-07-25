@@ -29,7 +29,7 @@ export const load = (async ({ fetch }) => {
 
   const [admins, mods, devs, helpers] = await parallel(
     4,
-    [adminsRes.values, modRes.values, devRes.values, helperRes.values],
+    [adminsRes, modRes, devRes, helperRes].map(v => v.values),
     async users => await userSchema.array().parseAsync(users)
   );
 
