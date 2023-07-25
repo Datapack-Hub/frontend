@@ -66,28 +66,23 @@
         delay: 1000
       });
 
-      let intersect = new IntersectionObserver(e => {
-        e.forEach((entry, i) => {
-          if (entry.isIntersecting) {
-            anime({
-              autoplay: true,
-              targets: entry.target,
-              opacity: 1,
-              delay: (i + 1) * 200
-            });
-          } else {
-            anime({
-              autoplay: true,
-              targets: entry.target,
-              opacity: 0,
-              duration: 0
-            });
-          }
-        });
+    let intersect = new IntersectionObserver(e => {
+      e.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          anime({
+            autoplay: true,
+            targets: entry.target,
+            opacity: 1,
+            delay: (i + 1) * 200
+          });
+        } else {
+          anime({ autoplay: true, targets: entry.target, opacity: 0 });
+        }
       });
+    });
 
-      fadingTextElements.forEach(e => intersect.observe(e));
-      visible = true;
+    fadingTextElements.forEach(e => intersect.observe(e));
+    visible = true;
   });
 </script>
 
