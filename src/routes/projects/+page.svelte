@@ -66,7 +66,7 @@
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
     <div class="flex-grow flex flex-col sm:flex-row space-x-4 items-center">
       <div
-        class="input flex items-center rounded-full px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 ">
+        class="input flex items-center rounded-full px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
         <input
           placeholder="Search Datapacks..."
