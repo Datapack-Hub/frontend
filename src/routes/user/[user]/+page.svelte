@@ -218,9 +218,9 @@
     <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
       Select Action
     </p>
-    <button
+    <!-- <button
       class="button-base {'delete' ? 'bg-stone-600' : 'bg-stone-900'}"
-      on:click="{() => 'delete'}">Delete</button>
+      on:click="{() => 'delete'}">Delete</button> -->
   </div>
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
     Moderation Note

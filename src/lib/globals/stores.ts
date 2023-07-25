@@ -8,7 +8,7 @@ export const authed = writable(false);
 export const consoleWarned = writable(false);
 
 /**
- * Store for User Data
+ * Contains all basic information about you (other than sensitive data)
  */
 export const user: Writable<User> = writable({
   id: -1,
@@ -20,7 +20,7 @@ export const user: Writable<User> = writable({
 });
 
 /**
- * Contains all information about a role
+ * Contains all information about your role
  */
 export const roleInfo: Writable<Role> = writable({
   name: "default",

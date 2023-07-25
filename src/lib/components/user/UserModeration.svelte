@@ -1,24 +1,18 @@
 <script lang="ts">
   import { browser } from "$app/environment";
+  import { goto, invalidateAll } from "$app/navigation";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
+  import { badges } from "$lib/globals/consts";
   import type { User } from "$lib/globals/schema";
-  import { isDark, roleInfo, roles } from "$lib/globals/stores";
+  import { roleInfo, roles } from "$lib/globals/stores";
+  import { MultiSelect } from "svelte-multiselect";
   import { toast } from "svelte-sonner";
-  import IconBan from "~icons/tabler/Ban.svelte";
-  import IconLogOut from "~icons/tabler/Logout.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
-  import IconMessage from "~icons/tabler/MailForward.svelte";
-  import IconSettings from "~icons/tabler/Settings.svelte";
-  import IconWarn from "~icons/tabler/AlertTriangle.svelte";
-  import IconTags from "~icons/tabler/Tags.svelte";
   import { fetchAuthed } from "../../globals/functions";
   import MarkdownComponent from "../MarkdownComponent.svelte";
   import Button from "../decorative/Button.svelte";
-  import { MultiSelect } from "svelte-multiselect";
-  import { badges } from "$lib/globals/consts";
   import UserCard from "./UserCard.svelte";
-  import { goto, invalidateAll } from "$app/navigation";
 
   export let user: User | undefined;
 
@@ -45,10 +39,6 @@
       let modData = await fetchAuthed("get", `/moderation/user/${user?.id}`);
       modJson = await modData.json();
     }
-  }
-
-  function open(mod: Modal) {
-    mod.open();
   }
 
   async function warn() {

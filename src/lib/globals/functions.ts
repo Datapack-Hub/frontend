@@ -99,6 +99,12 @@ export function removeCookie(name: string) {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
+/**
+ * Check if the role is a moderator or above
+ *
+ * @param role the role to check
+ * @returns true or false
+ */
 export const isModOrAbove = memo((role: Role | undefined) => {
   return (
     get(authed) &&
