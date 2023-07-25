@@ -2,11 +2,11 @@
   import autoAnimate from "@formkit/auto-animate";
 
   import { afterNavigate, goto } from "$app/navigation";
+  import MarkdownEditor from "$lib/components/MarkdownEditor.svelte";
   import Button from "$lib/components/decorative/Button.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import { categories } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
-  import type { Project } from "$lib/globals/schema";
   import { user } from "$lib/globals/stores";
   import { dash } from "radash";
   import { onMount } from "svelte";
@@ -20,7 +20,6 @@
   import IconEdit from "~icons/tabler/Pencil.svelte";
   import IconSA from "~icons/tabler/Repeat.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
-  import MarkdownEditor from "$lib/components/MarkdownEditor.svelte";
 
   let iconB64: string | ArrayBuffer | null | undefined;
   let iconVal: FileList;
@@ -44,7 +43,7 @@
   }
 
   async function create() {
-    let projData: Project = {
+    let projData = {
       icon: iconB64?.toString(),
       type: "datapack",
       url: dash(title.trim()),
