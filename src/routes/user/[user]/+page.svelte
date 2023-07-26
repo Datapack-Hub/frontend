@@ -67,7 +67,8 @@
 <main
   id="main-content"
   class="flex flex-col lg:flex-row w-full items-center bg-slate-50 px-8 transition-all dark:bg-stone-900 md:items-start md:px-16 md:pt-32 lg:px-24">
-  <div class="w-full lg:w-2/5 xl:w-1/3 bg-slate-200 dark:bg-stone-800 p-6 rounded-lg">
+  <div
+    class="w-full lg:w-2/5 xl:w-1/3 bg-slate-200 dark:bg-stone-800 p-6 rounded-lg">
     <div
       class="mb-4 flex w-full flex-col mt-16 md:mt-0 items-center md:items-start">
       <div class="self-center">

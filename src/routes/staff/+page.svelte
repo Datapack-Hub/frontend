@@ -8,7 +8,7 @@
   export let data: PageData;
 
   let visible = false;
-  onMount(() => visible = true);
+  onMount(() => (visible = true));
 </script>
 
 <svelte:head>

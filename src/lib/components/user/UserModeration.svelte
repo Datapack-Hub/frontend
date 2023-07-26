@@ -170,10 +170,7 @@
       style="base"
       click="{() => modModal.open()}"
       classes="mt-4 flex w-full items-center bg-slate-300">
-      <IconShield
-        width="24"
-        height="24"
-        class="float-left mr-2" />
+      <IconShield width="24" height="24" class="float-left mr-2" />
       Moderate {user?.username}
     </Button>
   {/await}

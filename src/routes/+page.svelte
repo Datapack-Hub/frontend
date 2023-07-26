@@ -162,13 +162,16 @@
       class="fadeTextAnime text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl mx-4">
       The Go-To Platform for Datapacks
     </h1>
-    <div class="flex flex-col lg:flex-row items-center lg:items-start w-3/4 xl:w-2/3 2xl:w-1/2 space-y-4 lg:space-y-0 space-x-0 lg:space-x-4 mt-12">
-      <div class="p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full lg:w-1/2">
+    <div
+      class="flex flex-col lg:flex-row items-center lg:items-start w-3/4 xl:w-2/3 2xl:w-1/2 space-y-4 lg:space-y-0 space-x-0 lg:space-x-4 mt-12">
+      <div
+        class="p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full lg:w-1/2">
         <h2
           class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           No more "made for an older version"
         </h2>
-        <p class="fadeTextAnime text-black dark:text-white text-lg my-4 font-light">
+        <p
+          class="fadeTextAnime text-black dark:text-white text-lg my-4 font-light">
           Datapack Hub automatically converts your pack version to the requested
           version
         </p>
@@ -185,8 +188,8 @@
 &lbrace;
   "pack": &lbrace;
     "pack_format": <span class="text-red-500">10</span> -&gt; <span
-              class="text-green-500 fadeTextAnime">15</span
-            >,
+                class="text-green-500 fadeTextAnime">15</span
+              >,
     "description": "The timmy pack!"
   &rbrace;
 &rbrace;
@@ -200,7 +203,8 @@
             class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
             Strong Moderation
           </h2>
-          <p class="fadeTextAnime text-black dark:text-white text-lg my-4 font-light">
+          <p
+            class="fadeTextAnime text-black dark:text-white text-lg my-4 font-light">
             Our team of intelligent admins, moderators and helpers watch over
             the site for naughty people
           </p>
@@ -213,7 +217,8 @@
                   title="{staff.username}"
                   loading="lazy"
                   class="h-8 lg:h-12 absolute rounded-md hover:scale-105 transition-all fadeTextAnime"
-                  style="left: {i * (width < 1024 ? 16 : 36) + (width < 1024 ? 16 : 8)}px;" />
+                  style="left: {i * (width < 1024 ? 16 : 36) +
+                    (width < 1024 ? 16 : 8)}px;" />
               </a>
             {/each}
             <div class="h-8 lg:h-12"></div>
@@ -224,7 +229,8 @@
             class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
             Awesome Community
           </h2>
-          <p class="fadeTextAnime text-black dark:text-white text-lg my-4 font-light">
+          <p
+            class="fadeTextAnime text-black dark:text-white text-lg my-4 font-light">
             Join our Discord server to get help with the website, support for
             making datapacks, and to be a part of the community!
           </p>

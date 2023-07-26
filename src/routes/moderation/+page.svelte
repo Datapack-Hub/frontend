@@ -153,7 +153,9 @@
                 <th class="p-2 text-slate-950 dark:text-white">Permissions</th>
               </tr>
               {#each rolesJson ?? [] as i}
-                <tr use:autoAnimate class="odd:bg-slate-400/25 dark:odd:bg-stone-700/25">
+                <tr
+                  use:autoAnimate
+                  class="odd:bg-slate-400/25 dark:odd:bg-stone-700/25">
                   <td
                     ><p
                       style="color: {i.color};"
