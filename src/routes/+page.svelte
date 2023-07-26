@@ -159,8 +159,8 @@
   <div
     class="w-full bg-slate-200 dark:bg-stone-800/20 py-48 flex flex-col justify-center items-center">
     <h1
-      class="fadeTextAnime text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl mx-4">
-      The Go-To Platform for Datapacks
+      class="fadeTextAnime font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl mx-4">
+      The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div class="mt-6 grid grid-cols-2 w-3/4 xl:w-2/3 2xl:w-1/2 gap-3">
       <div
