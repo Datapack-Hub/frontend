@@ -48,12 +48,14 @@ export const projectSchema = z.object({
   title: z.string(),
   type: z.enum(["datapack"]),
   url: z.string(),
-  latest_version: z.optional(z.object({
-    name: z.string(),
-    description: z.ostring(),
-    minecraft_versions: z.string(),
-    version_code: z.string()
-  })),
+  latest_version: z.optional(
+    z.object({
+      name: z.string(),
+      description: z.ostring(),
+      minecraft_versions: z.string(),
+      version_code: z.string()
+    })
+  ),
   downloads: z.number(),
   updated: z.number(),
   licence: z.string().nullish(),
