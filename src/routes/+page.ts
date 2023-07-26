@@ -15,7 +15,7 @@ export const load = (async ({ fetch }) => {
   ] = await parallel(
     3,
     await Promise.all([
-      fetch(`${API}/projects/random?count=3`),
+      fetch(`${API}/projects/random?count=10`),
       fetch(`${API}/projects/featured`),
       fetch(`${API}/projects/count`),
       // staff
