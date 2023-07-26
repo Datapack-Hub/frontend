@@ -3,7 +3,7 @@
   import { toast } from "svelte-sonner";
   import IconX from "~icons/tabler/X.svelte";
   import type { Notif } from "$lib/globals/schema";
-  import MarkdownComponent from "./MarkdownComponent.svelte";
+  import MarkdownComponent from "./MarkdownRenderer.svelte";
 
   export let notification: Notif | undefined;
   let visible = true;

@@ -6,7 +6,7 @@
 
   import Button from "$lib/components/decorative/Button.svelte";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
-  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import MarkdownComponent from "$lib/components/MarkdownRenderer.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 

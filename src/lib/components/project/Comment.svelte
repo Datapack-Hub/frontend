@@ -11,7 +11,7 @@
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
-  import MarkdownComponent from "../MarkdownComponent.svelte";
+  import MarkdownComponent from "../MarkdownRenderer.svelte";
   import Reply from "./Reply.svelte";
 
   export let comment: DPHComment;

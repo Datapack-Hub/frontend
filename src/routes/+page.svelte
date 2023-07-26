@@ -162,7 +162,8 @@
       class="fadeTextAnime font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl mx-4">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
-    <div class="mt-6 grid grid-cols-2 w-3/4 xl:w-2/3 2xl:w-1/2 gap-3">
+    <div
+      class="mt-6 grid grid-cols-1 lg:grid-cols-2 w-3/4 xl:w-2/3 2xl:w-1/2 gap-3">
       <div
         class="p-4 row-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
@@ -206,15 +207,17 @@
           Our team of intelligent admins, moderators and helpers watch over the
           site for naughty people
         </p>
-        <div class="flex">
-          {#each data.staff as staff, i}
+        <div class="flex py-4">
+          {#each data.staff as staff}
             <a href="/user/{staff.username}">
               <img
                 src="{staff.profile_icon}&size=64"
                 alt="{staff.username}'s profile"
                 title="{staff.username}"
                 loading="lazy"
-                class="lg:h-12 rounded-md hover:scale-105 transition-all fadeTextAnime" />
+                width="48"
+                height="48"
+                class="h-auto md:h-12 rounded-md hover:scale-105 transition-all fadeTextAnime" />
             </a>
           {/each}
         </div>

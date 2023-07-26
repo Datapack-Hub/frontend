@@ -10,7 +10,7 @@
   import { toast } from "svelte-sonner";
   import IconShield from "~icons/tabler/Shield.svelte";
   import { fetchAuthed } from "../../globals/functions";
-  import MarkdownComponent from "../MarkdownComponent.svelte";
+  import MarkdownComponent from "../MarkdownRenderer.svelte";
   import Button from "../decorative/Button.svelte";
   import UserCard from "./UserCard.svelte";
 

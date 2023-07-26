@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import MarkdownComponent from "./MarkdownComponent.svelte";
+  import MarkdownComponent from "./MarkdownRenderer.svelte";
 
   export let maxEditorLength = 1e4;
   export let classes = "";

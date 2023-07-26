@@ -7,7 +7,7 @@
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
   // Component imports
-  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import MarkdownComponent from "$lib/components/MarkdownRenderer.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import {
     commentSchema,
@@ -39,7 +39,7 @@
   import Modal from "../modals/Modal.svelte";
   import UserCard from "../user/UserCard.svelte";
   import Comment from "./Comment.svelte";
-  import BhAdvert from "../BHAdvert.svelte";
+  import BhAdvert from "../decorative/BHAdvert.svelte";
 
   // we need to split this up more or something jeez
 

@@ -11,7 +11,7 @@
   import IconInfo from "~icons/tabler/InfoCircle.svelte";
   import IconTime from "~icons/tabler/Clock.svelte";
   import IconDL from "~icons/tabler/Download.svelte";
-  import MarkdownComponent from "$lib/components/MarkdownComponent.svelte";
+  import MarkdownComponent from "$lib/components/MarkdownRenderer.svelte";
   import { badges } from "$lib/globals/consts";
   import { title } from "radash";
   import IconVerified from "$lib/components/decorative/IconVerified.svelte";
