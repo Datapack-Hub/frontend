@@ -172,7 +172,8 @@
     </h1>
     <div
       class="mt-6 grid grid-cols-1 lg:grid-cols-2 w-3/4 xl:w-2/3 2xl:w-1/2 gap-3">
-      <div class="col-span-2 p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+      <div
+        class="col-span-2 p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
           class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Easily find datapacks you'll like</b>
@@ -182,53 +183,51 @@
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
         <div class="dark:bg-stone-900 rounded-xl p-3 mb-5 space-y-2">
-          {#each data.random.slice(0,2) ?? [] as rand}
-          <div
-            class="w-full items-center rounded-xl bg-slate-200 p-3 text-slate-950 dark:bg-stone-800 dark:text-slate-100">
-            <div class="flex items-top">
-              {#if rand.icon}
-              <img
-              src="{rand.icon}"
-              alt="{rand.title} icon"
-              width="96"
-              height="96"
-              loading="lazy"
-              class="aspect-square w-20 rounded-lg bg-cover" />
-              {:else}
-              <IconNoPhoto width="48" height="48" />
-              {/if}
-              <div class="ml-4 w-3/4">
-                <a
-                  class=" text-lg hover:underline md:text-xl lg:text-2xl">
-                  {rand.title}
-                </a>
-                <div
-                  class="flex space-x-2 items-center text-xs text-slate-950/40 dark:text-slate-100">
-
-                  <a
-                    class="block">
-                    {rand.author.username}
+          {#each data.random.slice(0, 2) ?? [] as rand}
+            <div
+              class="w-full items-center rounded-xl bg-slate-200 p-3 text-slate-950 dark:bg-stone-800 dark:text-slate-100">
+              <div class="flex items-top">
+                {#if rand.icon}
+                  <img
+                    src="{rand.icon}"
+                    alt="{rand.title} icon"
+                    width="96"
+                    height="96"
+                    loading="lazy"
+                    class="aspect-square w-20 rounded-lg bg-cover" />
+                {:else}
+                  <IconNoPhoto width="48" height="48" />
+                {/if}
+                <div class="ml-4 w-3/4">
+                  <a class=" text-lg hover:underline md:text-xl lg:text-2xl">
+                    {rand.title}
                   </a>
-                  <span>•</span>
-                  <span>
-                    {rand.latest_version?.version_code}
-                  </span>
-                  <span>•</span>
-                  <span>{rand.downloads ? rand.downloads : "0"} downloads</span>
+                  <div
+                    class="flex space-x-2 items-center text-xs text-slate-950/40 dark:text-slate-100">
+                    <a class="block">
+                      {rand.author.username}
+                    </a>
+                    <span>•</span>
+                    <span>
+                      {rand.latest_version?.version_code}
+                    </span>
+                    <span>•</span>
+                    <span
+                      >{rand.downloads ? rand.downloads : "0"} downloads</span>
+                  </div>
+                  <p
+                    class="line-clamp-2 max-w-1/2 text-xs font-medium text-slate-950/40 dark:text-slate-100/40 mt-2">
+                    {rand.description}
+                  </p>
                 </div>
-                <p
-                  class="line-clamp-2 max-w-1/2 text-xs font-medium text-slate-950/40 dark:text-slate-100/40 mt-2">
-                  {rand.description}
-                </p>
               </div>
             </div>
-          </div>
           {/each}
         </div>
         <a
           class="rounded-lg p-2 mt-2 bg-dph-orange text-white font-medium"
           href="/projects">
-        Find your next favourite datapack
+          Find your next favourite datapack
         </a>
       </div>
       <div
@@ -239,7 +238,8 @@
         </h2>
         <p
           class="fadeTextAnime text-black dark:text-white text-lg my-3 font-light">
-          Datapack Hub automatically converts the pack version to the requested version, removing those pesky "Made for an older version" errors!
+          Datapack Hub automatically converts the pack version to the requested
+          version, removing those pesky "Made for an older version" errors!
         </p>
         <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-4">
           <div
@@ -273,11 +273,12 @@
           We use PackSquash in the background to reduce the size of files and
           make them run faster in-game!
         </p>
-        <div class="bg-slate-200 dark:bg-stone-900 rounded-xl p-4 px-32 dark:text-white flex items-center">
+        <div
+          class="bg-slate-200 dark:bg-stone-900 rounded-xl p-4 px-32 dark:text-white flex items-center">
           <div class="flex items-center relative space-x-3">
-            <IconFile width="64" height="64" class="text-red-500"/>
-            <IconArrow width="32" height="32"/>
-            <IconFile width="32" height="32" class="text-green-500"/>
+            <IconFile width="64" height="64" class="text-red-500" />
+            <IconArrow width="32" height="32" />
+            <IconFile width="32" height="32" class="text-green-500" />
           </div>
         </div>
       </div>
@@ -288,7 +289,8 @@
         </h2>
         <p
           class="fadeTextAnime text-black dark:text-white text-lg mt-3 font-light">
-          Our amazing staff team work together to keep Datapack Hub the best and cleanest place to find datapacks!
+          Our amazing staff team work together to keep Datapack Hub the best and
+          cleanest place to find datapacks!
         </p>
         <div class="flex py-4 space-x-1">
           {#each data.staff as staff}
@@ -297,7 +299,9 @@
                 src="{staff.profile_icon}&size=64"
                 alt="{staff.username}'s profile"
                 use:tippy="{{
-                  content:`${staff.username}<br /><span style='color: ${$roles.find(v => v.name == staff.role)?.color}; font-weight:600'>● ${title(staff.role)}</span>`,
+                  content: `${staff.username}<br /><span style='color: ${
+                    $roles.find(v => v.name == staff.role)?.color
+                  }; font-weight:600'>● ${title(staff.role)}</span>`,
                   placement: 'bottom',
                   interactive: true,
                   allowHTML: true
@@ -344,7 +348,8 @@
           <FeaturedProjectComponent project="{randProj}" type="featured" />
         {/each}
       </div>
-      <div class="p-4 col-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+      <div
+        class="p-4 col-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
           class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Public API</b>
@@ -360,12 +365,14 @@
               <p class="text-green-500">GET</p>
               <p>https://api.datapackhub.net/user/silabear</p>
             </div>
-            <a class="bg-green-500 text-white rounded-md px-2 py-1 cursor-pointer" on:click={() => ran = true}>Run</a>
+            <a
+              class="bg-green-500 text-white rounded-md px-2 py-1 cursor-pointer"
+              on:click="{() => (ran = true)}">Run</a>
           </div>
           {#if ran}
-          <div
-            class="text-slate-600 dark:text-stone-300 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-md overflow-x-auto">
-            <pre class="text-sm p-4">
+            <div
+              class="text-slate-600 dark:text-stone-300 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-md overflow-x-auto">
+              <pre class="text-sm p-4">
 <!--DO NOT INDENT!!!-->&lbrace;
   "badges": [
     "contributor",
@@ -379,7 +386,7 @@
   "role": "admin",
   "username": "Silabear"
 &rbrace;</pre>
-          </div>
+            </div>
           {/if}
         </div>
       </div>
