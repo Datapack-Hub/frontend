@@ -4,18 +4,18 @@ import { parallel } from "radash";
 import type { PageLoad } from "./$types";
 
 export const load = (async ({ fetch }) => {
-  const [admins, moderators, developers, helpers] = await parallel(
+  const [admins, moderators, helpers] = await parallel(
     5,
     await Promise.all([
       fetch(`${API}/user/staff/admin`),
       fetch(`${API}/user/staff/moderator`),
-      fetch(`${API}/user/staff/developer`),
+      // fetch(`${API}/user/staff/developer`),
       fetch(`${API}/user/staff/helper`)
     ]),
     async res => await userSchema.array().parseAsync((await res.json()).values)
   );
 
   return {
-    staff: admins.concat(moderators, developers, helpers)
+    staff: admins.concat(moderators, helpers)
   };
 }) satisfies PageLoad;
