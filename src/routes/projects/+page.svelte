@@ -66,7 +66,7 @@
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
     <div class="flex-grow flex flex-col sm:flex-row space-x-4 items-center">
       <div
-        class="input flex items-center rounded-full px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500">
+        class="input flex items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
         <input
           placeholder="Search Datapacks..."
@@ -74,13 +74,13 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class="ml-2 text-slate-950 placeholder:text-stone-400 bg-slate-300 dark:bg-stone-800 focus:outline-none dark:text-white focus:w-80"
+          class="ml-2 text-slate-950 placeholder:text-slate-600 dark:placeholder:text-stone-400 bg-slate-300 dark:bg-stone-800 focus:outline-none dark:text-white focus:w-80"
           on:input="{search}" />
       </div>
       <div class="block mt-2 sm:mt-0 sm:flex space-x-2 items-center">
         <p class="dark:text-white text-center">Sort By:</p>
         <select
-          class="flex h-8 pl-3 items-center rounded-full bg-slate-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-orange-500 dark:bg-stone-700 dark:text-white"
+          class="flex h-8 pl-3 items-center rounded-full bg-slate-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-dph-orange dark:bg-stone-700 dark:text-white"
           bind:value="{sort}"
           on:change="{resort}">
           {#each ["Updated", "Downloads"] as cat}

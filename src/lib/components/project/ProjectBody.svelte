@@ -244,8 +244,8 @@
     <div class="space-x-1.5">
       <button
         class="button-base {activePage === 'description'
-          ? 'bg-slate-500 dark:bg-stone-600'
-          : 'bg-slate-300 dark:bg-stone-800'}"
+          ? 'bg-slate-400 dark:bg-stone-600'
+          : 'bg-slate-200 dark:bg-stone-800'}"
         on:click="{() => (activePage = 'description')}"
         aria-label="Description">
         {#if !isSmall}
@@ -256,8 +256,8 @@
       </button>
       <button
         class="button-base {activePage === 'comments'
-          ? 'bg-slate-500 dark:bg-stone-600'
-          : 'bg-slate-300 dark:bg-stone-800'}"
+          ? 'bg-slate-400 dark:bg-stone-600'
+          : 'bg-slate-200 dark:bg-stone-800'}"
         on:click="{() => (activePage = 'comments')}"
         aria-label="Comments">
         {#if !isSmall}
@@ -362,7 +362,7 @@
         the project, click the restore button.
       </p>
       <button
-        class="bg-orange-500 rounded-md p-1 px-2 text-white"
+        class="bg-dph-orange rounded-md p-1 px-2 text-white"
         on:click="{() => moderate('restore')}">Restore</button>
     </div>
   {:else if status == "review_queue" || status == "publish_queue"}

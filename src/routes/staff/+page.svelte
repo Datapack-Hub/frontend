@@ -8,7 +8,7 @@
   export let data: PageData;
 
   let visible = false;
-  onMount(() => (visible = true));
+  onMount(() => visible = true);
 </script>
 
 <svelte:head>
@@ -27,11 +27,11 @@
     <p class=" text-slate-950 dark:text-white">
       The people listed below help keep Datapack Hub running smoothly and safe!
       You will be able to recognise them by their orange or blue verification
-      checkmarks.
+      check marks.
     </p>
     {#if visible}
       {#each data.staff ?? [] as person, i}
-        <div in:fly="{{ x: -200, duration: 500, delay: i * 75 }}">
+        <div in:fly="{{ y: -200, duration: 500, delay: i * 75 }}">
           <UserCard
             {person}
             role="{$roles?.find(v => person.role == v.name)}" />

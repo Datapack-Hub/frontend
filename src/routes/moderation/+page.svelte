@@ -142,7 +142,7 @@
           </div>
         {:else if activePage == "roles"}
           <div
-            class="flex flex-col space-x-2 rounded-xl bg-stone-800 p-2 py-3 text-center align-middle md:text-start">
+            class="flex flex-col space-x-2 rounded-xl bg-slate-200 dark:bg-stone-800 p-2 py-3 text-center align-middle md:text-start">
             <h1
               class="m-2 text-center text-2xl font-bold text-slate-950 dark:text-white md:text-start">
               Site Roles
@@ -153,7 +153,7 @@
                 <th class="p-2 text-slate-950 dark:text-white">Permissions</th>
               </tr>
               {#each rolesJson ?? [] as i}
-                <tr use:autoAnimate class="odd:bg-stone-700/25">
+                <tr use:autoAnimate class="odd:bg-slate-400/25 dark:odd:bg-stone-700/25">
                   <td
                     ><p
                       style="color: {i.color};"

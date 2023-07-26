@@ -13,7 +13,7 @@
       loading="lazy"
       src="{person?.profile_icon}?size=64"
       alt="{person?.username}'s profile picture"
-      class="float-left mr-2 h-16 w-16 rounded-full" />
+      class="float-left mr-2 h-16 w-16 rounded-full" width="64" height="64" />
     <div>
       <a href="/user/{person?.username.toLowerCase()}">
         <h1 class="mr-2 text-xl font-bold text-slate-950 dark:text-white">

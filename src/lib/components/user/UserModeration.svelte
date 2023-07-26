@@ -167,13 +167,13 @@
     <p class="text-slate-950 dark:text-white">Loading...</p>
   {:then}
     <Button
-      style="boring"
+      style="base"
       click="{() => modModal.open()}"
-      classes="mt-4 flex w-full items-center">
+      classes="mt-4 flex w-full items-center bg-slate-300">
       <IconShield
         width="24"
         height="24"
-        class="float-left mr-2 stroke-blue-400" />
+        class="float-left mr-2" />
       Moderate {user?.username}
     </Button>
   {/await}
@@ -192,33 +192,33 @@
     </p>
     <button
       class="button-base {modModalPage == 'ban'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-stone-600'
+        : 'bg-slate-300 dark:bg-stone-900'}"
       on:click="{() => (modModalPage = 'ban')}">Ban</button>
     <button
       class="button-base {modModalPage == 'warn'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-stone-600'
+        : 'bg-slate-300 dark:bg-stone-900'}"
       on:click="{() => (modModalPage = 'warn')}">Warn</button>
     <button
       class="button-base {modModalPage == 'notif'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-stone-600'
+        : 'bg-slate-300 dark:bg-stone-900'}"
       on:click="{() => (modModalPage = 'notif')}">Send Notification</button>
     <button
       class="button-base {modModalPage == 'logout'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-stone-600'
+        : 'bg-slate-300 dark:bg-stone-900'}"
       on:click="{() => (modModalPage = 'logout')}">Log Out</button>
     <button
       class="button-base {modModalPage == 'badges'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-stone-600'
+        : 'bg-slate-300 dark:bg-stone-900'}"
       on:click="{() => (modModalPage = 'badges')}">Edit Badges</button>
     <button
       class="button-base {modModalPage == 'edit'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-stone-600'
+        : 'bg-slate-300 dark:bg-stone-900'}"
       on:click="{() => goto(user?.username + '/edit')}">Edit User</button>
   </div>
   {#if modModalPage == "ban"}

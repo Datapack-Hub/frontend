@@ -24,13 +24,13 @@
   <div class="hidden lg:block"></div>
   <div class="w-full md:w-1/2">
     <div class="flex w-full text-center">
-      <p class="mb-4 w-1/3 text-center text-xl font-bold text-orange-500">
+      <p class="mb-4 w-1/3 text-center text-xl font-bold text-dph-orange">
         Support
       </p>
-      <p class="mb-4 w-1/3 text-center text-xl font-bold text-orange-500">
+      <p class="mb-4 w-1/3 text-center text-xl font-bold text-dph-orange">
         Socials
       </p>
-      <p class="mb-4 w-1/3 text-center text-xl font-bold text-orange-500">
+      <p class="mb-4 w-1/3 text-center text-xl font-bold text-dph-orange">
         Policies
       </p>
     </div>

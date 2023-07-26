@@ -67,13 +67,13 @@
 <main
   id="main-content"
   class="flex flex-col lg:flex-row w-full items-center bg-slate-50 px-8 transition-all dark:bg-stone-900 md:items-start md:px-16 md:pt-32 lg:px-24">
-  <div class="w-full lg:w-2/5 xl:w-1/3">
+  <div class="w-full lg:w-2/5 xl:w-1/3 bg-slate-200 dark:bg-stone-800 p-6 rounded-lg">
     <div
       class="mb-4 flex w-full flex-col mt-16 md:mt-0 items-center md:items-start">
       <div class="self-center">
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <img
-          src="{data.profile?.profile_icon}&size=160"
+          src="{data.profile?.profile_icon}&size=128"
           alt="{data.profile?.username}'s profile picture"
           on:click="{data.profile?.id == 3 ? play : null}"
           on:keypress="{e =>
@@ -120,7 +120,7 @@
       <h2 class="dark:text-white font-bold mb-1 text-lg mt-8 flex items-center">
         <IconInfo class="inline-block mr-1" /> About
       </h2>
-      <p class="w-full rounded-xl bg-slate-300 dark:bg-stone-800 p-5">
+      <p class="w-full rounded-xl bg-slate-300 dark:bg-stone-700 p-5">
         <MarkdownComponent
           source="{data.profile?.bio
             .replaceAll('\\n', '\n')
@@ -176,7 +176,7 @@
     {/if}
   </div>
   <div
-    class="grid grid-flow-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 auto-rows-min styled-scrollbar ml-0 mt-16 lg:ml-12 lg:mt-0 flex-grow">
+    class="grid grid-flow-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 auto-rows-min styled-scrollbar ml-0 mt-16 lg:ml-12 lg:mt-0 flex-grow w-full lg:w-auto">
     <div class="mb-2 flex items-center col-span-1 sm:col-span-2 lg:col-span-1">
       <h1
         class="flex-grow text-center text-xl font-bold text-slate-900 dark:text-slate-100 md:text-left">
@@ -187,7 +187,7 @@
           >New Project</Button>
       {/if}
     </div>
-    <div class="col-span-1 sm:col-span-2 lg:col-span-1">
+    <div class="col-span-2">
       <CasualLine />
     </div>
     {#if data.projects?.length == 0}

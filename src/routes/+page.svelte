@@ -72,7 +72,7 @@
             autoplay: true,
             targets: entry.target,
             opacity: 1,
-            delay: (i + 1) * 50
+            delay: (i + 1) * 75
           });
         } else {
           anime({ autoplay: true, targets: entry.target, opacity: 0 });
@@ -107,7 +107,7 @@
   </div>
   <div class="pt-20 lg:pt-0"></div>
   <div
-    class="flex h-[75vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
+    class="flex h-screen md:h-[75vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
       <div
         class="relative mb-4 h-36 w-full md:mb-0 {visible
@@ -140,7 +140,7 @@
       </h2>
     </div>
     <div
-      class="mt-8 h-fit justify-between space-y-3 overflow-y-none rounded-xl px-4 sm:my-16 md:my-0 md:w-1/2">
+      class="mt-8 h-fit justify-between space-y-3 overflow-x-clip overflow-y-auto rounded-xl px-4 sm:my-16 md:my-0 md:w-1/2">
       <h3
         class=" text-2xl font-medium text-slate-950 dark:text-slate-100 text-center mt-6">
         Featured Projects
@@ -157,54 +157,54 @@
     </div>
   </div>
   <div
-    class="w-full bg-stone-800/20 py-48 flex flex-col justify-center items-center">
+    class="w-full bg-slate-200 dark:bg-stone-800/20 py-48 flex flex-col justify-center items-center">
     <h1
-      class="fadeTextAnime text-white w-full text-center text-4xl lg:text-5xl xl:text-6xl">
+      class="fadeTextAnime text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl mx-4">
       The Go-To Platform for Datapacks
     </h1>
-    <div class="flex w-1/2 space-x-4 mt-12">
-      <div class="p-4 bg-stone-800 rounded-lg w-1/2">
+    <div class="flex flex-col lg:flex-row items-center lg:items-start w-3/4 xl:w-2/3 2xl:w-1/2 space-y-4 lg:space-y-0 space-x-0 lg:space-x-4 mt-12">
+      <div class="p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full lg:w-1/2">
         <h2
-          class="opacity-0 fadeTextAnime text-white text-lg lg:text-xl xl:text-2xl">
+          class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           No more "made for an older version"
         </h2>
-        <p class="fadeTextAnime text-white text-lg my-4 font-light">
+        <p class="fadeTextAnime text-black dark:text-white text-lg my-4 font-light">
           Datapack Hub automatically converts your pack version to the requested
           version
         </p>
-        <div class="bg-stone-900 rounded-lg p-4">
+        <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-4">
           <div
-            class="flex items-center justify-between bg-stone-800 rounded-t-md p-2 m-4 text-stone-500">
+            class="flex items-center justify-between bg-slate-300 dark:bg-stone-800 rounded-t-md p-2 m-4 text-slate-600 dark:text-stone-500">
             <p>pack.mcmeta</p>
             <IconX />
           </div>
           <div
-            class="text-stone-500 font-mono bg-stone-800 m-4 px-4 rounded-b-md">
-            <pre>
+            class="text-slate-600 dark:text-stone-500 font-mono bg-slate-300 dark:bg-stone-800 m-4 px-4 rounded-b-md overflow-x-auto">
+            <pre class="text-sm">
               <!--DO NOT INDENT!!!-->
 &lbrace;
   "pack": &lbrace;
-      "pack_format": <span class="text-red-500">10</span> -&gt; <span
-                class="text-green-500 fadeTextAnime">15</span
-              >,
-      "description": "The timmy pack!"
-    &rbrace;
+    "pack_format": <span class="text-red-500">10</span> -&gt; <span
+              class="text-green-500 fadeTextAnime">15</span
+            >,
+    "description": "The timmy pack!"
+  &rbrace;
 &rbrace;
             </pre>
           </div>
         </div>
       </div>
-      <div class="flex flex-col space-y-4 w-1/2">
-        <div class="p-4 bg-stone-800 rounded-lg w-full h-1/2">
+      <div class="flex flex-col space-y-4 w-full lg:w-1/2">
+        <div class="p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full h-1/2">
           <h2
-            class="opacity-0 fadeTextAnime text-white text-lg lg:text-xl xl:text-2xl">
+            class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
             Strong Moderation
           </h2>
-          <p class="fadeTextAnime text-white text-lg my-4 font-light">
+          <p class="fadeTextAnime text-black dark:text-white text-lg my-4 font-light">
             Our team of intelligent admins, moderators and helpers watch over
             the site for naughty people
           </p>
-          <div class="bg-stone-900 rounded-lg p-4 relative">
+          <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-4 relative">
             {#each data.staff as staff, i}
               <a href="/user/{staff.username}">
                 <img
@@ -212,19 +212,19 @@
                   alt="{staff.username}'s profile"
                   title="{staff.username}"
                   loading="lazy"
-                  class="h-12 absolute rounded-md hover:brightness-75 transition-all fadeTextAnime"
-                  style="left: {i * 36 + 16}px;" />
+                  class="h-8 lg:h-12 absolute rounded-md hover:scale-105 transition-all fadeTextAnime"
+                  style="left: {i * (width < 1024 ? 16 : 36) + (width < 1024 ? 16 : 8)}px;" />
               </a>
             {/each}
-            <div class="h-12"></div>
+            <div class="h-8 lg:h-12"></div>
           </div>
         </div>
-        <div class="p-4 bg-stone-800 rounded-lg w-full h-1/2">
+        <div class="p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full h-1/2">
           <h2
-            class="opacity-0 fadeTextAnime text-white text-lg lg:text-xl xl:text-2xl">
+            class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
             Awesome Community
           </h2>
-          <p class="fadeTextAnime text-white text-lg my-4 font-light">
+          <p class="fadeTextAnime text-black dark:text-white text-lg my-4 font-light">
             Join our Discord server to get help with the website, support for
             making datapacks, and to be a part of the community!
           </p>
@@ -243,15 +243,15 @@
     </div>
     <ul class="mt-6">
       <li
-        class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
+        class="opacity-0 fadeTextAnime list-disc text-black dark:text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
         Automatic Pack Optimization
       </li>
       <li
-        class="opacity-0 fadeTextAnime list-disc text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
+        class="opacity-0 fadeTextAnime list-disc text-black dark:text-white text-lg lg:text-xl xl:text-2xl my-4 font-light">
         Project featuring
       </li>
       <li
-        class="opacity-0 fadeTextAnime text-white text-3xl my-4 font-light text-center">
+        class="opacity-0 fadeTextAnime text-black dark:text-white text-3xl my-4 font-light text-center">
         ...And More!
       </li>
     </ul>
