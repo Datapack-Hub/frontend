@@ -1,17 +1,17 @@
 <script lang="ts">
   import Button from "$lib/components/decorative/Button.svelte";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
+  import { roles } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import anime from "animejs";
+  import { title } from "radash";
   import { onMount } from "svelte";
+  import tippy from "sveltejs-tippy";
+  import IconArrow from "~icons/tabler/ArrowBigRightLinesFilled.svelte";
+  import IconFile from "~icons/tabler/FileZip.svelte";
+  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
-  import tippy from "sveltejs-tippy";
-  import { title } from "radash";
-  import { roles } from "$lib/globals/stores";
-  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
-  import IconFile from "~icons/tabler/FileZip.svelte";
-  import IconArrow from "~icons/tabler/ArrowBigRightLinesFilled.svelte";
 
   let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
 
@@ -121,19 +121,13 @@
         class="relative mb-4 h-36 w-full md:mb-0 {visible
           ? 'visible'
           : 'invisible'}">
-        <h1
-          id="indexText1"
-          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
+        <h1 id="indexText1" class="split-text appearing-text-styles">
           <span class="letters inline-block text-dph-orange">Explore</span>
         </h1>
-        <h1
-          id="indexText2"
-          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
+        <h1 id="indexText2" class="split-text appearing-text-styles">
           <span class="letters inline-block text-dph-orange">Create</span>
         </h1>
-        <h1
-          id="indexText3"
-          class="split-text absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl">
+        <h1 id="indexText3" class="split-text appearing-text-styles">
           <span class="letters inline-block text-dph-orange">Play</span>
         </h1>
       </div>
@@ -199,12 +193,14 @@
                   <IconNoPhoto width="48" height="48" />
                 {/if}
                 <div class="ml-4 w-3/4">
-                  <a class=" text-lg hover:underline md:text-xl lg:text-2xl">
+                  <a
+                    href="/project/{rand.url}"
+                    class=" text-lg hover:underline md:text-xl lg:text-2xl">
                     {rand.title}
                   </a>
                   <div
                     class="flex space-x-2 items-center text-xs text-slate-950/40 dark:text-slate-100">
-                    <a class="block">
+                    <a href="/user/{rand.author.username}" class="block">
                       {rand.author.username}
                     </a>
                     <span>•</span>
@@ -365,14 +361,14 @@
               <p class="text-green-500">GET</p>
               <p>https://api.datapackhub.net/user/silabear</p>
             </div>
-            <a
+            <button
               class="bg-green-500 text-white rounded-md px-2 py-1 cursor-pointer"
-              on:click="{() => (ran = true)}">Run</a>
+              on:click="{() => (ran = true)}">Run</button>
           </div>
-          {#if ran}
-            <div
-              class="text-slate-600 dark:text-stone-300 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-md overflow-x-auto">
-              <pre class="text-sm p-4">
+          <div
+          class="text-slate-600 dark:text-stone-300 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-md overflow-x-auto h-80">
+              {#if ran}
+                <pre class="text-sm p-4">
 <!--DO NOT INDENT!!!-->&lbrace;
   "badges": [
     "contributor",
@@ -385,9 +381,9 @@
   "profile_icon": "https://avatars.githubusercontent.com/u/56885288?v=4",
   "role": "admin",
   "username": "Silabear"
-&rbrace;</pre>
+&rbrace;      </pre>
+            {/if}
             </div>
-          {/if}
         </div>
       </div>
     </div>
@@ -401,6 +397,9 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    @apply bg-gradient-to-br from-pink-700 to-dph-orange;
+  }
+
+  .appearing-text-styles {
+    @apply absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl;
   }
 </style>
