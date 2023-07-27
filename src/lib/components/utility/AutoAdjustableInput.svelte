@@ -15,6 +15,6 @@
   type="text"
   class="{classes}"
   bind:value
-  style="max-width: {value.length + 1 ?? 10}ch;"
+  style="max-width: {value.length < 5 ? 5 : value.length}ch;"
   autocorrect="false"
   on:change="{e => deploy(e.currentTarget.value)}" />

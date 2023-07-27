@@ -60,14 +60,14 @@
       <a
         href="/moderation"
         aria-label="Moderation page"
-        class="z-20 mr-2 md:mr-6"
+        class="z-20 mr-2 md:mr-6 hover:brightness-75"
         use:tippy="{moderationHoverMsg}">
         <IconShield height="24" width="24" color="{iconColor}" />
       </a>
     {/if}
     <a
       href="/notifications"
-      class="z-20"
+      class="z-20 hover:brightness-75"
       aria-label="Notifications page"
       use:tippy="{notificationHoverMsg}">
       {#if unreadNotifications}
@@ -80,7 +80,7 @@
       <a
         href="/projects/new"
         aria-label="Create Project page"
-        class="z-20 ml-2 md:ml-6"
+        class="z-20 ml-2 md:ml-6 hover:brightness-75"
         use:tippy="{newHoverMsg}">
         <IconPlus height="24" width="24" color="{iconColor}" />
       </a>
@@ -103,7 +103,7 @@
         alt="{$user.username}'s profile picture"
         height="24"
         width="24"
-        class="ml-3 rounded-full outline outline-2 outline-offset-2 md:ml-6"
+        class="ml-3 rounded-full outline outline-2 outline-offset-2 md:ml-6 hover:brightness-75"
         style="outline-color:{$roleInfo.color ?? '#eab308'};" />
     </a>
   {:else}
