@@ -366,9 +366,9 @@
               on:click="{() => (ran = true)}">Run</button>
           </div>
           <div
-          class="text-slate-600 dark:text-stone-300 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-md overflow-x-auto h-80">
-              {#if ran}
-                <pre class="text-sm p-4">
+            class="text-slate-600 dark:text-stone-300 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-md overflow-x-auto h-80">
+            {#if ran}
+              <pre class="text-sm p-4">
 <!--DO NOT INDENT!!!-->&lbrace;
   "badges": [
     "contributor",
@@ -383,7 +383,7 @@
   "username": "Silabear"
 &rbrace;      </pre>
             {/if}
-            </div>
+          </div>
         </div>
       </div>
     </div>
