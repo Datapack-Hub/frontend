@@ -546,7 +546,8 @@
                       <IconLink class="inline-block" /> URL
                     </p>
                     <div class="flex items-center">
-                      <span class="bg-slate-300 dark:bg-stone-800 rounded-lg border-2 border-slate-400 dark:border-stone-700 p-2 focus:border-dph-orange dark:focus:border-dph-orange outline-none focus:text-opacity-100 text-slate-950 dark:text-stone-600 transition-all placeholder:italic placeholder:text-slate-800 dark:placeholder:text-stone-500 w-full text-opacity-60">
+                      <span
+                        class="bg-slate-300 dark:bg-stone-800 rounded-lg border-2 border-slate-400 dark:border-stone-700 p-2 focus:border-dph-orange dark:focus:border-dph-orange outline-none focus:text-opacity-100 text-slate-950 dark:text-stone-600 transition-all placeholder:italic placeholder:text-slate-800 dark:placeholder:text-stone-500 w-full text-opacity-60">
                         datapackhub.net/project/<AutoAdjustableInput
                           classes="bg-slate-300 text-opacity-100 dark:bg-stone-800 text-slate-100 outline-none"
                           on:change="{e => dependencyHandler(e.detail, i)}" />

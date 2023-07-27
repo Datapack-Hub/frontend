@@ -37,7 +37,9 @@
       >Jump to Main Content</a>
 
     <nav class="flex items-center mr-2">
-      <a href="/" class="z-20 flex cursor-pointer items-center space-x-2 hover:brightness-75">
+      <a
+        href="/"
+        class="z-20 flex cursor-pointer items-center space-x-2 hover:brightness-75">
         <img
           src="/logos/dph.svg"
           alt="logo"
