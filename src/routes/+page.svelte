@@ -80,7 +80,7 @@
             autoplay: true,
             targets: entry.target,
             opacity: 1,
-            delay: (i + 1) * 75
+            delay: (i + 1) * 50
           });
         } else {
           anime({ autoplay: true, targets: entry.target, opacity: 0 });
@@ -162,7 +162,7 @@
   <div
     class="w-full bg-slate-200 dark:bg-stone-800/20 py-48 flex flex-col justify-center items-center">
     <h1
-      class=" font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl mx-4">
+      class="fadeTextAnime opacity-0 font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl mx-4">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
@@ -170,11 +170,11 @@
       <div
         class="fadeTextAnime opacity-0 col-span-2 p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Easily find datapacks you'll like</b>
         </h2>
         <p
-          class=" text-black dark:text-white text-lg my-3 font-light">
+          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-3 font-light">
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
         <div class="dark:bg-stone-900 rounded-xl p-3 mb-5 space-y-2">
@@ -230,22 +230,22 @@
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto row-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>No more "made for older version"</b>
         </h2>
         <p
-          class=" text-black dark:text-white text-lg my-3 font-light">
+          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-3 font-light">
           Datapack Hub automatically converts the pack version to the requested
           version, removing those pesky "Made for an older version" errors!
         </p>
         <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-4">
           <div
-            class="flex items-center justify-between bg-slate-300 dark:bg-stone-800 rounded-t-md p-2 mx-4 mt-4 text-slate-600 dark:text-stone-500">
+            class="fadeTextAnime opacity-0 flex items-center justify-between bg-slate-300 dark:bg-stone-800 rounded-t-md p-2 mx-4 mt-4 text-slate-600 dark:text-stone-500">
             <p>pack.mcmeta</p>
             <IconX />
           </div>
           <div
-            class="text-slate-600 dark:text-stone-500 font-mono bg-slate-300 dark:bg-stone-800 mx-4 mb-4 my-2 px-4 rounded-b-md overflow-x-auto">
+            class="fadeTextAnime opacity-0 text-slate-600 dark:text-stone-500 font-mono bg-slate-300 dark:bg-stone-800 mx-4 mb-4 my-2 px-4 rounded-b-md overflow-x-auto">
             <pre class="text-sm">
               <!--DO NOT INDENT!!!-->
 &lbrace;
@@ -263,11 +263,11 @@
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Automatic ZIP Optimisation</b>
         </h2>
         <p
-          class=" text-black dark:text-white text-lg my-4 font-light">
+          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
           We use PackSquash in the background to reduce the size of files and
           make them run faster in-game!
         </p>
@@ -283,11 +283,11 @@
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto pb-0 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Strong Moderation</b>
         </h2>
         <p
-          class=" text-black dark:text-white text-lg mt-3 font-light">
+          class="text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg mt-3 font-light">
           Our amazing staff team work together to keep Datapack Hub the best and
           cleanest place to find datapacks!
         </p>
@@ -316,11 +316,11 @@
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Awesome Community</b>
         </h2>
         <p
-          class=" text-black dark:text-white text-lg my-4 font-light">
+          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
           Join our Discord server to get help with the website, support for
           making datapacks, and to be a part of the community!
         </p>
@@ -339,11 +339,11 @@
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Project Featuring</b>
         </h2>
         <p
-          class=" text-black dark:text-white text-lg my-4 font-light">
+          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
           Our staff regularly feature cool projects to reach a wider audience!
         </p>
         {#each data.random.splice(0, 1) as randProj}
@@ -353,17 +353,17 @@
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Public API</b>
         </h2>
         <p
-          class=" text-black dark:text-white text-lg my-4 font-light">
+          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
           Datapack Hub is ran entirely by an API which anyone can access.
         </p>
         <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-8">
           <div
             class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-stone-800 rounded-md p-2 text-slate-600 dark:text-stone-500">
-            <div class="flex space-x-2">
+            <div class="flex space-x-2 fadeTextAnime opacity-0">
               <p class="text-green-500">GET</p>
               <p>https://api.datapackhub.net/user/silabear</p>
             </div>
@@ -374,7 +374,7 @@
           <div
             class="text-slate-600 dark:text-stone-300 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-md overflow-x-auto h-80">
             {#if ran}
-              <pre class="text-sm p-4">
+              <pre class="text-sm p-4 fadeTextAnime opacity-0">
 <!--DO NOT INDENT!!!-->&lbrace;
   "badges": [
     "contributor",
