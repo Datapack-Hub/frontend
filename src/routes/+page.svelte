@@ -89,8 +89,8 @@
     });
 
     for (let i = 0; i < fadingTextElements.length; i++) {
-      const item = fadingTextElements.item(i)
-      if(item !== null) intersect.observe(item);
+      const item = fadingTextElements.item(i);
+      if (item !== null) intersect.observe(item);
     }
 
     visible = true;
