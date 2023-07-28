@@ -88,7 +88,7 @@
       });
     });
 
-    fadingTextElements.forEach(e => intersect.observe(e))
+    fadingTextElements.forEach(e => intersect.observe(e));
 
     visible = true;
   });
@@ -169,12 +169,10 @@
       class="mt-6 grid grid-cols-1 lg:grid-cols-2 w-3/4 xl:w-2/3 2xl:w-1/2 gap-3">
       <div
         class="fadeTextAnime opacity-0 col-span-2 p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
-        <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+        <h2 class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Easily find datapacks you'll like</b>
         </h2>
-        <p
-          class=" text-black dark:text-white text-lg my-3 font-light">
+        <p class=" text-black dark:text-white text-lg my-3 font-light">
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
         <div class="dark:bg-stone-900 rounded-xl p-3 mb-5 space-y-2">
@@ -229,12 +227,10 @@
       </div>
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto row-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
-        <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+        <h2 class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>No more "made for older version"</b>
         </h2>
-        <p
-          class=" text-black dark:text-white text-lg my-3 font-light">
+        <p class=" text-black dark:text-white text-lg my-3 font-light">
           Datapack Hub automatically converts the pack version to the requested
           version, removing those pesky "Made for an older version" errors!
         </p>
@@ -251,7 +247,7 @@
 &lbrace;
   "pack": &lbrace;
     "pack_format": <span class="text-red-500">7</span> -&gt; <span
-                class="text-green-500 ">9</span
+                class="text-green-500">9</span
               >,
     "description": "The timmy pack!"
   &rbrace;
@@ -262,12 +258,10 @@
       </div>
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
-        <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+        <h2 class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Automatic ZIP Optimisation</b>
         </h2>
-        <p
-          class=" text-black dark:text-white text-lg my-4 font-light">
+        <p class=" text-black dark:text-white text-lg my-4 font-light">
           We use PackSquash in the background to reduce the size of files and
           make them run faster in-game!
         </p>
@@ -282,12 +276,10 @@
       </div>
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto pb-0 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
-        <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+        <h2 class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Strong Moderation</b>
         </h2>
-        <p
-          class=" text-black dark:text-white text-lg mt-3 font-light">
+        <p class=" text-black dark:text-white text-lg mt-3 font-light">
           Our amazing staff team work together to keep Datapack Hub the best and
           cleanest place to find datapacks!
         </p>
@@ -308,19 +300,17 @@
                 loading="lazy"
                 width="48"
                 height="48"
-                class="h-auto md:h-12 rounded-md hover:scale-105 transition-all " />
+                class="h-auto md:h-12 rounded-md hover:scale-105 transition-all" />
             </a>
           {/each}
         </div>
       </div>
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
-        <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+        <h2 class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Awesome Community</b>
         </h2>
-        <p
-          class=" text-black dark:text-white text-lg my-4 font-light">
+        <p class=" text-black dark:text-white text-lg my-4 font-light">
           Join our Discord server to get help with the website, support for
           making datapacks, and to be a part of the community!
         </p>
@@ -338,12 +328,10 @@
       </div>
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
-        <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+        <h2 class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Project Featuring</b>
         </h2>
-        <p
-          class=" text-black dark:text-white text-lg my-4 font-light">
+        <p class=" text-black dark:text-white text-lg my-4 font-light">
           Our staff regularly feature cool projects to reach a wider audience!
         </p>
         {#each data.random.splice(0, 1) as randProj}
@@ -352,12 +340,10 @@
       </div>
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
-        <h2
-          class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+        <h2 class="  text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Public API</b>
         </h2>
-        <p
-          class=" text-black dark:text-white text-lg my-4 font-light">
+        <p class=" text-black dark:text-white text-lg my-4 font-light">
           Datapack Hub is ran entirely by an API which anyone can access.
         </p>
         <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-8">
