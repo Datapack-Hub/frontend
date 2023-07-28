@@ -75,7 +75,10 @@
 
     let intersect = new IntersectionObserver(e => {
       e.forEach((entry, i) => {
-        if (entry.isIntersecting && window.matchMedia(`(prefers-reduced-motion: reduce)`).matches) {
+        if (
+          entry.isIntersecting &&
+          window.matchMedia(`(prefers-reduced-motion: reduce)`).matches
+        ) {
           anime({
             autoplay: true,
             targets: entry.target,
