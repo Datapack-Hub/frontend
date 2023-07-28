@@ -88,7 +88,7 @@
       });
     });
 
-    fadingTextElements.forEach(e => intersect.observe(e))
+    fadingTextElements.forEach(e => intersect.observe(e));
 
     visible = true;
   });
@@ -251,7 +251,7 @@
 &lbrace;
   "pack": &lbrace;
     "pack_format": <span class="text-red-500">7</span> -&gt; <span
-                class="text-green-500 ">9</span
+                class="text-green-500">9</span
               >,
     "description": "The timmy pack!"
   &rbrace;
@@ -308,7 +308,7 @@
                 loading="lazy"
                 width="48"
                 height="48"
-                class="h-auto md:h-12 rounded-md hover:scale-105 transition-all " />
+                class="h-auto md:h-12 rounded-md hover:scale-105 transition-all" />
             </a>
           {/each}
         </div>
