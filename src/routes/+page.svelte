@@ -44,7 +44,7 @@
         opacity: 0,
         duration: 1000,
         easing: "easeOutExpo",
-        delay: 1000
+        delay: 750
       })
       .add({
         targets: "#indexText2 .letter",
@@ -57,7 +57,7 @@
         opacity: 0,
         duration: 1000,
         easing: "easeOutExpo",
-        delay: 1000
+        delay: 750
       })
       .add({
         targets: "#indexText3 .letter",
@@ -70,17 +70,17 @@
         opacity: 0,
         duration: 1000,
         easing: "easeOutExpo",
-        delay: 1000
+        delay: 750
       });
 
     let intersect = new IntersectionObserver(e => {
       e.forEach((entry, i) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && window.matchMedia(`(prefers-reduced-motion: reduce)`).matches) {
           anime({
             autoplay: true,
             targets: entry.target,
             opacity: 1,
-            delay: (i + 1) * 75
+            delay: i * 75
           });
         } else {
           anime({ autoplay: true, targets: entry.target, opacity: 0 });
@@ -139,7 +139,7 @@
         class="w-full text-center text-xl text-slate-950 dark:text-slate-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{(data.count - 1).toString()}"
-          class="text-gradient bg-gradient-to-br from-rose-500 to-yellow-500 font-bold">
+          class="text-dph-orange font-bold">
           {compactNumberFormatter.format(data.count - 1)}
         </span>
         of the latest and best datapacks from creators across the globe
@@ -402,12 +402,6 @@
 </main>
 
 <style lang="postcss">
-  .text-gradient {
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
   .appearing-text-styles {
     @apply absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl;
   }
