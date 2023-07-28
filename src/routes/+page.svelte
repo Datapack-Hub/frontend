@@ -23,15 +23,18 @@
   export let data: PageData;
 
   onMount(async () => {
-    let cyclingTextWrapper = document.getElementsByClassName("split-text letters");
+    let cyclingTextWrapper =
+      document.getElementsByClassName("split-text letters");
     let fadingTextElements = document.getElementsByClassName("fadeTextAnime");
 
     for (let i = 0; i < cyclingTextWrapper.length; i++) {
-      const item = cyclingTextWrapper.item(i)
-      if(item !== null) {
-        item.innerHTML = item.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ?? "";
+      const item = cyclingTextWrapper.item(i);
+      if (item !== null) {
+        item.innerHTML =
+          item.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ??
+          "";
       }
-    };
+    }
 
     anime
       .timeline({ loop: true, autoplay: true })
@@ -91,8 +94,8 @@
     });
 
     for (let i = 0; i < fadingTextElements.length; i++) {
-      const item = fadingTextElements.item(i)
-      if(item !== null) intersect.observe(item);
+      const item = fadingTextElements.item(i);
+      if (item !== null) intersect.observe(item);
     }
 
     visible = true;
