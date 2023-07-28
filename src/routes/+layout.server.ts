@@ -6,6 +6,7 @@ import type { LayoutServerLoad } from "./$types";
 
 export const load = (async ({ cookies }) => {
   const cookie = cookies.get("dph_token");
+
   if (cookie) {
     const [userRes, roleRes] = await parallel(
       2,

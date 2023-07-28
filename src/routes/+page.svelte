@@ -80,7 +80,7 @@
             autoplay: true,
             targets: entry.target,
             opacity: 1,
-            delay: (i + 1) * 50
+            delay: (i + 1) * 75
           });
         } else {
           anime({ autoplay: true, targets: entry.target, opacity: 0 });
@@ -363,7 +363,7 @@
         <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-8">
           <div
             class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-stone-800 rounded-md p-2 text-slate-600 dark:text-stone-500">
-            <div class="flex space-x-2 fadeTextAnime opacity-0">
+            <div class="flex space-x-2">
               <p class="text-green-500">GET</p>
               <p>https://api.datapackhub.net/user/silabear</p>
             </div>
@@ -374,7 +374,7 @@
           <div
             class="text-slate-600 dark:text-stone-300 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-md overflow-x-auto h-80">
             {#if ran}
-              <pre class="text-sm p-4 fadeTextAnime opacity-0">
+              <pre class="text-sm p-4">
 <!--DO NOT INDENT!!!-->&lbrace;
   "badges": [
     "contributor",
