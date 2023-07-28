@@ -3,7 +3,7 @@
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import { roles } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
-  import anime from "animejs";
+  import anime from "animejs/lib/anime.es";
   import { title } from "radash";
   import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
@@ -22,14 +22,16 @@
 
   export let data: PageData;
 
-  onMount(() => {
-    let cyclingTextWrapper = document.querySelectorAll(".split-text .letters");
-    cyclingTextWrapper.forEach(el => {
-      el.innerHTML =
-        el.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ?? "";
-    });
+  onMount(async () => {
+    let cyclingTextWrapper = document.getElementsByClassName("split-text letters");
+    let fadingTextElements = document.getElementsByClassName("fadeTextAnime");
 
-    let fadingTextElements = document.querySelectorAll(".fadeTextAnime");
+    for (let i = 0; i < cyclingTextWrapper.length; i++) {
+      const item = cyclingTextWrapper.item(i)
+      if(item !== null) {
+        item.innerHTML = item.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ?? "";
+      }
+    };
 
     anime
       .timeline({ loop: true, autoplay: true })
@@ -88,7 +90,11 @@
       });
     });
 
-    fadingTextElements.forEach(e => intersect.observe(e));
+    for (let i = 0; i < fadingTextElements.length; i++) {
+      const item = fadingTextElements.item(i)
+      if(item !== null) intersect.observe(item);
+    }
+
     visible = true;
   });
 </script>
@@ -227,7 +233,7 @@
         </a>
       </div>
       <div
-        class="p-4 row-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+        class="p-4 col-span-2 lg:col-auto row-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
           class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>No more "made for older version"</b>
@@ -259,7 +265,8 @@
           </div>
         </div>
       </div>
-      <div class="p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+      <div
+        class="p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
           class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Automatic ZIP Optimisation</b>
@@ -278,7 +285,8 @@
           </div>
         </div>
       </div>
-      <div class="p-4 pb-0 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+      <div
+        class="p-4 col-span-2 lg:col-auto pb-0 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
           class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Strong Moderation</b>
@@ -310,7 +318,8 @@
           {/each}
         </div>
       </div>
-      <div class="p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+      <div
+        class="p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
           class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Awesome Community</b>
@@ -327,11 +336,13 @@
             src="/logos/discord-white.svg"
             alt="discord logo"
             class="inline-block mr-2"
+            loading="lazy"
             height="16"
             width="16" />Join us now!
         </a>
       </div>
-      <div class="p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+      <div
+        class="p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
           class="opacity-0 fadeTextAnime text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Project Featuring</b>

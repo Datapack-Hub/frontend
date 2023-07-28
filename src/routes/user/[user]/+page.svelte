@@ -188,7 +188,7 @@
           >New Project</Button>
       {/if}
     </div>
-    <div class="col-span-2">
+    <div class="col-span-1 sm:col-span-2 lg:col-span-1">
       <CasualLine />
     </div>
     {#if data.projects?.length == 0}
