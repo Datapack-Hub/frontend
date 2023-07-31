@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MarkdownComponent from "$lib/components/MarkdownRenderer.svelte";
+  import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;

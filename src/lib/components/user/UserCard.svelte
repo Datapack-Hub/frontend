@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Role, User } from "$lib/globals/schema";
   import { title } from "radash";
-  import MarkdownComponent from "../MarkdownRenderer.svelte";
+  import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
 
   export let person: User | undefined;
   export let role: Role | undefined;

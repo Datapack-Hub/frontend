@@ -2,7 +2,7 @@
   import autoAnimate from "@formkit/auto-animate";
 
   import { afterNavigate, goto } from "$app/navigation";
-  import MarkdownEditor from "$lib/components/MarkdownEditor.svelte";
+  import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
   import Button from "$lib/components/decorative/Button.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import { categories } from "$lib/globals/consts";

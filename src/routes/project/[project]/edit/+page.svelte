@@ -6,7 +6,7 @@
 
   import Button from "$lib/components/decorative/Button.svelte";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
-  import MarkdownComponent from "$lib/components/MarkdownRenderer.svelte";
+  import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 
@@ -32,7 +32,7 @@
   import IconSA from "~icons/tabler/Repeat.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
-  import MarkdownEditor from "$lib/components/MarkdownEditor.svelte";
+  import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
   import { list } from "radash";
   import { MultiSelect } from "svelte-multiselect";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";

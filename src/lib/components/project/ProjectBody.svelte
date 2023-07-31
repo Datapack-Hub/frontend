@@ -7,7 +7,7 @@
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
   // Component imports
-  import MarkdownComponent from "$lib/components/MarkdownRenderer.svelte";
+  import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import {
     commentSchema,

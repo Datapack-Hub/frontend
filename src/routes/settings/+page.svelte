@@ -9,7 +9,7 @@
 
   import IconDiscord from "~icons/tabler/BrandDiscord.svelte";
   import IconGithub from "~icons/tabler/BrandGithub.svelte";
-  import MarkdownEditor from "$lib/components/MarkdownEditor.svelte";
+  import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
 
   export let data: PageData;
 

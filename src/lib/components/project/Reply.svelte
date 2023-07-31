@@ -7,7 +7,7 @@
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
-  import MarkdownComponent from "../MarkdownRenderer.svelte";
+  import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
 
   export let reply: {
     id: number;

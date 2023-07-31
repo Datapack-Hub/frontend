@@ -5,7 +5,7 @@
   import { authed } from "$lib/globals/stores";
   import { onMount } from "svelte";
   import Button from "../decorative/Button.svelte";
-  import MarkdownComponent from "../MarkdownRenderer.svelte";
+  import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import { userSchema } from "$lib/globals/schema";
 
   let visible = false;

@@ -4,7 +4,7 @@
   import tippy from "sveltejs-tippy";
 
   import CasualLine from "../decorative/CasualLine.svelte";
-  import MarkdownComponent from "../MarkdownRenderer.svelte";
+  import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import Modal from "../modals/Modal.svelte";
 
   import IconZIP from "~icons/tabler/Cube.svelte";

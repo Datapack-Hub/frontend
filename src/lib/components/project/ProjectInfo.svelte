@@ -12,7 +12,7 @@
   import IconBack from "~icons/tabler/ArrowBack.svelte";
   import IconDL from "~icons/tabler/Download.svelte";
   import IconUpdate from "~icons/tabler/Refresh.svelte";
-  import MarkdownComponent from "../MarkdownRenderer.svelte";
+  import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import type { Project, User } from "$lib/globals/schema";
   import { title } from "radash";
 
