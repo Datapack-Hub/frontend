@@ -264,7 +264,9 @@
 
   async function resolveDependency(v: string, i: number) {
     let search = await fetch(`${API}/projects/search?query=${v}`);
-    let projects = await projectSchema.array().parseAsync((await search.json()).result);
+    let projects = await projectSchema
+      .array()
+      .parseAsync((await search.json()).result);
 
     projects.forEach(project => {
       if (project.url == v) {

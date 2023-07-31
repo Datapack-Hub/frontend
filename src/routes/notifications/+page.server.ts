@@ -14,6 +14,8 @@ export const load = (async ({ cookies }) => {
   }
 
   return {
-    notifications: await notifSchema.array().parseAsync((await unread.json()).result)
+    notifications: await notifSchema
+      .array()
+      .parseAsync((await unread.json()).result)
   };
 }) satisfies PageServerLoad;

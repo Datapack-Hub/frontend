@@ -11,20 +11,20 @@ export const load = (async ({ params, fetch }) => {
     const [user, projects, role] = await Promise.all([
       fetch(`${API}/user/${params.user}`),
       fetchAuthed("get", `/user/${params.user}/projects`),
-      fetch(`${API}/user/staff/roles`),
+      fetch(`${API}/user/staff/roles`)
     ]);
 
     if (user.status == 404) {
       throw error(404, {
         message: "User not found",
-        description: "You may have hallucinated their existence",
+        description: "You may have hallucinated their existence"
       });
     }
 
-    if ([user, projects, role].some((r) => !r.ok)) {
+    if ([user, projects, role].some(r => !r.ok)) {
       throw error(user.status, {
         message: "Unexpected error",
-        description: "Something unexpected happen, try again later",
+        description: "Something unexpected happen, try again later"
       });
     }
 
@@ -34,21 +34,19 @@ export const load = (async ({ params, fetch }) => {
       roleSchema.array().parseAsync((await role.json()).roles)
     ]);
 
-    const profileRole = rolesJson.find(
-      v => v.name == profileJson.role,
-    );
+    const profileRole = rolesJson.find(v => v.name == profileJson.role);
 
-    const downloads: number = sum(projectJson, (p) => p.downloads ?? 0);
+    const downloads: number = sum(projectJson, p => p.downloads ?? 0);
 
     return {
       profile: profileJson,
       projects: projectJson,
       role: profileRole,
-      downloads: downloads,
+      downloads: downloads
     };
   }
 
   return {
-    downloads: 0,
+    downloads: 0
   };
 }) satisfies PageLoad;

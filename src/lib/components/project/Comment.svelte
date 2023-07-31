@@ -46,7 +46,9 @@
     if (cmt.ok) {
       toast.success("Comment posted!");
       let newComment = await fetch(API + "/comments/id/" + comment.id);
-      let parsedComments = await commentSchema.parseAsync(await newComment.json());
+      let parsedComments = await commentSchema.parseAsync(
+        await newComment.json()
+      );
       comment = parsedComments;
       replyMsg = "";
       wait = false;
