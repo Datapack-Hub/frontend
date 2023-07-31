@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
-  import MKDWorker from "./markdown.worker?worker"
+  import MKDWorker from "./markdown.worker?worker";
 
   export let source: string | undefined = "";
   export let classes = "";
@@ -21,11 +21,11 @@
 
     if (!source) html = "";
     else {
-      let worker = new MKDWorker()
+      let worker = new MKDWorker();
       worker.postMessage([source, limitedMode]);
-      worker.onmessage = (msg) => {
-        if(typeof msg.data == "string") html = msg.data
-      }
+      worker.onmessage = msg => {
+        if (typeof msg.data == "string") html = msg.data;
+      };
     }
   });
 
@@ -36,11 +36,11 @@
 
     if (!source) html = "";
     else {
-      let worker = new MKDWorker()
+      let worker = new MKDWorker();
       worker.postMessage([source, limitedMode]);
-      worker.onmessage = (msg) => {
-        if(typeof msg.data == "string") html = msg.data
-      }
+      worker.onmessage = msg => {
+        if (typeof msg.data == "string") html = msg.data;
+      };
     }
   });
 </script>

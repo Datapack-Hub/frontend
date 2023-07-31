@@ -1,6 +1,6 @@
 import { marked, Renderer } from "marked";
 
-onmessage = (msg) => {
+onmessage = msg => {
   const [source, limited] = msg.data;
 
   const renderer = new Renderer();
@@ -19,13 +19,12 @@ onmessage = (msg) => {
 
   const compileFunc = limited ? marked.parseInline : marked.parse;
 
-  postMessage(compileFunc(
-    source,
-    {
+  postMessage(
+    compileFunc(source, {
       renderer: renderer,
       breaks: true,
       mangle: false,
-      headerIds: false,
-    },
-  ));
+      headerIds: false
+    })
+  );
 };
