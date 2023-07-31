@@ -69,7 +69,7 @@ jobs:
           pnpm i
       - name: Install playwright
         run: |
-          pnpx playwright install
+          pnpx playwright install --with-deps
       - name: Run tests
         run: |
           pnpm test

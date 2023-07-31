@@ -9,7 +9,7 @@
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "format": "prettier --cache src --write ./src/**/*.{svelte,ts}",
+    "format": "prettier --cache src --write ./{src,tests}/**/*.{svelte,ts}",
     "lighthouse": "unlighthouse --config unlighthouse.config.ts",
     "lint": "eslint . --cache --fix"
   },

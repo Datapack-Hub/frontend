@@ -169,7 +169,7 @@
     <Button
       style="base"
       click="{() => modModal.open()}"
-      classes="mt-4 flex w-full items-center bg-slate-300 dark:bg-stone-600">
+      classes="mt-4 flex w-full items-center bg-slate-300 dark:bg-stone-600 modBtn">
       <IconShield width="24" height="24" class="float-left mr-2" />
       Moderate {user?.username}
     </Button>
@@ -198,6 +198,7 @@
         : 'bg-slate-300 dark:bg-stone-900'}"
       on:click="{() => (modModalPage = 'warn')}">Warn</button>
     <button
+      id="send_notif"
       class="button-base {modModalPage == 'notif'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"

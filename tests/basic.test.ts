@@ -3,7 +3,7 @@ import { config } from "dotenv";
 
 test.beforeAll(() => {
   config();
-})
+});
 
 test.beforeEach(async ({ page }) => {
   const token = process.env.UNLIGHTHOUSE_DPH_TOKEN;
@@ -12,8 +12,8 @@ test.beforeEach(async ({ page }) => {
       {
         name: "dph_token",
         value: token,
-        url: "https://localhost:4173/",
-      },
+        url: "https://localhost:4173/"
+      }
     ]);
     await page.reload();
   }
@@ -21,26 +21,26 @@ test.beforeEach(async ({ page }) => {
 
 test("all pages load", async ({ page }) => {
   const pages = [
-    '/staff',
-    '/rules',
-    '/user/silabear',
-    '/project/taglib',
-    '/projects',
-    '/notifications',
-    '/moderation',
-    '/moderation/console',
-    '/jam',
-    '/privacy',
-    '/settings',
-    '/install',
-    '/login',
-    '/'
-  ]
+    "/staff",
+    "/rules",
+    "/user/silabear",
+    "/project/taglib",
+    "/projects",
+    "/notifications",
+    "/moderation",
+    "/moderation/console",
+    "/jam",
+    "/privacy",
+    "/settings",
+    "/install",
+    "/login",
+    "/"
+  ];
 
   for (const p of pages) {
     await test.step(`testing if ${p} loads properly`, async () => {
-      const res = await page.goto(p, { timeout: 3000 });
+      const res = await page.goto(p, { timeout: 2000 });
       expect(res?.status()).toEqual(200);
-    })
+    });
   }
 });
