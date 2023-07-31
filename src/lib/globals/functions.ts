@@ -82,11 +82,13 @@ export async function fetchAuthed(
 
 export const getCookie = memo((cookieName: string): string | null => {
   if (!browser) return null;
+
   const cookies = document.cookie.split(";");
+
   if (cookies.length == 0) return null;
+
   for (const i of range(cookies.length - 1)) {
     const cookie = cookies[i].trim();
-
     if (cookie.startsWith(cookieName + "=")) {
       return cookie.substring(cookieName.length + 1);
     }

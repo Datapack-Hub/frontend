@@ -18,18 +18,18 @@ export const load = (async ({ params, cookies }) => {
       fetch(`${API}/user/staff/roles`)
     ]);
 
-    const [userJSON, meJSON] = await Promise.all([
+    const [userJson, meJson] = await Promise.all([
       userSchema.parseAsync(await user.json()),
       userSchema.parseAsync(await me.json())
     ]);
 
     if ([user, me, roles].every(r => r.ok)) {
       const profileRole: Role = (await roles.json()).roles.find(
-        (v: Role) => v.name == userJSON?.role
+        (v: Role) => v.name == userJson?.role
       );
 
       if (
-        userJSON.username != meJSON.username &&
+        userJson.username != meJson.username &&
         !defaultRole.permissions.includes("EDIT_USER")
       ) {
         throw error(403, {
@@ -39,7 +39,7 @@ export const load = (async ({ params, cookies }) => {
       }
 
       return {
-        profile: userSchema.parse(userJSON),
+        profile: await userSchema.parseAsync(userJson),
         role: profileRole
       };
     }

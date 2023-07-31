@@ -4,7 +4,7 @@ import {
   commentSchema,
   projectSchema,
   roleSchema,
-  versionSchema
+  versionSchema,
 } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
@@ -15,37 +15,37 @@ export const load = (async ({ params, fetch, cookies }) => {
     serverFetchAuthed(
       "get",
       `/versions/project/url/${params.project}`,
-      cookies
+      cookies,
     ),
-    fetch(`${API}/user/staff/roles`)
+    fetch(`${API}/user/staff/roles`),
   ]);
 
-  if ([projectReq, versionsReq, rolesReq].every(r => r.ok)) {
+  if ([projectReq, versionsReq, rolesReq].every((r) => r.ok)) {
     const [project, versions, roles] = await Promise.all([
       projectSchema.parseAsync(await projectReq.json()),
       versionSchema.array().parseAsync((await versionsReq.json()).result),
-      roleSchema.array().parseAsync((await rolesReq.json()).roles)
+      roleSchema.array().parseAsync((await rolesReq.json()).roles),
     ]);
 
     const commentsReq = await fetch(`${API}/comments/thread/${project.ID}`);
-    const comments = commentSchema
+    const comments = await commentSchema
       .array()
-      .parse((await commentsReq.json()).result);
+      .parseAsync((await commentsReq.json()).result);
 
     return {
       project: project,
       versions: versions,
       roles: roles,
-      comments: comments
+      comments: comments,
     };
   } else if (projectReq.status == 404) {
     throw error(404, {
       message: "Project not found",
-      description: "Why not go ahead and turn the idea into a reality?"
+      description: "Why not go ahead and turn the idea into a reality?",
     });
   } else {
     throw error(projectReq.status, {
-      message: "Unexpected error"
+      message: "Unexpected error",
       // description: "Something unexpected happen, try again later"
     });
   }

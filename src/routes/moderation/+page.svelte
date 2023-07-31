@@ -23,7 +23,7 @@
 
   async function loadStuff() {
     let [pq, rq, rp, r] = await parallel(
-      2,
+      4,
       await Promise.all([
         fetchAuthed("get", "/moderation/queue/publish"),
         fetchAuthed("get", "/moderation/queue/review"),
@@ -35,10 +35,10 @@
       }
     );
 
-    publishQueue = projectSchema.array().parse(pq.projects);
-    reviewQueue = projectSchema.array().parse(rq.projects);
-    reports = reportSchema.array().parse(rp.reports);
-    rolesJson = roleSchema.array().parse(r.roles);
+    publishQueue = await projectSchema.array().parseAsync(pq.projects);
+    reviewQueue = await projectSchema.array().parseAsync(rq.projects);
+    reports = await reportSchema.array().parseAsync(rp.reports);
+    rolesJson = await roleSchema.array().parseAsync(r.roles);
   }
 </script>
 

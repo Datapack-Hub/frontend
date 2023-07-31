@@ -217,9 +217,9 @@
       }).then(async res => {
         if (res.ok) {
           let newComments = await fetch(API + "/comments/thread/" + project.ID);
-          let parsedComments = commentSchema
+          let parsedComments = await commentSchema
             .array()
-            .parse((await newComments.json()).result);
+            .parseAsync((await newComments.json()).result);
           comments = parsedComments;
           comment = "";
           return;

@@ -1,3 +1,5 @@
 User-Agent: *
 Disallow: /moderation
 Disallow: /notifications
+Disallow: /settings
+Disallow: /linkout

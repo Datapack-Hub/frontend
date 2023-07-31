@@ -16,13 +16,13 @@ export const load = (async ({ fetch, url }) => {
     async res => (await res.json()).result
   );
 
-  const data = projectSchema.array().parse(projects);
+  const data = await projectSchema.array().parseAsync(projects);
   const count = parseInt(projects.pages);
 
   return {
     projects: data,
     pages: count,
-    featured: shuffle(projectSchema.array().parse(featured)),
+    featured: shuffle(await projectSchema.array().parseAsync(featured)),
     page: page
   };
 }) satisfies PageLoad;

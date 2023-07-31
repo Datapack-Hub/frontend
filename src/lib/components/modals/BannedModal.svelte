@@ -17,7 +17,7 @@
       let me = await fetchAuthed("get", "/user/me");
 
       if (me.ok) {
-        let meJson = userSchema.parse(await me.json());
+        let meJson = await userSchema.parseAsync(await me.json());
 
         if (meJson.banned && meJson.banData) {
           banReason = meJson.banData.message;

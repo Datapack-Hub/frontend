@@ -17,7 +17,7 @@ export const load = (async ({ cookies }) => {
       async res => await res.json()
     );
 
-    const user = userSchema.parse(userRes);
+    const user = await userSchema.parseAsync(userRes);
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const role = roleSchema
       .array()
