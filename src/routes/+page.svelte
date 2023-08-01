@@ -12,6 +12,7 @@
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
+  import { fade } from "svelte/transition";
 
   let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
 
@@ -115,7 +116,7 @@
     beta period, unless you don't want that.
   </div>
   <div class="pt-20 lg:pt-0"></div>
-  <div
+  <section
     class="flex h-screen md:h-[75vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
       <div
@@ -142,7 +143,7 @@
         of the latest and best datapacks from creators across the globe
       </h2>
     </div>
-    <div
+    <section
       class="mt-8 h-fit justify-between space-y-3 overflow-x-clip overflow-y-auto rounded-xl px-4 sm:my-16 md:my-0 md:w-1/2">
       <h3
         class=" text-2xl font-medium text-slate-950 dark:text-slate-100 text-center mt-6">
@@ -157,16 +158,16 @@
         {/each}
       </div>
       <div></div>
-    </div>
-  </div>
+    </section>
+  </section>
   <div
-    class="w-full bg-slate-200 dark:bg-stone-800/20 py-48 flex flex-col justify-center items-center">
+    class="w-full bg-slate-200 dark:bg-stone-800/20 flex flex-col justify-center items-center py-32">
     <h1
       class="fadeTextAnime opacity-0 font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl mx-4">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
-      class="mt-6 grid grid-cols-1 lg:grid-cols-2 w-3/4 xl:w-2/3 2xl:w-1/2 gap-3">
+      class="mt-16 grid grid-cols-1 lg:grid-cols-2 w-3/4 xl:w-2/3 2xl:w-1/2 gap-3">
       <div
         class="fadeTextAnime opacity-0 col-span-2 p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2
@@ -393,7 +394,7 @@
         </div>
       </div>
     </div>
-    <Button click="/projects" style="alt" classes=" mt-2"
+    <Button click="/projects" style="alt" classes="mt-16"
       >Explore datapacks</Button>
   </div>
 </main>

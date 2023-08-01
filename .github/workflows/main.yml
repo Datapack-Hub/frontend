@@ -53,7 +53,7 @@ jobs:
           pnpm check
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v3.5.2
       - uses: pnpm/action-setup@v2
