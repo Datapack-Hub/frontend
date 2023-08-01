@@ -363,17 +363,17 @@
         </p>
         <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-8">
           <div
-            class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-stone-800 rounded-md p-2 text-slate-600 dark:text-stone-500">
+            class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-stone-800 rounded-t-md p-2 text-slate-600 dark:text-stone-500">
             <div class="flex space-x-2">
-              <p class="text-green-500">GET</p>
+              <p class="text-green-600">GET</p>
               <p>https://api.datapackhub.net/user/silabear</p>
             </div>
             <button
-              class="bg-green-500 text-white rounded-md px-2 py-1 cursor-pointer"
+              class="bg-green-600 text-white rounded-md px-2 py-1 cursor-pointer"
               on:click="{() => (ran = true)}">Run</button>
           </div>
           <div
-            class="text-slate-600 dark:text-stone-300 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-md overflow-x-auto h-80">
+            class="text-slate-600 dark:text-stone-300 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-b-md overflow-x-auto h-80">
             {#if ran}
               <pre class="text-sm p-4">
 <!--DO NOT INDENT!!!-->&lbrace;
