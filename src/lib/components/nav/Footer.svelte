@@ -70,7 +70,8 @@
       </ul>
       <ul class="w-1/3 text-center text-slate-950 dark:text-white">
         <li>
-          <a class="hover:brightness-75 transition-transform" href="/rules">Rules</a>
+          <a class="hover:brightness-75 transition-transform" href="/rules"
+            >Rules</a>
         </li>
         <li>
           <a class="hover:brightness-75 transition-transform" href="/privacy"
