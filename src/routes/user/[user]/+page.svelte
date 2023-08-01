@@ -74,7 +74,7 @@
       <div class="self-center">
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <img
-          src="{data.profile?.profile_icon}&size=128"
+          src="{data.profile?.profile_icon}&size=256"
           alt="{data.profile?.username}'s profile picture"
           on:click="{data.profile?.id == 3 ? play : null}"
           on:keypress="{e =>

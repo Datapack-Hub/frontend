@@ -39,41 +39,41 @@
       <ul class="w-1/3 text-center text-slate-950 dark:text-white">
         <li>
           <a
-            class="hover:brightness-75 transition-all"
+            class="hover:brightness-75 transition-transform"
             href="https://discord.gg/aEXsdjjdu4">Community Discord</a>
         </li>
         <li>
-          <a class="hover:brightness-75 transition-all" href="/staff"
+          <a class="hover:brightness-75 transition-transform" href="/staff"
             >Staff Team</a>
         </li>
         <li>
-          <a class="hover:brightness-75 transition-all" href="/staff"
+          <a class="hover:brightness-75 transition-transform" href="/staff"
             >About us</a>
         </li>
       </ul>
       <ul class="w-1/3 text-center text-slate-950 dark:text-white">
         <li>
           <a
-            class="hover:brightness-75 transition-all"
+            class="hover:brightness-75 transition-transform"
             href="https://discord.gg/aEXsdjjdu4">Discord</a>
         </li>
         <li>
           <a
-            class="hover:brightness-75 transition-all"
+            class="hover:brightness-75 transition-transform"
             href="https://github.com/Datapack-Hub">GitHub</a>
         </li>
         <li>
           <a
-            class="hover:brightness-75 transition-all"
+            class="hover:brightness-75 transition-transform"
             href="https://twitter.com/DatapackHub">Twitter</a>
         </li>
       </ul>
       <ul class="w-1/3 text-center text-slate-950 dark:text-white">
         <li>
-          <a class="hover:brightness-75 transition-all" href="/rules">Rules</a>
+          <a class="hover:brightness-75 transition-transform" href="/rules">Rules</a>
         </li>
         <li>
-          <a class="hover:brightness-75 transition-all" href="/privacy"
+          <a class="hover:brightness-75 transition-transform" href="/privacy"
             >Privacy</a>
         </li>
       </ul>
