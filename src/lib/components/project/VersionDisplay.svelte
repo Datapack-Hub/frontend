@@ -105,29 +105,31 @@
 
       let supportedFormats = mcMetaData.pack.supported_formats;
       if (typeof supportedFormats !== "undefined") {
-        if (isObject(supportedFormats) as {}) {
-          if (supportedFormats.max_inclusive > packFormat) return;
-          supportedFormats.max_inclusive = packFormat;
+        if (isObject(supportedFormats)) {
+          if (mcMetaData.pack.supportedFormats.max_inclusive > packFormat) {
+            return;
+          }
+          mcMetaData.pack.supportedFormats.max_inclusive = packFormat;
         }
 
         if (isNumber(supportedFormats)) {
           if (supportedFormats > packFormat) return;
-          supportedFormats = packFormat;
+          mcMetaData.pack.supportedFormats = packFormat;
         }
 
         if (isArray(supportedFormats)) {
           if (supportedFormats[1] > packFormat) return;
-          supportedFormats = packFormat;
+          mcMetaData.pack.supportedFormats = packFormat;
         }
       }
 
       parsedZip.file("pack.mcmeta", JSON.stringify(mcMetaData));
 
       let final = await parsedZip.generateAsync({ type: "base64" });
-      var clickMePlz = document.createElement("a");
-      clickMePlz.download = url.split("/")[url.split("/").length - 1];
-      clickMePlz.href = "data:application/zip;base64," + final;
-      clickMePlz.click();
+      var autoRunDownload = document.createElement("a");
+      autoRunDownload.download = url.split("/")[url.split("/").length - 1];
+      autoRunDownload.href = "data:application/zip;base64," + final;
+      autoRunDownload.click();
 
       rp
         ? toast.success(

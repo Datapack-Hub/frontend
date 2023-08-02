@@ -36,7 +36,7 @@ export const minecraftVersions = [
   "1.19-1.19.3",
   "1.19.4",
   "1.20-1.20.1",
-  "1.20.2",
+  "1.20.2"
 ];
 
 export const badges = [
