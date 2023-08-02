@@ -12,7 +12,7 @@ export const load = (async ({ params, cookies }) => {
 
     const [user, me] = await Promise.all([
       serverFetchAuthed("get", "/user/" + params.user, cookies),
-      serverFetchAuthed("get", "/user/me", cookies),
+      serverFetchAuthed("get", "/user/me", cookies)
     ]);
 
     const [userJson, meJson] = await Promise.all([
@@ -21,9 +21,7 @@ export const load = (async ({ params, cookies }) => {
     ]);
 
     if ([user, me].every(r => r.ok)) {
-      const profileRole = get(roles).find(
-        v => v.name == userJson?.role
-      );
+      const profileRole = get(roles).find(v => v.name == userJson?.role);
 
       if (
         userJson.username != meJson.username &&
