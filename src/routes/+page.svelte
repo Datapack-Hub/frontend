@@ -1,6 +1,7 @@
 <script lang="ts">
   import Button from "$lib/components/decorative/Button.svelte";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
+  import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import { roles } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import anime from "animejs";
@@ -9,10 +10,8 @@
   import tippy from "sveltejs-tippy";
   import IconArrow from "~icons/tabler/ArrowBigRightLinesFilled.svelte";
   import IconFile from "~icons/tabler/FileZip.svelte";
-  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
-  import { fade } from "svelte/transition";
 
   let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
 
@@ -160,7 +159,7 @@
       <div></div>
     </section>
   </section>
-  <div
+  <section
     class="w-full bg-slate-200 dark:bg-stone-800/20 flex flex-col justify-center items-center py-32">
     <h1
       class="fadeTextAnime opacity-0 font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl mx-4">
@@ -180,53 +179,10 @@
         </p>
         <div class="dark:bg-stone-900 rounded-xl p-3 mb-5 space-y-2">
           {#each data.random.slice(0, 2) ?? [] as rand}
-            <div
-              class="w-full items-center rounded-xl bg-slate-200 p-3 text-slate-950 dark:bg-stone-800 dark:text-slate-100">
-              <div class="flex items-top">
-                {#if rand.icon}
-                  <img
-                    src="{rand.icon}"
-                    alt="{rand.title} icon"
-                    width="96"
-                    height="96"
-                    loading="lazy"
-                    class="aspect-square w-20 rounded-lg bg-cover" />
-                {:else}
-                  <IconNoPhoto width="48" height="48" />
-                {/if}
-                <div class="ml-4 w-3/4">
-                  <a
-                    href="/project/{rand.url}"
-                    class=" text-lg hover:underline md:text-xl lg:text-2xl">
-                    {rand.title}
-                  </a>
-                  <div
-                    class="flex space-x-2 items-center text-xs text-slate-950/40 dark:text-slate-100">
-                    <a href="/user/{rand.author.username}" class="block">
-                      {rand.author.username}
-                    </a>
-                    <span>•</span>
-                    <span>
-                      {rand.latest_version?.version_code}
-                    </span>
-                    <span>•</span>
-                    <span
-                      >{rand.downloads ? rand.downloads : "0"} downloads</span>
-                  </div>
-                  <p
-                    class="line-clamp-2 max-w-1/2 text-xs font-medium text-slate-950/40 dark:text-slate-100/40 mt-2">
-                    {rand.description}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <ProjectComponent project="{rand}" />
           {/each}
         </div>
-        <a
-          class="rounded-lg p-2 mt-2 bg-dph-orange text-white font-medium"
-          href="/projects">
-          Find your next favourite datapack
-        </a>
+        <Button click="/projects">Find your next favourite datapack</Button>
       </div>
       <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto row-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
@@ -273,11 +229,11 @@
           make them run faster in-game!
         </p>
         <div
-          class="bg-slate-200 dark:bg-stone-900 rounded-xl p-4 px-32 dark:text-white flex items-center">
+          class="bg-slate-200 dark:bg-stone-900 rounded-xl p-4 dark:text-white flex items-center justify-center">
           <div class="flex items-center relative space-x-3">
-            <IconFile width="64" height="64" class="text-red-500" />
-            <IconArrow width="32" height="32" />
-            <IconFile width="32" height="32" class="text-green-500" />
+            <IconFile width="48" height="48" class="text-red-500" />
+            <IconArrow width="24" height="24" />
+            <IconFile width="24" height="24" class="text-green-500" />
           </div>
         </div>
       </div>
@@ -361,12 +317,14 @@
           class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
           Datapack Hub is ran entirely by an API which anyone can access.
         </p>
-        <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-8">
+        <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-4">
           <div
             class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-stone-800 rounded-t-md p-2 text-slate-600 dark:text-stone-500">
-            <div class="flex space-x-2">
+            <div class="flex space-x-2 overflow-x-auto">
               <p class="text-green-600">GET</p>
-              <p>https://api.datapackhub.net/user/silabear</p>
+              <p class="overflow-hidden text-ellipsis">
+                https://api.datapackhub.net/user/silabear
+              </p>
             </div>
             <button
               class="bg-green-600 text-white rounded-md px-2 py-1 cursor-pointer"
@@ -396,7 +354,7 @@
     </div>
     <Button click="/projects" style="alt" classes="mt-16"
       >Explore datapacks</Button>
-  </div>
+  </section>
 </main>
 
 <style lang="postcss">
