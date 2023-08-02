@@ -19,7 +19,7 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import UserCard from "$lib/components/user/UserCard.svelte";
 
-  let moduleModal: Modal;
+  let moderateModal: Modal;
 
   export let data: PageData;
 
@@ -205,7 +205,7 @@
   <div class="mb-16"></div>
 </main>
 
-<Modal bind:this="{moduleModal}">
+<Modal bind:this="{moderateModal}">
   <h1 class="text-xl font-bold text-slate-950 dark:text-white">
     Moderate {data.profile?.username}
   </h1>

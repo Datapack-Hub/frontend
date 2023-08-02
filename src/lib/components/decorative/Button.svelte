@@ -1,7 +1,8 @@
 <script lang="ts">
   export let style: "primary" | "secondary" | "boring" | "alt" | "sm" | "base" =
     "primary";
-  export let click: string | (() => void) | (() => Promise<void>) | undefined;
+  export let click: string | (() => void) | (() => Promise<void>) | undefined =
+    undefined;
   export let classes = "";
   export let wait = false;
   export let formCompat = false;
@@ -17,8 +18,7 @@
         Promise.resolve(click()).then(() => (disabled = false));
       }
     } else {
-      if (click !== undefined && typeof click != "string")
-        await click();
+      if (click !== undefined && typeof click != "string") await click();
     }
   }
 </script>

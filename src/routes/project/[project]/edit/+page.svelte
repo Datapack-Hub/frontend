@@ -103,8 +103,8 @@
     new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.addEventListener('load', () => resolve(reader.result as string));
-      reader.addEventListener('error', () => reject);
+      reader.addEventListener("load", () => resolve(reader.result as string));
+      reader.addEventListener("error", () => reject);
     });
 
   async function uploadVersion() {
@@ -263,10 +263,8 @@
 
   async function resolveDependency(v: string, index: number) {
     let search = await fetch(`${API}/projects/search?query=${v}`);
-    let searchJson = await search.json()
-    let projects = await projectSchema
-      .array()
-      .parseAsync(searchJson.result);
+    let searchJson = await search.json();
+    let projects = await projectSchema.array().parseAsync(searchJson.result);
 
     for (const project of projects) {
       if (project.url == v) {
@@ -552,7 +550,8 @@
                         class="bg-slate-300 dark:bg-stone-800 rounded-lg border-2 border-slate-400 dark:border-stone-700 p-2 focus:border-dph-orange dark:focus:border-dph-orange outline-none focus:text-opacity-100 text-slate-950 dark:text-stone-600 transition-all placeholder:italic placeholder:text-slate-800 dark:placeholder:text-stone-500 w-full text-opacity-60">
                         datapackhub.net/project/<AutoAdjustableInput
                           classes="bg-slate-300 text-opacity-100 dark:bg-stone-800 text-slate-100 outline-none"
-                          on:change="{event => dependencyHandler(event.detail, index)}" />
+                          on:change="{event =>
+                            dependencyHandler(event.detail, index)}" />
                       </span>
                       {#if dependencies[index]}
                         <a href="/project/{dependencies[index].url}">

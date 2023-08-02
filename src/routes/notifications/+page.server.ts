@@ -13,11 +13,9 @@ export const load = (async ({ cookies }) => {
     });
   }
 
-  const unreadJson = await unread.json()
+  const unreadJson = await unread.json();
 
   return {
-    notifications: await notifSchema
-      .array()
-      .parseAsync(unreadJson.result)
+    notifications: await notifSchema.array().parseAsync(unreadJson.result)
   };
 }) satisfies PageServerLoad;

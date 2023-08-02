@@ -30,18 +30,20 @@
     }
 
     toast.promise(
-      fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, request).then(response => {
-        if (!response.ok) {
-          return response.text().then(txt => alert(txt));
+      fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, request).then(
+        response => {
+          if (!response.ok) {
+            return response.text().then(txt => alert(txt));
+          }
+          if (data.profile?.id == $user.id) {
+            $user.username = usernameElement.value.trim();
+            $user.bio =
+              bioValue?.trim() ??
+              "If you see this, something went wrong with bio parsing, message Cobble";
+          }
+          goto("/user/" + $user.username);
         }
-        if (data.profile?.id == $user.id) {
-          $user.username = usernameElement.value.trim();
-          $user.bio =
-            bioValue?.trim() ??
-            "If you see this, something went wrong with bio parsing, message Cobble";
-        }
-        goto("/user/" + $user.username);
-      }),
+      ),
       {
         success: "Profile saved!",
         loading: "Saving...",

@@ -12,8 +12,8 @@ test.beforeEach(async ({ page }) => {
       {
         name: "dph_token",
         value: token,
-        url: "https://localhost:4173/",
-      },
+        url: "https://localhost:4173/"
+      }
     ]);
     await page.reload();
   }
@@ -21,7 +21,7 @@ test.beforeEach(async ({ page }) => {
 
 test("project can be located and fetched", async ({ page }) => {
   const response = await page.goto("/project/hexenwerk/", { timeout: 2000 });
-  expect(res?.status()).toEqual(200);
+  expect(response?.status()).toEqual(200);
 });
 
 test("project page tabs work", async ({ page }) => {
@@ -29,7 +29,7 @@ test("project page tabs work", async ({ page }) => {
   const tabs = [
     page.getByLabel("Description"),
     page.getByLabel("Comments"),
-    page.getByLabel("Download"),
+    page.getByLabel("Download")
   ];
 
   let pageContent = await page.content();

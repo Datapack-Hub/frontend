@@ -15,8 +15,7 @@ export const load = (async ({ params, fetch, cookies }) => {
   ]);
 
   if ([projectRequest, versionsRequest].every(r => r.ok)) {
-
-    const versionsJson = await versionsRequest.json()
+    const versionsJson = await versionsRequest.json();
 
     const [project, versions] = await Promise.all([
       projectSchema.parseAsync(await projectRequest.json()),
@@ -24,7 +23,7 @@ export const load = (async ({ params, fetch, cookies }) => {
     ]);
 
     const commentsRequest = await fetch(`${API}/comments/thread/${project.ID}`);
-    const commentsJson = await commentsRequest.json()
+    const commentsJson = await commentsRequest.json();
     const comments = await commentSchema
       .array()
       .parseAsync(commentsJson.result);

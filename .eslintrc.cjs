@@ -35,6 +35,7 @@ module.exports = {
     "unicorn/filename-case": "off",
     "unicorn/no-document-cookie": "off",
     "unicorn/prefer-top-level-await": "off",
+    "unicorn/no-useless-undefined": "off",
   },
   env: {
     browser: true,

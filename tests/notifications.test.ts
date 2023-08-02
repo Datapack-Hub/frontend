@@ -12,8 +12,8 @@ test.beforeEach(async ({ page }) => {
       {
         name: "dph_token",
         value: token,
-        url: "https://localhost:4173/",
-      },
+        url: "https://localhost:4173/"
+      }
     ]);
     await page.reload();
   }
@@ -25,15 +25,15 @@ test("notifications can be removed", async ({ page }) => {
 
   // attempts to match "https://api.datapackhub.net/notifs" with no sub-routes
   const response = await page.waitForResponse(
-    async (response) => {
-      const parts = res.url().split("/");
+    async response => {
+      const parts = response.url().split("/");
       return parts[3].includes("notifs");
     },
-    { timeout: 3000 },
+    { timeout: 3000 }
   );
 
   // skip when no notifs exist
-  if ((await res.json()).result.length == 0) {
+  if ((await response.json()).result.length == 0) {
     test.skip();
   }
 
@@ -42,12 +42,12 @@ test("notifications can be removed", async ({ page }) => {
   for (const btn of await page.locator(".closeButton").all()) {
     await btn.click({ timeout: 1000 });
     const response = await page.waitForResponse(
-      (response) => {
-        return res.url().includes("/notifs/delete/");
+      response => {
+        return response.url().includes("/notifs/delete/");
       },
-      { timeout: 2000 },
+      { timeout: 2000 }
     );
-    expect(res.ok).toBeTruthy();
+    expect(response.ok).toBeTruthy();
   }
 
   expect(await page.locator(".testNotif").count()).toBeLessThanOrEqual(1);
@@ -76,13 +76,13 @@ test("notification can be sent", async ({ page }) => {
     // send it!
     await page.locator("#send_notif_btn").click({ timeout: 1500 });
     const response = await page.waitForResponse(
-      (response) => {
-        return res.url().includes("/notifs/send/");
+      response => {
+        return response.url().includes("/notifs/send/");
       },
-      { timeout: 1500 },
+      { timeout: 1500 }
     );
 
-    expect(res.ok).toBeTruthy();
+    expect(response.ok).toBeTruthy();
   });
 
   await test.step("go to page", async () => {

@@ -17,7 +17,9 @@ export const load = (async ({ params, cookies }) => {
     });
   }
 
-  const projectJson = await projectSchema.parseAsync(await projectRequest.json());
+  const projectJson = await projectSchema.parseAsync(
+    await projectRequest.json()
+  );
   const meRequest = await serverFetchAuthed("get", "/user/me", cookies);
 
   if (meRequest.status == 401) {
@@ -38,7 +40,7 @@ export const load = (async ({ params, cookies }) => {
       cookies
     );
 
-    const projectResultJson = await project.json()
+    const projectResultJson = await project.json();
     const versionsRequest = await versionSchema
       .array()
       .parseAsync(projectResultJson.result);

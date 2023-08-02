@@ -21,17 +21,16 @@
 
   export let version: Version;
   export let expanded = false;
-  export let mcVersion: string | undefined;
-  export let project: Project | undefined;
+  export let mcVersion: string = "";
+  // eslint-disable-next-line unicorn/no-useless-undefined
+  export let project: Project | undefined = undefined;
 
   let properVersion = isArray(version.minecraft_versions.split(","))
     ? version.minecraft_versions.split(",")
     : version.minecraft_versions;
   let dlModal: Modal;
 
-  function openDownloadModal(
-    type?: "datapack" | "resourcepack" | undefined
-  ) {
+  function openDownloadModal(type?: "datapack" | "resourcepack" | undefined) {
     if (!type || !mcVersion) return dlModal.open();
     if (type == "datapack")
       return download(
