@@ -12,7 +12,7 @@ export const load = (async ({ params, fetch }) => {
   if (browser) {
     const [user, projects] = await Promise.all([
       fetch(`${API}/user/${params.user}`),
-      fetchAuthed("get", `/user/${params.user}/projects`),
+      fetchAuthed("get", `/user/${params.user}/projects`)
     ]);
 
     if (user.status == 404) {
@@ -31,7 +31,7 @@ export const load = (async ({ params, fetch }) => {
 
     const [profileJson, projectJson] = await Promise.all([
       userSchema.parseAsync(await user.json()),
-      projectSchema.array().parseAsync((await projects.json()).result),
+      projectSchema.array().parseAsync((await projects.json()).result)
     ]);
 
     const profileRole = get(roles).find(v => v.name == profileJson.role);
