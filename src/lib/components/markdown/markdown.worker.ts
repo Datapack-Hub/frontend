@@ -1,26 +1,22 @@
 import { marked, Renderer } from "marked";
 
-onmessage = msg => {
-  const [source, limited] = msg.data;
+onmessage = message => {
+  const [source, limited] = message.data;
 
   const renderer = new Renderer();
 
   renderer.link = (href, _, text) => {
-    if (!href?.startsWith("https://datapackhub.net")) {
-      return `<a href="https://datapackhub.net/linkout?url=${href}" target="_blank">${text}</a>`;
-    } else {
-      return `<a href="${href}" target="_blank">${text}</a>`;
-    }
+    return href?.startsWith("https://datapackhub.net") ? `<a href="${href}" target="_blank">${text}</a>` : `<a href="https://datapackhub.net/linkout?url=${href}" target="_blank">${text}</a>`;
   };
 
   if (limited) {
     renderer.image = (_href, _title, text) => text;
   }
 
-  const compileFunc = limited ? marked.parseInline : marked.parse;
+  const compileFunction = limited ? marked.parseInline : marked.parse;
 
   postMessage(
-    compileFunc(source, {
+    compileFunction(source, {
       renderer: renderer,
       breaks: true,
       mangle: false,

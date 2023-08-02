@@ -6,6 +6,7 @@
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
+  import { onMount } from "svelte";
 
   export let project: Project;
   export let report: Report;
@@ -15,9 +16,9 @@
 
   let me: HTMLDivElement;
 
-  (async () => {
+  onMount(() => {
     visible = true;
-  })();
+  });
 
   async function remove() {
     let rem = await fetchAuthed(

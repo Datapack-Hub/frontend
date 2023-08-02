@@ -19,14 +19,14 @@
 
     marked.use(msp.markedSmartypants());
 
-    if (!source) html = "";
-    else {
+    if (source) {
       let worker = new MKDWorker();
       worker.postMessage([source, limitedMode]);
-      worker.onmessage = msg => {
-        if (typeof msg.data == "string") html = msg.data;
-      };
+      worker.addEventListener("message",  message => {
+        if (typeof message.data == "string") html = message.data;
+      });
     }
+    else {html = "";}
   });
 
   afterNavigate(() => {
@@ -34,14 +34,14 @@
       return;
     }
 
-    if (!source) html = "";
-    else {
+    if (source) {
       let worker = new MKDWorker();
       worker.postMessage([source, limitedMode]);
-      worker.onmessage = msg => {
-        if (typeof msg.data == "string") html = msg.data;
-      };
+      worker.addEventListener("message", message => {
+        if (typeof message.data == "string") html = message.data;
+      });
     }
+    else {html = "";}
   });
 </script>
 

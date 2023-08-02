@@ -14,30 +14,30 @@
   export let data: PageData;
 
   let usernameElement: HTMLInputElement;
-  let bioVal: string | undefined = data.profile?.bio.replaceAll("\\n", "\n");
+  let bioValue: string | undefined = data.profile?.bio.replaceAll("\\n", "\n");
 
   let activePage = "profile";
 
   async function save() {
-    let req = {
+    let request = {
       username: usernameElement.value,
-      bio: bioVal,
+      bio: bioValue,
       role: data.profile?.role
     };
 
-    if ((bioVal?.length ?? 0) > 500) {
+    if ((bioValue?.length ?? 0) > 500) {
       return;
     }
 
     toast.promise(
-      fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, req).then(res => {
-        if (!res.ok) {
-          return res.text().then(txt => alert(txt));
+      fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, request).then(response => {
+        if (!response.ok) {
+          return response.text().then(txt => alert(txt));
         }
         if (data.profile?.id == $user.id) {
           $user.username = usernameElement.value.trim();
           $user.bio =
-            bioVal?.trim() ??
+            bioValue?.trim() ??
             "If you see this, something went wrong with bio parsing, message Cobble";
         }
         goto("/user/" + $user.username);
@@ -109,7 +109,7 @@
             <MarkdownEditor
               classes="w-1/2 h-80 resize-none"
               maxEditorLength="{500}"
-              bind:content="{bioVal}" />
+              bind:content="{bioValue}" />
             <br />
             <Button click="{save}" wait="{true}">Save Changes</Button>
           </div>

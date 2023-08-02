@@ -19,7 +19,7 @@
 
   let userRole = $roles.find(v => v.name == comment.author.role);
 
-  let replyMsg: string;
+  let replyMessage: string;
   let showReplies = false;
   let expanded = false;
   let wait = false;
@@ -31,7 +31,7 @@
 
   async function reply() {
     wait = true;
-    if (replyMsg.length == 0) {
+    if (replyMessage.length === 0) {
       wait = false;
       return toast.error("Comment field is empty!");
     }
@@ -39,7 +39,7 @@
       "POST",
       `/comments/thread/${project.ID}/post`,
       {
-        message: replyMsg,
+        message: replyMessage,
         parent_id: comment.id
       }
     );
@@ -50,7 +50,7 @@
         await newComment.json()
       );
       comment = parsedComments;
-      replyMsg = "";
+      replyMessage = "";
       wait = false;
       return;
     }
@@ -92,7 +92,7 @@
           limitedMode="{true}"
           source="{comment.message}"
           classes="text-sm" />
-        {#if comment.replies.length != 0}
+        {#if comment.replies.length > 0}
           {#if !showReplies}
             <button
               class="text-blue-400 font-bold mt-1 flex items-center space-x-1 cursor-pointer"
@@ -118,7 +118,7 @@
                   alt="Your profile"
                   class="rounded-full h-8" />
                 <input
-                  bind:value="{replyMsg}"
+                  bind:value="{replyMessage}"
                   type="text"
                   required
                   class="p-1 rounded-md dark:bg-stone-900 px-2 text-white focus:transition-all"
@@ -139,7 +139,7 @@
               alt="Your profile"
               class="rounded-full h-8" />
             <input
-              bind:value="{replyMsg}"
+              bind:value="{replyMessage}"
               type="text"
               required
               class="p-1 rounded-md dark:bg-stone-900 px-2 text-white focus:transition-all"

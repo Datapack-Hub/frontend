@@ -36,7 +36,7 @@
   });
 
   // Dismiss the mod message function
-  async function dismissModMsg() {
+  async function dismissModuleMessage() {
     mm.remove();
     let dsm = await fetchAuthed(
       "DELETE",
@@ -142,7 +142,7 @@
       {#if status && !["disabled", "review_queue"].includes(status)}
         <button
           class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
-          on:click="{dismissModMsg}"><IconCross /></button>
+          on:click="{dismissModuleMessage}"><IconCross /></button>
       {/if}
       <p class=" font-black">Message from Datapack Hub Staff:</p>
       <p

@@ -16,9 +16,9 @@
 
   export let user: User | undefined;
 
-  let modModalPage = "ban";
+  let moduleModalPage = "ban";
 
-  let modModal: Modal;
+  let moduleModal: Modal;
   let warnDialog: Modal;
   let notifDialog: Modal;
   let banDialog: Modal;
@@ -28,7 +28,7 @@
 
   let badgeState = user?.badges ?? [];
 
-  let modJson: { banned: boolean; banExpiry: number; banMessage: string } = {
+  let moduleJson: { banned: boolean; banExpiry: number; banMessage: string } = {
     banned: false,
     banExpiry: -1,
     banMessage: "null"
@@ -36,38 +36,38 @@
 
   async function loadData() {
     if (browser) {
-      let modData = await fetchAuthed("get", `/moderation/user/${user?.id}`);
-      modJson = await modData.json();
+      let moduleData = await fetchAuthed("get", `/moderation/user/${user?.id}`);
+      moduleJson = await moduleData.json();
     }
   }
 
   async function warn() {
-    const msgTxt = document.getElementById(
-      "warn-message"
+    const messageTxt = document.querySelector(
+      "#warn-message"
     ) as HTMLTextAreaElement;
 
-    let warnRes = await fetchAuthed("post", `/notifs/send/${user?.id}`, {
+    let warnResponse = await fetchAuthed("post", `/notifs/send/${user?.id}`, {
       type: "important",
       message: "Warning",
-      description: msgTxt.value
+      description: messageTxt.value
     });
 
-    if (warnRes.ok) {
+    if (warnResponse.ok) {
       warnDialog.close();
       toast.success(`Warned ${user?.username}!`);
     } else {
-      toast.error(await warnRes.text());
+      toast.error(await warnResponse.text());
     }
   }
 
   async function sendNotif() {
-    const message = document.getElementById(
-      "notif-message"
+    const message = document.querySelector(
+      "#notif-message"
     ) as HTMLInputElement;
-    const content = document.getElementById(
-      "notif-content"
+    const content = document.querySelector(
+      "#notif-content"
     ) as HTMLTextAreaElement;
-    const type = document.getElementById("notif-type") as HTMLSelectElement;
+    const type = document.querySelector("#notif-type") as HTMLSelectElement;
 
     if ([message.value, content.value].some(v => v.length <= 0)) {
       toast.error("Make sure all fields are filled");
@@ -89,16 +89,16 @@
   }
 
   async function banUser() {
-    let expiry = document.getElementById("ban-expiry") as HTMLInputElement;
-    const message = document.getElementById(
-      "ban-message"
+    let expiry = document.querySelector("#ban-expiry") as HTMLInputElement;
+    const message = document.querySelector(
+      "#ban-message"
     ) as HTMLTextAreaElement;
-    const permanent = document.getElementById(
-      "ban-permanent"
+    const permanent = document.querySelector(
+      "#ban-permanent"
     ) as HTMLInputElement;
 
-    let exp = parseInt(expiry.value);
-    if (permanent.checked) exp = 36500;
+    let exp = Number.parseInt(expiry.value);
+    if (permanent.checked) exp = 36_500;
 
     let ban = await fetchAuthed("post", `/moderation/ban/${user?.id}`, {
       id: user?.id,
@@ -122,7 +122,7 @@
     }
 
     unbanDialog.close();
-    modJson.banned == false;
+    moduleJson.banned == false;
     toast.success(`${user?.username} is now unbanned.`);
   }
 
@@ -138,12 +138,12 @@
   }
 
   async function submitBadgeChanges() {
-    let badgeRes = await fetchAuthed("PATCH", `/user/badges/${user?.id}`, {
+    let badgeResponse = await fetchAuthed("PATCH", `/user/badges/${user?.id}`, {
       badges: badgeState
     });
 
-    if (!badgeRes.ok) {
-      toast.error(await badgeRes.text());
+    if (!badgeResponse.ok) {
+      toast.error(await badgeResponse.text());
       return;
     }
 
@@ -153,10 +153,10 @@
   }
 
   function disableBan() {
-    const permanent = document.getElementById(
-      "ban-permanent"
+    const permanent = document.querySelector(
+      "#ban-permanent"
     ) as HTMLInputElement;
-    let expiry = document.getElementById("ban-expiry") as HTMLInputElement;
+    let expiry = document.querySelector("#ban-expiry") as HTMLInputElement;
     expiry.disabled = false;
     if (permanent.checked) expiry.disabled = true;
   }
@@ -168,7 +168,7 @@
   {:then}
     <Button
       style="base"
-      click="{() => modModal.open()}"
+      click="{() => moduleModal.open()}"
       classes="mt-4 flex w-full items-center bg-slate-300 dark:bg-stone-600 modBtn">
       <IconShield width="24" height="24" class="float-left mr-2" />
       Moderate {user?.username}
@@ -176,7 +176,7 @@
   {/await}
 {/if}
 
-<Modal bind:this="{modModal}">
+<Modal bind:this="{moduleModal}">
   <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Moderate {user?.username}
   </h1>
@@ -188,38 +188,38 @@
       Select Action
     </p>
     <button
-      class="button-base {modModalPage == 'ban'
+      class="button-base {moduleModalPage == 'ban'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
-      on:click="{() => (modModalPage = 'ban')}">Ban</button>
+      on:click="{() => (moduleModalPage = 'ban')}">Ban</button>
     <button
-      class="button-base {modModalPage == 'warn'
+      class="button-base {moduleModalPage == 'warn'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
-      on:click="{() => (modModalPage = 'warn')}">Warn</button>
+      on:click="{() => (moduleModalPage = 'warn')}">Warn</button>
     <button
       id="send_notif"
-      class="button-base {modModalPage == 'notif'
+      class="button-base {moduleModalPage == 'notif'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
-      on:click="{() => (modModalPage = 'notif')}">Send Notification</button>
+      on:click="{() => (moduleModalPage = 'notif')}">Send Notification</button>
     <button
-      class="button-base {modModalPage == 'logout'
+      class="button-base {moduleModalPage == 'logout'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
-      on:click="{() => (modModalPage = 'logout')}">Log Out</button>
+      on:click="{() => (moduleModalPage = 'logout')}">Log Out</button>
     <button
-      class="button-base {modModalPage == 'badges'
+      class="button-base {moduleModalPage == 'badges'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
-      on:click="{() => (modModalPage = 'badges')}">Edit Badges</button>
+      on:click="{() => (moduleModalPage = 'badges')}">Edit Badges</button>
     <button
-      class="button-base {modModalPage == 'edit'
+      class="button-base {moduleModalPage == 'edit'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
       on:click="{() => goto(user?.username + '/edit')}">Edit User</button>
   </div>
-  {#if modModalPage == "ban"}
+  {#if moduleModalPage == "ban"}
     <p class=" text-slate-950 dark:text-white">
       Banning a user prevents them from interacting with the website. You can
       write a message or ban reason to be displayed when they try to log in.
@@ -245,7 +245,7 @@
       placeholder="Burning cake after being **repeatedly told** to stop"
       id="ban-message"></textarea>
     <Button click="{async () => await banUser()}">Ban {user?.username}</Button>
-  {:else if modModalPage == "warn"}
+  {:else if moduleModalPage == "warn"}
     <p class=" text-slate-950 dark:text-white">
       This message is sent to the user as a notification. Always be
       professional, even when they are not.
@@ -258,7 +258,7 @@
       placeholder="..."
       id="warn-message"></textarea>
     <Button click="{async () => await warn()}">Warn {user?.username}</Button>
-  {:else if modModalPage == "notif"}
+  {:else if moduleModalPage == "notif"}
     <p class=" text-slate-950 dark:text-white mb-3">
       Send an anonymous notification (unless you put your name down) to the
       user. For warnings, use the Warn button.
@@ -300,13 +300,13 @@
       id="send_notif_btn"
       class="rounded-md bg-dph-orange p-2 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
       >Send</button>
-  {:else if modModalPage == "logout"}
+  {:else if moduleModalPage == "logout"}
     <p class=" text-slate-950 dark:text-white mb-3">
       This will log {user?.username} out of all their signed-in devices, and generate
       them a new token. They will need to sign in again.
     </p>
     <Button click="{async () => await logOutUser()}">Log them out!</Button>
-  {:else if modModalPage == "badges"}
+  {:else if moduleModalPage == "badges"}
     <div class="my-4">
       <h2 class="text-slate-950 dark:text-white mb-2">Badges</h2>
       <MultiSelect

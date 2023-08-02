@@ -1,7 +1,13 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:svelte/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:svelte/recommended',
+    'plugin:unicorn/recommended',
+    'plugin:tailwindcss/recommended',
+  ],
   plugins: ['@typescript-eslint'],
   ignorePatterns: ['*.cjs', 'node_modules'],
   overrides: [
@@ -25,7 +31,10 @@ module.exports = {
     // "@typescript-eslint/no-floating-promises": "error",
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/no-misused-promises": "error",
-    "@typescript-eslint/indent": "off"
+    "@typescript-eslint/indent": "off",
+    "unicorn/filename-case": "off",
+    "unicorn/no-document-cookie": "off",
+    "unicorn/prefer-top-level-await": "off",
   },
   env: {
     browser: true,

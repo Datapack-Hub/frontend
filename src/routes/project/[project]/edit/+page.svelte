@@ -49,10 +49,10 @@
 
   let createVersion = false;
 
-  let titleVal = data.project?.title;
-  let descVal = data.project?.description;
-  let bodyVal = data.project?.body;
-  let iconVal: FileList;
+  let titleValue = data.project?.title;
+  let descValue = data.project?.description;
+  let bodyValue = data.project?.body;
+  let iconValue: FileList;
   let iconB64: string | ArrayBuffer | null | undefined;
   let iconImg: string;
 
@@ -77,19 +77,18 @@
 
   async function uploadDatapack() {
     if (browser) {
-      let inp = document.getElementById("zip") as HTMLInputElement;
+      let inp = document.querySelector("#zip") as HTMLInputElement;
       if (inp.files) zipFile = inp.files[0];
 
       if (zipFile?.size > 5e6) {
         toast.error("File size can't be more than 5mb!");
-        inp.files = null;
         return;
       }
 
       if (zipFile) {
         let { loadAsync } = await import("jszip");
         let zip = await loadAsync(zipFile);
-        if (zip.file("pack.mcmeta") == null) {
+        if (zip.file("pack.mcmeta") == undefined) {
           return toast.error("Missing pack.mcmeta");
         }
 
@@ -104,21 +103,21 @@
     new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = reject;
+      reader.addEventListener('load', () => resolve(reader.result as string));
+      reader.addEventListener('error', () => reject);
     });
 
   async function uploadVersion() {
-    let v_name = (document.getElementById("v_name") as HTMLInputElement).value;
-    let v_code = (document.getElementById("v_code") as HTMLInputElement).value;
-    let v_rp = document.getElementById("v_rp") as HTMLInputElement;
-    let v_squash = document.getElementById("squash") as HTMLInputElement;
+    let v_name = (document.querySelector("#v_name") as HTMLInputElement).value;
+    let v_code = (document.querySelector("#v_code") as HTMLInputElement).value;
+    let v_rp = document.querySelector("#v_rp") as HTMLInputElement;
+    let v_squash = document.querySelector("#squash") as HTMLInputElement;
 
     if (!v_name) return toast("Please make sure you give a version name!");
     if (!v_code) return toast("Please make sure you give a version number!");
     if (!v_changelog)
       return toast("Please make sure you give a version changelog!");
-    if (selected.length == 0) {
+    if (selected.length === 0) {
       return toast("Please select at least one compatible Minecraft version!");
     }
 
@@ -157,13 +156,13 @@
   }
 
   function uploadIcon() {
-    if (iconVal[0].size > 256000) {
+    if (iconValue[0].size > 256_000) {
       return toast.error("Icon must be less than 256kb");
     }
 
     if (
       !["png", "jpg", "webp", "gif", "avif"].includes(
-        iconVal[0].name.split(".").at(-1)?.toLowerCase() ?? "null"
+        iconValue[0].name.split(".").at(-1)?.toLowerCase() ?? "null"
       )
     ) {
       return toast.error("Unsupported file type");
@@ -171,18 +170,18 @@
 
     let reader = new FileReader();
 
-    reader.readAsDataURL(iconVal[0]);
+    reader.readAsDataURL(iconValue[0]);
 
-    reader.addEventListener("load", e => {
-      iconB64 = e.target?.result;
-      iconImg = URL.createObjectURL(iconVal[0]);
+    reader.addEventListener("load", event => {
+      iconB64 = event.target?.result;
+      iconImg = URL.createObjectURL(iconValue[0]);
     });
   }
 
   async function update() {
-    if ((titleVal?.length ?? 0) < 4)
+    if ((titleValue?.length ?? 0) < 4)
       return toast.error("Title must be at least 3 characters");
-    if ((bodyVal?.length ?? 0) < 101)
+    if ((bodyValue?.length ?? 0) < 101)
       return toast.error("Body must be at least 100 characters");
 
     let projData: {
@@ -192,10 +191,10 @@
       category: string[] | undefined;
       icon?: string | ArrayBuffer | null | undefined;
     } = {
-      title: titleVal,
-      description: descVal,
-      body: bodyVal,
-      category: $category.length == 0 ? data.project?.category : $category,
+      title: titleValue,
+      description: descValue,
+      body: bodyValue,
+      category: $category.length === 0 ? data.project?.category : $category,
       icon: iconB64
     };
 
@@ -255,24 +254,25 @@
     }
   }
 
-  function dependencyHandler(v: string, i: number) {
-    dependencyNames[i] = v;
-    if (dependencyNames.length == i) dependencyNames.push("");
-    dependencyNames = [...dependencyNames.slice(0, 4)];
-    resolveDependency(v, i);
+  function dependencyHandler(v: string, index: number) {
+    dependencyNames[index] = v;
+    if (dependencyNames.length == index) dependencyNames.push("");
+    dependencyNames = dependencyNames.slice(0, 4);
+    resolveDependency(v, index);
   }
 
-  async function resolveDependency(v: string, i: number) {
+  async function resolveDependency(v: string, index: number) {
     let search = await fetch(`${API}/projects/search?query=${v}`);
+    let searchJson = await search.json()
     let projects = await projectSchema
       .array()
-      .parseAsync((await search.json()).result);
+      .parseAsync(searchJson.result);
 
-    projects.forEach(project => {
+    for (const project of projects) {
       if (project.url == v) {
-        dependencies[i] = project;
+        dependencies[index] = project;
       }
-    });
+    }
   }
 </script>
 
@@ -342,17 +342,17 @@
                 <img
                   src="{iconImg}"
                   alt="Your Icon"
-                  class="aspect-square overflow-clip w-full h-full rounded-xl {iconVal
+                  class="aspect-square overflow-clip w-full h-full rounded-xl {iconValue
                     ? 'block'
                     : 'hidden'}" />
                 <input
-                  bind:files="{iconVal}"
+                  bind:files="{iconValue}"
                   on:change="{uploadIcon}"
                   type="file"
                   accept="image/*"
                   class="hidden" />
                 <IconNoIcon
-                  class="h-1/2 w-1/2 {iconVal ? 'hidden' : 'block'}" />
+                  class="h-1/2 w-1/2 {iconValue ? 'hidden' : 'block'}" />
               </label>
             </div>
             <div class="w-full">
@@ -361,7 +361,7 @@
                 type="text"
                 placeholder="Super Cool Datapack"
                 maxlength="35"
-                bind:value="{titleVal}"
+                bind:value="{titleValue}"
                 required
                 class="input w-full" />
             </div>
@@ -373,14 +373,14 @@
           <textarea
             placeholder="A short description of your pack"
             maxlength="200"
-            bind:value="{descVal}"
+            bind:value="{descValue}"
             class="input resize-none h-32 col-span-2"></textarea>
           <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
             Description
           </p>
           <MarkdownEditor
             classes="resize-none h-64 col-span-2"
-            bind:content="{bodyVal}" />
+            bind:content="{bodyValue}" />
           <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
             CC Licence (click to select)
           </p>
@@ -483,7 +483,7 @@
                 {/each}
               </div>
             {:else}
-              {@const ver = (Math.random() * 10).toFixed(1)}
+              {@const version = (Math.random() * 10).toFixed(1)}
               <div>
                 <button
                   class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
@@ -507,13 +507,13 @@
                   <input
                     class="input w-3/4"
                     required
-                    placeholder="{data.project?.title} v{ver}"
+                    placeholder="{data.project?.title} v{version}"
                     maxlength="50"
                     id="v_name" />
                   <input
                     required
                     class="input w-1/4"
-                    placeholder="v{ver}"
+                    placeholder="v{version}"
                     maxlength="15"
                     id="v_code" />
                 </div>
@@ -543,7 +543,7 @@
                 <div
                   class="space-y-3 bg-slate-300 dark:bg-stone-800/50 rounded-lg border-2 border-slate-400 dark:border-stone-700 p-3 w-full md:w-2/3"
                   use:autoAnimate>
-                  {#each list(dependencies.length) as i}
+                  {#each list(dependencies.length) as index}
                     <p class="text-slate-950 dark:text-slate-100">
                       <IconLink class="inline-block" /> URL
                     </p>
@@ -552,13 +552,13 @@
                         class="bg-slate-300 dark:bg-stone-800 rounded-lg border-2 border-slate-400 dark:border-stone-700 p-2 focus:border-dph-orange dark:focus:border-dph-orange outline-none focus:text-opacity-100 text-slate-950 dark:text-stone-600 transition-all placeholder:italic placeholder:text-slate-800 dark:placeholder:text-stone-500 w-full text-opacity-60">
                         datapackhub.net/project/<AutoAdjustableInput
                           classes="bg-slate-300 text-opacity-100 dark:bg-stone-800 text-slate-100 outline-none"
-                          on:change="{e => dependencyHandler(e.detail, i)}" />
+                          on:change="{event => dependencyHandler(event.detail, index)}" />
                       </span>
-                      {#if dependencies[i]}
-                        <a href="/project/{dependencies[i].url}">
+                      {#if dependencies[index]}
+                        <a href="/project/{dependencies[index].url}">
                           <img
-                            src="{dependencies[i].icon}"
-                            alt="{dependencies[i].title}'s icon"
+                            src="{dependencies[index].icon}"
+                            alt="{dependencies[index].title}'s icon"
                             height="48"
                             width="48"
                             class="ml-3 rounded-lg aspect-square" />

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
-  import { fetchAuthed, isModOrAbove } from "$lib/globals/functions";
+  import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import { authed, isDark, roleInfo, user } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
   import IconRead from "~icons/tabler/Bell.svelte";
@@ -11,22 +11,22 @@
 
   export let small: boolean;
 
-  let signInHoverMsg = {
+  let signInHoverMessage = {
     content: "Sign In",
     placement: "bottom"
   };
 
-  let notificationHoverMsg = {
+  let notificationHoverMessage = {
     content: "Notifications",
     placement: "bottom"
   };
 
-  let moderationHoverMsg = {
+  let moderationHoverMessage = {
     content: "Moderation",
     placement: "bottom"
   };
 
-  let newHoverMsg = {
+  let newHoverMessage = {
     content: "Create Project",
     placement: "bottom"
   };
@@ -35,7 +35,7 @@
 
   afterNavigate(() => {
     if (browser && $authed) {
-      refreshNotifications().catch(err => console.error(err));
+      refreshNotifications().catch(error => console.error(error));
     }
   });
 
@@ -56,12 +56,12 @@
 
 <div class="z-50 ml-3 flex items-center justify-center md:ml-6">
   {#if $authed}
-    {#if isModOrAbove($roleInfo) && !small}
+    {#if moderatorOrAbove($roleInfo) && !small}
       <a
         href="/moderation"
         aria-label="Moderation page"
         class="z-20 mr-2 md:mr-6 hover:brightness-75"
-        use:tippy="{moderationHoverMsg}">
+        use:tippy="{moderationHoverMessage}">
         <IconShield height="24" width="24" color="{iconColor}" />
       </a>
     {/if}
@@ -69,7 +69,7 @@
       href="/notifications"
       class="z-20 hover:brightness-75"
       aria-label="Notifications page"
-      use:tippy="{notificationHoverMsg}">
+      use:tippy="{notificationHoverMessage}">
       {#if unreadNotifications}
         <IconUnread height="24" width="24" color="{iconColor}" />
       {:else}
@@ -81,7 +81,7 @@
         href="/projects/new"
         aria-label="Create Project page"
         class="z-20 ml-2 md:ml-6 hover:brightness-75"
-        use:tippy="{newHoverMsg}">
+        use:tippy="{newHoverMessage}">
         <IconPlus height="24" width="24" color="{iconColor}" />
       </a>
     {/if}
@@ -112,7 +112,7 @@
       href="/login"
       aria-label="Button to sign in"
       class="button-primary"
-      use:tippy="{signInHoverMsg}">
+      use:tippy="{signInHoverMessage}">
       Sign in
     </a>
   {/if}

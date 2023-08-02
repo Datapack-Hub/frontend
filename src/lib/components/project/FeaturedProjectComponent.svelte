@@ -31,18 +31,22 @@
 
   let style: string;
   switch (type) {
-    case "popular":
+    case "popular": {
       style = "blue-600";
       break;
-    case "featured":
+    }
+    case "featured": {
       style = "dph-orange";
       break;
-    case "random":
+    }
+    case "random": {
       style = "stone-600";
       break;
-    case "new":
+    }
+    case "new": {
       style = "lime-400";
       break;
+    }
   }
 </script>
 

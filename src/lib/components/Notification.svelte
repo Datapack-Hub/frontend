@@ -12,14 +12,14 @@
     visible = false;
     toast.promise(
       fetchAuthed("DELETE", `/notifs/delete/${notification?.id}`)
-        .then(res => {
-          if (!res.ok) {
+        .then(response => {
+          if (!response.ok) {
             visible = true;
           }
         })
-        .catch(err => {
+        .catch(error => {
           visible = true;
-          console.error(err);
+          console.error(error);
         }),
       {
         success: "Removed Notification!",

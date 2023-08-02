@@ -15,12 +15,12 @@
   function toggleClicked() {
     if ($selected.length < limit) {
       clicked = !clicked;
-      selected.update(arr => toggle(arr, value));
+      selected.update(array => toggle(array, value));
       return;
     }
 
     clicked = false;
-    selected.update(arr => arr.filter(v => v != value));
+    selected.update(array => array.filter(v => v != value));
     dispatch("fail");
   }
 </script>
@@ -34,7 +34,7 @@
     : 'hover:border-dph-orange dark:hover:border-dph-orange border-slate-400 bg-slate-300 dark:border-stone-700 dark:bg-stone-800'}
     border-2 p-2 rounded-lg text-slate-950 dark:text-slate-100 select-none cursor-pointer transition-all"
   on:click="{toggleClicked}"
-  on:keypress="{e => (e.key == 'ENTER' ? toggleClicked : null)}">
+  on:keypress="{event => (event.key == 'ENTER' ? toggleClicked : undefined)}">
   <p>
     {value}
   </p>

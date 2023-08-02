@@ -81,7 +81,7 @@ export const roleSchema = z.object({
   name: z.string(),
   color: z
     .string()
-    .regex(/#([a-f]|[A-F]|[0-9]){3,6}/, {
+    .regex(/#([a-f]|[A-F]|\d){3,6}/, {
       message: "Not a valid colour"
     })
     .nullish(),

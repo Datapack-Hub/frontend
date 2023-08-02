@@ -4,30 +4,30 @@ import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
 export const load = (async ({ params, cookies }) => {
-  const projectReq = await serverFetchAuthed(
+  const projectRequest = await serverFetchAuthed(
     "get",
     "/projects/get/" + params.project,
     cookies
   );
 
-  if (projectReq.status == 404) {
+  if (projectRequest.status == 404) {
     throw error(404, {
       message: "Silly boy!",
       description: "Doesn't exist, nerd!"
     });
   }
 
-  const projectJson = await projectSchema.parseAsync(await projectReq.json());
-  const meReq = await serverFetchAuthed("get", "/user/me", cookies);
+  const projectJson = await projectSchema.parseAsync(await projectRequest.json());
+  const meRequest = await serverFetchAuthed("get", "/user/me", cookies);
 
-  if (meReq.status == 401) {
+  if (meRequest.status == 401) {
     throw error(401, {
       message: "Please sign in.",
       description: "If you are signed in, then our server must be down. Sorry!"
     });
   }
 
-  const me = (await meReq.json()) as User;
+  const me = (await meRequest.json()) as User;
   if (
     me.id == projectJson.author.id ||
     ["admin", "moderator"].includes(me.role)
@@ -38,12 +38,13 @@ export const load = (async ({ params, cookies }) => {
       cookies
     );
 
-    const versionsReq = await versionSchema
+    const projectResultJson = await project.json()
+    const versionsRequest = await versionSchema
       .array()
-      .parseAsync((await project.json()).result);
+      .parseAsync(projectResultJson.result);
     return {
       project: projectJson,
-      versions: versionsReq
+      versions: versionsRequest
     };
   }
 

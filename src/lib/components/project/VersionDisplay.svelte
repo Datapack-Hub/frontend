@@ -21,8 +21,8 @@
 
   export let version: Version;
   export let expanded = false;
-  export let mcVersion: string | undefined = undefined;
-  export let project: Project | undefined = undefined;
+  export let mcVersion: string | undefined;
+  export let project: Project | undefined;
 
   let properVersion = isArray(version.minecraft_versions.split(","))
     ? version.minecraft_versions.split(",")
@@ -30,7 +30,7 @@
   let dlModal: Modal;
 
   function openDownloadModal(
-    type: "datapack" | "resourcepack" | undefined = undefined
+    type?: "datapack" | "resourcepack" | undefined
   ) {
     if (!type || !mcVersion) return dlModal.open();
     if (type == "datapack")
@@ -60,7 +60,7 @@
       try {
         let { loadAsync } = await import("jszip");
         parsedZip = await loadAsync(zipBlob);
-      } catch (er) {
+      } catch {
         return toast.error("Something bad happened");
       }
 
@@ -69,42 +69,52 @@
       let packFormat;
 
       switch (mcVersionCode) {
-        case "1.13-1.14.4":
+        case "1.13-1.14.4": {
           packFormat = 4;
           break;
-        case "1.15-1.16.1":
+        }
+        case "1.15-1.16.1": {
           packFormat = 5;
           break;
-        case "1.16.2-1.16.5":
+        }
+        case "1.16.2-1.16.5": {
           packFormat = 6;
           break;
-        case "1.17.x":
+        }
+        case "1.17.x": {
           packFormat = 7;
           break;
-        case "1.18.x":
+        }
+        case "1.18.x": {
           packFormat = 8;
           break;
-        case "1.19-1.19.3":
+        }
+        case "1.19-1.19.3": {
           packFormat = 10;
           break;
-        case "1.19.4":
+        }
+        case "1.19.4": {
           packFormat = 12;
           break;
-        case "1.20-1.20.1":
+        }
+        case "1.20-1.20.1": {
           packFormat = 15;
           break;
-        case "1.20.2":
+        }
+        case "1.20.2": {
           packFormat = 16;
           break;
-        default:
+        }
+        default: {
           packFormat = 0;
           break;
+        }
       }
 
       mcMetaData.pack.pack_format = packFormat;
 
       let supportedFormats = mcMetaData.pack.supported_formats;
-      if (typeof supportedFormats !== "undefined") {
+      if (supportedFormats !== undefined) {
         if (isObject(supportedFormats)) {
           if (mcMetaData.pack.supportedFormats.max_inclusive > packFormat) {
             return;
@@ -182,7 +192,7 @@
               download(
                 version.primary_download,
                 mcv,
-                typeof version.resource_pack_download !== 'undefined'
+                version.resource_pack_download !== undefined
               )}">
             {mcv}
           </button>

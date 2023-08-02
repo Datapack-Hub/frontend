@@ -22,7 +22,7 @@
   import IconNoIcon from "~icons/tabler/Upload.svelte";
 
   let iconB64: string | ArrayBuffer | null | undefined;
-  let iconVal: FileList;
+  let iconValue: FileList;
   let iconImg: string;
   let title: string;
   let description: string;
@@ -57,12 +57,12 @@
 
     toast.promise(
       fetchAuthed("post", `/projects/create`, projData)
-        .then(res => {
-          if (res.ok) {
+        .then(response => {
+          if (response.ok) {
             goto("/project/" + title.toLowerCase().replaceAll(" ", "-"));
           }
         })
-        .catch(err => console.error(err)),
+        .catch(error => console.error(error)),
       {
         success: "Created project! Redirecting...",
         loading: "Creating project...",
@@ -72,23 +72,23 @@
   }
 
   function uploadIcon() {
-    if (iconVal[0].size > 256000) {
+    if (iconValue[0].size > 256_000) {
       return toast.error("Icon must be less than 256kb");
     }
 
     if (
       !["png", "jpg", "webp", "gif", "avif"].includes(
-        iconVal[0].name.split(".").at(-1)?.toLowerCase() ?? "null"
+        iconValue[0].name.split(".").at(-1)?.toLowerCase() ?? "null"
       )
     ) {
       return toast.error("Unsupported file type");
     }
 
     let reader = new FileReader();
-    reader.readAsDataURL(iconVal[0]);
-    reader.addEventListener("load", e => {
-      iconB64 = e.target?.result;
-      iconImg = URL.createObjectURL(iconVal[0]);
+    reader.readAsDataURL(iconValue[0]);
+    reader.addEventListener("load", event => {
+      iconB64 = event.target?.result;
+      iconImg = URL.createObjectURL(iconValue[0]);
     });
   }
 </script>
@@ -111,16 +111,16 @@
           <img
             src="{iconImg}"
             alt="Your Icon"
-            class="aspect-square overflow-clip w-full h-full rounded-xl {iconVal
+            class="aspect-square overflow-clip w-full h-full rounded-xl {iconValue
               ? 'block'
               : 'hidden'}" />
           <input
-            bind:files="{iconVal}"
+            bind:files="{iconValue}"
             on:change="{uploadIcon}"
             type="file"
             accept="image/*"
             class="hidden" />
-          <IconNoIcon class="h-1/2 w-1/2 {iconVal ? 'hidden' : 'block'}" />
+          <IconNoIcon class="h-1/2 w-1/2 {iconValue ? 'hidden' : 'block'}" />
         </label>
       </div>
       <div class="w-full">

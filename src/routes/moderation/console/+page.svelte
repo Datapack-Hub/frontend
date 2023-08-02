@@ -8,12 +8,12 @@
   let command = "";
   let consoleIn = "";
   let innerWidth = 0;
-  let objDiv: HTMLDivElement;
+  let objectDiv: HTMLDivElement;
 
   $: isSmallWidth = innerWidth < 768;
 
   onMount(async () => {
-    consoleIn = document.getElementById("cons")?.innerHTML ?? "";
+    consoleIn = document.querySelector("#cons")?.innerHTML ?? "";
 
     submitCmd = async () => {
       if (command) {
@@ -21,13 +21,13 @@
         commandInput.value = "Loading...";
 
         try {
-          let res = await fetchAuthed("post", "/moderation/console", {
+          let response = await fetchAuthed("post", "/moderation/console", {
             command: command
           });
 
-          let text = await res.text();
+          let text = await response.text();
 
-          if (res.ok) {
+          if (response.ok) {
             consoleIn = consoleIn + `<pre class='resp'>${text}</pre>`;
             command = "";
             return;
@@ -35,12 +35,12 @@
 
           consoleIn = consoleIn + `<li class='pb-4 text-red-500'>${text}</li>`;
           command = "";
-        } catch (err) {
-          consoleIn = consoleIn + `<li class='resp err'>${err}</li>`;
+        } catch (error) {
+          consoleIn = consoleIn + `<li class='resp err'>${error}</li>`;
           command = "";
         }
 
-        objDiv.scrollTop = objDiv.scrollHeight;
+        objectDiv.scrollTop = objectDiv.scrollHeight;
       }
     };
   });
@@ -59,7 +59,7 @@
         class="h-screen w-full flex-col font-console text-lime-400 md:items-start md:pt-20">
         <div
           id="big"
-          bind:this="{objDiv}"
+          bind:this="{objectDiv}"
           class="overflow-y-scroll"
           style="height: 92%;">
           <span class="text-lg font-bold">Datapack Hub Console</span><br />

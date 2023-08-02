@@ -26,10 +26,11 @@
     let cyclingTextWrapper = document.querySelectorAll(".split-text .letters");
     let fadingTextElements = document.querySelectorAll(".fadeTextAnime");
 
-    cyclingTextWrapper.forEach(el => {
-      el.innerHTML =
-        el.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ?? "";
-    });
+    for (const element of cyclingTextWrapper) {
+      element.innerHTML =
+        element.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ??
+        "";
+    }
 
     anime
       .timeline({ loop: true, autoplay: true })
@@ -37,7 +38,7 @@
         targets: "#indexText1 .letter",
         translateY: ["1.1em", 0],
         duration: 750,
-        delay: (_el, i) => 50 * i
+        delay: (_element, index) => 50 * index
       })
       .add({
         targets: "#indexText1",
@@ -50,7 +51,7 @@
         targets: "#indexText2 .letter",
         translateY: ["1.1em", 0],
         duration: 750,
-        delay: (_el, i) => 50 * i
+        delay: (_element, index) => 50 * index
       })
       .add({
         targets: "#indexText2",
@@ -63,7 +64,7 @@
         targets: "#indexText3 .letter",
         translateY: ["1.1em", 0],
         duration: 750,
-        delay: (_el, i) => 50 * i
+        delay: (_element, index) => 50 * index
       })
       .add({
         targets: "#indexText3",
@@ -73,22 +74,22 @@
         delay: 750
       });
 
-    let intersect = new IntersectionObserver(e => {
-      e.forEach((entry, i) => {
+    let intersect = new IntersectionObserver(entries => {
+      for (const [index, entry] of entries.entries()) {
         if (entry.isIntersecting) {
           anime({
             autoplay: true,
             targets: entry.target,
             opacity: 1,
-            delay: (i + 1) * 75
+            delay: (index + 1) * 75
           });
         } else {
           anime({ autoplay: true, targets: entry.target, opacity: 0 });
         }
-      });
+      }
     });
 
-    fadingTextElements.forEach(e => intersect.observe(e));
+    for (const element of fadingTextElements) intersect.observe(element);
 
     visible = true;
   });
@@ -110,9 +111,9 @@
   <div
     class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 rounded-lg">
     <b class="text-lg mb-2">Datapack Hub is in early beta.</b><br />
-    Many features are incomplete or do not work as expected. In these early stages,
-    there is likely going to be lots of downtime. All projects will stay after the
-    beta period, unless you don't want that.
+    Many featuresponse are incomplete or do not work as expected. In these early
+    stages, there is likely going to be lots of downtime. All projects will stay
+    after the beta period, unless you don't want that.
   </div>
   <div class="pt-20 lg:pt-0"></div>
   <section

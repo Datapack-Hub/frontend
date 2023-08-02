@@ -36,7 +36,7 @@
 }
 
 .button-secondary {
-  @apply button-base bg-dph-orange/25 border-dph-orange border-2 text-sm md:text-base lg:text-lg dark:text-slate-100 font-bold;
+  @apply button-base border-2 border-dph-orange bg-dph-orange/25 text-sm font-bold dark:text-slate-100 md:text-base lg:text-lg;
 }
 
 .button-boring {
@@ -44,7 +44,7 @@
 }
 
 .button-base {
-  @apply rounded-lg px-3 py-2 text-slate-950 dark:text-slate-100 transition-transform hover:scale-105 active:brightness-75;
+  @apply rounded-lg px-3 py-2 text-slate-950 transition-transform hover:scale-105 active:brightness-75 dark:text-slate-100;
 }
 
 .button-base:disabled {
@@ -68,15 +68,15 @@
 }
 
 .prose :where(a):not(:where([class~="not-prose"] *)) {
-  @apply font-medium text-blue-600 dark:text-blue-400 no-underline;
+  @apply font-medium text-blue-600 no-underline dark:text-blue-400;
 }
 
 .nav_item {
-  @apply z-20 pl-2 md:pl-6 text-lg font-light text-slate-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500;
+  @apply z-20 pl-2 text-lg font-light text-slate-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:pl-6;
 }
 
 .nav_item_disabled {
-  @apply z-20 pl-2 md:pl-6 text-lg font-light text-neutral-500;
+  @apply z-20 pl-2 text-lg font-light text-neutral-500 md:pl-6;
 }
 
 .moderation {
@@ -88,5 +88,5 @@
 }
 
 .input {
-  @apply bg-slate-300 dark:bg-stone-800 rounded-lg border-2 border-slate-400 dark:border-stone-700 p-2 focus:border-dph-orange dark:focus:border-dph-orange outline-none text-opacity-60 focus:text-opacity-100 text-slate-950 dark:text-slate-100 transition-all placeholder:italic placeholder:text-slate-800 dark:placeholder:text-stone-500;
+  @apply rounded-lg border-2 border-slate-400 bg-slate-300 p-2 text-slate-950 text-opacity-60 outline-none transition-all placeholder:italic placeholder:text-slate-800 focus:border-dph-orange focus:text-opacity-100 dark:border-stone-700 dark:bg-stone-800 dark:text-slate-100 dark:placeholder:text-stone-500 dark:focus:border-dph-orange;
 }

@@ -3,7 +3,7 @@
   import { goto } from "$app/navigation";
   import { API, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed, isModOrAbove } from "$lib/globals/functions";
-  import { authed, roleInfo, roles, user } from "$lib/globals/stores";
+  import { authed, moderatorOrAboveles, roleInfo, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
   // Component imports
@@ -50,24 +50,24 @@
   // Local vars
   let activePage = "description";
   let selectedVersions: string[] = [];
-  let pickedVersion: string | undefined = undefined;
+  let pickedVersion: string | undefined;
   let reportModal: Modal;
-  let modModal: Modal;
+  let moduleModal: Modal;
   let featureModal: Modal;
-  let modModalPage = "delete";
+  let moduleModalPage = "delete";
   let status = project?.status;
   let del: HTMLDivElement;
-  let postedModMsg = "";
-  let reportMsg = "";
+  let postedModuleMessage = "";
+  let reportMessage = "";
   let matches: Version[] = [];
-  let stitchedVersions: string;
+  let stitchedVersions: string = "";
   let featureDur: string;
   let comment: string;
   let innerWidth: number;
 
   // Version filtering
   $: versionMatches =
-    selectedVersions.length !== 0 && typeof datapackVersions !== "undefined"
+    selectedVersions.length > 0 && datapackVersions !== undefined
       ? datapackVersions.filter(dp =>
           dp.minecraft_versions
             .split(",")
@@ -75,18 +75,19 @@
         )
       : datapackVersions;
 
-  datapackVersions?.forEach(item => {
-    stitchedVersions += item.minecraft_versions;
-  });
+  if (datapackVersions)
+    for (const item of datapackVersions) {
+      stitchedVersions += item.minecraft_versions;
+    }
 
   function pickVersions(vs: string) {
     matches = [];
     pickedVersion = vs;
-    datapackVersions
-      ?.filter(versions => versions.minecraft_versions.split(",").includes(vs))
-      .forEach(v => {
-        matches = [...matches, v];
-      });
+    for (const v of datapackVersions.filter(versions =>
+      versions.minecraft_versions.split(",").includes(vs)
+    )) {
+      matches = [...matches, v];
+    }
     if (matches?.length == 0)
       return toast.error("This datapack doesn't support " + vs);
   }
@@ -108,59 +109,59 @@
   }
 
   async function moderate(action: string) {
-    modModal.close();
-    let modReqData: object = {};
+    moduleModal.close();
+    let moduleRequestData: object = {};
     switch (action) {
-      case "delete":
-        if (postedModMsg.length != 0) {
-          modReqData = {
-            action: "delete",
-            message: postedModMsg
-          };
-        } else {
-          modReqData = {
-            action: "delete"
-          };
-        }
+      case "delete": {
+        moduleRequestData =
+          postedModuleMessage.length > 0
+            ? {
+                action: "delete",
+                message: postedModuleMessage
+              }
+            : {
+                action: "delete"
+              };
         break;
-      case "disable":
-        if (postedModMsg.length != 0) {
-          modReqData = {
-            action: "disable",
-            message: postedModMsg
-          };
-        } else {
-          modReqData = {
-            action: "disable"
-          };
-        }
+      }
+      case "disable": {
+        moduleRequestData =
+          postedModuleMessage.length > 0
+            ? {
+                action: "disable",
+                message: postedModuleMessage
+              }
+            : {
+                action: "disable"
+              };
         break;
-      case "write note":
-        if (postedModMsg.length != 0) {
-          modReqData = {
+      }
+      case "write note": {
+        if (postedModuleMessage.length > 0) {
+          moduleRequestData = {
             action: "write_note",
-            message: postedModMsg
+            message: postedModuleMessage
           };
         } else {
           return toast.error("You gotta leave them a message!");
         }
         break;
-      case "restore":
-        modReqData = {
+      }
+      case "restore": {
+        moduleRequestData = {
           action: "restore"
         };
         break;
+      }
     }
 
     toast.promise(
       fetchAuthed(
         "PATCH",
         "/moderation/project/" + project?.ID + "/action",
-        modReqData
-      ).then(res => {
-        if (res.ok) {
-          if (action == "restore") del.parentElement?.removeChild(del);
-        }
+        moduleRequestData
+      ).then(response => {
+        if (response.ok && action == "restore") del.remove();
       }),
       {
         success: "Moderated project!",
@@ -175,7 +176,7 @@
     reportModal.close();
     toast.promise(
       fetchAuthed("post", "/projects/id/" + project?.ID + "/report", {
-        message: reportMsg
+        message: reportMessage
       }),
       {
         success: "Reported project! A moderator will review your report ASAP.",
@@ -190,7 +191,7 @@
     featureModal.close();
     toast.promise(
       fetchAuthed("post", "/projects/id/" + project?.ID + "/feature", {
-        expires: parseInt(featureDur)
+        expires: Number.parseInt(featureDur)
       }),
       {
         success: "Featured project!",
@@ -201,18 +202,19 @@
   }
 
   async function postComment() {
-    if (comment.length == 0) {
+    if (comment.length === 0) {
       return toast.error("Comment field is empty!");
     }
     toast.promise(
       fetchAuthed("POST", `/comments/thread/${project.ID}/post`, {
         message: comment
-      }).then(async res => {
-        if (res.ok) {
+      }).then(async response => {
+        if (response.ok) {
           let newComments = await fetch(API + "/comments/thread/" + project.ID);
+          let newCommentsJson = await newComments.json()
           let parsedComments = await commentSchema
             .array()
-            .parseAsync((await newComments.json()).result);
+            .parseAsync(newCommentsJson.result);
           comments = parsedComments;
           comment = "";
           return;
@@ -277,7 +279,7 @@
             reportModal.open();
           }}"><IconReport /><span class="hidden md:block">Report</span></button>
       {/if}
-      {#if isModOrAbove($roleInfo)}
+      {#if moderatorOrAboveles($roleInfo)}
         {#if status == "publish_queue" || status == "review_queue"}
           <button
             aria-label="Approve"
@@ -289,8 +291,8 @@
             aria-label="Request Changes"
             class="button-base flex items-center space-x-1 bg-yellow-600"
             on:click="{() => {
-              modModalPage = 'disable';
-              modModal.open();
+              moduleModalPage = 'disable';
+              moduleModal.open();
             }}"
             use:tippy="{{ content: 'Request Changes', placement: 'bottom' }}"
             ><IconPencil /><!--<span class="hidden md:block">Request Changes</span
@@ -299,16 +301,16 @@
             aria-label="Deny"
             class="button-base flex items-center space-x-1 bg-red-600"
             on:click="{() => {
-              modModalPage = 'delete';
-              modModal.open();
+              moduleModalPage = 'delete';
+              moduleModal.open();
             }}"
             use:tippy="{{ content: 'Deny', placement: 'bottom' }}"
-            ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>
+            ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>moderatorOrAbove
           <button
             class="button-base space-x-1"
             aria-label="Moderate"
             on:click="{() => {
-              modModal.open();
+              moduleModal.open();
             }}"
             use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
             ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
@@ -336,7 +338,7 @@
           class="button-base space-x-1 bg-red-600"
           aria-label="Moderate"
           on:click="{() => {
-            modModal.open();
+            moduleModal.open();
           }}"
           use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
           ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
@@ -438,14 +440,14 @@
           <p class="text-white">Select a Minecraft version:</p>
           <div class="grid grid-cols-3 grid-rows-auto gap-3">
             {#each minecraftVersions ?? [] as v}
-              {#if stitchedVersions.indexOf(v) >= 0}
+              {#if stitchedVersions.includes(v)}
                 {@const mcVersions = project?.latest_version
                   ? project.latest_version.minecraft_versions.split(",")
                   : []}
                 <button
                   data-test-btn="{v}"
                   class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2
-                  {!mcVersions.includes(v) ? ' text-red-500' : ' text-white'}"
+                  {mcVersions.includes(v) ? ' text-white' : ' text-red-500'}"
                   on:click="{() => pickVersions(v)}">
                   {#if !mcVersions.includes(v)}
                     <IconAlert />
@@ -485,7 +487,7 @@
           </h2>
         {/if}
       </div>
-      {#if matches.length != 0}
+      {#if matches.length > 0}
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-slate-50/10">
           <p class="text-white MB-6">Latest version for {pickedVersion}:</p>
           <ul use:autoAnimate class="space-y-2">
@@ -537,7 +539,7 @@
   {/if}
 </div>
 
-<Modal bind:this="{modModal}">
+<Modal bind:this="{moduleModal}">
   <h1 class="text-xl font-bold text-slate-950 dark:text-white">
     Moderate {project?.title}
   </h1>
@@ -552,20 +554,20 @@
       Select Action
     </p>
     <button
-      class="button-base {modModalPage === 'delete'
+      class="button-base {moduleModalPage === 'delete'
         ? 'bg-stone-600'
         : 'bg-stone-900'}"
-      on:click="{() => (modModalPage = 'delete')}">Delete</button>
+      on:click="{() => (moduleModalPage = 'delete')}">Delete</button>
     <button
-      class="button-base {modModalPage === 'disable'
+      class="button-base {moduleModalPage === 'disable'
         ? 'bg-stone-600'
         : 'bg-stone-900'}"
-      on:click="{() => (modModalPage = 'disable')}">Disable</button>
+      on:click="{() => (moduleModalPage = 'disable')}">Disable</button>
     <button
-      class="button-base {modModalPage === 'write note'
+      class="button-base {moduleModalPage === 'write note'
         ? 'bg-stone-600'
         : 'bg-stone-900'}"
-      on:click="{() => (modModalPage = 'write note')}">Write Note</button>
+      on:click="{() => (moduleModalPage = 'write note')}">Write Note</button>
     <button
       class="button-base bg-stone-900"
       on:click="{() => goto('/project/' + project?.url + '/edit')}"
@@ -579,8 +581,9 @@
     placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
     id="description"
     maxlength="200"
-    bind:value="{postedModMsg}"></textarea>
-  <Button click="{() => moderate(modModalPage)}">{title(modModalPage)}</Button>
+    bind:value="{postedModuleMessage}"></textarea>
+  <Button click="{() => moderate(moduleModalPage)}"
+    >{title(moduleModalPage)}</Button>
 </Modal>
 
 <Modal bind:this="{reportModal}">
@@ -601,7 +604,7 @@
     placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
     id="description"
     maxlength="200"
-    bind:value="{reportMsg}"></textarea>
+    bind:value="{reportMessage}"></textarea>
   <Button click="{() => report()}">Report</Button>
 </Modal>
 

@@ -6,8 +6,8 @@
   let value = "";
   let dispatch = createEventDispatcher();
 
-  function deploy(e: string) {
-    dispatch("change", e);
+  function deploy(result: string) {
+    dispatch("change", result);
   }
 </script>
 
@@ -17,4 +17,4 @@
   bind:value
   style="max-width: {value.length < 5 ? 5 : value.length}ch;"
   autocorrect="false"
-  on:change="{e => deploy(e.currentTarget.value)}" />
+  on:change="{event => deploy(event.currentTarget.value)}" />

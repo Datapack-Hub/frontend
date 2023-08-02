@@ -15,11 +15,11 @@
   import { badges } from "$lib/globals/consts";
   import { title } from "radash";
   import IconVerified from "$lib/components/decorative/IconVerified.svelte";
-  import { isModOrAbove } from "$lib/globals/functions";
+  import { moderatorOrAbove } from "$lib/globals/functions";
   import Modal from "$lib/components/modals/Modal.svelte";
   import UserCard from "$lib/components/user/UserCard.svelte";
 
-  let modModal: Modal;
+  let moduleModal: Modal;
 
   export let data: PageData;
 
@@ -76,9 +76,9 @@
         <img
           src="{data.profile?.profile_icon}&size=256"
           alt="{data.profile?.username}'s profile picture"
-          on:click="{data.profile?.id == 3 ? play : null}"
-          on:keypress="{e =>
-            e.key == 'Enter' && data.profile?.id == 3 ? play : null}"
+          on:click="{data.profile?.id == 3 ? play : undefined}"
+          on:keypress="{event =>
+            event.key == 'Enter' && data.profile?.id == 3 ? play : undefined}"
           height="128"
           width="128"
           class="rounded-full outline outline-2 outline-offset-4 md:h-24 md:w-24 lg:h-32 lg:w-32"
@@ -87,7 +87,7 @@
       <p
         class="mt-4 w-full text-center text-4xl font-bold text-slate-950 dark:text-white md:text-3xl lg:text-4xl">
         {data.profile?.username}
-        {#if isModOrAbove(data.role)}
+        {#if moderatorOrAbove(data.role)}
           <span class="text-dph-orange icon" use:tippy="{orangeVerifiedHover}"
             ><IconVerified /></span
           >{:else if data.profile?.role == "helper"}<span
@@ -153,7 +153,7 @@
               alt="{badge} badge"
               src="/badges/{badge}.png"
               class="h-12 w-12 rounded-lg"
-              use:tippy="{badges.find(i => i.name == badge)?.tippy}" />
+              use:tippy="{badges.find(index => index.name == badge)?.tippy}" />
           {/each}
         {/if}
       </div>
@@ -172,7 +172,7 @@
         </Button>
       {/if}
     </div>
-    {#if isModOrAbove($roleInfo)}
+    {#if moderatorOrAbove($roleInfo)}
       <UserModeration user="{data.profile}" />
     {/if}
   </div>
@@ -205,7 +205,7 @@
   <div class="mb-16"></div>
 </main>
 
-<Modal bind:this="{modModal}">
+<Modal bind:this="{moduleModal}">
   <h1 class="text-xl font-bold text-slate-950 dark:text-white">
     Moderate {data.profile?.username}
   </h1>

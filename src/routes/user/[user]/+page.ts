@@ -29,9 +29,11 @@ export const load = (async ({ params, fetch }) => {
       });
     }
 
+    const projectResponseJson = await projects.json()
+
     const [profileJson, projectJson] = await Promise.all([
       userSchema.parseAsync(await user.json()),
-      projectSchema.array().parseAsync((await projects.json()).result)
+      projectSchema.array().parseAsync(projectResponseJson.result)
     ]);
 
     const profileRole = get(roles).find(v => v.name == profileJson.role);

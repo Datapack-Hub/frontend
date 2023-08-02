@@ -12,10 +12,13 @@ export const load = (async ({ fetch }) => {
       // fetch(`${API}/user/staff/developer`),
       fetch(`${API}/user/staff/helper`)
     ]),
-    async res => await userSchema.array().parseAsync((await res.json()).values)
+    async response => {
+      const responseJson = await response.json()
+      return await userSchema.array().parseAsync(responseJson.values)
+    }
   );
 
   return {
-    staff: admins.concat(moderators, helpers)
+    staff: [...admins, ...moderators, ...helpers]
   };
 }) satisfies PageLoad;

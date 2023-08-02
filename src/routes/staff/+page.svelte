@@ -30,8 +30,8 @@
       check marks.
     </p>
     {#if visible}
-      {#each data.staff ?? [] as person, i}
-        <div in:fly="{{ y: -200, duration: 500, delay: i * 75 }}">
+      {#each data.staff ?? [] as person, index}
+        <div in:fly="{{ y: -200, duration: 500, delay: index * 75 }}">
           <UserCard
             {person}
             role="{$roles?.find(v => person.role == v.name)}" />

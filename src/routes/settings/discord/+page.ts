@@ -4,19 +4,19 @@ import { fetchAuthed } from "$lib/globals/functions";
 import type { PageLoad } from "../$types";
 
 export const load = (async ({ url }) => {
-  const params = url.searchParams;
+  const parameters = url.searchParams;
 
   if (browser) {
-    if (!params.has("code")) {
+    if (!parameters.has("code")) {
       goto("/");
       return {};
     }
 
-    const res = await fetchAuthed(
+    const response = await fetchAuthed(
       "put",
-      "/auth/link/discord?code=" + params.get("code")
+      "/auth/link/discord?code=" + parameters.get("code")
     );
-    if (res.ok) goto("/settings");
+    if (response.ok) goto("/settings");
   }
   return {};
 }) satisfies PageLoad;

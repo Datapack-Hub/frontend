@@ -30,8 +30,8 @@
         fetchAuthed("get", "/moderation/queue/report"),
         fetchAuthed("get", "/user/staff/roles")
       ]),
-      async (res: Response) => {
-        return await res.json();
+      async (response: Response) => {
+        return await response.json();
       }
     );
 
@@ -93,7 +93,7 @@
         {#if activePage == "publish_queue"}
           <div
             class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
-            {#if publishQueue.length == 0}
+            {#if publishQueue.length === 0}
               <p class=" dark:text-white">
                 You're all caught up! There are no projects in the publish
                 queue.
@@ -111,7 +111,7 @@
           <div
             class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2"
             use:autoAnimate>
-            {#if reviewQueue.length == 0}
+            {#if reviewQueue.length === 0}
               <p class=" dark:text-white">
                 You're all caught up! There are no projects awaiting review.
               </p>
@@ -127,7 +127,7 @@
         {:else if activePage == "reports"}
           <div
             class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
-            {#if reports.length == 0}
+            {#if reports.length === 0}
               <p class=" dark:text-white">
                 You're all caught up! There are no reports in the queue.
               </p>
@@ -152,18 +152,18 @@
                 <th class="p-2 text-slate-950 dark:text-white">Role Name</th>
                 <th class="p-2 text-slate-950 dark:text-white">Permissions</th>
               </tr>
-              {#each rolesJson ?? [] as i}
+              {#each rolesJson ?? [] as index}
                 <tr
                   use:autoAnimate
                   class="odd:bg-slate-400/25 dark:odd:bg-stone-700/25">
                   <td
                     ><p
-                      style="color: {i.color};"
+                      style="color: {index.color};"
                       class="text-slate-950 dark:text-white">
-                      ⬤ {title(i.name)}
+                      ⬤ {title(index.name)}
                     </p></td>
                   <td class="text-slate-950 dark:text-white"
-                    >{#if i.permissions.length != 0}{i.permissions
+                    >{#if index.permissions.length > 0}{index.permissions
                         .map(p => title(p.toLowerCase()))
                         .join(", ")}{:else}None{/if}</td>
                 </tr>

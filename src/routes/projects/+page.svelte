@@ -45,9 +45,11 @@
       `${API}/projects/?sort=${sort.toLowerCase()}`
     );
 
+    let resultJson = await searchResult.json()
+
     dataCopy = await projectSchema
       .array()
-      .parseAsync((await searchResult.json()).result);
+      .parseAsync(resultJson.result);
   }
 </script>
 
@@ -150,7 +152,7 @@
   </div>
   <CasualLine />
   <div class="py-4 flex flex-col">
-    {#if !dataCopy || !(dataCopy.length >= 1)}
+    {#if !dataCopy || dataCopy.length === 0}
       <h2 class=" text-slate-950 dark:text-white">No results found</h2>
     {:else}
       <h2 class=" text-slate-950 dark:text-white mx-3">

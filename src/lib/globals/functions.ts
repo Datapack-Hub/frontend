@@ -1,17 +1,17 @@
+import { browser } from "$app/environment";
 import type { Role } from "$lib/globals/schema";
+import type { Cookies } from "@sveltejs/kit";
 import { memo, range } from "radash";
 import { get } from "svelte/store";
 import { API } from "./consts";
 import { authed, isDark } from "./stores";
-import { browser } from "$app/environment";
-import type { Cookies } from "@sveltejs/kit";
 
 /**
  * Loads the user's preferred color scheme from LocalStorage
  */
 export function loadColorPref() {
   const color = localStorage.getItem("dp_colorPref");
-  isDark.set(color != null && color === "true");
+  isDark.set(color != undefined && color === "true");
 }
 
 /**
@@ -28,24 +28,26 @@ export async function serverFetchAuthed(
   url: string,
   cookies: Cookies,
   data: object | undefined = undefined,
-  headers: HeadersInit | undefined = undefined
+  headers: HeadersInit | undefined = undefined,
 ): Promise<Response> {
   const cookie = cookies.get("dph_token");
 
   // what is going on here
-  const res = await fetch(`${API}${url}`, {
+  const response = await fetch(`${API}${url}`, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
-      ...(cookie != null ? { Authorization: `Basic ${cookie}` } : undefined),
-      ...headers
-    }
+      ...(cookie == undefined
+        ? undefined
+        : { Authorization: `Basic ${cookie}` }),
+      ...headers,
+    },
   });
 
-  if (res.status == 401) cookies.delete("dph_token");
-  if (!res.ok) Promise.reject(res.statusText);
+  if (response.status == 401) cookies.delete("dph_token");
+  if (!response.ok) Promise.reject(response.statusText);
 
-  return res;
+  return response;
 }
 
 /**
@@ -60,41 +62,43 @@ export async function fetchAuthed(
   method: string,
   url: string,
   data: object | undefined = undefined,
-  headers: HeadersInit | undefined = undefined
+  headers: HeadersInit | undefined = undefined,
 ): Promise<Response> {
   const cookie = getCookie("dph_token");
 
   // what is going on here
-  const res = await fetch(`${API}${url}`, {
+  const response = await fetch(`${API}${url}`, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
-      ...(cookie != null ? { Authorization: `Basic ${cookie}` } : undefined),
-      ...headers
-    }
+      ...(cookie == undefined
+        ? undefined
+        : { Authorization: `Basic ${cookie}` }),
+      ...headers,
+    },
   });
 
-  if (res.status == 401) removeCookie("dph_token");
-  if (!res.ok) Promise.reject(res.statusText);
+  if (response.status == 401) removeCookie("dph_token");
+  if (!response.ok) Promise.reject(response.statusText);
 
-  return res;
+  return response;
 }
 
-export const getCookie = memo((cookieName: string): string | null => {
-  if (!browser) return null;
+export const getCookie = memo((cookieName: string): string | undefined => {
+  if (!browser) return;
 
   const cookies = document.cookie.split(";");
 
-  if (cookies.length == 0) return null;
+  if (cookies.length === 0) return;
 
-  for (const i of range(cookies.length - 1)) {
-    const cookie = cookies[i].trim();
+  for (const index of range(cookies.length - 1)) {
+    const cookie = cookies[index].trim();
     if (cookie.startsWith(cookieName + "=")) {
-      return cookie.substring(cookieName.length + 1);
+      return cookie.slice(Math.max(0, cookieName.length + 1));
     }
   }
 
-  return null;
+  return;
 });
 
 export function removeCookie(name: string) {
@@ -107,7 +111,7 @@ export function removeCookie(name: string) {
  * @param role the role to check
  * @returns true or false
  */
-export const isModOrAbove = memo((role: Role | undefined) => {
+export const moderatorOrAbove = memo((role: Role | undefined) => {
   return (
     get(authed) &&
     ["moderator", "developer", "admin"].includes(role?.name ?? "")

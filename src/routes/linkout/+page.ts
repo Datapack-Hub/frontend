@@ -3,16 +3,16 @@ import { goto } from "$app/navigation";
 import type { PageLoad } from "./$types";
 
 export const load = (async ({ url }) => {
-  const params = url.searchParams;
+  const parameters = url.searchParams;
 
   if (browser) {
-    if (!params.has("url")) {
+    if (!parameters.has("url")) {
       goto("/");
       return {};
     }
 
     return {
-      url: params.get("url")
+      url: parameters.get("url")
     };
   }
   return {};

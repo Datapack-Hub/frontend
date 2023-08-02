@@ -36,16 +36,16 @@
           <th class="p-2 text-slate-950 dark:text-white">Role Name</th>
           <th class="p-2 text-slate-950 dark:text-white">Permissions</th>
         </tr>
-        {#each rolesJson ?? [] as i}
+        {#each rolesJson ?? [] as index}
           <tr class="odd:bg-stone-700/5">
             <td
               ><p
-                style="color: {i.color};"
+                style="color: {index.color};"
                 class="text-slate-950 dark:text-white">
-                ⬤ {title(i.name)}
+                ⬤ {title(index.name)}
               </p></td>
             <td class="text-slate-950 dark:text-white"
-              >{#if i.permissions.length != 0}{i.permissions.join(
+              >{#if index.permissions.length > 0}{index.permissions.join(
                   " | "
                 )}{:else}None{/if}</td>
           </tr>

@@ -4,7 +4,7 @@ import { parallel, shuffle } from "radash";
 import type { PageLoad } from "./$types";
 
 export const load = (async ({ fetch }) => {
-  const [randomJson, featuredJson, count, adminsRes, modRes, helperRes] =
+  const [randomJson, featuredJson, count, adminsResponse, moduleResponse, helperResponse] =
     await parallel(
       3,
       await Promise.all([
@@ -14,15 +14,15 @@ export const load = (async ({ fetch }) => {
         // staff
         fetch(`${API}/user/staff/admin`),
         fetch(`${API}/user/staff/moderator`),
-        fetch(`${API}/user/staff/helper`)
+        fetch(`${API}/user/staff/helper`),
       ]),
-      async res => await res.json()
+      async (response) => await response.json(),
     );
 
   const [admins, mods, helpers] = await parallel(
     3,
-    [adminsRes, modRes, helperRes].map(v => v.values),
-    async users => await userSchema.array().parseAsync(users)
+    [adminsResponse, moduleResponse, helperResponse].map((v) => v.values),
+    async (users) => await userSchema.array().parseAsync(users),
   );
 
   const random = await projectSchema.array().parseAsync(randomJson.result);
@@ -35,6 +35,6 @@ export const load = (async ({ fetch }) => {
     random,
     featured,
     count: count.count,
-    staff: admins.concat(mods, helpers)
+    staff: [...admins, ...mods, ...helpers],
   };
 }) satisfies PageLoad;

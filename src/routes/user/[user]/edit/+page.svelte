@@ -17,12 +17,12 @@
   let bio: HTMLTextAreaElement;
 
   onMount(() => {
-    uname = document.getElementById("username") as HTMLInputElement;
-    bio = document.getElementById("bio") as HTMLTextAreaElement;
+    uname = document.querySelector("#username") as HTMLInputElement;
+    bio = document.querySelector("#bio") as HTMLTextAreaElement;
   });
 
   function save() {
-    let req = {
+    let request = {
       username: uname.value,
       bio: bio.value,
       role: newRole
@@ -33,10 +33,10 @@
     }
 
     toast.promise(
-      fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, req)
-        .then(res => {
-          if (!res.ok) {
-            return res.text().then(txt => alert(txt));
+      fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, request)
+        .then(response => {
+          if (!response.ok) {
+            return response.text().then(txt => alert(txt));
           }
           if (data.profile?.id == $user.id) {
             $user.username = uname.value;
@@ -44,8 +44,8 @@
           }
           goto("/user/" + uname.value);
         })
-        .catch(err => {
-          console.error(err);
+        .catch(error => {
+          console.error(error);
         }),
       {
         success: "Profile saved!",
