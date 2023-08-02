@@ -15,7 +15,7 @@
   import { fetchAuthed } from "$lib/globals/functions";
   import type { Project, Version } from "$lib/globals/schema";
   import { user } from "$lib/globals/stores";
-  import { isArray } from "radash";
+  import { isArray, isNumber, isObject } from "radash";
   import Button from "../decorative/Button.svelte";
   import { goto } from "$app/navigation";
 
@@ -65,7 +65,7 @@
       }
 
       let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
-      let packMcmData = JSON.parse(packMcm);
+      let mcMetaData = JSON.parse(packMcm);
       let packFormat;
 
       switch (mcVersionCode) {
@@ -93,11 +93,35 @@
         case "1.20-1.20.1":
           packFormat = 15;
           break;
+        case "1.20.2":
+          packFormat = 16;
+          break;
+        default:
+          packFormat = 0;
+          break;
       }
 
-      packMcmData.pack.pack_format = packFormat;
+      mcMetaData.pack.pack_format = packFormat;
 
-      parsedZip.file("pack.mcmeta", JSON.stringify(packMcmData));
+      let supportedFormats = mcMetaData.pack.supported_formats;
+      if (typeof supportedFormats !== "undefined") {
+        if (isObject(supportedFormats) as {}) {
+          if (supportedFormats.max_inclusive > packFormat) return;
+          supportedFormats.max_inclusive = packFormat;
+        }
+
+        if (isNumber(supportedFormats)) {
+          if (supportedFormats > packFormat) return;
+          supportedFormats = packFormat;
+        }
+
+        if (isArray(supportedFormats)) {
+          if (supportedFormats[1] > packFormat) return;
+          supportedFormats = packFormat;
+        }
+      }
+
+      parsedZip.file("pack.mcmeta", JSON.stringify(mcMetaData));
 
       let final = await parsedZip.generateAsync({ type: "base64" });
       var clickMePlz = document.createElement("a");
