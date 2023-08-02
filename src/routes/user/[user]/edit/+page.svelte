@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { roles } from "$lib/globals/consts";
+  import { roleNames } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
   import { authed, user } from "$lib/globals/stores";
   import { onMount } from "svelte";
@@ -99,7 +99,7 @@
           class="h-10 rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-stone-800 dark:text-white">
           <option value="{data.profile?.role}" selected
             >{data.profile?.role}</option>
-          {#each roles as r}
+          {#each roleNames as r}
             {#if r != data.profile?.role}
               <option value="{r}" selected>{title(r)}</option>
             {/if}

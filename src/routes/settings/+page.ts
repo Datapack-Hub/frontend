@@ -1,24 +1,18 @@
 import { browser } from "$app/environment";
-import { API } from "$lib/globals/consts";
 import { fetchAuthed } from "$lib/globals/functions";
-import { roleSchema, userSchema } from "$lib/globals/schema";
+import { userSchema } from "$lib/globals/schema";
+import { roles } from "$lib/globals/stores";
+import { get } from "svelte/store";
 import type { PageLoad } from "./$types";
 
-export const load = (async ({ fetch }) => {
+export const load = (async () => {
   if (browser) {
-    const [meRes, roleRes] = await Promise.all([
-      fetchAuthed("GET", "/user/me"),
-      fetch(`${API}/user/staff/roles`)
-    ]);
-
-    const [profile, role] = await Promise.all([
-      userSchema.parseAsync(await meRes.json()),
-      roleSchema.array().parseAsync((await roleRes.json()).roles)
-    ]);
+    const meRes = await fetchAuthed("GET", "/user/me");
+    const profile = await userSchema.parseAsync(await meRes.json()),
 
     return {
       profile: profile,
-      role: role.find(v => {
+      role: get(roles).find(v => {
         profile.role == v.name;
       })
     };

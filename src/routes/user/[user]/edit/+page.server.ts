@@ -1,21 +1,18 @@
 import { browser } from "$app/environment";
-import { API } from "$lib/globals/consts";
-import type { Role } from "$lib/globals/schema";
+import { serverFetchAuthed } from "$lib/globals/functions";
 import { userSchema } from "$lib/globals/schema";
-import { roleInfo } from "$lib/globals/stores";
+import { roleInfo, roles } from "$lib/globals/stores";
 import { error } from "@sveltejs/kit";
 import { get } from "svelte/store";
 import type { PageServerLoad } from "./$types";
-import { serverFetchAuthed } from "$lib/globals/functions";
 
 export const load = (async ({ params, cookies }) => {
   if (browser) {
     const defaultRole = get(roleInfo);
 
-    const [user, me, roles] = await Promise.all([
+    const [user, me] = await Promise.all([
       serverFetchAuthed("get", "/user/" + params.user, cookies),
       serverFetchAuthed("get", "/user/me", cookies),
-      fetch(`${API}/user/staff/roles`)
     ]);
 
     const [userJson, meJson] = await Promise.all([
@@ -23,9 +20,9 @@ export const load = (async ({ params, cookies }) => {
       userSchema.parseAsync(await me.json())
     ]);
 
-    if ([user, me, roles].every(r => r.ok)) {
-      const profileRole: Role = (await roles.json()).roles.find(
-        (v: Role) => v.name == userJson?.role
+    if ([user, me].every(r => r.ok)) {
+      const profileRole = get(roles).find(
+        v => v.name == userJson?.role
       );
 
       if (

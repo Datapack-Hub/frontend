@@ -3,17 +3,16 @@
   import { goto } from "$app/navigation";
   import { API, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed, isModOrAbove } from "$lib/globals/functions";
-  import { authed, roleInfo, user } from "$lib/globals/stores";
+  import { authed, roleInfo, roles, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
-  // Component imports
+// Component imports
   import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import {
     commentSchema,
     type DPHComment,
     type Project,
-    type Role,
     type Version
   } from "$lib/globals/schema";
   import MultiSelect from "svelte-multiselect";
@@ -34,19 +33,18 @@
   import IconCross from "~icons/tabler/X.svelte";
 
   import { title } from "radash";
+  import BhAdvert from "../decorative/BHAdvert.svelte";
   import Button from "../decorative/Button.svelte";
   import CasualLine from "../decorative/CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import UserCard from "../user/UserCard.svelte";
   import Comment from "./Comment.svelte";
-  import BhAdvert from "../decorative/BHAdvert.svelte";
 
   // we need to split this up more or something jeez
 
   // Component args
   export let project: Project;
   export let datapackVersions: Version[];
-  export let roles: Role[];
   export let comments: DPHComment[];
 
   // Local vars
@@ -63,14 +61,9 @@
   let reportMsg = "";
   let matches: Version[] = [];
   let stitchedVersions: string;
-  let body = "";
   let featureDur: string;
   let comment: string;
   let innerWidth: number;
-
-  if (project?.body) {
-    body = project.body;
-  }
 
   // Version filtering
   $: versionMatches =
@@ -388,7 +381,7 @@
     <div class="w-full rounded-xl bg-slate-200 p-3 dark:bg-slate-50/10">
       <p class="w-full leading-tight break-words">
         <MarkdownComponent
-          source="{body}"
+          source="{project.body}"
           classes="prose-img:my-0 prose-p:my-0 prose-headings:mb-2 prose-ul:my-3" />
       </p>
     </div>
@@ -553,7 +546,7 @@
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
   <UserCard
     person="{project.author}"
-    role="{roles?.find(v => project.author?.role == v.name)}" />
+    role="{$roles.find(v => project.author?.role == v.name)}" />
   <div class="mb-2 min-w-fit items-center">
     <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
       Select Action
@@ -599,7 +592,7 @@
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">Author</p>
   <UserCard
     person="{project.author}"
-    role="{roles?.find(v => project.author?.role == v.name)}" />
+    role="{$roles.find(v => project.author?.role == v.name)}" />
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
     Report Message
   </p>
@@ -621,7 +614,7 @@
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">Author</p>
   <UserCard
     person="{project.author}"
-    role="{roles?.find(v => project.author?.role == v.name)}" />
+    role="{$roles.find(v => project.author?.role == v.name)}" />
   <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
     Duration of feature
   </p>

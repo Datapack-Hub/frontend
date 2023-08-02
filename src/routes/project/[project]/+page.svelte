@@ -30,14 +30,13 @@
   class=" bg-slate-50 px-0 pb-64 transition-all dark:bg-stone-900 sm:px-8 md:px-16 lg:px-24">
   <div class="md:pt-20"></div>
   <div class="flex flex-col lg:flex-row w-full px-4">
-    {#if data.project && data.versions && data.roles}
+    {#if data.project && data.versions}
       <!--Project Meta-->
       <ProjectInfo project="{data.project}" />
       <!--Main-->
       <ProjectBody
         project="{data.project}"
         datapackVersions="{data.versions}"
-        roles="{data.roles}"
         comments="{data.comments}" />
     {/if}
   </div>

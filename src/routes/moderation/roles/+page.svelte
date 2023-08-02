@@ -1,9 +1,8 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { fetchAuthed } from "$lib/globals/functions";
+  import type { Role } from "$lib/globals/schema";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
-  import type { Role } from "$lib/globals/schema";
   import { title } from "radash";
 
   let rolesJson: Role[];
@@ -12,9 +11,6 @@
     if ($user.role == "default") {
       goto("/");
     }
-
-    let roles = await fetchAuthed("get", "/user/staff/roles");
-    rolesJson = (await roles.json())["roles"];
   }
 </script>
 
