@@ -29,7 +29,7 @@ export const load = (async ({ params, fetch }) => {
       });
     }
 
-    const projectResponseJson = await projects.json()
+    const projectResponseJson = await projects.json();
 
     const [profileJson, projectJson] = await Promise.all([
       userSchema.parseAsync(await user.json()),

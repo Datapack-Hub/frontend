@@ -22,11 +22,12 @@
     if (source) {
       let worker = new MKDWorker();
       worker.postMessage([source, limitedMode]);
-      worker.addEventListener("message",  message => {
+      worker.addEventListener("message", message => {
         if (typeof message.data == "string") html = message.data;
       });
+    } else {
+      html = "";
     }
-    else {html = "";}
   });
 
   afterNavigate(() => {
@@ -40,8 +41,9 @@
       worker.addEventListener("message", message => {
         if (typeof message.data == "string") html = message.data;
       });
+    } else {
+      html = "";
     }
-    else {html = "";}
   });
 </script>
 

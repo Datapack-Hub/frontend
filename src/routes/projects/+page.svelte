@@ -45,11 +45,9 @@
       `${API}/projects/?sort=${sort.toLowerCase()}`
     );
 
-    let resultJson = await searchResult.json()
+    let resultJson = await searchResult.json();
 
-    dataCopy = await projectSchema
-      .array()
-      .parseAsync(resultJson.result);
+    dataCopy = await projectSchema.array().parseAsync(resultJson.result);
   }
 </script>
 

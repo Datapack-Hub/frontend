@@ -13,8 +13,8 @@ export const load = (async ({ fetch }) => {
       fetch(`${API}/user/staff/helper`)
     ]),
     async response => {
-      const responseJson = await response.json()
-      return await userSchema.array().parseAsync(responseJson.values)
+      const responseJson = await response.json();
+      return await userSchema.array().parseAsync(responseJson.values);
     }
   );
 

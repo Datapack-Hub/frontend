@@ -28,7 +28,7 @@ export async function serverFetchAuthed(
   url: string,
   cookies: Cookies,
   data: object | undefined = undefined,
-  headers: HeadersInit | undefined = undefined,
+  headers: HeadersInit | undefined = undefined
 ): Promise<Response> {
   const cookie = cookies.get("dph_token");
 
@@ -40,8 +40,8 @@ export async function serverFetchAuthed(
       ...(cookie == undefined
         ? undefined
         : { Authorization: `Basic ${cookie}` }),
-      ...headers,
-    },
+      ...headers
+    }
   });
 
   if (response.status == 401) cookies.delete("dph_token");
@@ -62,7 +62,7 @@ export async function fetchAuthed(
   method: string,
   url: string,
   data: object | undefined = undefined,
-  headers: HeadersInit | undefined = undefined,
+  headers: HeadersInit | undefined = undefined
 ): Promise<Response> {
   const cookie = getCookie("dph_token");
 
@@ -74,8 +74,8 @@ export async function fetchAuthed(
       ...(cookie == undefined
         ? undefined
         : { Authorization: `Basic ${cookie}` }),
-      ...headers,
-    },
+      ...headers
+    }
   });
 
   if (response.status == 401) removeCookie("dph_token");

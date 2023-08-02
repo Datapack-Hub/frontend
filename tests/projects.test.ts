@@ -12,8 +12,8 @@ test.beforeEach(async ({ page }) => {
       {
         name: "dph_token",
         value: token,
-        url: "https://localhost:4173/",
-      },
+        url: "https://localhost:4173/"
+      }
     ]);
     await page.reload();
   }
@@ -29,7 +29,7 @@ test("project page tabs work", async ({ page }) => {
   const tabs = [
     page.getByLabel("Description"),
     page.getByLabel("Comments"),
-    page.getByLabel("Download"),
+    page.getByLabel("Download")
   ];
 
   let pageContent = await page.content();

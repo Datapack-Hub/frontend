@@ -17,8 +17,7 @@
         Promise.resolve(click()).then(() => (disabled = false));
       }
     } else {
-      if (click !== undefined && typeof click != "string")
-        await click();
+      if (click !== undefined && typeof click != "string") await click();
     }
   }
 </script>

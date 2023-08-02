@@ -3,7 +3,12 @@
   import { goto } from "$app/navigation";
   import { API, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed, isModOrAbove } from "$lib/globals/functions";
-  import { authed, moderatorOrAboveles, roleInfo, user } from "$lib/globals/stores";
+  import {
+    authed,
+    moderatorOrAboveles,
+    roleInfo,
+    user
+  } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
   // Component imports
@@ -211,7 +216,7 @@
       }).then(async response => {
         if (response.ok) {
           let newComments = await fetch(API + "/comments/thread/" + project.ID);
-          let newCommentsJson = await newComments.json()
+          let newCommentsJson = await newComments.json();
           let parsedComments = await commentSchema
             .array()
             .parseAsync(newCommentsJson.result);
@@ -305,7 +310,8 @@
               moduleModal.open();
             }}"
             use:tippy="{{ content: 'Deny', placement: 'bottom' }}"
-            ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>moderatorOrAbove
+            ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button
+          >moderatorOrAbove
           <button
             class="button-base space-x-1"
             aria-label="Moderate"

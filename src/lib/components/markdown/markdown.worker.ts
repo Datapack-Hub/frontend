@@ -6,7 +6,9 @@ onmessage = message => {
   const renderer = new Renderer();
 
   renderer.link = (href, _, text) => {
-    return href?.startsWith("https://datapackhub.net") ? `<a href="${href}" target="_blank">${text}</a>` : `<a href="https://datapackhub.net/linkout?url=${href}" target="_blank">${text}</a>`;
+    return href?.startsWith("https://datapackhub.net")
+      ? `<a href="${href}" target="_blank">${text}</a>`
+      : `<a href="https://datapackhub.net/linkout?url=${href}" target="_blank">${text}</a>`;
   };
 
   if (limited) {

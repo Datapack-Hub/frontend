@@ -12,8 +12,8 @@ test.beforeEach(async ({ page }) => {
       {
         name: "dph_token",
         value: token,
-        url: "https://localhost:4173/",
-      },
+        url: "https://localhost:4173/"
+      }
     ]);
     await page.reload();
   }
@@ -34,7 +34,7 @@ test("all pages load", async ({ page }) => {
     "/settings",
     "/install",
     "/login",
-    "/",
+    "/"
   ];
 
   for (const p of pages) {

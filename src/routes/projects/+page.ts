@@ -13,11 +13,11 @@ export const load = (async ({ fetch, url }) => {
     2,
     await Promise.all([
       fetch(`${API}/projects/?page=${page}`),
-      fetch(`${API}/projects/featured`),
+      fetch(`${API}/projects/featured`)
     ]),
-    async (response) => {
-      const responseJson = await response.json()
-      return responseJson.result
+    async response => {
+      const responseJson = await response.json();
+      return responseJson.result;
     }
   );
 
@@ -28,6 +28,6 @@ export const load = (async ({ fetch, url }) => {
     projects: data,
     pages: count,
     featured: shuffle(await projectSchema.array().parseAsync(featured)),
-    page: page,
+    page: page
   };
 }) satisfies PageLoad;

@@ -29,9 +29,7 @@
     : version.minecraft_versions;
   let dlModal: Modal;
 
-  function openDownloadModal(
-    type?: "datapack" | "resourcepack" | undefined
-  ) {
+  function openDownloadModal(type?: "datapack" | "resourcepack" | undefined) {
     if (!type || !mcVersion) return dlModal.open();
     if (type == "datapack")
       return download(

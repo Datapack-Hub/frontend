@@ -1,6 +1,6 @@
 import { API } from "$lib/globals/consts";
 import { serverFetchAuthed } from "$lib/globals/functions";
-import { type Role, roleSchema, userSchema } from "$lib/globals/schema";
+import { roleSchema, userSchema, type Role } from "$lib/globals/schema";
 import { parallel } from "radash";
 import type { LayoutServerLoad } from "./$types";
 
@@ -12,9 +12,9 @@ export const load = (async ({ cookies }) => {
       2,
       await Promise.all([
         serverFetchAuthed("get", "/user/me", cookies),
-        fetch(`${API}/user/staff/roles`),
+        fetch(`${API}/user/staff/roles`)
       ]),
-      async (response) => await response.json(),
+      async response => await response.json()
     );
 
     const user = await userSchema.parseAsync(userResponse);
@@ -26,7 +26,7 @@ export const load = (async ({ cookies }) => {
 
     return {
       user,
-      role,
+      role
     };
   }
 }) satisfies LayoutServerLoad;
