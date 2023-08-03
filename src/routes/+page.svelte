@@ -111,9 +111,9 @@
   <div
     class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 rounded-lg">
     <b class="text-lg mb-2">Datapack Hub is in early beta.</b><br />
-    Many features are incomplete or do not work as expected. In these early
-    stages, there is likely going to be lots of downtime. All projects will stay
-    after the beta period, unless you don't want that.
+    Many features are incomplete or do not work as expected. In these early stages,
+    there is likely going to be lots of downtime. All projects will stay after the
+    beta period, unless you don't want that.
   </div>
   <div class="pt-20 lg:pt-0"></div>
   <section

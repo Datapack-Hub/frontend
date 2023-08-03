@@ -8,7 +8,8 @@
 </script>
 
 <a href="/user/{person?.username.toLowerCase()}">
-  <div class="my-2 flex w-full rounded-xl bg-slate-200 p-2 dark:bg-stone-800 hover:brightness-90 transition-all">
+  <div
+    class="my-2 flex w-full rounded-xl bg-slate-200 p-2 dark:bg-stone-800 hover:brightness-90 transition-all">
     <img
       loading="lazy"
       src="{person?.profile_icon}?size=64"
@@ -33,7 +34,7 @@
             width="18" />Datapack Hub Team
         {/if}
       </span>
-      <MarkdownComponent source="{person?.bio}" classes={""} />
+      <MarkdownComponent source="{person?.bio}" classes="{''}" />
     </div>
   </div>
 </a>

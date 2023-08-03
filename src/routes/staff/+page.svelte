@@ -32,11 +32,11 @@
     <ul>
       {#if visible}
         {#each data.staff ?? [] as person, index}
-        <li in:fly="{{ y: -200, duration: 500, delay: index * 75 }}">
-          <UserCard
-          {person}
-          role="{$roles?.find(v => person.role == v.name)}" />
-        </li>
+          <li in:fly="{{ y: -200, duration: 500, delay: index * 75 }}">
+            <UserCard
+              {person}
+              role="{$roles?.find(v => person.role == v.name)}" />
+          </li>
         {/each}
       {/if}
     </ul>
