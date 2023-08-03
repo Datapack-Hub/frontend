@@ -13,6 +13,7 @@
   import IconDelete from "~icons/tabler/Trash.svelte";
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import Reply from "./Reply.svelte";
+  import { sort } from "radash";
 
   export let comment: DPHComment;
   export let project: Project;
@@ -105,7 +106,7 @@
               ><IconDexpand /><span>Hide Replies</span></button>
             <div>
               <ul class="w-full">
-                {#each comment.replies ?? [] as reply}
+                {#each sort(comment.replies, r => r.sent) ?? [] as reply}
                   <Reply {reply} />
                 {/each}
               </ul>
@@ -125,6 +126,7 @@
                   placeholder="Leave a reply" />
                 <input
                   on:click="{reply}"
+                  on:submit="{reply}"
                   type="submit"
                   class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50"
                   disabled="{wait}"
@@ -157,7 +159,8 @@
             role="checkbox"
             aria-checked="{expanded}"
             class="cursor-pointer"
-            on:click="{() => (expanded = !expanded)}">
+            on:click="{() => (expanded = !expanded)}"
+            on:pointerleave="{() => (expanded = false)}">
             {#if !expanded}
               <IconExpand
                 class="ml-auto"

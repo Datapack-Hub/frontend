@@ -32,7 +32,7 @@
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
 
-  import { title } from "radash";
+  import { sort, title } from "radash";
   import BhAdvert from "../decorative/BHAdvert.svelte";
   import Button from "../decorative/Button.svelte";
   import CasualLine from "../decorative/CasualLine.svelte";
@@ -528,7 +528,7 @@
                 formText="{'Post'}" />
             </form>
             {#key comments}
-              {#each comments as cmt}
+              {#each sort(comments, c => c.sent, true) as cmt}
                 <Comment comment="{cmt}" {project} />
               {/each}
             {/key}
