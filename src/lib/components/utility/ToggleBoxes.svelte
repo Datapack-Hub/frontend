@@ -19,7 +19,7 @@
       return;
     }
 
-    if(clicked) {
+    if (clicked) {
       clicked = false;
       selected.update(array => array.filter(v => v != value));
       dispatch("fail");

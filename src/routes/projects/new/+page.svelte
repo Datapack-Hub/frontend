@@ -43,7 +43,6 @@
   }
 
   async function create() {
-
     let projData = {
       icon: iconB64?.toString(),
       type: "datapack",
