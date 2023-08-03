@@ -1,7 +1,5 @@
-import { browser } from "$app/environment";
-import { roleSchema, type Role, type User } from "$lib/globals/schema";
-import { readable, writable, type Writable } from "svelte/store";
-import { API } from "./consts";
+import { type Role, type User } from "$lib/globals/schema";
+import { writable } from "svelte/store";
 
 export const isDark = writable(true);
 export const authed = writable(false);
@@ -10,7 +8,7 @@ export const consoleWarned = writable(false);
 /**
  * Contains all basic information about you (other than sensitive data)
  */
-export const user: Writable<User> = writable({
+export const user = writable<User>({
   id: -1,
   username: "",
   bio: "",
@@ -22,7 +20,7 @@ export const user: Writable<User> = writable({
 /**
  * Contains all information about your role
  */
-export const roleInfo: Writable<Role> = writable({
+export const roleInfo = writable<Role>({
   name: "default",
   verified: false,
   permissions: []
@@ -31,11 +29,4 @@ export const roleInfo: Writable<Role> = writable({
 /**
  * Contains all information about all roles
  */
-export const roles = readable<Role[]>([], set => {
-  if (browser)
-    fetch(`${API}/user/staff/roles`).then(resp =>
-      resp.json().then(parsed => {
-        set(roleSchema.array().parse(parsed.roles));
-      })
-    );
-});
+export const roles = writable<Role[]>([]);

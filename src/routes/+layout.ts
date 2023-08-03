@@ -1,7 +1,15 @@
 import { browser, dev } from "$app/environment";
 import { goto } from "$app/navigation";
+import { API } from "$lib/globals/consts";
 import { loadColorPref } from "$lib/globals/functions";
-import { authed, consoleWarned, roleInfo, user } from "$lib/globals/stores";
+import { roleSchema } from "$lib/globals/schema";
+import {
+  authed,
+  consoleWarned,
+  roleInfo,
+  roles,
+  user
+} from "$lib/globals/stores";
 import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
 
@@ -35,9 +43,14 @@ export const load = (async ({ url, data }) => {
       consoleWarned.set(true);
     }
 
+    const rolesResponse = await fetch(`${API}/user/staff/roles`);
+    const rolesJson = await rolesResponse.json();
+    const rolesObject = await roleSchema.array().parseAsync(rolesJson.roles);
+
     if (data.role !== undefined && data.user !== undefined) {
       user.set(data.user);
       roleInfo.set(data.role);
+      roles.set(rolesObject);
       authed.set(true);
     }
     loadColorPref();
