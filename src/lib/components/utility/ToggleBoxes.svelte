@@ -13,15 +13,17 @@
 
   // way more complex than needed
   function toggleClicked() {
-    if ($selected.length < limit) {
-      clicked = !clicked;
+    clicked = !clicked;
+    if (!clicked || $selected.length < limit) {
       selected.update(array => toggle(array, value));
       return;
     }
 
-    clicked = false;
-    selected.update(array => array.filter(v => v != value));
-    dispatch("fail");
+    if(clicked) {
+      clicked = false;
+      selected.update(array => array.filter(v => v != value));
+      dispatch("fail");
+    }
   }
 </script>
 

@@ -43,6 +43,7 @@
   }
 
   async function create() {
+
     let projData = {
       icon: iconB64?.toString(),
       type: "datapack",
@@ -101,12 +102,13 @@
   <h1 class="text-slate-950 dark:text-slate-100 text-3xl font-bold mb-4">
     Create New Datapack
   </h1>
+  <p class="text-slate-950 dark:text-slate-100 ml-3">Logo</p>
   <div
     class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2">
     <div
-      class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2 xl:col-span-1">
+      class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2">
       <div
-        class="bg-slate-300 dark:bg-stone-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
+        class="bg-slate-300 dark:bg-stone-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white hover:brightness-75 cursor-pointer transition-all">
         <label class="w-full h-full flex items-center justify-center">
           <img
             src="{iconImg}"
