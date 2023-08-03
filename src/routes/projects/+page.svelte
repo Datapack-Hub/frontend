@@ -80,7 +80,7 @@
       <div class="block mt-2 sm:mt-0 sm:flex space-x-2 items-center">
         <p class="dark:text-white text-center">Sort By:</p>
         <select
-          class="flex h-8 pl-3 items-center rounded-full bg-slate-200 px-2 py-1 focus-within:outline focus-within:outline-2 focus-within:outline-dph-orange dark:bg-stone-700 dark:text-white"
+          class="flex h-8 pl-2 items-center rounded-full bg-slate-200 py-1 px-2 focus-within:outline focus-within:outline-2 focus-within:outline-dph-orange dark:bg-stone-700 dark:text-white border-r-8 border-slate-200 dark:border-stone-700"
           bind:value="{sort}"
           on:change="{resort}">
           {#each ["Updated", "Downloads"] as cat}
