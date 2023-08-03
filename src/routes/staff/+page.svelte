@@ -29,15 +29,18 @@
       You will be able to recognise them by their orange or blue verification
       check marks.
     </p>
-    {#if visible}
-      {#each data.staff ?? [] as person, index}
-        <div in:fly="{{ y: -200, duration: 500, delay: index * 75 }}">
+    <ul>
+      {#if visible}
+        {#each data.staff ?? [] as person, index}
+        <li in:fly="{{ y: -200, duration: 500, delay: index * 75 }}">
           <UserCard
-            {person}
-            role="{$roles?.find(v => person.role == v.name)}" />
-        </div>
-      {/each}
-    {/if}
+          {person}
+          role="{$roles?.find(v => person.role == v.name)}" />
+        </li>
+        {/each}
+      {/if}
+    </ul>
+
     <p class="text-slate-950 dark:text-white">
       <b>Want to become staff?</b> We don't take applications for staff, so don't
       ask. However, the admins will notice you if you're active and helpful around

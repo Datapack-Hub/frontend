@@ -7,8 +7,8 @@ onmessage = message => {
 
   renderer.link = (href, _, text) => {
     return href?.startsWith("https://datapackhub.net")
-      ? `<a href="${href}" target="_blank">${text}</a>`
-      : `<a href="https://datapackhub.net/linkout?url=${href}" target="_blank">${text}</a>`;
+      ? `<a href="${href}" target="_blank" class="break-all">${text}</a>`
+      : `<a href="https://datapackhub.net/linkout?url=${href}" target="_blank" class="break-all">${text}</a>`;
   };
 
   if (limited) {

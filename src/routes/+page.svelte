@@ -111,7 +111,7 @@
   <div
     class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 rounded-lg">
     <b class="text-lg mb-2">Datapack Hub is in early beta.</b><br />
-    Many featuresponse are incomplete or do not work as expected. In these early
+    Many features are incomplete or do not work as expected. In these early
     stages, there is likely going to be lots of downtime. All projects will stay
     after the beta period, unless you don't want that.
   </div>
@@ -163,11 +163,11 @@
   <section
     class="w-full bg-slate-200 dark:bg-stone-800/20 flex flex-col justify-center items-center py-32">
     <h1
-      class="fadeTextAnime opacity-0 font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl mx-4">
+      class="fadeTextAnime opacity-0 font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
-      class="mt-16 grid grid-cols-1 lg:grid-cols-2 w-3/4 xl:w-2/3 2xl:w-1/2 gap-3">
+      class="mt-16 grid grid-cols-1 lg:grid-cols-2 p-4 w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2 gap-3">
       <div
         class="fadeTextAnime opacity-0 col-span-2 p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
         <h2

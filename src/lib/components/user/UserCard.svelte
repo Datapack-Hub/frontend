@@ -8,7 +8,7 @@
 </script>
 
 <a href="/user/{person?.username.toLowerCase()}">
-  <div class="my-2 flex w-full rounded-xl bg-slate-200 p-2 dark:bg-stone-800">
+  <div class="my-2 flex w-full rounded-xl bg-slate-200 p-2 dark:bg-stone-800 hover:brightness-90 transition-all">
     <img
       loading="lazy"
       src="{person?.profile_icon}?size=64"
@@ -17,12 +17,10 @@
       width="64"
       height="64" />
     <div>
-      <a href="/user/{person?.username.toLowerCase()}">
-        <h1 class="mr-2 text-xl font-bold text-slate-950 dark:text-white">
-          {person?.username}
-        </h1>
-      </a>
-      <span class=" font-bold" style="color:{role?.color};">
+      <h1 class="text-xl font-bold text-slate-950 dark:text-white">
+        {person?.username}
+      </h1>
+      <span class="font-bold" style="color:{role?.color};">
         {#if person?.role != "admin"}
           {title(person?.role)}
         {:else}
@@ -35,7 +33,7 @@
             width="18" />Datapack Hub Team
         {/if}
       </span>
-      <MarkdownComponent source="{person?.bio}" classes="{'line-clamp-1'}" />
+      <MarkdownComponent source="{person?.bio}" classes={""} />
     </div>
   </div>
 </a>

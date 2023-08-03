@@ -42,13 +42,13 @@
         {project.title}
       </a>
       <div
-        class="flex space-x-2 items-center text-xs text-slate-950/40 dark:text-slate-100">
+        class="flex gap-1 items-center text-xs text-slate-950/40 dark:text-slate-100 mt-2">
         <img
           src="{author.profile_icon}&size=32"
           alt="{author.username}'s profile"
-          class="h-6 rounded-full"
-          height="24"
-          width="24" />
+          class="h-4 rounded-full"
+          height="16"
+          width="16" />
         <a
           href="/user/{author.username.toLowerCase()}"
           class="block"
