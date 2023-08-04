@@ -1,5 +1,4 @@
 <script lang="ts">
-
   export let style: "primary" | "secondary" | "boring" | "alt" | "sm" | "base" =
     "primary";
   export let click: string | (() => void) | (() => Promise<void>) | undefined =
