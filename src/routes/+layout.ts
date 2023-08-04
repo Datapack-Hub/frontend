@@ -47,7 +47,7 @@ export const load = (async ({ url, data }) => {
     const rolesJson = await rolesResponse.json();
     const rolesObject = await roleSchema.array().parseAsync(rolesJson.roles);
 
-    if (data.role !== undefined && data.user !== undefined) {
+    if (data && data.role && data.user) {
       user.set(data.user);
       roleInfo.set(data.role);
       roles.set(rolesObject);
