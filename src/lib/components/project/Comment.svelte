@@ -173,7 +173,10 @@
           {#if expanded}
             <div
               class="absolute right-0 top-8 p-2 bg-stone-600 rounded-lg space-y-1"
-              on:pointerleave="{debounce({ delay: 300 }, () => expanded = false)}">
+              on:pointerleave="{debounce(
+                { delay: 300 },
+                () => (expanded = false)
+              )}">
               <button
                 class="flex items-center space-x-1 p-0.5 px-1 cursor-pointer rounded-lg hover:bg-stone-600 text-xs"
                 on:click="{del}">
