@@ -30,14 +30,14 @@
     dateStyle: "short"
   });
 
-  async function reply() {
+  async function sendReply() {
     wait = true;
     if (replyMessage.length === 0) {
       wait = false;
       toast.error("Comment field is empty!");
       return;
     }
-    const cmt = await fetchAuthed(
+    const commentPost = await fetchAuthed(
       "POST",
       `/comments/thread/${project.ID}/post`,
       {
@@ -45,7 +45,7 @@
         parent_id: comment.id
       }
     );
-    if (cmt.ok) {
+    if (commentPost.ok) {
       toast.success("Comment posted!");
       let newComment = await fetch(API + "/comments/id/" + comment.id);
       let parsedComments = await commentSchema.parseAsync(
@@ -60,7 +60,7 @@
     toast.error("There was an error.");
   }
 
-  async function del() {
+  async function deleteReply() {
     visible = false;
     const cmt = await fetchAuthed("DELETE", `/comments/id/${comment.id}`);
     if (cmt.ok) {
@@ -115,7 +115,7 @@
 
               <form
                 class="flex items-center space-x-2 mt-3"
-                on:submit="{reply}">
+                on:submit|preventDefault="{sendReply}">
                 <img
                   src="{$user.profile_icon}"
                   alt="Your profile"
@@ -126,16 +126,17 @@
                   required
                   class="p-1 rounded-md dark:bg-stone-900 px-2 text-white focus:transition-all"
                   placeholder="Leave a reply" />
-                <input
+                <button
                   type="submit"
                   class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50"
-                  disabled="{wait}"
-                  value="Post" />
+                  disabled="{wait}">Post</button>
               </form>
             </div>
           {/if}
         {:else}
-          <div class="flex items-center space-x-2 mt-3">
+          <form
+            class="flex items-center space-x-2 mt-3"
+            on:submit|preventDefault="{sendReply}">
             <img
               src="{$user.profile_icon}"
               alt="Your profile"
@@ -147,10 +148,10 @@
               class="p-1 rounded-md dark:bg-stone-900 px-2 text-white focus:transition-all"
               placeholder="Leave the first reply" />
             <button
-              on:click="{reply}"
+              type="submit"
               class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50"
               disabled="{wait}">Post</button>
-          </div>
+          </form>
         {/if}
       </div>
       {#if $user.id == comment.author.id || $roleInfo.permissions.includes("DELETE_CONTENT")}
@@ -179,7 +180,7 @@
               )}">
               <button
                 class="flex items-center space-x-1 p-0.5 px-1 cursor-pointer rounded-lg hover:bg-stone-600 text-xs"
-                on:click="{del}">
+                on:click="{deleteReply}">
                 <IconDelete />
                 <p>Delete</p>
               </button>

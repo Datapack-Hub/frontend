@@ -6,7 +6,7 @@
   import { authed, roleInfo, roles, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
-  // Component imports
+// Component imports
   import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import {
@@ -49,21 +49,27 @@
 
   // Local vars
   let activePage = "description";
+  let moduleModalPage = "delete";
+
   let selectedVersions: string[] = [];
   let pickedVersion: string | undefined;
+  let stitchedVersions: string = "";
+  let matches: Version[] = [];
+
   let reportModal: Modal;
   let moduleModal: Modal;
   let featureModal: Modal;
-  let moduleModalPage = "delete";
+
   let status = project?.status;
   let del: HTMLDivElement;
   let postedModuleMessage = "";
   let reportMessage = "";
-  let matches: Version[] = [];
-  let stitchedVersions: string = "";
   let featureDur: string;
-  let comment: string;
+
   let innerWidth: number;
+
+  let comment: string;
+  let commentSending = false;
 
   // Version filtering
   $: versionMatches =
@@ -202,8 +208,11 @@
   }
 
   async function postComment() {
+    commentSending = true;
     if (comment.length === 0) {
-      return toast.error("Comment field is empty!");
+      commentSending = false;
+      toast.error("Comment field is empty!");
+      return;
     }
     toast.promise(
       fetchAuthed("POST", `/comments/thread/${project.ID}/post`, {
@@ -217,8 +226,10 @@
             .parseAsync(newCommentsJson.result);
           comments = parsedComments;
           comment = "";
+          commentSending = false;
           return;
         }
+        commentSending = false;
       }),
       {
         success: "Comment posted successfully!",
@@ -511,7 +522,9 @@
       <div class="rounded-xl bg-slate-200 p-3 dark:bg-slate-50/10">
         <div class="space-y-2" use:autoAnimate>
           {#if $authed}
-            <form class="flex items-center space-x-2" on:submit="{postComment}">
+            <form
+              class="flex items-center space-x-2"
+              on:submit|preventDefault="{postComment}">
               <img
                 src="{$user.profile_icon}"
                 alt="Your profile icon"
@@ -521,11 +534,10 @@
                 required
                 placeholder="Write a comment on {project.title} (markdown supported!)"
                 bind:value="{comment}" />
-              <Button
-                wait="{true}"
-                click="{postComment}"
-                formCompat="{true}"
-                formText="{'Post'}" />
+              <button
+                type="submit"
+                class="button-primary"
+                disabled="{commentSending}">Post</button>
             </form>
             {#key comments}
               {#each sort(comments, c => c.sent, true) as cmt}

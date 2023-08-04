@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { debounce } from "radash";
 
   export let style: "primary" | "secondary" | "boring" | "alt" | "sm" | "base" =
     "primary";
