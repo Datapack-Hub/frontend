@@ -15,19 +15,16 @@ export const load = (async ({ fetch, url }) => {
       fetch(`${API}/projects/?page=${page}`),
       fetch(`${API}/projects/featured`)
     ]),
-    async response => {
-      const responseJson = await response.json();
-      return responseJson.result;
-    }
+    async response => await response.json()
   );
 
-  const data = await projectSchema.array().parseAsync(projects);
+  const data = await projectSchema.array().parseAsync(projects.result);
   const count = Number.parseInt(projects.pages);
 
   return {
     projects: data,
     pages: count,
-    featured: shuffle(await projectSchema.array().parseAsync(featured)),
+    featured: shuffle(await projectSchema.array().parseAsync(featured.result)),
     page: page
   };
 }) satisfies PageLoad;

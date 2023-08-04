@@ -117,13 +117,13 @@
       {/if}
       <div class="block mt-2 sm:mt-0 sm:flex space-x-1 items-center">
         <p class="dark:text-white mr-2">Page:</p>
-        {#if data.page - 2 > 1}
+        {#if data.page - 2 >= 1}
           <a
             href="/projects?page={data.page - 2}"
             class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
             >{data.page - 2}</a>
         {/if}
-        {#if data.page - 1 > 1}
+        {#if data.page - 1 >= 1}
           <a
             href="/projects?page={data.page - 1}"
             class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
@@ -133,13 +133,13 @@
           href="/projects?page={data.page}"
           class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
           >{data.page}</a>
-        {#if data.page + 1 < data.pages}
+        {#if data.page + 1 <= data.pages}
           <a
             href="/projects?page={data.page + 1}"
             class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
             >{data.page + 1}</a>
         {/if}
-        {#if data.page + 2 < data.pages}
+        {#if data.page + 2 <= data.pages}
           <a
             href="/projects?page={data.page + 2}"
             class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"

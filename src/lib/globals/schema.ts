@@ -31,10 +31,21 @@ export const userSchema = z.object({
 export const projectSchema = z.object({
   ID: z.number(),
   author: z.object(userSchema.shape),
-  body: z.string(),
+  body: z.string().max(1e4),
   category: z.optional(z.array(z.string())),
+  dependencies: z.array(z.string()).nullish(),
   description: z.string(),
+  downloads: z.number(),
   icon: z.string().url().nullish(),
+  latest_version: z.optional(
+    z.object({
+      name: z.string(),
+      description: z.ostring(),
+      minecraft_versions: z.string(),
+      version_code: z.string()
+    })
+  ),
+  licence: z.string().nullish(),
   mod_message: z.string().nullish(),
   status: z.enum([
     "unpublished",
@@ -45,21 +56,10 @@ export const projectSchema = z.object({
     "publish_queue",
     "review_queue"
   ]),
-  title: z.string(),
+  title: z.string().max(35),
   type: z.enum(["datapack"]),
-  url: z.string(),
-  latest_version: z.optional(
-    z.object({
-      name: z.string(),
-      description: z.ostring(),
-      minecraft_versions: z.string(),
-      version_code: z.string()
-    })
-  ),
-  downloads: z.number(),
-  updated: z.number(),
-  licence: z.string().nullish(),
-  dependencies: z.array(z.string()).nullish()
+  updated: z.number().positive(),
+  url: z.string().regex(/[a-z-]+/)
 });
 
 export const notificationSchema = z.object({
@@ -117,13 +117,13 @@ export const commentSchema = z.object({
   id: z.number(),
   author: z.object(userSchema.shape),
   message: z.string(),
-  sent: z.number(),
+  sent: z.number().positive(),
   replies: z.array(
     z.object({
       id: z.number(),
       message: z.string(),
       author: z.object(userSchema.shape),
-      sent: z.number()
+      sent: z.number().positive()
     })
   )
 });

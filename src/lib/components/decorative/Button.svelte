@@ -1,8 +1,8 @@
 <script lang="ts">
-  export let style: "primary" | "secondary" | "boring" | "alt" | "sm" | "base" =
-    "primary";
-  export let click: string | (() => void) | (() => Promise<void>) | undefined =
-    undefined;
+  import { debounce } from "radash";
+
+  export let style: "primary" | "secondary" | "boring" | "alt" | "sm" | "base" = "primary";
+  export let click: string | (() => void) | (() => Promise<void>) | undefined = undefined;
   export let classes = "";
   export let wait = false;
   export let formCompat = false;
@@ -39,6 +39,7 @@
   <button
     on:click="{buttonClick}"
     aria-label="{label}"
+    {disabled}
     class="button-{style} {classes} disabled:bg-opacity-40">
     <slot />
   </button>

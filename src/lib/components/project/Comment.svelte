@@ -7,13 +7,13 @@
     type Project
   } from "$lib/globals/schema";
   import { roleInfo, roles, user } from "$lib/globals/stores";
+  import { debounce, sort } from "radash";
   import { toast } from "svelte-sonner";
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import Reply from "./Reply.svelte";
-  import { sort } from "radash";
 
   export let comment: DPHComment;
   export let project: Project;
@@ -34,7 +34,8 @@
     wait = true;
     if (replyMessage.length === 0) {
       wait = false;
-      return toast.error("Comment field is empty!");
+      toast.error("Comment field is empty!");
+      return;
     }
     const cmt = await fetchAuthed(
       "POST",
@@ -56,17 +57,18 @@
       return;
     }
     wait = false;
-    return toast.error("There was an error.");
+    toast.error("There was an error.");
   }
 
   async function del() {
     visible = false;
     const cmt = await fetchAuthed("DELETE", `/comments/id/${comment.id}`);
     if (cmt.ok) {
-      return toast.success("Comment removed!");
+      toast.success("Comment removed!");
+      return;
     }
     visible = true;
-    return toast.error("There was an error.");
+    toast.error("There was an error.");
   }
 </script>
 
@@ -125,8 +127,6 @@
                   class="p-1 rounded-md dark:bg-stone-900 px-2 text-white focus:transition-all"
                   placeholder="Leave a reply" />
                 <input
-                  on:click="{reply}"
-                  on:submit="{reply}"
                   type="submit"
                   class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50"
                   disabled="{wait}"
@@ -159,8 +159,7 @@
             role="checkbox"
             aria-checked="{expanded}"
             class="cursor-pointer"
-            on:click="{() => (expanded = !expanded)}"
-            on:pointerleave="{() => (expanded = false)}">
+            on:click="{() => (expanded = !expanded)}">
             {#if !expanded}
               <IconExpand
                 class="ml-auto"
@@ -173,7 +172,8 @@
           </button>
           {#if expanded}
             <div
-              class="absolute right-0 top-8 p-2 bg-stone-600 rounded-lg space-y-1">
+              class="absolute right-0 top-8 p-2 bg-stone-600 rounded-lg space-y-1"
+              on:pointerleave="{debounce({ delay: 300 }, () => expanded = false)}">
               <button
                 class="flex items-center space-x-1 p-0.5 px-1 cursor-pointer rounded-lg hover:bg-stone-600 text-xs"
                 on:click="{del}">
