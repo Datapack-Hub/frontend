@@ -14,11 +14,6 @@
     if (!browser) {
       return;
     }
-    const msp = await import("marked-smartypants");
-    const { marked } = await import("marked");
-
-    marked.use(msp.markedSmartypants());
-
     if (source) {
       let worker = new MKDWorker();
       worker.postMessage([source, limitedMode]);
