@@ -1,32 +1,27 @@
 import { API } from "$lib/globals/consts";
 import { serverFetchAuthed } from "$lib/globals/functions";
 import { roleSchema, userSchema, type Role } from "$lib/globals/schema";
-import { parallel } from "radash";
 import type { LayoutServerLoad } from "./$types";
 
 export const load = (async ({ cookies }) => {
   const cookie = cookies.get("dph_token");
 
+  const roleResponse = await fetch(`${API}/user/staff/roles`);
+  const rolesJson = await roleResponse.json();
   if (cookie) {
-    const [userResponse, roleResponse] = await parallel(
-      2,
-      await Promise.all([
-        serverFetchAuthed("get", "/user/me", cookies),
-        fetch(`${API}/user/staff/roles`)
-      ]),
-      async response => await response.json()
-    );
+    const userResponse = await serverFetchAuthed("get", "/user/me", cookies);
 
-    const user = await userSchema.parseAsync(userResponse);
+    const user = await userSchema.parseAsync(await userResponse.json());
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const role = roleSchema
       .array()
-      .parse(roleResponse.roles)
+      .parse(rolesJson.roles)
       .find((v: Role) => v.name == user.role)!;
 
     return {
       user,
-      role
+      role,
+      roles: rolesJson.roles
     };
   }
   return {};

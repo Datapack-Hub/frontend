@@ -1,8 +1,6 @@
 import { browser, dev } from "$app/environment";
 import { goto } from "$app/navigation";
-import { API } from "$lib/globals/consts";
 import { loadColorPref } from "$lib/globals/functions";
-import { roleSchema } from "$lib/globals/schema";
 import {
   authed,
   consoleWarned,
@@ -43,11 +41,7 @@ export const load = (async ({ url, data }) => {
       consoleWarned.set(true);
     }
 
-    const rolesResponse = await fetch(`${API}/user/staff/roles`);
-    const rolesJson = await rolesResponse.json();
-    const rolesObject = await roleSchema.array().parseAsync(rolesJson.roles);
-
-    roles.set(rolesObject);
+    roles.set(data.roles);
 
     if (data && data.role && data.user) {
       user.set(data.user);
