@@ -67,8 +67,7 @@
 <main
   id="main-content"
   class="flex flex-col lg:flex-row w-full items-center bg-slate-50 px-8 transition-all dark:bg-stone-900 md:items-start md:px-16 md:pt-32 lg:px-24">
-  <div
-    class="w-full lg:w-2/5 xl:w-1/3 p-6 rounded-lg">
+  <div class="w-full lg:w-2/5 xl:w-1/3 p-6 rounded-lg">
     <div
       class="mb-4 flex w-full flex-col mt-16 md:mt-0 items-center md:items-start">
       <div class="self-center">
@@ -188,7 +187,7 @@
       {/if}
       <CasualLine />
     </div>
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-2 ">
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-2">
       {#if data.projects?.length == 0}
         <p
           class="mt-24 text-center text-3xl text-slate-950/40 dark:text-white/40 md:mt-48 col-span-2">
@@ -202,7 +201,7 @@
     </div>
   </div>
 </main>
-<div class="py-3" />
+<div class="py-3"></div>
 
 <Modal bind:this="{moderateModal}">
   <h1 class="text-xl font-bold text-slate-950 dark:text-white">

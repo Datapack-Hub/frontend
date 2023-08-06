@@ -99,11 +99,12 @@
         class="mt-2 text-base text-slate-950/60 transition-all dark:text-white/60">
         {project?.description}
       </h2>
-      <p
-        class="flex items-center space-x-2 text-md my-2 dark:text-white">
+      <p class="flex items-center space-x-2 text-md my-2 dark:text-white">
         <IconCube />
         <span class="font-bold">Categories:</span>
-        <span>{#each project.category ?? [] as cat, i}{cat}{#if project.category?.length && project.category.length > 0 && i != project.category.length - 1}, {/if}{/each}</span>
+        <span
+          >{#each project.category ?? [] as cat, i}{cat}{#if project.category?.length && project.category.length > 0 && i != project.category.length - 1},
+            {/if}{/each}</span>
       </p>
       <div class="my-3">
         <CasualLine />
@@ -119,10 +120,10 @@
         class="flex items-center space-x-2 text-md mt-1 font-medium text-slate-950 dark:text-white">
         <IconUpdate />
         <span>
-          <b>Last updated:</b> {formatter.format((project?.updated ?? 0) * 1000)}
+          <b>Last updated:</b>
+          {formatter.format((project?.updated ?? 0) * 1000)}
         </span>
       </h1>
-
 
       <div class="mt-2">
         {#if ["unpublished", "draft"].includes(status)}
