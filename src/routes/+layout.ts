@@ -17,10 +17,10 @@ export const load = (async ({ url, data }) => {
   if (browser) {
     if (parameters.has("token")) {
       const newToken = parameters.get("token");
-      const expires = new Date();
+      const expiry = new Date();
 
-      expires.setTime(Date.now() + 30 * 24 * 60 * 60 * 1000);
-      document.cookie = `dph_token=${newToken}; expires=${expires.toUTCString()}`;
+      expiry.setTime(Date.now() + 30 * 8.64e7);
+      document.cookie = `dph_token=${newToken}; expires=${expiry.toUTCString()}`;
 
       goto("/");
     }
