@@ -15,6 +15,7 @@
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import type { Project, User } from "$lib/globals/schema";
   import { title } from "radash";
+  import CasualLine from "../decorative/CasualLine.svelte";
 
   // Component args
   export let project: Project;
@@ -56,8 +57,8 @@
     </a>
   </div>
   <div
-    class="rounded-xl border-slate-200 p-4 mb-2 bg-slate-200 dark:bg-slate-50/10">
-    <div class="max-w-fit items-center space-x-2 flex">
+    class="rounded-xl border-slate-200 p-4 mb-2 bg-slate-200 dark:bg-stone-800">
+    <div class="max-w-fit items-top space-x-3 flex">
       {#if project?.icon}
         <img
           src="{project?.icon}"
@@ -71,67 +72,71 @@
           <IconNoPhoto width="32" height="32" />
         </div>
       {/if}
-      <h1
-        class="flex items-center text-4xl font-bold text-slate-950 dark:text-white">
-        {project?.title}
-      </h1>
+      <div>
+        <h1
+          class="flex items-center text-3xl font-bold text-slate-950 dark:text-white">
+          {project?.title}
+        </h1>
+        <div class="flex items-center space-x-1 mt-1 min-w-fit">
+          <a
+            href="/user/{author?.username}"
+            class="flex items-center space-x-1">
+            <img
+              src="{author?.profile_icon}?size=32"
+              class="max-h-5 rounded-full"
+              alt="{author?.username}'s profile picture" />
+            <span
+              class="text-xs xl:text-sm text-slate-950 transition-all hover:underline dark:text-white"
+              in:fade="{{ duration: 250 }}">
+              {author?.username}
+            </span>
+          </a>
+        </div>
+      </div>
     </div>
     <div>
       <h2
         class="mt-2 text-base text-slate-950/60 transition-all dark:text-white/60">
         {project?.description}
       </h2>
+      <p
+        class="flex items-center space-x-2 text-md my-2 dark:text-white">
+        <IconCube />
+        <span class="font-bold">Categories:</span>
+        <span>{#each project.category ?? [] as cat, i}{cat}{#if project.category?.length && project.category.length > 0 && i != project.category.length - 1}, {/if}{/each}</span>
+      </p>
+      <div class="my-3">
+        <CasualLine />
+      </div>
+    </div>
+    <div>
       <h1
         class="flex items-center space-x-2 text-md mt-2 font-medium text-slate-950 dark:text-white">
         <IconDL />
-        <span>{project?.downloads} downloads</span>
+        <span><b>Downloads: </b>{project?.downloads}</span>
       </h1>
       <h1
-        class="flex items-center space-x-2 text-md mt-2 font-medium text-slate-950 dark:text-white">
+        class="flex items-center space-x-2 text-md mt-1 font-medium text-slate-950 dark:text-white">
         <IconUpdate />
         <span>
-          Last updated: {formatter.format((project?.updated ?? 0) * 1000)}
+          <b>Last updated:</b> {formatter.format((project?.updated ?? 0) * 1000)}
         </span>
       </h1>
-      {#if visible}
-        <div class="mt-4 flex items-center space-x-2 min-w-fit mb-4">
-          <a
-            href="/user/{author?.username}"
-            class="flex items-center space-x-2">
-            <img
-              src="{author?.profile_icon}?size=32"
-              class="max-h-8 rounded-full"
-              width="32"
-              height="32"
-              alt="{author?.username}'s profile picture" />
-            <span
-              class="text-xs md:text-sm xl:text-base text-slate-950 transition-all hover:underline dark:text-white"
-              in:fade="{{ duration: 250 }}">
-              {author?.username}
-            </span>
-          </a>
-        </div>
-        {#each project.category ?? [] as cat}
-          <span
-            class="flex items-center text-xs md:text-sm xl:text-base space-x-1 dark:text-white">
-            <IconCube />
-            <p>{cat}</p>
-          </span>
-        {/each}
-        <div class="mt-2">
-          {#if ["unpublished", "draft"].includes(status)}
-            <span class="text-stone-400">•</span>
-            <span class="text-stone-400 font-bold mt-2">{title(status)}</span>
-          {:else if ["disabled"].includes(status)}
-            <span class="text-red-400">•</span>
-            <span class="text-red-400 font-bold mt-2"
-              >{title(status.replaceAll("_", " "))}</span>
-          {:else if ["review_queue", "publish_queue"].includes(status)}
-            <span class="text-yellow-600">•</span>
-            <span class="text-yellow-600 font-bold pt-2">In Queue</span>
-          {/if}
-        </div>
-      {/if}
+
+
+      <div class="mt-2">
+        {#if ["unpublished", "draft"].includes(status)}
+          <span class="text-stone-400">•</span>
+          <span class="text-stone-400 font-bold mt-2">{title(status)}</span>
+        {:else if ["disabled"].includes(status)}
+          <span class="text-red-400">•</span>
+          <span class="text-red-400 font-bold mt-2"
+            >{title(status.replaceAll("_", " "))}</span>
+        {:else if ["review_queue", "publish_queue"].includes(status)}
+          <span class="text-yellow-600">•</span>
+          <span class="text-yellow-600 font-bold pt-2">In Queue</span>
+        {/if}
+      </div>
     </div>
   </div>
   {#if project?.mod_message}

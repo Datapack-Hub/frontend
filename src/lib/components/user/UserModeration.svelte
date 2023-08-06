@@ -168,8 +168,8 @@
   {:then}
     <Button
       style="base"
-      click="{() => moduleModal.open()}"
-      classes="mt-4 flex w-full items-center bg-slate-300 dark:bg-stone-600 modBtn">
+      click="{() => modModal.open()}"
+      classes="mt-4 flex w-full items-center bg-slate-300 dark:bg-stone-700">
       <IconShield width="24" height="24" class="float-left mr-2" />
       Moderate {user?.username}
     </Button>

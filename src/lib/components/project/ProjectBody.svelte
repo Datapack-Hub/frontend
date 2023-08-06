@@ -392,7 +392,7 @@
     </div>
   {/if}
   {#if activePage == "description"}
-    <div class="w-full rounded-xl bg-slate-200 p-3 dark:bg-slate-50/10">
+    <div class="w-full rounded-xl bg-slate-200 p-3 dark:bg-stone-800">
       <p class="w-full leading-tight break-words">
         <MarkdownComponent
           source="{project.body}"
@@ -401,7 +401,7 @@
     </div>
   {:else if activePage == "versions"}
     <div
-      class="mb-2 items-center rounded-xl bg-slate-200 p-3 dark:bg-slate-50/10">
+      class="mb-2 items-center rounded-xl bg-slate-200 p-3 dark:bg-stone-800">
       <div class="mb-3 text-sky-300" use:autoAnimate>
         <button on:click="{() => (activePage = 'description')}"
           ><IconBack class="inline" /> Back to description
@@ -442,7 +442,7 @@
     </div>
   {:else if activePage == "download"}
     <div class="mb-2 items-center space-y-2">
-      <div class="rounded-xl bg-slate-200 p-3 dark:bg-slate-50/10">
+      <div class="rounded-xl bg-slate-200 p-3 dark:bg-stone-800">
         <div class="mb-3 text-sky-300" use:autoAnimate>
           <button on:click="{() => (activePage = 'description')}"
             ><IconBack class="inline" /> Back to description
@@ -499,8 +499,8 @@
           </h2>
         {/if}
       </div>
-      {#if matches.length > 0}
-        <div class="rounded-xl bg-slate-200 p-3 dark:bg-slate-50/10">
+      {#if matches.length != 0}
+        <div class="rounded-xl bg-slate-200 p-3 dark:bg-stone-800">
           <p class="text-white MB-6">Latest version for {pickedVersion}:</p>
           <ul use:autoAnimate class="space-y-2">
             <VersionDisplay
@@ -519,7 +519,7 @@
     </div>
   {:else if activePage == "comments"}
     <div class="mb-2 items-center space-y-2">
-      <div class="rounded-xl bg-slate-200 p-3 dark:bg-slate-50/10">
+      <div class="rounded-xl bg-slate-200 p-3 dark:bg-stone-800">
         <div class="space-y-2" use:autoAnimate>
           {#if $authed}
             <form
