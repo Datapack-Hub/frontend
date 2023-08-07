@@ -9,7 +9,7 @@ export const load = (async ({ fetch }) => {
     featuredJson,
     count,
     adminsResponse,
-    moduleResponse,
+    moderatorResponse,
     helperResponse
   ] = await parallel(
     3,
@@ -27,7 +27,7 @@ export const load = (async ({ fetch }) => {
 
   const [admins, mods, helpers] = await parallel(
     3,
-    [adminsResponse, moduleResponse, helperResponse].map(v => v.values),
+    [adminsResponse, moderatorResponse, helperResponse].map(v => v.values),
     async users => await userSchema.array().parseAsync(users)
   );
 

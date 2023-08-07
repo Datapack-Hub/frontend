@@ -49,7 +49,7 @@
 
   // Local vars
   let activePage = "description";
-  let moduleModalPage = "delete";
+  let moderationModalPage = "delete";
 
   let selectedVersions: string[] = [];
   let pickedVersion: string | undefined;
@@ -57,12 +57,12 @@
   let matches: Version[] = [];
 
   let reportModal: Modal;
-  let moduleModal: Modal;
+  let moderateModal: Modal;
   let featureModal: Modal;
 
   let status = project?.status;
   let del: HTMLDivElement;
-  let postedModuleMessage = "";
+  let postedModeratorMessage = "";
   let reportMessage = "";
   let featureDur: string;
 
@@ -115,15 +115,15 @@
   }
 
   async function moderate(action: string) {
-    moduleModal.close();
-    let moduleRequestData: object = {};
+    moderateModal.close();
+    let moderationRequestData: object = {};
     switch (action) {
       case "delete": {
-        moduleRequestData =
-          postedModuleMessage.length > 0
+        moderationRequestData =
+          postedModeratorMessage.length > 0
             ? {
                 action: "delete",
-                message: postedModuleMessage
+                message: postedModeratorMessage
               }
             : {
                 action: "delete"
@@ -131,11 +131,11 @@
         break;
       }
       case "disable": {
-        moduleRequestData =
-          postedModuleMessage.length > 0
+        moderationRequestData =
+          postedModeratorMessage.length > 0
             ? {
                 action: "disable",
-                message: postedModuleMessage
+                message: postedModeratorMessage
               }
             : {
                 action: "disable"
@@ -143,10 +143,10 @@
         break;
       }
       case "write note": {
-        if (postedModuleMessage.length > 0) {
-          moduleRequestData = {
+        if (postedModeratorMessage.length > 0) {
+          moderationRequestData = {
             action: "write_note",
-            message: postedModuleMessage
+            message: postedModeratorMessage
           };
         } else {
           return toast.error("You gotta leave them a message!");
@@ -154,7 +154,7 @@
         break;
       }
       case "restore": {
-        moduleRequestData = {
+        moderationRequestData = {
           action: "restore"
         };
         break;
@@ -165,7 +165,7 @@
       fetchAuthed(
         "PATCH",
         "/moderation/project/" + project?.ID + "/action",
-        moduleRequestData
+        moderationRequestData
       ).then(response => {
         if (response.ok && action == "restore") del.remove();
       }),
@@ -302,8 +302,8 @@
             aria-label="Request Changes"
             class="button-base flex items-center space-x-1 bg-yellow-600"
             on:click="{() => {
-              moduleModalPage = 'disable';
-              moduleModal.open();
+              moderationModalPage = 'disable';
+              moderateModal.open();
             }}"
             use:tippy="{{ content: 'Request Changes', placement: 'bottom' }}"
             ><IconPencil /><!--<span class="hidden md:block">Request Changes</span
@@ -312,8 +312,8 @@
             aria-label="Deny"
             class="button-base flex items-center space-x-1 bg-red-600"
             on:click="{() => {
-              moduleModalPage = 'delete';
-              moduleModal.open();
+              moderationModalPage = 'delete';
+              moderateModal.open();
             }}"
             use:tippy="{{ content: 'Deny', placement: 'bottom' }}"
             ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button
@@ -322,7 +322,7 @@
             class="button-base space-x-1"
             aria-label="Moderate"
             on:click="{() => {
-              moduleModal.open();
+              moderateModal.open();
             }}"
             use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
             ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
@@ -350,7 +350,7 @@
           class="button-base space-x-1 bg-red-600"
           aria-label="Moderate"
           on:click="{() => {
-            moduleModal.open();
+            moderateModal.open();
           }}"
           use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
           ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
@@ -552,7 +552,7 @@
   {/if}
 </div>
 
-<Modal bind:this="{moduleModal}">
+<Modal bind:this="{moderateModal}">
   <h1 class="text-xl font-bold text-slate-950 dark:text-white">
     Moderate {project?.title}
   </h1>
@@ -567,20 +567,20 @@
       Select Action
     </p>
     <button
-      class="button-base {moduleModalPage === 'delete'
+      class="button-base {moderationModalPage === 'delete'
         ? 'bg-stone-600'
         : 'bg-stone-900'}"
-      on:click="{() => (moduleModalPage = 'delete')}">Delete</button>
+      on:click="{() => (moderationModalPage = 'delete')}">Delete</button>
     <button
-      class="button-base {moduleModalPage === 'disable'
+      class="button-base {moderationModalPage === 'disable'
         ? 'bg-stone-600'
         : 'bg-stone-900'}"
-      on:click="{() => (moduleModalPage = 'disable')}">Disable</button>
+      on:click="{() => (moderationModalPage = 'disable')}">Disable</button>
     <button
-      class="button-base {moduleModalPage === 'write note'
+      class="button-base {moderationModalPage === 'write note'
         ? 'bg-stone-600'
         : 'bg-stone-900'}"
-      on:click="{() => (moduleModalPage = 'write note')}">Write Note</button>
+      on:click="{() => (moderationModalPage = 'write note')}">Write Note</button>
     <button
       class="button-base bg-stone-900"
       on:click="{() => goto('/project/' + project?.url + '/edit')}"
@@ -594,9 +594,9 @@
     placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
     id="description"
     maxlength="200"
-    bind:value="{postedModuleMessage}"></textarea>
-  <Button click="{() => moderate(moduleModalPage)}"
-    >{title(moduleModalPage)}</Button>
+    bind:value="{postedModeratorMessage}"></textarea>
+  <Button click="{() => moderate(moderationModalPage)}"
+    >{title(moderationModalPage)}</Button>
 </Modal>
 
 <Modal bind:this="{reportModal}">

@@ -16,9 +16,9 @@
 
   export let user: User | undefined;
 
-  let moduleModalPage = "ban";
+  let moderationModalPage = "warn";
 
-  let moduleModal: Modal;
+  let moderationModal: Modal;
   let warnDialog: Modal;
   let notifDialog: Modal;
   let banDialog: Modal;
@@ -28,7 +28,7 @@
 
   let badgeState = user?.badges ?? [];
 
-  let moduleJson: { banned: boolean; banExpiry: number; banMessage: string } = {
+  let moderationJson: { banned: boolean; banExpiry: number; banMessage: string } = {
     banned: false,
     banExpiry: -1,
     banMessage: "null"
@@ -36,8 +36,8 @@
 
   async function loadData() {
     if (browser) {
-      let moduleData = await fetchAuthed("get", `/moderation/user/${user?.id}`);
-      moduleJson = await moduleData.json();
+      let moderationData = await fetchAuthed("get", `/moderation/user/${user?.id}`);
+      moderationJson = await moderationData.json();
     }
   }
 
@@ -122,7 +122,7 @@
     }
 
     unbanDialog.close();
-    moduleJson.banned == false;
+    moderationJson.banned == false;
     toast.success(`${user?.username} is now unbanned.`);
   }
 
@@ -168,7 +168,7 @@
   {:then}
     <Button
       style="base"
-      click="{() => modModal.open()}"
+      click="{() => moderationModal.open()}"
       classes="mt-4 flex w-full items-center bg-slate-300 dark:bg-stone-700">
       <IconShield width="24" height="24" class="float-left mr-2" />
       Moderate {user?.username}
@@ -176,7 +176,7 @@
   {/await}
 {/if}
 
-<Modal bind:this="{moduleModal}">
+<Modal bind:this="{moderationModal}">
   <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
     Moderate {user?.username}
   </h1>
@@ -188,38 +188,38 @@
       Select Action
     </p>
     <button
-      class="button-base {moduleModalPage == 'ban'
+      class="button-base {moderationModalPage == 'ban'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
-      on:click="{() => (moduleModalPage = 'ban')}">Ban</button>
+      on:click="{() => (moderationModalPage = 'ban')}">Ban</button>
     <button
-      class="button-base {moduleModalPage == 'warn'
+      class="button-base {moderationModalPage == 'warn'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
-      on:click="{() => (moduleModalPage = 'warn')}">Warn</button>
+      on:click="{() => (moderationModalPage = 'warn')}">Warn</button>
     <button
       id="send_notif"
-      class="button-base {moduleModalPage == 'notif'
+      class="button-base {moderationModalPage == 'notif'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
-      on:click="{() => (moduleModalPage = 'notif')}">Send Notification</button>
+      on:click="{() => (moderationModalPage = 'notif')}">Send Notification</button>
     <button
-      class="button-base {moduleModalPage == 'logout'
+      class="button-base {moderationModalPage == 'logout'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
-      on:click="{() => (moduleModalPage = 'logout')}">Log Out</button>
+      on:click="{() => (moderationModalPage = 'logout')}">Log Out</button>
     <button
-      class="button-base {moduleModalPage == 'badges'
+      class="button-base {moderationModalPage == 'badges'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
-      on:click="{() => (moduleModalPage = 'badges')}">Edit Badges</button>
+      on:click="{() => (moderationModalPage = 'badges')}">Edit Badges</button>
     <button
-      class="button-base {moduleModalPage == 'edit'
+      class="button-base {moderationModalPage == 'edit'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
       on:click="{() => goto(user?.username + '/edit')}">Edit User</button>
   </div>
-  {#if moduleModalPage == "ban"}
+  {#if moderationModalPage == "ban"}
     <p class=" text-slate-950 dark:text-white">
       Banning a user prevents them from interacting with the website. You can
       write a message or ban reason to be displayed when they try to log in.
@@ -245,7 +245,7 @@
       placeholder="Burning cake after being **repeatedly told** to stop"
       id="ban-message"></textarea>
     <Button click="{async () => await banUser()}">Ban {user?.username}</Button>
-  {:else if moduleModalPage == "warn"}
+  {:else if moderationModalPage == "warn"}
     <p class=" text-slate-950 dark:text-white">
       This message is sent to the user as a notification. Always be
       professional, even when they are not.
@@ -258,7 +258,7 @@
       placeholder="..."
       id="warn-message"></textarea>
     <Button click="{async () => await warn()}">Warn {user?.username}</Button>
-  {:else if moduleModalPage == "notif"}
+  {:else if moderationModalPage == "notif"}
     <p class=" text-slate-950 dark:text-white mb-3">
       Send an anonymous notification (unless you put your name down) to the
       user. For warnings, use the Warn button.
@@ -300,13 +300,13 @@
       id="send_notif_btn"
       class="rounded-md bg-dph-orange p-2 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
       >Send</button>
-  {:else if moduleModalPage == "logout"}
+  {:else if moderationModalPage == "logout"}
     <p class=" text-slate-950 dark:text-white mb-3">
       This will log {user?.username} out of all their signed-in devices, and generate
       them a new token. They will need to sign in again.
     </p>
     <Button click="{async () => await logOutUser()}">Log them out!</Button>
-  {:else if moduleModalPage == "badges"}
+  {:else if moderationModalPage == "badges"}
     <div class="my-4">
       <h2 class="text-slate-950 dark:text-white mb-2">Badges</h2>
       <MultiSelect

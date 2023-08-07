@@ -1,26 +1,24 @@
 <script lang="ts">
-  // Svelte imports
   import { fetchAuthed } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
   import { fade } from "svelte/transition";
-  // Componenet imports
-  import IconCube from "~icons/tabler/Box.svelte";
-  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
-  import IconCross from "~icons/tabler/X.svelte";
-  import IconBack from "~icons/tabler/ArrowBack.svelte";
-  import IconDL from "~icons/tabler/Download.svelte";
-  import IconUpdate from "~icons/tabler/Refresh.svelte";
-  import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
+
   import type { Project, User } from "$lib/globals/schema";
   import { title } from "radash";
+  import IconBack from "~icons/tabler/ArrowBack.svelte";
+  import IconCube from "~icons/tabler/Box.svelte";
+  import IconDL from "~icons/tabler/Download.svelte";
+  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
+  import IconUpdate from "~icons/tabler/Refresh.svelte";
+  import IconCross from "~icons/tabler/X.svelte";
   import CasualLine from "../decorative/CasualLine.svelte";
+  import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
 
   // Component args
   export let project: Project;
 
-  // Local vars
   let visible = false;
   let author: User;
   let mm: HTMLDivElement;
@@ -37,7 +35,7 @@
   });
 
   // Dismiss the mod message function
-  async function dismissModuleMessage() {
+  async function dismissModeratorMessage() {
     mm.remove();
     let dsm = await fetchAuthed(
       "DELETE",
@@ -102,9 +100,7 @@
       <p class="flex items-center space-x-2 text-md my-2 dark:text-white">
         <IconCube />
         <span class="font-bold">Categories:</span>
-        <span
-          >{#each project.category ?? [] as cat, i}{cat}{#if project.category?.length && project.category.length > 0 && i != project.category.length - 1},
-            {/if}{/each}</span>
+        <span>{project.category?.toString()}</span>
       </p>
       <div class="my-3">
         <CasualLine />
@@ -148,7 +144,7 @@
       {#if status && !["disabled", "review_queue"].includes(status)}
         <button
           class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
-          on:click="{dismissModuleMessage}"><IconCross /></button>
+          on:click="{dismissModeratorMessage}"><IconCross /></button>
       {/if}
       <p class=" font-black">Message from Datapack Hub Staff:</p>
       <p
@@ -156,7 +152,7 @@
         <MarkdownComponent source="{project?.mod_message}" />
       </p>
       <p class=" text-xs opacity-50">
-        Only you (and staff) can read this message. Once you've acknowleged it,
+        Only you (and staff) can read this message. Once you've acknowledged it,
         you can dismiss the message if the project isn't disabled.
       </p>
     </div>

@@ -197,14 +197,14 @@
           Datapack Hub automatically converts the pack version to the requested
           version, removing those pesky "Made for an older version" errors!
         </p>
-        <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-4">
+        <div class="bg-slate-200 dark:bg-stone-900 rounded-xl p-2">
           <div
-            class="fadeTextAnime opacity-0 flex items-center justify-between bg-slate-300 dark:bg-stone-800 rounded-t-md p-2 mx-4 mt-4 text-slate-600 dark:text-stone-500">
+            class="fadeTextAnime opacity-0 flex items-center justify-between bg-slate-300 dark:bg-stone-800 rounded-t-md p-2 text-slate-600 dark:text-stone-500">
             <p>pack.mcmeta</p>
             <IconX />
           </div>
           <div
-            class="fadeTextAnime opacity-0 text-slate-600 dark:text-stone-500 font-mono bg-slate-300 dark:bg-stone-800 mx-4 mb-4 my-2 px-4 rounded-b-md overflow-x-auto">
+            class="fadeTextAnime opacity-0 text-slate-600 dark:text-stone-500 font-mono bg-slate-300 dark:bg-stone-800 mt-2 px-4 rounded-b-md overflow-x-auto">
             <pre class="text-sm">
               <!--DO NOT INDENT!!!-->
 &lbrace;
@@ -319,7 +319,7 @@
           class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
           Datapack Hub is ran entirely by an API which anyone can access.
         </p>
-        <div class="bg-slate-200 dark:bg-stone-900 rounded-lg p-4">
+        <div class="bg-slate-200 dark:bg-stone-900 rounded-xl p-2">
           <div
             class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-stone-800 rounded-t-md p-2 text-slate-600 dark:text-stone-500">
             <div class="flex space-x-2 overflow-x-auto">
@@ -333,7 +333,7 @@
               on:click="{() => (ran = true)}">Run</button>
           </div>
           <div
-            class="text-slate-600 dark:text-stone-300 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-b-md overflow-x-auto h-80">
+            class="text-slate-600 dark:text-stone-500 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-b-md overflow-x-auto h-80">
             {#if ran}
               <pre class="text-sm p-4">
 <!--DO NOT INDENT!!!-->&lbrace;

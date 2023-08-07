@@ -19,8 +19,6 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import UserCard from "$lib/components/user/UserCard.svelte";
 
-  let moderateModal: Modal;
-
   export let data: PageData;
 
   let orangeVerifiedHover = {
@@ -202,35 +200,6 @@
   </div>
 </main>
 <div class="py-3"></div>
-
-<Modal bind:this="{moderateModal}">
-  <h1 class="text-xl font-bold text-slate-950 dark:text-white">
-    Moderate {data.profile?.username}
-  </h1>
-  <CasualLine />
-  <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
-  <UserCard
-    person="{data.profile}"
-    role="{$roles.find(v => data.profile?.role == v.name)}" />
-  <div class="mb-2 min-w-fit items-center">
-    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
-      Select Action
-    </p>
-    <!-- <button
-      class="button-base {'delete' ? 'bg-stone-600' : 'bg-stone-900'}"
-      on:click="{() => 'delete'}">Delete</button> -->
-  </div>
-  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
-    Moderation Note
-  </p>
-  <textarea
-    class="input w-full h-48 resize-none"
-    placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
-    id="description"
-    maxlength="200"></textarea>
-  <Button>Moderate</Button>
-</Modal>
 
 <style lang="postcss">
   .icon {
