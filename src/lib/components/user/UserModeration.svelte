@@ -28,7 +28,11 @@
 
   let badgeState = user?.badges ?? [];
 
-  let moderationJson: { banned: boolean; banExpiry: number; banMessage: string } = {
+  let moderationJson: {
+    banned: boolean;
+    banExpiry: number;
+    banMessage: string;
+  } = {
     banned: false,
     banExpiry: -1,
     banMessage: "null"
@@ -36,7 +40,10 @@
 
   async function loadData() {
     if (browser) {
-      let moderationData = await fetchAuthed("get", `/moderation/user/${user?.id}`);
+      let moderationData = await fetchAuthed(
+        "get",
+        `/moderation/user/${user?.id}`
+      );
       moderationJson = await moderationData.json();
     }
   }
@@ -202,7 +209,8 @@
       class="button-base {moderationModalPage == 'notif'
         ? 'bg-slate-500 dark:bg-stone-600'
         : 'bg-slate-300 dark:bg-stone-900'}"
-      on:click="{() => (moderationModalPage = 'notif')}">Send Notification</button>
+      on:click="{() => (moderationModalPage = 'notif')}"
+      >Send Notification</button>
     <button
       class="button-base {moderationModalPage == 'logout'
         ? 'bg-slate-500 dark:bg-stone-600'

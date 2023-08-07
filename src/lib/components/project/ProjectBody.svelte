@@ -580,7 +580,8 @@
       class="button-base {moderationModalPage === 'write note'
         ? 'bg-stone-600'
         : 'bg-stone-900'}"
-      on:click="{() => (moderationModalPage = 'write note')}">Write Note</button>
+      on:click="{() => (moderationModalPage = 'write note')}"
+      >Write Note</button>
     <button
       class="button-base bg-stone-900"
       on:click="{() => goto('/project/' + project?.url + '/edit')}"
