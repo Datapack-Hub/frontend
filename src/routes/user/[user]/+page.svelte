@@ -1,23 +1,21 @@
 <script lang="ts">
   import Button from "$lib/components/decorative/Button.svelte";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
+  import IconVerified from "$lib/components/decorative/IconVerified.svelte";
+  import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import UserModeration from "$lib/components/user/UserModeration.svelte";
-  import { authed, roleInfo, user, roles } from "$lib/globals/stores";
-  import type { PageData } from "./$types";
+  import { badges } from "$lib/globals/consts";
+  import { moderatorOrAbove } from "$lib/globals/functions";
+  import { authed, roleInfo, user } from "$lib/globals/stores";
+  import { title } from "radash";
   import tippy from "sveltejs-tippy";
-  import IconSettings from "~icons/tabler/Settings.svelte";
   import IconBadge from "~icons/tabler/Award.svelte";
-  import IconInfo from "~icons/tabler/InfoCircle.svelte";
   import IconTime from "~icons/tabler/Clock.svelte";
   import IconDL from "~icons/tabler/Download.svelte";
-  import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
-  import { badges } from "$lib/globals/consts";
-  import { title } from "radash";
-  import IconVerified from "$lib/components/decorative/IconVerified.svelte";
-  import { moderatorOrAbove } from "$lib/globals/functions";
-  import Modal from "$lib/components/modals/Modal.svelte";
-  import UserCard from "$lib/components/user/UserCard.svelte";
+  import IconInfo from "~icons/tabler/InfoCircle.svelte";
+  import IconSettings from "~icons/tabler/Settings.svelte";
+  import type { PageData } from "./$types";
 
   export let data: PageData;
 

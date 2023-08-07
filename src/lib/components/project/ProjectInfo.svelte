@@ -19,7 +19,6 @@
   // Component args
   export let project: Project;
 
-  let visible = false;
   let author: User;
   let mm: HTMLDivElement;
   let status = project.status ?? "unpublished";
@@ -31,7 +30,6 @@
   // Get author data on load
   onMount(async () => {
     author = project?.author;
-    visible = true;
   });
 
   // Dismiss the mod message function

@@ -499,7 +499,7 @@
           </h2>
         {/if}
       </div>
-      {#if matches.length != 0}
+      {#if matches.length > 0}
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-stone-800">
           <p class="text-white MB-6">Latest version for {pickedVersion}:</p>
           <ul use:autoAnimate class="space-y-2">
