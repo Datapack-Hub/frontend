@@ -5,7 +5,7 @@
   import IconCompass from "~icons/tabler/Compass.svelte";
   import IconSchool from "~icons/tabler/School.svelte";
   import IconSwords from "~icons/tabler/Swords.svelte";
-  import ColorSchemeSelector from "./ColorSchemeSelector.svelte";
+  import ColorSchemeSelector from "../ColorSchemeSelector.svelte";
   import ProfileNavComponent from "./ProfileNavComponent.svelte";
 
   let scrollY: number;

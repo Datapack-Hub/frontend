@@ -9,7 +9,7 @@
 
 <a href="/user/{person?.username.toLowerCase()}">
   <div
-    class="my-2 flex w-full rounded-xl bg-slate-200 p-2 dark:bg-stone-800 hover:brightness-90 transition-all">
+    class="my-2 flex w-full rounded-xl bg-slate-200 p-4 dark:bg-stone-800 hover:brightness-90 transition-all">
     <img
       loading="lazy"
       src="{person?.profile_icon}?size=64"

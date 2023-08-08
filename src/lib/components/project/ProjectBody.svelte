@@ -38,7 +38,7 @@
   import CasualLine from "../decorative/CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import UserCard from "../user/UserCard.svelte";
-  import Comment from "./Comment.svelte";
+  import Comment from "../Comment.svelte";
 
   // we need to split this up more or something jeez
 
@@ -195,6 +195,13 @@
 
   async function feature() {
     featureModal.close();
+
+    let parsedFeatureDuration = Number.parseInt(featureDur);
+
+    if (parsedFeatureDuration <= 0) {
+      return toast.error("Cannot set time to less than 0");
+    }
+
     toast.promise(
       fetchAuthed("post", "/projects/id/" + project?.ID + "/feature", {
         expires: Number.parseInt(featureDur)

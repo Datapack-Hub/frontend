@@ -8,9 +8,9 @@ export const load = (async ({ fetch }) => {
     randomJson,
     featuredJson,
     count,
-    adminsResponse,
-    moderatorResponse,
-    helperResponse
+    adminsJson,
+    moderatorsJson,
+    helpersJson
   ] = await parallel(
     3,
     await Promise.all([
@@ -27,7 +27,7 @@ export const load = (async ({ fetch }) => {
 
   const [admins, mods, helpers] = await parallel(
     3,
-    [adminsResponse, moderatorResponse, helperResponse].map(v => v.values),
+    [adminsJson, moderatorsJson, helpersJson].map(v => v.values),
     async users => await userSchema.array().parseAsync(users)
   );
 
