@@ -13,23 +13,21 @@
   import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
 
-  let compactNumberFormatter = Intl.NumberFormat("en", { notation: "compact" });
-
-  let visible = false;
-  let width: number;
-
-  let ran = false;
-
   export let data: PageData;
+
+  let formatter = Intl.NumberFormat("en", { notation: "compact" });
+  let width: number;
+  let ran = false;
 
   onMount(async () => {
     let cyclingTextWrapper = document.querySelectorAll(".split-text .letters");
     let fadingTextElements = document.querySelectorAll(".fadeTextAnime");
 
     for (const element of cyclingTextWrapper) {
-      element.innerHTML =
-        element.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ??
-        "";
+      element.innerHTML = element.textContent!.replaceAll(
+        /\S/g,
+        "<span class='letter'>$&</span>"
+      );
     }
 
     anime
@@ -90,8 +88,6 @@
     });
 
     for (const element of fadingTextElements) intersect.observe(element);
-
-    visible = true;
   });
 </script>
 
@@ -110,20 +106,16 @@
   <div class="pt-0 md:pt-20"></div>
   <div
     class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 rounded-lg">
-    <b class="text-lg text-red-500 mb-2">Datapack Hub is in early beta.</b
-    ><br />
-    Many features are incomplete or do not work as expected. In these early stages,
-    there is likely going to be lots of downtime. All projects will stay after the
-    beta period, unless you don't want that.
+    <b class="text-lg mb-2">Datapack Hub is in beta.</b>
+    <br />
+    Many features are incomplete or do not work as expected. In these stages, there
+    is going to be lots of issues, please be patient with us.
   </div>
   <div class="pt-20 lg:pt-0"></div>
   <section
     class="flex h-screen md:h-[75vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
-      <div
-        class="relative mb-4 h-36 w-full md:mb-0 {visible
-          ? 'visible'
-          : 'invisible'}">
+      <div class="relative mb-4 h-36 w-full md:mb-0">
         <h1 id="indexText1" class="split-text appearing-text-styles">
           <span class="letters inline-block text-dph-orange">Explore</span>
         </h1>
@@ -139,7 +131,7 @@
         Over <span
           title="{(data.count - 1).toString()}"
           class="text-dph-orange font-bold">
-          {compactNumberFormatter.format(data.count - 1)}
+          {formatter.format(data.count - 1)}
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>
@@ -164,7 +156,7 @@
   <section
     class="w-full bg-slate-200 dark:bg-stone-800/20 flex flex-col justify-center items-center py-32">
     <h1
-      class="fadeTextAnime opacity-0 font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl">
+      class="font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div

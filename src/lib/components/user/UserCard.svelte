@@ -12,7 +12,7 @@
     class="my-2 flex w-full rounded-xl bg-slate-200 p-4 dark:bg-stone-800 hover:brightness-90 transition-all">
     <img
       loading="lazy"
-      src="{person?.profile_icon}?size=64"
+      src="{person?.profile_icon}&size=64"
       alt="{person?.username}'s profile picture"
       class="float-left mr-2 h-16 w-16 rounded-full"
       width="64"

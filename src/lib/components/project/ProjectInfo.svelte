@@ -78,9 +78,11 @@
             href="/user/{author?.username}"
             class="flex items-center space-x-1">
             <img
-              src="{author?.profile_icon}?size=32"
+              src="{author?.profile_icon}&size=32"
               class="max-h-5 rounded-full"
-              alt="{author?.username}'s profile picture" />
+              alt="{author?.username}'s profile picture"
+              width="20"
+              height="20" />
             <span
               class="text-xs xl:text-sm text-slate-950 transition-all hover:underline dark:text-white"
               in:fade="{{ duration: 250 }}">
