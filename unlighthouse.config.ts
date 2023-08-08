@@ -13,6 +13,9 @@ export default defineConfig({
   scanner: {
     throttle: true
   },
+  puppeteerClusterOptions: {
+    maxConcurrency: 4
+  },
   site: 'datapackhub.net',
   urls: [ //TODO: Add a sitemap.xml
     '/staff',
