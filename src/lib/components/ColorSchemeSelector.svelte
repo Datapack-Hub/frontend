@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { draw } from "svelte/transition";
   import { isDark } from "$lib/globals/stores";
+  import { throttle } from "radash";
+  import { draw } from "svelte/transition";
 
   export let small = false;
 
@@ -22,7 +23,7 @@
       xmlns="http://www.w3.org/2000/svg"
       role="button"
       tabindex="0"
-      on:click="{toggle}"
+      on:click="{throttle({ interval: 300 }, toggle)}"
       on:keydown|preventDefault="{k => (k.key == 'T' ? toggle : undefined)}"
       class="icon icon-tabler icon-tabler-moon-stars ml-0 cursor-pointer hover:brightness-75 md:ml-6"
       width="{iconSize}"
@@ -54,7 +55,7 @@
       role="button"
       tabindex="0"
       xmlns="http://www.w3.org/2000/svg"
-      on:click="{toggle}"
+      on:click="{throttle({ interval: 300 }, toggle)}"
       on:keydown|preventDefault="{k => (k.key == 'T' ? toggle : undefined)}"
       class="icon icon-tabler icon-tabler-sun-high ml-0 cursor-pointer hover:brightness-200 md:ml-6"
       width="{iconSize}"

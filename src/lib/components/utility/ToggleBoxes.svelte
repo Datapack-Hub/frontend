@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { toggle } from "radash";
+  import { throttle, toggle } from "radash";
   import { createEventDispatcher } from "svelte";
   import type { Writable } from "svelte/store";
 
@@ -35,7 +35,7 @@
     ? 'border-dph-orange hover:brightness-75 bg-dph-orange/40 dark:bg-dph-orange/20'
     : 'hover:border-dph-orange dark:hover:border-dph-orange border-slate-400 bg-slate-300 dark:border-stone-700 dark:bg-stone-800'}
     border-2 p-2 rounded-lg text-slate-950 dark:text-slate-100 select-none cursor-pointer transition-all"
-  on:click="{toggleClicked}"
+  on:click="{throttle({ interval: 300 }, toggleClicked)}"
   on:keypress="{event => (event.key == 'ENTER' ? toggleClicked : undefined)}">
   <p>
     {value}

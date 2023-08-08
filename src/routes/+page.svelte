@@ -12,6 +12,8 @@
   import IconFile from "~icons/tabler/FileZip.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
+  import { fade } from "svelte/transition";
+  import { quintInOut } from "svelte/easing";
 
   export let data: PageData;
 
@@ -321,13 +323,15 @@
               </p>
             </div>
             <button
-              class="bg-green-600 text-white rounded-md px-2 py-1 cursor-pointer"
-              on:click="{() => (ran = true)}">Run</button>
+              class="button-base bg-green-600 text-white"
+              on:click|once="{() => (ran = true)}">Run</button>
           </div>
           <div
             class="text-slate-600 dark:text-stone-500 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-b-md overflow-x-auto h-80">
             {#if ran}
-              <pre class="text-sm p-4">
+              <pre
+                class="text-sm p-4"
+                transition:fade="{{ duration: 300, easing: quintInOut }}">
 <!--DO NOT INDENT!!!-->&lbrace;
   "badges": [
     "contributor",

@@ -252,7 +252,7 @@
       class="input w-full h-48 resize-none"
       placeholder="Burning cake after being **repeatedly told** to stop"
       id="ban-message"></textarea>
-    <Button click="{async () => await banUser()}">Ban {user?.username}</Button>
+    <Button click="{banUser}">Ban {user?.username}</Button>
   {:else if moderationModalPage == "warn"}
     <p class=" text-slate-950 dark:text-white">
       This message is sent to the user as a notification. Always be
@@ -265,7 +265,7 @@
       class="input w-full h-32 resize-none"
       placeholder="..."
       id="warn-message"></textarea>
-    <Button click="{async () => await warn()}">Warn {user?.username}</Button>
+    <Button click="{warn}">Warn {user?.username}</Button>
   {:else if moderationModalPage == "notif"}
     <p class=" text-slate-950 dark:text-white mb-3">
       Send an anonymous notification (unless you put your name down) to the
@@ -304,7 +304,7 @@
       <option value="rainbow">Rainbow 🌈</option>
     </select>
     <button
-      on:click="{async () => await sendNotif()}"
+      on:click="{sendNotif}"
       id="send_notif_btn"
       class="rounded-md bg-dph-orange p-2 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
       >Send</button>
@@ -313,7 +313,7 @@
       This will log {user?.username} out of all their signed-in devices, and generate
       them a new token. They will need to sign in again.
     </p>
-    <Button click="{async () => await logOutUser()}">Log them out!</Button>
+    <Button click="{logOutUser}">Log them out!</Button>
   {:else if moderationModalPage == "badges"}
     <div class="my-4">
       <h2 class="text-slate-950 dark:text-white mb-2">Badges</h2>
@@ -321,8 +321,7 @@
         options="{badges.map(v => v.name)}"
         bind:selected="{badgeState}" />
     </div>
-    <Button click="{async () => await submitBadgeChanges()}"
-      >Submit Changes</Button>
+    <Button click="{submitBadgeChanges}">Submit Changes</Button>
   {/if}
 </Modal>
 
@@ -342,7 +341,7 @@
     class="input w-full h-32 resize-none"
     placeholder="..."
     id="warn-message"></textarea>
-  <Button click="{async () => await warn()}">Warn {user?.username}</Button>
+  <Button click="{warn}">Warn {user?.username}</Button>
 </Modal>
 
 <Modal bind:this="{notifDialog}">
@@ -387,7 +386,7 @@
     <option value="rainbow">Rainbow 🌈</option>
   </select>
   <button
-    on:click="{async () => await sendNotif()}"
+    on:click="{sendNotif}"
     id="send_notif_btn"
     class="rounded-md bg-dph-orange p-2 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Send</button>
@@ -422,7 +421,7 @@
     class="input w-full h-48 resize-none"
     placeholder="Burning cake after being **repeatedly told** to stop"
     id="ban-message"></textarea>
-  <Button click="{async () => await banUser()}">Ban {user?.username}</Button>
+  <Button click="{banUser}">Ban {user?.username}</Button>
 </Modal>
 
 <Modal bind:this="{unbanDialog}">
@@ -439,7 +438,7 @@
   <p class=" text-slate-950 dark:text-white">
     Unban them to end their ban early.
   </p>
-  <Button click="{async () => await unbanUser()}">Log them out!</Button>
+  <Button click="{unbanUser}">Log them out!</Button>
 </Modal>
 
 <Modal bind:this="{logOutDialog}">
@@ -451,7 +450,7 @@
     This will log {user?.username} out of all their signed-in devices, and generate
     them a new token. They will need to sign in again.
   </p>
-  <Button click="{async () => await logOutUser()}">Log them out!</Button>
+  <Button click="{logOutUser}">Log them out!</Button>
 </Modal>
 
 <Modal bind:this="{addBadgesDialog}">
@@ -465,6 +464,5 @@
       options="{badges.map(v => v.name)}"
       bind:selected="{badgeState}" />
   </div>
-  <Button click="{async () => await submitBadgeChanges()}"
-    >Submit Changes</Button>
+  <Button click="{submitBadgeChanges}">Submit Changes</Button>
 </Modal>
