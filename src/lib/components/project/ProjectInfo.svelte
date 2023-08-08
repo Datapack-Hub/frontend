@@ -23,8 +23,8 @@
   let mm: HTMLDivElement;
   let status = project.status ?? "unpublished";
   let formatter = Intl.DateTimeFormat("en", {
-    dateStyle: "short",
-    timeStyle: "medium"
+    dateStyle: "medium",
+    timeStyle: "short"
   });
 
   // Get author data on load

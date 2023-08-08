@@ -7,145 +7,145 @@
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import Modal from "../modals/Modal.svelte";
 
+  import { invalidateAll } from "$app/navigation";
+  import { fetchAuthed } from "$lib/globals/functions";
+  import type { Project, Version } from "$lib/globals/schema";
+  import { user } from "$lib/globals/stores";
+  import { isArray, isNumber, isObject } from "radash";
   import IconZIP from "~icons/tabler/Cube.svelte";
   import IconFile from "~icons/tabler/File.svelte";
   import IconFileFilled from "~icons/tabler/FileFilled.svelte";
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import IconRP from "~icons/tabler/Sparkles.svelte";
-  import { fetchAuthed } from "$lib/globals/functions";
-  import type { Project, Version } from "$lib/globals/schema";
-  import { user } from "$lib/globals/stores";
-  import { isArray, isNumber, isObject } from "radash";
   import Button from "../decorative/Button.svelte";
-  import { goto } from "$app/navigation";
 
   export let version: Version;
   export let expanded = false;
   export let mcVersion: string = "";
-  // eslint-disable-next-line unicorn/no-useless-undefined
   export let project: Project | undefined = undefined;
 
-  let properVersion = isArray(version.minecraft_versions.split(","))
-    ? version.minecraft_versions.split(",")
-    : version.minecraft_versions;
+  let properVersion = version.minecraft_versions.split(",");
   let dlModal: Modal;
 
   function openDownloadModal(type?: "datapack" | "resourcepack" | undefined) {
     if (!type || !mcVersion) return dlModal.open();
-    if (type == "datapack")
+
+    if (type == "datapack") {
       return download(
         version.primary_download,
         mcVersion,
         version.resource_pack_download ? true : false
       );
+    }
+
     if (type == "resourcepack")
       return download(version.resource_pack_download, mcVersion, false);
   }
 
   async function download(
     url: string | undefined,
-    mcVersionCode: string,
+    mcSemver: string,
     rp: boolean
   ) {
-    console.log(url);
-    console.log(mcVersionCode);
-    console.log(version);
-
-    if (browser && url) {
-      let zip = await fetch(url);
-      let zipBlob = await zip.blob();
-      let parsedZip;
-
-      try {
-        let { loadAsync } = await import("jszip");
-        parsedZip = await loadAsync(zipBlob);
-      } catch {
-        return toast.error("Something bad happened");
-      }
-
-      let packMcm = await parsedZip.files["pack.mcmeta"].async("text");
-      let mcMetaData = JSON.parse(packMcm);
-      let packFormat;
-
-      switch (mcVersionCode) {
-        case "1.13-1.14.4": {
-          packFormat = 4;
-          break;
-        }
-        case "1.15-1.16.1": {
-          packFormat = 5;
-          break;
-        }
-        case "1.16.2-1.16.5": {
-          packFormat = 6;
-          break;
-        }
-        case "1.17.x": {
-          packFormat = 7;
-          break;
-        }
-        case "1.18.x": {
-          packFormat = 8;
-          break;
-        }
-        case "1.19-1.19.3": {
-          packFormat = 10;
-          break;
-        }
-        case "1.19.4": {
-          packFormat = 12;
-          break;
-        }
-        case "1.20-1.20.1": {
-          packFormat = 15;
-          break;
-        }
-        case "1.20.2": {
-          packFormat = 16;
-          break;
-        }
-        default: {
-          packFormat = 0;
-          break;
-        }
-      }
-
-      mcMetaData.pack.pack_format = packFormat;
-
-      let supportedFormats = mcMetaData.pack.supported_formats;
-      if (supportedFormats !== undefined) {
-        if (isObject(supportedFormats)) {
-          if (mcMetaData.pack.supportedFormats.max_inclusive > packFormat) {
-            return;
-          }
-          mcMetaData.pack.supportedFormats.max_inclusive = packFormat;
-        }
-
-        if (isNumber(supportedFormats)) {
-          if (supportedFormats > packFormat) return;
-          mcMetaData.pack.supportedFormats = packFormat;
-        }
-
-        if (isArray(supportedFormats)) {
-          if (supportedFormats[1] > packFormat) return;
-          mcMetaData.pack.supportedFormats = packFormat;
-        }
-      }
-
-      parsedZip.file("pack.mcmeta", JSON.stringify(mcMetaData));
-
-      let final = await parsedZip.generateAsync({ type: "base64" });
-      var autoRunDownload = document.createElement("a");
-      autoRunDownload.download = url.split("/")[url.split("/").length - 1];
-      autoRunDownload.href = "data:application/zip;base64," + final;
-      autoRunDownload.click();
-
-      rp
-        ? toast.success(
-            "Downloaded file! Make sure to download the resource pack too."
-          )
-        : toast.success("Downloaded file!");
+    if (!browser || typeof url == "undefined") {
+      return toast.error("Could not find file!");
     }
+
+    let zip = await fetch(url);
+    let zipBlob = await zip.blob();
+    let parsedZip;
+
+    try {
+      let { loadAsync } = await import("jszip");
+      parsedZip = await loadAsync(zipBlob);
+    } catch {
+      toast.error(
+        "Failed to start auto-meta updating, forcing download anyway..."
+      );
+      let autoRunDownload = document.createElement("a");
+      autoRunDownload.href = url;
+      autoRunDownload.click();
+      return;
+    }
+
+    let mcMeta = JSON.parse(await parsedZip.files["pack.mcmeta"].async("text"));
+    let packFormat = 0;
+
+    switch (mcSemver) {
+      case "1.13-1.14.4": {
+        packFormat = 4;
+        break;
+      }
+      case "1.15-1.16.1": {
+        packFormat = 5;
+        break;
+      }
+      case "1.16.2-1.16.5": {
+        packFormat = 6;
+        break;
+      }
+      case "1.17.x": {
+        packFormat = 7;
+        break;
+      }
+      case "1.18.x": {
+        packFormat = 8;
+        break;
+      }
+      case "1.19-1.19.3": {
+        packFormat = 10;
+        break;
+      }
+      case "1.19.4": {
+        packFormat = 12;
+        break;
+      }
+      case "1.20-1.20.1": {
+        packFormat = 15;
+        break;
+      }
+      case "1.20.2": {
+        packFormat = 16;
+        break;
+      }
+      default: {
+        packFormat = 0;
+        break;
+      }
+    }
+
+    mcMeta.pack.pack_format = packFormat;
+
+    let supportedFormats = mcMeta.pack.supported_formats;
+    if (supportedFormats !== undefined) {
+      if (isObject(supportedFormats)) {
+        if (mcMeta.pack.supportedFormats.max_inclusive > packFormat) return;
+
+        mcMeta.pack.supportedFormats.max_inclusive = packFormat;
+      } else if (isNumber(supportedFormats)) {
+        if (supportedFormats > packFormat) return;
+
+        mcMeta.pack.supportedFormats = packFormat;
+      } else if (isArray(supportedFormats)) {
+        if (supportedFormats[1] > packFormat) return;
+
+        mcMeta.pack.supportedFormats = packFormat;
+      } else {
+        return toast.error("Something went wrong: MCMeta is corrupt!");
+      }
+    }
+
+    parsedZip.file("pack.mcmeta", JSON.stringify(mcMeta));
+
+    let final = await parsedZip.generateAsync({ type: "base64" });
+    let autoRunDownload = document.createElement("a");
+    autoRunDownload.download = url.split("/").at(-1)!;
+    autoRunDownload.href = "data:application/zip;base64," + final;
+    autoRunDownload.click();
+
+    if (rp) {
+      toast.success("Downloaded file! Make sure to get the resource pack too!");
+    } else toast.success("Downloaded file!");
   }
 
   function deleteVersion() {
@@ -160,7 +160,7 @@
         error: "Error trying to delete project."
       }
     );
-    goto("/");
+    invalidateAll();
   }
 </script>
 

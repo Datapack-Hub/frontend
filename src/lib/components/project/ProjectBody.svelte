@@ -116,30 +116,32 @@
 
   async function moderate(action: string) {
     moderateModal.close();
-    let moderationRequestData: object = {};
+    let moderationRequestData = {};
     switch (action) {
       case "delete": {
-        moderationRequestData =
-          postedModeratorMessage.length > 0
-            ? {
-                action: "delete",
-                message: postedModeratorMessage
-              }
-            : {
-                action: "delete"
-              };
+        if (postedModeratorMessage.length > 0) {
+          moderationRequestData = {
+            action: "delete",
+            message: postedModeratorMessage
+          };
+        } else {
+          moderationRequestData = {
+            action: "delete"
+          };
+        }
         break;
       }
       case "disable": {
-        moderationRequestData =
-          postedModeratorMessage.length > 0
-            ? {
-                action: "disable",
-                message: postedModeratorMessage
-              }
-            : {
-                action: "disable"
-              };
+        if (postedModeratorMessage.length > 0) {
+          moderationRequestData = {
+            action: "disable",
+            message: postedModeratorMessage
+          };
+        } else {
+          moderationRequestData = {
+            action: "disable"
+          };
+        }
         break;
       }
       case "write note": {
@@ -180,17 +182,19 @@
 
   async function report() {
     reportModal.close();
-    toast.promise(
-      fetchAuthed("post", "/projects/id/" + project?.ID + "/report", {
-        message: reportMessage
-      }),
+    let promise = fetchAuthed(
+      "post",
+      "/projects/id/" + project?.ID + "/report",
       {
-        success: "Reported project! A moderator will review your report ASAP.",
-        loading: "Reporting...",
-        error:
-          "Uh oh, something went wrong. In the meantime, please report this bug on our Discord."
+        message: reportMessage
       }
     );
+    toast.promise(promise, {
+      success: "Reported project! A moderator will review your report ASAP.",
+      loading: "Reporting...",
+      error:
+        "Uh oh, something went wrong. In the meantime, please report this bug on our Discord."
+    });
   }
 
   async function feature() {
