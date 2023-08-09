@@ -47,7 +47,7 @@
     mcSemver: string,
     rp: boolean
   ) {
-    if (!browser || typeof url == "undefined") {
+    if (!browser || url === undefined) {
       return toast.error("Could not find file!");
     }
 

@@ -3,7 +3,6 @@
   import autoAnimate from "@formkit/auto-animate";
   import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
-  import { fade } from "svelte/transition";
 
   import type { Project, User } from "$lib/globals/schema";
   import { title } from "radash";
@@ -84,8 +83,7 @@
               width="20"
               height="20" />
             <span
-              class="text-xs xl:text-sm text-slate-950 transition-all hover:underline dark:text-white"
-              in:fade="{{ duration: 250 }}">
+              class="text-xs xl:text-sm text-slate-950 transition-all hover:underline dark:text-white">
               {author?.username}
             </span>
           </a>

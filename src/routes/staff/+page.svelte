@@ -30,15 +30,15 @@
       check marks.
     </p>
     <ul>
-      {#if visible}
-        {#each data.staff ?? [] as person, index}
-          <li in:fly="{{ y: -200, duration: 500, delay: index * 75 }}">
+      {#each data.staff ?? [] as person, index}
+        {#if visible}
+          <li transition:fly="{{ y: -300, duration: 500, delay: index * 100 }}">
             <UserCard
               {person}
               role="{$roles?.find(v => person.role == v.name)}" />
           </li>
-        {/each}
-      {/if}
+        {/if}
+      {/each}
     </ul>
 
     <p class="text-slate-950 dark:text-white">

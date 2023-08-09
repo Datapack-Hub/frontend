@@ -1,12 +1,11 @@
 <script lang="ts">
   import { fetchAuthed } from "$lib/globals/functions";
   import type { Project, Report, User } from "$lib/globals/schema";
+  import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
-  import { fade } from "svelte/transition";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
-  import { onMount } from "svelte";
 
   export let project: Project;
   export let report: Report;
@@ -65,8 +64,7 @@
         <div class="flex space-x-2 text-md text-slate-950/40 dark:text-slate">
           <a
             href="/user/{author.username.toLowerCase()}"
-            class="block dark:hover:text-slate-100"
-            in:fade="{{ duration: 250 }}">
+            class="block dark:hover:text-slate-100">
             {author.username}
           </a>
           {#if project.latest_version}

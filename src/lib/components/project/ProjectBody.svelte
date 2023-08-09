@@ -119,29 +119,27 @@
     let moderationRequestData = {};
     switch (action) {
       case "delete": {
-        if (postedModeratorMessage.length > 0) {
-          moderationRequestData = {
-            action: "delete",
-            message: postedModeratorMessage
-          };
-        } else {
-          moderationRequestData = {
-            action: "delete"
-          };
-        }
+        moderationRequestData =
+          postedModeratorMessage.length > 0
+            ? {
+                action: "delete",
+                message: postedModeratorMessage
+              }
+            : {
+                action: "delete"
+              };
         break;
       }
       case "disable": {
-        if (postedModeratorMessage.length > 0) {
-          moderationRequestData = {
-            action: "disable",
-            message: postedModeratorMessage
-          };
-        } else {
-          moderationRequestData = {
-            action: "disable"
-          };
-        }
+        moderationRequestData =
+          postedModeratorMessage.length > 0
+            ? {
+                action: "disable",
+                message: postedModeratorMessage
+              }
+            : {
+                action: "disable"
+              };
         break;
       }
       case "write note": {

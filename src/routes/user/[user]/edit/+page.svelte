@@ -1,13 +1,12 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
+  import Button from "$lib/components/decorative/Button.svelte";
   import { roleNames } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
   import { authed, user } from "$lib/globals/stores";
-  import { onMount } from "svelte";
+  import { title } from "radash";
   import { toast } from "svelte-sonner";
   import type { PageData } from "./$types";
-  import Button from "$lib/components/decorative/Button.svelte";
-  import { title } from "radash";
 
   export let data: PageData;
 
@@ -15,11 +14,6 @@
 
   let uname: HTMLInputElement;
   let bio: HTMLTextAreaElement;
-
-  onMount(() => {
-    uname = document.querySelector("#username") as HTMLInputElement;
-    bio = document.querySelector("#bio") as HTMLTextAreaElement;
-  });
 
   function save() {
     let request = {
@@ -68,7 +62,7 @@
     <h1
       class="mt-8 pb-10 text-center text-5xl font-bold text-slate-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Profile Settings for <span style="color: {data.role?.color};"
-        >{data.profile?.username || "<loading>"}</span>
+        >{data.profile?.username || "Loading..."}</span>
     </h1>
     <div class="text-center align-middle md:text-start">
       <p class="align-middle text-slate-950 dark:text-slate-100">Username</p>
@@ -76,14 +70,14 @@
         class="h-10 rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-stone-800 dark:text-white"
         value="{data.profile?.username}"
         maxlength="32"
-        id="username" />
+        bind:this="{uname}" />
       <br /><br />
       <p class="align-middle text-slate-950 dark:text-slate-100">Bio</p>
       <textarea
         class="h-96 w-1/2 resize-none rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-stone-800 dark:text-white"
         maxlength="500"
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
-        id="bio"></textarea>
+        bind:this="{bio}"></textarea>
       {#key 500 - bio?.value.length}
         <p class="align-middle text-xs text-slate-950 dark:text-slate-100">
           {(500 - bio?.value.length).toString()} characters left

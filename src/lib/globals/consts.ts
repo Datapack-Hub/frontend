@@ -65,7 +65,7 @@ export const badges = [
     description: "1000 Downloads",
     tippy: {
       content:
-        '<b style="font-size:24;">1K Downloads</b><br />Awarded to people who have received over 1,000 total downloads',
+        '<b style="font-size:24;">1K Downloads</b><br />Awarded to developers who have received over 1,000 total downloads',
       placement: "top",
       allowHTML: true
     }
@@ -75,7 +75,7 @@ export const badges = [
     description: "5000 Downloads",
     tippy: {
       content:
-        '<b style="font-size:24;">5K Downloads</b><br />Awarded to people who have received over 5,000 total downloads',
+        '<b style="font-size:24;">5K Downloads</b><br />Awarded to developers who achieved over 5,000 total downloads',
       placement: "top",
       allowHTML: true
     }
@@ -85,7 +85,7 @@ export const badges = [
     description: "10,000 Downloads",
     tippy: {
       content:
-        '<b style="font-size:24;">10K Downloads</b><br />Awarded to people who have received over 10,000 total downloads',
+        '<b style="font-size:24;">10K Downloads</b><br />Awarded to well-established developers achieving over 10,000 total downloads',
       placement: "top",
       allowHTML: true
     }
