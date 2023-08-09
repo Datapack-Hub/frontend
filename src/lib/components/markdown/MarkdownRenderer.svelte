@@ -24,9 +24,9 @@
       .use(rehypeSanitize)
       .use(rehypeStringify)
       .use(remarkGFM)
-      // .use(remarkMentions, {
-      //   usernameLink: (uname) => `/user/${uname}`
-      // })
+      .use(remarkMentions, {
+        usernameLink: (uname) => `/user/${uname}`
+      })
 
   onMount(async () => {
     if (!browser) {
