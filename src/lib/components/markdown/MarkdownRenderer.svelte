@@ -2,7 +2,15 @@
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
-  import MKDWorker from "./markdown.worker?worker";
+  import { unified } from "unified"
+  import rehypeSanitize from "rehype-sanitize"
+  import rehypeStringify from "rehype-stringify"
+  import remarkMentions from "remark-mentions"
+  import remarkRehype from "remark-rehype"
+  import remarkParse from "remark-parse"
+  import remarkGFM from "remark-gfm"
+  import remarkUnlink from "remark-unlink"
+  // import MKDWorker from "./markdown.worker?worker";
 
   export let source: string | undefined = "";
   export let classes = "";
@@ -10,18 +18,23 @@
 
   let html = "";
 
+  let thing = unified()
+      .use(remarkParse)
+      .use(remarkRehype)
+      .use(rehypeSanitize)
+      .use(rehypeStringify)
+      .use(remarkGFM)
+      // .use(remarkMentions, {
+      //   usernameLink: (uname) => `/user/${uname}`
+      // })
+
   onMount(async () => {
     if (!browser) {
       return;
     }
-    if (source) {
-      let worker = new MKDWorker();
-      worker.postMessage([source, limitedMode]);
-      worker.addEventListener("message", message => {
-        if (typeof message.data == "string") html = message.data;
-      });
-    } else {
-      html = "";
+    if(source) {
+      let md = await thing.process(source)
+      html = String(md)
     }
   });
 
@@ -30,14 +43,12 @@
       return;
     }
 
-    if (source) {
-      let worker = new MKDWorker();
-      worker.postMessage([source, limitedMode]);
-      worker.addEventListener("message", message => {
-        if (typeof message.data == "string") html = message.data;
-      });
-    } else {
-      html = "";
+    if(source) {
+      thing
+        .process(source)
+        .then(v => {
+          html = String(v)
+        })
     }
   });
 </script>
