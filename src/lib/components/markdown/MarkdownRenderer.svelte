@@ -2,15 +2,14 @@
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
-  import { unified } from "unified"
-  import rehypeSanitize from "rehype-sanitize"
-  import rehypeStringify from "rehype-stringify"
-  import remarkMentions from "remark-mentions"
-  import remarkRehype from "remark-rehype"
-  import remarkParse from "remark-parse"
-  import remarkGFM from "remark-gfm"
-  import remarkUnlink from "remark-unlink"
-  // import MKDWorker from "./markdown.worker?worker";
+  import { unified } from "unified";
+  import rehypeSanitize from "rehype-sanitize";
+  import rehypeStringify from "rehype-stringify";
+  import rehypeUrls from "@jsdevtools/rehype-url-inspector";
+  import remarkMentions from "remark-mentions";
+  import remarkRehype from "remark-rehype";
+  import remarkParse from "remark-parse";
+  import remarkGFM from "remark-gfm";
 
   export let source: string | undefined = "";
   export let classes = "";
@@ -18,23 +17,35 @@
 
   let html = "";
 
-  let thing = unified()
-      .use(remarkParse)
-      .use(remarkRehype)
-      .use(rehypeSanitize)
-      .use(rehypeStringify)
-      .use(remarkGFM)
-      .use(remarkMentions, {
-        usernameLink: (uname) => `/user/${uname}`
-      })
+  let markdownProcessor = unified()
+    .use(remarkParse)
+    .use(remarkGFM)
+    .use(remarkMentions, {
+      usernameLink: (uname: string) => `https://datapackhub.net/user/${uname}`
+    })
+    .use(remarkRehype)
+    .use(rehypeUrls, {
+      inspectEach(match) {
+        console.log(match.url);
+        if (
+          match.node.tagName === "a" &&
+          new URL(match.url).host !== "datapackhub.net"
+        ) {
+          match.node.properties!.href =
+            "https://datapackhub.net/linkout?url=" + match.url.toString();
+        }
+      }
+    })
+    .use(rehypeSanitize)
+    .use(rehypeStringify);
 
   onMount(async () => {
     if (!browser) {
       return;
     }
-    if(source) {
-      let md = await thing.process(source)
-      html = String(md)
+    if (source) {
+      let md = await markdownProcessor.process(source);
+      html = String(md);
     }
   });
 
@@ -43,12 +54,10 @@
       return;
     }
 
-    if(source) {
-      thing
-        .process(source)
-        .then(v => {
-          html = String(v)
-        })
+    if (source) {
+      markdownProcessor.process(source).then(v => {
+        html = String(v);
+      });
     }
   });
 </script>
