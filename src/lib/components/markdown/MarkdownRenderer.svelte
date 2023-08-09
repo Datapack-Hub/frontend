@@ -25,16 +25,13 @@
     })
     .use(remarkRehype)
     .use(rehypeUrls, {
-      inspectEach(match) {
-        console.log(match.url);
-        if (
-          match.node.tagName === "a" &&
-          new URL(match.url).host !== "datapackhub.net"
-        ) {
-          match.node.properties!.href =
-            "https://datapackhub.net/linkout?url=" + match.url.toString();
+      inspectEach({ node, url }) {
+        console.log(url);
+        let props = node.properties!;
+        if (node.tagName === "a" && new URL(url).host !== "datapackhub.net") {
+          props.href = "https://datapackhub.net/linkout?url=" + url.toString();
         } else {
-          match.node.properties!.href = match.url
+          props.href = url;
         }
       }
     })
