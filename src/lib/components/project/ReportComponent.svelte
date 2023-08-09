@@ -69,7 +69,10 @@
           </a>
           {#if project.latest_version}
             <span>•</span>
-            <span>{project.latest_version.minecraft_versions.split(",").at(-1)}</span>
+            <span
+              >{project.latest_version.minecraft_versions
+                .split(",")
+                .at(-1)}</span>
             <span>•</span>
             <span>{project.latest_version.version_code}</span>
           {:else}
