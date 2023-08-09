@@ -9,9 +9,7 @@
   export let showStatus = false;
 
   let userRole = $roles.find(v => v.name == project.author.role);
-
   let status = project.status ?? "unpublished";
-
   let author = project.author;
 </script>
 

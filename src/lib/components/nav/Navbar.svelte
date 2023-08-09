@@ -39,19 +39,19 @@
     <nav class="flex items-center mr-2">
       <a
         href="/"
-        class="z-20 flex cursor-pointer items-center space-x-2 hover:brightness-75">
+        class="z-20 flex cursor-pointer items-center space-x-2 hover:brightness-75 active:brightness-50">
         <img
           src="/logos/dph.svg"
           alt="logo"
-          class="min-h-8 flex-shrink-0 transition-all"
+          class="min-h-8 flex-shrink-0"
           height="{iconSize}"
           width="{iconSize}" />
         <span
-          class="hidden text-2xl font-bold text-slate-950 transition-colors active:text-neutral-600 dark:text-white dark:active:text-neutral-500 lg:block">
+          class="hidden text-2xl font-bold text-slate-950 dark:text-white lg:block">
           Datapack Hub
         </span>
         <span
-          class="text-xs md:text-base font-bold text-white bg-dph-orange px-2 rounded-full transition-all">
+          class="text-xs md:text-base font-bold text-white bg-dph-orange px-2 rounded-full">
           BETA
         </span>
       </a>
