@@ -33,6 +33,8 @@
         ) {
           match.node.properties!.href =
             "https://datapackhub.net/linkout?url=" + match.url.toString();
+        } else {
+          match.node.properties!.href = match.url
         }
       }
     })
