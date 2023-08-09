@@ -12,6 +12,7 @@
   import IconGrid from "~icons/tabler/LayoutGrid.svelte";
   import IconList from "~icons/tabler/LayoutList.svelte";
   import IconSearch from "~icons/tabler/Search.svelte";
+  import IconBTS from "~icons/tabler/ArrowBigLeftLine.svelte";
   import { browser } from "$app/environment";
 
   export let data: PageData;
@@ -117,16 +118,22 @@
       {/if}
       <div class="block mt-2 sm:mt-0 sm:flex space-x-1 items-center">
         <p class="dark:text-white mr-2">Page:</p>
+        {#if data.page - 3 >= 1}
+          <a
+            href="/projects?page=1"
+            class="h-8 pl-1 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0 flex items-center content-center"
+            ><IconBTS class="" /></a>
+        {/if}
         {#if data.page - 2 >= 1}
           <a
             href="/projects?page={data.page - 2}"
-            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
             >{data.page - 2}</a>
         {/if}
         {#if data.page - 1 >= 1}
           <a
             href="/projects?page={data.page - 1}"
-            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
             >{data.page - 1}</a>
         {/if}
         <a
@@ -136,13 +143,13 @@
         {#if data.page + 1 <= data.pages}
           <a
             href="/projects?page={data.page + 1}"
-            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
             >{data.page + 1}</a>
         {/if}
         {#if data.page + 2 <= data.pages}
           <a
             href="/projects?page={data.page + 2}"
-            class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
             >{data.page + 2}</a>
         {/if}
       </div>
