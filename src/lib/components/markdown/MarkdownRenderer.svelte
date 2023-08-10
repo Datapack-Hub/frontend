@@ -2,7 +2,14 @@
   import { onMount } from "svelte";
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
-  import MKDWorker from "./markdown.worker?worker";
+  import { unified } from "unified";
+  import rehypeSanitize from "rehype-sanitize";
+  import rehypeStringify from "rehype-stringify";
+  import rehypeUrls from "@jsdevtools/rehype-url-inspector";
+  import remarkMentions from "remark-mentions";
+  import remarkRehype from "remark-rehype";
+  import remarkParse from "remark-parse";
+  import remarkGFM from "remark-gfm";
 
   export let source: string | undefined = "";
   export let classes = "";
@@ -10,18 +17,45 @@
 
   let html = "";
 
+  let markdownProcessor = unified()
+    .use(remarkParse)
+    // .use(remarkDisable, { // out of date, find alternative or do not use
+    //   block: [
+    //     'indentedCode',
+    //     'fencedCode',
+    //     'atxHeading',
+    //     'setextHeading',
+    //     'footnote',
+    //     'table',
+    //     'custom_blocks'
+    //   ],
+    // })
+    .use(remarkGFM)
+    .use(remarkMentions, {
+      usernameLink: (uname: string) => `https://datapackhub.net/user/${uname}`
+    })
+    .use(remarkRehype)
+    .use(rehypeUrls, {
+      inspectEach({ node, url }) {
+        console.log(url);
+        let props = node.properties!;
+        if (node.tagName === "a" && new URL(url).host !== "datapackhub.net") {
+          props.href = "https://datapackhub.net/linkout?url=" + url.toString();
+        } else {
+          props.href = url;
+        }
+      }
+    })
+    .use(rehypeSanitize)
+    .use(rehypeStringify);
+
   onMount(async () => {
     if (!browser) {
       return;
     }
     if (source) {
-      let worker = new MKDWorker();
-      worker.postMessage([source, limitedMode]);
-      worker.addEventListener("message", message => {
-        if (typeof message.data == "string") html = message.data;
-      });
-    } else {
-      html = "";
+      let md = await markdownProcessor.process(source);
+      html = String(md);
     }
   });
 
@@ -31,13 +65,9 @@
     }
 
     if (source) {
-      let worker = new MKDWorker();
-      worker.postMessage([source, limitedMode]);
-      worker.addEventListener("message", message => {
-        if (typeof message.data == "string") html = message.data;
+      markdownProcessor.process(source).then(v => {
+        html = String(v);
       });
-    } else {
-      html = "";
     }
   });
 </script>
