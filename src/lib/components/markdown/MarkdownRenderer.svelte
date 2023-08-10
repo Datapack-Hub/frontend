@@ -38,12 +38,11 @@
     .use(rehypeUrls, {
       inspectEach({ node, url }) {
         console.log(url);
-        let props = node.properties!;
-        if (node.tagName === "a" && new URL(url).host !== "datapackhub.net") {
-          props.href = "https://datapackhub.net/linkout?url=" + url.toString();
-        } else {
-          props.href = url;
-        }
+        let properties = node.properties!;
+        properties.href =
+          node.tagName === "a" && new URL(url).host !== "datapackhub.net"
+            ? "https://datapackhub.net/linkout?url=" + url.toString()
+            : url;
       }
     })
     .use(rehypeSanitize)
