@@ -42,6 +42,7 @@
     "rehype-sanitize": "^5.0.1",
     "rehype-stringify": "^9.0.3",
     "rehype-urls": "^1.2.0",
+    "remark-disable-tokenizers": "^1.1.0",
     "remark-gfm": "^3.0.1",
     "remark-mentions": "^1.0.2",
     "remark-parse": "^10.0.2",

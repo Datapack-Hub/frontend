@@ -25,8 +25,10 @@
       URL: {data.url}
     </p>
     <div class="flex w-2/3 md:w-1/2 lg:w-2/5 justify-between mt-4">
-      <Button click="{data.url ?? 'https://datapackhub.net'}"
-        >Continue to page</Button>
+      <a
+        class="button-primary"
+        rel="nofollow"
+        href="{data.url ?? 'https://datapackhub.net'}">Continue to page</a>
       <Button click="{() => history.back()}">Go Back</Button>
     </div>
   </div>
