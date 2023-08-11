@@ -12,7 +12,7 @@
 
 <main
   id="main-content"
-  class=" bg-slate-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class=" bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
   <div class="w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
       class="my-3 pb-2 text-center text-5xl font-bold text-slate-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
@@ -22,27 +22,27 @@
       <Button
         style="base"
         classes="{activePage === 'new'
-          ? 'bg-slate-500 dark:bg-stone-600'
-          : 'bg-slate-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-zinc-600'
+          : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'new')}">Installing to a new world</Button>
       <Button
         style="base"
         classes="{activePage === 'existing'
-          ? 'bg-slate-500 dark:bg-stone-600'
-          : 'bg-slate-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-zinc-600'
+          : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'existing')}"
         >Installing to an existing world</Button>
       <Button
         style="base"
         classes="{activePage === 'server'
-          ? 'bg-slate-500 dark:bg-stone-600'
-          : 'bg-slate-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-zinc-600'
+          : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'server')}">Installing to a server</Button>
       <Button
         style="base"
         classes="{activePage === 'realm'
-          ? 'bg-slate-500 dark:bg-stone-600'
-          : 'bg-slate-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-zinc-600'
+          : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'realm')}">Installing to a realm</Button>
     </div>
 

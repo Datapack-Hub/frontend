@@ -20,7 +20,7 @@
 
 <main
   id="main-content"
-  class=" bg-slate-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class=" bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
   <div class="h-screen w-full flex-col md:flex-row md:items-start md:pt-5">
     <h1
       class="mt-8 pb-2 text-center text-3xl font-bold text-slate-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
@@ -37,7 +37,7 @@
           <th class="p-2 text-slate-950 dark:text-white">Permissions</th>
         </tr>
         {#each rolesJson ?? [] as index}
-          <tr class="odd:bg-stone-700/5">
+          <tr class="odd:bg-zinc-700/5">
             <td
               ><p
                 style="color: {index.color};"

@@ -48,7 +48,7 @@
 
 <main
   id="main-content"
-  class=" bg-slate-50 px-4 transition-all dark:bg-stone-900 lg:px-32 xl:px-64">
+  class=" bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -59,30 +59,30 @@
       <Button
         style="base"
         classes="{activePage === 'publish_queue'
-          ? 'bg-slate-500 dark:bg-stone-600'
-          : 'bg-slate-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-zinc-600'
+          : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'publish_queue')}">Publish Queue</Button>
       <Button
         style="base"
         classes="{activePage === 'review_queue'
-          ? 'bg-slate-500 dark:bg-stone-600'
-          : 'bg-slate-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-zinc-600'
+          : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'review_queue')}">Review Queue</Button>
       <Button
         style="base"
         classes="{activePage === 'reports'
-          ? 'bg-slate-500 dark:bg-stone-600'
-          : 'bg-slate-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-zinc-600'
+          : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'reports')}">Reports</Button>
       <Button
         style="base"
         classes="{activePage === 'roles'
-          ? 'bg-slate-500 dark:bg-stone-600'
-          : 'bg-slate-300 dark:bg-stone-800'}"
+          ? 'bg-slate-500 dark:bg-zinc-600'
+          : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'roles')}">Roles</Button>
       <Button
         style="base"
-        classes="bg-slate-300 dark:bg-stone-800"
+        classes="bg-slate-300 dark:bg-zinc-800"
         click="/moderation/console">Open console</Button>
     </div>
 
@@ -142,7 +142,7 @@
           </div>
         {:else if activePage == "roles"}
           <div
-            class="flex flex-col space-x-2 rounded-xl bg-slate-200 dark:bg-stone-800 p-2 py-3 text-center align-middle md:text-start">
+            class="flex flex-col space-x-2 rounded-xl bg-slate-200 dark:bg-zinc-800 p-2 py-3 text-center align-middle md:text-start">
             <h1
               class="m-2 text-center text-2xl font-bold text-slate-950 dark:text-white md:text-start">
               Site Roles
@@ -155,7 +155,7 @@
               {#each rolesJson ?? [] as index}
                 <tr
                   use:autoAnimate
-                  class="odd:bg-slate-400/25 dark:odd:bg-stone-700/25">
+                  class="odd:bg-slate-400/25 dark:odd:bg-zinc-700/25">
                   <td
                     ><p
                       style="color: {index.color};"

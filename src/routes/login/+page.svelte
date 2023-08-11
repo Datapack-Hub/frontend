@@ -12,7 +12,7 @@
 
 <div class="right-0 top-0 flex h-screen transform-gpu">
   <div
-    class="m-auto w-fit justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800 overflow-x-hidden">
+    class="m-auto w-fit justify-self-center rounded-xl p-3 align-middle dark:bg-zinc-800 overflow-x-hidden">
     {#if !$authed}
       <a
         href="/login"

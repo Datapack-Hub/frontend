@@ -28,7 +28,7 @@
   class="{isSmall
     ? 'bottom-0'
     : 'top-0'} z-40 w-full transition-all transform-gpu fixed px-2 sm:px-8 md:px-16 lg:px-24 {showNavBG
-    ? 'bg-slate-50/80 dark:bg-stone-800/80 backdrop-blur shadow-md'
+    ? 'bg-slate-50/80 dark:bg-zinc-800/80 backdrop-blur shadow-md'
     : 'shadow-none'}">
   <div class="flex h-16 w-full flex-row items-center justify-between md:h-16">
     <a

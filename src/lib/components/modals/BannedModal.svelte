@@ -40,7 +40,7 @@
   <div
     class="fixed left-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-3xl backdrop-brightness-50">
     <div
-      class="relative m-auto w-2/3 justify-self-center rounded-xl p-3 align-middle dark:bg-stone-800">
+      class="relative m-auto w-2/3 justify-self-center rounded-xl p-3 align-middle dark:bg-zinc-800">
       <a href="/" class="z-20 flex cursor-pointer items-center justify-center">
         <img
           src="/logos/dph.svg"
@@ -60,7 +60,7 @@
         projects, or interact with the site until your ban has expired.
       </p>
       <p class="text-md text-slate-950 dark:text-white mt-2">Ban Reason:</p>
-      <p class="prose mb-2 rounded-xl bg-stone-700 p-2 dark:text-stone-300">
+      <p class="prose mb-2 rounded-xl bg-zinc-700 p-2 dark:text-zinc-300">
         <MarkdownComponent source="{banReason}" />
       </p>
       <p class="mt-3 text-slate-950 dark:text-white">

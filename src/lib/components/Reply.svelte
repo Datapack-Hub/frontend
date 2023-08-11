@@ -72,9 +72,9 @@
             </button>
             {#if expanded}
               <div
-                class="absolute right-0 top-8 p-2 bg-stone-600 rounded-lg space-y-1">
+                class="absolute right-0 top-8 p-2 bg-zinc-600 rounded-lg space-y-1">
                 <button
-                  class="flex items-center space-x-1 p-0.5 px-1 cursor-pointer rounded-lg hover:bg-stone-600 text-xs"
+                  class="flex items-center space-x-1 p-0.5 px-1 cursor-pointer rounded-lg hover:bg-zinc-600 text-xs"
                   on:click="{del}">
                   <IconDelete />
                   <p>Delete</p>

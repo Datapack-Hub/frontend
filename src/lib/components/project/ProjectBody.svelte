@@ -259,8 +259,8 @@
     <div class="space-x-1.5">
       <button
         class="button-base {activePage === 'description'
-          ? 'bg-slate-400 dark:bg-stone-600'
-          : 'bg-slate-200 dark:bg-stone-800'}"
+          ? 'bg-slate-400 dark:bg-zinc-600'
+          : 'bg-slate-200 dark:bg-zinc-800'}"
         on:click="{() => (activePage = 'description')}"
         aria-label="Description">
         {#if !isSmall}
@@ -271,8 +271,8 @@
       </button>
       <button
         class="button-base {activePage === 'comments'
-          ? 'bg-slate-400 dark:bg-stone-600'
-          : 'bg-slate-200 dark:bg-stone-800'}"
+          ? 'bg-slate-400 dark:bg-zinc-600'
+          : 'bg-slate-200 dark:bg-zinc-800'}"
         on:click="{() => (activePage = 'comments')}"
         aria-label="Comments">
         {#if !isSmall}
@@ -401,7 +401,7 @@
     </div>
   {/if}
   {#if activePage == "description"}
-    <div class="w-full rounded-xl bg-slate-200 p-3 dark:bg-stone-800">
+    <div class="w-full rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
       <p class="w-full leading-tight break-words">
         <MarkdownComponent
           source="{project.body}"
@@ -409,8 +409,7 @@
       </p>
     </div>
   {:else if activePage == "versions"}
-    <div
-      class="mb-2 items-center rounded-xl bg-slate-200 p-3 dark:bg-stone-800">
+    <div class="mb-2 items-center rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
       <div class="mb-3 text-sky-300" use:autoAnimate>
         <button on:click="{() => (activePage = 'description')}"
           ><IconBack class="inline" /> Back to description
@@ -451,7 +450,7 @@
     </div>
   {:else if activePage == "download"}
     <div class="mb-2 items-center space-y-2">
-      <div class="rounded-xl bg-slate-200 p-3 dark:bg-stone-800">
+      <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
         <div class="mb-3 text-sky-300" use:autoAnimate>
           <button on:click="{() => (activePage = 'description')}"
             ><IconBack class="inline" /> Back to description
@@ -467,7 +466,7 @@
                   : []}
                 <button
                   data-test-btn="{v}"
-                  class="bg-stone-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2
+                  class="bg-zinc-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2
                   {mcVersions.includes(v) ? ' text-white' : ' text-red-500'}"
                   on:click="{() => pickVersions(v)}">
                   {#if !mcVersions.includes(v)}
@@ -493,7 +492,7 @@
               <IconRight />
             </Button>
           </div>
-          <div class="flex space-x-1 items-center mt-2 text-stone-500">
+          <div class="flex space-x-1 items-center mt-2 text-zinc-500">
             <IconAlert />
             <p>means the datapack version is outdated</p>
           </div>
@@ -509,7 +508,7 @@
         {/if}
       </div>
       {#if matches.length > 0}
-        <div class="rounded-xl bg-slate-200 p-3 dark:bg-stone-800">
+        <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
           <p class="text-white MB-6">Latest version for {pickedVersion}:</p>
           <ul use:autoAnimate class="space-y-2">
             <VersionDisplay
@@ -528,7 +527,7 @@
     </div>
   {:else if activePage == "comments"}
     <div class="mb-2 items-center space-y-2">
-      <div class="rounded-xl bg-slate-200 p-3 dark:bg-stone-800">
+      <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
         <div class="space-y-2" use:autoAnimate>
           {#if $authed}
             <form
@@ -577,22 +576,22 @@
     </p>
     <button
       class="button-base {moderationModalPage === 'delete'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
+        ? 'bg-zinc-600'
+        : 'bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'delete')}">Delete</button>
     <button
       class="button-base {moderationModalPage === 'disable'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
+        ? 'bg-zinc-600'
+        : 'bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'disable')}">Disable</button>
     <button
       class="button-base {moderationModalPage === 'write note'
-        ? 'bg-stone-600'
-        : 'bg-stone-900'}"
+        ? 'bg-zinc-600'
+        : 'bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'write note')}"
       >Write Note</button>
     <button
-      class="button-base bg-stone-900"
+      class="button-base bg-zinc-900"
       on:click="{() => goto('/project/' + project?.url + '/edit')}"
       >Edit Submission</button>
   </div>
@@ -623,7 +622,7 @@
     Report Message
   </p>
   <textarea
-    class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-slate-300 p-2 dark:bg-stone-700"
+    class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-slate-300 p-2 dark:bg-zinc-700"
     placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
     id="description"
     maxlength="200"
@@ -647,7 +646,7 @@
   <input
     type="number"
     required
-    class="h-8 w-full resize-none rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-stone-700 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-zinc-700 dark:text-white"
     bind:value="{featureDur}"
     placeholder="i.e 1, 7, 14, 30, 365" />
   <Button classes="mt-2" click="{() => feature()}">Feature</Button>

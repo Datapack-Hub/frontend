@@ -34,14 +34,14 @@
 </script>
 
 <div
-  class="w-full items-center rounded-xl relative bg-slate-200 p-3 text-slate-950 dark:bg-stone-800 dark:text-slate-100"
+  class="w-full items-center rounded-xl relative bg-slate-200 p-3 text-slate-950 dark:bg-zinc-800 dark:text-slate-100"
   bind:this="{me}">
   <div class="flex items-center">
     <a
       href="/project/{project.url}"
       class="rounded-lg {project.icon
         ? ''
-        : 'bg-slate-300 p-4 dark:bg-stone-700 dark:text-slate-100'}">
+        : 'bg-slate-300 p-4 dark:bg-zinc-700 dark:text-slate-100'}">
       {#if project.icon}
         <img
           loading="lazy"

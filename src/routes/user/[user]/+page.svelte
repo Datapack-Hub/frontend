@@ -62,7 +62,7 @@
 
 <main
   id="main-content"
-  class="flex flex-col lg:flex-row w-full items-center bg-slate-50 px-8 transition-all dark:bg-stone-900 md:items-start md:px-16 md:pt-32 lg:px-24">
+  class="flex flex-col lg:flex-row w-full items-center bg-slate-50 px-8 transition-all dark:bg-zinc-900 md:items-start md:px-16 md:pt-32 lg:px-24">
   <div class="w-full lg:w-2/5 xl:w-1/3 p-6 rounded-lg">
     <div
       class="mb-4 flex w-full flex-col mt-16 md:mt-0 items-center md:items-start">
@@ -116,7 +116,7 @@
       <h2 class="dark:text-white font-bold mb-1 text-lg mt-8 flex items-center">
         <IconInfo class="inline-block mr-1" /> About
       </h2>
-      <p class="w-full rounded-xl bg-slate-300 dark:bg-stone-800 p-5">
+      <p class="w-full rounded-xl bg-slate-300 dark:bg-zinc-800 p-5">
         <MarkdownComponent
           source="{data.profile?.bio
             .replaceAll('\\n', '\n')
@@ -133,7 +133,7 @@
         <b class="mr-2">Total Downloads: </b>{data.downloads}
       </h2>
 
-      <!-- <div class="mt-4 w-full rounded-xl bg-slate-300 dark:bg-stone-800 p-5"> -->
+      <!-- <div class="mt-4 w-full rounded-xl bg-slate-300 dark:bg-zinc-800 p-5"> -->
       <div class="flex items-center justify-between">
         <h2
           class="dark:text-slate-100 font-bold mb-1 text-lg mt-4 flex items-center">
@@ -141,7 +141,7 @@
         </h2>
       </div>
       <div
-        class="flex space-x-2 p-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full min-h-[3rem]">
+        class="flex space-x-2 p-2 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full min-h-[3rem]">
         {#if data.profile?.badges?.length != 0}
           {#each data.profile?.badges ?? [] as badge}
             <img

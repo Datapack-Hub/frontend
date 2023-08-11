@@ -280,7 +280,7 @@
 
 <main
   id="main-content"
-  class="relative bg-slate-50 px-4 transition-all dark:bg-stone-900 sm:px-8 lg:px-16 xl:px-24">
+  class="relative bg-slate-50 px-4 transition-all dark:bg-zinc-900 sm:px-8 lg:px-16 xl:px-24">
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -292,7 +292,7 @@
         class="mt-2 rounded-xl bg-slate-200 p-4 dark:bg-red-500/20 dark:text-slate-100">
         <p class=" font-black">Message from Datapack Hub Staff:</p>
         <p
-          class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 dark:text-stone-300">
+          class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 dark:text-zinc-300">
           <MarkdownComponent source="{data.project?.mod_message}" />
         </p>
       </div>
@@ -300,14 +300,14 @@
     <div class="mb-2 mt-2 flex space-x-2">
       <button
         class="{activePage === 'details'
-          ? 'bg-slate-200 dark:bg-stone-600'
-          : 'bg-slate-300 dark:bg-stone-800'} button-base"
+          ? 'bg-slate-200 dark:bg-zinc-600'
+          : 'bg-slate-300 dark:bg-zinc-800'} button-base"
         on:click="{() => (activePage = 'details')}">Details</button>
       <div class="flex-grow">
         <button
           class="{activePage === 'versions'
-            ? 'bg-slate-200 dark:bg-stone-600'
-            : 'bg-slate-300 dark:bg-stone-800'} button-base"
+            ? 'bg-slate-200 dark:bg-zinc-600'
+            : 'bg-slate-300 dark:bg-zinc-800'} button-base"
           on:click="{() => (activePage = 'versions')}"
           >Versions ({data.versions?.length})</button>
       </div>
@@ -318,7 +318,7 @@
           ><IconTick /><span>Publish Project</span></button>
       {:else if data.project?.status == "live"}
         <button
-          class="button-base flex items-center space-x-1 bg-stone-600"
+          class="button-base flex items-center space-x-1 bg-zinc-600"
           on:click="{() => draftModal.open()}"
           ><IconDraft /><span>Draft submission</span></button>
       {/if}
@@ -331,11 +331,11 @@
     <div use:autoAnimate>
       {#if activePage == "details"}
         <div
-          class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2 bg-slate-200 dark:bg-stone-800">
+          class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2 bg-slate-200 dark:bg-zinc-800">
           <div
             class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2 xl:col-span-1">
             <div
-              class="bg-slate-300 dark:bg-stone-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
+              class="bg-slate-300 dark:bg-zinc-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
               <label class="w-full h-full flex items-center justify-center">
                 <img
                   src="{iconImg}"
@@ -457,7 +457,7 @@
         </div>
         <!-- VERSIONS-->
       {:else if activePage == "versions"}
-        <div class="bg-slate-200 dark:bg-stone-800 p-3 rounded-xl">
+        <div class="bg-slate-200 dark:bg-zinc-800 p-3 rounded-xl">
           <div class="text-center align-middle md:text-start w-full">
             {#if createVersion == false}
               <div class="my-2 mb-4 flex space-x-2">
@@ -539,7 +539,7 @@
                   Dependencies
                 </p>
                 <div
-                  class="space-y-3 bg-slate-300 dark:bg-stone-800/50 rounded-lg border-2 border-slate-400 dark:border-stone-700 p-3 w-full md:w-2/3"
+                  class="space-y-3 bg-slate-300 dark:bg-zinc-800/50 rounded-lg border-2 border-slate-400 dark:border-zinc-700 p-3 w-full md:w-2/3"
                   use:autoAnimate>
                   {#each list(dependencies.length) as index}
                     <p class="text-slate-950 dark:text-slate-100">
@@ -547,9 +547,9 @@
                     </p>
                     <div class="flex items-center">
                       <span
-                        class="bg-slate-300 dark:bg-stone-800 rounded-lg border-2 border-slate-400 dark:border-stone-700 p-2 focus:border-dph-orange dark:focus:border-dph-orange outline-none focus:text-opacity-100 text-slate-950 dark:text-stone-600 transition-all placeholder:italic placeholder:text-slate-800 dark:placeholder:text-stone-500 w-full text-opacity-60">
+                        class="bg-slate-300 dark:bg-zinc-800 rounded-lg border-2 border-slate-400 dark:border-zinc-700 p-2 focus:border-dph-orange dark:focus:border-dph-orange outline-none focus:text-opacity-100 text-slate-950 dark:text-zinc-600 transition-all placeholder:italic placeholder:text-slate-800 dark:placeholder:text-zinc-500 w-full text-opacity-60">
                         datapackhub.net/project/<AutoAdjustableInput
-                          classes="bg-slate-300 text-opacity-100 dark:bg-stone-800 text-slate-100 outline-none"
+                          classes="bg-slate-300 text-opacity-100 dark:bg-zinc-800 text-slate-100 outline-none"
                           on:change="{event =>
                             dependencyHandler(event.detail, index)}" />
                       </span>
@@ -623,7 +623,7 @@
     submission at any point.
   </p>
   <button
-    class="button-base flex items-center space-x-1 bg-stone-600"
+    class="button-base flex items-center space-x-1 bg-zinc-600"
     on:click="{draft}"><IconDraft /><span>Draft submission</span></button>
 </Modal>
 

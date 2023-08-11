@@ -8,7 +8,7 @@
 
 <main
   id="main-content"
-  class=" bg-slate-50 transition-all dark:bg-stone-900 lg:px-16 xl:px-32">
+  class=" bg-slate-50 transition-all dark:bg-zinc-900 lg:px-16 xl:px-32">
   <div
     class="h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1

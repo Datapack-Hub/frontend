@@ -75,13 +75,13 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class="ml-2 text-slate-950 placeholder:text-slate-600 dark:placeholder:text-stone-400 bg-slate-300 dark:bg-stone-800 focus:outline-none dark:text-white focus:w-80"
+          class="ml-2 text-slate-950 placeholder:text-slate-600 dark:placeholder:text-zinc-400 bg-slate-300 dark:bg-zinc-800 focus:outline-none dark:text-white focus:w-80"
           on:input="{search}" />
       </div>
       <div class="block mt-2 sm:mt-0 sm:flex space-x-2 items-center">
         <p class="dark:text-white text-center">Sort By:</p>
         <select
-          class="flex h-8 pl-2 items-center rounded-full bg-slate-200 py-1 px-2 focus-within:outline focus-within:outline-2 focus-within:outline-dph-orange dark:bg-stone-700 dark:text-white border-r-8 border-slate-200 dark:border-stone-700"
+          class="flex h-8 pl-2 items-center rounded-full bg-slate-200 py-1 px-2 focus-within:outline focus-within:outline-2 focus-within:outline-dph-orange dark:bg-zinc-700 dark:text-white border-r-8 border-slate-200 dark:border-zinc-700"
           bind:value="{sort}"
           on:change="{resort}">
           {#each ["Updated", "Downloads"] as cat}

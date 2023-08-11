@@ -52,7 +52,7 @@
     </a>
   </div>
   <div
-    class="rounded-xl border-slate-200 p-4 mb-2 bg-slate-200 dark:bg-stone-800">
+    class="rounded-xl border-slate-200 p-4 mb-2 bg-slate-200 dark:bg-zinc-800">
     <div class="max-w-fit items-top space-x-3 flex">
       {#if project?.icon}
         <img
@@ -63,7 +63,7 @@
           height="64" />
       {:else}
         <div
-          class="bg-slate-300 dark:bg-stone-700 p-4 w-16 h-16 rounded-xl dark:text-white">
+          class="bg-slate-300 dark:bg-zinc-700 p-4 w-16 h-16 rounded-xl dark:text-white">
           <IconNoPhoto width="32" height="32" />
         </div>
       {/if}
@@ -121,8 +121,8 @@
 
       <div class="mt-2">
         {#if ["unpublished", "draft"].includes(status)}
-          <span class="text-stone-400">•</span>
-          <span class="text-stone-400 font-bold mt-2">{title(status)}</span>
+          <span class="text-zinc-400">•</span>
+          <span class="text-zinc-400 font-bold mt-2">{title(status)}</span>
         {:else if ["disabled"].includes(status)}
           <span class="text-red-400">•</span>
           <span class="text-red-400 font-bold mt-2"
@@ -146,7 +146,7 @@
       {/if}
       <p class=" font-black">Message from Datapack Hub Staff:</p>
       <p
-        class="prose mb-1 mt-2 rounded-xl moderation-hl p-2 dark:text-stone-300">
+        class="prose mb-1 mt-2 rounded-xl moderation-hl p-2 dark:text-zinc-300">
         <MarkdownComponent source="{project?.mod_message}" />
       </p>
       <p class=" text-xs opacity-50">
@@ -155,5 +155,5 @@
       </p>
     </div>
   {/if}
-  <p class="text-stone-600">Project ID: {project?.ID}</p>
+  <p class="text-zinc-600">Project ID: {project?.ID}</p>
 </div>

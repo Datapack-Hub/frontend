@@ -14,13 +14,13 @@
 </script>
 
 <div
-  class="w-full h-full items-center rounded-xl relative bg-slate-200 p-3 text-slate-950 dark:bg-stone-800 dark:text-slate-100">
+  class="w-full h-full items-center rounded-xl relative bg-slate-200 p-3 text-slate-950 dark:bg-zinc-800 dark:text-slate-100">
   <div class="flex items-top">
     <a
       href="/project/{project.url}"
       class="rounded-lg {project.icon
         ? ''
-        : 'bg-slate-300 p-4 dark:bg-stone-700 dark:text-slate-100'} items-start">
+        : 'bg-slate-300 p-4 dark:bg-zinc-700 dark:text-slate-100'} items-start">
       {#if project.icon}
         <img
           src="{project.icon}"
@@ -68,8 +68,8 @@
             class="inline-block h-4 w-4 align-text-top ml-0.5" /></span>
         {#if showStatus}
           {#if ["unpublished", "draft"].includes(status)}
-            <span class="text-stone-400">•</span>
-            <span class="text-stone-400 font-bold">{title(status)}</span>
+            <span class="text-zinc-400">•</span>
+            <span class="text-zinc-400 font-bold">{title(status)}</span>
           {:else if ["disabled"].includes(status)}
             <span class="text-red-500">•</span>
             <span class="text-red-500 font-bold"

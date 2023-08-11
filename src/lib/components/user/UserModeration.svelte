@@ -176,7 +176,7 @@
     <Button
       style="base"
       click="{() => moderationModal.open()}"
-      classes="mt-4 flex w-full items-center bg-slate-300 dark:bg-stone-700">
+      classes="mt-4 flex w-full items-center bg-slate-300 dark:bg-zinc-700">
       <IconShield width="24" height="24" class="float-left mr-2" />
       Moderate {user?.username}
     </Button>
@@ -196,35 +196,35 @@
     </p>
     <button
       class="button-base {moderationModalPage == 'ban'
-        ? 'bg-slate-500 dark:bg-stone-600'
-        : 'bg-slate-300 dark:bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-zinc-600'
+        : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'ban')}">Ban</button>
     <button
       class="button-base {moderationModalPage == 'warn'
-        ? 'bg-slate-500 dark:bg-stone-600'
-        : 'bg-slate-300 dark:bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-zinc-600'
+        : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'warn')}">Warn</button>
     <button
       id="send_notif"
       class="button-base {moderationModalPage == 'notif'
-        ? 'bg-slate-500 dark:bg-stone-600'
-        : 'bg-slate-300 dark:bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-zinc-600'
+        : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'notif')}"
       >Send Notification</button>
     <button
       class="button-base {moderationModalPage == 'logout'
-        ? 'bg-slate-500 dark:bg-stone-600'
-        : 'bg-slate-300 dark:bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-zinc-600'
+        : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'logout')}">Log Out</button>
     <button
       class="button-base {moderationModalPage == 'badges'
-        ? 'bg-slate-500 dark:bg-stone-600'
-        : 'bg-slate-300 dark:bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-zinc-600'
+        : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'badges')}">Edit Badges</button>
     <button
       class="button-base {moderationModalPage == 'edit'
-        ? 'bg-slate-500 dark:bg-stone-600'
-        : 'bg-slate-300 dark:bg-stone-900'}"
+        ? 'bg-slate-500 dark:bg-zinc-600'
+        : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => goto(user?.username + '/edit')}">Edit User</button>
   </div>
   {#if moderationModalPage == "ban"}
@@ -432,7 +432,7 @@
   <p class=" text-slate-950 dark:text-white">
     {user?.username} has been banned for the following reason:
   </p>
-  <p class="my-2 rounded-xl bg-stone-700 p-2 dark:text-stone-300">
+  <p class="my-2 rounded-xl bg-zinc-700 p-2 dark:text-zinc-300">
     <MarkdownComponent source="" />
   </p>
   <p class=" text-slate-950 dark:text-white">

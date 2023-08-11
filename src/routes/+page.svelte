@@ -104,7 +104,7 @@
 
 <main
   id="main-content"
-  class="bg-slate-50 transition-all dark:bg-stone-900 h-full">
+  class="bg-slate-50 transition-all dark:bg-zinc-900 h-full">
   <div class="pt-0 md:pt-20"></div>
   <div
     class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 rounded-lg">
@@ -156,7 +156,7 @@
     </section>
   </section>
   <section
-    class="w-full bg-slate-200 dark:bg-stone-800/20 flex flex-col justify-center items-center py-32">
+    class="w-full bg-slate-200 dark:bg-zinc-800/20 flex flex-col justify-center items-center py-32">
     <h1
       class="font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
@@ -164,7 +164,7 @@
     <div
       class="mt-16 grid grid-cols-1 lg:grid-cols-2 p-4 w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2 gap-3">
       <div
-        class="fadeTextAnime opacity-0 col-span-2 p-4 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+        class="fadeTextAnime opacity-0 col-span-2 p-4 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
         <h2
           class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Easily find datapacks you'll like</b>
@@ -173,7 +173,7 @@
           class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-3 font-light">
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
-        <div class="dark:bg-stone-900 rounded-xl p-3 mb-5 space-y-2">
+        <div class="dark:bg-zinc-900 rounded-xl p-3 mb-5 space-y-2">
           {#each data.random.slice(0, 2) ?? [] as rand}
             <ProjectComponent project="{rand}" />
           {/each}
@@ -181,7 +181,7 @@
         <Button click="/projects">Find your next favourite datapack</Button>
       </div>
       <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto row-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto row-span-2 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
         <h2
           class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>No more "made for older version"</b>
@@ -191,14 +191,14 @@
           Datapack Hub automatically converts the pack version to the requested
           version, removing those pesky "Made for an older version" errors!
         </p>
-        <div class="bg-slate-200 dark:bg-stone-900 rounded-xl p-2">
+        <div class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-2">
           <div
-            class="fadeTextAnime opacity-0 flex items-center justify-between bg-slate-300 dark:bg-stone-800 rounded-t-md p-2 text-slate-600 dark:text-stone-500">
+            class="fadeTextAnime opacity-0 flex items-center justify-between bg-slate-300 dark:bg-zinc-800 rounded-t-md p-2 text-slate-600 dark:text-zinc-500">
             <p>pack.mcmeta</p>
             <IconX />
           </div>
           <div
-            class="fadeTextAnime opacity-0 text-slate-600 dark:text-stone-500 font-mono bg-slate-300 dark:bg-stone-800 mt-2 px-4 rounded-b-md overflow-x-auto">
+            class="fadeTextAnime opacity-0 text-slate-600 dark:text-zinc-500 font-mono bg-slate-300 dark:bg-zinc-800 mt-2 px-4 rounded-b-md overflow-x-auto">
             <pre class="text-sm">
               <!--DO NOT INDENT!!!-->
 &lbrace;
@@ -214,7 +214,7 @@
         </div>
       </div>
       <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
         <h2
           class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Automatic ZIP Optimisation</b>
@@ -225,7 +225,7 @@
           make them run faster in-game!
         </p>
         <div
-          class="bg-slate-200 dark:bg-stone-900 rounded-xl p-4 dark:text-white flex items-center justify-center">
+          class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-4 dark:text-white flex items-center justify-center">
           <div class="flex items-center relative space-x-3">
             <IconFile width="48" height="48" class="text-red-500" />
             <IconArrow width="24" height="24" />
@@ -234,7 +234,7 @@
         </div>
       </div>
       <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto pb-0 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto pb-0 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
         <h2
           class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Strong Moderation</b>
@@ -267,7 +267,7 @@
         </div>
       </div>
       <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
         <h2
           class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Awesome Community</b>
@@ -290,7 +290,7 @@
         </a>
       </div>
       <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
         <h2
           class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Project Featuring</b>
@@ -304,7 +304,7 @@
         {/each}
       </div>
       <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 bg-slate-300 dark:bg-stone-800 rounded-lg w-full">
+        class="fadeTextAnime opacity-0 p-4 col-span-2 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
         <h2
           class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Public API</b>
@@ -313,9 +313,9 @@
           class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
           Datapack Hub is ran entirely by an API which anyone can access.
         </p>
-        <div class="bg-slate-200 dark:bg-stone-900 rounded-xl p-2">
+        <div class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-2">
           <div
-            class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-stone-800 rounded-t-md p-2 text-slate-600 dark:text-stone-500">
+            class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-zinc-800 rounded-t-md p-2 text-slate-600 dark:text-zinc-500">
             <div class="flex space-x-2 overflow-x-auto">
               <p class="text-green-600">GET</p>
               <p class="overflow-hidden text-ellipsis">
@@ -327,7 +327,7 @@
               on:click|once="{() => (ran = true)}">Run</button>
           </div>
           <div
-            class="text-slate-600 dark:text-stone-500 font-mono mt-2 bg-slate-300 dark:bg-stone-800 rounded-b-md overflow-x-auto h-80">
+            class="text-slate-600 dark:text-zinc-500 font-mono mt-2 bg-slate-300 dark:bg-zinc-800 rounded-b-md overflow-x-auto h-80">
             {#if ran}
               <pre
                 class="text-sm p-4"

@@ -37,12 +37,12 @@ const config = {
     "bg-dph-orange",
     "outline-blue-600",
     "bg-blue-600",
-    "outline-stone-600",
-    "bg-stone-600",
+    "outline-zinc-600",
+    "bg-zinc-600",
     "text-green-500",
     "text-red-500",
     "text-yellow-500",
-    "text-stone-500"
+    "text-zinc-500"
   ],
 
   plugins: [require('@tailwindcss/typography')],

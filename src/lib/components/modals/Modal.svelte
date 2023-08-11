@@ -23,7 +23,7 @@
         in:fly="{{ y: 300 }}"
         class="relative m-auto {wide
           ? 'w-1/2'
-          : 'w-1/3'} justify-self-center rounded-xl p-3 align-middle bg-slate-200 dark:bg-stone-800">
+          : 'w-1/3'} justify-self-center rounded-xl p-3 align-middle bg-slate-200 dark:bg-zinc-800">
         <button
           class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
           on:click="{() => close()}"><IconClose /></button>
