@@ -150,7 +150,9 @@
       {
         success: "Uploaded! Refreshing...",
         error: "Something went wrong.",
-        loading: "Uploading file..."
+        loading: "Uploading file...",
+        info: "",
+        warning: ""
       }
     );
   }

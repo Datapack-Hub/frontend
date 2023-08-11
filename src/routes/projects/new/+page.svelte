@@ -66,7 +66,9 @@
       {
         success: "Created project! Redirecting...",
         loading: "Creating project...",
-        error: "Something went wrong!"
+        error: "Something went wrong!",
+        info: "",
+        warning: ""
       }
     );
   }

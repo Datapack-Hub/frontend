@@ -24,7 +24,9 @@
       {
         success: "Removed Notification!",
         error: "Something went wrong 😵",
-        loading: "Removing..."
+        loading: "Removing...",
+        info: "",
+        warning: ""
       }
     );
   }

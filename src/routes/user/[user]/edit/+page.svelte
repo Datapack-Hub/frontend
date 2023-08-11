@@ -44,7 +44,9 @@
       {
         success: "Profile saved!",
         loading: "Saving...",
-        error: "Profile unable to save 😭"
+        error: "Profile unable to save 😭",
+        info: "",
+        warning: ""
       }
     );
   }
