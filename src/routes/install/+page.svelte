@@ -1,6 +1,6 @@
 <script lang="ts">
   import BhAdvert from "$lib/components/decorative/BHAdvert.svelte";
-import Button from "$lib/components/decorative/Button.svelte";
+  import Button from "$lib/components/decorative/Button.svelte";
   import autoAnimate from "@formkit/auto-animate";
 
   let activePage = "new";
