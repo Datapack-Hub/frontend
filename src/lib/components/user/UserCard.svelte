@@ -34,7 +34,10 @@
             width="18" />Datapack Hub Team
         {/if}
       </span>
-      <MarkdownComponent source="{person?.bio}" classes="{''}" limitedMode={true} />
+      <MarkdownComponent
+        source="{person?.bio}"
+        classes="{''}"
+        limitedMode="{true}" />
     </div>
   </div>
 </a>

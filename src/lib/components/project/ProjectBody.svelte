@@ -494,7 +494,7 @@
             {/each}
             <button
               class="bg-zinc-600 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 text-white"
-              on:click="{() => activePage = "versions"}">
+              on:click="{() => (activePage = 'versions')}">
               <div class="font-bold flex-grow flex items-center space-x-2">
                 <p>Show All Versions</p>
               </div>

@@ -25,7 +25,9 @@
         in:fly="{{ y: 300 }}"
         class="relative m-auto {wide
           ? 'w-3/4'
-          : isSmall ? "w-2/3" : "w-1/2"} justify-self-center rounded-xl p-3 align-middle bg-slate-200 dark:bg-zinc-800">
+          : isSmall
+          ? 'w-2/3'
+          : 'w-1/2'} justify-self-center rounded-xl p-3 align-middle bg-slate-200 dark:bg-zinc-800">
         <button
           class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
           on:click="{() => close()}"><IconClose /></button>
