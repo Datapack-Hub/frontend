@@ -33,8 +33,7 @@
 </script>
 
 {#if visible}
-  <li
-    class="{notification?.type}-background testNotif rounded-xl p-4 relative">
+  <li class="{notification?.type}-background testNotif rounded-xl p-4 relative">
     <div class="flex-auto">
       <h1 class="text-xl font-bold dark:text-white">
         {notification?.read == 0 ? "•" : ""}
@@ -52,7 +51,6 @@
 {/if}
 
 <style lang="postcss">
-
   .default-background {
     @apply bg-slate-200 dark:bg-zinc-800;
   }
@@ -66,6 +64,15 @@
   }
 
   .rainbow-background {
-    background-image: linear-gradient(90deg, #ff000066, #ff880066, #ffff0066, #00ff0066, #00ff8866, #00ffff66, #0000ff66);
+    background-image: linear-gradient(
+      90deg,
+      #ff000066,
+      #ff880066,
+      #ffff0066,
+      #00ff0066,
+      #00ff8866,
+      #00ffff66,
+      #0000ff66
+    );
   }
 </style>
