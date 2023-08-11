@@ -1,10 +1,9 @@
 <script lang="ts">
   import { fetchAuthed } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
-  import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
 
-  import type { Project, User } from "$lib/globals/schema";
+  import type { Project } from "$lib/globals/schema";
   import { title } from "radash";
   import IconBack from "~icons/tabler/ArrowBack.svelte";
   import IconCube from "~icons/tabler/Box.svelte";

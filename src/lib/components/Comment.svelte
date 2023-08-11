@@ -6,8 +6,8 @@
     type DPHComment,
     type Project
   } from "$lib/globals/schema";
-  import { roleInfo, roles, user } from "$lib/globals/stores";
-  import { debounce, sort } from "radash";
+  import { roles, user } from "$lib/globals/stores";
+  import { sort } from "radash";
   import { toast } from "svelte-sonner";
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
@@ -22,7 +22,6 @@
 
   let replyMessage: string;
   let showReplies = false;
-  let expanded = false;
   let wait = false;
   let visible = true;
   let formatter = Intl.DateTimeFormat("en", {

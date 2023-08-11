@@ -1,9 +1,8 @@
 <script lang="ts">
-  import autoAnimate from "@formkit/auto-animate";
 
   import { afterNavigate, goto } from "$app/navigation";
-  import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
   import Button from "$lib/components/decorative/Button.svelte";
+  import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import { categories } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
@@ -12,13 +11,6 @@
   import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
   import { writable, type Writable } from "svelte/store";
-  import IconAttr from "~icons/tabler/At.svelte";
-  import {
-    default as IconNC,
-    default as IconND
-  } from "~icons/tabler/CoinOff.svelte";
-  import IconEdit from "~icons/tabler/Pencil.svelte";
-  import IconSA from "~icons/tabler/Repeat.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
 
   let iconB64: string | ArrayBuffer | null | undefined;

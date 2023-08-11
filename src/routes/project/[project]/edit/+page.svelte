@@ -16,26 +16,19 @@
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
 
+  import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
   import AutoAdjustableInput from "$lib/components/utility/AutoAdjustableInput.svelte";
+  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import { projectSchema, type Project } from "$lib/globals/schema";
+  import { list } from "radash";
   import { onMount } from "svelte";
+  import { MultiSelect } from "svelte-multiselect";
   import { writable, type Writable } from "svelte/store";
-  import IconAttr from "~icons/tabler/At.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
-  import {
-    default as IconNC,
-    default as IconND
-  } from "~icons/tabler/CoinOff.svelte";
   import IconDraft from "~icons/tabler/FileOff.svelte";
   import IconLink from "~icons/tabler/Link.svelte";
-  import IconEdit from "~icons/tabler/Pencil.svelte";
-  import IconSA from "~icons/tabler/Repeat.svelte";
-  import IconNoIcon from "~icons/tabler/Upload.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
-  import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
-  import { list } from "radash";
-  import { MultiSelect } from "svelte-multiselect";
-  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
+  import IconNoIcon from "~icons/tabler/Upload.svelte";
 
   let publishModal: Modal;
   let draftModal: Modal;
