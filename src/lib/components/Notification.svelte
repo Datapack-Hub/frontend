@@ -2,6 +2,7 @@
   import { fetchAuthed } from "$lib/globals/functions";
   import { toast } from "svelte-sonner";
   import IconX from "~icons/tabler/X.svelte";
+  import IconUnread from "~icons/tabler/BellRinging.svelte";
   import type { Notif } from "$lib/globals/schema";
   import MarkdownComponent from "./markdown/MarkdownRenderer.svelte";
 
@@ -33,19 +34,23 @@
 </script>
 
 {#if visible}
-  <li class="{notification?.type}-background testNotif rounded-xl p-4 relative">
+  <li class="w-full md:w-2/3 {notification?.type}-background testNotif rounded-xl p-4 relative">
     <div class="flex-auto">
-      <h1 class="text-xl font-bold dark:text-white">
-        {notification?.read == 0 ? "•" : ""}
-        {notification?.message}
-      </h1>
+      <div class="flex items-center gap-2">
+        {#if notification?.read == 0}<IconUnread class="text-xl font-bold dark:text-white p-0.5"/>{/if}
+        <h1 class="text-xl font-bold dark:text-white mr-4">
+          {notification?.message}
+        </h1>
+
+      </div>
       <MarkdownComponent
         limitedMode="{true}"
         classes="mt-3"
         source="{notification?.description}" />
     </div>
     <button
-      class="closeButton absolute right-4 top-4 text-slate-950 dark:text-white"
+      title="Dismiss"
+      class="closeButton absolute right-3.5 top-3.5 p-0.5 rounded-full text-slate-950 dark:text-white"
       on:click="{remove}"><IconX /></button>
   </li>
 {/if}
