@@ -1,5 +1,4 @@
 <script lang="ts">
-
   import { afterNavigate, goto } from "$app/navigation";
   import Button from "$lib/components/decorative/Button.svelte";
   import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
