@@ -1,5 +1,6 @@
 <script lang="ts">
-  import Button from "$lib/components/decorative/Button.svelte";
+  import BhAdvert from "$lib/components/decorative/BHAdvert.svelte";
+import Button from "$lib/components/decorative/Button.svelte";
   import autoAnimate from "@formkit/auto-animate";
 
   let activePage = "new";
@@ -45,7 +46,6 @@
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'realm')}">Installing to a realm</Button>
     </div>
-
     <div use:autoAnimate>
       {#if activePage == "new"}
         <div
@@ -130,6 +130,7 @@
       {:else if activePage == "server"}
         <div
           class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2 dark:text-white">
+          <BhAdvert />
           <p class="text-red-500 font-bold">
             Note - some datapacks won't be compatible with server software such
             as Bukkit, Spigot, or plugins like EssentialsX.

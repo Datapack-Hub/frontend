@@ -15,7 +15,7 @@
       width="24"
       height="24" />
     <p class="text-black dark:text-white text-sm">
-      Want to play this datapack with friends? <b><u>Bisect Hosting</u></b> is the
+      Want to play Minecraft with friends? <b><u>Bisect Hosting</u></b> is the
       official reccomended Minecraft server host of Datapack Hub!
     </p>
   </div>
