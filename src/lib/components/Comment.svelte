@@ -74,7 +74,7 @@
 
 {#if visible}
   {#key comment}
-    <div class="dark:bg-zinc-800 p-2 rounded-xl w-full flex space-x-2 relative">
+    <div class="group dark:bg-zinc-900 p-2 rounded-xl w-full flex space-x-2 relative">
       <img
         src="{comment.author.profile_icon}&size=64"
         alt="{comment.author.username}'s profile"
@@ -123,7 +123,7 @@
                   bind:value="{replyMessage}"
                   type="text"
                   required
-                  class="p-1 rounded-md dark:bg-zinc-900 px-2 text-white focus:transition-all"
+                  class="p-1 rounded-md dark:bg-zinc-800 px-2 text-white focus:transition-all"
                   placeholder="Leave a reply" />
                 <button
                   type="submit"
@@ -144,7 +144,7 @@
               bind:value="{replyMessage}"
               type="text"
               required
-              class="p-1 rounded-md dark:bg-zinc-900 px-2 text-white focus:transition-all"
+              class="p-1 rounded-md dark:bg-zinc-800 px-2 text-white focus:transition-all"
               placeholder="Leave the first reply" />
             <button
               type="submit"
@@ -153,42 +153,16 @@
           </form>
         {/if}
       </div>
-      {#if $user.id == comment.author.id || $roleInfo.permissions.includes("DELETE_CONTENT")}
-        <div class="relative right-0 p-2 text-white">
-          <button
-            role="checkbox"
-            aria-checked="{expanded}"
-            class="cursor-pointer"
-            on:click="{() => (expanded = !expanded)}">
-            {#if !expanded}
-              <IconExpand
-                class="ml-auto"
-                on:keypress="{() => (expanded = true)}" />
-            {:else}
-              <IconDexpand
-                class="ml-auto"
-                on:keypress="{() => (expanded = true)}" />
-            {/if}
+      {#if $user.id == comment.author.id || ["moderator","admin"].includes($user.role)}
+        <div class="right-0 p-1 text-zinc-400 text-sm group-hover:flex hidden space-x-4 items-start">
+          <button class="flex space-x-1 items-center" on:click={deleteReply}>
+            <IconDelete />
+            <p>Delete</p>
           </button>
-          {#if expanded}
-            <div
-              class="absolute right-0 top-8 p-2 bg-zinc-600 rounded-lg space-y-1"
-              on:pointerleave="{debounce(
-                { delay: 300 },
-                () => (expanded = false)
-              )}">
-              <button
-                class="flex items-center space-x-1 p-0.5 px-1 cursor-pointer rounded-lg hover:bg-zinc-600 text-xs"
-                on:click="{deleteReply}">
-                <IconDelete />
-                <p>Delete</p>
-              </button>
-              <!-- <div class="flex items-center space-x-1">
-        <IconEdit />
-        <p>Edit</p>
-      </div> -->
-            </div>
-          {/if}
+          <!-- <button class="flex space-x-1 items-center">
+            <IconDelete />
+            <p>Edit</p>
+          </button> -->
         </div>
       {/if}
     </div>
