@@ -2,6 +2,7 @@
   import { fly } from "svelte/transition";
   import IconClose from "~icons/tabler/X.svelte";
 
+  let innerWidth: number;
   let visible = false;
 
   export let wide = false;
@@ -16,6 +17,8 @@
 
   $: isSmall = innerWidth < 1181;
 </script>
+
+<svelte:window bind:innerWidth />
 
 {#if visible}
   <div class="absolute">
