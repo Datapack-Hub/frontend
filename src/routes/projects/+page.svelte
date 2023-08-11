@@ -176,7 +176,7 @@
             <FeaturedProjectComponent project="{feat}" type="featured" />
           {/each}
         </div>
-        {#key dataCopy}
+        {#key layout}
           <div
             class="{layout === 'list'
               ? 'space-y-2'
