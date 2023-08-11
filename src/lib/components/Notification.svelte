@@ -34,14 +34,15 @@
 </script>
 
 {#if visible}
-  <li class="w-full md:w-2/3 {notification?.type}-background testNotif rounded-xl p-4 relative">
+  <li
+    class="w-full md:w-2/3 {notification?.type}-background testNotif rounded-xl p-4 relative">
     <div class="flex-auto">
       <div class="flex items-center gap-2">
-        {#if notification?.read == 0}<IconUnread class="text-xl font-bold dark:text-white p-0.5"/>{/if}
+        {#if notification?.read == 0}<IconUnread
+            class="text-xl font-bold dark:text-white p-0.5" />{/if}
         <h1 class="text-xl font-bold dark:text-white mr-4">
           {notification?.message}
         </h1>
-
       </div>
       <MarkdownComponent
         limitedMode="{true}"
