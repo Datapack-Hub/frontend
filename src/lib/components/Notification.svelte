@@ -34,49 +34,38 @@
 
 {#if visible}
   <li
-    class="flex w-full {notification?.type}-background testNotif my-2 rounded-xl p-4">
+    class="{notification?.type}-background testNotif rounded-xl p-4 relative">
     <div class="flex-auto">
-      <h1 class="text-xl font-bold {notification?.type}-text">
-        {#if notification?.read == 0}•
-        {/if}{notification?.message}
+      <h1 class="text-xl font-bold dark:text-white">
+        {notification?.read == 0 ? "•" : ""}
+        {notification?.message}
       </h1>
       <MarkdownComponent
         limitedMode="{true}"
+        classes="mt-3"
         source="{notification?.description}" />
     </div>
     <button
-      class="closeButton right-0 top-0 h-1 text-slate-950 dark:text-white"
+      class="closeButton absolute right-4 top-4 text-slate-950 dark:text-white"
       on:click="{remove}"><IconX /></button>
   </li>
 {/if}
 
 <style lang="postcss">
-  /* @HoodieRocks can you fix this so it works on light mode too */
-  .default-text {
-    @apply text-slate-950 dark:text-white;
-  }
+
   .default-background {
     @apply bg-slate-200 dark:bg-zinc-800;
   }
 
-  .important-text {
-    @apply text-red-500;
-  }
   .important-background {
-    @apply bg-red-500/20;
+    @apply bg-red-500/40;
   }
 
-  .announcement-text {
-    @apply text-yellow-500;
-  }
   .announcement-background {
-    @apply bg-yellow-500/20;
+    @apply bg-yellow-500/40;
   }
 
-  .rainbow-text {
-    @apply text-white;
-  }
   .rainbow-background {
-    @apply bg-gradient-to-r from-red-500/75 via-green-500/75 to-purple-500/75;
+    background-image: linear-gradient(90deg, #ff000066, #ff880066, #ffff0066, #00ff0066, #00ff8866, #00ffff66, #0000ff66);
   }
 </style>

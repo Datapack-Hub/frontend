@@ -37,7 +37,6 @@
     .use(remarkRehype)
     .use(rehypeUrls, {
       inspectEach({ node, url }) {
-        console.log(url);
         let properties = node.properties!;
         properties.href =
           node.tagName === "a" && new URL(url).host !== "datapackhub.net"

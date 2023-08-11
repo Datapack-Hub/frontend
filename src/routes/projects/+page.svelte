@@ -177,17 +177,19 @@
           {/each}
         </div>
         {#key layout}
-          <div
-            class="{layout === 'list'
+        <div
+        class="{layout === 'list'
               ? 'space-y-2'
               : 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2'}"
             use:autoAnimate>
-            {#each dataCopy as project}
-              <li>
-                <ProjectComponent {project} />
-              </li>
-              <!-- {/if} -->
-            {/each}
+            {#key dataCopy}
+              {#each dataCopy as project}
+                <li>
+                  <ProjectComponent {project} />
+                </li>
+                <!-- {/if} -->
+              {/each}
+            {/key}
           </div>
         {/key}
       </ul>

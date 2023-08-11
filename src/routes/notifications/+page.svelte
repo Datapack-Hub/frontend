@@ -33,7 +33,7 @@
             </h1>
           </div>
         {/if}
-        <ul use:autoAnimate>
+        <ul use:autoAnimate class="grid grid-cols-1 gap-3">
           {#each localNotifCopy ?? [] as notification}
             <Notification {notification} />
           {/each}
