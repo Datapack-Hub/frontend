@@ -2,8 +2,8 @@
   import { fly } from "svelte/transition";
   import IconClose from "~icons/tabler/X.svelte";
 
-  let innerWidth: number;
   let visible = false;
+  let innerWidth = 0
 
   export let wide = false;
 
