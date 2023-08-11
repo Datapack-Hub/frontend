@@ -256,7 +256,7 @@
     );
   }
 
-  $: isSmall = innerWidth < 768;
+  $: isSmall = innerWidth < 1181;
 </script>
 
 <svelte:window bind:innerWidth />
@@ -492,13 +492,14 @@
                 </button>
               {/if}
             {/each}
-            <Button style="boring" click="{() => (activePage = 'versions')}">
+            <button
+              class="bg-zinc-600 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 text-white"
+              on:click="{() => activePage = "versions"}">
               <div class="font-bold flex-grow flex items-center space-x-2">
-                <IconFiles />
                 <p>Show All Versions</p>
               </div>
               <IconRight />
-            </Button>
+            </button>
           </div>
           <div class="flex space-x-1 items-center mt-2 text-zinc-500">
             <IconAlert />

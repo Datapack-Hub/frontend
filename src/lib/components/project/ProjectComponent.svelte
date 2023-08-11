@@ -40,7 +40,7 @@
         {project.title}
       </a>
       <div
-        class="flex gap-1 items-center text-xs text-slate-950/40 dark:text-slate-100 mt-2">
+        class="flex gap-1 items-center text-sm text-slate-950/40 dark:text-slate-100">
         <img
           src="{author.profile_icon}&size=32"
           alt="{author.username}'s profile"

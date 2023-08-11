@@ -18,17 +18,11 @@
   // Component args
   export let project: Project;
 
-  let author: User;
   let mm: HTMLDivElement;
   let status = project.status ?? "unpublished";
   let formatter = Intl.DateTimeFormat("en", {
     dateStyle: "medium",
     timeStyle: "short"
-  });
-
-  // Get author data on load
-  onMount(async () => {
-    author = project?.author;
   });
 
   // Dismiss the mod message function
@@ -74,17 +68,17 @@
         </h1>
         <div class="flex items-center space-x-1 mt-1 min-w-fit">
           <a
-            href="/user/{author?.username}"
+            href="/user/{project.author?.username}"
             class="flex items-center space-x-1">
             <img
-              src="{author?.profile_icon}&size=32"
+              src="{project.author?.profile_icon}&size=32"
               class="max-h-5 rounded-full"
-              alt="{author?.username}'s profile picture"
+              alt="{project.author?.username}'s profile picture"
               width="20"
               height="20" />
             <span
               class="text-xs xl:text-sm text-slate-950 transition-all hover:underline dark:text-white">
-              {author?.username}
+              {project.author?.username}
             </span>
           </a>
         </div>
@@ -98,7 +92,7 @@
       <p class="flex items-center space-x-2 text-md my-2 dark:text-white">
         <IconCube />
         <span class="font-bold">Categories:</span>
-        <span>{project.category?.toString()}</span>
+        <span>{project.category?.join(", ")}</span>
       </p>
       <div class="my-3">
         <CasualLine />
