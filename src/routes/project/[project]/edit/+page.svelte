@@ -381,7 +381,7 @@
           <MarkdownEditor
             classes="resize-none h-64 col-span-2"
             bind:content="{bodyValue}" />
-          <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
+          <!-- <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
             CC Licence (click to select)
           </p>
           <p class="text-slate-950 dark:text-slate-100/20 col-span-3">
@@ -440,7 +440,7 @@
                 class="input w-full"
                 placeholder="https://example.com/my-custom-licence.md" />
             </div>
-          </div>
+          </div> -->
           <p class="text-slate-950 dark:text-slate-100 col-span-3">
             Categories
           </p>
