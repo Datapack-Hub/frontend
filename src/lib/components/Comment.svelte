@@ -74,7 +74,8 @@
 
 {#if visible}
   {#key comment}
-    <div class="group dark:bg-zinc-900 p-2 rounded-xl w-full flex space-x-2 relative">
+    <div
+      class="group dark:bg-zinc-900 p-2 rounded-xl w-full flex space-x-2 relative">
       <img
         src="{comment.author.profile_icon}&size=64"
         alt="{comment.author.username}'s profile"
@@ -153,9 +154,10 @@
           </form>
         {/if}
       </div>
-      {#if $user.id == comment.author.id || ["moderator","admin"].includes($user.role)}
-        <div class="right-0 p-1 text-zinc-400 text-sm group-hover:flex hidden space-x-4 items-start">
-          <button class="flex space-x-1 items-center" on:click={deleteReply}>
+      {#if $user.id == comment.author.id || ["moderator", "admin"].includes($user.role)}
+        <div
+          class="right-0 p-1 text-zinc-400 text-sm group-hover:flex hidden space-x-4 items-start">
+          <button class="flex space-x-1 items-center" on:click="{deleteReply}">
             <IconDelete />
             <p>Delete</p>
           </button>

@@ -3,7 +3,7 @@
   import IconClose from "~icons/tabler/X.svelte";
 
   let visible = false;
-  let innerWidth = 0
+  let innerWidth = 0;
 
   export let wide = false;
 
