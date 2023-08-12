@@ -21,9 +21,9 @@
 
   let formatter = Intl.NumberFormat("en", { notation: "compact" });
   let width: number;
-  let apiExampleUser = "silabear"
-  let apiExampleResult = ""
-  let visible = false
+  let apiExampleUser = "silabear";
+  let apiExampleResult = "";
+  let visible = false;
 
   onMount(async () => {
     let cyclingTextWrapper = document.querySelectorAll(".split-text .letters");
@@ -98,9 +98,9 @@
   });
 
   async function apiExampleRun() {
-    let exampleResponse = await fetch(API + "/user/" + apiExampleUser)
-    let exampleJson = await exampleResponse.json()
-    apiExampleResult = JSON.stringify(exampleJson, null, 2)
+    let exampleResponse = await fetch(API + "/user/" + apiExampleUser);
+    let exampleJson = await exampleResponse.json();
+    apiExampleResult = JSON.stringify(exampleJson, null, 2);
   }
 </script>
 
@@ -129,15 +129,15 @@
     class="flex h-screen md:h-[75vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
       <div class="relative mb-4 h-36 w-full md:mb-0">
-          <h1 id="indexText1" class="split-text appearing-text-styles">
-            <span class="letters inline-block text-dph-orange">Explore</span>
-          </h1>
-          <h1 id="indexText2" class="split-text appearing-text-styles">
-            <span class="letters inline-block text-dph-orange">Create</span>
-          </h1>
-          <h1 id="indexText3" class="split-text appearing-text-styles">
-            <span class="letters inline-block text-dph-orange">Play</span>
-          </h1>
+        <h1 id="indexText1" class="split-text appearing-text-styles">
+          <span class="letters inline-block text-dph-orange">Explore</span>
+        </h1>
+        <h1 id="indexText2" class="split-text appearing-text-styles">
+          <span class="letters inline-block text-dph-orange">Create</span>
+        </h1>
+        <h1 id="indexText3" class="split-text appearing-text-styles">
+          <span class="letters inline-block text-dph-orange">Play</span>
+        </h1>
       </div>
       <h2
         class="w-full text-center text-xl text-slate-950 dark:text-slate-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
@@ -330,7 +330,10 @@
             <div class="flex space-x-2 overflow-x-auto">
               <p class="text-green-600">GET</p>
               <span class="overflow-hidden text-ellipsis">
-                https://api.datapackhub.net/user/<AutoAdjustableInput on:change={event => apiExampleUser = event.detail} classes="bg-transparent text-slate-600 dark:text-zinc-500" defaultValue="silabear" />
+                https://api.datapackhub.net/user/<AutoAdjustableInput
+                  on:change="{event => (apiExampleUser = event.detail)}"
+                  classes="bg-transparent text-slate-600 dark:text-zinc-500"
+                  defaultValue="silabear" />
               </span>
             </div>
             <button

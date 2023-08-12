@@ -94,8 +94,8 @@
             </p>
             <p
               class="align-middle text-slate-950 dark:text-slate-100 opacity-40 text-sm">
-              Your username is used to view your profile, and is
-              displayed on your datapacks, comments, and replies.
+              Your username is used to view your profile, and is displayed on
+              your datapacks, comments, and replies.
             </p>
             <input
               class="input"

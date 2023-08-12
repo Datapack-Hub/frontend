@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
 
   export let classes = "";
-  export let defaultValue = ""
+  export let defaultValue = "";
 
   let value = defaultValue;
   let dispatch = createEventDispatcher();
