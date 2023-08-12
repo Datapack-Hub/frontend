@@ -6,7 +6,7 @@
     type DPHComment,
     type Project
   } from "$lib/globals/schema";
-  import { roles, user } from "$lib/globals/stores";
+  import { roles, user, authed } from "$lib/globals/stores";
   import { sort } from "radash";
   import { toast } from "svelte-sonner";
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
@@ -111,7 +111,7 @@
                   <Reply {reply} />
                 {/each}
               </ul>
-
+              {#if $authed}
               <form
                 class="flex items-center space-x-2 mt-3"
                 on:submit|preventDefault="{sendReply}">
@@ -130,9 +130,10 @@
                   class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50"
                   disabled="{wait}">Post</button>
               </form>
+              {/if}
             </div>
           {/if}
-        {:else}
+        {:else if $authed}
           <form
             class="flex items-center space-x-2 mt-3"
             on:submit|preventDefault="{sendReply}">

@@ -555,12 +555,14 @@
                 class="button-primary"
                 disabled="{commentSending}">Post</button>
             </form>
-            {#key comments}
-              {#each sort(comments, c => c.sent, true) as cmt}
-                <Comment comment="{cmt}" {project} />
-              {/each}
-            {/key}
+          {:else}
+          <p class="text-white mt-1 mb-3 ml-1"><b>Sign in</b> to post a comment or reply</p>
           {/if}
+          {#key comments}
+            {#each sort(comments, c => c.sent, true) as cmt}
+              <Comment comment="{cmt}" {project} />
+            {/each}
+          {/key}
           <!-- <Comment /> -->
         </div>
       </div>
