@@ -1,7 +1,13 @@
 import { browser, dev } from "$app/environment";
 import { goto } from "$app/navigation";
 import { loadColorPref } from "$lib/globals/functions";
-import { authed, consoleWarned, roleInfo, roles, user } from "$lib/globals/stores";
+import {
+  authed,
+  consoleWarned,
+  roleInfo,
+  roles,
+  user
+} from "$lib/globals/stores";
 import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
 
@@ -14,7 +20,7 @@ export const load = (async ({ url, data }) => {
     authed.set(true);
   }
 
-  roles.set(data.roles)
+  roles.set(data.roles);
 
   if (browser) {
     if (parameters.has("token")) {
