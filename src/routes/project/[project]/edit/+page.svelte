@@ -645,11 +645,11 @@
 
 <style lang="postcss">
   :root {
-    --sms-bg: theme(colors.stone.800);
-    --sms-border: 2px solid theme(colors.stone.200);
-    --sms-selected-bg: theme(colors.stone.700);
+    --sms-bg: theme(colors.zinc.800);
+    --sms-border: 2px solid theme(colors.zinc.200);
+    --sms-selected-bg: theme(colors.zinc.700);
     --sms-remove-btn-hover-bg: theme(colors.orange.500);
-    --sms-options-bg: theme(colors.stone.800);
+    --sms-options-bg: theme(colors.zinc.800);
     --sms-text-color: theme(colors.slate.100);
   }
 </style>

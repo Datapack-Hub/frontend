@@ -40,7 +40,7 @@
       break;
     }
     case "random": {
-      style = "stone-600";
+      style = "zinc-600";
       break;
     }
     case "new": {
