@@ -32,7 +32,9 @@
   <div class="flex flex-col lg:flex-row w-full px-4">
     {#if data.project && data.versions}
       <!--Project Meta-->
-      <ProjectInfo project="{data.project}" is_new={data.is_new == "1" ? true : false} />
+      <ProjectInfo
+        project="{data.project}"
+        is_new="{data.is_new == '1' ? true : false}" />
       <!--Main-->
       <ProjectBody
         project="{data.project}"
@@ -41,4 +43,3 @@
     {/if}
   </div>
 </main>
-

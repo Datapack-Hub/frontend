@@ -568,7 +568,7 @@
   {/if}
 </div>
 
-<Modal bind:this="{moderateModal}" title={"Moderate " + project.title}>
+<Modal bind:this="{moderateModal}" title="{'Moderate ' + project.title}">
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
   <UserCard
@@ -612,7 +612,7 @@
     >{title(moderationModalPage)}</Button>
 </Modal>
 
-<Modal bind:this="{reportModal}" title={"Report " + project.title}>
+<Modal bind:this="{reportModal}" title="{'Report ' + project.title}">
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">Author</p>
   <UserCard
@@ -630,7 +630,7 @@
   <Button click="{() => report()}">Report</Button>
 </Modal>
 
-<Modal bind:this="{featureModal}" title={"Feature " + project.title}>
+<Modal bind:this="{featureModal}" title="{'Feature ' + project.title}">
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">Author</p>
   <UserCard

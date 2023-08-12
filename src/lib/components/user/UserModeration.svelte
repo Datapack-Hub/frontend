@@ -183,7 +183,10 @@
   {/await}
 {/if}
 
-<Modal bind:this="{moderationModal}" wide="{true}" title={"Moderate " + user?.username}>
+<Modal
+  bind:this="{moderationModal}"
+  wide="{true}"
+  title="{'Moderate ' + user?.username}">
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
   <UserCard person="{user}" role="{$roles.find(v => user?.role == v.name)}" />
   <div class="mb-2 min-w-fit items-center">

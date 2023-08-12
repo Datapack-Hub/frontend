@@ -30,8 +30,8 @@
   export let is_new: boolean;
 
   onMount(() => {
-    if(is_new == true) nextStepsModal.open()
-  })
+    if (is_new == true) nextStepsModal.open();
+  });
 
   let mm: HTMLDivElement;
   let status = project.status ?? "unpublished";
@@ -165,61 +165,92 @@
     </div>
   {/if}
   {#if status == "draft"}
-  <button on:click={nextStepsModal.open} class="flex items-center space-x-1 text-yellow-400">
-    <IconList />
-    <span class="">Open checklist</span>
-  </button>
+    <button
+      on:click="{nextStepsModal.open}"
+      class="flex items-center space-x-1 text-yellow-400">
+      <IconList />
+      <span class="">Open checklist</span>
+    </button>
   {:else}
-  <p class="text-zinc-600">Project ID: {project?.ID}</p>
+    <p class="text-zinc-600">Project ID: {project?.ID}</p>
   {/if}
 </div>
 
-<Modal bind:this={nextStepsModal} title="Checklist">
+<Modal bind:this="{nextStepsModal}" title="Checklist">
   <div class="text-white">
-    <p class="mb-2">Congrats! You've made a new empty project. Here's a quick checklist of what you should do next:</p>
+    <p class="mb-2">
+      Congrats! You've made a new empty project. Here's a quick checklist of
+      what you should do next:
+    </p>
     <div class="space-y-2">
       {#if !project.icon}
-      <div class="rounded-xl bg-zinc-900 p-3">
-        <div class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
-          <IconIcon />
-          <h1>Add an icon</h1>
+        <div class="rounded-xl bg-zinc-900 p-3">
+          <div
+            class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
+            <IconIcon />
+            <h1>Add an icon</h1>
+          </div>
+          <p>
+            Your project icon is the first thing people will see. Make it
+            simple, effective, and stand out to get people to click on it!
+          </p>
         </div>
-        <p>Your project icon is the first thing people will see. Make it simple, effective, and stand out to get people to click on it!</p>
-      </div>
       {/if}
-      {#if typeof(project.category) != undefined || project.category[0] == ""}
-      <div class="rounded-xl bg-zinc-900 p-3">
-        <div class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
-          <IconCategories />
-          <h1>Select categories</h1>
+      {#if typeof project.category != undefined || project.category[0] == ""}
+        <div class="rounded-xl bg-zinc-900 p-3">
+          <div
+            class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
+            <IconCategories />
+            <h1>Select categories</h1>
+          </div>
+          <p>
+            Categories help people search for your datapacks. If you add more
+            categories, more people will find and download your datapack
+          </p>
         </div>
-        <p>Categories help people search for your datapacks. If you add more categories, more people will find and download your datapack</p>
-      </div>
       {/if}
       <div class="rounded-xl bg-zinc-900 p-3">
-        <div class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
+        <div
+          class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
           <IconDescription />
           <h1>Add relevant details</h1>
         </div>
-        <p>Unless you tell them, nobody knows how to use your datapack. Use the description to tell people what your datapack does, how to use it, etc.</p>
+        <p>
+          Unless you tell them, nobody knows how to use your datapack. Use the
+          description to tell people what your datapack does, how to use it,
+          etc.
+        </p>
       </div>
       {#if !project.latest_version}
-      <div class="rounded-xl bg-zinc-900 p-3">
-        <div class="flex text-lg font-semibold text-sky-500 items-center space-x-2">
-          <IconUpload />
-          <h1>Upload a version</h1>
+        <div class="rounded-xl bg-zinc-900 p-3">
+          <div
+            class="flex text-lg font-semibold text-sky-500 items-center space-x-2">
+            <IconUpload />
+            <h1>Upload a version</h1>
+          </div>
+          <p>
+            Versions are your datapack's downloadable files. Upload a datapack
+            file, select the Minecraft versions it supports, and users will be
+            able to download your datapack with our smart download system.
+          </p>
         </div>
-        <p>Versions are your datapack's downloadable files. Upload a datapack file, select the Minecraft versions it supports, and users will be able to download your datapack with our smart download system.</p>
-      </div>
       {/if}
       <div class="rounded-xl bg-zinc-900 p-3">
-        <div class="flex text-lg font-semibold text-green-500 items-center space-x-2">
+        <div
+          class="flex text-lg font-semibold text-green-500 items-center space-x-2">
           <IconTick />
           <h1>Submit for approval</h1>
         </div>
-        <p>Once you think your datapack is ready to be published, publish it. A moderator will review your datapack to make sure it follows our rules before going live.</p>
+        <p>
+          Once you think your datapack is ready to be published, publish it. A
+          moderator will review your datapack to make sure it follows our rules
+          before going live.
+        </p>
       </div>
     </div>
-    <p class="mt-2">You can view this list anytime by clicking the "Open Checklist" button on the project page.</p>
+    <p class="mt-2">
+      You can view this list anytime by clicking the "Open Checklist" button on
+      the project page.
+    </p>
   </div>
 </Modal>
