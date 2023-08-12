@@ -8,8 +8,11 @@
   import IconUnread from "~icons/tabler/BellRinging.svelte";
   import IconPlus from "~icons/tabler/Plus.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
+  import { sanitize } from "isomorphic-dompurify";
 
   export let small: boolean;
+
+  let cleanUsername = "";
 
   let signInHoverMessage = {
     content: "Sign In",
@@ -90,7 +93,7 @@
       href="/user/{$user.username}"
       use:tippy="{{
         content:
-          $user.username +
+          sanitize($user.username) +
           "<span class='items-center'><br /><button onclick=\"document.cookie = 'dph_token' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; location.replace('/')\" class='text-sky-500'>Sign Out</a></span>",
         placement: 'bottom',
         interactive: true,

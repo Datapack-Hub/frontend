@@ -2,6 +2,7 @@
   import { fetchAuthed } from "$lib/globals/functions";
   import { authed, user } from "$lib/globals/stores";
   import { onMount } from "svelte";
+  import { sanitize } from "isomorphic-dompurify";
 
   let submitCmd: () => Promise<void> | undefined;
   let commandInput: HTMLInputElement;
@@ -14,7 +15,6 @@
 
   onMount(async () => {
     consoleIn = document.querySelector("#cons")?.innerHTML ?? "";
-
     submitCmd = async () => {
       if (command) {
         consoleIn = consoleIn + `<li>⫻ ${command}</li>`;
@@ -66,7 +66,7 @@
           <span class="text-lg font-normal">Welcome!</span>
           <!-- refactor this to not require a @html tag in the future -->
           <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-          <ul class="list-none" id="cons">{@html consoleIn}</ul>
+          <ul class="list-none" id="cons">{@html sanitize(consoleIn)}</ul>
         </div>
         <div
           class="absolute bottom-0 right-0 flex w-full justify-around bg-black p-3">
