@@ -29,24 +29,28 @@ export const userSchema = z.object({
 });
 
 export const versionSchema = z.object({
-  name: z.string().max(50, { message: "Version name too long"}),
-  description: z.string().max(1e6, { message: "Version description too long (somehow?)"}),
+  name: z.string().max(50, { message: "Version name too long" }),
+  description: z
+    .string()
+    .max(1e6, { message: "Version description too long (somehow?)" }),
   minecraft_versions: z.string(),
   primary_download: z.string(),
   resource_pack_download: z.ostring(),
-  version_code: z.string().max(15, { message: "Version code too long"})
+  version_code: z.string().max(15, { message: "Version code too long" })
 });
 
 export const projectSchema = z.object({
   ID: z.number(),
   author: z.object(userSchema.shape),
-  body: z.string().max(1e4, { message: "Body too long"}),
+  body: z.string().max(1e4, { message: "Body too long" }),
   category: z.optional(z.array(z.string())),
   dependencies: z.array(z.string()).nullish(),
-  description: z.string().max(200, { message: "Description too long"}),
+  description: z.string().max(200, { message: "Description too long" }),
   downloads: z.number(),
   icon: z.string().url().nullish(),
-  latest_version: z.optional(versionSchema.omit({ primary_download: true, resource_pack_download: true})),
+  latest_version: z.optional(
+    versionSchema.omit({ primary_download: true, resource_pack_download: true })
+  ),
   licence: z.string().nullish(),
   mod_message: z.string().nullish(),
   status: z.enum([
@@ -67,7 +71,7 @@ export const projectSchema = z.object({
 export const notificationSchema = z.object({
   id: z.number().nonnegative(),
   description: z.ostring(),
-  message: z.string().max(200, { message: "Notification message too long"}),
+  message: z.string().max(200, { message: "Notification message too long" }),
   read: z.number().nonnegative(),
   type: z.enum([
     "announcement",
@@ -99,10 +103,9 @@ export const roleSchema = z.object({
   )
 });
 
-
 export const reportSchema = z.object({
   id: z.number().nonnegative(),
-  message: z.string().max(500, { message: "Report too long"}),
+  message: z.string().max(500, { message: "Report too long" }),
   project: z.object(projectSchema.shape),
   reporter: z.object(userSchema.shape)
 });
