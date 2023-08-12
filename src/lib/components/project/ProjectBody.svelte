@@ -556,7 +556,9 @@
                 disabled="{commentSending}">Post</button>
             </form>
           {:else}
-          <p class="text-white mt-1 mb-3 ml-1"><b>Sign in</b> to post a comment or reply</p>
+            <p class="text-white mt-1 mb-3 ml-1">
+              <b>Sign in</b> to post a comment or reply
+            </p>
           {/if}
           {#key comments}
             {#each sort(comments, c => c.sent, true) as cmt}

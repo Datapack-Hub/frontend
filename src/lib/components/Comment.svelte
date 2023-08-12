@@ -112,24 +112,24 @@
                 {/each}
               </ul>
               {#if $authed}
-              <form
-                class="flex items-center space-x-2 mt-3"
-                on:submit|preventDefault="{sendReply}">
-                <img
-                  src="{$user.profile_icon}"
-                  alt="Your profile"
-                  class="rounded-full h-8" />
-                <input
-                  bind:value="{replyMessage}"
-                  type="text"
-                  required
-                  class="p-1 rounded-md dark:bg-zinc-800 px-2 text-white focus:transition-all"
-                  placeholder="Leave a reply" />
-                <button
-                  type="submit"
-                  class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50"
-                  disabled="{wait}">Post</button>
-              </form>
+                <form
+                  class="flex items-center space-x-2 mt-3"
+                  on:submit|preventDefault="{sendReply}">
+                  <img
+                    src="{$user.profile_icon}"
+                    alt="Your profile"
+                    class="rounded-full h-8" />
+                  <input
+                    bind:value="{replyMessage}"
+                    type="text"
+                    required
+                    class="p-1 rounded-md dark:bg-zinc-800 px-2 text-white focus:transition-all"
+                    placeholder="Leave a reply" />
+                  <button
+                    type="submit"
+                    class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50"
+                    disabled="{wait}">Post</button>
+                </form>
               {/if}
             </div>
           {/if}
