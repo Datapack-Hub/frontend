@@ -223,7 +223,8 @@
         </h2>
         <p
           class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-3 font-light">
-          Uploaded files have the option to be optimised automatically with PackSquash!
+          Uploaded files have the option to be optimised automatically with
+          PackSquash!
         </p>
         <div
           class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-4 dark:text-white flex items-center justify-center">
@@ -343,6 +344,7 @@
         </div>
       </div>
     </div> -->
+    </div>
   </section>
 </main>
 
