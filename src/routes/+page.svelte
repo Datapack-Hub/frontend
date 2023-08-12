@@ -18,6 +18,7 @@
 
   let formatter = Intl.NumberFormat("en", { notation: "compact" });
   let width: number;
+  let visible = false;
   // let apiExampleUser = "silabear";
   // let apiExampleResult = "";
 
@@ -73,6 +74,8 @@
         easing: "easeOutExpo",
         delay: 750
       });
+
+    visible = true;
     let intersect = new IntersectionObserver(entries => {
       for (const [index, entry] of entries.entries()) {
         if (entry.isIntersecting) {
@@ -117,13 +120,13 @@
     class="flex h-screen md:h-[75vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
       <div class="relative mb-4 h-36 w-full md:mb-0">
-        <h1 id="indexText1" class="split-text appearing-text-styles">
+        <h1 id="indexText1" class="split-text appearing-text-styles {!visible ? "opacity-0" : ""}">
           <span class="letters inline-block text-dph-orange">Explore</span>
         </h1>
-        <h1 id="indexText2" class="split-text appearing-text-styles">
+        <h1 id="indexText2" class="split-text appearing-text-styles {!visible ? "opacity-0" : ""}">
           <span class="letters inline-block text-dph-orange">Create</span>
         </h1>
-        <h1 id="indexText3" class="split-text appearing-text-styles">
+        <h1 id="indexText3" class="split-text appearing-text-styles {!visible ? "opacity-0" : ""}">
           <span class="letters inline-block text-dph-orange">Play</span>
         </h1>
       </div>
