@@ -5,7 +5,7 @@
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import { categories } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
-  import { user } from "$lib/globals/stores";
+  import { authed, user } from "$lib/globals/stores";
   import { dash } from "radash";
   import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
@@ -95,6 +95,7 @@
 </svelte:head>
 
 <main id="main-content" class="pt-20 px-4 sm:px-8 md:px-16 lg:px-24 pb-3">
+  {#if $authed}
   <h1 class="text-slate-950 dark:text-slate-100 text-3xl font-bold mb-4">
     Create New Datapack
   </h1>
@@ -166,5 +167,8 @@
     <Button classes="col-span-3 w-fit mt-4" click="{create}" wait="{true}"
       >Create Project</Button>
   </div>
+  {:else}
+  <p class="text-white">silly billy! you forgor 💀 to sign in! make sure u sign in before you try to post stuff :P</p>
+  {/if}
   <div class="py-16"></div>
 </main>

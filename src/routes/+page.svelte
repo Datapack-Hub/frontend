@@ -12,6 +12,7 @@
   import IconFile from "~icons/tabler/FileZip.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
+  import { goto } from "$app/navigation";
 
   export let data: PageData;
 
@@ -150,6 +151,9 @@
           <FeaturedProjectComponent project="{randProj}" type="random" />
         {/each}
       </div>
+      <h3 class="text-center">
+        <Button style="hugh" classes="text-center" click={() => goto("/projects")}>Find more datapacks</Button>
+      </h3>
       <div></div>
     </section>
   </section>
