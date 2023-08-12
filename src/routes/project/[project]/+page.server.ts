@@ -8,7 +8,9 @@ import {
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
-export const load = (async ({ params, fetch, cookies }) => {
+export const load = (async ({ params, fetch, cookies, url }) => {
+  const parameters = url.searchParams;
+
   const [projectRequest, versionsRequest] = await Promise.all([
     serverFetchAuthed("get", `/projects/get/${params.project}`, cookies),
     serverFetchAuthed("get", `/versions/project/url/${params.project}`, cookies)
@@ -31,7 +33,8 @@ export const load = (async ({ params, fetch, cookies }) => {
     return {
       project: project,
       versions: versions,
-      comments: comments
+      comments: comments,
+      is_new: parameters.get("is_new")
     };
   } else if (projectRequest.status == 404) {
     throw error(404, {

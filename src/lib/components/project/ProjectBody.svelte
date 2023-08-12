@@ -35,7 +35,6 @@
   import { sort, title } from "radash";
   import BhAdvert from "../decorative/BHAdvert.svelte";
   import Button from "../decorative/Button.svelte";
-  import CasualLine from "../decorative/CasualLine.svelte";
   import Modal from "../modals/Modal.svelte";
   import UserCard from "../user/UserCard.svelte";
   import Comment from "../Comment.svelte";
@@ -569,11 +568,7 @@
   {/if}
 </div>
 
-<Modal bind:this="{moderateModal}">
-  <h1 class="text-xl font-bold text-slate-950 dark:text-white">
-    Moderate {project?.title}
-  </h1>
-  <CasualLine />
+<Modal bind:this="{moderateModal}" title={"Moderate " + project.title}>
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
   <UserCard
@@ -617,11 +612,7 @@
     >{title(moderationModalPage)}</Button>
 </Modal>
 
-<Modal bind:this="{reportModal}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
-    Report {project?.title}
-  </h1>
-  <CasualLine />
+<Modal bind:this="{reportModal}" title={"Report " + project.title}>
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">Author</p>
   <UserCard
@@ -639,11 +630,7 @@
   <Button click="{() => report()}">Report</Button>
 </Modal>
 
-<Modal bind:this="{featureModal}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
-    Feature {project?.title}
-  </h1>
-  <CasualLine />
+<Modal bind:this="{featureModal}" title={"Feature " + project.title}>
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">Author</p>
   <UserCard

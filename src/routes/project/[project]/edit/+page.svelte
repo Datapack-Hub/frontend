@@ -586,11 +586,7 @@
 </main>
 <br />
 
-<Modal bind:this="{publishModal}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
-    Publish {data.project?.title}
-  </h1>
-  <CasualLine />
+<Modal bind:this="{publishModal}" title={"Publish Project"}>
   <p class="mb-2 dark:text-white">
     Your project is currently: {data.project?.status}. If this project has not
     been published before, then it will be reviewed by a moderator before going
@@ -604,11 +600,7 @@
     on:click="{publish}"><IconTick /><span>Publish Project</span></button>
 </Modal>
 
-<Modal bind:this="{draftModal}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
-    Draft {data.project?.title}
-  </h1>
-  <CasualLine />
+<Modal bind:this="{draftModal}" title={"Draft project"}>
   <p class="mb-2 dark:text-white">
     Your project is currently {data.project?.status}.
   </p>
@@ -622,11 +614,7 @@
     on:click="{draft}"><IconDraft /><span>Draft submission</span></button>
 </Modal>
 
-<Modal bind:this="{deleteModal}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
-    Delete {data.project?.title}
-  </h1>
-  <CasualLine />
+<Modal bind:this="{deleteModal}" title={"Delete project"}>
   <p class="mb-2 dark:text-white">
     Your project is currently {data.project?.status}.
   </p>

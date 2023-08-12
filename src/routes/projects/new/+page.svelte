@@ -50,7 +50,7 @@
       fetchAuthed("post", `/projects/create`, projData)
         .then(response => {
           if (response.ok) {
-            goto("/project/" + title.toLowerCase().replaceAll(" ", "-"));
+            goto("/project/" + title.toLowerCase().replaceAll(" ", "-") + "?is_new=1");
           }
         })
         .catch(error => console.error(error)),

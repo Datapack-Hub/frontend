@@ -247,11 +247,7 @@
   {/if}
 </div>
 
-<Modal bind:this="{dlModal}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
-    Download Version: {version?.name ?? "Undefined"}
-  </h1>
-  <CasualLine />
+<Modal bind:this="{dlModal}" title={"Download version " + version.name}>
   <div class="items-middle flex items-center text-slate-950 dark:text-white">
     <p class="pr-1">
       Select a valid Minecraft version below to download the datapack.

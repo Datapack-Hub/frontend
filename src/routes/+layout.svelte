@@ -107,7 +107,7 @@
           Datapack Hub is down for maintenance!
         </p>
         <p class="text-white mb-2">
-          While we're improving the site, come hang out with us on our <a
+          Come hang out and check site status on our <a
             href="https://discord.gg/aEXsdjjdu4"
             class=" text-sky-200">Discord</a
           >!

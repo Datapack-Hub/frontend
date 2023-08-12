@@ -6,6 +6,7 @@
   let innerWidth = 0;
 
   export let wide = false;
+  export let title: string|undefined = undefined;
 
   export function open() {
     visible = true;
@@ -30,11 +31,24 @@
           ? 'w-3/4'
           : isSmall
           ? 'w-2/3'
-          : 'w-1/2'} justify-self-center rounded-xl p-3 align-middle bg-slate-200 dark:bg-zinc-800">
-        <button
+          : 'w-1/2'} justify-self-center">
+        {#if title}
+        <div class="dark:bg-zinc-900 p-3 rounded-t-xl flex items-center">
+          <h2 class="dark:text-white font-bold text-lg">{title}</h2>
+          <div class="flex-grow"></div>
+          <button
+          class="cursor-pointer select-none font-black text-slate-950 dark:text-white"
+          on:click="{() => close()}"><IconClose /></button>
+        </div>
+        {/if}
+        <div class="dark:bg-zinc-800 p-3 {title ? "rounded-b-xl" : "rounded-xl"}">
+          {#if !title}
+          <button
           class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
           on:click="{() => close()}"><IconClose /></button>
-        <slot />
+          {/if}
+          <slot />
+        </div>
       </div>
     </div>
   </div>
