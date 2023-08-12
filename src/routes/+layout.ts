@@ -1,13 +1,7 @@
 import { browser, dev } from "$app/environment";
 import { goto } from "$app/navigation";
 import { loadColorPref } from "$lib/globals/functions";
-import {
-  authed,
-  consoleWarned,
-  roleInfo,
-  roles,
-  user
-} from "$lib/globals/stores";
+import { authed, consoleWarned, roleInfo, user } from "$lib/globals/stores";
 import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
 
