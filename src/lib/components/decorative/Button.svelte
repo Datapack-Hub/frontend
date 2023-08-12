@@ -1,6 +1,12 @@
 <script lang="ts">
-  export let style: "primary" | "secondary" | "boring" | "hugh" | "alt" | "sm" | "base" =
-    "primary";
+  export let style:
+    | "primary"
+    | "secondary"
+    | "boring"
+    | "hugh"
+    | "alt"
+    | "sm"
+    | "base" = "primary";
   export let click: string | (() => void) | (() => Promise<void>) | undefined =
     undefined;
   export let classes = "";

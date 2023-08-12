@@ -152,7 +152,10 @@
         {/each}
       </div>
       <h3 class="text-center">
-        <Button style="hugh" classes="text-center" click={() => goto("/projects")}>Find more datapacks</Button>
+        <Button
+          style="hugh"
+          classes="text-center"
+          click="{() => goto('/projects')}">Find more datapacks</Button>
       </h3>
       <div></div>
     </section>
