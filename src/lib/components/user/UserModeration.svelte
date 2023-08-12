@@ -288,6 +288,7 @@
     </label>
     <textarea
       class="input w-full h-48 resize-none"
+      maxlength="2000"
       placeholder="Just a quick reminder that your cake which you forgot about has been in the oven for 10 minutes too long."
       name="notif-content"
       id="notif-content"></textarea>

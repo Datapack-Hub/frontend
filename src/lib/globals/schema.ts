@@ -28,23 +28,25 @@ export const userSchema = z.object({
   badges: z.array(z.string()).nullish()
 });
 
+export const versionSchema = z.object({
+  name: z.string().max(50, { message: "Version name too long"}),
+  description: z.string().max(1e6, { message: "Version description too long (somehow?)"}),
+  minecraft_versions: z.string(),
+  primary_download: z.string(),
+  resource_pack_download: z.ostring(),
+  version_code: z.string().max(15, { message: "Version code too long"})
+});
+
 export const projectSchema = z.object({
   ID: z.number(),
   author: z.object(userSchema.shape),
-  body: z.string().max(1e4),
+  body: z.string().max(1e4, { message: "Body too long"}),
   category: z.optional(z.array(z.string())),
   dependencies: z.array(z.string()).nullish(),
-  description: z.string(),
+  description: z.string().max(200, { message: "Description too long"}),
   downloads: z.number(),
   icon: z.string().url().nullish(),
-  latest_version: z.optional(
-    z.object({
-      name: z.string(),
-      description: z.ostring(),
-      minecraft_versions: z.string(),
-      version_code: z.string()
-    })
-  ),
+  latest_version: z.optional(versionSchema.omit({ primary_download: true, resource_pack_download: true})),
   licence: z.string().nullish(),
   mod_message: z.string().nullish(),
   status: z.enum([
@@ -58,15 +60,15 @@ export const projectSchema = z.object({
   ]),
   title: z.string().max(35),
   type: z.enum(["datapack"]),
-  updated: z.number().positive(),
+  updated: z.number().nonnegative(),
   url: z.string().regex(/[a-z-]+/)
 });
 
 export const notificationSchema = z.object({
-  id: z.number(),
+  id: z.number().nonnegative(),
   description: z.ostring(),
-  message: z.string(),
-  read: z.number(),
+  message: z.string().max(200, { message: "Notification message too long"}),
+  read: z.number().nonnegative(),
   type: z.enum([
     "announcement",
     "ban",
@@ -97,33 +99,25 @@ export const roleSchema = z.object({
   )
 });
 
-export const versionSchema = z.object({
-  name: z.string(),
-  description: z.string(),
-  minecraft_versions: z.string(),
-  primary_download: z.string(),
-  resource_pack_download: z.ostring(),
-  version_code: z.string()
-});
 
 export const reportSchema = z.object({
-  id: z.number(),
-  message: z.string(),
+  id: z.number().nonnegative(),
+  message: z.string().max(500, { message: "Report too long"}),
   project: z.object(projectSchema.shape),
   reporter: z.object(userSchema.shape)
 });
 
 export const commentSchema = z.object({
-  id: z.number(),
+  id: z.number().nonnegative(),
   author: z.object(userSchema.shape),
   message: z.string(),
-  sent: z.number().positive(),
+  sent: z.number().nonnegative(),
   replies: z.array(
     z.object({
-      id: z.number(),
+      id: z.number().nonnegative(),
       message: z.string(),
       author: z.object(userSchema.shape),
-      sent: z.number().positive()
+      sent: z.number().nonnegative()
     })
   )
 });

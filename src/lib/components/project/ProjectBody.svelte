@@ -629,7 +629,7 @@
     class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-slate-300 p-2 dark:bg-zinc-700"
     placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
     id="description"
-    maxlength="200"
+    maxlength="500"
     bind:value="{reportMessage}"></textarea>
   <Button click="{() => report()}">Report</Button>
 </Modal>
