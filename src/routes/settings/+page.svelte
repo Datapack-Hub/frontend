@@ -94,8 +94,8 @@
             </p>
             <p
               class="align-middle text-slate-950 dark:text-slate-100 opacity-40 text-sm">
-              Your username is used to view your profile. Your username is
-              displayed on your datapacks and more coming soon
+              Your username is used to view your profile, and is
+              displayed on your datapacks, comments, and replies.
             </p>
             <input
               class="input"
@@ -111,7 +111,7 @@
               information in it!
             </p>
             <MarkdownEditor
-              classes="w-1/2 h-80 resize-none"
+              classes="w-full md:w-2/3 lg:w-1/2 h-80 resize-none"
               maxEditorLength="{500}"
               bind:content="{bioValue}" />
             <br />

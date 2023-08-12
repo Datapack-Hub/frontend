@@ -14,12 +14,16 @@
   import type { PageData } from "./$types";
   import { fade } from "svelte/transition";
   import { quintInOut } from "svelte/easing";
+  import AutoAdjustableInput from "$lib/components/utility/AutoAdjustableInput.svelte";
+  import { API } from "$lib/globals/consts";
 
   export let data: PageData;
 
   let formatter = Intl.NumberFormat("en", { notation: "compact" });
   let width: number;
-  let ran = false;
+  let apiExampleUser = "silabear"
+  let apiExampleResult = ""
+  let visible = false
 
   onMount(async () => {
     let cyclingTextWrapper = document.querySelectorAll(".split-text .letters");
@@ -74,6 +78,7 @@
         delay: 750
       });
 
+    visible = true;
     let intersect = new IntersectionObserver(entries => {
       for (const [index, entry] of entries.entries()) {
         if (entry.isIntersecting) {
@@ -91,6 +96,12 @@
 
     for (const element of fadingTextElements) intersect.observe(element);
   });
+
+  async function apiExampleRun() {
+    let exampleResponse = await fetch(API + "/user/" + apiExampleUser)
+    let exampleJson = await exampleResponse.json()
+    apiExampleResult = JSON.stringify(exampleJson, null, 2)
+  }
 </script>
 
 <svelte:head>
@@ -118,15 +129,15 @@
     class="flex h-screen md:h-[75vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-2/3 md:w-3/5 lg:w-2/5">
       <div class="relative mb-4 h-36 w-full md:mb-0">
-        <h1 id="indexText1" class="split-text appearing-text-styles">
-          <span class="letters inline-block text-dph-orange">Explore</span>
-        </h1>
-        <h1 id="indexText2" class="split-text appearing-text-styles">
-          <span class="letters inline-block text-dph-orange">Create</span>
-        </h1>
-        <h1 id="indexText3" class="split-text appearing-text-styles">
-          <span class="letters inline-block text-dph-orange">Play</span>
-        </h1>
+          <h1 id="indexText1" class="split-text appearing-text-styles">
+            <span class="letters inline-block text-dph-orange">Explore</span>
+          </h1>
+          <h1 id="indexText2" class="split-text appearing-text-styles">
+            <span class="letters inline-block text-dph-orange">Create</span>
+          </h1>
+          <h1 id="indexText3" class="split-text appearing-text-styles">
+            <span class="letters inline-block text-dph-orange">Play</span>
+          </h1>
       </div>
       <h2
         class="w-full text-center text-xl text-slate-950 dark:text-slate-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
@@ -318,33 +329,22 @@
             class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-zinc-800 rounded-t-md p-2 text-slate-600 dark:text-zinc-500">
             <div class="flex space-x-2 overflow-x-auto">
               <p class="text-green-600">GET</p>
-              <p class="overflow-hidden text-ellipsis">
-                https://api.datapackhub.net/user/silabear
-              </p>
+              <span class="overflow-hidden text-ellipsis">
+                https://api.datapackhub.net/user/<AutoAdjustableInput on:change={event => apiExampleUser = event.detail} classes="bg-transparent text-slate-600 dark:text-zinc-500" defaultValue="silabear" />
+              </span>
             </div>
             <button
               class="button-base bg-green-600 text-white"
-              on:click|once="{() => (ran = true)}">Run</button>
+              on:click="{apiExampleRun}">Run</button>
           </div>
           <div
-            class="text-slate-600 dark:text-zinc-500 font-mono mt-2 bg-slate-300 dark:bg-zinc-800 rounded-b-md overflow-x-auto h-80">
-            {#if ran}
+            class="text-slate-600 dark:text-zinc-500 font-mono mt-2 bg-slate-300 dark:bg-zinc-800 rounded-b-md overflow-clip h-80 overflow-y-auto">
+            {#if apiExampleResult.length != 0}
               <pre
-                class="text-sm p-4"
+                class="text-sm p-2 whitespace-pre-wrap"
                 transition:fade="{{ duration: 300, easing: quintInOut }}">
-<!--DO NOT INDENT!!!-->&lbrace;
-  "badges": [
-    "contributor",
-    "betatester",
-    "bugfinder",
-    "nerd"
-  ],
-  "bio": "`const silabear = new Silabear(he/him)`\n\nI\u2019m an owne...",
-  "id": 1,
-  "profile_icon": "https://avatars.githubusercontent.com/u/56885288?v=4",
-  "role": "admin",
-  "username": "Silabear"
-&rbrace;      </pre>
+{apiExampleResult}
+              </pre>
             {/if}
           </div>
         </div>

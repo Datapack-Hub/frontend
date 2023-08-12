@@ -58,7 +58,7 @@
 
 <main
   id="main-content"
-  class=" bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
+  class=" bg-slate-50 px-0 transition-all dark:bg-zinc-900 md:px-16 lg:px-32 xl:px-64">
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
@@ -76,7 +76,7 @@
       <br /><br />
       <p class="align-middle text-slate-950 dark:text-slate-100">Bio</p>
       <textarea
-        class="h-96 w-1/2 resize-none rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white"
+        class="h-96 w-4/5 md:w-2/3 lg:w-1/2 resize-none rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white"
         maxlength="500"
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
         bind:this="{bio}"></textarea>

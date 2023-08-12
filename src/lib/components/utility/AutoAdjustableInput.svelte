@@ -2,11 +2,12 @@
   import { createEventDispatcher } from "svelte";
 
   export let classes = "";
+  export let defaultValue = ""
 
-  let value = "";
+  let value = defaultValue;
   let dispatch = createEventDispatcher();
 
-  function deploy(result: string) {
+  function deployChange(result: string) {
     dispatch("change", result);
   }
 </script>
@@ -17,4 +18,4 @@
   bind:value
   style="max-width: {value.length < 5 ? 5 : value.length}ch;"
   autocorrect="false"
-  on:change="{event => deploy(event.currentTarget.value)}" />
+  on:change="{event => deployChange(event.currentTarget.value)}" />

@@ -62,8 +62,8 @@
 
 <main
   id="main-content"
-  class="flex flex-col lg:flex-row w-full items-center bg-slate-50 px-8 transition-all dark:bg-zinc-900 md:items-start md:px-16 md:pt-32 lg:px-24">
-  <div class="w-full lg:w-2/5 xl:w-1/3 p-6 rounded-lg">
+  class="flex flex-col lg:flex-row w-full items-center bg-slate-50 px-0 transition-all dark:bg-zinc-900 md:items-start md:px-16 md:pt-32 lg:px-24">
+  <div class="w-full lg:w-2/5 xl:w-1/3 p-3 rounded-lg">
     <div
       class="mb-4 flex w-full flex-col mt-16 md:mt-0 items-center md:items-start">
       <div class="self-center">
@@ -171,7 +171,7 @@
       <UserModeration user="{data.profile}" />
     {/if}
   </div>
-  <div class="w-full lg:w-3/5 xl:w-2/3">
+  <div class="w-full lg:w-3/5 xl:w-2/3 px-3 pt-16">
     <div class="mb-4 flex items-center">
       <h1
         class="flex-grow text-center text-xl font-bold text-slate-900 dark:text-slate-100 md:text-left">
