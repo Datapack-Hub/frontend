@@ -305,7 +305,7 @@
           <FeaturedProjectComponent project="{randProj}" type="featured" />
         {/each}
       </div>
-      <div
+      <!-- <div
         class="fadeTextAnime opacity-0 p-4 col-span-2 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
         <h2
           class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
@@ -343,9 +343,7 @@
           </div>
         </div>
       </div>
-    </div>
-    <Button click="/projects" style="alt" classes="mt-16"
-      >Explore datapacks</Button>
+    </div> -->
   </section>
 </main>
 
