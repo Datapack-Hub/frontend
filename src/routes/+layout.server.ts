@@ -1,6 +1,6 @@
 import { API } from "$lib/globals/consts";
 import { serverFetch } from "$lib/globals/functions";
-import { type Role, roleSchema, userSchema } from "$lib/globals/schema";
+import { roleSchema, userSchema, type Role } from "$lib/globals/schema";
 import type { LayoutServerLoad } from "./$types";
 
 export const load = (async ({ cookies, fetch }) => {
@@ -21,10 +21,10 @@ export const load = (async ({ cookies, fetch }) => {
     return {
       user,
       role,
-      roles: rolesJson.roles,
+      roles: rolesJson.roles
     };
   }
   return {
-    roles: rolesJson.roles,
+    roles: rolesJson.roles
   };
 }) satisfies LayoutServerLoad;

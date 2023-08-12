@@ -1,6 +1,5 @@
-import { roleSchema, type Role, type User } from "$lib/globals/schema";
+import { type Role, type User } from "$lib/globals/schema";
 import { writable } from "svelte/store";
-import { API } from "./consts";
 
 export const isDark = writable(true);
 export const authed = writable(false);
