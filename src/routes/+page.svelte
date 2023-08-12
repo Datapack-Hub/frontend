@@ -215,12 +215,12 @@
         class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
         <h2
           class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
-          <b>Automatic ZIP Optimisation</b>
+          <b>ZIP Optimisation</b>
         </h2>
         <p
-          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
-          We use PackSquash in the background to reduce the size of files and
-          make them run faster in-game!
+          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-3 font-light">
+          Uploaded files have the option to be optimised automatically with
+          PackSquash!
         </p>
         <div
           class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-4 dark:text-white flex items-center justify-center">
