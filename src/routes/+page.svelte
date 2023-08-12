@@ -105,7 +105,7 @@
   <title>Datapack Hub</title>
   <meta
     name="description"
-    content="DatapackHub is a website designed for publishing datapacks" />
+    content="Datapack Hub is a website to find and download Minecraft datapacks. Join our datapacking discord" />
 </svelte:head>
 
 <svelte:window bind:innerWidth="{width}" />
@@ -113,14 +113,8 @@
 <main
   id="main-content"
   class="bg-slate-50 transition-all dark:bg-zinc-900 h-full">
-  <div class="pt-0 md:pt-20"></div>
-  <div
-    class="moderation mx-0 sm:mx-8 md:mx-16 lg:mx-24 dark:text-white p-2 rounded-lg">
-    <b class="text-lg mb-2">Datapack Hub is in beta.</b>
-    <br />
-    Many features are incomplete or do not work as expected. In these stages, there
-    is going to be lots of issues, please be patient with us.
-  </div>
+  <div class="pt-0 md:pt-12"></div>
+
   <div class="pt-20 lg:pt-0"></div>
   <section
     class="flex h-screen md:h-[75vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">

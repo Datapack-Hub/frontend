@@ -39,7 +39,7 @@
     <nav class="flex items-center mr-2">
       <a
         href="/"
-        class="z-20 flex cursor-pointer items-center space-x-2 hover:brightness-75 active:brightness-50">
+        class="z-20 flex cursor-pointer items-center space-x-2 hover:brightness-75 active:brightness-50 mr-3">
         <img
           src="/logos/dph.svg"
           alt="logo"
@@ -50,16 +50,16 @@
           class="hidden text-2xl font-bold text-slate-950 dark:text-white lg:block">
           Datapack Hub
         </span>
-        <span
+        <!-- <span
           class="text-xs md:text-base font-bold text-white bg-dph-orange px-2 rounded-full">
           BETA
-        </span>
+        </span> -->
       </a>
       {#if showNavItems}
         {#if innerWidth > 768}
           <a href="/projects" class="nav_item">Explore</a>
-          <button inert class="nav_item_disabled">Learn</button>
-          <button inert class="nav_item_disabled">Compete</button>
+          <a href="https://discord.gg/aEXsdjjdu4" class="nav_item">Discord</a>
+          <!-- <button inert class="nav_item_disabled">Compete</button> -->
         {:else}
           <a
             href="/projects"
