@@ -41,8 +41,6 @@ export const load = (async ({ url, data }) => {
       consoleWarned.set(true);
     }
 
-    roles.set(data.roles);
-
     if (data && data.role && data.user) {
       user.set(data.user);
       roleInfo.set(data.role);
