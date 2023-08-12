@@ -2,15 +2,11 @@
   import Button from "$lib/components/decorative/Button.svelte";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
-  import AutoAdjustableInput from "$lib/components/utility/AutoAdjustableInput.svelte";
-  import { API } from "$lib/globals/consts";
   import { roles } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import anime from "animejs";
   import { title } from "radash";
   import { onMount } from "svelte";
-  import { quintInOut } from "svelte/easing";
-  import { fade } from "svelte/transition";
   import tippy from "sveltejs-tippy";
   import IconArrow from "~icons/tabler/ArrowBigRightLinesFilled.svelte";
   import IconFile from "~icons/tabler/FileZip.svelte";
@@ -21,8 +17,8 @@
 
   let formatter = Intl.NumberFormat("en", { notation: "compact" });
   let width: number;
-  let apiExampleUser = "silabear";
-  let apiExampleResult = "";
+  // let apiExampleUser = "silabear";
+  // let apiExampleResult = "";
 
   onMount(async () => {
     let cyclingTextWrapper = document.querySelectorAll(".split-text .letters");
@@ -94,11 +90,11 @@
     for (const element of fadingTextElements) intersect.observe(element);
   });
 
-  async function apiExampleRun() {
-    let exampleResponse = await fetch(API + "/user/" + apiExampleUser);
-    let exampleJson = await exampleResponse.json();
-    apiExampleResult = JSON.stringify(exampleJson, undefined, 2);
-  }
+  // async function apiExampleRun() {
+  //   let exampleResponse = await fetch(API + "/user/" + apiExampleUser);
+  //   let exampleJson = await exampleResponse.json();
+  //   apiExampleResult = JSON.stringify(exampleJson, undefined, 2);
+  // }
 </script>
 
 <svelte:head>
