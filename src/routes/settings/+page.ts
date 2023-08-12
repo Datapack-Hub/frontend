@@ -11,7 +11,7 @@ export const load = (async () => {
     const profile = await userSchema.parseAsync(await meResponse.json());
 
     return {
-      profile: profile,
+      profile,
       role: get(roles).find(v => {
         profile.role == v.name;
       })
