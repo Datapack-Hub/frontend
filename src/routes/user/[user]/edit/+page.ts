@@ -1,10 +1,10 @@
+import { browser } from "$app/environment";
 import { fetchAuthed } from "$lib/globals/functions";
 import { userSchema } from "$lib/globals/schema";
 import { roleInfo, roles } from "$lib/globals/stores";
 import { error } from "@sveltejs/kit";
 import { get } from "svelte/store";
 import type { PageLoad } from "./$types";
-import { browser } from "$app/environment";
 
 export const load = (async ({ params }) => {
   if (browser) {
