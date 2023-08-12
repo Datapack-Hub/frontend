@@ -2,20 +2,20 @@
   import Button from "$lib/components/decorative/Button.svelte";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
+  import AutoAdjustableInput from "$lib/components/utility/AutoAdjustableInput.svelte";
+  import { API } from "$lib/globals/consts";
   import { roles } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import anime from "animejs";
   import { title } from "radash";
   import { onMount } from "svelte";
+  import { quintInOut } from "svelte/easing";
+  import { fade } from "svelte/transition";
   import tippy from "sveltejs-tippy";
   import IconArrow from "~icons/tabler/ArrowBigRightLinesFilled.svelte";
   import IconFile from "~icons/tabler/FileZip.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
-  import { fade } from "svelte/transition";
-  import { quintInOut } from "svelte/easing";
-  import AutoAdjustableInput from "$lib/components/utility/AutoAdjustableInput.svelte";
-  import { API } from "$lib/globals/consts";
 
   export let data: PageData;
 
@@ -23,7 +23,6 @@
   let width: number;
   let apiExampleUser = "silabear";
   let apiExampleResult = "";
-  let visible = false;
 
   onMount(async () => {
     let cyclingTextWrapper = document.querySelectorAll(".split-text .letters");
@@ -77,8 +76,6 @@
         easing: "easeOutExpo",
         delay: 750
       });
-
-    visible = true;
     let intersect = new IntersectionObserver(entries => {
       for (const [index, entry] of entries.entries()) {
         if (entry.isIntersecting) {
@@ -100,7 +97,7 @@
   async function apiExampleRun() {
     let exampleResponse = await fetch(API + "/user/" + apiExampleUser);
     let exampleJson = await exampleResponse.json();
-    apiExampleResult = JSON.stringify(exampleJson, null, 2);
+    apiExampleResult = JSON.stringify(exampleJson, undefined, 2);
   }
 </script>
 
@@ -342,7 +339,7 @@
           </div>
           <div
             class="text-slate-600 dark:text-zinc-500 font-mono mt-2 bg-slate-300 dark:bg-zinc-800 rounded-b-md overflow-clip h-80 overflow-y-auto">
-            {#if apiExampleResult.length != 0}
+            {#if apiExampleResult.length > 0}
               <pre
                 class="text-sm p-2 whitespace-pre-wrap"
                 transition:fade="{{ duration: 300, easing: quintInOut }}">

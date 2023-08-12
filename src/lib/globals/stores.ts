@@ -12,7 +12,7 @@ export const user = writable<User>({
   id: -1,
   username: "",
   bio: "",
-  profile_icon: "logos/dph.svg",
+  profile_icon: "/logos/dph.svg",
   role: "default" /** For role info, use the `$role` store */,
   banned: false
 });
