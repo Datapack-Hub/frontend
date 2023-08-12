@@ -196,7 +196,7 @@
           </p>
         </div>
       {/if}
-      {#if typeof project.category != undefined || project.category[0] == ""}
+      {#if project.category && project.category[0] == ""}
         <div class="rounded-xl bg-zinc-900 p-3">
           <div
             class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
