@@ -64,7 +64,10 @@ export async function fetchAuthed(
   data: object | undefined = undefined,
   headers: HeadersInit | undefined = undefined
 ): Promise<Response> {
-  const cookie = getCookie("dph_token");
+  let cookie;
+  if (browser) {
+    cookie = getCookie("dph_token");
+  }
 
   // what is going on here
   const response = await fetch(`${API}${url}`, {

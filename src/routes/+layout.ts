@@ -1,12 +1,20 @@
 import { browser, dev } from "$app/environment";
 import { goto } from "$app/navigation";
 import { loadColorPref } from "$lib/globals/functions";
-import { authed, consoleWarned, roleInfo, user } from "$lib/globals/stores";
+import { authed, consoleWarned, roleInfo, roles, user } from "$lib/globals/stores";
 import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
 
 export const load = (async ({ url, data }) => {
   const parameters = url.searchParams;
+
+  if (data && data.role && data.user) {
+    user.set(data.user);
+    roleInfo.set(data.role);
+    authed.set(true);
+  }
+
+  roles.set(data.roles)
 
   if (browser) {
     if (parameters.has("token")) {
@@ -35,11 +43,6 @@ export const load = (async ({ url, data }) => {
       consoleWarned.set(true);
     }
 
-    if (data && data.role && data.user) {
-      user.set(data.user);
-      roleInfo.set(data.role);
-      authed.set(true);
-    }
     loadColorPref();
   }
 }) satisfies LayoutLoad;

@@ -24,5 +24,7 @@ export const load = (async ({ cookies }) => {
       roles: rolesJson.roles
     };
   }
-  return {};
+  return {
+    roles: rolesJson.roles
+  };
 }) satisfies LayoutServerLoad;

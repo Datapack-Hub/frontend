@@ -1,4 +1,3 @@
-import { browser } from "$app/environment";
 import { API } from "$lib/globals/consts";
 import { fetchAuthed } from "$lib/globals/functions";
 import { projectSchema, userSchema } from "$lib/globals/schema";
@@ -9,46 +8,40 @@ import { get } from "svelte/store";
 import type { PageLoad } from "./$types";
 
 export const load = (async ({ params, fetch }) => {
-  if (browser) {
-    const [user, projects] = await Promise.all([
-      fetch(`${API}/user/${params.user}`),
-      fetchAuthed("get", `/user/${params.user}/projects`)
-    ]);
+  const [user, projects] = await Promise.all([
+    fetch(`${API}/user/${params.user}`),
+    fetchAuthed("get", `/user/${params.user}/projects`),
+  ]);
 
-    if (user.status == 404) {
-      throw error(404, {
-        message: "User not found",
-        description: "You may have hallucinated their existence"
-      });
-    }
-
-    if ([user, projects].some(r => !r.ok)) {
-      throw error(user.status, {
-        message: "Unexpected error",
-        description: "Something unexpected happen, try again later"
-      });
-    }
-
-    const projectResponseJson = await projects.json();
-
-    const [profileJson, projectJson] = await Promise.all([
-      userSchema.parseAsync(await user.json()),
-      projectSchema.array().parseAsync(projectResponseJson.result)
-    ]);
-
-    const profileRole = get(roles).find(r => r.name == profileJson.role);
-
-    const downloads: number = sum(projectJson, p => p.downloads);
-
-    return {
-      profile: profileJson,
-      projects: projectJson,
-      role: profileRole,
-      downloads: downloads
-    };
+  if (user.status == 404) {
+    throw error(404, {
+      message: "User not found",
+      description: "You may have hallucinated their existence",
+    });
   }
 
+  if ([user, projects].some((r) => !r.ok)) {
+    throw error(user.status, {
+      message: "Unexpected error",
+      description: "Something unexpected happen, try again later",
+    });
+  }
+
+  const projectResponseJson = await projects.json();
+
+  const [profileJson, projectJson] = await Promise.all([
+    userSchema.parseAsync(await user.json()),
+    projectSchema.array().parseAsync(projectResponseJson.result),
+  ]);
+
+  const profileRole = get(roles).find((role) => role.name == profileJson.role);
+
+  const downloads: number = sum(projectJson, (p) => p.downloads);
+
   return {
-    downloads: 0
+    profile: profileJson,
+    projects: projectJson,
+    role: profileRole,
+    downloads: downloads,
   };
 }) satisfies PageLoad;
