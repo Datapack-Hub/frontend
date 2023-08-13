@@ -24,7 +24,7 @@
 {#if visible}
   <div class="absolute">
     <div
-      class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-lg overflow-y-auto">
+      class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-lg backdrop-brightness-75 overflow-y-auto">
       <div
         in:fly="{{ y: 300 }}"
         class="relative m-auto {wide
