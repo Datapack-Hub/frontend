@@ -3,7 +3,7 @@ import { serverFetch } from "$lib/globals/functions";
 import { roleSchema, userSchema, type Role } from "$lib/globals/schema";
 import type { LayoutServerLoad } from "./$types";
 
-export const load = (async ({ cookies, fetch }) => {
+export const load = (async ({ cookies }) => {
   const cookie = cookies.get("dph_token");
 
   const roleResponse = await fetch(`${API}/user/staff/roles`);
