@@ -43,11 +43,11 @@ export const versionSchema = z.object({
 export const projectSchema = z.object({
   ID: z.number(),
   author: z.object(userSchema.shape),
-  body: z.string().max(1e4, { message: "Body too long" }),
+  body: z.string().max(1e4, { message: "Body too long" }).optional(),
   category: z.optional(z.array(z.string())),
   dependencies: z.array(z.string()).nullish(),
   description: z.string().max(200, { message: "Description too long" }),
-  downloads: z.number(),
+  downloads: z.onumber(),
   icon: z.string().url().nullish(),
   latest_version: z.optional(
     versionSchema.omit({ primary_download: true, resource_pack_download: true })
@@ -65,7 +65,7 @@ export const projectSchema = z.object({
   ]),
   title: z.string().max(35),
   type: z.enum(["datapack"]),
-  updated: z.number().nonnegative(),
+  updated: z.number().nonnegative().optional(),
   url: z.string().regex(/[a-z-]+/)
 });
 
