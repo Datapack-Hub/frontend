@@ -67,7 +67,7 @@
       }
     );
 
-    console.log(projData)
+    console.log(projData);
   }
 
   function uploadIcon() {
