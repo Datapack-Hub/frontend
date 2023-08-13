@@ -18,7 +18,7 @@
   let title: string;
   let description: string;
   let body: string;
-  let slug: string; // unused for rn
+  let slug: string;
   let category: Writable<string[]> = writable([]);
 
   onMount(() => {
@@ -37,7 +37,7 @@
     let projData = {
       icon: iconB64?.toString(),
       type: "datapack",
-      url: dash(title.trim()),
+      url: slug == "" ? dash(title.trim()) : slug,
       title: title,
       description: description,
       body: body,
@@ -66,6 +66,8 @@
         warning: ""
       }
     );
+
+    console.log(projData)
   }
 
   function uploadIcon() {
