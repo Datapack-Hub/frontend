@@ -64,7 +64,7 @@
         {/if}
         <span>•</span>
         <span
-          >{project.downloads}<IconDownload
+          >{project.downloads ?? 0}<IconDownload
             class="inline-block h-4 w-4 align-text-top ml-0.5" /></span>
         {#if showStatus}
           {#if ["unpublished", "draft"].includes(status)}

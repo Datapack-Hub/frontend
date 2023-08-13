@@ -35,7 +35,7 @@ export const load = (async ({ params }) => {
 
   const profileRole = get(roles).find(role => role.name == profileJson.role);
 
-  const downloads: number = sum(projectJson, p => p.downloads);
+  const downloads: number = sum(projectJson, p => p.downloads ?? 0);
 
   return {
     profile: profileJson,

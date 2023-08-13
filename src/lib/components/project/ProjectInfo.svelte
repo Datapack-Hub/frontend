@@ -117,7 +117,7 @@
       <h1
         class="flex items-center space-x-2 text-md mt-2 font-medium text-slate-950 dark:text-white">
         <IconDL />
-        <span><b>Downloads: </b>{project?.downloads}</span>
+        <span><b>Downloads: </b>{project?.downloads ?? 0}</span>
       </h1>
       <h1
         class="flex items-center space-x-2 text-md mt-1 font-medium text-slate-950 dark:text-white">
