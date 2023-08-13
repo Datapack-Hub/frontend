@@ -1,4 +1,3 @@
-import { API } from "$lib/globals/consts";
 import { fetchAuthed } from "$lib/globals/functions";
 import { projectSchema, userSchema } from "$lib/globals/schema";
 import { roles } from "$lib/globals/stores";
@@ -6,13 +5,12 @@ import { error } from "@sveltejs/kit";
 import { sum } from "radash";
 import { get } from "svelte/store";
 import type { PageLoad } from "./$types";
-import { browser } from "$app/environment";
 
 export const load = (async ({ params, fetch }) => {
-    const [user, projects] = await Promise.all([
-      fetchAuthed("get", `/user/${params.user}`),
-      fetchAuthed("get", `/user/${params.user}/projects`)
-    ]);
+  const [user, projects] = await Promise.all([
+    fetchAuthed("get", `/user/${params.user}`),
+    fetchAuthed("get", `/user/${params.user}/projects`)
+  ]);
 
   if (user.status == 404) {
     throw error(404, {
