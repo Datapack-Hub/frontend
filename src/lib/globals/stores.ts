@@ -33,8 +33,9 @@ export const roleInfo = writable<Role>({
 
 // cobble this code works stop trying to fix it
 export const roles = readable<Role[]>([], function start(set) {
-	fetch(`${API}/user/staff/roles`).then(resp => resp.json().then(parsed => {
-    set(roleSchema.array().parse(parsed.roles))
-  }))
+  fetch(`${API}/user/staff/roles`).then(resp =>
+    resp.json().then(parsed => {
+      set(roleSchema.array().parse(parsed.roles));
+    })
+  );
 });
-
