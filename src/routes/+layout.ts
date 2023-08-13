@@ -20,8 +20,6 @@ export const load = (async ({ url, data }) => {
     authed.set(true);
   }
 
-  roles.set(data.roles);
-
   if (browser) {
     if (parameters.has("token")) {
       const newToken = parameters.get("token");

@@ -1,5 +1,6 @@
-import type { Role, User } from "$lib/globals/schema";
-import { writable } from "svelte/store";
+import { roleSchema, type Role, type User } from "$lib/globals/schema";
+import { readable, writable } from "svelte/store";
+import { API } from "./consts";
 
 export const isDark = writable(true);
 export const authed = writable(false);
@@ -29,4 +30,11 @@ export const roleInfo = writable<Role>({
 /**
  * Contains all information about all roles
  */
-export const roles = writable<Role[]>([]);
+
+// cobble this code works stop trying to fix it
+export const roles = readable<Role[]>([], function start(set) {
+	fetch(`${API}/user/staff/roles`).then(resp => resp.json().then(parsed => {
+    set(roleSchema.array().parse(parsed.roles))
+  }))
+});
+
