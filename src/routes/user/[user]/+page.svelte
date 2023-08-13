@@ -21,7 +21,7 @@
 
   export let data: PageData;
 
-  let followed = data.profile?.followed
+  let followed = data.profile?.followed;
 
   let orangeVerifiedHover = {
     content: "Verified for being part of the Datapack Hub staff team.",
@@ -48,11 +48,14 @@
 
   async function follow() {
     followed = !followed;
-    let followreq = await fetchAuthed("post", "/user/id/" + data.profile?.id + "/follow")
-    if(followreq.ok){
-      toast.success("Done!")
-    }else{
-      toast.error("Something went wrong!")
+    let followreq = await fetchAuthed(
+      "post",
+      "/user/id/" + data.profile?.id + "/follow"
+    );
+    if (followreq.ok) {
+      toast.success("Done!");
+    } else {
+      toast.error("Something went wrong!");
       followed = !followed;
     }
   }
@@ -129,7 +132,12 @@
         {/if}
       </p>
       <div class="flex w-full justify-around mt-1">
-        <Button style="sm" classes="flex space-x-1 items-center" click={follow}><IconPlus /> {#if followed}Unfollow{:else}Follow{/if}</Button>
+        <Button
+          style="sm"
+          classes="flex space-x-1 items-center"
+          click="{follow}"
+          ><IconPlus />
+          {#if followed}Unfollow{:else}Follow{/if}</Button>
       </div>
       <h2 class="dark:text-white font-bold mb-1 text-lg mt-8 flex items-center">
         <IconInfo class="inline-block mr-1" /> About
