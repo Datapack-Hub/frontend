@@ -12,8 +12,6 @@
 
   export let small: boolean;
 
-  let cleanUsername = "";
-
   let signInHoverMessage = {
     content: "Sign In",
     placement: "bottom"

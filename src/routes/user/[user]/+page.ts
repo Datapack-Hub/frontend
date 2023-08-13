@@ -6,7 +6,7 @@ import { sum } from "radash";
 import { get } from "svelte/store";
 import type { PageLoad } from "./$types";
 
-export const load = (async ({ params, fetch }) => {
+export const load = (async ({ params }) => {
   const [user, projects] = await Promise.all([
     fetchAuthed("get", `/user/${params.user}`),
     fetchAuthed("get", `/user/${params.user}/projects`)

@@ -123,23 +123,23 @@
       <div class="relative mb-4 h-36 w-full md:mb-0">
         <h1
           id="indexText1"
-          class="split-text appearing-text-styles {!visible
-            ? 'invisible'
-            : 'visible'}">
+          class="split-text appearing-text-styles {visible
+            ? 'visible'
+            : 'invisible'}">
           <span class="letters inline-block text-dph-orange">Explore</span>
         </h1>
         <h1
           id="indexText2"
-          class="split-text appearing-text-styles {!visible
-            ? 'invisible'
-            : 'visible'}">
+          class="split-text appearing-text-styles {visible
+            ? 'visible'
+            : 'invisible'}">
           <span class="letters inline-block text-dph-orange">Create</span>
         </h1>
         <h1
           id="indexText3"
-          class="split-text appearing-text-styles {!visible
-            ? 'invisible'
-            : 'visible'}">
+          class="split-text appearing-text-styles {visible
+            ? 'visible'
+            : 'invisible'}">
           <span class="letters inline-block text-dph-orange">Play</span>
         </h1>
       </div>
