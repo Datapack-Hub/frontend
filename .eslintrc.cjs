@@ -7,6 +7,7 @@ module.exports = {
     'plugin:svelte/recommended',
     'plugin:unicorn/recommended',
     'plugin:tailwindcss/recommended',
+    'plugin:security/recommended'
   ],
   plugins: ['@typescript-eslint'],
   ignorePatterns: ['*.cjs', 'node_modules'],

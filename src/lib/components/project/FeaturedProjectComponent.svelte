@@ -29,30 +29,20 @@
     }
   };
 
-  let style: string;
-  switch (type) {
-    case "popular": {
-      style = "blue-600";
-      break;
-    }
-    case "featured": {
-      style = "dph-orange";
-      break;
-    }
-    case "random": {
-      style = "zinc-600";
-      break;
-    }
-    case "new": {
-      style = "lime-400";
-      break;
-    }
-  }
+  let styles = new Map([
+    ["popular", "blue-600"],
+    ["featured", "dph-orange"],
+    ["random", "zinc-600"],
+    ["new", "lime-400"]
+  ]);
+
+  let style = styles.get(type);
 </script>
 
 <div
   class="w-full items-center rounded-xl outline outline-{style} relative bg-slate-200 dark:bg-zinc-800 text-white">
   <ProjectComponent {project} />
+  <!-- eslint-disable-next-line security/detect-object-injection-->
   <div
     class="absolute right-3 top-0 bg-{style} flex space-x-1 rounded-b-md px-2 py-0.5 text-xs"
     use:tippy="{hoverMsgs[type]}">

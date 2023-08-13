@@ -95,6 +95,7 @@ export const getCookie = memo((cookieName: string): string | undefined => {
   if (cookies.length === 0) return;
 
   for (const index of range(cookies.length - 1)) {
+    // eslint-disable-next-line security/detect-object-injection
     const cookie = cookies[index].trim();
     if (cookie.startsWith(cookieName + "=")) {
       return cookie.slice(Math.max(0, cookieName.length + 1));
