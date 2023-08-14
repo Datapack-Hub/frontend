@@ -153,7 +153,9 @@
         bind:value="{description}"
         class="input resize-none h-32 col-span-2"></textarea>
       <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
-        Description
+        Description <a
+          href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
+          class="text-sky-500">(supports markdown)</a>
       </p>
       <MarkdownEditor bind:content="{body}" classes="col-span-2 resize-none" />
       <p class="text-slate-950 dark:text-slate-100 col-span-3">Categories</p>

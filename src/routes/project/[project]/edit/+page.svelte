@@ -368,7 +368,7 @@
             bind:value="{descValue}"
             class="input resize-none h-32 col-span-2"></textarea>
           <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
-            Description
+            Description <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" class="text-sky-500">(supports markdown)</a>
           </p>
           <MarkdownEditor
             classes="resize-none h-64 col-span-2"
@@ -465,8 +465,7 @@
                   accept=".zip"
                   id="zip"
                   on:input="{uploadDatapack}" />
-                <span class="align-center text-slate-950 dark:text-white"
-                  >(Supported: *.zip)</span>
+                <span class="align-center text-slate-950 dark:text-white">(Supported: *.zip)</span>
                 <!-- <p class="align-middle  text-slate-950 dark:text-slate-100">No versions yet!</p> -->
               </div>
               <div class="space-y-2">
@@ -492,7 +491,7 @@
                   </p>
                   <p
                     class="w-1/4 align-middle text-slate-950 dark:text-slate-100">
-                    Version Number
+                    Version Code
                   </p>
                 </div>
                 <div class="flex space-x-3">
@@ -511,7 +510,7 @@
                 </div>
 
                 <p class="align-middle text-slate-950 dark:text-slate-100 mt-4">
-                  Changelog (supports markdown!)
+                  Changelog <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" class="text-sky-500">(supports markdown!)</a>
                 </p>
                 <MarkdownEditor
                   bind:content="{v_changelog}"
