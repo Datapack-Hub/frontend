@@ -22,5 +22,6 @@ svelte.config.js
 unlighthouse.config.ts
 vite.config.js
 playwright.config.ts
+knip.ts
 
 /.vscode

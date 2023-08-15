@@ -87,7 +87,7 @@ export async function fetchAuthed(
   return response;
 }
 
-export const getCookie = memo((cookieName: string): string | undefined => {
+const getCookie = memo((cookieName: string): string | undefined => {
   if (!browser) return;
 
   const cookies = document.cookie.split(";");
