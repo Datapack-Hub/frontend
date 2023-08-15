@@ -29,9 +29,9 @@
         in:fly="{{ y: 300 }}"
         class="relative m-auto {wide
           ? 'w-3/4'
-          : isSmall
+          : (isSmall
           ? 'w-2/3'
-          : 'w-1/2'} justify-self-center">
+          : 'w-1/2')} justify-self-center">
         {#if title}
           <div class="dark:bg-zinc-900 p-3 rounded-t-xl flex items-center">
             <h2 class="dark:text-white font-bold text-lg">{title}</h2>

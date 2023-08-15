@@ -9,9 +9,9 @@
   let localNotifCopy = data.notifications;
 
   function deleteAll() {
-    localNotifCopy.forEach(n => {
+    for (const n of localNotifCopy) {
       fetchAuthed("DELETE", `/notifs/delete/${n?.id}`);
-    });
+    }
     localNotifCopy = [];
   }
 </script>

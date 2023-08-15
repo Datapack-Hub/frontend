@@ -1,21 +1,20 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import { browser } from "$app/environment";
-  import { afterNavigate } from "$app/navigation";
-  import { unified } from "unified";
+  import rehypeUrls from "@jsdevtools/rehype-url-inspector";
   import rehypeSanitize from "rehype-sanitize";
   import rehypeStringify from "rehype-stringify";
-  import rehypeUrls from "@jsdevtools/rehype-url-inspector";
-  import remarkMentions from "remark-mentions";
-  import remarkRehype from "remark-rehype";
-  import remarkParse from "remark-parse";
   import remarkGFM from "remark-gfm";
+  import remarkMentions from "remark-mentions";
+  import remarkParse from "remark-parse";
+  import remarkRehype from "remark-rehype";
+  import { onMount } from "svelte";
+  import { unified } from "unified";
 
   export let source: string | undefined = "";
   export let classes = "";
   export let limitedMode = false;
 
-  let html = "";
+  $: html = "";
 
   let markdownProcessor = unified()
     .use(remarkParse)
@@ -54,18 +53,6 @@
     if (source) {
       let md = await markdownProcessor.process(source);
       html = String(md);
-    }
-  });
-
-  afterNavigate(() => {
-    if (!browser) {
-      return;
-    }
-
-    if (source) {
-      markdownProcessor.process(source).then(v => {
-        html = String(v);
-      });
     }
   });
 </script>

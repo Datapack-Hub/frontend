@@ -28,7 +28,8 @@
       <a
         class="button-primary"
         rel="nofollow"
-        href="{decodeURIComponent(data.url ?? 'https://datapackhub.net')}">Continue to page</a>
+        href="{decodeURIComponent(data.url ?? 'https://datapackhub.net')}"
+        >Continue to page</a>
       <Button click="{() => history.back()}">Go Back</Button>
     </div>
   </div>

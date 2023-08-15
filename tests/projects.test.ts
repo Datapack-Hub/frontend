@@ -6,7 +6,7 @@ test.beforeAll(() => {
 });
 
 test.beforeEach(async ({ page }) => {
-  const token = process.env.UNLIGHTHOUSE_DPH_TOKEN;
+  const token = process.env.TESTING_TOKEN;
   if (token) {
     await page.context().addCookies([
       {
