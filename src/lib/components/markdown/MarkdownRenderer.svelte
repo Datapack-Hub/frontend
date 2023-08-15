@@ -40,7 +40,7 @@
         let properties = node.properties!;
         properties.href =
           node.tagName === "a" && new URL(url).host !== "datapackhub.net"
-            ? "https://datapackhub.net/linkout?url=" + url.toString()
+            ? "https://datapackhub.net/linkout?url=" + encodeURIComponent(url)
             : url;
       }
     })
