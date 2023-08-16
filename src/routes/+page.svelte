@@ -271,9 +271,7 @@
                 src="{staff.profile_icon}&size=64"
                 alt="{staff.username}'s profile"
                 use:tippy="{{
-                  content: `${
-                    staff.username
-                  }<br /><span style='color: ${
+                  content: `${staff.username}<br /><span style='color: ${
                     $roles.find(v => v.name == staff.role)?.color
                   }; font-weight:600'>● ${title(staff.role)}</span>`,
                   placement: 'bottom',
