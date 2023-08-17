@@ -37,7 +37,7 @@
     let projData = {
       icon: iconB64?.toString(),
       type: "datapack",
-      url: slug == "" ? dash(title.trim()) : slug,
+      url: slug.length === 0 ? dash(title.trim()) : slug,
       title: title,
       description: description,
       body: body,
