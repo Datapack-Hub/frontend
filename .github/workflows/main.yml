@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm i
-      - name: Run Prettier
+      - name: Run Rome Format
         run: |
           pnpm format
       - uses: stefanzweifel/git-auto-commit-action@v4.16.0
@@ -67,7 +67,7 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm i
-      - name: Run linter
+      - name: Run Rome Linter
         run: |
           pnpm lint
   # test:
