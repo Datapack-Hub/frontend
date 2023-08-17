@@ -51,6 +51,25 @@ jobs:
       - name: Run check
         run: |
           pnpm check
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v3.5.2
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup Node JS 18
+        uses: actions/setup-node@v3.7.0
+        with:
+          node-version: 18
+          cache: "pnpm"
+      - name: Install dependencies
+        run: |
+          pnpm i
+      - name: Run linter
+        run: |
+          pnpm lint
   # test:
   #   runs-on: ubuntu-latest
   #   timeout-minutes: 10
