@@ -13,7 +13,6 @@
   import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
   import { goto } from "$app/navigation";
-  import { sanitize } from "isomorphic-dompurify";
 
   export let data: PageData;
 
@@ -272,9 +271,7 @@
                 src="{staff.profile_icon}&size=64"
                 alt="{staff.username}'s profile"
                 use:tippy="{{
-                  content: `${sanitize(
-                    staff.username
-                  )}<br /><span style='color: ${
+                  content: `${staff.username}<br /><span style='color: ${
                     $roles.find(v => v.name == staff.role)?.color
                   }; font-weight:600'>● ${title(staff.role)}</span>`,
                   placement: 'bottom',
