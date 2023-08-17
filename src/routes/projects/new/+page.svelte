@@ -37,7 +37,7 @@
     let projData = {
       icon: iconB64?.toString(),
       type: "datapack",
-      url: slug.length === 0 ? dash(title.trim()) : slug,
+      url: slug.length === 0 ? dash(title.trim()) : dash(slug),
       title: title,
       description: description,
       body: body,
@@ -47,17 +47,11 @@
     };
 
     toast.promise(
-      fetchAuthed("post", `/projects/create`, projData)
-        .then(response => {
-          if (response.ok) {
-            goto(
-              "/project/" +
-                title.toLowerCase().replaceAll(" ", "-") +
-                "?is_new=1"
-            );
-          }
-        })
-        .catch(error => console.error(error)),
+      fetchAuthed("post", `/projects/create`, projData).then(res => {
+        if (res.ok) {
+          goto(`/project/${projData.url.toLowerCase()}?is_new=1`);
+        }
+      }),
       {
         success: "Created project! Redirecting...",
         loading: "Creating project...",
