@@ -33,12 +33,14 @@ export const roleInfo = writable<Role>({
  */
 export const roles = writable<Role[]>([]);
 
-
-export const windowWidth = readable(1920, set => {
-  if(browser) {
-    set(window.innerWidth)
-    addEventListener("resize", debounce({delay: 20}, () => {
-      set(window.innerWidth)
-    }))
+export const windowWidth = readable(1920, (set) => {
+  if (browser) {
+    set(window.innerWidth);
+    addEventListener(
+      "resize",
+      debounce({ delay: 20 }, () => {
+        set(window.innerWidth);
+      }),
+    );
   }
-})
+});
