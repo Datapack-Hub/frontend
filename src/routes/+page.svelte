@@ -17,7 +17,6 @@
   export let data: PageData;
 
   let formatter = Intl.NumberFormat("en", { notation: "compact" });
-  let width: number;
   let visible = false;
   // let apiExampleUser = "silabear";
   // let apiExampleResult = "";
@@ -108,8 +107,6 @@
     content="Datapack Hub is a website to find and download Minecraft datapacks. Join our datapacking discord" />
 </svelte:head>
 
-<svelte:window bind:innerWidth="{width}" />
-
 <main
   id="main-content"
   class="bg-slate-50 transition-all dark:bg-zinc-900 h-full">
@@ -118,7 +115,7 @@
   <div class="pt-20 lg:pt-0"></div>
   <section
     class="flex h-screen md:h-[75vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
-    <div class="w-2/3 md:w-3/5 lg:w-2/5">
+    <div class="w-full md:w-3/5 lg:w-2/5 p-4">
       <div class="relative mb-4 h-36 w-full md:mb-0">
         <h1
           id="indexText1"
@@ -368,6 +365,6 @@
 
 <style lang="postcss">
   .appearing-text-styles {
-    @apply absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-5xl font-bold sm:text-6xl md:left-0 md:w-auto md:translate-x-0 md:text-left md:text-7xl xl:text-8xl;
+    @apply absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center font-bold md:left-0 md:w-full md:translate-x-0 md:text-left text-7xl xl:text-8xl;
   }
 </style>

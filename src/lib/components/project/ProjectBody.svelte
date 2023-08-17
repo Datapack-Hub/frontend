@@ -3,7 +3,7 @@
   import { goto } from "$app/navigation";
   import { API, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
-  import { authed, roleInfo, roles, user } from "$lib/globals/stores";
+  import { authed, isDark, roleInfo, roles, user, windowWidth } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
   // Component imports
@@ -255,10 +255,9 @@
     );
   }
 
-  $: isSmall = innerWidth < 1181;
+  $: isSmall = $windowWidth < 1181;
+  $: iconColor = $isDark ? "white" : "black"
 </script>
-
-<svelte:window bind:innerWidth />
 
 <div use:autoAnimate class="w-full mt-4 lg:w-3/4 lg:mt-0">
   <!--Buttons-->
@@ -273,7 +272,7 @@
         {#if !isSmall}
           Description
         {:else}
-          <IconDescription />
+          <IconDescription color={iconColor} />
         {/if}
       </button>
       <button
@@ -285,7 +284,7 @@
         {#if !isSmall}
           Comments
         {:else}
-          <IconMessage />
+          <IconMessage color={iconColor} />
         {/if}
       </button>
     </div>

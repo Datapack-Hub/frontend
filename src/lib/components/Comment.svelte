@@ -12,6 +12,7 @@
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
+  import IconEdit from "~icons/tabler/Edit.svelte";
   import MarkdownComponent from "./markdown/MarkdownRenderer.svelte";
   import Reply from "./Reply.svelte";
 
@@ -123,7 +124,7 @@
                     bind:value="{replyMessage}"
                     type="text"
                     required
-                    class="p-1 rounded-md dark:bg-zinc-800 px-2 text-white focus:transition-all"
+                    class="p-1 rounded-md dark:bg-zinc-800 px-2 dark:text-white focus:transition-all w-1/2 md:w-full text-sm md:text-base"
                     placeholder="Leave a reply" />
                   <button
                     type="submit"
@@ -145,7 +146,7 @@
               bind:value="{replyMessage}"
               type="text"
               required
-              class="p-1 rounded-md dark:bg-zinc-800 px-2 text-white focus:transition-all"
+              class="p-1 rounded-md dark:bg-zinc-800 px-2 dark:text-white focus:transition-all w-1/2 md:w-full text-sm md:text-base"
               placeholder="Leave the first reply" />
             <button
               type="submit"
@@ -156,15 +157,13 @@
       </div>
       {#if $user.id == comment.author.id || ["moderator", "admin"].includes($user.role)}
         <div
-          class="right-0 p-1 text-zinc-400 text-sm group-hover:flex hidden space-x-4 items-start">
-          <button class="flex space-x-1 items-center" on:click="{deleteReply}">
-            <IconDelete />
-            <p>Delete</p>
+        class="right-2 top-2 p-1 text-zinc-400 opacity-0 hover:opacity-100 text-sm flex space-x-2 items-start absolute">
+          <button class="flex space-x-1 items-center" aria-label="Edit comment">
+            <IconEdit />
           </button>
-          <!-- <button class="flex space-x-1 items-center">
+          <button class="flex space-x-1 items-center" on:click="{deleteReply}" aria-label="Delete comment">
             <IconDelete />
-            <p>Edit</p>
-          </button> -->
+          </button>
         </div>
       {/if}
     </div>

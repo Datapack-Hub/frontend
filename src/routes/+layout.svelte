@@ -8,7 +8,7 @@
   import BannedModal from "$lib/components/modals/BannedModal.svelte";
   import Footer from "$lib/components/nav/Footer.svelte";
   import Navbar from "$lib/components/nav/Navbar.svelte";
-  import { authed, isDark, user } from "$lib/globals/stores";
+  import { authed, isDark, user, windowWidth } from "$lib/globals/stores";
   import NProgress from "nprogress";
   import { Toaster } from "svelte-sonner";
 
@@ -31,7 +31,7 @@
 
 <svelte:head>
   {#if authed && !["helper", "moderator", "admin", "beta access", "verified"].includes($user.role)}
-    <title>Coming Soon</title>
+    <title>Coming Fall 2023?</title>
   {/if}
 </svelte:head>
 
@@ -46,7 +46,7 @@
         <Navbar />
         <slot />
       </div>
-      <Toaster theme="dark" />
+      <Toaster theme={$isDark ? "dark" : "light"} position={$windowWidth > 768 ? "bottom-right" : "top-center"} richColors />
       <Footer />
     {:else}
       <div class="fixed left-0 top-0 flex h-screen w-screen bg-zinc-900">

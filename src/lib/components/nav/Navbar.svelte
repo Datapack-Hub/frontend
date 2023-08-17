@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isDark } from "$lib/globals/stores";
+  import { isDark, windowWidth } from "$lib/globals/stores";
   import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
   import IconCompass from "~icons/tabler/Compass.svelte";
@@ -9,19 +9,16 @@
   import ProfileNavComponent from "./ProfileNavComponent.svelte";
 
   let scrollY: number;
-  let innerWidth: number;
   let showNavItems = false;
   let showNavBG: boolean;
 
   onMount(() => (showNavItems = true));
 
   $: iconColor = $isDark ? "white" : "black";
-  $: isSmall = (innerWidth ?? 769) < 768;
+  $: isSmall = ($windowWidth ?? 769) < 768;
   $: showNavBG = (scrollY ?? 34) > 35 || isSmall;
   $: iconSize = isSmall ? 24 : 32;
 </script>
-
-<svelte:window bind:scrollY bind:innerWidth />
 
 <header
   id="nav"
@@ -56,7 +53,7 @@
         </span> -->
       </a>
       {#if showNavItems}
-        {#if innerWidth > 768}
+        {#if $windowWidth > 768}
           <a href="/projects" class="nav_item">Explore</a>
           <a href="https://discord.gg/aEXsdjjdu4" class="nav_item">Discord</a>
           <!-- <button inert class="nav_item_disabled">Compete</button> -->

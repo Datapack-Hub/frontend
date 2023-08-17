@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fetchAuthed } from "$lib/globals/functions";
-  import { authed, user } from "$lib/globals/stores";
+  import { authed, user, windowWidth } from "$lib/globals/stores";
   import { onMount } from "svelte";
   import { sanitize } from "isomorphic-dompurify";
 
@@ -8,10 +8,9 @@
   let commandInput: HTMLInputElement;
   let command = "";
   let consoleIn = "";
-  let innerWidth = 0;
   let objectDiv: HTMLDivElement;
 
-  $: isSmallWidth = innerWidth < 768;
+  $: isSmallWidth = $windowWidth < 768;
 
   onMount(async () => {
     consoleIn = document.querySelector("#cons")?.innerHTML ?? "";
@@ -49,8 +48,6 @@
 <svelte:head>
   <title>Datapack Hub Console</title>
 </svelte:head>
-
-<svelte:window bind:innerWidth />
 
 <main id="main-content" class="bg-zinc-900 px-4 transition-all">
   {#if $user.role != "default" && $authed}

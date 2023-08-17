@@ -1,5 +1,7 @@
+import { browser } from "$app/environment";
 import type { Role, User } from "$lib/globals/schema";
-import { writable } from "svelte/store";
+import { debounce } from "radash";
+import { readable, writable } from "svelte/store";
 
 export const isDark = writable(true);
 export const authed = writable(false);
@@ -30,3 +32,13 @@ export const roleInfo = writable<Role>({
  * Contains all information about all roles
  */
 export const roles = writable<Role[]>([]);
+
+
+export const windowWidth = readable(1920, set => {
+  if(browser) {
+    set(window.innerWidth)
+    addEventListener("resize", debounce({delay: 20}, () => {
+      set(window.innerWidth)
+    }))
+  }
+})

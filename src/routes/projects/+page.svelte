@@ -7,7 +7,7 @@
 
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import { projectSchema } from "$lib/globals/schema";
-  import { isDark } from "$lib/globals/stores";
+  import { isDark, windowWidth } from "$lib/globals/stores";
   import { debounce } from "radash";
   import IconGrid from "~icons/tabler/LayoutGrid.svelte";
   import IconList from "~icons/tabler/LayoutList.svelte";
@@ -19,14 +19,13 @@
 
   let query: string;
   let sort = "Updated";
-  let innerWidth = 0;
   let searchTime = 0;
   let layout = browser
     ? localStorage.getItem("preferred_layout") || "list"
     : "list";
 
   $: dataCopy = data.projects ?? [];
-  $: isSmall = innerWidth > 768;
+  $: isSmall = $windowWidth > 768;
 
   let featured = data.featured?.splice(0, 2);
 
@@ -52,8 +51,6 @@
   }
 </script>
 
-<svelte:window bind:innerWidth />
-
 <svelte:head>
   <title>Projects | Datapack Hub</title>
   <meta name="description" content="Explore all our datapacks" />
@@ -63,9 +60,9 @@
   id="main-content"
   class="items-center pt-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
   <div
-    class="py-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-2">
+    class="py-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-0 md:space-x-2">
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
-    <div class="flex-grow flex flex-col sm:flex-row space-x-4 items-center">
+    <div class="flex-grow flex flex-col sm:flex-row space-x-0 md:space-x-4 items-center">
       <div
         class="input flex items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
@@ -78,7 +75,7 @@
           class="ml-2 text-slate-950 placeholder:text-slate-600 dark:placeholder:text-zinc-400 bg-slate-300 dark:bg-zinc-800 focus:outline-none dark:text-white focus:w-80"
           on:input="{search}" />
       </div>
-      <div class="block mt-2 sm:mt-0 sm:flex space-x-2 items-center">
+      <div class="block mt-2 sm:mt-0 sm:flex space-x-0 md:space-x-2 items-center">
         <p class="dark:text-white text-center">Sort By:</p>
         <select
           class="flex h-8 pl-2 items-center rounded-full bg-slate-200 py-1 px-2 focus-within:outline focus-within:outline-2 focus-within:outline-dph-orange dark:bg-zinc-700 dark:text-white"
@@ -116,7 +113,7 @@
             <IconGrid /></button>
         </div>
       {/if}
-      <div class="block sm:mt-0 sm:flex space-x-1 items-center">
+      <div class="sm:mt-0 flex space-x-1 items-center">
         <p class="dark:text-white mr-2">Page:</p>
         {#if data.page - 3 >= 1}
           <a
