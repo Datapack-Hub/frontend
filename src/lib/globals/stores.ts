@@ -14,7 +14,7 @@ export const user = writable<User>({
   bio: "",
   profile_icon: "/logos/dph.svg",
   role: "default" /** For role info, use the `$role` store */,
-  banned: false
+  banned: false,
 });
 
 /**
@@ -23,7 +23,7 @@ export const user = writable<User>({
 export const roleInfo = writable<Role>({
   name: "default",
   verified: false,
-  permissions: []
+  permissions: [],
 });
 
 /**

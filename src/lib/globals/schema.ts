@@ -5,12 +5,12 @@ export const userSchema = z.object({
   banData: z.optional(
     z.object({
       message: z.string(),
-      expires: z.number()
-    })
+      expires: z.number(),
+    }),
   ),
   banned: z.oboolean(),
   bio: z.string().max(500, {
-    message: "Bio too long"
+    message: "Bio too long",
   }),
   profile_icon: z.string().url(),
   role: z.enum([
@@ -20,13 +20,13 @@ export const userSchema = z.object({
     "verified",
     "nerd",
     "donator",
-    "default"
+    "default",
   ]),
   username: z.string().max(32, {
-    message: "Username too long"
+    message: "Username too long",
   }),
   badges: z.array(z.string()).nullish(),
-  followed: z.oboolean()
+  followed: z.oboolean(),
 });
 
 export const versionSchema = z.object({
@@ -37,7 +37,7 @@ export const versionSchema = z.object({
   minecraft_versions: z.string(),
   primary_download: z.string(),
   resource_pack_download: z.ostring(),
-  version_code: z.string().max(15, { message: "Version code too long" })
+  version_code: z.string().max(15, { message: "Version code too long" }),
 });
 
 export const projectSchema = z.object({
@@ -50,7 +50,10 @@ export const projectSchema = z.object({
   downloads: z.onumber(),
   icon: z.string().url().nullish(),
   latest_version: z.optional(
-    versionSchema.omit({ primary_download: true, resource_pack_download: true })
+    versionSchema.omit({
+      primary_download: true,
+      resource_pack_download: true,
+    }),
   ),
   licence: z.string().nullish(),
   mod_message: z.string().nullish(),
@@ -61,12 +64,12 @@ export const projectSchema = z.object({
     "disabled",
     "deleted",
     "publish_queue",
-    "review_queue"
+    "review_queue",
   ]),
   title: z.string().max(35),
   type: z.enum(["datapack"]),
   updated: z.number().nonnegative().optional(),
-  url: z.string().regex(/[a-z-]+/)
+  url: z.string().regex(/[a-z-]+/),
 });
 
 export const notificationSchema = z.object({
@@ -80,8 +83,8 @@ export const notificationSchema = z.object({
     "warn",
     "default",
     "important",
-    "rainbow"
-  ])
+    "rainbow",
+  ]),
 });
 
 export const roleSchema = z.object({
@@ -89,7 +92,7 @@ export const roleSchema = z.object({
   color: z
     .string()
     .regex(/#([a-f]|[A-F]|\d){3,6}/, {
-      message: "Not a valid colour"
+      message: "Not a valid colour",
     })
     .nullish(),
   verified: z.boolean(),
@@ -99,16 +102,16 @@ export const roleSchema = z.object({
       "WARN_USER",
       "EDIT_USER",
       "DELETE_CONTENT",
-      "USE_CONSOLE"
-    ])
-  )
+      "USE_CONSOLE",
+    ]),
+  ),
 });
 
 export const reportSchema = z.object({
   id: z.number().nonnegative(),
   message: z.string().max(500, { message: "Report too long" }),
   project: z.object(projectSchema.shape),
-  reporter: z.object(userSchema.shape)
+  reporter: z.object(userSchema.shape),
 });
 
 export const commentSchema = z.object({
@@ -121,9 +124,9 @@ export const commentSchema = z.object({
       id: z.number().nonnegative(),
       message: z.string(),
       author: z.object(userSchema.shape),
-      sent: z.number().nonnegative()
-    })
-  )
+      sent: z.number().nonnegative(),
+    }),
+  ),
 });
 
 export type User = z.infer<typeof userSchema>;

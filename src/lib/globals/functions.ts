@@ -11,7 +11,7 @@ import { authed, isDark } from "./stores";
  */
 export function loadColorPref() {
   const color = localStorage.getItem("dp_colorPref");
-  isDark.set(color != undefined && color === "true");
+  isDark.set(color !== undefined && color === "true");
 }
 
 /**
@@ -28,7 +28,7 @@ export async function serverFetch(
   url: string,
   cookies: Cookies,
   data: object | undefined = undefined,
-  headers: HeadersInit | undefined = undefined
+  headers: HeadersInit | undefined = undefined,
 ): Promise<Response> {
   const cookie = cookies.get("dph_token");
 
@@ -37,14 +37,14 @@ export async function serverFetch(
     method: method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
-      ...(cookie == undefined
+      ...(cookie === undefined
         ? undefined
         : { Authorization: `Basic ${cookie}` }),
-      ...headers
-    }
+      ...headers,
+    },
   });
 
-  if (response.status == 401) cookies.delete("dph_token");
+  if (response.status === 401) cookies.delete("dph_token");
   if (!response.ok) Promise.reject(response.statusText);
 
   return response;
@@ -62,7 +62,7 @@ export async function fetchAuthed(
   method: string,
   url: string,
   data: object | undefined = undefined,
-  headers: HeadersInit | undefined = undefined
+  headers: HeadersInit | undefined = undefined,
 ): Promise<Response> {
   let cookie;
   if (browser) {
@@ -74,14 +74,14 @@ export async function fetchAuthed(
     method: method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
-      ...(cookie == undefined
+      ...(cookie === undefined
         ? undefined
         : { Authorization: `Basic ${cookie}` }),
-      ...headers
-    }
+      ...headers,
+    },
   });
 
-  if (response.status == 401) removeCookie("dph_token");
+  if (response.status === 401) removeCookie("dph_token");
   if (!response.ok) Promise.reject(response.statusText);
 
   return response;
@@ -97,7 +97,7 @@ const getCookie = memo((cookieName: string): string | undefined => {
   for (const index of range(cookies.length - 1)) {
     // eslint-disable-next-line security/detect-object-injection
     const cookie = cookies[index].trim();
-    if (cookie.startsWith(cookieName + "=")) {
+    if (cookie.startsWith(`${cookieName}=`)) {
       return cookie.slice(Math.max(0, cookieName.length + 1));
     }
   }

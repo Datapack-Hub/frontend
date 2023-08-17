@@ -12,9 +12,9 @@ export const load = (async () => {
 
     return {
       profile,
-      role: get(roles).find(v => {
-        profile.role == v.name;
-      })
+      role: get(roles).find((v) => {
+        profile.role === v.name;
+      }),
     };
   }
   return {};

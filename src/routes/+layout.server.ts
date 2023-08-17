@@ -13,18 +13,19 @@ export const load = (async ({ cookies, fetch }) => {
 
     const user = await userSchema.parseAsync(await userResponse.json());
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    // rome-ignore lint/style/noNonNullAssertion: <explanation>
     const role = roleSchema
       .array()
       .parse(rolesJson.roles)
-      .find((v: Role) => v.name == user.role)!;
+      .find((v: Role) => v.name === user.role)!;
 
     return {
       user,
       role,
-      roles: rolesJson.roles
+      roles: rolesJson.roles,
     };
   }
   return {
-    roles: rolesJson.roles
+    roles: rolesJson.roles,
   };
 }) satisfies LayoutServerLoad;
