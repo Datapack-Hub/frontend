@@ -1,7 +1,7 @@
 import { serverFetch } from "$lib/globals/functions";
-import { projectSchema, versionSchema, type User } from "$lib/globals/schema";
-import { error } from "@sveltejs/kit";
+import { type User, projectSchema, versionSchema } from "$lib/globals/schema";
 import type { PageServerLoad } from "./$types";
+import { error } from "@sveltejs/kit";
 
 export const load = (async ({ params, cookies }) => {
   const projectRequest = await serverFetch(

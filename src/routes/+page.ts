@@ -1,7 +1,7 @@
 import { API } from "$lib/globals/consts";
 import { projectSchema, userSchema } from "$lib/globals/schema";
-import { parallel, shuffle } from "radash";
 import type { PageLoad } from "./$types";
+import { parallel, shuffle } from "radash";
 
 export const load = (async ({ fetch }) => {
   const [

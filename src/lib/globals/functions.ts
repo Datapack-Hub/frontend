@@ -1,10 +1,10 @@
 import { browser } from "$app/environment";
 import type { Role } from "$lib/globals/schema";
+import { API } from "./consts";
+import { authed, isDark } from "./stores";
 import type { Cookies } from "@sveltejs/kit";
 import { memo, range } from "radash";
 import { get } from "svelte/store";
-import { API } from "./consts";
-import { authed, isDark } from "./stores";
 
 /**
  * Loads the user's preferred color scheme from LocalStorage

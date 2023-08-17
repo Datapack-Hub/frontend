@@ -8,8 +8,8 @@ import {
   roles,
   user,
 } from "$lib/globals/stores";
-import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
+import { get } from "svelte/store";
 
 export const load = (async ({ url, data }) => {
   if (browser) {

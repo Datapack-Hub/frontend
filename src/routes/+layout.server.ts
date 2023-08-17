@@ -1,6 +1,6 @@
 import { API } from "$lib/globals/consts";
 import { serverFetch } from "$lib/globals/functions";
-import { roleSchema, userSchema, type Role } from "$lib/globals/schema";
+import { type Role, roleSchema, userSchema } from "$lib/globals/schema";
 import type { LayoutServerLoad } from "./$types";
 
 export const load = (async ({ cookies, fetch }) => {

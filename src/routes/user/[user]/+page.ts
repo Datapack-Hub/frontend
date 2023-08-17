@@ -1,10 +1,10 @@
 import { fetchAuthed } from "$lib/globals/functions";
 import { projectSchema, userSchema } from "$lib/globals/schema";
 import { roles } from "$lib/globals/stores";
+import type { PageLoad } from "./$types";
 import { error } from "@sveltejs/kit";
 import { sum } from "radash";
 import { get } from "svelte/store";
-import type { PageLoad } from "./$types";
 
 export const load = (async ({ params }) => {
   const [user, projects] = await Promise.all([
