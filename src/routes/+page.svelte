@@ -1,18 +1,7 @@
 <script lang="ts">
-  import Button from "$lib/components/decorative/Button.svelte";
-  import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
-  import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
-  import { roles } from "$lib/globals/stores";
-  import autoAnimate from "@formkit/auto-animate";
   import anime from "animejs";
-  import { title } from "radash";
   import { onMount } from "svelte";
-  import tippy from "sveltejs-tippy";
-  import IconArrow from "~icons/tabler/ArrowBigRightLinesFilled.svelte";
-  import IconFile from "~icons/tabler/FileZip.svelte";
-  import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
-  import { goto } from "$app/navigation";
 
   export let data: PageData;
 
@@ -20,12 +9,14 @@
   let visible = false;
   // let apiExampleUser = "silabear";
   // let apiExampleResult = "";
-  let frontPageProjects = []
+  let frontPageProjects = [];
 
-  data.featured.forEach(project => frontPageProjects.push({type: "featured", project}))
+  data.featured.forEach(project =>
+    frontPageProjects.push({ type: "featured", project })
+  );
 
-  for(let i = 0; i < 4 - frontPageProjects.length; i++) {
-    frontPageProjects.push(data.random[i])
+  for (let i = 0; i < 4 - frontPageProjects.length; i++) {
+    frontPageProjects.push(data.random[i]);
   }
 
   onMount(async () => {
@@ -350,7 +341,7 @@
               </span>
             </div>
             <button
-              class="button-base bg-green-600 text-white"
+              class="button-base text-slate-950 dark:text-slate-100 bg-green-600 text-white"
               on:click="{apiExampleRun}">Run</button>
           </div>
           <div
@@ -372,6 +363,6 @@
 
 <style lang="postcss">
   .appearing-text-styles {
-    @apply absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center font-bold md:left-0 md:w-full md:translate-x-0 md:text-left text-7xl xl:text-8xl;
+    @apply absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-7xl font-bold md:left-0 md:w-full md:translate-x-0 md:text-left xl:text-8xl;
   }
 </style>

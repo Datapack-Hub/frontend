@@ -1,18 +1,10 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { goto, invalidateAll } from "$app/navigation";
-  import CasualLine from "$lib/components/decorative/CasualLine.svelte";
+  import { invalidateAll } from "$app/navigation";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { badges } from "$lib/globals/consts";
   import type { User } from "$lib/globals/schema";
-  import { roleInfo, roles } from "$lib/globals/stores";
-  import { MultiSelect } from "svelte-multiselect";
   import { toast } from "svelte-sonner";
-  import IconShield from "~icons/tabler/Shield.svelte";
   import { fetchAuthed } from "../../globals/functions";
-  import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
-  import Button from "../decorative/Button.svelte";
-  import UserCard from "./UserCard.svelte";
 
   export let user: User | undefined;
 
@@ -194,34 +186,40 @@
       Select Action
     </p>
     <button
-      class="button-base {moderationModalPage == 'ban'
+      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      'ban'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'ban')}">Ban</button>
     <button
-      class="button-base {moderationModalPage == 'warn'
+      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      'warn'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'warn')}">Warn</button>
     <button
       id="send_notif"
-      class="button-base {moderationModalPage == 'notif'
+      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      'notif'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'notif')}"
       >Send Notification</button>
     <button
-      class="button-base {moderationModalPage == 'logout'
+      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      'logout'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'logout')}">Log Out</button>
     <button
-      class="button-base {moderationModalPage == 'badges'
+      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      'badges'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'badges')}">Edit Badges</button>
     <button
-      class="button-base {moderationModalPage == 'edit'
+      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      'edit'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => goto(user?.username + '/edit')}">Edit User</button>

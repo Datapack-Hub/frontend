@@ -25,13 +25,13 @@
   <div class="flex items-center space-x-1.5 mb-3">
     <button
       role="tab"
-      class="button-base {tab === 'editor'
+      class="button-base text-slate-950 dark:text-slate-100 text-slate-950 dark:text-slate-100 {tab === 'editor'
         ? 'bg-slate-400 dark:bg-zinc-500'
         : 'bg-slate-300 dark:bg-zinc-700'}"
       on:click="{() => (tab = 'editor')}">Edit</button>
     <button
       role="tab"
-      class="button-base {tab === 'preview'
+      class="button-base text-slate-950 dark:text-slate-100 text-slate-950 dark:text-slate-100 {tab === 'preview'
         ? 'bg-slate-400 dark:bg-zinc-500'
         : 'bg-slate-300 dark:bg-zinc-700'}"
       on:click="{() => (tab = 'preview')}">Preview</button>

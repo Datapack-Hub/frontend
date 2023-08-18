@@ -4,26 +4,14 @@
   import { browser } from "$app/environment";
   import { afterNavigate, goto } from "$app/navigation";
 
-  import Button from "$lib/components/decorative/Button.svelte";
-  import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 
-  import { categories, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
 
-  import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
 
-  import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
-  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import { onMount } from "svelte";
-  import { MultiSelect } from "svelte-multiselect";
   import { writable, type Writable } from "svelte/store";
-  import IconTick from "~icons/tabler/Check.svelte";
-  import IconDraft from "~icons/tabler/FileOff.svelte";
-  import IconDelete from "~icons/tabler/Trash.svelte";
-  import IconNoIcon from "~icons/tabler/Upload.svelte";
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -291,29 +279,29 @@
       <button
         class="{activePage === 'details'
           ? 'bg-slate-200 dark:bg-zinc-600'
-          : 'bg-slate-300 dark:bg-zinc-800'} button-base"
+          : 'bg-slate-300 dark:bg-zinc-800'} button-base text-slate-950 dark:text-slate-100"
         on:click="{() => (activePage = 'details')}">Details</button>
       <div class="flex-grow">
         <button
           class="{activePage === 'versions'
             ? 'bg-slate-200 dark:bg-zinc-600'
-            : 'bg-slate-300 dark:bg-zinc-800'} button-base"
+            : 'bg-slate-300 dark:bg-zinc-800'} button-base text-slate-950 dark:text-slate-100"
           on:click="{() => (activePage = 'versions')}"
           >Versions ({data.versions?.length})</button>
       </div>
       {#if ["draft", "unpublished", "disabled"].includes(data.project?.status ?? "draft")}
         <button
-          class="button-base flex items-center space-x-1 bg-green-600"
+          class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-green-600"
           on:click="{() => publishModal.open()}"
           ><IconTick /><span>Publish Project</span></button>
       {:else if data.project?.status == "live"}
         <button
-          class="button-base flex items-center space-x-1 bg-zinc-600"
+          class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-zinc-600"
           on:click="{() => draftModal.open()}"
           ><IconDraft /><span>Draft submission</span></button>
       {/if}
       <button
-        class="button-base flex items-center space-x-1 bg-red-600"
+        class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-red-600"
         on:click="{() => deleteModal.open()}"><IconDelete /></button>
     </div>
 
@@ -595,7 +583,7 @@
     By publishing this project, you agree that it follows the rules.
   </p>
   <button
-    class="button-base flex items-center space-x-1 bg-green-600"
+    class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-green-600"
     on:click="{publish}"><IconTick /><span>Publish Project</span></button>
 </Modal>
 
@@ -609,7 +597,7 @@
     submission at any point.
   </p>
   <button
-    class="button-base flex items-center space-x-1 bg-zinc-600"
+    class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-zinc-600"
     on:click="{draft}"><IconDraft /><span>Draft submission</span></button>
 </Modal>
 
@@ -623,7 +611,7 @@
     contact a staff member.
   </p>
   <button
-    class="button-base flex items-center space-x-1 bg-red-600"
+    class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-red-600"
     on:click="{remove}"
     ><IconDraft /><span
       >I confirm I understand the above. Delete submission</span

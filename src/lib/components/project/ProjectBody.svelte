@@ -256,7 +256,7 @@
   }
 
   $: isSmall = $windowWidth < 1181;
-  $: iconColor = $isDark ? "white" : "black"
+  $: iconColor = $isDark ? "white" : "black";
 </script>
 
 <div use:autoAnimate class="w-full mt-4 lg:w-3/4 lg:mt-0">
@@ -264,7 +264,8 @@
   <div class="mb-2 flex items-center justify-between space-x-2">
     <div class="space-x-1.5">
       <button
-        class="button-base {activePage === 'description'
+        class="button-base text-slate-950 dark:text-slate-100 {activePage ===
+        'description'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-200 dark:bg-zinc-800'}"
         on:click="{() => (activePage = 'description')}"
@@ -272,11 +273,12 @@
         {#if !isSmall}
           Description
         {:else}
-          <IconDescription color={iconColor} />
+          <IconDescription color="{iconColor}" />
         {/if}
       </button>
       <button
-        class="button-base {activePage === 'comments'
+        class="button-base text-slate-950 dark:text-slate-100 {activePage ===
+        'comments'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-200 dark:bg-zinc-800'}"
         on:click="{() => (activePage = 'comments')}"
@@ -284,7 +286,7 @@
         {#if !isSmall}
           Comments
         {:else}
-          <IconMessage color={iconColor} />
+          <IconMessage color="{iconColor}" />
         {/if}
       </button>
     </div>
@@ -292,7 +294,7 @@
       {#if $user.id == project?.author.id}
         <a
           aria-label="Edit"
-          class="button-base ml-auto flex items-center space-x-1"
+          class="button-base text-slate-950 dark:text-slate-100 ml-auto flex items-center space-x-1"
           href="/project/{project?.url}/edit">
           <IconPencil /><span class="hidden md:block">Edit</span>
         </a>
@@ -300,7 +302,7 @@
       {#if $user.id != project?.author.id && status == "live"}
         <button
           aria-label="Report"
-          class="button-base flex items-center space-x-1"
+          class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1"
           on:click="{() => {
             reportModal.open();
           }}"><IconReport /><span class="hidden md:block">Report</span></button>
@@ -309,13 +311,13 @@
         {#if status == "publish_queue" || status == "review_queue"}
           <button
             aria-label="Approve"
-            class="button-base flex items-center space-x-1 bg-green-600"
+            class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-green-600"
             on:click="{approve}"
             use:tippy="{{ content: 'Approve', placement: 'bottom' }}"
             ><IconTick /><!--<span class="hidden md:block">Approve</span>--></button>
           <button
             aria-label="Request Changes"
-            class="button-base flex items-center space-x-1 bg-yellow-600"
+            class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-yellow-600"
             on:click="{() => {
               moderationModalPage = 'disable';
               moderateModal.open();
@@ -325,16 +327,15 @@
             >--></button>
           <button
             aria-label="Deny"
-            class="button-base flex items-center space-x-1 bg-red-600"
+            class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-red-600"
             on:click="{() => {
               moderationModalPage = 'delete';
               moderateModal.open();
             }}"
             use:tippy="{{ content: 'Deny', placement: 'bottom' }}"
-            ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button
-          >
+            ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>
           <button
-            class="button-base space-x-1"
+            class="button-base text-slate-950 dark:text-slate-100 space-x-1"
             aria-label="Moderate"
             on:click="{() => {
               moderateModal.open();
@@ -345,7 +346,7 @@
         {#if status == "live"}
           <button
             aria-label="Feature"
-            class="button-base flex items-center space-x-1"
+            class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1"
             on:click="{() => {
               featureModal.open();
             }}"
@@ -362,7 +363,7 @@
       </Button>
       {#if moderatorOrAbove($roleInfo) && !(status == "publish_queue" || status == "review_queue")}
         <button
-          class="button-base space-x-1 bg-red-600"
+          class="button-base text-slate-950 dark:text-slate-100 space-x-1 bg-red-600"
           aria-label="Moderate"
           on:click="{() => {
             moderateModal.open();
@@ -582,23 +583,26 @@
       Select Action
     </p>
     <button
-      class="button-base {moderationModalPage === 'delete'
+      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ===
+      'delete'
         ? 'bg-zinc-600'
         : 'bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'delete')}">Delete</button>
     <button
-      class="button-base {moderationModalPage === 'disable'
+      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ===
+      'disable'
         ? 'bg-zinc-600'
         : 'bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'disable')}">Disable</button>
     <button
-      class="button-base {moderationModalPage === 'write note'
+      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ===
+      'write note'
         ? 'bg-zinc-600'
         : 'bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'write note')}"
       >Write Note</button>
     <button
-      class="button-base bg-zinc-900"
+      class="button-base text-slate-950 dark:text-slate-100 bg-zinc-900"
       on:click="{() => goto('/project/' + project?.url + '/edit')}"
       >Edit Submission</button>
   </div>

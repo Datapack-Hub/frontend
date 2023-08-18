@@ -32,23 +32,23 @@
 }
 
 .button-primary {
-  @apply button-base bg-dph-orange text-sm md:text-base lg:text-lg;
+  @apply button-base bg-dph-orange text-sm md:text-base lg:text-lg text-slate-100;
 }
 
 .button-secondary {
-  @apply button-base border-2 border-dph-orange bg-dph-orange/25 text-sm font-bold dark:text-slate-100 md:text-base lg:text-lg;
+  @apply button-base border-2 border-dph-orange/50 bg-dph-orange/25 text-sm font-bold text-dph-orange md:text-base lg:text-lg;
 }
 
 .button-boring {
-  @apply button-base bg-slate-200 dark:bg-zinc-600;
+  @apply button-base bg-slate-200 dark:bg-zinc-600 text-slate-950 dark:text-slate-100;
 }
 
 .button-hugh {
-  @apply button-base bg-dph-orange;
+  @apply button-base bg-dph-orange text-slate-100;
 }
 
 .button-base {
-  @apply rounded-lg px-3 py-2 transition-transform hover:scale-105 active:brightness-75 text-slate-100;
+  @apply rounded-lg px-3 py-2 transition-transform hover:scale-105 active:brightness-75;
 }
 
 .button-base:disabled {
@@ -56,7 +56,7 @@
 }
 
 .button-alt {
-  @apply rounded-md border-2 border-blue-400 bg-blue-400/10 px-2 py-2 text-base text-blue-400 transition-transform hover:scale-102 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl;
+  @apply rounded-md border-2 border-blue-400/50 bg-blue-400/25 px-2 py-2 text-base text-blue-400 transition-transform hover:scale-102 active:brightness-75 md:px-3 md:py-2 md:text-lg lg:text-xl;
 }
 
 .button-sm {
