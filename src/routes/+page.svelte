@@ -20,6 +20,13 @@
   let visible = false;
   // let apiExampleUser = "silabear";
   // let apiExampleResult = "";
+  let frontPageProjects = []
+
+  data.featured.forEach(project => frontPageProjects.push({type: "featured", project}))
+
+  for(let i = 0; i < 4 - frontPageProjects.length; i++) {
+    frontPageProjects.push(data.random[i])
+  }
 
   onMount(async () => {
     let cyclingTextWrapper = document.querySelectorAll(".split-text .letters");
@@ -156,10 +163,10 @@
         Featured Projects
       </h3>
       <div use:autoAnimate class="space-y-3">
-        {#each data.featured.splice(0, 2) as randProj}
-          <FeaturedProjectComponent project="{randProj}" type="featured" />
+        {#each data.featured.splice(0, 2) as featuredProj}
+          <FeaturedProjectComponent project="{featuredProj}" type="featured" />
         {/each}
-        {#each data.random.splice(0, 1) as randProj}
+        {#each data.random.splice(0, 2) as randProj}
           <FeaturedProjectComponent project="{randProj}" type="random" />
         {/each}
       </div>
