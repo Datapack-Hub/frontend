@@ -8,9 +8,8 @@
   export let project: Project;
   export let showStatus = false;
 
-  let author = project.author;
-  let userRole = $roles.find(role => role.name === author.role);
-  let status = project.status ?? "unpublished";
+  $: userRole = $roles.find(role => role.name === project.author.role);
+  $: status = project.status ?? "unpublished";
 </script>
 
 <div
@@ -42,16 +41,16 @@
       <div
         class="flex gap-1 items-center text-sm text-slate-950/40 dark:text-slate-100">
         <img
-          src="{author.profile_icon}&size=32"
-          alt="{author.username}'s profile"
+          src="{project.author.profile_icon}&size=32"
+          alt="{project.author.username}'s profile"
           class="h-4 rounded-full"
           height="16"
           width="16" />
         <a
-          href="/user/{author.username.toLowerCase()}"
+          href="/user/{project.author.username.toLowerCase()}"
           class="block"
           style="color: {userRole?.color}">
-          {author.username}
+          {project.author.username}
         </a>
         {#if project.latest_version}
           <span>•</span>
