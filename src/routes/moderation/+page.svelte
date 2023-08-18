@@ -136,7 +136,7 @@
                 There are {reports.length} reported item(s):
               </p>
               {#each reports ?? [] as proj}
-                <ReportComponent project="{proj.project}" report="{proj}" />
+                <ReportComponent report="{proj}" />
               {/each}
             {/if}
           </div>
