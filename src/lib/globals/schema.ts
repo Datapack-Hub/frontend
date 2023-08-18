@@ -45,7 +45,7 @@ export const projectSchema = z.object({
   author: z.object(userSchema.shape),
   body: z.string().max(1e4, { message: "Body too long" }).optional(),
   category: z.optional(z.array(z.string())),
-  dependencies: z.array(z.string()).nullish(),
+  // dependencies: z.array(z.string()).nullish(),
   description: z.string().max(200, { message: "Description too long" }),
   downloads: z.onumber(),
   icon: z.string().url().nullish(),

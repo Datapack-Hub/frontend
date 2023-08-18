@@ -9,23 +9,19 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 
-  import { API, categories, minecraftVersions } from "$lib/globals/consts";
+  import { categories, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
 
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
 
   import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
-  import AutoAdjustableInput from "$lib/components/utility/AutoAdjustableInput.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
-  import { projectSchema, type Project } from "$lib/globals/schema";
-  import { list } from "radash";
   import { onMount } from "svelte";
   import { MultiSelect } from "svelte-multiselect";
   import { writable, type Writable } from "svelte/store";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconDraft from "~icons/tabler/FileOff.svelte";
-  import IconLink from "~icons/tabler/Link.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
 
@@ -52,8 +48,8 @@
 
   let v_changelog = "";
 
-  let dependencies: Project[] = [];
-  let dependencyNames: string[] = [""];
+  // let dependencies: Project[] = [];
+  // let dependencyNames: string[] = [""];
 
   onMount(() => {
     $category = [];
@@ -248,24 +244,24 @@
     }
   }
 
-  function dependencyHandler(v: string, index: number) {
-    dependencyNames[index] = v;
-    if (dependencyNames.length == index) dependencyNames.push("");
-    dependencyNames = dependencyNames.slice(0, 4);
-    resolveDependency(v, index);
-  }
+  // function dependencyHandler(v: string, index: number) {
+  //   dependencyNames[index] = v;
+  //   if (dependencyNames.length == index) dependencyNames.push("");
+  //   dependencyNames = dependencyNames.slice(0, 4);
+  //   resolveDependency(v, index);
+  // }
 
-  async function resolveDependency(v: string, index: number) {
-    let search = await fetch(`${API}/projects/search?query=${v}`);
-    let searchJson = await search.json();
-    let projects = await projectSchema.array().parseAsync(searchJson.result);
+  // async function resolveDependency(v: string, index: number) {
+  //   let search = await fetch(`${API}/projects/search?query=${v}`);
+  //   let searchJson = await search.json();
+  //   let projects = await projectSchema.array().parseAsync(searchJson.result);
 
-    for (const project of projects) {
-      if (project.url == v) {
-        dependencies[index] = project;
-      }
-    }
-  }
+  //   for (const project of projects) {
+  //     if (project.url == v) {
+  //       dependencies[index] = project;
+  //     }
+  //   }
+  // }
 </script>
 
 <svelte:head>
@@ -533,7 +529,7 @@
                 </div>
                 <p class="mb-4"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->
-                <p class="text-slate-950 dark:text-slate-100 col-span-3">
+                <!-- <p class="text-slate-950 dark:text-slate-100 col-span-3">
                   Dependencies
                 </p>
                 <div
@@ -563,7 +559,7 @@
                       {/if}
                     </div>
                   {/each}
-                </div>
+                </div> -->
                 <p class="align-middle text-slate-950 dark:text-slate-100 mt-3">
                   Resource Pack Download (optional)
                 </p>

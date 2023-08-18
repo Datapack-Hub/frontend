@@ -332,7 +332,7 @@
             }}"
             use:tippy="{{ content: 'Deny', placement: 'bottom' }}"
             ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button
-          >moderatorOrAbove
+          >
           <button
             class="button-base space-x-1"
             aria-label="Moderate"
