@@ -174,9 +174,9 @@
     <p class="text-slate-950 dark:text-white">Loading...</p>
   {:then}
     <Button
-      style="base"
+      style="boring"
       click="{() => moderationModal.open()}"
-      classes="mt-4 flex w-full items-center bg-slate-300 dark:bg-zinc-700">
+      classes="mt-4 flex w-full items-center">
       <IconShield width="24" height="24" class="float-left mr-2" />
       Moderate {user?.username}
     </Button>
