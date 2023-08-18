@@ -4,14 +4,26 @@
   import { browser } from "$app/environment";
   import { afterNavigate, goto } from "$app/navigation";
 
+  import Button from "$lib/components/decorative/Button.svelte";
+  import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
+  import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 
+  import { categories, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
 
+  import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
 
+  import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
+  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import { onMount } from "svelte";
+  import { MultiSelect } from "svelte-multiselect";
   import { writable, type Writable } from "svelte/store";
+  import IconTick from "~icons/tabler/Check.svelte";
+  import IconDraft from "~icons/tabler/FileOff.svelte";
+  import IconDelete from "~icons/tabler/Trash.svelte";
+  import IconNoIcon from "~icons/tabler/Upload.svelte";
 
   let publishModal: Modal;
   let draftModal: Modal;

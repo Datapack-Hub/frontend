@@ -1,7 +1,18 @@
 <script lang="ts">
+  import Button from "$lib/components/decorative/Button.svelte";
+  import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
+  import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
+  import { roles } from "$lib/globals/stores";
+  import autoAnimate from "@formkit/auto-animate";
   import anime from "animejs";
+  import { title } from "radash";
   import { onMount } from "svelte";
+  import tippy from "sveltejs-tippy";
+  import IconArrow from "~icons/tabler/ArrowBigRightLinesFilled.svelte";
+  import IconFile from "~icons/tabler/FileZip.svelte";
+  import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
+  import { goto } from "$app/navigation";
 
   export let data: PageData;
 

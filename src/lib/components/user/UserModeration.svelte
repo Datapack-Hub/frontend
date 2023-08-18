@@ -1,10 +1,18 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { invalidateAll } from "$app/navigation";
+  import { goto, invalidateAll } from "$app/navigation";
+  import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
+  import { badges } from "$lib/globals/consts";
   import type { User } from "$lib/globals/schema";
+  import { roleInfo, roles } from "$lib/globals/stores";
+  import { MultiSelect } from "svelte-multiselect";
   import { toast } from "svelte-sonner";
+  import IconShield from "~icons/tabler/Shield.svelte";
   import { fetchAuthed } from "../../globals/functions";
+  import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
+  import Button from "../decorative/Button.svelte";
+  import UserCard from "./UserCard.svelte";
 
   export let user: User | undefined;
 
