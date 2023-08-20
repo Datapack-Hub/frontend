@@ -12,7 +12,7 @@
 
   export let source: string | undefined = "";
   export let classes = "";
-  export const limitedMode = false;
+  export let limitedMode = false;
 
   $: html = "";
 
