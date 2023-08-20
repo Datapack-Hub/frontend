@@ -1,31 +1,31 @@
 import { serverFetch } from "$lib/globals/functions";
-import { projectSchema, versionSchema, type User } from "$lib/globals/schema";
-import { error } from "@sveltejs/kit";
+import { type User, projectSchema, versionSchema } from "$lib/globals/schema";
 import type { PageServerLoad } from "./$types";
+import { error } from "@sveltejs/kit";
 
 export const load = (async ({ params, cookies }) => {
   const projectRequest = await serverFetch(
     "get",
     `/projects/get/${params.project}`,
-    cookies
+    cookies,
   );
 
   if (projectRequest.status === 404) {
     throw error(404, {
       message: "Silly boy!",
-      description: "Doesn't exist, nerd!"
+      description: "Doesn't exist, nerd!",
     });
   }
 
   const projectJson = await projectSchema.parseAsync(
-    await projectRequest.json()
+    await projectRequest.json(),
   );
   const meRequest = await serverFetch("get", "/user/me", cookies);
 
   if (meRequest.status === 401) {
     throw error(401, {
       message: "Please sign in.",
-      description: "If you are signed in, then our server must be down. Sorry!"
+      description: "If you are signed in, then our server must be down. Sorry!",
     });
   }
 
@@ -37,7 +37,7 @@ export const load = (async ({ params, cookies }) => {
     const project = await serverFetch(
       "get",
       `/versions/project/${projectJson.ID}`,
-      cookies
+      cookies,
     );
 
     const projectResultJson = await project.json();
@@ -46,12 +46,12 @@ export const load = (async ({ params, cookies }) => {
       .parseAsync(projectResultJson.result);
     return {
       project: projectJson,
-      versions: versionsRequest
+      versions: versionsRequest,
     };
   }
 
   throw error(403, {
     message: "Not your project.",
-    description: "Only the owner can edit this."
+    description: "Only the owner can edit this.",
   });
 }) satisfies PageServerLoad;

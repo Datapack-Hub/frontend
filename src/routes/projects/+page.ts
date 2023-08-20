@@ -1,7 +1,7 @@
 import { API } from "$lib/globals/consts";
 import { projectSchema } from "$lib/globals/schema";
-import { parallel, shuffle } from "radash";
 import type { PageLoad } from "./$types";
+import { parallel, shuffle } from "radash";
 
 export const load = (async ({ fetch, url }) => {
   const parameters = url.searchParams;
@@ -13,9 +13,9 @@ export const load = (async ({ fetch, url }) => {
     2,
     await Promise.all([
       fetch(`${API}/projects/?page=${page}`),
-      fetch(`${API}/projects/featured`)
+      fetch(`${API}/projects/featured`),
     ]),
-    async response => await response.json()
+    async (response) => await response.json(),
   );
 
   const data = await projectSchema.array().parseAsync(projects.result);
@@ -25,6 +25,6 @@ export const load = (async ({ fetch, url }) => {
     projects: data,
     featured: shuffle(await projectSchema.array().parseAsync(featured.result)),
     pages,
-    page
+    page,
   };
 }) satisfies PageLoad;

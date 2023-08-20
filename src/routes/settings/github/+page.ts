@@ -14,7 +14,7 @@ export const load = (async ({ url }) => {
 
     const response = await fetchAuthed(
       "put",
-      `/auth/link/github?code=${parameters.get("code")}`
+      `/auth/link/github?code=${parameters.get("code")}`,
     );
     if (response.ok) goto("/settings");
   }

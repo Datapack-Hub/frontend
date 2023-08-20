@@ -1,7 +1,7 @@
 import { API } from "$lib/globals/consts";
 import { projectSchema, userSchema } from "$lib/globals/schema";
-import { parallel, shuffle } from "radash";
 import type { PageLoad } from "./$types";
+import { parallel, shuffle } from "radash";
 
 export const load = (async ({ fetch }) => {
   const [
@@ -10,7 +10,7 @@ export const load = (async ({ fetch }) => {
     count,
     adminsJson,
     moderatorsJson,
-    helpersJson
+    helpersJson,
   ] = await parallel(
     3,
     await Promise.all([
@@ -20,15 +20,15 @@ export const load = (async ({ fetch }) => {
       // staff
       fetch(`${API}/user/staff/admin`),
       fetch(`${API}/user/staff/moderator`),
-      fetch(`${API}/user/staff/helper`)
+      fetch(`${API}/user/staff/helper`),
     ]),
-    async response => await response.json()
+    async (response) => await response.json(),
   );
 
   const [admins, mods, helpers] = await parallel(
     3,
-    [adminsJson, moderatorsJson, helpersJson].map(v => v.values),
-    async users => await userSchema.array().parseAsync(users)
+    [adminsJson, moderatorsJson, helpersJson].map((v) => v.values),
+    async (users) => await userSchema.array().parseAsync(users),
   );
 
   const random = await projectSchema.array().parseAsync(randomJson.result);
@@ -41,6 +41,6 @@ export const load = (async ({ fetch }) => {
     random,
     featured,
     count: count.count,
-    staff: [...admins, ...mods, ...helpers]
+    staff: [...admins, ...mods, ...helpers],
   };
 }) satisfies PageLoad;

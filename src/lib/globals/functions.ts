@@ -1,10 +1,10 @@
 import { browser } from "$app/environment";
 import type { Role } from "$lib/globals/schema";
+import { API } from "./consts";
+import { authed, isDark } from "./stores";
 import type { Cookies } from "@sveltejs/kit";
 import { memo, range } from "radash";
 import { get } from "svelte/store";
-import { API } from "./consts";
-import { authed, isDark } from "./stores";
 
 /**
  * Loads the user's preferred color scheme from LocalStorage
@@ -28,7 +28,7 @@ export async function serverFetch(
   url: string,
   cookies: Cookies,
   data: object | undefined = undefined,
-  headers: HeadersInit | undefined = undefined
+  headers: HeadersInit | undefined = undefined,
 ): Promise<Response> {
   const cookie = cookies.get("dph_token");
 
@@ -40,8 +40,8 @@ export async function serverFetch(
       ...(cookie === undefined
         ? undefined
         : { Authorization: `Basic ${cookie}` }),
-      ...headers
-    }
+      ...headers,
+    },
   });
 
   if (response.status === 401) cookies.delete("dph_token");
@@ -61,7 +61,7 @@ export async function fetchAuthed(
   method: string,
   url: string,
   data: object | undefined = undefined,
-  headers: HeadersInit | undefined = undefined
+  headers: HeadersInit | undefined = undefined,
 ): Promise<Response> {
   let cookie;
   if (browser) {
@@ -76,8 +76,8 @@ export async function fetchAuthed(
       ...(cookie === undefined
         ? undefined
         : { Authorization: `Basic ${cookie}` }),
-      ...headers
-    }
+      ...headers,
+    },
   });
 
   if (response.status === 401) removeCookie("dph_token");
