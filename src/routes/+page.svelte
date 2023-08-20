@@ -22,12 +22,11 @@
   // let apiExampleResult = "";
   let frontPageProjects = [];
 
-  data.featured.forEach(project =>
-    frontPageProjects.push({ type: "featured", project })
-  );
+  for (const project of data.featured)
+    frontPageProjects.push({ type: "featured", project });
 
-  for (let i = 0; i < 4 - frontPageProjects.length; i++) {
-    frontPageProjects.push(data.random[i]);
+  for (let index = 0; index < 4 - frontPageProjects.length; index++) {
+    frontPageProjects.push(data.random[index]);
   }
 
   onMount(async () => {

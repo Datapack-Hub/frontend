@@ -24,6 +24,8 @@
   import IconDraft from "~icons/tabler/FileOff.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
+  import IconX from "~icons/tabler/X.svelte";
+  import IconUpload from "~icons/tabler/FileUpload.svelte";
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -31,7 +33,7 @@
 
   let selected: string[] = [];
   let zipFile: File;
-  let activePage = "details";
+  let activePage = "versions";
 
   export let data: PageData;
 
@@ -274,7 +276,7 @@
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="pt-8 text-center text-5xl font-bold text-slate-950 dark:text-slate-100 md:text-start md:text-4xl lg:text-4xl">
+      class="py-8 md:py-0 text-center text-5xl font-bold text-slate-950 dark:text-slate-100 md:text-start md:text-4xl lg:text-4xl">
       Edit <span class="text-dph-orange">{data.project?.title}</span>
     </h1>
     {#if data.project?.mod_message}
@@ -452,10 +454,14 @@
         <div class="bg-slate-200 dark:bg-zinc-800 p-3 rounded-xl">
           <div class="text-center align-middle md:text-start w-full">
             {#if createVersion == false}
-              <div class="my-2 mb-4 flex space-x-2">
-                <label for="zip" class="max-w-100">
+              <div class="my-2 mb-4">
+                <p class="text-slate-950 dark:text-slate-100 mb-4">
+                  Press the button below to upload a version of your pack, it
+                  will move on automatically
+                </p>
+                <label for="zip">
                   <span class="button-primary cursor-pointer"
-                    >Upload New Version</span>
+                    ><IconUpload class="inline-block align-text-top" /> Upload Version</span>
                 </label>
                 <input
                   type="file"
@@ -477,7 +483,7 @@
               <div>
                 <button
                   class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
-                  on:click="{() => (createVersion = false)}">X</button>
+                  on:click="{() => (createVersion = false)}"><IconX /></button>
                 <h2
                   class="mb-2 text-xl font-bold text-slate-950 dark:text-white">
                   Creating new Version
@@ -508,7 +514,8 @@
                     id="v_code" />
                 </div>
 
-                <p class="align-middle text-slate-950 dark:text-slate-100 mt-4">
+                <p
+                  class="align-middle text-slate-950 dark:text-slate-100 mt-4 mb-2">
                   Changelog <a
                     href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
                     class="text-sky-500">(supports markdown!)</a>
@@ -517,7 +524,8 @@
                   bind:content="{v_changelog}"
                   classes="h-36 w-full md:w-3/4" />
 
-                <p class="align-middle text-slate-950 dark:text-slate-100 mt-4">
+                <p
+                  class="align-middle text-slate-950 dark:text-slate-100 mt-8 mb-2">
                   Compatible Minecraft Versions
                 </p>
                 <div
@@ -527,7 +535,7 @@
                     minSelect="{1}"
                     bind:selected />
                 </div>
-                <p class="mb-4"></p>
+                <p class="mb-8"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->
                 <!-- <p class="text-slate-950 dark:text-slate-100 col-span-3">
                   Dependencies
@@ -560,17 +568,24 @@
                     </div>
                   {/each}
                 </div> -->
-                <p class="align-middle text-slate-950 dark:text-slate-100 mt-3">
-                  Resource Pack Download (optional)
-                </p>
-                <input type="file" accept=".zip" id="v_rp" class="mb-4 input" />
-                <div class=" mb-4">
+                <label
+                  for="v_rp"
+                  class="align-middle text-slate-950 dark:text-slate-100 mt-4 button-boring">
+                  <IconUpload class="inline-block align-text-top" /> Resource Pack
+                  Download (optional)
+                </label>
+                <input
+                  type="file"
+                  accept=".zip"
+                  id="v_rp"
+                  name="v_rp"
+                  class="hidden" />
+                <div class="mt-2 mb-4">
                   <input name="squash" id="squash" type="checkbox" />
                   <label
                     for="squash"
                     class="align-middle text-slate-950 dark:text-slate-100">
-                    Squash datapack. (This compresses the zip file, making it
-                    load faster in game)
+                    Squash datapack. (Apply size and load speed optimizations)
                   </label>
                 </div>
                 <Button click="{uploadVersion}" wait="{true}"

@@ -42,7 +42,6 @@
 <div
   class="w-full items-center rounded-xl outline outline-{style} relative bg-slate-200 dark:bg-zinc-800 text-white">
   <ProjectComponent {project} />
-  <!-- eslint-disable-next-line security/detect-object-injection-->
   <div
     class="absolute right-3 top-0 bg-{style} flex space-x-1 rounded-b-md px-2 py-0.5 text-xs"
     use:tippy="{hoverMsgs[type]}">
