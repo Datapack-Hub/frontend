@@ -2,7 +2,6 @@
   import { fetchAuthed } from "$lib/globals/functions";
   import { authed, user, windowWidth } from "$lib/globals/stores";
   import { onMount } from "svelte";
-  import { sanitize } from "isomorphic-dompurify";
 
   let submitCmd: () => Promise<void> | undefined;
   let commandInput: HTMLInputElement;
