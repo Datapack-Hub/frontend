@@ -24,6 +24,8 @@
   export let mcVersion: string = "";
   export let project: Project | undefined = undefined;
 
+  console.log(project?.author.id)
+
   let properVersion = version.minecraft_versions.split(",");
   let dlModal: Modal;
 
@@ -169,7 +171,7 @@
 <div
   class="rounded-xl bg-slate-300 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-slate-50/10 relative">
   <div class="flex items-center space-x-3">
-    <div class="flex w-1/3 items-center space-x-2">
+    <div class="flex items-center space-x-2">
       <button
         class="text-xl font-bold text-slate-950 dark:text-white flex items-center space-x-1"
         on:click="{() => (expanded = !expanded)}">
@@ -201,12 +203,12 @@
       </h3>
     {/if}
     {#if !expanded && !mcVersion}
-      {#if project?.ID == $user.id}
+      {#if project?.author.id == $user.id}
         <button
           on:click="{() => {
             deleteVersion();
           }}"
-          class="rounded-xl text-red-500 p-1">Delete</button>
+          class="text-red-500">Delete</button>
       {/if}
       <Button
         click="{() => {

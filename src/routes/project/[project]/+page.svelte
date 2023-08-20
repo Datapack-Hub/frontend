@@ -476,7 +476,7 @@
               </div>
               <ul use:autoAnimate class="space-y-2">
                 {#each versionMatches ?? [] as version}
-                  <VersionDisplay {version} />
+                  <VersionDisplay {version} project={data.project} />
                 {/each}
               </ul>
               <p class="mx-1 mt-2 text-slate-950 dark:text-white">
@@ -565,6 +565,7 @@
                   <VersionDisplay
                     version="{matches[0]}"
                     expanded="{true}"
+                    project="{data.project}"
                     mcVersion="{pickedVersion}" />
                 </ul>
                 <p
