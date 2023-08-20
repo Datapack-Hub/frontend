@@ -8,7 +8,6 @@ export const load = (async ({ cookies, fetch }) => {
 
   const roleResponse = await fetch(`${API}/user/staff/roles`);
   const rolesJson = await roleResponse.json();
-  try {
     if (cookie) {
       const userResponse = await serverFetch("get", "/user/me", cookies);
 
@@ -26,9 +25,6 @@ export const load = (async ({ cookies, fetch }) => {
         roles: rolesJson.roles,
       };
     }
-  } catch (error) {
-    console.error(error);
-  }
   return {
     roles: rolesJson.roles,
   };
