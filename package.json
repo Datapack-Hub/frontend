@@ -9,8 +9,7 @@
     "dev": "vite dev",
     "format": "prettier --cache src --write \"./{src,tests}/**/*.{svelte,ts}\"",
     "lighthouse": "unlighthouse --config unlighthouse.config.ts",
-    "lint:fix": "rome check src --apply",
-    "lint": "rome check src",
+    "lint": "eslint . --cache --fix",
     "preview": "vite preview",
     "test": "playwright test"
   },
