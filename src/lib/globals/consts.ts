@@ -14,7 +14,7 @@ export const categories = [
   "Tools & Equipment",
   "Utility",
   "Vanilla+",
-  "World Generation",
+  "World Generation"
 ];
 
 export const roleNames = [
@@ -24,7 +24,7 @@ export const roleNames = [
   "verified",
   "nerd",
   "donator",
-  "default",
+  "default"
 ];
 
 export const minecraftVersions = [
@@ -36,7 +36,7 @@ export const minecraftVersions = [
   "1.19-1.19.3",
   "1.19.4",
   "1.20-1.20.1",
-  "1.20.2",
+  "1.20.2"
 ];
 
 export const badges = [
@@ -47,8 +47,8 @@ export const badges = [
       content:
         '<b style="font-size:24;">Beta Tester</b><br />Given to those who participated in the initial closed beta',
       placement: "top",
-      allowHTML: true,
-    },
+      allowHTML: true
+    }
   },
   {
     name: "contributor",
@@ -57,8 +57,8 @@ export const badges = [
       content:
         '<b style="font-size:24;">Contributor</b><br />Helped in the development of the site, whether that is through GitHub or development tasks.',
       placement: "top",
-      allowHTML: true,
-    },
+      allowHTML: true
+    }
   },
   {
     name: "downloads-1000",
@@ -67,8 +67,8 @@ export const badges = [
       content:
         '<b style="font-size:24;">1K Downloads</b><br />Awarded to developers who have received over 1,000 total downloads',
       placement: "top",
-      allowHTML: true,
-    },
+      allowHTML: true
+    }
   },
   {
     name: "downloads-5000",
@@ -77,8 +77,8 @@ export const badges = [
       content:
         '<b style="font-size:24;">5K Downloads</b><br />Awarded to developers who achieved over 5,000 total downloads',
       placement: "top",
-      allowHTML: true,
-    },
+      allowHTML: true
+    }
   },
   {
     name: "downloads-10000",
@@ -87,8 +87,8 @@ export const badges = [
       content:
         '<b style="font-size:24;">10K Downloads</b><br />Awarded to well-established developers achieving over 10,000 total downloads',
       placement: "top",
-      allowHTML: true,
-    },
+      allowHTML: true
+    }
   },
   {
     name: "bugfinder",
@@ -97,8 +97,8 @@ export const badges = [
       content:
         '<b style="font-size:24;">Bug Finder</b><br />Helped find a bug in Datapack Hub',
       placement: "top",
-      allowHTML: true,
-    },
+      allowHTML: true
+    }
   },
   {
     name: "nerd",
@@ -107,7 +107,7 @@ export const badges = [
       content:
         '<b style="font-size:24;">Nerd</b><br />Given to people who successfully manage to annoy Flynecraft enough into giving them the badge',
       placement: "top",
-      allowHTML: true,
-    },
-  },
+      allowHTML: true
+    }
+  }
 ];

@@ -287,7 +287,7 @@
                 loading="lazy"
                 width="48"
                 height="48"
-                class="h-auto md:h-12 rounded-md hover:scale-105 transition-all" />
+                class="h-12 md:h-auto rounded-md hover:scale-105 transition-all aspect-square" />
             </a>
           {/each}
         </div>

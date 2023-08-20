@@ -157,11 +157,14 @@
       </div>
       {#if $user.id == comment.author.id || ["moderator", "admin"].includes($user.role)}
         <div
-        class="right-2 top-2 p-1 text-zinc-400 opacity-0 hover:opacity-100 text-sm flex space-x-2 items-start absolute">
+          class="right-2 top-2 p-1 text-zinc-400 opacity-0 hover:opacity-100 text-sm flex space-x-2 items-start absolute">
           <button class="flex space-x-1 items-center" aria-label="Edit comment">
             <IconEdit />
           </button>
-          <button class="flex space-x-1 items-center" on:click="{deleteReply}" aria-label="Delete comment">
+          <button
+            class="flex space-x-1 items-center"
+            on:click="{deleteReply}"
+            aria-label="Delete comment">
             <IconDelete />
           </button>
         </div>

@@ -12,7 +12,7 @@ export const load = (async ({ url }) => {
     }
 
     return {
-      url: parameters.get("url"),
+      url: parameters.get("url")
     };
   }
   return {};

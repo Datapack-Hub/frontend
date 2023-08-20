@@ -20,7 +20,7 @@
   $: iconSize = isSmall ? 24 : 32;
 </script>
 
-<svelte:window bind:scrollY="{scrollY}"/>
+<svelte:window bind:scrollY />
 
 <header
   id="nav"

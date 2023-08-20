@@ -46,7 +46,10 @@
         <Navbar />
         <slot />
       </div>
-      <Toaster theme={$isDark ? "dark" : "light"} position={$windowWidth > 768 ? "bottom-right" : "top-center"} richColors />
+      <Toaster
+        theme="{$isDark ? 'dark' : 'light'}"
+        position="{$windowWidth > 768 ? 'bottom-right' : 'top-center'}"
+        richColors />
       <Footer />
     {:else}
       <div class="fixed left-0 top-0 flex h-screen w-screen bg-zinc-900">

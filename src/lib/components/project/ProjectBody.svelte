@@ -3,7 +3,14 @@
   import { goto } from "$app/navigation";
   import { API, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
-  import { authed, isDark, roleInfo, roles, user, windowWidth } from "$lib/globals/stores";
+  import {
+    authed,
+    isDark,
+    roleInfo,
+    roles,
+    user,
+    windowWidth
+  } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
   // Component imports

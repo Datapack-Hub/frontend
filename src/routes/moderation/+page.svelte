@@ -2,44 +2,13 @@
   import Button from "$lib/components/decorative/Button.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import ReportComponent from "$lib/components/ReportComponent.svelte";
-  import { fetchAuthed } from "$lib/globals/functions";
-  import {
-    projectSchema,
-    reportSchema,
-    roleSchema,
-    type Project,
-    type Report,
-    type Role
-  } from "$lib/globals/schema";
   import autoAnimate from "@formkit/auto-animate";
-  import { parallel, title } from "radash";
+  import { title } from "radash";
+  import type { PageData } from "./$types";
+
+  export let data: PageData;
 
   let activePage = "publish_queue";
-
-  let rolesJson: Role[];
-  let publishQueue: Project[];
-  let reviewQueue: Project[];
-  let reports: Report[];
-
-  async function loadStuff() {
-    let [pq, rq, rp, r] = await parallel(
-      4,
-      await Promise.all([
-        fetchAuthed("get", "/moderation/queue/publish"),
-        fetchAuthed("get", "/moderation/queue/review"),
-        fetchAuthed("get", "/moderation/queue/report"),
-        fetchAuthed("get", "/user/staff/roles")
-      ]),
-      async (response: Response) => {
-        return await response.json();
-      }
-    );
-
-    publishQueue = await projectSchema.array().parseAsync(pq.projects);
-    reviewQueue = await projectSchema.array().parseAsync(rq.projects);
-    reports = await reportSchema.array().parseAsync(rp.reports);
-    rolesJson = await roleSchema.array().parseAsync(r.roles);
-  }
 </script>
 
 <svelte:head>
@@ -87,91 +56,86 @@
     </div>
 
     <div use:autoAnimate>
-      {#await loadStuff()}
-        <p class="p-2 dark:text-white">Loading...</p>
-      {:then}
-        {#if activePage == "publish_queue"}
-          <div
-            class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
-            {#if publishQueue.length === 0}
-              <p class=" dark:text-white">
-                You're all caught up! There are no projects in the publish
-                queue.
-              </p>
-            {:else}
-              <p class=" dark:text-white">
-                There are {publishQueue.length} items awaiting approval:
-              </p>
-              {#each publishQueue ?? [] as proj}
-                <ProjectComponent project="{proj}" />
-              {/each}
-            {/if}
-          </div>
-        {:else if activePage == "review_queue"}
-          <div
-            class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2"
-            use:autoAnimate>
-            {#if reviewQueue.length === 0}
-              <p class=" dark:text-white">
-                You're all caught up! There are no projects awaiting review.
-              </p>
-            {:else}
-              <p class=" dark:text-white">
-                There are {reviewQueue.length} items awaiting approval:
-              </p>
-              {#each reviewQueue ?? [] as proj}
-                <ProjectComponent project="{proj}" />
-              {/each}
-            {/if}
-          </div>
-        {:else if activePage == "reports"}
-          <div
-            class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
-            {#if reports.length === 0}
-              <p class=" dark:text-white">
-                You're all caught up! There are no reports in the queue.
-              </p>
-            {:else}
-              <p class=" dark:text-white">
-                There are {reports.length} reported item(s):
-              </p>
-              {#each reports ?? [] as proj}
-                <ReportComponent report="{proj}" />
-              {/each}
-            {/if}
-          </div>
-        {:else if activePage == "roles"}
-          <div
-            class="flex flex-col space-x-2 rounded-xl bg-slate-200 dark:bg-zinc-800 p-2 py-3 text-center align-middle md:text-start">
-            <h1
-              class="m-2 text-center text-2xl font-bold text-slate-950 dark:text-white md:text-start">
-              Site Roles
-            </h1>
-            <table class="table-auto rounded-xl p-2 text-left">
-              <tr class="bg-emerald-500 p-2">
-                <th class="p-2 text-slate-950 dark:text-white">Role Name</th>
-                <th class="p-2 text-slate-950 dark:text-white">Permissions</th>
+      {#if activePage == "publish_queue"}
+        <div
+          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
+          {#if data.publishQueue?.length === 0}
+            <p class=" dark:text-white">
+              You're all caught up! There are no projects in the publish queue.
+            </p>
+          {:else}
+            <p class=" dark:text-white">
+              There are {data.publishQueue?.length} items awaiting approval:
+            </p>
+            {#each data.publishQueue ?? [] as proj}
+              <ProjectComponent project="{proj}" />
+            {/each}
+          {/if}
+        </div>
+      {:else if activePage == "review_queue"}
+        <div
+          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2"
+          use:autoAnimate>
+          {#if data.reviewQueue?.length === 0}
+            <p class=" dark:text-white">
+              You're all caught up! There are no projects awaiting review.
+            </p>
+          {:else}
+            <p class=" dark:text-white">
+              There are {data.reviewQueue?.length} items awaiting approval:
+            </p>
+            {#each data.reviewQueue ?? [] as proj}
+              <ProjectComponent project="{proj}" />
+            {/each}
+          {/if}
+        </div>
+      {:else if activePage == "reports"}
+        <div
+          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
+          {#if data.reports?.length === 0}
+            <p class=" dark:text-white">
+              You're all caught up! There are no reports in the queue.
+            </p>
+          {:else}
+            <p class=" dark:text-white">
+              There are {data.reports?.length} reported item(s):
+            </p>
+            {#each data.reports ?? [] as proj}
+              <ReportComponent report="{proj}" />
+            {/each}
+          {/if}
+        </div>
+      {:else if activePage == "roles"}
+        <div
+          class="flex flex-col space-x-2 rounded-xl bg-slate-200 dark:bg-zinc-800 p-2 py-3 text-center align-middle md:text-start">
+          <h1
+            class="m-2 text-center text-2xl font-bold text-slate-950 dark:text-white md:text-start">
+            Site Roles
+          </h1>
+          <table class="table-auto rounded-xl p-2 text-left">
+            <tr class="bg-emerald-500 p-2">
+              <th class="p-2 text-slate-950 dark:text-white">Role Name</th>
+              <th class="p-2 text-slate-950 dark:text-white">Permissions</th>
+            </tr>
+            {#each data.rolesJson ?? [] as index}
+              <tr
+                use:autoAnimate
+                class="odd:bg-slate-400/25 dark:odd:bg-zinc-700/25">
+                <td
+                  ><p
+                    style="color: {index.color};"
+                    class="text-slate-950 dark:text-white">
+                    ⬤ {title(index.name)}
+                  </p></td>
+                <td class="text-slate-950 dark:text-white"
+                  >{#if index.permissions.length > 0}{index.permissions
+                      .map(p => title(p.toLowerCase()))
+                      .join(", ")}{:else}None{/if}</td>
               </tr>
-              {#each rolesJson ?? [] as index}
-                <tr
-                  use:autoAnimate
-                  class="odd:bg-slate-400/25 dark:odd:bg-zinc-700/25">
-                  <td
-                    ><p
-                      style="color: {index.color};"
-                      class="text-slate-950 dark:text-white">
-                      ⬤ {title(index.name)}
-                    </p></td>
-                  <td class="text-slate-950 dark:text-white"
-                    >{#if index.permissions.length > 0}{index.permissions
-                        .map(p => title(p.toLowerCase()))
-                        .join(", ")}{:else}None{/if}</td>
-                </tr>
-              {/each}
-            </table>
-          </div>
-        {/if}
-      {/await}
+            {/each}
+          </table>
+        </div>
+      {/if}
     </div>
   </div>
 </main>

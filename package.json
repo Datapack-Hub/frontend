@@ -7,7 +7,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "dev": "vite dev",
-    "format": "rome format --write src",
+    "format": "prettier --cache src --write \"./{src,tests}/**/*.{svelte,ts}\"",
     "lighthouse": "unlighthouse --config unlighthouse.config.ts",
     "lint:fix": "rome check src --apply",
     "lint": "rome check src",
