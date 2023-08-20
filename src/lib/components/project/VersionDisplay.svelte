@@ -24,7 +24,7 @@
   export let mcVersion: string = "";
   export let project: Project | undefined = undefined;
 
-  console.log(project?.author.id)
+  console.log(project?.author.id);
 
   let properVersion = version.minecraft_versions.split(",");
   let dlModal: Modal;
