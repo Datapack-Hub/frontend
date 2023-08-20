@@ -16,7 +16,7 @@ export const user = writable<User>({
   bio: "",
   profile_icon: "/logos/dph.svg",
   role: "default" /** For role info, use the `$role` store */,
-  banned: false,
+  banned: false
 });
 
 /**
@@ -25,7 +25,7 @@ export const user = writable<User>({
 export const roleInfo = writable<Role>({
   name: "default",
   verified: false,
-  permissions: [],
+  permissions: []
 });
 
 /**
@@ -33,14 +33,14 @@ export const roleInfo = writable<Role>({
  */
 export const roles = writable<Role[]>([]);
 
-export const windowWidth = readable(1920, (set) => {
+export const windowWidth = readable(1920, set => {
   if (browser) {
     set(window.innerWidth);
     addEventListener(
       "resize",
       debounce({ delay: 20 }, () => {
         set(window.innerWidth);
-      }),
+      })
     );
   }
 });

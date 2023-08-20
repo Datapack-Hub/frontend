@@ -2,8 +2,8 @@ import { browser } from "$app/environment";
 import { fetchAuthed } from "$lib/globals/functions";
 import { userSchema } from "$lib/globals/schema";
 import { roles } from "$lib/globals/stores";
-import type { PageLoad } from "./$types";
 import { get } from "svelte/store";
+import type { PageLoad } from "./$types";
 
 export const load = (async () => {
   if (browser) {
@@ -12,9 +12,9 @@ export const load = (async () => {
 
     return {
       profile,
-      role: get(roles).find((v) => {
+      role: get(roles).find(v => {
         profile.role === v.name;
-      }),
+      })
     };
   }
   return {};
