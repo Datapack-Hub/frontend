@@ -20,7 +20,7 @@
   async function remove() {
     let rem = await fetchAuthed(
       "delete",
-      "/moderation/remove_report/" + report.project.ID
+      "/moderation/remove_report/" + report.id
     );
     if (rem.ok) {
       toast.success("Dismissed report!");
