@@ -62,7 +62,7 @@
           <span class="text-lg font-normal">Welcome!</span>
           <!-- refactor this to not require a @html tag in the future -->
           <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-          <ul class="list-none" id="cons">{@html sanitize(consoleIn)}</ul>
+          <ul class="list-none" id="cons">{@html consoleIn}</ul>
         </div>
         <div
           class="absolute bottom-0 right-0 flex w-full justify-around bg-black p-3">
