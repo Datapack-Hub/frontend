@@ -12,6 +12,7 @@
 
   export let source: string | undefined = "";
   export let classes = "";
+  // eslint-disable-next-line svelte/valid-compile
   export let limitedMode = false;
 
   $: html = "";

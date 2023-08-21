@@ -1,5 +1,6 @@
 <script lang="ts">
   import { windowWidth } from "$lib/globals/stores";
+  import { quartOut } from "svelte/easing";
   import { fly } from "svelte/transition";
   import IconClose from "~icons/tabler/X.svelte";
 
@@ -24,12 +25,12 @@
     <div
       class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-lg backdrop-brightness-75 overflow-y-auto">
       <div
-        in:fly="{{ y: 300 }}"
+        in:fly={{x:-300, easing: quartOut}}
         class="relative m-auto {wide
           ? 'w-3/4'
-          : isSmall
+          : (isSmall
           ? 'w-2/3'
-          : 'w-1/2'} justify-self-center">
+          : 'w-1/2')} justify-self-center">
         {#if title}
           <div
             class="bg-slate-300 dark:bg-zinc-900 p-3 rounded-t-xl flex items-center">
