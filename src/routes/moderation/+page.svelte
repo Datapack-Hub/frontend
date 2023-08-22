@@ -27,13 +27,15 @@
     <div class="mb-2 flex space-x-2">
       <Button
         style="base"
-        classes="dark:text-slate-100 text-slate-950 {activePage === 'publish_queue'
+        classes="dark:text-slate-100 text-slate-950 {activePage ===
+        'publish_queue'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'publish_queue')}">Publish Queue</Button>
       <Button
         style="base"
-        classes="dark:text-slate-100 text-slate-950 {activePage === 'review_queue'
+        classes="dark:text-slate-100 text-slate-950 {activePage ===
+        'review_queue'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'review_queue')}">Review Queue</Button>
