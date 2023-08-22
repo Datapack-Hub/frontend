@@ -111,3 +111,5 @@ export const badges = [
     }
   }
 ];
+
+export type FeaturedProjectTypes = "random" | "featured" | "popular" | "new" | undefined

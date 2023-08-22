@@ -13,6 +13,8 @@
   import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
   import { goto } from "$app/navigation";
+  import type { Project } from "$lib/globals/schema";
+  import type { FeaturedProjectTypes } from "$lib/globals/consts";
 
   export let data: PageData;
 
@@ -20,13 +22,13 @@
   let visible = false;
   // let apiExampleUser = "silabear";
   // let apiExampleResult = "";
-  let frontPageProjects = [];
+  let frontPageProjects: { type: FeaturedProjectTypes, project: Project}[] = [];
 
   for (const project of data.featured)
     frontPageProjects.push({ type: "featured", project });
 
   for (let index = 0; index < 4 - frontPageProjects.length; index++) {
-    frontPageProjects.push(data.random[index]);
+    frontPageProjects.push({ type: "random", project: data.random[index] });
   }
 
   onMount(async () => {
@@ -164,11 +166,8 @@
         Featured Projects
       </h3>
       <div use:autoAnimate class="space-y-3">
-        {#each data.featured.splice(0, 2) as featuredProj}
-          <FeaturedProjectComponent project="{featuredProj}" type="featured" />
-        {/each}
-        {#each data.random.splice(0, 2) as randProj}
-          <FeaturedProjectComponent project="{randProj}" type="random" />
+        {#each frontPageProjects as proj}
+          <FeaturedProjectComponent project="{proj.project}" type="{proj.type}" />
         {/each}
       </div>
       <h3 class="text-center">
