@@ -22,7 +22,8 @@
   let visible = false;
   // let apiExampleUser = "silabear";
   // let apiExampleResult = "";
-  let frontPageProjects: { type: FeaturedProjectTypes, project: Project}[] = [];
+  let frontPageProjects: { type: FeaturedProjectTypes; project: Project }[] =
+    [];
 
   for (const project of data.featured)
     frontPageProjects.push({ type: "featured", project });
@@ -167,7 +168,9 @@
       </h3>
       <div use:autoAnimate class="space-y-3">
         {#each frontPageProjects as proj}
-          <FeaturedProjectComponent project="{proj.project}" type="{proj.type}" />
+          <FeaturedProjectComponent
+            project="{proj.project}"
+            type="{proj.type}" />
         {/each}
       </div>
       <h3 class="text-center">
