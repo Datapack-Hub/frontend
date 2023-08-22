@@ -27,31 +27,31 @@
     <div class="mb-2 flex space-x-2">
       <Button
         style="base"
-        classes="{activePage === 'publish_queue'
-          ? 'bg-slate-500 dark:bg-zinc-600'
+        classes="dark:text-slate-100 text-slate-950 {activePage === 'publish_queue'
+          ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'publish_queue')}">Publish Queue</Button>
       <Button
         style="base"
-        classes="{activePage === 'review_queue'
-          ? 'bg-slate-500 dark:bg-zinc-600'
+        classes="dark:text-slate-100 text-slate-950 {activePage === 'review_queue'
+          ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'review_queue')}">Review Queue</Button>
       <Button
         style="base"
-        classes="{activePage === 'reports'
-          ? 'bg-slate-500 dark:bg-zinc-600'
+        classes="dark:text-slate-100 text-slate-950 {activePage === 'reports'
+          ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'reports')}">Reports</Button>
       <Button
         style="base"
-        classes="{activePage === 'roles'
-          ? 'bg-slate-500 dark:bg-zinc-600'
+        classes="dark:text-slate-100 text-slate-950 {activePage === 'roles'
+          ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'roles')}">Roles</Button>
       <Button
         style="base"
-        classes="bg-slate-300 dark:bg-zinc-800"
+        classes="dark:text-slate-100 text-slate-950 bg-slate-300 dark:bg-zinc-800"
         click="/moderation/console">Open console</Button>
     </div>
 

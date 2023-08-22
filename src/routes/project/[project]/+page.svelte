@@ -361,7 +361,7 @@
             >--></button>
                 <button
                   aria-label="Deny"
-                  class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-red-600"
+                  class="button-base text-slate-100 flex items-center space-x-1 bg-red-600"
                   on:click="{() => {
                     moderationModalPage = 'delete';
                     moderateModal.open();
@@ -397,7 +397,7 @@
             </Button>
             {#if moderatorOrAbove($roleInfo) && !(status == "publish_queue" || status == "review_queue")}
               <button
-                class="button-base text-slate-950 dark:text-slate-100 space-x-1 bg-red-600"
+                class="button-base text-slate-100 space-x-1 bg-red-600"
                 aria-label="Moderate"
                 on:click="{() => {
                   moderateModal.open();
