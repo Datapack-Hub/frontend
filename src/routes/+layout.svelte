@@ -54,7 +54,7 @@
     {:else}
       <div class="fixed left-0 top-0 flex h-screen w-screen bg-zinc-900">
         <div
-          class="relative m-auto w-2/3 md:w-1/2 lg:w-1/3 justify-self-center rounded-xl bg-zinc-800 p-3 align-middle shadow-md shadow-black/25">
+          class="relative m-auto w-2/3 md:w-1/2 lg:w-1/3 justify-self-center rounded-xl bg-zinc-800 p-2 align-middle shadow-md shadow-black/25">
           <div class="flex items-center justify-center">
             <img
               src="/logos/dph.svg"
@@ -92,7 +92,7 @@
     <div
       class="fixed left-0 top-0 flex h-screen w-screen bg-zinc-900 align-middle">
       <div
-        class="relative m-auto w-1/3 justify-self-center rounded-xl bg-zinc-800 p-3 align-middle shadow-md shadow-black/25">
+        class="relative m-auto w-1/3 justify-self-center rounded-xl bg-zinc-800 p-2 align-middle shadow-md shadow-black/25">
         <div class="flex items-center justify-center">
           <img
             src="/logos/dph.svg"

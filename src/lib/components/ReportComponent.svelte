@@ -32,7 +32,7 @@
 </script>
 
 <div
-  class="w-full items-center rounded-xl relative bg-slate-200 p-3 text-slate-950 dark:bg-zinc-800 dark:text-slate-100"
+  class="w-full items-center rounded-xl relative bg-slate-200 p-2 text-slate-950 dark:bg-zinc-800 dark:text-slate-100"
   bind:this="{me}">
   <div class="flex items-center">
     <a

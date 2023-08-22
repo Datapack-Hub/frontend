@@ -97,9 +97,9 @@
     </h1>
     <p class="text-slate-950 dark:text-slate-100 ml-3">Logo</p>
     <div
-      class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-3 text-center align-middle md:text-start space-y-2">
+      class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-2 text-center align-middle md:text-start space-y-2">
       <div
-        class="flex items-center justify-between space-x-0 md:space-x-3 flex-col md:flex-row col-span-2">
+        class="flex items-center justify-between space-x-0 md:space-x-2 flex-col md:flex-row col-span-2">
         <div
           class="bg-slate-300 dark:bg-zinc-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white hover:brightness-75 cursor-pointer transition-all">
           <label class="w-full h-full flex items-center justify-center">
@@ -154,7 +154,7 @@
       <MarkdownEditor bind:content="{body}" classes="col-span-2 resize-none" />
       <p class="text-slate-950 dark:text-slate-100 col-span-3">Categories</p>
       <div
-        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 rounded-lg col-span-2">
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 rounded-lg col-span-2">
         {#each categories as cat}
           <ToggleBoxes
             value="{cat}"

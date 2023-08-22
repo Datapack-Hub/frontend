@@ -60,7 +60,7 @@
     <div use:autoAnimate>
       {#if activePage == "publish_queue"}
         <div
-          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
+          class="rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
           {#if data.publishQueue?.length === 0}
             <p class=" dark:text-white">
               You're all caught up! There are no projects in the publish queue.
@@ -76,7 +76,7 @@
         </div>
       {:else if activePage == "review_queue"}
         <div
-          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2"
+          class="rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2"
           use:autoAnimate>
           {#if data.reviewQueue?.length === 0}
             <p class=" dark:text-white">
@@ -93,7 +93,7 @@
         </div>
       {:else if activePage == "reports"}
         <div
-          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
+          class="rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
           {#if data.reports?.length === 0}
             <p class=" dark:text-white">
               You're all caught up! There are no reports in the queue.

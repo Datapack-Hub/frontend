@@ -170,7 +170,7 @@
         {/if}
       </h2>
       <ul class="space-y-2 mx-3 mt-2" use:autoAnimate>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-3" use:autoAnimate>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2" use:autoAnimate>
           {#each featured ?? [] as feat}
             <FeaturedProjectComponent project="{feat}" type="featured" />
           {/each}

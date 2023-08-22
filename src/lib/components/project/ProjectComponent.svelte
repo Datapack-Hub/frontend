@@ -13,7 +13,7 @@
 </script>
 
 <div
-  class="w-full h-full items-center rounded-xl relative bg-slate-200 p-3 text-slate-950 dark:bg-zinc-800 dark:text-slate-100">
+  class="w-full h-full items-center rounded-xl relative bg-slate-200 p-2 text-slate-950 dark:bg-zinc-800 dark:text-slate-100">
   <div class="flex items-top">
     <a
       href="/project/{project.url}"
@@ -24,8 +24,8 @@
         <img
           src="{project.icon}"
           alt="{project.title} icon"
-          width="96"
-          height="96"
+          width="80"
+          height="80"
           loading="lazy"
           class="aspect-square w-20 rounded-lg bg-cover" />
       {:else}
@@ -39,7 +39,7 @@
         {project.title}
       </a>
       <div
-        class="flex gap-1 items-center text-sm text-slate-950/40 dark:text-slate-100">
+        class="flex gap-1 items-center text-sm text-slate-950/40 dark:text-slate-100 mt-1">
         <img
           src="{project.author.profile_icon}&size=32"
           alt="{project.author.username}'s profile"
@@ -80,7 +80,7 @@
         {/if}
       </div>
       <p
-        class="line-clamp-2 max-w-1/2 text-xs font-medium text-slate-950/40 dark:text-slate-100/40 mt-2">
+        class="line-clamp-1 max-w-1/2 text-xs font-medium text-slate-950/40 dark:text-slate-100/40 mt-2">
         {project.description}
       </p>
     </div>

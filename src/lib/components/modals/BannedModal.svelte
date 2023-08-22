@@ -40,7 +40,7 @@
   <div
     class="fixed left-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-3xl backdrop-brightness-50">
     <div
-      class="relative m-auto w-2/3 justify-self-center rounded-xl p-3 align-middle dark:bg-zinc-800">
+      class="relative m-auto w-2/3 justify-self-center rounded-xl p-2 align-middle dark:bg-zinc-800">
       <a href="/" class="z-20 flex cursor-pointer items-center justify-center">
         <img
           src="/logos/dph.svg"

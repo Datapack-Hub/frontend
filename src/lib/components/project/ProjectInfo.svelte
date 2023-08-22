@@ -62,7 +62,7 @@
   </div>
   <div
     class="rounded-xl border-slate-200 p-4 mb-2 bg-slate-200 dark:bg-zinc-800">
-    <div class="max-w-fit items-top space-x-3 flex">
+    <div class="max-w-fit items-top space-x-2 flex">
       {#if project?.icon}
         <img
           src="{project?.icon}"
@@ -184,7 +184,7 @@
     </p>
     <div class="space-y-2">
       {#if !project.icon}
-        <div class="rounded-xl bg-zinc-900 p-3">
+        <div class="rounded-xl bg-zinc-900 p-2">
           <div
             class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
             <IconIcon />
@@ -197,7 +197,7 @@
         </div>
       {/if}
       {#if project.category && project.category[0] == ""}
-        <div class="rounded-xl bg-zinc-900 p-3">
+        <div class="rounded-xl bg-zinc-900 p-2">
           <div
             class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
             <IconCategories />
@@ -209,7 +209,7 @@
           </p>
         </div>
       {/if}
-      <div class="rounded-xl bg-zinc-900 p-3">
+      <div class="rounded-xl bg-zinc-900 p-2">
         <div
           class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
           <IconDescription />
@@ -222,7 +222,7 @@
         </p>
       </div>
       {#if !project.latest_version}
-        <div class="rounded-xl bg-zinc-900 p-3">
+        <div class="rounded-xl bg-zinc-900 p-2">
           <div
             class="flex text-lg font-semibold text-sky-500 items-center space-x-2">
             <IconUpload />
@@ -235,7 +235,7 @@
           </p>
         </div>
       {/if}
-      <div class="rounded-xl bg-zinc-900 p-3">
+      <div class="rounded-xl bg-zinc-900 p-2">
         <div
           class="flex text-lg font-semibold text-green-500 items-center space-x-2">
           <IconTick />

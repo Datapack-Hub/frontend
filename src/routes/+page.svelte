@@ -189,7 +189,7 @@
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
-      class="mt-16 grid grid-cols-1 lg:grid-cols-2 p-4 w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2 gap-3">
+      class="mt-16 grid grid-cols-1 lg:grid-cols-2 p-4 w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2 gap-2">
       <div
         class="fadeTextAnime opacity-0 col-span-2 p-4 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
         <h2
@@ -200,7 +200,7 @@
           class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-3 font-light">
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
-        <div class="dark:bg-zinc-900 rounded-xl p-3 mb-5 space-y-2">
+        <div class="dark:bg-zinc-900 rounded-xl p-2 mb-5 space-y-2">
           {#each data.random.slice(0, 2) ?? [] as rand}
             <ProjectComponent project="{rand}" />
           {/each}
@@ -253,7 +253,7 @@
         </p>
         <div
           class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-4 dark:text-white flex items-center justify-center">
-          <div class="flex items-center relative space-x-3">
+          <div class="flex items-center relative space-x-2">
             <IconFile width="48" height="48" class="text-red-500" />
             <IconArrow width="24" height="24" />
             <IconFile width="24" height="24" class="text-green-500" />

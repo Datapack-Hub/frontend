@@ -81,7 +81,7 @@
 <main
   id="main-content"
   class="flex flex-col lg:flex-row w-full items-center bg-slate-50 px-0 transition-all dark:bg-zinc-900 md:items-start md:px-16 md:pt-32 lg:px-24">
-  <div class="w-full lg:w-2/5 xl:w-1/3 p-3 rounded-lg">
+  <div class="w-full lg:w-2/5 xl:w-1/3 p-2 rounded-lg">
     <div
       class="mb-4 flex w-full flex-col mt-16 md:mt-0 items-center md:items-start">
       <div class="self-center">

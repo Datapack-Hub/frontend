@@ -291,7 +291,7 @@
       <div use:autoAnimate class="w-full mt-4 lg:w-3/4 lg:mt-0">
         <!--Buttons-->
         <div class="mb-2 flex items-center justify-between space-x-2">
-          <div class="space-x-1.5">
+          <div class="space-x-1">
             <button
               class="button-base text-slate-950 dark:text-slate-100 {activePage ===
               'description'
@@ -319,7 +319,7 @@
               {/if}
             </button>
           </div>
-          <div class="flex space-x-1.5">
+          <div class="flex space-x-1">
             {#if $user.id == data.project?.author.id}
               <a
                 aria-label="Edit"
@@ -442,7 +442,7 @@
           </div>
         {/if}
         {#if activePage == "description"}
-          <div class="w-full rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
+          <div class="w-full rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
             <p class="w-full leading-tight break-words">
               <MarkdownComponent
                 source="{data.project.body}"
@@ -451,7 +451,7 @@
           </div>
         {:else if activePage == "versions"}
           <div
-            class="mb-2 items-center rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
+            class="mb-2 items-center rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
             <div class="mb-3 text-sky-300" use:autoAnimate>
               <button on:click="{() => (activePage = 'description')}"
                 ><IconBack class="inline" /> Back to description
@@ -464,7 +464,7 @@
                   bind:selected="{selectedVersions}"
                   options="{minecraftVersions}" />
               </div>
-              <div class="mx-3 flex space-x-3 mt-4">
+              <div class="mx-3 flex space-x-2 mt-4">
                 <h2
                   class="w-1/3 text-xl font-black text-slate-950 dark:text-white">
                   Name
@@ -494,7 +494,7 @@
           </div>
         {:else if activePage == "download"}
           <div class="mb-2 items-center space-y-2">
-            <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
+            <div class="rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
               <div class="mb-3 text-sky-300" use:autoAnimate>
                 <button on:click="{() => (activePage = 'description')}"
                   ><IconBack class="inline" /> Back to description
@@ -502,7 +502,7 @@
               </div>
               {#if data.versions?.length != 0}
                 <p class="text-white">Select a Minecraft version:</p>
-                <div class="grid grid-cols-3 grid-rows-auto gap-3">
+                <div class="grid grid-cols-3 grid-rows-auto gap-2">
                   {#each minecraftVersions ?? [] as v}
                     {#if stitchedVersions.includes(v)}
                       {@const mcVersions = data.project?.latest_version
@@ -557,7 +557,7 @@
               {/if}
             </div>
             {#if matches.length > 0}
-              <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
+              <div class="rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
                 <p class="text-white MB-6">
                   Latest version for {pickedVersion}:
                 </p>
@@ -580,7 +580,7 @@
           </div>
         {:else if activePage == "comments"}
           <div class="mb-2 items-center space-y-2">
-            <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
+            <div class="rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
               <div class="space-y-2" use:autoAnimate>
                 {#if $authed}
                   <form

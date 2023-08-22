@@ -87,7 +87,7 @@
     <div use:autoAnimate>
       {#if activePage == "profile"}
         <div
-          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
+          class="rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
           <div class="text-center align-middle md:text-start">
             <p class="align-middle text-slate-950 dark:text-slate-100">
               Username
@@ -120,7 +120,7 @@
         </div>
       {:else if activePage == "account"}
         <div
-          class="rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
+          class="rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
           <div class="text-center align-middle md:text-start">
             <p class="align-middle text-slate-950 dark:text-slate-100">
               Linked Github
