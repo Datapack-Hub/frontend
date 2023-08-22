@@ -73,16 +73,16 @@
 
 <svelte:window bind:scrollY />
 
-<header class="fixed w-full z-50 {isSmall
-      ? 'bottom-0'
-      : 'top-0'}">
+<header class="fixed w-full z-50 {isSmall ? 'bottom-0' : 'top-0'}">
   <a
     href="#main-content"
     class="invert absolute transition-transform select-none cursor-default top-4 right-1/2 translate-x-1/2 opacity-0 translate-y-16 md:-translate-y-16 focus:opacity-100 focus:translate-y-0"
     >Jump to Main Content</a>
   <nav
     class="flex justify-around md:justify-between transition-all transform-gpu will-change-transform items-center w-full py-4 md:px-16 bg-slate-200/40 dark:bg-zinc-800/40 backdrop-blur">
-    <ConditionalWrapper wrapCondition={!isSmall} classes="flex items-center space-x-4">
+    <ConditionalWrapper
+      wrapCondition="{!isSmall}"
+      classes="flex items-center space-x-4">
       <a
         href="/"
         class="flex cursor-pointer items-center space-x-2 hover:brightness-75 active:brightness-50">
@@ -99,19 +99,22 @@
       </a>
       <a
         href="/projects"
-        class="hover:bg-dph-orange/40 transition-all p-1 rounded-lg"
-        >
+        class="hover:bg-dph-orange/40 transition-all p-1 rounded-lg">
         {#if isSmall}
-        <IconCompass width="24" height="24" color="{iconColor}" />
+          <IconCompass width="24" height="24" color="{iconColor}" />
         {:else}
-        <span class="dark:text-slate-100 font-light">Explore</span>
+          <span class="dark:text-slate-100 font-light">Explore</span>
         {/if}
       </a>
       {#if !isSmall}
-        <a class="hover:bg-dph-orange/40 transition-all p-1 rounded-lg dark:text-slate-100 font-light" href="https://discord.gg/aEXsdjjdu4">Discord</a>
+        <a
+          class="hover:bg-dph-orange/40 transition-all p-1 rounded-lg dark:text-slate-100 font-light"
+          href="https://discord.gg/aEXsdjjdu4">Discord</a>
       {/if}
     </ConditionalWrapper>
-    <ConditionalWrapper wrapCondition={!isSmall} classes="flex justify-end items-center space-x-4">
+    <ConditionalWrapper
+      wrapCondition="{!isSmall}"
+      classes="flex justify-end items-center space-x-4">
       <a
         href="/projects/new"
         class="hover:bg-dph-orange/40 transition-all p-1 rounded-lg"

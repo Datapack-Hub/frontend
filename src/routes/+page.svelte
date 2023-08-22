@@ -172,10 +172,8 @@
         {/each}
       </div>
       <h3 class="text-center">
-        <Button
-          style="hugh"
-          classes="text-center"
-          click="/projects">Find more datapacks</Button>
+        <Button style="hugh" classes="text-center" click="/projects"
+          >Find more datapacks</Button>
       </h3>
       <div class="py-12 md:py-0"></div>
     </section>
