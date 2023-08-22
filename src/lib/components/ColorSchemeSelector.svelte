@@ -3,18 +3,14 @@
   import { throttle } from "radash";
   import { draw } from "svelte/transition";
 
-  export let small = false;
-
   let toggle = () => {
     $isDark = !$isDark;
     localStorage.setItem("dp_colorPref", $isDark.toString());
   };
-
-  $: iconSize = small ? 20 : 24;
 </script>
 
 <div
-  class="select-none"
+  class="select-none hover:bg-dph-orange/40 transition-all p-1 rounded-lg"
   role="checkbox"
   aria-checked="{$isDark}"
   aria-label="dark mode toggle">
@@ -25,9 +21,9 @@
       tabindex="0"
       on:click="{throttle({ interval: 300 }, toggle)}"
       on:keydown="{k => (k.key == 'T' ? toggle : undefined)}"
-      class="icon icon-tabler icon-tabler-moon-stars ml-0 cursor-pointer hover:brightness-75 md:ml-6"
-      width="{iconSize}"
-      height="{iconSize}"
+      class="icon icon-tabler icon-tabler-moon-stars cursor-pointer"
+      width="24"
+      height="24"
       color="white"
       viewBox="0 0 24 24"
       stroke-width="2"
@@ -57,9 +53,9 @@
       xmlns="http://www.w3.org/2000/svg"
       on:click="{throttle({ interval: 300 }, toggle)}"
       on:keydown="{k => (k.key == 'T' ? toggle : undefined)}"
-      class="icon icon-tabler icon-tabler-sun-high ml-0 cursor-pointer hover:brightness-200 md:ml-6"
-      width="{iconSize}"
-      height="{iconSize}"
+      class="icon icon-tabler icon-tabler-sun-high cursor-pointer"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
       stroke-width="2"
       stroke="currentColor"

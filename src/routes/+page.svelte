@@ -121,13 +121,11 @@
 <main
   id="main-content"
   class="bg-slate-50 transition-all dark:bg-zinc-900 h-full">
-  <div class="pt-0 md:pt-12"></div>
-
-  <div class="pt-20 lg:pt-0"></div>
+  <div class="py-12 md:py-0"></div>
   <section
-    class="flex h-screen md:h-[75vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
+    class="flex h-fit md:h-[85vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
     <div class="w-full md:w-3/5 lg:w-2/5 p-4">
-      <div class="relative mb-4 h-36 w-full md:mb-0">
+      <div class="relative h-36 w-full">
         <h1
           id="indexText1"
           class="split-text appearing-text-styles {visible
@@ -161,7 +159,7 @@
       </h2>
     </div>
     <section
-      class="mt-8 h-fit justify-between space-y-3 overflow-x-clip overflow-y-auto rounded-xl px-4 sm:my-16 md:my-0 md:w-1/2">
+      class="mt-8 h-fit justify-between space-y-3 overflow-x-clip overflow-y-auto rounded-xl px-4 md:w-1/2">
       <h3
         class=" text-2xl font-medium text-slate-950 dark:text-slate-100 text-center mt-6">
         Featured Projects
@@ -177,9 +175,9 @@
         <Button
           style="hugh"
           classes="text-center"
-          click="{() => goto('/projects')}">Find more datapacks</Button>
+          click="/projects">Find more datapacks</Button>
       </h3>
-      <div></div>
+      <div class="py-12 md:py-0"></div>
     </section>
   </section>
   <section
