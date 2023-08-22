@@ -3,7 +3,7 @@
   import { quartOut } from "svelte/easing";
   import { fly } from "svelte/transition";
   import IconClose from "~icons/tabler/X.svelte";
-  
+
   let visible = false;
 
   export let wide = false;
