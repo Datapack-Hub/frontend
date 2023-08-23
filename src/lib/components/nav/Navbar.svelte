@@ -105,12 +105,14 @@
       classes="flex justify-end items-center space-x-4">
       <a
         href="/projects/new"
-        class="hover:bg-dph-orange/40 transition-all p-1 rounded-full" use:tippy={newHoverMessage}
+        class="hover:bg-dph-orange/40 transition-all p-1 rounded-full"
+        use:tippy="{newHoverMessage}"
         ><IconPlus width="24" height="24" color="{iconColor}" /></a>
       <a
         href="/notifications"
         class="z-20 hover:bg-dph-orange/40 transition-all p-1 rounded-full"
-        aria-label="Notifications page" use:tippy={notificationHoverMessage}>
+        aria-label="Notifications page"
+        use:tippy="{notificationHoverMessage}">
         {#if unreadNotifications}
           <IconUnread height="24" width="24" color="{iconColor}" />
         {:else}
@@ -121,7 +123,8 @@
         {#if $authed && moderatorOrAbove($roleInfo)}
           <a
             href="/moderation"
-            class="hover:bg-dph-orange/40 transition-all p-1 rounded-full" use:tippy={moderationHoverMessage}
+            class="hover:bg-dph-orange/40 transition-all p-1 rounded-full"
+            use:tippy="{moderationHoverMessage}"
             ><IconShield width="24" height="24" color="{iconColor}" /></a>
         {/if}
       {/if}
@@ -149,12 +152,7 @@
             style="outline-color:{$roleInfo.color ?? '#eab308'};" />
         </a>
       {:else}
-        <a
-          id="sign_in"
-          href="/login"
-          class="button-primary">
-          Sign in
-        </a>
+        <a id="sign_in" href="/login" class="button-primary"> Sign in </a>
       {/if}
     </ConditionalWrapper>
   </nav>

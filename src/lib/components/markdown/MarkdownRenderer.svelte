@@ -13,7 +13,6 @@
   export let classes = "";
 
   let markdownProcessor = unified()
-
     .use(remarkParse)
     // .use(remarkDisable, { // out of date, find alternative or do not use
     //   block: [
@@ -43,10 +42,10 @@
     .use(rehypeSanitize)
     .use(rehypeStringify);
 
-  $: html = ""
+  $: html = "";
 
   markdownProcessor.process(source).then(md => {
-    html = String(md)
+    html = String(md);
   });
 </script>
 
