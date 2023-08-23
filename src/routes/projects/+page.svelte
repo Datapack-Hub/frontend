@@ -92,27 +92,27 @@
       </div>
     </div>
     <div class="flex items-center space-x-0 md:space-x-4 mt-4 md:mt-0">
-        <div class="mt-2 sm:mt-0 md:flex space-x-1 items-center hidden">
-          <p class="dark:text-white text-center mr-2">Layout:</p>
-          <button
-            on:click="{() => {
-              layout = 'list';
-              localStorage.setItem('preferred_layout', 'list');
-            }}"
-            class="h-8 w-8 rounded-md {layout === 'list'
-              ? 'bg-dph-orange'
-              : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0 flex items-center justify-center">
-            <IconList /></button>
-          <button
-            on:click="{() => {
-              layout = 'grid';
-              localStorage.setItem('preferred_layout', 'grid');
-            }}"
-            class="h-8 w-8 rounded-md {layout === 'grid'
-              ? 'bg-dph-orange'
-              : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0 flex items-center justify-center">
-            <IconGrid /></button>
-        </div>
+      <div class="mt-2 sm:mt-0 md:flex space-x-1 items-center hidden">
+        <p class="dark:text-white text-center mr-2">Layout:</p>
+        <button
+          on:click="{() => {
+            layout = 'list';
+            localStorage.setItem('preferred_layout', 'list');
+          }}"
+          class="h-8 w-8 rounded-md {layout === 'list'
+            ? 'bg-dph-orange'
+            : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0 flex items-center justify-center">
+          <IconList /></button>
+        <button
+          on:click="{() => {
+            layout = 'grid';
+            localStorage.setItem('preferred_layout', 'grid');
+          }}"
+          class="h-8 w-8 rounded-md {layout === 'grid'
+            ? 'bg-dph-orange'
+            : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0 flex items-center justify-center">
+          <IconGrid /></button>
+      </div>
       <div class="sm:mt-0 flex space-x-1 items-center">
         <p class="dark:text-white mr-2">Page:</p>
         {#if data.page - 3 >= 1}
