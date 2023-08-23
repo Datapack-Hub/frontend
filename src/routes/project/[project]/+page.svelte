@@ -1,7 +1,7 @@
 <script lang="ts">
   import ProjectInfo from "$lib/components/project/ProjectInfo.svelte";
   import type { PageData } from "./$types";
-  // Svelte imports
+// Svelte imports
   import { goto } from "$app/navigation";
   import { API, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
@@ -10,12 +10,11 @@
     isDark,
     roleInfo,
     roles,
-    user,
-    windowWidth
+    user
   } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
-  // Component imports
+// Component imports
   import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import { commentSchema, type Version } from "$lib/globals/schema";
@@ -254,7 +253,6 @@
     );
   }
 
-  $: isSmall = $windowWidth < 1181;
   $: iconColor = $isDark ? "white" : "black";
 </script>
 

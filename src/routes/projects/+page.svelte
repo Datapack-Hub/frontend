@@ -5,15 +5,15 @@
   import autoAnimate from "@formkit/auto-animate";
   import type { PageData } from "./$types";
 
+  import { browser } from "$app/environment";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import { projectSchema } from "$lib/globals/schema";
-  import { isDark, windowWidth } from "$lib/globals/stores";
+  import { isDark } from "$lib/globals/stores";
   import { debounce } from "radash";
+  import IconBTS from "~icons/tabler/ArrowBigLeftLine.svelte";
   import IconGrid from "~icons/tabler/LayoutGrid.svelte";
   import IconList from "~icons/tabler/LayoutList.svelte";
   import IconSearch from "~icons/tabler/Search.svelte";
-  import IconBTS from "~icons/tabler/ArrowBigLeftLine.svelte";
-  import { browser } from "$app/environment";
 
   export let data: PageData;
 
@@ -25,7 +25,6 @@
     : "grid";
 
   $: dataCopy = data.projects ?? [];
-  $: isSmall = $windowWidth > 768;
 
   let featured = data.featured?.splice(0, 2);
 
