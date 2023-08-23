@@ -44,9 +44,7 @@
           {notification?.message}
         </h1>
       </div>
-      <MarkdownComponent
-        classes="mt-3"
-        source="{notification?.description}" />
+      <MarkdownComponent classes="mt-3" source="{notification?.description}" />
     </div>
     <button
       title="Dismiss"
