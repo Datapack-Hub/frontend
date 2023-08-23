@@ -1,20 +1,14 @@
 <script lang="ts">
   import ProjectInfo from "$lib/components/project/ProjectInfo.svelte";
   import type { PageData } from "./$types";
-// Svelte imports
+  // Svelte imports
   import { goto } from "$app/navigation";
   import { API, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
-  import {
-    authed,
-    isDark,
-    roleInfo,
-    roles,
-    user
-  } from "$lib/globals/stores";
+  import { authed, isDark, roleInfo, roles, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
-// Component imports
+  // Component imports
   import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import { commentSchema, type Version } from "$lib/globals/schema";
