@@ -99,7 +99,7 @@
       </a>
       <a
         href="/projects"
-        class="hover:bg-dph-orange/40 transition-all p-1 rounded-lg">
+        class="hover:bg-dph-orange/40 transition-all p-1 rounded-full">
         {#if isSmall}
           <IconCompass width="24" height="24" color="{iconColor}" />
         {:else}
@@ -108,7 +108,7 @@
       </a>
       {#if !isSmall}
         <a
-          class="hover:bg-dph-orange/40 transition-all p-1 rounded-lg dark:text-slate-100 font-light"
+          class="hover:bg-dph-orange/40 transition-all p-1 rounded-full dark:text-slate-100 font-light"
           href="https://discord.gg/aEXsdjjdu4">Discord</a>
       {/if}
     </ConditionalWrapper>
@@ -117,11 +117,11 @@
       classes="flex justify-end items-center space-x-4">
       <a
         href="/projects/new"
-        class="hover:bg-dph-orange/40 transition-all p-1 rounded-lg"
+        class="hover:bg-dph-orange/40 transition-all p-1 rounded-full"
         ><IconPlus width="24" height="24" color="{iconColor}" /></a>
       <a
         href="/notifications"
-        class="z-20 hover:bg-dph-orange/40 transition-all p-1 rounded-lg"
+        class="z-20 hover:bg-dph-orange/40 transition-all p-1 rounded-full"
         aria-label="Notifications page">
         {#if unreadNotifications}
           <IconUnread height="24" width="24" color="{iconColor}" />
@@ -133,7 +133,7 @@
         {#if $authed && moderatorOrAbove($roleInfo)}
           <a
             href="/moderation"
-            class="hover:bg-dph-orange/40 transition-all p-1 rounded-lg"
+            class="hover:bg-dph-orange/40 transition-all p-1 rounded-full"
             ><IconShield width="24" height="24" color="{iconColor}" /></a>
         {/if}
         <ColorSchemeSelector />
