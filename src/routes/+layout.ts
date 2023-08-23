@@ -12,16 +12,17 @@ import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
 
 export const load = (async ({ url, data }) => {
+  if (data?.role && data.user) {
+    user.set(data.user);
+    if(data.role) roleInfo.set(data.role);
+    authed.set(true);
+  }
+
+  roles.set(data.roles);
+
   if (browser) {
     const parameters = url.searchParams;
 
-    if (data?.role && data.user) {
-      user.set(data.user);
-      roleInfo.set(data.role);
-      authed.set(true);
-    }
-
-    roles.set(data.roles);
     if (parameters.has("token")) {
       const newToken = parameters.get("token");
       const expiry = new Date();

@@ -36,8 +36,7 @@
       </span>
       <MarkdownComponent
         source="{person?.bio}"
-        classes="{''}"
-        limitedMode="{true}" />
+        classes="{''}" />
     </div>
   </div>
 </a>

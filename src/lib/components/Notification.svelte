@@ -45,7 +45,6 @@
         </h1>
       </div>
       <MarkdownComponent
-        limitedMode="{true}"
         classes="mt-3"
         source="{notification?.description}" />
     </div>

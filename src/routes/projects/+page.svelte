@@ -63,7 +63,7 @@
     class="py-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-0 md:space-x-2">
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
     <div
-      class="flex-grow flex flex-col sm:flex-row space-x-0 md:space-x-4 items-center">
+      class="flex-grow flex flex-col sm:flex-row space-x-0 sm:space-x-4 items-center">
       <div
         class="input flex items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
@@ -77,7 +77,7 @@
           on:input="{search}" />
       </div>
       <div
-        class="block mt-2 sm:mt-0 sm:flex space-x-0 md:space-x-2 items-center">
+        class="block mt-2 sm:mt-0 sm:flex space-x-0 sm:space-x-2 items-center">
         <p class="dark:text-white text-center">Sort By:</p>
         <select
           class="flex h-8 pl-2 items-center rounded-full bg-slate-200 py-1 px-2 focus-within:outline focus-within:outline-2 focus-within:outline-dph-orange dark:bg-zinc-700 dark:text-white"

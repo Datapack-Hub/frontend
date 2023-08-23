@@ -92,7 +92,6 @@
         </div>
 
         <MarkdownComponent
-          limitedMode="{true}"
           source="{comment.message}"
           classes="text-sm" />
         {#if comment.replies.length > 0}

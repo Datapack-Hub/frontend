@@ -89,7 +89,6 @@
         {/if}
       </div>
       <MarkdownComponent
-        limitedMode="{true}"
         source="{reply.message}"
         classes="dark:text-neutral-200 text-sm" />
     </div>

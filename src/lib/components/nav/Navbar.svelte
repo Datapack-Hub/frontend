@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
+  import { afterNavigate } from "$app/navigation";
+  import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import {
     authed,
     isDark,
@@ -6,30 +9,16 @@
     user,
     windowWidth
   } from "$lib/globals/stores";
-  import { onMount } from "svelte";
   import tippy from "sveltejs-tippy";
-  import IconCompass from "~icons/tabler/Compass.svelte";
-  import ColorSchemeSelector from "../ColorSchemeSelector.svelte";
-  import ProfileNavComponent from "./ProfileNavComponent.svelte";
-  import IconShield from "~icons/tabler/Shield.svelte";
-  import IconPlus from "~icons/tabler/Plus.svelte";
-  import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import IconRead from "~icons/tabler/Bell.svelte";
   import IconUnread from "~icons/tabler/BellRinging.svelte";
-  import { afterNavigate } from "$app/navigation";
-  import { browser } from "$app/environment";
+  import IconCompass from "~icons/tabler/Compass.svelte";
+  import IconPlus from "~icons/tabler/Plus.svelte";
+  import IconShield from "~icons/tabler/Shield.svelte";
+  import ColorSchemeSelector from "../ColorSchemeSelector.svelte";
   import ConditionalWrapper from "../utility/ConditionalWrapper.svelte";
 
   let scrollY: number;
-  let showNavItems = false;
-  let showNavBG: boolean;
-
-  onMount(() => (showNavItems = true));
-
-  let signInHoverMessage = {
-    content: "Sign In",
-    placement: "bottom"
-  };
 
   let notificationHoverMessage = {
     content: "Notifications",
@@ -68,7 +57,6 @@
 
   $: iconColor = $isDark ? "white" : "black";
   $: isSmall = ($windowWidth ?? 769) < 768;
-  $: showNavBG = (scrollY ?? 34) > 35 || isSmall;
 </script>
 
 <svelte:window bind:scrollY />
@@ -117,12 +105,12 @@
       classes="flex justify-end items-center space-x-4">
       <a
         href="/projects/new"
-        class="hover:bg-dph-orange/40 transition-all p-1 rounded-full"
+        class="hover:bg-dph-orange/40 transition-all p-1 rounded-full" use:tippy={newHoverMessage}
         ><IconPlus width="24" height="24" color="{iconColor}" /></a>
       <a
         href="/notifications"
         class="z-20 hover:bg-dph-orange/40 transition-all p-1 rounded-full"
-        aria-label="Notifications page">
+        aria-label="Notifications page" use:tippy={notificationHoverMessage}>
         {#if unreadNotifications}
           <IconUnread height="24" width="24" color="{iconColor}" />
         {:else}
@@ -133,11 +121,11 @@
         {#if $authed && moderatorOrAbove($roleInfo)}
           <a
             href="/moderation"
-            class="hover:bg-dph-orange/40 transition-all p-1 rounded-full"
+            class="hover:bg-dph-orange/40 transition-all p-1 rounded-full" use:tippy={moderationHoverMessage}
             ><IconShield width="24" height="24" color="{iconColor}" /></a>
         {/if}
-        <ColorSchemeSelector />
       {/if}
+      <ColorSchemeSelector />
       {#if $authed}
         <a
           aria-label="Your profile"
@@ -164,7 +152,6 @@
         <a
           id="sign_in"
           href="/login"
-          aria-label="Button to sign in"
           class="button-primary">
           Sign in
         </a>

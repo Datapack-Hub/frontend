@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
+  import autoAnimate from "@formkit/auto-animate";
   import rehypeUrls from "@jsdevtools/rehype-url-inspector";
   import rehypeSanitize from "rehype-sanitize";
   import rehypeStringify from "rehype-stringify";
@@ -7,17 +7,13 @@
   import remarkMentions from "remark-mentions";
   import remarkParse from "remark-parse";
   import remarkRehype from "remark-rehype";
-  import { onMount } from "svelte";
   import { unified } from "unified";
 
-  export let source: string | undefined = "";
+  export let source: string = "";
   export let classes = "";
-  // eslint-disable-next-line svelte/valid-compile
-  export let limitedMode = false;
-
-  $: html = "";
 
   let markdownProcessor = unified()
+
     .use(remarkParse)
     // .use(remarkDisable, { // out of date, find alternative or do not use
     //   block: [
@@ -47,18 +43,15 @@
     .use(rehypeSanitize)
     .use(rehypeStringify);
 
-  onMount(async () => {
-    if (!browser) {
-      return;
-    }
-    if (source) {
-      let md = await markdownProcessor.process(source);
-      html = String(md);
-    }
+  $: html = ""
+
+  markdownProcessor.process(source).then(md => {
+    html = String(md)
   });
 </script>
 
 <div
+  use:autoAnimate
   class="prose dark:prose-invert leading-snug break-words prose-a:break-all prose-table:bg-slate-300 prose-table:dark:bg-zinc-800 prose-td:p-2 prose-th:p-2 prose-table:rounded-md prose-code:before:content-none prose-code:after:content-none prose-tbody:odd:bg-zinc-600 {classes}">
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html html}
