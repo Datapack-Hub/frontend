@@ -27,15 +27,13 @@ export const load = (async ({ params }) => {
   }
 
   const projectResponseJson = await projects.json();
-
   const [profileJson, projectJson] = await Promise.all([
     userSchema.parseAsync(await user.json()),
     projectSchema.array().parseAsync(projectResponseJson.result)
   ]);
 
   const profileRole = get(roles).find(role => role.name === profileJson.role);
-
-  const downloads: number = sum(projectJson, p => p.downloads ?? 0);
+  const downloads = sum(projectJson, p => p.downloads ?? 0);
 
   return {
     profile: profileJson,

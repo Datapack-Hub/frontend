@@ -3,7 +3,7 @@ import { config } from 'dotenv'
 
 config()
 
-const token = process.env.UNLIGHTHOUSE_DPH_TOKEN
+const token = process.env.UNLIGHTHOUSE_TOKEN
 const futureDate = new Date()
 
 futureDate.setTime(futureDate.getTime() + (24*60*60*1000))

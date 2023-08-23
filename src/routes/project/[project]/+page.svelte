@@ -299,11 +299,10 @@
                 : 'bg-slate-200 dark:bg-zinc-800'}"
               on:click="{() => (activePage = 'description')}"
               aria-label="Description">
-              {#if !isSmall}
-                Description
-              {:else}
-                <IconDescription color="{iconColor}" />
-              {/if}
+                <span class="hidden md:block">
+                  Description
+                </span>
+                <IconDescription color="{iconColor}" class="block md:hidden" />
             </button>
             <button
               class="button-base text-slate-950 dark:text-slate-100 {activePage ===
@@ -312,11 +311,10 @@
                 : 'bg-slate-200 dark:bg-zinc-800'}"
               on:click="{() => (activePage = 'comments')}"
               aria-label="Comments">
-              {#if !isSmall}
-                Comments
-              {:else}
-                <IconMessage color="{iconColor}" />
-              {/if}
+                <span class="hidden md:block">
+                  Comments
+                </span>
+                <IconMessage color="{iconColor}" class="block md:hidden" />
             </button>
           </div>
           <div class="flex space-x-1">
@@ -389,11 +387,10 @@
               {/if}
             {/if}
             <Button label="Download" click="{() => (activePage = 'download')}">
-              {#if !isSmall}
-                Download
-              {:else}
-                <IconDownload />
-              {/if}
+                <span  class="md:block hidden">
+                  Download
+                </span>
+                <IconDownload class="block md:hidden" />
             </Button>
             {#if moderatorOrAbove($roleInfo) && !(status == "publish_queue" || status == "review_queue")}
               <button

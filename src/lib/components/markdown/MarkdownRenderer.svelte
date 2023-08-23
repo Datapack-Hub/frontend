@@ -14,17 +14,6 @@
 
   let markdownProcessor = unified()
     .use(remarkParse)
-    // .use(remarkDisable, { // out of date, find alternative or do not use
-    //   block: [
-    //     'indentedCode',
-    //     'fencedCode',
-    //     'atxHeading',
-    //     'setextHeading',
-    //     'footnote',
-    //     'table',
-    //     'custom_blocks'
-    //   ],
-    // })
     .use(remarkGFM)
     .use(remarkMentions, {
       usernameLink: (uname: string) => `https://datapackhub.net/user/${uname}`

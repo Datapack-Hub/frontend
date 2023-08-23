@@ -21,8 +21,8 @@
   let sort = "Updated";
   let searchTime = 0;
   let layout = browser
-    ? localStorage.getItem("preferred_layout") || "list"
-    : "list";
+    ? localStorage.getItem("preferred_layout") || "grid"
+    : "grid";
 
   $: dataCopy = data.projects ?? [];
   $: isSmall = $windowWidth > 768;
@@ -92,8 +92,7 @@
       </div>
     </div>
     <div class="flex items-center space-x-0 md:space-x-4 mt-4 md:mt-0">
-      {#if isSmall}
-        <div class="block mt-2 sm:mt-0 sm:flex space-x-1 items-center">
+        <div class="mt-2 sm:mt-0 md:flex space-x-1 items-center hidden">
           <p class="dark:text-white text-center mr-2">Layout:</p>
           <button
             on:click="{() => {
@@ -114,7 +113,6 @@
               : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0 flex items-center justify-center">
             <IconGrid /></button>
         </div>
-      {/if}
       <div class="sm:mt-0 flex space-x-1 items-center">
         <p class="dark:text-white mr-2">Page:</p>
         {#if data.page - 3 >= 1}
