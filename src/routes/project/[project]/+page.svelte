@@ -320,8 +320,7 @@
                 class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1"
                 on:click="{() => {
                   reportModal.open();
-                }}"
-                ><IconReport /></button>
+                }}"><IconReport /></button>
             {/if}
             {#if moderatorOrAbove($roleInfo)}
               {#if status == "publish_queue" || status == "review_queue"}
@@ -370,7 +369,7 @@
                     featureModal.open();
                   }}"
                   ><IconConfetti />
-                  </button>
+                </button>
               {/if}
             {/if}
             <Button label="Download" click="{() => (activePage = 'download')}">
