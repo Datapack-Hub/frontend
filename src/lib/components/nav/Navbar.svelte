@@ -4,7 +4,6 @@
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import {
     authed,
-    isDark,
     roleInfo,
     user,
     windowWidth
@@ -55,7 +54,6 @@
     }
   }
 
-  $: iconColor = $isDark ? "white" : "black";
   $: isSmall = ($windowWidth ?? 769) < 768;
 </script>
 
@@ -106,8 +104,7 @@
       <a
         href="/projects/new"
         class="dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full"
-        use:tippy="{newHoverMessage}"
-        ><IconPlus width="24" height="24" /></a>
+        use:tippy="{newHoverMessage}"><IconPlus width="24" height="24" /></a>
       <a
         href="/notifications"
         class="z-20 dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full"
