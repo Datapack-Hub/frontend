@@ -482,9 +482,9 @@
                 </button>
               </div>
               {#if data.versions?.length != 0}
-                <p class="text-white">Select a Minecraft version:</p>
+                <p class="dark:text-slate-100">Select a Minecraft version:</p>
                 <div class="grid grid-cols-3 grid-rows-auto gap-2">
-                  {#each minecraftVersions ?? [] as v}
+                  {#each minecraftVersions.reverse() ?? [] as v}
                     {#if stitchedVersions.includes(v)}
                       {@const mcVersions = data.project?.latest_version
                         ? data.project.latest_version.minecraft_versions.split(
@@ -493,8 +493,8 @@
                         : []}
                       <button
                         data-test-btn="{v}"
-                        class="bg-zinc-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2
-                  {mcVersions.includes(v) ? ' text-white' : ' text-red-500'}"
+                        class="bg-slate-300 dark:bg-zinc-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2
+                  {mcVersions.includes(v) ? ' dark:text-slate-100' : ' text-red-500'}"
                         on:click="{() => pickVersions(v)}">
                         {#if !mcVersions.includes(v)}
                           <IconAlert />

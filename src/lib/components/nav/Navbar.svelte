@@ -87,16 +87,16 @@
       </a>
       <a
         href="/projects"
-        class="hover:bg-dph-orange/40 transition-all p-1 rounded-full">
+        class="dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full">
         {#if isSmall}
-          <IconCompass width="24" height="24" color="{iconColor}" />
+          <IconCompass width="24" height="24" />
         {:else}
-          <span class="dark:text-slate-100 font-light">Explore</span>
+          <span class="font-light">Explore</span>
         {/if}
       </a>
       {#if !isSmall}
         <a
-          class="hover:bg-dph-orange/40 transition-all p-1 rounded-full dark:text-slate-100 font-light"
+          class="md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full dark:text-slate-100 font-light"
           href="https://discord.gg/aEXsdjjdu4">Discord</a>
       {/if}
     </ConditionalWrapper>
@@ -105,27 +105,27 @@
       classes="flex justify-end items-center space-x-4">
       <a
         href="/projects/new"
-        class="hover:bg-dph-orange/40 transition-all p-1 rounded-full"
+        class="dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full"
         use:tippy="{newHoverMessage}"
-        ><IconPlus width="24" height="24" color="{iconColor}" /></a>
+        ><IconPlus width="24" height="24" /></a>
       <a
         href="/notifications"
-        class="z-20 hover:bg-dph-orange/40 transition-all p-1 rounded-full"
+        class="z-20 dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full"
         aria-label="Notifications page"
         use:tippy="{notificationHoverMessage}">
         {#if unreadNotifications}
-          <IconUnread height="24" width="24" color="{iconColor}" />
+          <IconUnread height="24" width="24" />
         {:else}
-          <IconRead height="24" width="24" color="{iconColor}" />
+          <IconRead height="24" width="24" />
         {/if}
       </a>
       {#if !isSmall}
         {#if $authed && moderatorOrAbove($roleInfo)}
           <a
             href="/moderation"
-            class="hover:bg-dph-orange/40 transition-all p-1 rounded-full"
+            class="dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full"
             use:tippy="{moderationHoverMessage}"
-            ><IconShield width="24" height="24" color="{iconColor}" /></a>
+            ><IconShield width="24" height="24" /></a>
         {/if}
       {/if}
       <ColorSchemeSelector />

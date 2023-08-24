@@ -10,7 +10,7 @@
 </script>
 
 <div
-  class="select-none hover:bg-dph-orange/40 transition-all p-1 rounded-lg"
+  class="select-none dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-lg"
   role="checkbox"
   aria-checked="{$isDark}"
   aria-label="dark mode toggle">
@@ -24,7 +24,6 @@
       class="icon icon-tabler icon-tabler-moon-stars cursor-pointer"
       width="24"
       height="24"
-      color="white"
       viewBox="0 0 24 24"
       stroke-width="2"
       stroke="currentColor"

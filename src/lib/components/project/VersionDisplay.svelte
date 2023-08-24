@@ -169,7 +169,7 @@
 </script>
 
 <div
-  class="rounded-xl bg-slate-300 p-2 last:mb-0 first:dark:bg-orange-300/20 dark:bg-slate-50/10 relative">
+  class="rounded-xl bg-slate-300 p-2 last:mb-0 first:dark:bg-orange-300/10 dark:bg-slate-50/10 relative">
   <div class="flex items-center space-x-2">
     <div class="flex items-center space-x-2">
       <button
@@ -237,7 +237,7 @@
           click="{() => {
             openDownloadModal('resourcepack');
           }}"
-          style="secondary"
+          style="alt"
           classes="flex items-center space-x-2 mt-2"
           ><IconRP />
           <p>Required Resourcepack</p></Button>
