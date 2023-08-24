@@ -494,7 +494,9 @@
                       <button
                         data-test-btn="{v}"
                         class="bg-slate-300 dark:bg-zinc-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2
-                  {mcVersions.includes(v) ? ' dark:text-slate-100' : ' text-red-500'}"
+                  {mcVersions.includes(v)
+                          ? ' dark:text-slate-100'
+                          : ' text-red-500'}"
                         on:click="{() => pickVersions(v)}">
                         {#if !mcVersions.includes(v)}
                           <IconAlert />
