@@ -282,7 +282,7 @@
       <!--Main-->
       <div use:autoAnimate class="w-full mt-4 lg:w-3/4 lg:mt-0">
         <!--Buttons-->
-        <div class="mb-2 flex items-center justify-between space-x-2">
+        <div class="mb-2 flex items-center justify-between">
           <div class="space-x-1">
             <button
               class="button-base text-slate-950 dark:text-slate-100 {activePage ===
@@ -291,7 +291,7 @@
                 : 'bg-slate-200 dark:bg-zinc-800'}"
               on:click="{() => (activePage = 'description')}"
               aria-label="Description">
-              <span class="hidden md:block"> Description </span>
+              <span class="hidden md:block">Description</span>
               <IconDescription color="{iconColor}" class="block md:hidden" />
             </button>
             <button
@@ -301,7 +301,7 @@
                 : 'bg-slate-200 dark:bg-zinc-800'}"
               on:click="{() => (activePage = 'comments')}"
               aria-label="Comments">
-              <span class="hidden md:block"> Comments </span>
+              <span class="hidden md:block">Comments</span>
               <IconMessage color="{iconColor}" class="block md:hidden" />
             </button>
           </div>
@@ -321,8 +321,7 @@
                 on:click="{() => {
                   reportModal.open();
                 }}"
-                ><IconReport /><span class="hidden md:block">Report</span
-                ></button>
+                ><IconReport /></button>
             {/if}
             {#if moderatorOrAbove($roleInfo)}
               {#if status == "publish_queue" || status == "review_queue"}
@@ -370,13 +369,13 @@
                   on:click="{() => {
                     featureModal.open();
                   }}"
-                  ><IconConfetti /><span class="hidden md:block">Feature</span
-                  ></button>
+                  ><IconConfetti />
+                  </button>
               {/if}
             {/if}
             <Button label="Download" click="{() => (activePage = 'download')}">
-              <span class="md:block hidden"> Download </span>
-              <IconDownload class="block md:hidden" />
+              <span class="lg:block hidden"> Download </span>
+              <IconDownload class="block lg:hidden" />
             </Button>
             {#if moderatorOrAbove($roleInfo) && !(status == "publish_queue" || status == "review_queue")}
               <button
