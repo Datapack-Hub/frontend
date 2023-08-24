@@ -82,12 +82,8 @@
           class="flex h-8 pl-2 items-center rounded-full bg-slate-300 px-2 border-2 outline-none border-zinc-700 focus-within:border-dph-orange dark:bg-zinc-800 dark:text-white"
           bind:value="{sort}"
           on:change="{resort}">
-            <option value="Updated">
-              Updated
-            </option>
-            <option value="Downloads">
-              Downloads
-            </option>
+          <option value="Updated"> Updated </option>
+          <option value="Downloads"> Downloads </option>
         </select>
       </div>
     </div>
