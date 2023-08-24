@@ -68,22 +68,21 @@
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
         <input
           placeholder="Search Datapacks..."
-          type="search"
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class="ml-2 text-slate-950 placeholder:text-slate-600 dark:placeholder:text-zinc-400 bg-slate-300 dark:bg-zinc-800 focus:outline-none dark:text-white focus:w-80"
+          class="ml-2 text-slate-950 placeholder:text-slate-600 dark:placeholder:text-zinc-400 bg-slate-300 dark:bg-zinc-800 focus:outline-none dark:text-white"
           on:input="{search}" />
       </div>
       <div
-        class="block mt-2 sm:mt-0 sm:flex space-x-0 sm:space-x-2 items-center">
-        <p class="dark:text-white text-center">Sort By:</p>
+        class="mt-2 sm:mt-0 flex items-center">
+        <p class="dark:text-white text-center h-11 flex items-center bg-zinc-700 px-4 rounded-l-lg">Sort By:</p>
         <select
-          class="flex h-8 pl-2 items-center rounded-full bg-slate-300 px-2 border-2 outline-none border-zinc-700 focus-within:border-dph-orange dark:bg-zinc-800 dark:text-white"
+          class="flex h-11 items-center pl-2 rounded-r-lg bg-slate-300 border-2 outline-none border-zinc-700 focus-within:border-dph-orange dark:bg-zinc-800 dark:text-white"
           bind:value="{sort}"
           on:change="{resort}">
-          <option value="Updated"> Updated </option>
-          <option value="Downloads"> Downloads </option>
+          <option value="Updated">Updated</option>
+          <option value="Downloads">Downloads</option>
         </select>
       </div>
     </div>
@@ -150,6 +149,14 @@
   </div>
   <CasualLine />
   <div class="py-4 flex flex-col">
+    {#if featured.length != 0}
+      <p class="mx-2 dark:text-slate-100 mb-2">Featured Projects</p>
+    {/if}
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mx-2 mb-4" use:autoAnimate>
+      {#each featured ?? [] as feat}
+        <FeaturedProjectComponent project="{feat}" type="featured" />
+      {/each}
+    </div>
     {#if !dataCopy || dataCopy.length === 0}
       <h2 class=" text-slate-950 dark:text-white">No results found</h2>
     {:else}
@@ -163,12 +170,7 @@
             : "s"}
         {/if}
       </h2>
-      <ul class="space-y-2 mx-3 mt-2" use:autoAnimate>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2" use:autoAnimate>
-          {#each featured ?? [] as feat}
-            <FeaturedProjectComponent project="{feat}" type="featured" />
-          {/each}
-        </div>
+      <ul class="space-y-2 mx-2 mt-2" use:autoAnimate>
         {#key layout}
           <div
             class="{layout === 'list'
