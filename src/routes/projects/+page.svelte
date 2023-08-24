@@ -79,14 +79,15 @@
         class="block mt-2 sm:mt-0 sm:flex space-x-0 sm:space-x-2 items-center">
         <p class="dark:text-white text-center">Sort By:</p>
         <select
-          class="flex h-8 pl-2 items-center rounded-full bg-slate-200 py-1 px-2 focus-within:outline focus-within:outline-2 focus-within:outline-dph-orange dark:bg-zinc-700 dark:text-white"
+          class="flex h-8 pl-2 items-center rounded-full bg-slate-300 px-2 border-2 outline-none border-zinc-700 focus-within:border-dph-orange dark:bg-zinc-800 dark:text-white"
           bind:value="{sort}"
           on:change="{resort}">
-          {#each ["Updated", "Downloads"] as cat}
-            <option value="{cat}">
-              {cat}
+            <option value="Updated">
+              Updated
             </option>
-          {/each}
+            <option value="Downloads">
+              Downloads
+            </option>
         </select>
       </div>
     </div>
