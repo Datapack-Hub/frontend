@@ -2,12 +2,7 @@
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
-  import {
-    authed,
-    roleInfo,
-    user,
-    windowWidth
-  } from "$lib/globals/stores";
+  import { authed, roleInfo, user, windowWidth } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
   import IconRead from "~icons/tabler/Bell.svelte";
   import IconUnread from "~icons/tabler/BellRinging.svelte";
