@@ -22,7 +22,7 @@
 </script>
 
 <div class="{classes} h-fit">
-  <div class="flex items-center space-x-1 mb-3">
+  <div class="mb-3 flex items-center space-x-1">
     <button
       role="tab"
       class="button-base text-slate-950 dark:text-slate-100 {tab === 'editor'
@@ -43,7 +43,7 @@
         bind:value="{content}"
         maxlength="{maxEditorLength}"
         on:input="{input}"
-        class="input w-full h-64"></textarea>
+        class="input h-64 w-full"></textarea>
       <p class="align-middle text-xs text-slate-950 dark:text-slate-100">
         {remainingCharacters} characters left
       </p>

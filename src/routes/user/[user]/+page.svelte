@@ -80,10 +80,10 @@
 
 <main
   id="main-content"
-  class="flex flex-col lg:flex-row w-full items-center bg-slate-50 px-0 transition-all dark:bg-zinc-900 md:items-start md:px-16 md:pt-32 lg:px-24">
-  <div class="w-full lg:w-2/5 xl:w-1/3 p-2 rounded-lg">
+  class="flex w-full flex-col items-center bg-slate-50 px-0 transition-all dark:bg-zinc-900 md:items-start md:px-16 md:pt-32 lg:flex-row lg:px-24">
+  <div class="w-full rounded-lg p-2 lg:w-2/5 xl:w-1/3">
     <div
-      class="mb-4 flex w-full flex-col mt-16 md:mt-0 items-center md:items-start">
+      class="mb-4 mt-16 flex w-full flex-col items-center md:mt-0 md:items-start">
       <div class="self-center">
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <img
@@ -101,13 +101,13 @@
         class="mt-4 w-full text-center text-4xl font-bold text-slate-950 dark:text-white md:text-3xl lg:text-4xl">
         {data.profile?.username}
         {#if moderatorOrAbove(data.role)}
-          <span class="text-dph-orange icon" use:tippy="{orangeVerifiedHover}"
+          <span class="icon text-dph-orange" use:tippy="{orangeVerifiedHover}"
             ><IconVerified /></span
           >{:else if data.profile?.role == "helper"}<span
-            class="text-blue-500 icon"
+            class="icon text-blue-500"
             use:tippy="{blueVerifiedHover}"><IconVerified /></span
           >{:else if data.profile?.role == "verified"}<span
-            class="text-emerald-500 icon"
+            class="icon text-emerald-500"
             use:tippy="{emeraldVerifiedHover}"
             ><IconVerified />
           </span>
@@ -123,7 +123,7 @@
             {:else if data.role?.name == "admin"}<img
                 src="/logos/dph.svg"
                 alt="logo"
-                class="inline-block mr-2"
+                class="mr-2 inline-block"
                 height="24"
                 width="24" /> Datapack Hub Team{:else}{title(
                 data.role?.name
@@ -131,43 +131,43 @@
           </span>
         {/if}
       </p>
-      <div class="flex w-full justify-around mt-1">
+      <div class="mt-1 flex w-full justify-around">
         <Button
           style="sm"
-          classes="flex space-x-1 items-center"
+          classes="flex items-center space-x-1"
           click="{follow}"
           ><IconPlus />
           {#if followed}Unfollow{:else}Follow{/if}</Button>
       </div>
-      <h2 class="dark:text-white font-bold mb-1 text-lg mt-8 flex items-center">
-        <IconInfo class="inline-block mr-1" /> About
+      <h2 class="mb-1 mt-8 flex items-center text-lg font-bold dark:text-white">
+        <IconInfo class="mr-1 inline-block" /> About
       </h2>
-      <p class="w-full rounded-xl bg-slate-300 dark:bg-zinc-800 p-5">
+      <p class="w-full rounded-xl bg-slate-300 p-5 dark:bg-zinc-800">
         <MarkdownComponent
           source="{data.profile?.bio
             .replaceAll('\\n', '\n')
             .replaceAll('![', '[')}" />
       </p>
 
-      <h2 class="dark:text-slate-100 mb-1 text-md mt-4 flex items-center">
-        <IconTime class="inline-block mr-1" /> <b class="mr-2">Joined: </b>we
+      <h2 class="text-md mb-1 mt-4 flex items-center dark:text-slate-100">
+        <IconTime class="mr-1 inline-block" /> <b class="mr-2">Joined: </b>we
         forgor, at least they're here now 🦆
       </h2>
 
-      <h2 class="dark:text-slate-100 mb-1 text-md flex items-center">
-        <IconDL class="inline-block mr-1" />
+      <h2 class="text-md mb-1 flex items-center dark:text-slate-100">
+        <IconDL class="mr-1 inline-block" />
         <b class="mr-2">Total Downloads: </b>{data.downloads}
       </h2>
 
       <!-- <div class="mt-4 w-full rounded-xl bg-slate-300 dark:bg-zinc-800 p-5"> -->
       <div class="flex items-center justify-between">
         <h2
-          class="dark:text-slate-100 font-bold mb-1 text-lg mt-4 flex items-center">
-          <IconBadge class="inline-block mr-1" /> Badges
+          class="mb-1 mt-4 flex items-center text-lg font-bold dark:text-slate-100">
+          <IconBadge class="mr-1 inline-block" /> Badges
         </h2>
       </div>
       <div
-        class="flex space-x-2 p-2 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full min-h-[3rem]">
+        class="flex min-h-[3rem] w-full space-x-2 rounded-lg bg-slate-300 p-2 dark:bg-zinc-800">
         {#if data.profile?.badges?.length != 0}
           {#each data.profile?.badges ?? [] as badge}
             <img
@@ -197,7 +197,7 @@
       <UserModeration user="{data.profile}" />
     {/if}
   </div>
-  <div class="w-full lg:w-3/5 xl:w-2/3 px-3 pt-16">
+  <div class="w-full px-3 pt-16 lg:w-3/5 xl:w-2/3">
     <div class="mb-4 flex items-center">
       <h1
         class="flex-grow text-center text-xl font-bold text-slate-900 dark:text-slate-100 md:text-left">
@@ -209,10 +209,10 @@
       {/if}
       <CasualLine />
     </div>
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-2">
+    <div class="grid grid-cols-1 gap-2 xl:grid-cols-2">
       {#if data.projects?.length == 0}
         <p
-          class="mt-24 text-center text-3xl text-slate-950/40 dark:text-white/40 md:mt-48 col-span-2">
+          class="col-span-2 mt-24 text-center text-3xl text-slate-950/40 dark:text-white/40 md:mt-48">
           No projects here...
         </p>
       {:else}

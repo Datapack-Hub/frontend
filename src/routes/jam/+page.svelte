@@ -15,12 +15,12 @@
       class="mt-8 pb-2 text-center text-5xl font-bold text-slate-950 dark:text-white md:text-start md:text-5xl lg:text-6xl">
       Join <span class="text-dph-orange">Datapack Jam</span>
     </h1>
-    <p in:fly="{{ x: -200 }}" class=" dark:text-white text-lg">
+    <p in:fly="{{ x: -200 }}" class=" text-lg dark:text-white">
       Datapack Jam is a monthly competition where you're tasked to create a
       datapack around a theme, in a set period of time.
     </p>
-    <h2 class=" dark:text-white text-2xl mt-3 font-bold">How does it work?</h2>
-    <p in:fly="{{ x: -200 }}" class=" dark:text-white text-lg">
+    <h2 class=" mt-3 text-2xl font-bold dark:text-white">How does it work?</h2>
+    <p in:fly="{{ x: -200 }}" class=" text-lg dark:text-white">
       You have one week to create a datapack. A countdown to the start can be
       seen below this post. Around that time, the theme will be revealed and you
       can start making your datapacks! Then, enter it into the jam using the

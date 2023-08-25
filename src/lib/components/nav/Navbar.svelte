@@ -54,13 +54,13 @@
 
 <svelte:window bind:scrollY />
 
-<header class="fixed w-full z-50 {isSmall ? 'bottom-0' : 'top-0'}">
+<header class="fixed z-50 w-full {isSmall ? 'bottom-0' : 'top-0'}">
   <a
     href="#main-content"
-    class="invert absolute transition-transform select-none cursor-default top-4 right-1/2 translate-x-1/2 opacity-0 translate-y-16 md:-translate-y-16 focus:opacity-100 focus:translate-y-0"
+    class="absolute right-1/2 top-4 translate-x-1/2 translate-y-16 cursor-default select-none opacity-0 invert transition-transform focus:translate-y-0 focus:opacity-100 md:-translate-y-16"
     >Jump to Main Content</a>
   <nav
-    class="flex justify-around md:justify-between transition-all transform-gpu will-change-transform items-center w-full py-4 md:px-16 bg-slate-200/40 dark:bg-zinc-800/40 backdrop-blur">
+    class="flex w-full transform-gpu items-center justify-around bg-slate-200/40 py-4 backdrop-blur transition-all will-change-transform dark:bg-zinc-800/40 md:justify-between md:px-16">
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
       classes="flex items-center space-x-4">
@@ -80,7 +80,7 @@
       </a>
       <a
         href="/projects"
-        class="dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full">
+        class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange">
         {#if isSmall}
           <IconCompass width="24" height="24" />
         {:else}
@@ -89,20 +89,20 @@
       </a>
       {#if !isSmall}
         <a
-          class="md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full dark:text-slate-100 font-light"
+          class="rounded-full p-1 font-light transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
           href="https://discord.gg/aEXsdjjdu4">Discord</a>
       {/if}
     </ConditionalWrapper>
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
-      classes="flex justify-end items-center space-x-4">
+      classes="flex items-center justify-end space-x-4">
       <a
         href="/projects/new"
-        class="dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full"
+        class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
         use:tippy="{newHoverMessage}"><IconPlus width="24" height="24" /></a>
       <a
         href="/notifications"
-        class="z-20 dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full"
+        class="z-20 rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
         aria-label="Notifications page"
         use:tippy="{notificationHoverMessage}">
         {#if unreadNotifications}
@@ -115,7 +115,7 @@
         {#if $authed && moderatorOrAbove($roleInfo)}
           <a
             href="/moderation"
-            class="dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-full"
+            class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
             use:tippy="{moderationHoverMessage}"
             ><IconShield width="24" height="24" /></a>
         {/if}
@@ -140,7 +140,7 @@
             alt="{$user.username}'s profile picture"
             height="24"
             width="24"
-            class="rounded-full outline outline-2 outline-offset-2 ml-2 hover:brightness-75"
+            class="ml-2 rounded-full outline outline-2 outline-offset-2 hover:brightness-75"
             style="outline-color:{$roleInfo.color ?? '#eab308'};" />
         </a>
       {:else}

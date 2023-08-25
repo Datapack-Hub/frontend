@@ -76,7 +76,7 @@
       <br /><br />
       <p class="align-middle text-slate-950 dark:text-slate-100">Bio</p>
       <textarea
-        class="h-96 w-4/5 md:w-2/3 lg:w-1/2 resize-none rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white"
+        class="h-96 w-4/5 resize-none rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white md:w-2/3 lg:w-1/2"
         maxlength="500"
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
         bind:this="{bio}"></textarea>

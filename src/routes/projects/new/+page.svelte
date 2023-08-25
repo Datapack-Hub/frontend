@@ -90,23 +90,23 @@
   <title>Create Project | Datapack Hub</title>
 </svelte:head>
 
-<main id="main-content" class="pt-20 px-4 sm:px-8 md:px-16 lg:px-24 pb-3">
+<main id="main-content" class="px-4 pb-3 pt-20 sm:px-8 md:px-16 lg:px-24">
   {#if $authed}
-    <h1 class="text-slate-950 dark:text-slate-100 text-3xl font-bold mb-4">
+    <h1 class="mb-4 text-3xl font-bold text-slate-950 dark:text-slate-100">
       Create New Datapack
     </h1>
-    <p class="text-slate-950 dark:text-slate-100 ml-3">Logo</p>
+    <p class="ml-3 text-slate-950 dark:text-slate-100">Logo</p>
     <div
-      class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-2 text-center align-middle md:text-start space-y-2">
+      class="grid grid-cols-2 gap-2 space-y-2 rounded-xl p-2 text-center align-middle md:text-start lg:grid-cols-3">
       <div
-        class="flex items-center justify-between space-x-0 md:space-x-2 flex-col md:flex-row col-span-2">
+        class="col-span-2 flex flex-col items-center justify-between space-x-0 md:flex-row md:space-x-2">
         <div
-          class="bg-slate-300 dark:bg-zinc-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white hover:brightness-75 cursor-pointer transition-all">
-          <label class="w-full h-full flex items-center justify-center">
+          class="aspect-square h-full w-1/3 cursor-pointer justify-center rounded-xl bg-slate-300 transition-all hover:brightness-75 dark:bg-zinc-700 dark:text-white md:w-auto">
+          <label class="flex h-full w-full items-center justify-center">
             <img
               src="{iconImg}"
               alt="Your Icon"
-              class="aspect-square overflow-clip w-full h-full rounded-xl {iconValue
+              class="aspect-square h-full w-full overflow-clip rounded-xl {iconValue
                 ? 'block'
                 : 'hidden'}" />
             <input
@@ -119,7 +119,7 @@
           </label>
         </div>
         <div class="w-full">
-          <p class="text-slate-950 dark:text-slate-100 mb-2">Title</p>
+          <p class="mb-2 text-slate-950 dark:text-slate-100">Title</p>
           <input
             type="text"
             placeholder="Super Cool Datapack"
@@ -128,7 +128,7 @@
             aria-required="true"
             bind:value="{title}"
             class="input w-full" />
-          <p class="text-slate-950 dark:text-slate-100 col-span-2 mt-4 mb-2">
+          <p class="col-span-2 mb-2 mt-4 text-slate-950 dark:text-slate-100">
             URL
           </p>
           <input
@@ -140,21 +140,21 @@
         </div>
       </div>
 
-      <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">Summary</p>
+      <p class="col-span-3 pt-3 text-slate-950 dark:text-slate-100">Summary</p>
       <textarea
         placeholder="A short description of your pack"
         maxlength="200"
         bind:value="{description}"
-        class="input resize-none h-32 col-span-2"></textarea>
-      <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
+        class="input col-span-2 h-32 resize-none"></textarea>
+      <p class="col-span-3 pt-3 text-slate-950 dark:text-slate-100">
         Description <a
           href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
           class="text-sky-500">(supports markdown)</a>
       </p>
       <MarkdownEditor bind:content="{body}" classes="col-span-2 resize-none" />
-      <p class="text-slate-950 dark:text-slate-100 col-span-3">Categories</p>
+      <p class="col-span-3 text-slate-950 dark:text-slate-100">Categories</p>
       <div
-        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 rounded-lg col-span-2">
+        class="col-span-2 grid grid-cols-2 gap-2 rounded-lg md:grid-cols-3 lg:grid-cols-4">
         {#each categories as cat}
           <ToggleBoxes
             value="{cat}"
@@ -162,7 +162,7 @@
             on:fail="{maxCategoriesReached}" />
         {/each}
       </div>
-      <Button classes="col-span-3 w-fit mt-4" click="{create}" wait="{true}"
+      <Button classes="col-span-3 mt-4 w-fit" click="{create}" wait="{true}"
         >Create Project</Button>
     </div>
   {:else}

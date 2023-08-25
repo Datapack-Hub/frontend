@@ -59,7 +59,7 @@
         <b>You are banned from Datapack Hub.</b> You are not able to upload, edit
         projects, or interact with the site until your ban has expired.
       </p>
-      <p class="text-md text-slate-950 dark:text-white mt-2">Ban Reason:</p>
+      <p class="text-md mt-2 text-slate-950 dark:text-white">Ban Reason:</p>
       <p class="prose mb-2 rounded-xl bg-zinc-700 p-2 dark:text-zinc-300">
         <MarkdownComponent source="{banReason}" />
       </p>

@@ -10,7 +10,7 @@
 </script>
 
 <div
-  class="select-none dark:text-slate-100 md:hover:text-dph-orange md:hover:bg-transparent hover:bg-dph-orange/40 transition-all p-1 rounded-lg"
+  class="select-none rounded-lg p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
   role="checkbox"
   aria-checked="{$isDark}"
   aria-label="dark mode toggle">

@@ -1,5 +1,5 @@
 <footer
-  class="flex h-[30rem] flex-col items-center justify-evenly border-t-2 border-slate-50 bg-slate-50 px-8 dark:border-zinc-700 dark:bg-zinc-900 lg:h-64 lg:flex-row lg:justify-between md:px-16 lg:px-24"
+  class="flex h-[30rem] flex-col items-center justify-evenly border-t-2 border-slate-50 bg-slate-50 px-8 dark:border-zinc-700 dark:bg-zinc-900 md:px-16 lg:h-64 lg:flex-row lg:justify-between lg:px-24"
   id="footer">
   <div>
     <div class="flex items-center space-x-2">
@@ -39,42 +39,42 @@
       <ul class="w-1/3 text-center text-slate-950 dark:text-white">
         <li>
           <a
-            class="hover:brightness-75 transition-transform"
+            class="transition-transform hover:brightness-75"
             href="https://discord.gg/aEXsdjjdu4">Community Discord</a>
         </li>
         <li>
-          <a class="hover:brightness-75 transition-transform" href="/staff"
+          <a class="transition-transform hover:brightness-75" href="/staff"
             >Staff Team</a>
         </li>
         <li>
-          <a class="hover:brightness-75 transition-transform" href="/staff"
+          <a class="transition-transform hover:brightness-75" href="/staff"
             >About us</a>
         </li>
       </ul>
       <ul class="w-1/3 text-center text-slate-950 dark:text-white">
         <li>
           <a
-            class="hover:brightness-75 transition-transform"
+            class="transition-transform hover:brightness-75"
             href="https://discord.gg/aEXsdjjdu4">Discord</a>
         </li>
         <li>
           <a
-            class="hover:brightness-75 transition-transform"
+            class="transition-transform hover:brightness-75"
             href="https://github.com/Datapack-Hub">GitHub</a>
         </li>
         <li>
           <a
-            class="hover:brightness-75 transition-transform"
+            class="transition-transform hover:brightness-75"
             href="https://twitter.com/DatapackHub">Twitter</a>
         </li>
       </ul>
       <ul class="w-1/3 text-center text-slate-950 dark:text-white">
         <li>
-          <a class="hover:brightness-75 transition-transform" href="/rules"
+          <a class="transition-transform hover:brightness-75" href="/rules"
             >Rules</a>
         </li>
         <li>
-          <a class="hover:brightness-75 transition-transform" href="/privacy"
+          <a class="transition-transform hover:brightness-75" href="/privacy"
             >Privacy</a>
         </li>
       </ul>

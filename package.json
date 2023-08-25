@@ -27,7 +27,7 @@
     "animejs": "^3.2.1",
     "dotenv": "^16.3.1",
     "esbuild": "^0.19.2",
-    "eslint": "^8.47.0",
+    "eslint": "^8.48.0",
     "eslint-plugin-security": "^1.7.1",
     "eslint-plugin-svelte": "^2.33.0",
     "eslint-plugin-unicorn": "^48.0.1",
@@ -36,7 +36,7 @@
     "prettier": "^3.0.2",
     "prettier-plugin-organize-imports": "^3.2.3",
     "prettier-plugin-svelte": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.4.1",
+    "prettier-plugin-tailwindcss": "^0.5.3",
     "radash": "^11.0.0",
     "rehype-sanitize": "^5.0.1",
     "rehype-stringify": "^9.0.4",
@@ -48,8 +48,8 @@
     "svelte-preprocess": "^5.0.4",
     "svelte-sonner": "^0.1.4",
     "tslib": "^2.6.2",
-    "typescript": "^5.1.6",
-    "unified": "^10.1.2",
+    "typescript": "^5.2.2",
+    "unified": "^11.0.2",
     "unlighthouse": "^0.10.0",
     "unplugin-icons": "^0.16.5",
     "vite": "^4.4.9"
@@ -76,14 +76,15 @@
     "svelteIndentScriptAndStyle": true,
     "svelteSortOrder": "scripts-options-markup-styles",
     "trailingComma": "none",
+    "tailwindConfig": "./tailwind.config.cjs",
     "tailwindAttributes": [
       "class",
       "classes"
     ],
     "plugins": [
-      "prettier-plugin-tailwindcss",
+      "prettier-plugin-svelte",
       "prettier-plugin-organize-imports",
-      "prettier-plugin-svelte"
+      "prettier-plugin-tailwindcss"
     ]
   },
   "engineStrict": true,

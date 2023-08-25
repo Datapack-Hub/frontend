@@ -27,40 +27,40 @@
     <div class="mb-2 flex space-x-2">
       <Button
         style="base"
-        classes="dark:text-slate-100 text-slate-950 {activePage ===
+        classes="text-slate-950 dark:text-slate-100 {activePage ===
         'publish_queue'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'publish_queue')}">Publish Queue</Button>
       <Button
         style="base"
-        classes="dark:text-slate-100 text-slate-950 {activePage ===
+        classes="text-slate-950 dark:text-slate-100 {activePage ===
         'review_queue'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'review_queue')}">Review Queue</Button>
       <Button
         style="base"
-        classes="dark:text-slate-100 text-slate-950 {activePage === 'reports'
+        classes="text-slate-950 dark:text-slate-100 {activePage === 'reports'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'reports')}">Reports</Button>
       <Button
         style="base"
-        classes="dark:text-slate-100 text-slate-950 {activePage === 'roles'
+        classes="text-slate-950 dark:text-slate-100 {activePage === 'roles'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'roles')}">Roles</Button>
       <Button
         style="base"
-        classes="dark:text-slate-100 text-slate-950 bg-slate-300 dark:bg-zinc-800"
+        classes="bg-slate-300 text-slate-950 dark:bg-zinc-800 dark:text-slate-100"
         click="/moderation/console">Open console</Button>
     </div>
 
     <div use:autoAnimate>
       {#if activePage == "publish_queue"}
         <div
-          class="rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
+          class="space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start">
           {#if data.publishQueue?.length === 0}
             <p class=" dark:text-white">
               You're all caught up! There are no projects in the publish queue.
@@ -76,7 +76,7 @@
         </div>
       {:else if activePage == "review_queue"}
         <div
-          class="rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2"
+          class="space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start"
           use:autoAnimate>
           {#if data.reviewQueue?.length === 0}
             <p class=" dark:text-white">
@@ -93,7 +93,7 @@
         </div>
       {:else if activePage == "reports"}
         <div
-          class="rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
+          class="space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start">
           {#if data.reports?.length === 0}
             <p class=" dark:text-white">
               You're all caught up! There are no reports in the queue.
@@ -109,7 +109,7 @@
         </div>
       {:else if activePage == "roles"}
         <div
-          class="flex flex-col space-x-2 rounded-xl bg-slate-200 dark:bg-zinc-800 p-2 py-3 text-center align-middle md:text-start">
+          class="flex flex-col space-x-2 rounded-xl bg-slate-200 p-2 py-3 text-center align-middle dark:bg-zinc-800 md:text-start">
           <h1
             class="m-2 text-center text-2xl font-bold text-slate-950 dark:text-white md:text-start">
             Site Roles

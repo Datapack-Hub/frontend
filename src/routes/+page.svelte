@@ -119,11 +119,11 @@
 
 <main
   id="main-content"
-  class="bg-slate-50 transition-all dark:bg-zinc-900 h-full">
+  class="h-full bg-slate-50 transition-all dark:bg-zinc-900">
   <div class="py-12 md:py-0"></div>
   <section
-    class="flex h-fit md:h-[85vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-4 md:flex-row md:justify-between md:px-8 lg:px-16">
-    <div class="w-full md:w-2/5 p-4">
+    class="flex h-fit w-full flex-col items-center justify-start overflow-visible px-0 sm:px-4 md:h-[85vh] md:flex-row md:justify-between md:px-8 lg:px-16">
+    <div class="w-full p-4 md:w-2/5">
       <div class="relative h-36 w-full">
         <h1
           id="indexText1"
@@ -151,16 +151,16 @@
         class="w-full text-center text-xl text-slate-950 dark:text-slate-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{(data.count - 1).toString()}"
-          class="text-dph-orange font-bold">
+          class="font-bold text-dph-orange">
           {formatter.format(data.count - 1)}
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>
     </div>
     <section
-      class="mt-8 h-fit justify-between space-y-3 overflow-x-clip overflow-y-auto rounded-xl px-4 md:w-1/2">
+      class="mt-8 h-fit justify-between space-y-3 overflow-y-auto overflow-x-clip rounded-xl px-4 md:w-1/2">
       <h3
-        class=" text-2xl font-medium text-slate-950 dark:text-slate-100 text-center mt-6">
+        class=" mt-6 text-center text-2xl font-medium text-slate-950 dark:text-slate-100">
         Featured Projects
       </h3>
       <div use:autoAnimate class="space-y-3">
@@ -178,24 +178,24 @@
     </section>
   </section>
   <section
-    class="w-full bg-slate-200 dark:bg-zinc-800/20 flex flex-col justify-center items-center py-32">
+    class="flex w-full flex-col items-center justify-center bg-slate-200 py-32 dark:bg-zinc-800/20">
     <h1
-      class="font-bold text-black dark:text-white text-center text-4xl lg:text-5xl xl:text-6xl">
+      class="text-center text-4xl font-bold text-black dark:text-white lg:text-5xl xl:text-6xl">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
-      class="mt-16 grid grid-cols-1 lg:grid-cols-2 p-4 w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2 gap-2">
+      class="mt-16 grid w-full grid-cols-1 gap-2 p-4 lg:w-3/4 lg:grid-cols-2 xl:w-2/3 2xl:w-1/2">
       <div
-        class="fadeTextAnime opacity-0 col-span-2 p-4 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800">
         <h2
-          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Easily find datapacks you'll like</b>
         </h2>
         <p
-          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-3 font-light">
+          class="fadeTextAnime my-3 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
-        <div class="dark:bg-zinc-900 rounded-xl p-2 mb-5 space-y-2">
+        <div class="mb-5 space-y-2 rounded-xl p-2 dark:bg-zinc-900">
           {#each data.random.slice(0, 2) ?? [] as rand}
             <ProjectComponent project="{rand}" />
           {/each}
@@ -203,24 +203,24 @@
         <Button click="/projects">Find your next favourite datapack</Button>
       </div>
       <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto row-span-2 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
+        class="fadeTextAnime col-span-2 row-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
-          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>No more "made for older version"</b>
         </h2>
         <p
-          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-3 font-light">
+          class="fadeTextAnime my-3 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
           Datapack Hub automatically converts the pack version to the requested
           version, removing those pesky "Made for an older version" errors!
         </p>
-        <div class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-2">
+        <div class="rounded-xl bg-slate-200 p-2 dark:bg-zinc-900">
           <div
-            class="fadeTextAnime opacity-0 flex items-center justify-between bg-slate-300 dark:bg-zinc-800 rounded-t-md p-2 text-slate-600 dark:text-zinc-500">
+            class="fadeTextAnime flex items-center justify-between rounded-t-md bg-slate-300 p-2 text-slate-600 opacity-0 dark:bg-zinc-800 dark:text-zinc-500">
             <p>pack.mcmeta</p>
             <IconX />
           </div>
           <div
-            class="fadeTextAnime opacity-0 text-slate-600 dark:text-zinc-500 font-mono bg-slate-300 dark:bg-zinc-800 mt-2 px-4 rounded-b-md overflow-x-auto">
+            class="fadeTextAnime mt-2 overflow-x-auto rounded-b-md bg-slate-300 px-4 font-mono text-slate-600 opacity-0 dark:bg-zinc-800 dark:text-zinc-500">
             <pre class="text-sm">
               <!--DO NOT INDENT!!!-->
 &lbrace;
@@ -236,19 +236,19 @@
         </div>
       </div>
       <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
-          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>ZIP Optimisation</b>
         </h2>
         <p
-          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-3 font-light">
+          class="fadeTextAnime my-3 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
           Uploaded files have the option to be optimised automatically with
           PackSquash!
         </p>
         <div
-          class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-4 dark:text-white flex items-center justify-center">
-          <div class="flex items-center relative space-x-2">
+          class="flex items-center justify-center rounded-xl bg-slate-200 p-4 dark:bg-zinc-900 dark:text-white">
+          <div class="relative flex items-center space-x-2">
             <IconFile width="48" height="48" class="text-red-500" />
             <IconArrow width="24" height="24" />
             <IconFile width="24" height="24" class="text-green-500" />
@@ -256,17 +256,17 @@
         </div>
       </div>
       <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto pb-0 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 pb-0 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
-          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Strong Moderation</b>
         </h2>
         <p
-          class="text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg mt-3 font-light">
+          class="mt-3 text-lg font-light text-pearl-lusta-950 dark:text-pearl-lusta-100">
           Our amazing staff team work together to keep Datapack Hub the best and
           cleanest place to find datapacks!
         </p>
-        <div class="flex py-4 space-x-1">
+        <div class="flex space-x-1 py-4">
           {#each data.staff as staff}
             <a href="/user/{staff.username}">
               <img
@@ -283,42 +283,42 @@
                 loading="lazy"
                 width="48"
                 height="48"
-                class="h-12 md:h-auto rounded-md hover:scale-105 transition-all aspect-square" />
+                class="aspect-square h-12 rounded-md transition-all hover:scale-105 md:h-auto" />
             </a>
           {/each}
         </div>
       </div>
       <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
-          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Awesome Community</b>
         </h2>
         <p
-          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
+          class="fadeTextAnime my-4 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
           Join our Discord server to get help with the website, support for
           making datapacks, and to be a part of the community!
         </p>
         <a
-          class="rounded-lg p-2 bg-[#5865F2] text-white font-bold"
+          class="rounded-lg bg-[#5865F2] p-2 font-bold text-white"
           href="https://discord.gg/aEXsdjjdu4">
           <img
             src="/logos/discord-white.svg"
             alt="discord logo"
-            class="inline-block mr-2"
+            class="mr-2 inline-block"
             loading="lazy"
             height="16"
             width="16" />Join us now!
         </a>
       </div>
       <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 lg:col-auto bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
-          class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Project Featuring</b>
         </h2>
         <p
-          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
+          class="fadeTextAnime my-4 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
           Our staff regularly feature cool projects to reach a wider audience!
         </p>
         {#each data.random.splice(0, 1) as randProj}

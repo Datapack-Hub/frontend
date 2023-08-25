@@ -54,25 +54,25 @@
   }
 </script>
 
-<div class="h-fit w-full lg:w-2/5 xl:w-1/3 flex-col mr-4" use:autoAnimate>
+<div class="mr-4 h-fit w-full flex-col lg:w-2/5 xl:w-1/3" use:autoAnimate>
   <div class="my-3 mb-4 text-sky-300" use:autoAnimate>
     <a href="/projects">
       <IconBack class="inline" /> Explore other projects
     </a>
   </div>
   <div
-    class="rounded-xl border-slate-200 p-4 mb-2 bg-slate-200 dark:bg-zinc-800">
-    <div class="max-w-fit items-top space-x-2 flex">
+    class="mb-2 rounded-xl border-slate-200 bg-slate-200 p-4 dark:bg-zinc-800">
+    <div class="items-top flex max-w-fit space-x-2">
       {#if project?.icon}
         <img
           src="{project?.icon}"
           alt="{project?.title} icon"
-          class="aspect-square w-16 h-16 rounded-lg bg-cover"
+          class="aspect-square h-16 w-16 rounded-lg bg-cover"
           width="64"
           height="64" />
       {:else}
         <div
-          class="bg-slate-300 dark:bg-zinc-700 p-4 w-16 h-16 rounded-xl dark:text-white">
+          class="h-16 w-16 rounded-xl bg-slate-300 p-4 dark:bg-zinc-700 dark:text-white">
           <IconNoPhoto width="32" height="32" />
         </div>
       {/if}
@@ -81,7 +81,7 @@
           class="flex items-center text-3xl font-bold text-slate-950 dark:text-white">
           {project?.title}
         </h1>
-        <div class="flex items-center space-x-1 mt-1 min-w-fit">
+        <div class="mt-1 flex min-w-fit items-center space-x-1">
           <a
             href="/user/{project.author?.username}"
             class="flex items-center space-x-1">
@@ -92,7 +92,7 @@
               width="20"
               height="20" />
             <span
-              class="text-xs xl:text-sm text-slate-950 transition-all hover:underline dark:text-white">
+              class="text-xs text-slate-950 transition-all hover:underline dark:text-white xl:text-sm">
               {project.author?.username}
             </span>
           </a>
@@ -104,7 +104,7 @@
         class="mt-2 text-base text-slate-950/60 transition-all dark:text-white/60">
         {project?.description}
       </h2>
-      <p class="flex items-center space-x-2 text-md my-2 dark:text-white">
+      <p class="text-md my-2 flex items-center space-x-2 dark:text-white">
         <IconCube />
         <span class="font-bold">Categories:</span>
         <span>{project.category?.join(", ")}</span>
@@ -115,12 +115,12 @@
     </div>
     <div>
       <h1
-        class="flex items-center space-x-2 text-md mt-2 font-medium text-slate-950 dark:text-white">
+        class="text-md mt-2 flex items-center space-x-2 font-medium text-slate-950 dark:text-white">
         <IconDL />
         <span><b>Downloads: </b>{project?.downloads ?? 0}</span>
       </h1>
       <h1
-        class="flex items-center space-x-2 text-md mt-1 font-medium text-slate-950 dark:text-white">
+        class="text-md mt-1 flex items-center space-x-2 font-medium text-slate-950 dark:text-white">
         <IconUpdate />
         <span>
           <b>Last updated:</b>
@@ -131,21 +131,21 @@
       <div class="mt-2">
         {#if ["unpublished", "draft"].includes(status)}
           <span class="text-zinc-400">•</span>
-          <span class="text-zinc-400 font-bold mt-2">{title(status)}</span>
+          <span class="mt-2 font-bold text-zinc-400">{title(status)}</span>
         {:else if ["disabled"].includes(status)}
           <span class="text-red-400">•</span>
-          <span class="text-red-400 font-bold mt-2"
+          <span class="mt-2 font-bold text-red-400"
             >{title(status.replaceAll("_", " "))}</span>
         {:else if ["review_queue", "publish_queue"].includes(status)}
           <span class="text-yellow-600">•</span>
-          <span class="text-yellow-600 font-bold pt-2">In Queue</span>
+          <span class="pt-2 font-bold text-yellow-600">In Queue</span>
         {/if}
       </div>
     </div>
   </div>
   {#if project?.mod_message}
     <div
-      class="mt-4 rounded-xl p-4 moderation dark:text-slate-100"
+      class="moderation mt-4 rounded-xl p-4 dark:text-slate-100"
       id="modmsg"
       bind:this="{mm}">
       {#if status && !["disabled", "review_queue"].includes(status)}
@@ -155,7 +155,7 @@
       {/if}
       <p class=" font-black">Message from Datapack Hub Staff:</p>
       <p
-        class="prose mb-1 mt-2 rounded-xl moderation-hl p-2 dark:text-zinc-300">
+        class="moderation-hl prose mb-1 mt-2 rounded-xl p-2 dark:text-zinc-300">
         <MarkdownComponent source="{project?.mod_message}" />
       </p>
       <p class=" text-xs opacity-50">
@@ -186,7 +186,7 @@
       {#if !project.icon}
         <div class="rounded-xl bg-zinc-900 p-2">
           <div
-            class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
+            class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
             <IconIcon />
             <h1>Add an icon</h1>
           </div>
@@ -199,7 +199,7 @@
       {#if project.category && project.category[0] == ""}
         <div class="rounded-xl bg-zinc-900 p-2">
           <div
-            class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
+            class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
             <IconCategories />
             <h1>Select categories</h1>
           </div>
@@ -211,7 +211,7 @@
       {/if}
       <div class="rounded-xl bg-zinc-900 p-2">
         <div
-          class="flex text-lg font-semibold text-yellow-500 items-center space-x-2">
+          class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
           <IconDescription />
           <h1>Add relevant details</h1>
         </div>
@@ -224,7 +224,7 @@
       {#if !project.latest_version}
         <div class="rounded-xl bg-zinc-900 p-2">
           <div
-            class="flex text-lg font-semibold text-sky-500 items-center space-x-2">
+            class="flex items-center space-x-2 text-lg font-semibold text-sky-500">
             <IconUpload />
             <h1>Upload a version</h1>
           </div>
@@ -237,7 +237,7 @@
       {/if}
       <div class="rounded-xl bg-zinc-900 p-2">
         <div
-          class="flex text-lg font-semibold text-green-500 items-center space-x-2">
+          class="flex items-center space-x-2 text-lg font-semibold text-green-500">
           <IconTick />
           <h1>Submit for approval</h1>
         </div>

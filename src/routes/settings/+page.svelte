@@ -87,13 +87,13 @@
     <div use:autoAnimate>
       {#if activePage == "profile"}
         <div
-          class="rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
+          class="space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start">
           <div class="text-center align-middle md:text-start">
             <p class="align-middle text-slate-950 dark:text-slate-100">
               Username
             </p>
             <p
-              class="align-middle text-slate-950 dark:text-slate-100 opacity-40 text-sm">
+              class="align-middle text-sm text-slate-950 opacity-40 dark:text-slate-100">
               Your username is used to view your profile, and is displayed on
               your datapacks, comments, and replies.
             </p>
@@ -102,16 +102,16 @@
               value="{data.profile?.username}"
               maxlength="32"
               bind:this="{usernameElement}" />
-            <p class="align-middle text-slate-950 dark:text-slate-100 mt-6">
+            <p class="mt-6 align-middle text-slate-950 dark:text-slate-100">
               Bio
             </p>
             <p
-              class="align-middle text-slate-950 dark:text-slate-100 mb-2 text-sm opacity-40">
+              class="mb-2 align-middle text-sm text-slate-950 opacity-40 dark:text-slate-100">
               Your bio is visible for anyone to see, don't store important
               information in it!
             </p>
             <MarkdownEditor
-              classes="w-full md:w-2/3 lg:w-1/2 h-80 resize-none"
+              classes="h-80 w-full resize-none md:w-2/3 lg:w-1/2"
               maxEditorLength="{500}"
               bind:content="{bioValue}" />
             <br />
@@ -120,37 +120,37 @@
         </div>
       {:else if activePage == "account"}
         <div
-          class="rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start space-y-2">
+          class="space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start">
           <div class="text-center align-middle md:text-start">
             <p class="align-middle text-slate-950 dark:text-slate-100">
               Linked Github
             </p>
             <p
-              class="align-middle text-slate-950 dark:text-slate-100 opacity-40 text-sm">
+              class="align-middle text-sm text-slate-950 opacity-40 dark:text-slate-100">
               Link your Github account to your Datapack Hub account, and you'll
               be able to log in with Github.
             </p>
             <a
-              class="flex rounded-lg p-2 bg-black text-white font-bold space-x-2 items-center w-fit"
+              class="flex w-fit items-center space-x-2 rounded-lg bg-black p-2 font-bold text-white"
               href="https://github.com/login/oauth/authorize?client_id=8a0527a3da5b002db8c9&redirect_uri=https%3A%2F%2Fdatapackhub.net%2Fsettings%2Fgithub">
               <IconGithub />
               <p>Link your Github account</p>
             </a>
-            <p class="align-middle text-slate-950 dark:text-slate-100 mt-6">
+            <p class="mt-6 align-middle text-slate-950 dark:text-slate-100">
               Linked Discord
             </p>
             <p
-              class="align-middle text-slate-950 dark:text-slate-100 opacity-40 text-sm">
+              class="align-middle text-sm text-slate-950 opacity-40 dark:text-slate-100">
               Link your Discord account to your Datapack Hub account, and you'll
               be able to log in with Discord.
             </p>
             <a
-              class="flex rounded-lg p-2 bg-[#5865F2] text-white font-bold space-x-2 items-center w-fit"
+              class="flex w-fit items-center space-x-2 rounded-lg bg-[#5865F2] p-2 font-bold text-white"
               href="https://discord.com/api/oauth2/authorize?client_id=1121129295868334220&redirect_uri=https%3A%2F%2Fdatapackhub.net%2Fsettings%2Fdiscord&response_type=code&scope=identify">
               <IconDiscord />
               <p>Link your Discord account</p>
             </a>
-            <p class="align-middle text-slate-950 dark:text-slate-100 mt-6">
+            <p class="mt-6 align-middle text-slate-950 dark:text-slate-100">
               (If you've already linked an account, it'll be re-linked.)
             </p>
           </div>

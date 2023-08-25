@@ -58,12 +58,12 @@
 
 <main
   id="main-content"
-  class="items-center pt-0 md:flex-row md:items-start md:pt-20 sm:px-8 md:px-16 lg:px-24">
+  class="items-center pt-0 sm:px-8 md:flex-row md:items-start md:px-16 md:pt-20 lg:px-24">
   <div
-    class="py-4 flex flex-col items-center justify-center md:flex-row md:justify-normal space-x-0 md:space-x-2">
+    class="flex flex-col items-center justify-center space-x-0 py-4 md:flex-row md:justify-normal md:space-x-2">
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
     <div
-      class="flex-grow flex flex-col sm:flex-row space-x-0 sm:space-x-4 items-center">
+      class="flex flex-grow flex-col items-center space-x-0 sm:flex-row sm:space-x-4">
       <div
         class="input flex items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
@@ -72,12 +72,12 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class="ml-2 text-slate-950 placeholder:text-slate-600 dark:placeholder:text-zinc-400 bg-slate-300 dark:bg-zinc-800 focus:outline-none dark:text-white"
+          class="ml-2 bg-slate-300 text-slate-950 placeholder:text-slate-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400"
           on:input="{search}" />
       </div>
-      <div class="mt-2 sm:mt-0 flex items-center">
+      <div class="mt-2 flex items-center sm:mt-0">
         <p
-          class="dark:text-white text-center h-11 flex items-center bg-zinc-700 px-4 rounded-l-lg">
+          class="flex h-11 items-center rounded-l-lg bg-zinc-700 px-4 text-center dark:text-white">
           Sort By:
         </p>
         <Dropdown
@@ -86,9 +86,9 @@
           on:change="{resort}" />
       </div>
     </div>
-    <div class="flex items-center space-x-0 md:space-x-4 mt-4 md:mt-0">
-      <div class="mt-2 sm:mt-0 md:flex space-x-1 items-center hidden">
-        <p class="dark:text-white text-center mr-2 hidden lg:block">Layout:</p>
+    <div class="mt-4 flex items-center space-x-0 md:mt-0 md:space-x-4">
+      <div class="mt-2 hidden items-center space-x-1 sm:mt-0 md:flex">
+        <p class="mr-2 hidden text-center dark:text-white lg:block">Layout:</p>
         <button
           on:click="{() => {
             layout = 'list';
@@ -96,7 +96,7 @@
           }}"
           class="h-8 w-8 rounded-md {layout === 'list'
             ? 'bg-dph-orange'
-            : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0 flex items-center justify-center">
+            : 'bg-dph-orange/25'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0">
           <IconList /></button>
         <button
           on:click="{() => {
@@ -105,15 +105,15 @@
           }}"
           class="h-8 w-8 rounded-md {layout === 'grid'
             ? 'bg-dph-orange'
-            : 'bg-dph-orange/25'} cursor-pointer p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0 flex items-center justify-center">
+            : 'bg-dph-orange/25'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0">
           <IconGrid /></button>
       </div>
-      <div class="sm:mt-0 flex space-x-1 items-center">
-        <p class="dark:text-white mr-2">Page:</p>
+      <div class="flex items-center space-x-1 sm:mt-0">
+        <p class="mr-2 dark:text-white">Page:</p>
         {#if data.page - 3 >= 1}
           <a
             href="/projects?page=1"
-            class="h-8 pl-1 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0 flex items-center content-center"
+            class="flex h-8 w-8 content-center items-center rounded-md bg-dph-orange/25 p-1 pl-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
             ><IconBTS class="" /></a>
         {/if}
         {#if data.page - 2 >= 1}
@@ -148,12 +148,12 @@
     </div>
   </div>
   <CasualLine />
-  <div class="py-4 flex flex-col">
+  <div class="flex flex-col py-4">
     {#if featured.length != 0}
-      <p class="mx-2 dark:text-slate-100 mb-2">Featured Projects</p>
+      <p class="mx-2 mb-2 dark:text-slate-100">Featured Projects</p>
     {/if}
     <div
-      class="grid grid-cols-1 lg:grid-cols-2 gap-2 mx-2 mb-4"
+      class="mx-2 mb-4 grid grid-cols-1 gap-2 lg:grid-cols-2"
       use:autoAnimate>
       {#each featured ?? [] as feat}
         <FeaturedProjectComponent project="{feat}" type="featured" />
@@ -162,7 +162,7 @@
     {#if !dataCopy || dataCopy.length === 0}
       <h2 class=" text-slate-950 dark:text-white">No results found</h2>
     {:else}
-      <h2 class=" text-slate-950 dark:text-white mx-3">
+      <h2 class=" mx-3 text-slate-950 dark:text-white">
         {#if query != "" && searchTime <= 0}
           Showing {dataCopy.length} projects
         {:else}
@@ -172,12 +172,12 @@
             : "s"}
         {/if}
       </h2>
-      <ul class="space-y-2 mx-2 mt-2" use:autoAnimate>
+      <ul class="mx-2 mt-2 space-y-2" use:autoAnimate>
         {#key layout}
           <div
             class="{layout === 'list'
               ? 'space-y-2'
-              : 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2'}"
+              : 'grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-3'}"
             use:autoAnimate>
             {#key dataCopy}
               {#each dataCopy as project}

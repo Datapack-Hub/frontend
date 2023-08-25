@@ -254,7 +254,7 @@
       Ban Message (supports markdown)
     </p>
     <textarea
-      class="input w-full h-48 resize-none"
+      class="input h-48 w-full resize-none"
       placeholder="Burning cake after being **repeatedly told** to stop"
       id="ban-message"></textarea>
     <Button click="{banUser}">Ban {user?.username}</Button>
@@ -267,12 +267,12 @@
       Warn Message
     </p>
     <textarea
-      class="input w-full h-32 resize-none"
+      class="input h-32 w-full resize-none"
       placeholder="..."
       id="warn-message"></textarea>
     <Button click="{warn}">Warn {user?.username}</Button>
   {:else if moderationModalPage == "notif"}
-    <p class=" text-slate-950 dark:text-white mb-3">
+    <p class=" mb-3 text-slate-950 dark:text-white">
       Send an anonymous notification (unless you put your name down) to the
       user. For warnings, use the Warn button.
     </p>
@@ -293,7 +293,7 @@
       Notification Body
     </label>
     <textarea
-      class="input w-full h-48 resize-none"
+      class="input h-48 w-full resize-none"
       maxlength="2000"
       placeholder="Just a quick reminder that your cake which you forgot about has been in the oven for 10 minutes too long."
       name="notif-content"
@@ -303,7 +303,7 @@
       class="mt-2 align-middle text-slate-950 dark:text-slate-100">
       Notification Type
     </label>
-    <select name="notif-type" id="notif-type" class="input w-full mb-2">
+    <select name="notif-type" id="notif-type" class="input mb-2 w-full">
       <option value="default">Default</option>
       <option value="important">Important</option>
       <option value="announcement">Announcement</option>
@@ -315,14 +315,14 @@
       class="rounded-md bg-dph-orange p-2 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
       >Send</button>
   {:else if moderationModalPage == "logout"}
-    <p class=" text-slate-950 dark:text-white mb-3">
+    <p class=" mb-3 text-slate-950 dark:text-white">
       This will log {user?.username} out of all their signed-in devices, and generate
       them a new token. They will need to sign in again.
     </p>
     <Button click="{logOutUser}">Log them out!</Button>
   {:else if moderationModalPage == "badges"}
     <div class="my-4">
-      <h2 class="text-slate-950 dark:text-white mb-2">Badges</h2>
+      <h2 class="mb-2 text-slate-950 dark:text-white">Badges</h2>
       <MultiSelect
         options="{badges.map(v => v.name)}"
         bind:selected="{badgeState}" />
@@ -344,7 +344,7 @@
     Warn Message
   </p>
   <textarea
-    class="input w-full h-32 resize-none"
+    class="input h-32 w-full resize-none"
     placeholder="..."
     id="warn-message"></textarea>
   <Button click="{warn}">Warn {user?.username}</Button>
@@ -376,7 +376,7 @@
     Notification Body
   </label>
   <textarea
-    class="input w-full h-48 resize-none"
+    class="input h-48 w-full resize-none"
     placeholder="Just a quick reminder that your cake which you forgot about has been in the oven for 10 minutes too long."
     name="notif-content"
     id="notif-content"></textarea>
@@ -385,7 +385,7 @@
     class="mt-2 align-middle text-slate-950 dark:text-slate-100">
     Notification Type
   </label>
-  <select name="notif-type" id="notif-type" class="input w-full mb-2">
+  <select name="notif-type" id="notif-type" class="input mb-2 w-full">
     <option value="default">Default</option>
     <option value="important">Important</option>
     <option value="announcement">Announcement</option>
@@ -424,7 +424,7 @@
     Ban Message (supports markdown)
   </p>
   <textarea
-    class="input w-full h-48 resize-none"
+    class="input h-48 w-full resize-none"
     placeholder="Burning cake after being **repeatedly told** to stop"
     id="ban-message"></textarea>
   <Button click="{banUser}">Ban {user?.username}</Button>
@@ -465,7 +465,7 @@
   </h1>
   <CasualLine />
   <div class="my-4">
-    <h2 class="text-slate-950 dark:text-white mb-2">Badges</h2>
+    <h2 class="mb-2 text-slate-950 dark:text-white">Badges</h2>
     <MultiSelect
       options="{badges.map(v => v.name)}"
       bind:selected="{badgeState}" />

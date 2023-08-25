@@ -12,7 +12,7 @@
 
 <div class="right-0 top-0 flex h-screen transform-gpu">
   <div
-    class="m-auto w-fit justify-self-center rounded-xl p-2 align-middle dark:bg-zinc-800 overflow-x-hidden">
+    class="m-auto w-fit justify-self-center overflow-x-hidden rounded-xl p-2 align-middle dark:bg-zinc-800">
     {#if !$authed}
       <a
         href="/login"
@@ -31,24 +31,24 @@
       <!-- <h1 class=" text-2xl text-slate-950 dark:text-white font-regular">You are temporarily banned from Datapack Hub</h1> -->
       <CasualLine />
       <p class="dark:text-white">Use a sign in option below.</p>
-      <p class="mb-2 dark:text-neutral-500 text-sm">
+      <p class="mb-2 text-sm dark:text-neutral-500">
         If you haven't made an account, one will be made for you.
       </p>
-      <div class="grid grid-cols-2 gap-1 w-fit">
+      <div class="grid w-fit grid-cols-2 gap-1">
         <a
-          class="flex rounded-lg p-2 bg-black text-white font-bold space-x-2 items-center"
+          class="flex items-center space-x-2 rounded-lg bg-black p-2 font-bold text-white"
           href="https://api.datapackhub.net/auth/login/github">
           <IconGithub />
           <p>Sign In with Github</p>
         </a>
         <a
-          class="flex rounded-lg p-2 bg-[#5865F2] text-white font-bold space-x-2 items-center"
+          class="flex items-center space-x-2 rounded-lg bg-[#5865F2] p-2 font-bold text-white"
           href="https://api.datapackhub.net/auth/login/discord">
           <IconDiscord />
           <p>Sign In with Discord</p>
         </a>
       </div>
-      <p class="mt-2 dark:text-neutral-300 text-sm">
+      <p class="mt-2 text-sm dark:text-neutral-300">
         By using Datapack Hub, you agree to our <a
           href="/privacy"
           class="text-blue-500">privacy policy</a>

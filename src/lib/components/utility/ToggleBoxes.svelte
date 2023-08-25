@@ -32,9 +32,9 @@
   aria-checked="{clicked}"
   tabindex="0"
   class="{clicked
-    ? 'border-dph-orange hover:brightness-75 bg-dph-orange/40 dark:bg-dph-orange/20'
-    : 'hover:border-dph-orange dark:hover:border-dph-orange border-slate-400 bg-slate-300 dark:border-zinc-700 dark:bg-zinc-800'}
-    border-2 p-2 rounded-lg text-slate-950 dark:text-slate-100 select-none cursor-pointer transition-all"
+    ? 'border-dph-orange bg-dph-orange/40 hover:brightness-75 dark:bg-dph-orange/20'
+    : 'border-slate-400 bg-slate-300 hover:border-dph-orange dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-dph-orange'}
+    cursor-pointer select-none rounded-lg border-2 p-2 text-slate-950 transition-all dark:text-slate-100"
   on:click="{throttle({ interval: 300 }, toggleClicked)}"
   on:keypress="{event => (event.key == 'ENTER' ? toggleClicked : undefined)}">
   <p>

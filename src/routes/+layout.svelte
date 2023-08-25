@@ -54,7 +54,7 @@
     {:else}
       <div class="fixed left-0 top-0 flex h-screen w-screen bg-zinc-900">
         <div
-          class="relative m-auto w-2/3 md:w-1/2 lg:w-1/3 justify-self-center rounded-xl bg-zinc-800 p-2 align-middle shadow-md shadow-black/25">
+          class="relative m-auto w-2/3 justify-self-center rounded-xl bg-zinc-800 p-2 align-middle shadow-md shadow-black/25 md:w-1/2 lg:w-1/3">
           <div class="flex items-center justify-center">
             <img
               src="/logos/dph.svg"
@@ -106,10 +106,10 @@
           </span>
         </div>
         <CasualLine />
-        <p class="text-lg text-white font-bold">
+        <p class="text-lg font-bold text-white">
           Datapack Hub is down for maintenance!
         </p>
-        <p class="text-white mb-2">
+        <p class="mb-2 text-white">
           Come hang out and check site status on our <a
             href="https://discord.gg/aEXsdjjdu4"
             class=" text-sky-200">Discord</a

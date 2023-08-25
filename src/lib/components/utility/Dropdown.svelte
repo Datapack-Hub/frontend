@@ -20,16 +20,16 @@
   }
 </script>
 
-<div class="w-max transition-all relative">
+<div class="relative w-max transition-all">
   <button
-    class="h-11 text-left p-2 bg-zinc-800 dark:text-slate-100 {expand
+    class="h-11 bg-zinc-800 p-2 text-left dark:text-slate-100 {expand
       ? 'rounded-tr-lg'
       : 'rounded-r-lg'}"
     on:keydown="{() => (expand = !expand)}"
     on:click="{() => (expand = !expand)}"
     style="width: {longest[0].length + 5}ch;">{selected}</button>
   <button
-    class="absolute right-2 top-1/2 -translate-y-1/2 dark:text-slate-100 text-sm {expand
+    class="absolute right-2 top-1/2 -translate-y-1/2 text-sm dark:text-slate-100 {expand
       ? 'rotate-180'
       : 'rotate-0'} transition-transform"
     on:keydown="{() => (expand = !expand)}"
@@ -37,12 +37,12 @@
   {#if expand}
     <ul
       out:fade="{{ duration: 100, delay: 0 }}"
-      class="border-2 border-zinc-700 last:rounded-b-lg p-1 bg-zinc-800 absolute z-30"
+      class="absolute z-30 border-2 border-zinc-700 bg-zinc-800 p-1 last:rounded-b-lg"
       style="width: {longest[0].length + 5}ch;">
       {#each options as opt, i}
         <li>
           <button
-            class="hover:bg-dph-orange rounded-[4px] cursor-pointer dark:text-slate-100 w-full p-2 text-left"
+            class="w-full cursor-pointer rounded-[4px] p-2 text-left hover:bg-dph-orange dark:text-slate-100"
             on:click="{() => chooseOption(i)}">{opt}</button>
         </li>
       {/each}

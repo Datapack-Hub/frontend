@@ -276,7 +276,7 @@
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="py-8 md:py-0 text-center text-5xl font-bold text-slate-950 dark:text-slate-100 md:text-start md:text-4xl lg:text-4xl">
+      class="py-8 text-center text-5xl font-bold text-slate-950 dark:text-slate-100 md:py-0 md:text-start md:text-4xl lg:text-4xl">
       Edit <span class="text-dph-orange">{data.project?.title}</span>
     </h1>
     {#if data.project?.mod_message}
@@ -305,17 +305,17 @@
       </div>
       {#if ["draft", "unpublished", "disabled"].includes(data.project?.status ?? "draft")}
         <button
-          class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-green-600"
+          class="button-base flex items-center space-x-1 bg-green-600 text-slate-950 dark:text-slate-100"
           on:click="{() => publishModal.open()}"
           ><IconTick /><span>Publish Project</span></button>
       {:else if data.project?.status == "live"}
         <button
-          class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-zinc-600"
+          class="button-base flex items-center space-x-1 bg-zinc-600 text-slate-950 dark:text-slate-100"
           on:click="{() => draftModal.open()}"
           ><IconDraft /><span>Draft submission</span></button>
       {/if}
       <button
-        class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-red-600"
+        class="button-base flex items-center space-x-1 bg-red-600 text-slate-950 dark:text-slate-100"
         on:click="{() => deleteModal.open()}"><IconDelete /></button>
     </div>
 
@@ -323,16 +323,16 @@
     <div use:autoAnimate>
       {#if activePage == "details"}
         <div
-          class="grid grid-cols-2 lg:grid-cols-3 gap-2 rounded-xl p-2 text-center align-middle md:text-start space-y-2 bg-slate-200 dark:bg-zinc-800">
+          class="grid grid-cols-2 gap-2 space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-zinc-800 md:text-start lg:grid-cols-3">
           <div
-            class="flex items-center justify-between space-x-0 md:space-x-2 flex-col md:flex-row col-span-2 xl:col-span-1">
+            class="col-span-2 flex flex-col items-center justify-between space-x-0 md:flex-row md:space-x-2 xl:col-span-1">
             <div
-              class="bg-slate-300 dark:bg-zinc-700 h-full w-1/3 md:w-auto aspect-square justify-center rounded-xl dark:text-white">
-              <label class="w-full h-full flex items-center justify-center">
+              class="aspect-square h-full w-1/3 justify-center rounded-xl bg-slate-300 dark:bg-zinc-700 dark:text-white md:w-auto">
+              <label class="flex h-full w-full items-center justify-center">
                 <img
                   src="{iconImg}"
                   alt="Your Icon"
-                  class="aspect-square overflow-clip w-full h-full rounded-xl {iconValue
+                  class="aspect-square h-full w-full overflow-clip rounded-xl {iconValue
                     ? 'block'
                     : 'hidden'}" />
                 <input
@@ -346,7 +346,7 @@
               </label>
             </div>
             <div class="w-full">
-              <p class="text-slate-950 dark:text-slate-100 mb-2">Title</p>
+              <p class="mb-2 text-slate-950 dark:text-slate-100">Title</p>
               <input
                 type="text"
                 placeholder="Super Cool Datapack"
@@ -357,21 +357,21 @@
             </div>
           </div>
 
-          <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
+          <p class="col-span-3 pt-3 text-slate-950 dark:text-slate-100">
             Summary
           </p>
           <textarea
             placeholder="A short description of your pack"
             maxlength="200"
             bind:value="{descValue}"
-            class="input resize-none h-32 col-span-2"></textarea>
-          <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
+            class="input col-span-2 h-32 resize-none"></textarea>
+          <p class="col-span-3 pt-3 text-slate-950 dark:text-slate-100">
             Description <a
               href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
               class="text-sky-500">(supports markdown)</a>
           </p>
           <MarkdownEditor
-            classes="resize-none h-64 col-span-2"
+            classes="col-span-2 h-64 resize-none"
             bind:content="{bodyValue}" />
           <!-- <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
             CC Licence (click to select)
@@ -433,11 +433,11 @@
                 placeholder="https://example.com/my-custom-licence.md" />
             </div>
           </div> -->
-          <p class="text-slate-950 dark:text-slate-100 col-span-3">
+          <p class="col-span-3 text-slate-950 dark:text-slate-100">
             Categories
           </p>
           <div
-            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 rounded-lg col-span-2">
+            class="col-span-2 grid grid-cols-2 gap-2 rounded-lg md:grid-cols-3 lg:grid-cols-4">
             {#each categories as cat}
               <ToggleBoxes
                 value="{cat}"
@@ -446,16 +446,16 @@
             {/each}
           </div>
           <div class="col-span-3"></div>
-          <Button classes="col-span-3 w-fit mt-4" click="{update}" wait="{true}"
+          <Button classes="col-span-3 mt-4 w-fit" click="{update}" wait="{true}"
             >Update Project</Button>
         </div>
         <!-- VERSIONS-->
       {:else if activePage == "versions"}
-        <div class="bg-slate-200 dark:bg-zinc-800 p-2 rounded-xl">
-          <div class="text-center align-middle md:text-start w-full">
+        <div class="rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
+          <div class="w-full text-center align-middle md:text-start">
             {#if createVersion == false}
               <div class="my-2 mb-4">
-                <p class="text-slate-950 dark:text-slate-100 mb-4">
+                <p class="mb-4 text-slate-950 dark:text-slate-100">
                   Press the button below to upload a version of your pack, it
                   will move on automatically
                 </p>
@@ -515,7 +515,7 @@
                 </div>
 
                 <p
-                  class="align-middle text-slate-950 dark:text-slate-100 mt-4 mb-2">
+                  class="mb-2 mt-4 align-middle text-slate-950 dark:text-slate-100">
                   Changelog <a
                     href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
                     class="text-sky-500">(supports markdown!)</a>
@@ -525,11 +525,11 @@
                   classes="h-36 w-full md:w-3/4" />
 
                 <p
-                  class="align-middle text-slate-950 dark:text-slate-100 mt-8 mb-2">
+                  class="mb-2 mt-8 align-middle text-slate-950 dark:text-slate-100">
                   Compatible Minecraft Versions
                 </p>
                 <div
-                  class="grid grid-cols-2 md:grid-cols-3 gap-2 rounded-lg col-span-2">
+                  class="col-span-2 grid grid-cols-2 gap-2 rounded-lg md:grid-cols-3">
                   <MultiSelect
                     options="{minecraftVersions}"
                     minSelect="{1}"
@@ -570,7 +570,7 @@
                 </div> -->
                 <label
                   for="v_rp"
-                  class="align-middle text-slate-950 dark:text-slate-100 mt-4 button-boring">
+                  class="button-boring mt-4 align-middle text-slate-950 dark:text-slate-100">
                   <IconUpload class="inline-block align-text-top" /> Resource Pack
                   Download (optional)
                 </label>
@@ -580,7 +580,7 @@
                   id="v_rp"
                   name="v_rp"
                   class="hidden" />
-                <div class="mt-2 mb-4">
+                <div class="mb-4 mt-2">
                   <input name="squash" id="squash" type="checkbox" />
                   <label
                     for="squash"
@@ -610,7 +610,7 @@
     By publishing this project, you agree that it follows the rules.
   </p>
   <button
-    class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-green-600"
+    class="button-base flex items-center space-x-1 bg-green-600 text-slate-950 dark:text-slate-100"
     on:click="{publish}"><IconTick /><span>Publish Project</span></button>
 </Modal>
 
@@ -624,7 +624,7 @@
     submission at any point.
   </p>
   <button
-    class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-zinc-600"
+    class="button-base flex items-center space-x-1 bg-zinc-600 text-slate-950 dark:text-slate-100"
     on:click="{draft}"><IconDraft /><span>Draft submission</span></button>
 </Modal>
 
@@ -638,7 +638,7 @@
     contact a staff member.
   </p>
   <button
-    class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-red-600"
+    class="button-base flex items-center space-x-1 bg-red-600 text-slate-950 dark:text-slate-100"
     on:click="{remove}"
     ><IconDraft /><span
       >I confirm I understand the above. Delete submission</span

@@ -43,18 +43,18 @@
 
 <main
   id="main-content"
-  class="flex h-screen w-full flex-col items-center justify-center bg-slate-50 transition-colors dark:bg-zinc-900 md:flex-row md:justify-start px-4 sm:px-8 md:px-16 lg:px-24">
+  class="flex h-screen w-full flex-col items-center justify-center bg-slate-50 px-4 transition-colors dark:bg-zinc-900 sm:px-8 md:flex-row md:justify-start md:px-16 lg:px-24">
   <p
     class="mb-8 w-full text-center font-console text-8xl font-bold text-slate-950 dark:text-white md:mb-0 md:w-1/2 md:text-9xl lg:text-[10rem] xl:text-[12rem]">
     {$page.status}
   </p>
   <div class="w-full md:w-1/2">
     <p
-      class="mb-6 text-center font-console text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-950 dark:text-white md:text-left">
+      class="mb-6 text-center font-console text-4xl font-bold text-slate-950 dark:text-white md:text-left md:text-5xl lg:text-6xl xl:text-7xl">
       {$page.error?.message}
     </p>
     <p
-      class="text-center md:text-left text-lg text-slate-950/40 dark:text-white/40 md:text-xl lg:text-2xl">
+      class="text-center text-lg text-slate-950/40 dark:text-white/40 md:text-left md:text-xl lg:text-2xl">
       {message}
     </p>
   </div>

@@ -3,7 +3,7 @@
   let hello = "Downloads";
 </script>
 
-<main class="flex w-full h-screen items-center justify-center">
+<main class="flex h-screen w-full items-center justify-center">
   <Dropdown
     bind:selected="{hello}"
     options="{['Hello', 'World', 'UwU', 'Downloads', 'Updated']}" />

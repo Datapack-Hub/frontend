@@ -75,11 +75,11 @@
 {#if visible}
   {#key comment}
     <div
-      class="group dark:bg-zinc-900 p-2 rounded-xl w-full flex space-x-2 relative">
+      class="group relative flex w-full space-x-2 rounded-xl p-2 dark:bg-zinc-900">
       <img
         src="{comment.author.profile_icon}&size=64"
         alt="{comment.author.username}'s profile"
-        class="rounded-full h-12" />
+        class="h-12 rounded-full" />
       <div class="w-full">
         <div class="flex items-baseline space-x-1">
           <a
@@ -95,12 +95,12 @@
         {#if comment.replies.length > 0}
           {#if !showReplies}
             <button
-              class="text-blue-400 font-bold mt-1 flex items-center space-x-1 cursor-pointer"
+              class="mt-1 flex cursor-pointer items-center space-x-1 font-bold text-blue-400"
               on:click="{() => (showReplies = true)}"
               ><IconExpand /><span>Show Replies</span></button>
           {:else}
             <button
-              class="text-blue-400 font-bold mt-1 flex items-center space-x-1 cursor-pointer"
+              class="mt-1 flex cursor-pointer items-center space-x-1 font-bold text-blue-400"
               on:click="{() => (showReplies = false)}"
               ><IconDexpand /><span>Hide Replies</span></button>
             <div>
@@ -111,21 +111,21 @@
               </ul>
               {#if $authed}
                 <form
-                  class="flex items-center space-x-2 mt-3"
+                  class="mt-3 flex items-center space-x-2"
                   on:submit|preventDefault="{sendReply}">
                   <img
                     src="{$user.profile_icon}"
                     alt="Your profile"
-                    class="rounded-full h-8" />
+                    class="h-8 rounded-full" />
                   <input
                     bind:value="{replyMessage}"
                     type="text"
                     required
-                    class="p-1 rounded-md dark:bg-zinc-800 px-2 dark:text-white focus:transition-all w-1/2 md:w-full text-sm md:text-base"
+                    class="w-1/2 rounded-md p-1 px-2 text-sm focus:transition-all dark:bg-zinc-800 dark:text-white md:w-full md:text-base"
                     placeholder="Leave a reply" />
                   <button
                     type="submit"
-                    class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50"
+                    class="rounded-lg bg-dph-orange p-1 px-2 text-white hover:scale-102 disabled:bg-opacity-50"
                     disabled="{wait}">Post</button>
                 </form>
               {/if}
@@ -133,33 +133,33 @@
           {/if}
         {:else if $authed}
           <form
-            class="flex items-center space-x-2 mt-3"
+            class="mt-3 flex items-center space-x-2"
             on:submit|preventDefault="{sendReply}">
             <img
               src="{$user.profile_icon}"
               alt="Your profile"
-              class="rounded-full h-8" />
+              class="h-8 rounded-full" />
             <input
               bind:value="{replyMessage}"
               type="text"
               required
-              class="p-1 rounded-md dark:bg-zinc-800 px-2 dark:text-white focus:transition-all w-1/2 md:w-full text-sm md:text-base"
+              class="w-1/2 rounded-md p-1 px-2 text-sm focus:transition-all dark:bg-zinc-800 dark:text-white md:w-full md:text-base"
               placeholder="Leave the first reply" />
             <button
               type="submit"
-              class="rounded-lg p-1 px-2 text-white bg-dph-orange hover:scale-102 disabled:bg-opacity-50"
+              class="rounded-lg bg-dph-orange p-1 px-2 text-white hover:scale-102 disabled:bg-opacity-50"
               disabled="{wait}">Post</button>
           </form>
         {/if}
       </div>
       {#if $user.id == comment.author.id || ["moderator", "admin"].includes($user.role)}
         <div
-          class="right-2 top-2 p-1 text-zinc-400 opacity-0 hover:opacity-100 text-sm flex space-x-2 items-start absolute">
-          <button class="flex space-x-1 items-center" aria-label="Edit comment">
+          class="absolute right-2 top-2 flex items-start space-x-2 p-1 text-sm text-zinc-400 opacity-0 hover:opacity-100">
+          <button class="flex items-center space-x-1" aria-label="Edit comment">
             <IconEdit />
           </button>
           <button
-            class="flex space-x-1 items-center"
+            class="flex items-center space-x-1"
             on:click="{deleteReply}"
             aria-label="Delete comment">
             <IconDelete />

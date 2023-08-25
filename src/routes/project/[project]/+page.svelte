@@ -273,14 +273,14 @@
   id="main-content"
   class=" bg-slate-50 px-0 pb-64 transition-all dark:bg-zinc-900 sm:px-8 md:px-16 lg:px-24">
   <div class="md:pt-20"></div>
-  <div class="flex flex-col lg:flex-row w-full px-4">
+  <div class="flex w-full flex-col px-4 lg:flex-row">
     {#if data.project && data.versions}
       <!--Project Meta-->
       <ProjectInfo
         project="{data.project}"
         is_new="{data.is_new == '1' ? true : false}" />
       <!--Main-->
-      <div use:autoAnimate class="w-full mt-4 lg:w-3/4 lg:mt-0">
+      <div use:autoAnimate class="mt-4 w-full lg:mt-0 lg:w-3/4">
         <!--Buttons-->
         <div class="mb-2 flex items-center justify-between">
           <div class="space-x-1">
@@ -309,7 +309,7 @@
             {#if $user.id == data.project?.author.id}
               <a
                 aria-label="Edit"
-                class="button-base text-slate-950 dark:text-slate-100 ml-auto flex items-center space-x-1"
+                class="button-base ml-auto flex items-center space-x-1 text-slate-950 dark:text-slate-100"
                 href="/project/{data.project?.url}/edit">
                 <IconPencil /><span class="hidden md:block">Edit</span>
               </a>
@@ -317,7 +317,7 @@
             {#if $user.id != data.project?.author.id && status == "live"}
               <button
                 aria-label="Report"
-                class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1"
+                class="button-base flex items-center space-x-1 text-slate-950 dark:text-slate-100"
                 on:click="{() => {
                   reportModal.open();
                 }}"><IconReport /></button>
@@ -326,13 +326,13 @@
               {#if status == "publish_queue" || status == "review_queue"}
                 <button
                   aria-label="Approve"
-                  class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-green-600"
+                  class="button-base flex items-center space-x-1 bg-green-600 text-slate-950 dark:text-slate-100"
                   on:click="{approve}"
                   use:tippy="{{ content: 'Approve', placement: 'bottom' }}"
                   ><IconTick /><!--<span class="hidden md:block">Approve</span>--></button>
                 <button
                   aria-label="Request Changes"
-                  class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1 bg-yellow-600"
+                  class="button-base flex items-center space-x-1 bg-yellow-600 text-slate-950 dark:text-slate-100"
                   on:click="{() => {
                     moderationModalPage = 'disable';
                     moderateModal.open();
@@ -345,7 +345,7 @@
             >--></button>
                 <button
                   aria-label="Deny"
-                  class="button-base text-slate-100 flex items-center space-x-1 bg-red-600"
+                  class="button-base flex items-center space-x-1 bg-red-600 text-slate-100"
                   on:click="{() => {
                     moderationModalPage = 'delete';
                     moderateModal.open();
@@ -353,7 +353,7 @@
                   use:tippy="{{ content: 'Deny', placement: 'bottom' }}"
                   ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>
                 <button
-                  class="button-base text-slate-950 dark:text-slate-100 space-x-1"
+                  class="button-base space-x-1 text-slate-950 dark:text-slate-100"
                   aria-label="Moderate"
                   on:click="{() => {
                     moderateModal.open();
@@ -364,7 +364,7 @@
               {#if status == "live"}
                 <button
                   aria-label="Feature"
-                  class="button-base text-slate-950 dark:text-slate-100 flex items-center space-x-1"
+                  class="button-base flex items-center space-x-1 text-slate-950 dark:text-slate-100"
                   on:click="{() => {
                     featureModal.open();
                   }}"
@@ -373,12 +373,12 @@
               {/if}
             {/if}
             <Button label="Download" click="{() => (activePage = 'download')}">
-              <span class="lg:block hidden"> Download </span>
+              <span class="hidden lg:block"> Download </span>
               <IconDownload class="block lg:hidden" />
             </Button>
             {#if moderatorOrAbove($roleInfo) && !(status == "publish_queue" || status == "review_queue")}
               <button
-                class="button-base text-slate-100 space-x-1 bg-red-600"
+                class="button-base space-x-1 bg-red-600 text-slate-100"
                 aria-label="Moderate"
                 on:click="{() => {
                   moderateModal.open();
@@ -393,30 +393,30 @@
 
         {#if status == "deleted"}
           <div
-            class="moderation rounded-xl p-2 mb-2 flex items-center"
+            class="moderation mb-2 flex items-center rounded-xl p-2"
             bind:this="{del}">
-            <p class="w-full leading-tight dark:text-white flex-grow m-1">
+            <p class="m-1 w-full flex-grow leading-tight dark:text-white">
               <b>This project is deleted.</b> Only staff can view the project. To
               restore the project, click the restore button.
             </p>
             <button
-              class="bg-dph-orange rounded-md p-1 px-2 text-white"
+              class="rounded-md bg-dph-orange p-1 px-2 text-white"
               on:click="{() => moderate('restore')}">Restore</button>
           </div>
         {:else if status == "review_queue" || status == "publish_queue"}
           <div
-            class="moderation rounded-xl p-2 mb-2 flex items-center"
+            class="moderation mb-2 flex items-center rounded-xl p-2"
             bind:this="{del}">
-            <p class="w-full leading-tight dark:text-white flex-grow m-1">
+            <p class="m-1 w-full flex-grow leading-tight dark:text-white">
               <b>This project is awaiting review.</b> A staff member will review
               your project before it goes public.
             </p>
           </div>
         {:else if status == "disabled"}
           <div
-            class="moderation rounded-xl p-2 mb-2 flex items-center"
+            class="moderation mb-2 flex items-center rounded-xl p-2"
             bind:this="{del}">
-            <p class="w-full leading-tight dark:text-white flex-grow m-1">
+            <p class="m-1 w-full flex-grow leading-tight dark:text-white">
               <b>This project is disabled.</b> Please read the mod message, and fix
               your project before it goes live.
             </p>
@@ -424,10 +424,10 @@
         {/if}
         {#if activePage == "description"}
           <div class="w-full rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
-            <p class="w-full leading-tight break-words">
+            <p class="w-full break-words leading-tight">
               <MarkdownComponent
                 source="{data.project.body}"
-                classes="prose-img:my-0 prose-p:my-0 prose-headings:mb-2 prose-ul:my-3" />
+                classes="prose-headings:mb-2 prose-p:my-0 prose-ul:my-3 prose-img:my-0" />
             </p>
           </div>
         {:else if activePage == "versions"}
@@ -439,13 +439,13 @@
               </button>
             </div>
             {#if data.versions?.length != 0}
-              <div class="flex space-x-2 w-full items-center dark:text-white">
+              <div class="flex w-full items-center space-x-2 dark:text-white">
                 <p class="mr-2">Search by Minecraft version:</p>
                 <MultiSelect
                   bind:selected="{selectedVersions}"
                   options="{minecraftVersions}" />
               </div>
-              <div class="mx-3 flex space-x-2 mt-4">
+              <div class="mx-3 mt-4 flex space-x-2">
                 <h2
                   class="w-1/3 text-xl font-black text-slate-950 dark:text-white">
                   Name
@@ -483,7 +483,7 @@
               </div>
               {#if data.versions?.length != 0}
                 <p class="dark:text-slate-100">Select a Minecraft version:</p>
-                <div class="grid grid-cols-3 grid-rows-auto gap-2">
+                <div class="grid-rows-auto grid grid-cols-3 gap-2">
                   {#each minecraftVersions.reverse() ?? [] as v}
                     {#if stitchedVersions.includes(v)}
                       {@const mcVersions = data.project?.latest_version
@@ -493,7 +493,7 @@
                         : []}
                       <button
                         data-test-btn="{v}"
-                        class="bg-slate-300 dark:bg-zinc-700 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2
+                        class="flex cursor-pointer items-center space-x-2 rounded-md bg-slate-300 p-2 transition-all hover:scale-102 dark:bg-zinc-700
                   {mcVersions.includes(v)
                           ? ' dark:text-slate-100'
                           : ' text-red-500'}"
@@ -502,7 +502,7 @@
                           <IconAlert />
                         {/if}
                         <div
-                          class="font-bold flex-grow flex items-center space-x-2">
+                          class="flex flex-grow items-center space-x-2 font-bold">
                           <p>{v}</p>
                           {#if mcVersions.includes(v)}
                             <p class="font-thin italic">
@@ -515,16 +515,16 @@
                     {/if}
                   {/each}
                   <button
-                    class="bg-zinc-600 p-2 rounded-md hover:scale-102 transition-all cursor-pointer flex items-center space-x-2 text-white"
+                    class="flex cursor-pointer items-center space-x-2 rounded-md bg-zinc-600 p-2 text-white transition-all hover:scale-102"
                     on:click="{() => (activePage = 'versions')}">
                     <div
-                      class="font-bold flex-grow flex items-center space-x-2">
+                      class="flex flex-grow items-center space-x-2 font-bold">
                       <p>Show All Versions</p>
                     </div>
                     <IconRight />
                   </button>
                 </div>
-                <div class="flex space-x-1 items-center mt-2 text-zinc-500">
+                <div class="mt-2 flex items-center space-x-1 text-zinc-500">
                   <IconAlert />
                   <p>means the datapack version is outdated</p>
                 </div>
@@ -541,7 +541,7 @@
             </div>
             {#if matches.length > 0}
               <div class="rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
-                <p class="text-white MB-6">
+                <p class="MB-6 text-white">
                   Latest version for {pickedVersion}:
                 </p>
                 <ul use:autoAnimate class="space-y-2">
@@ -552,7 +552,7 @@
                     mcVersion="{pickedVersion}" />
                 </ul>
                 <p
-                  class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-400">
+                  class="text-md mt-2 flex items-center space-x-1 pr-1 text-sky-400">
                   <IconFiles />
                   <button
                     on:click="{() => (activePage = 'versions')}"
@@ -585,7 +585,7 @@
                       disabled="{commentSending}">Post</button>
                   </form>
                 {:else}
-                  <p class="text-white mt-1 mb-3 ml-1">
+                  <p class="mb-3 ml-1 mt-1 text-white">
                     <b>Sign in</b> to post a comment or reply
                   </p>
                 {/if}
@@ -634,7 +634,7 @@
       on:click="{() => (moderationModalPage = 'write note')}"
       >Write Note</button>
     <button
-      class="button-base text-slate-950 dark:text-slate-100 bg-zinc-900"
+      class="button-base bg-zinc-900 text-slate-950 dark:text-slate-100"
       on:click="{() => goto('/project/' + data.project?.url + '/edit')}"
       >Edit Submission</button>
   </div>
@@ -642,7 +642,7 @@
     Moderation Note
   </p>
   <textarea
-    class="input w-full h-48 resize-none"
+    class="input h-48 w-full resize-none"
     placeholder="Write a helpful message explaining why they are being moderated. Include evidence (links etc) if applicable. Markdown is supported"
     id="description"
     maxlength="200"

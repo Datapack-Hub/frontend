@@ -35,12 +35,12 @@
 
 {#if visible}
   <li
-    class="w-full md:w-2/3 {notification?.type}-background testNotif rounded-xl p-4 relative">
+    class="w-full md:w-2/3 {notification?.type}-background testNotif relative rounded-xl p-4">
     <div class="flex-auto">
       <div class="flex items-center gap-2">
         {#if notification?.read == 0}<IconUnread
-            class="text-xl font-bold dark:text-white p-0.5" />{/if}
-        <h1 class="text-xl font-bold dark:text-white mr-4">
+            class="p-0.5 text-xl font-bold dark:text-white" />{/if}
+        <h1 class="mr-4 text-xl font-bold dark:text-white">
           {notification?.message}
         </h1>
       </div>
@@ -48,7 +48,7 @@
     </div>
     <button
       title="Dismiss"
-      class="closeButton absolute right-3.5 top-2.5 p-0.5 rounded-full text-slate-950 dark:text-white"
+      class="closeButton absolute right-3.5 top-2.5 rounded-full p-0.5 text-slate-950 dark:text-white"
       on:click="{remove}"><IconX /></button>
   </li>
 {/if}

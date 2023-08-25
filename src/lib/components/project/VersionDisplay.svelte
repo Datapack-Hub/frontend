@@ -169,11 +169,11 @@
 </script>
 
 <div
-  class="rounded-xl bg-slate-300 p-2 last:mb-0 first:dark:bg-orange-300/10 dark:bg-slate-50/10 relative">
+  class="relative rounded-xl bg-slate-300 p-2 last:mb-0 dark:bg-slate-50/10 first:dark:bg-orange-300/10">
   <div class="flex items-center space-x-2">
     <div class="flex items-center space-x-2">
       <button
-        class="text-xl font-bold text-slate-950 dark:text-white flex items-center space-x-1"
+        class="flex items-center space-x-1 text-xl font-bold text-slate-950 dark:text-white"
         on:click="{() => (expanded = !expanded)}">
         {#if !expanded}
           <IconFile />
@@ -217,12 +217,12 @@
     {/if}
   </div>
   {#if expanded}
-    <h2 class="dark:text-white mt-2">Changelog</h2>
-    <div class="w-full rounded-md bg-zinc-700/10 dark:bg-zinc-900/20 p-2 mb-2">
+    <h2 class="mt-2 dark:text-white">Changelog</h2>
+    <div class="mb-2 w-full rounded-md bg-zinc-700/10 p-2 dark:bg-zinc-900/20">
       <MarkdownComponent source="{version.description}" />
     </div>
     <h2 class="dark:text-white">Download this version:</h2>
-    <div class="flex flex-col max-w-fit">
+    <div class="flex max-w-fit flex-col">
       <Button
         click="{() => {
           openDownloadModal('datapack');
@@ -238,12 +238,12 @@
             openDownloadModal('resourcepack');
           }}"
           style="alt"
-          classes="flex items-center space-x-2 mt-2"
+          classes="mt-2 flex items-center space-x-2"
           ><IconRP />
           <p>Required Resourcepack</p></Button>
       {/if}
     </div>
-    <p class="flex mt-2 items-center space-x-1 pr-1 text-md text-sky-400">
+    <p class="text-md mt-2 flex items-center space-x-1 pr-1 text-sky-400">
       <IconInfo /><a href="/install">How to install a datapack</a>
     </p>
   {/if}

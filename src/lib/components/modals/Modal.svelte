@@ -23,7 +23,7 @@
 {#if visible}
   <div class="absolute">
     <div
-      class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu backdrop-blur-lg backdrop-brightness-75 overflow-y-auto">
+      class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu overflow-y-auto backdrop-blur-lg backdrop-brightness-75">
       <div
         in:fly="{{ x: -300, easing: quartOut }}"
         class="relative m-auto {wide
@@ -33,8 +33,8 @@
           : 'w-1/2'} justify-self-center">
         {#if title}
           <div
-            class="bg-slate-300 dark:bg-zinc-900 p-2 rounded-t-xl flex items-center">
-            <h2 class="dark:text-white font-bold text-lg">{title}</h2>
+            class="flex items-center rounded-t-xl bg-slate-300 p-2 dark:bg-zinc-900">
+            <h2 class="text-lg font-bold dark:text-white">{title}</h2>
             <div class="flex-grow"></div>
             <button
               class="cursor-pointer select-none font-black text-slate-950 dark:text-white"
@@ -42,7 +42,7 @@
           </div>
         {/if}
         <div
-          class="bg-slate-200 dark:bg-zinc-800 p-2 {title
+          class="bg-slate-200 p-2 dark:bg-zinc-800 {title
             ? 'rounded-b-xl'
             : 'rounded-xl'}">
           {#if !title}

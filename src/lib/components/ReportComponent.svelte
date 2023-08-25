@@ -32,7 +32,7 @@
 </script>
 
 <div
-  class="w-full items-center rounded-xl relative bg-slate-200 p-2 text-slate-950 dark:bg-zinc-800 dark:text-slate-100"
+  class="relative w-full items-center rounded-xl bg-slate-200 p-2 text-slate-950 dark:bg-zinc-800 dark:text-slate-100"
   bind:this="{me}">
   <div class="flex items-center">
     <a
@@ -59,7 +59,7 @@
         {report.project.title}
       </a>
       {#if visible}
-        <div class="flex space-x-2 text-md text-slate-950/40 dark:text-slate">
+        <div class="text-md dark:text-slate flex space-x-2 text-slate-950/40">
           <a
             href="/user/{report.project.author.username.toLowerCase()}"
             class="block dark:hover:text-slate-100">
@@ -85,9 +85,9 @@
       </p>
     </div>
   </div>
-  <div class="moderation mt-2 p-2 rounded-xl relative">
+  <div class="moderation relative mt-2 rounded-xl p-2">
     <b>Reported by {report.reporter.username}:</b>
-    <div class="moderation-hl px-2 py-1 rounded-lg">
+    <div class="moderation-hl rounded-lg px-2 py-1">
       <MarkdownComponent source="{report.message}" />
     </div>
     <button class="absolute right-0 top-0 p-2" on:click="{remove}"

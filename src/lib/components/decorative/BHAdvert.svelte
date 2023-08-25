@@ -7,14 +7,14 @@
     ? 'https://bisecthosting.com/silabear'
     : 'https://bisecthosting.com/flynecraft'}">
   <div
-    class="rounded-xl bg-[#03ddff] text-[#0d1129] p-2 dark:bg-[#0D1129] dark:text-white hover:scale-101 transition-all mb-2 flex space-x-2 items-center">
+    class="mb-2 flex items-center space-x-2 rounded-xl bg-[#03ddff] p-2 text-[#0d1129] transition-all hover:scale-101 dark:bg-[#0D1129] dark:text-white">
     <img
       src="/logos/bh.svg"
       alt="BisectHosting Logo"
       class="h-6"
       width="24"
       height="24" />
-    <p class="text-black dark:text-white text-sm">
+    <p class="text-sm text-black dark:text-white">
       Want to play Minecraft with friends? <b><u>Bisect Hosting</u></b> is the official
       reccomended Minecraft server host of Datapack Hub!
     </p>

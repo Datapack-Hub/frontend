@@ -37,11 +37,11 @@
 </script>
 
 {#if visible}
-  <li class="flex space-x-1 mt-3 relative w-full">
+  <li class="relative mt-3 flex w-full space-x-1">
     <img
       src="{reply.author.profile_icon}&size=32"
       alt="{reply.author}'s profile"
-      class="rounded-full h-6"
+      class="h-6 rounded-full"
       height="24"
       width="24" />
     <div>
@@ -72,9 +72,9 @@
             </button>
             {#if expanded}
               <div
-                class="absolute right-0 top-8 p-2 bg-zinc-600 rounded-lg space-y-1">
+                class="absolute right-0 top-8 space-y-1 rounded-lg bg-zinc-600 p-2">
                 <button
-                  class="flex items-center space-x-1 p-0.5 px-1 cursor-pointer rounded-lg hover:bg-zinc-600 text-xs"
+                  class="flex cursor-pointer items-center space-x-1 rounded-lg p-0.5 px-1 text-xs hover:bg-zinc-600"
                   on:click="{del}">
                   <IconDelete />
                   <p>Delete</p>
@@ -90,7 +90,7 @@
       </div>
       <MarkdownComponent
         source="{reply.message}"
-        classes="dark:text-neutral-200 text-sm" />
+        classes="text-sm dark:text-neutral-200" />
     </div>
   </li>
 {/if}
