@@ -88,7 +88,7 @@
     </div>
     <div class="flex items-center space-x-0 md:space-x-4 mt-4 md:mt-0">
       <div class="mt-2 sm:mt-0 md:flex space-x-1 items-center hidden">
-        <p class="dark:text-white text-center mr-2">Layout:</p>
+        <p class="dark:text-white text-center mr-2 hidden lg:block">Layout:</p>
         <button
           on:click="{() => {
             layout = 'list';
