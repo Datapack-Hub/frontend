@@ -27,7 +27,7 @@
       : 'rounded-r-lg'}"
     on:keydown="{() => (expand = !expand)}"
     on:click="{() => (expand = !expand)}"
-    style="width: {longest[0].length + 3}ch;">{selected}</button>
+    style="width: {longest[0].length + 5}ch;">{selected}</button>
   <button
     class="absolute right-2 top-1/2 -translate-y-1/2 dark:text-slate-100 text-sm {expand
       ? 'rotate-180'
@@ -38,7 +38,7 @@
     <ul
       out:fade="{{ duration: 100, delay: 0 }}"
       class="border-2 border-zinc-700 last:rounded-b-lg p-1 bg-zinc-800 absolute z-30"
-      style="width: {longest[0].length + 3}ch;">
+      style="width: {longest[0].length + 5}ch;">
       {#each options as opt, i}
         <li>
           <button

@@ -122,8 +122,8 @@
   class="bg-slate-50 transition-all dark:bg-zinc-900 h-full">
   <div class="py-12 md:py-0"></div>
   <section
-    class="flex h-fit md:h-[85vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-8 md:flex-row md:justify-between md:px-16 lg:px-24">
-    <div class="w-full md:w-3/5 lg:w-2/5 p-4">
+    class="flex h-fit md:h-[85vh] w-full flex-col items-center justify-start overflow-visible px-0 sm:px-4 md:flex-row md:justify-between md:px-8 lg:px-16">
+    <div class="w-full md:w-2/5 p-4">
       <div class="relative h-36 w-full">
         <h1
           id="indexText1"
