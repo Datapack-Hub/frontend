@@ -4,17 +4,17 @@
   import { fade } from "svelte/transition";
   import IconUp from "~icons/tabler/ChevronUp.svelte";
 
-  export let options: string[] = [];
+  export let options: string[];
   export let selected = "";
-  // export let arrowStyles = ""
+  export let expand = false;
+  export let selectedStyles = "";
 
-  let expand = false;
   let dispatch = createEventDispatcher();
 
-  $: longest = sort(options, i => i.length, true);
+  $: longest = sort(options, index => index.length, true);
 
-  function chooseOption(i: number) {
-    selected = options[i];
+  function chooseOption(index: number) {
+    selected = options[index];
     expand = false;
     dispatch("change", selected);
   }
@@ -22,9 +22,7 @@
 
 <div class="relative w-max transition-all">
   <button
-    class="h-11 bg-zinc-800 p-2 text-left dark:text-slate-100 {expand
-      ? 'rounded-tr-lg'
-      : 'rounded-r-lg'}"
+    class="{selectedStyles}"
     on:keydown="{() => (expand = !expand)}"
     on:click="{() => (expand = !expand)}"
     style="width: {longest[0].length + 5}ch;">{selected}</button>
@@ -39,11 +37,11 @@
       out:fade="{{ duration: 100, delay: 0 }}"
       class="absolute z-30 border-2 border-zinc-700 bg-zinc-800 p-1 last:rounded-b-lg"
       style="width: {longest[0].length + 5}ch;">
-      {#each options as opt, i}
+      {#each options as opt, index}
         <li>
           <button
             class="w-full cursor-pointer rounded-[4px] p-2 text-left hover:bg-dph-orange dark:text-slate-100"
-            on:click="{() => chooseOption(i)}">{opt}</button>
+            on:click="{() => chooseOption(index)}">{opt}</button>
         </li>
       {/each}
     </ul>

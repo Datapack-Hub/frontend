@@ -30,6 +30,7 @@
     "eslint": "^8.48.0",
     "eslint-plugin-security": "^1.7.1",
     "eslint-plugin-svelte": "^2.33.0",
+    "eslint-plugin-tailwindcss": "^3.13.0",
     "eslint-plugin-unicorn": "^48.0.1",
     "jszip": "^3.10.1",
     "nprogress": "^0.2.0",
@@ -57,7 +58,6 @@
   "type": "module",
   "dependencies": {
     "@tailwindcss/typography": "^0.5.9",
-    "eslint-plugin-tailwindcss": "^3.13.0",
     "postcss": "^8.4.28",
     "postcss-load-config": "^4.0.1",
     "svelte": "^4.2.0",

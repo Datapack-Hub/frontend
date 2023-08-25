@@ -9,7 +9,7 @@ module.exports = {
     'plugin:tailwindcss/recommended',
     'plugin:security/recommended'
   ],
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint',"tailwindcss"],
   ignorePatterns: ['*.cjs', 'node_modules'],
   overrides: [
     {
@@ -20,7 +20,13 @@ module.exports = {
     { files: ['*.ts', '*.svelte'], rules: { "no-undef": "off" } }
   ],
   settings: {
-    'svelte3/typescript': require('typescript')
+    'svelte3/typescript': require('typescript'),
+    tailwindcss: {
+      config: "./tailwind.config.cjs",
+      cssfiles: [
+        "src/**/*.postcss"
+      ]
+    }
   },
   parserOptions: {
     project: 'tsconfig.json',

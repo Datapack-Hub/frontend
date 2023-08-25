@@ -18,6 +18,7 @@
 
   export let data: PageData;
 
+  let dropdownOpen: boolean;
   let query: string;
   let sort = "Updated";
   let searchTime = 0;
@@ -77,12 +78,16 @@
       </div>
       <div class="mt-2 flex items-center sm:mt-0">
         <p
-          class="flex h-11 items-center rounded-l-lg bg-zinc-700 px-4 text-center dark:text-white">
+          class="flex h-11 items-center rounded-l-lg bg-slate-300 dark:bg-zinc-700 px-4 text-center dark:text-white">
           Sort By:
         </p>
         <Dropdown
           options="{['Updated', 'Downloads']}"
           bind:selected="{sort}"
+          bind:expand="{dropdownOpen}"
+          selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-2 text-left dark:text-slate-100 {dropdownOpen
+            ? 'rounded-tr-lg'
+            : 'rounded-r-lg'}"
           on:change="{resort}" />
       </div>
     </div>
@@ -95,8 +100,8 @@
             localStorage.setItem('preferred_layout', 'list');
           }}"
           class="h-8 w-8 rounded-md {layout === 'list'
-            ? 'bg-dph-orange'
-            : 'bg-dph-orange/25'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0">
+            ? 'bg-dph-orange text-white'
+            : 'bg-dph-orange/25 text-slate-950 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold sm:mt-0">
           <IconList /></button>
         <button
           on:click="{() => {
@@ -104,8 +109,8 @@
             localStorage.setItem('preferred_layout', 'grid');
           }}"
           class="h-8 w-8 rounded-md {layout === 'grid'
-            ? 'bg-dph-orange'
-            : 'bg-dph-orange/25'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0">
+            ? 'bg-dph-orange text-white'
+            : 'bg-dph-orange/25 text-slate-950 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0">
           <IconGrid /></button>
       </div>
       <div class="flex items-center space-x-1 sm:mt-0">
@@ -130,7 +135,7 @@
         {/if}
         <a
           href="/projects?page={data.page}"
-          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-white sm:mt-0"
           >{data.page}</a>
         {#if data.page + 1 <= data.pages}
           <a
@@ -149,7 +154,7 @@
   </div>
   <CasualLine />
   <div class="flex flex-col py-4">
-    {#if featured.length != 0}
+    {#if featured.length > 0}
       <p class="mx-2 mb-2 dark:text-slate-100">Featured Projects</p>
     {/if}
     <div
