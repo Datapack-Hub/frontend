@@ -75,10 +75,15 @@
           class="ml-2 text-slate-950 placeholder:text-slate-600 dark:placeholder:text-zinc-400 bg-slate-300 dark:bg-zinc-800 focus:outline-none dark:text-white"
           on:input="{search}" />
       </div>
-      <div
-        class="mt-2 sm:mt-0 flex items-center">
-        <p class="dark:text-white text-center h-11 flex items-center bg-zinc-700 px-4 rounded-l-lg">Sort By:</p>
-        <Dropdown options={["Updated","Downloads"]} bind:selected={sort} on:change={resort}/>
+      <div class="mt-2 sm:mt-0 flex items-center">
+        <p
+          class="dark:text-white text-center h-11 flex items-center bg-zinc-700 px-4 rounded-l-lg">
+          Sort By:
+        </p>
+        <Dropdown
+          options="{['Updated', 'Downloads']}"
+          bind:selected="{sort}"
+          on:change="{resort}" />
       </div>
     </div>
     <div class="flex items-center space-x-0 md:space-x-4 mt-4 md:mt-0">
@@ -147,7 +152,9 @@
     {#if featured.length != 0}
       <p class="mx-2 dark:text-slate-100 mb-2">Featured Projects</p>
     {/if}
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mx-2 mb-4" use:autoAnimate>
+    <div
+      class="grid grid-cols-1 lg:grid-cols-2 gap-2 mx-2 mb-4"
+      use:autoAnimate>
       {#each featured ?? [] as feat}
         <FeaturedProjectComponent project="{feat}" type="featured" />
       {/each}
