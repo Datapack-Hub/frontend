@@ -78,7 +78,7 @@
       </div>
       <div class="mt-2 flex items-center sm:mt-0">
         <p
-          class="flex h-11 items-center rounded-l-lg bg-slate-300 dark:bg-zinc-700 px-4 text-center dark:text-white">
+          class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
           Sort By:
         </p>
         <Dropdown
