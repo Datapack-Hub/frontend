@@ -105,81 +105,89 @@
           <UserModeration user="{data.profile}" />
         {/if}
       </div>
-      <div class="w-full md:w-2/5">
-        <p
-          class="text-center text-4xl font-bold text-slate-950 dark:text-white md:text-left md:text-3xl lg:text-4xl">
-          {data.profile?.username}
-          {#if moderatorOrAbove(data.role)}
-            <span
-              class="icon text-dph-orange"
-              use:tippy="{orangeVerifiedHover}">
-              <IconVerified />
-            </span>
-          {:else if data.profile?.role == "helper"}
-            <span class="icon text-blue-500" use:tippy="{blueVerifiedHover}">
-              <IconVerified />
-            </span>
-          {:else if data.profile?.role == "verified"}
-            <span
-              class="icon text-emerald-500"
-              use:tippy="{emeraldVerifiedHover}">
-              <IconVerified />
-            </span>
+      <div class="flex flex-col justify-between w-full md:w-2/5">
+        <div>
+
+          <p
+            class="text-center text-4xl font-bold text-slate-950 dark:text-white md:text-left md:text-3xl lg:text-4xl">
+            {data.profile?.username}
+            {#if moderatorOrAbove(data.role)}
+              <span
+                class="icon text-dph-orange"
+                use:tippy="{orangeVerifiedHover}">
+                <IconVerified />
+              </span>
+            {:else if data.profile?.role == "helper"}
+              <span class="icon text-blue-500" use:tippy="{blueVerifiedHover}">
+                <IconVerified />
+              </span>
+            {:else if data.profile?.role == "verified"}
+              <span
+                class="icon text-emerald-500"
+                use:tippy="{emeraldVerifiedHover}">
+                <IconVerified />
+              </span>
+            {/if}
+          </p>
+          <p
+            class="mt-1 text-center font-semibold text-slate-950 dark:text-white sm:text-base md:text-left md:text-lg">
+            {#if data.role?.name != "default"}
+              <span style="color: {data.role?.color};">
+                {#if data.role?.name == "nerd"}🤓
+                {:else if data.role?.name == "admin"}<img
+                    src="/logos/dph.svg"
+                    alt="logo"
+                    class="mr-1 inline-block"
+                    height="24"
+                    width="24" />Datapack Hub Team{:else}{title(
+                    data.role?.name
+                  )}{/if}
+              </span>
+            {/if}
+          </p>
+          {#if $authed && $user.id === data.profile?.id}
+            <Button
+              style="secondary"
+              click="/settings#profile"
+              classes="mt-3 flex w-fit items-center text-sm">
+              <IconSettings
+                width="16"
+                height="16"
+                class="float-left mr-1 stroke-blue-400" />
+              Profile Settings
+            </Button>
           {/if}
-        </p>
-        <p
-          class="mt-1 text-center font-semibold text-slate-950 dark:text-white sm:text-base md:text-left md:text-lg">
-          {#if data.role?.name != "default"}
-            <span style="color: {data.role?.color};">
-              {#if data.role?.name == "nerd"}🤓
-              {:else if data.role?.name == "admin"}<img
-                  src="/logos/dph.svg"
-                  alt="logo"
-                  class="mr-1 inline-block"
-                  height="24"
-                  width="24" />Datapack Hub Team{:else}{title(
-                  data.role?.name
-                )}{/if}
-            </span>
-          {/if}
-        </p>
-        {#if $authed && $user.id === data.profile?.id}
-          <Button
-            style="secondary"
-            click="/settings#profile"
-            classes="mt-3 flex w-fit items-center text-sm">
-            <IconSettings
-              width="16"
-              height="16"
-              class="float-left mr-1 stroke-blue-400" />
-            Profile Settings
-          </Button>
-        {/if}
-        <h2
-          class="mb-1 mt-4 w-full text-center dark:text-slate-100 md:text-left">
-          <IconTime class="mr-1 inline-block" /> <b class="mr-2">Joined: </b>we
-          forgor 🦆
-        </h2>
-        <h2 class="mb-1 text-center dark:text-slate-100 md:text-left">
-          <IconDL class="mr-1 inline-block" />
-          <b class="mr-2">Total Downloads: </b>{data.downloads}
-        </h2>
-        <h2
-          class="mb-1 mt-4 text-center text-lg font-bold dark:text-slate-100 md:text-left">
-          <IconBadge class="mr-1 inline-block" /> Badges
-        </h2>
-        <div
-          class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-300 p-3 dark:bg-zinc-800 md:justify-start">
-          {#if data.profile?.badges?.length != 0}
-            {#each data.profile?.badges ?? [] as badge}
-              <img
-                alt="{badge} badge"
-                src="/badges/{badge}.png"
-                class="h-8 w-8 rounded-lg lg:h-12 lg:w-12"
-                use:tippy="{badges.find(index => index.name == badge)
-                  ?.tippy}" />
-            {/each}
-          {/if}
+        </div>
+        <div>
+          <h2
+            class="mb-1 mt-4 w-full text-center dark:text-slate-100 md:text-left">
+            <IconTime class="mr-1 inline-block" /> <b class="mr-2">Joined: </b>we
+            forgor 🦆
+          </h2>
+          <h2 class="mb-1 text-center dark:text-slate-100 md:text-left">
+            <IconDL class="mr-1 inline-block" />
+            <b class="mr-2">Total Downloads: </b>{data.downloads}
+          </h2>
+        </div>
+        <div>
+
+          <h2
+            class="mb-1 mt-4 text-center text-lg font-bold dark:text-slate-100 md:text-left">
+            <IconBadge class="mr-1 inline-block" /> Badges
+          </h2>
+          <div
+            class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-300 p-3 dark:bg-zinc-800 md:justify-start">
+            {#if data.profile?.badges?.length != 0}
+              {#each data.profile?.badges ?? [] as badge}
+                <img
+                  alt="{badge} badge"
+                  src="/badges/{badge}.png"
+                  class="h-8 w-8 rounded-lg lg:h-12 lg:w-12"
+                  use:tippy="{badges.find(index => index.name == badge)
+                    ?.tippy}" />
+              {/each}
+            {/if}
+          </div>
         </div>
       </div>
       <span
