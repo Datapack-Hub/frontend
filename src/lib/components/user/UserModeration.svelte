@@ -177,7 +177,7 @@
       style="boring"
       click="{() => moderationModal.open()}"
       classes="mt-3 text-sm">
-      <IconShield width="16" height="16" class="inline-block mr-2" />
+      <IconShield width="16" height="16" class="mr-2 inline-block" />
       Moderate {user?.username}
     </Button>
   {/await}
