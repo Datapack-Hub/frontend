@@ -72,13 +72,13 @@
     <div class="mb-2 flex space-x-2">
       <Button
         style="base"
-        classes="{activePage === 'profile'
+        classes="dark:text-slate-100 {activePage === 'profile'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'profile')}">Profile</Button>
       <Button
         style="base"
-        classes="{activePage === 'account'
+        classes="dark:text-slate-100 {activePage === 'account'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'account')}">Account</Button>
