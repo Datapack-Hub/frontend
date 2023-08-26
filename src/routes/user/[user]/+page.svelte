@@ -81,7 +81,7 @@
   id="main-content"
   class="flex w-full flex-col items-center bg-slate-50 px-0 transition-all dark:bg-zinc-900 md:items-start md:px-16 md:pt-32 lg:flex-row lg:px-24">
   <div class="w-full rounded-lg p-3">
-    <div class="mb-4 flex h-auto flex-col gap-4 md:h-64 md:flex-row lg:gap-8">
+    <div class="mb-4 flex h-auto flex-col gap-4 md:h-[19.5rem] md:flex-row lg:gap-8">
       <div class="flex w-full flex-col items-center md:w-1/5">
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <img
@@ -103,6 +103,7 @@
         {#if moderatorOrAbove($roleInfo)}
           <UserModeration user="{data.profile}" />
         {/if}
+
       </div>
       <div class="w-full md:w-2/5">
         <p
@@ -142,6 +143,18 @@
             </span>
           {/if}
         </p>
+        {#if $authed && $user.id === data.profile?.id}
+          <Button
+            style="secondary"
+            click="/settings#profile"
+            classes="mt-3 flex text-sm w-fit items-center">
+            <IconSettings
+              width="16"
+              height="16"
+              class="float-left mr-1 stroke-blue-400" />
+            Profile Settings
+          </Button>
+        {/if}
         <h2
           class="mb-1 mt-4 w-full text-center dark:text-slate-100 md:text-left">
           <IconTime class="mr-1 inline-block" /> <b class="mr-2">Joined: </b>we
@@ -174,18 +187,6 @@
         <MarkdownComponent source="{data.profile?.bio}" />
       </span>
     </div>
-    {#if $authed && $user.id === data.profile?.id}
-      <Button
-        style="secondary"
-        click="/settings#profile"
-        classes="mt-4 flex w-fit items-center">
-        <IconSettings
-          width="24"
-          height="24"
-          class="float-left mr-2 stroke-blue-400" />
-        Profile Settings
-      </Button>
-    {/if}
     <div class="px-3 pt-16">
       <div class="mb-4 flex items-center">
         <h1
