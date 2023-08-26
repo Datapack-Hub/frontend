@@ -2,7 +2,6 @@
   import Button from "$lib/components/decorative/Button.svelte";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import IconVerified from "$lib/components/decorative/IconVerified.svelte";
-  import IconPlus from "~icons/tabler/Plus.svelte";
   import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import UserModeration from "$lib/components/user/UserModeration.svelte";
@@ -10,14 +9,14 @@
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import { authed, roleInfo, user } from "$lib/globals/stores";
   import { title } from "radash";
+  import { toast } from "svelte-sonner";
   import tippy from "sveltejs-tippy";
   import IconBadge from "~icons/tabler/Award.svelte";
   import IconTime from "~icons/tabler/Clock.svelte";
   import IconDL from "~icons/tabler/Download.svelte";
-  import IconInfo from "~icons/tabler/InfoCircle.svelte";
+  import IconPlus from "~icons/tabler/Plus.svelte";
   import IconSettings from "~icons/tabler/Settings.svelte";
   import type { PageData } from "./$types";
-  import { toast } from "svelte-sonner";
 
   export let data: PageData;
 
@@ -59,15 +58,6 @@
       followed = !followed;
     }
   }
-
-  //  {:else if data.profile?.role == "helper"}<span
-  //           class="icon text-blue-500"
-  //           use:tippy="{blueVerifiedHover}"><IconVerified /></span
-  //         >{:else if data.profile?.role == "verified"}<span
-  //           class="icon text-emerald-500"
-  //           use:tippy="{emeraldVerifiedHover}"
-  //           ><IconVerified />
-  //         </span>
 </script>
 
 <svelte:head>
@@ -91,8 +81,8 @@
   id="main-content"
   class="flex w-full flex-col items-center bg-slate-50 px-0 transition-all dark:bg-zinc-900 md:items-start md:px-16 md:pt-32 lg:flex-row lg:px-24">
   <div class="w-full rounded-lg p-3">
-    <div class="mb-4 flex flex-col md:flex-row gap-4 lg:gap-8 h-auto md:h-64">
-      <div class="flex w-full md:w-1/5 flex-col items-center">
+    <div class="mb-4 flex h-auto flex-col gap-4 md:h-64 md:flex-row lg:gap-8">
+      <div class="flex w-full flex-col items-center md:w-1/5">
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <img
           src="{data.profile?.profile_icon}&size=256"
@@ -110,13 +100,13 @@
           click="{follow}"
           ><IconPlus />
           {#if followed}Unfollow{:else}Follow{/if}</Button>
-            {#if moderatorOrAbove($roleInfo)}
-      <UserModeration user="{data.profile}" />
-    {/if}
+        {#if moderatorOrAbove($roleInfo)}
+          <UserModeration user="{data.profile}" />
+        {/if}
       </div>
       <div class="w-full md:w-2/5">
         <p
-          class="text-center md:text-left text-4xl font-bold text-slate-950 dark:text-white md:text-3xl lg:text-4xl">
+          class="text-center text-4xl font-bold text-slate-950 dark:text-white md:text-left md:text-3xl lg:text-4xl">
           {data.profile?.username}
           {#if moderatorOrAbove(data.role)}
             <span
@@ -124,10 +114,20 @@
               use:tippy="{orangeVerifiedHover}">
               <IconVerified />
             </span>
+          {:else if data.profile?.role == "helper"}
+            <span class="icon text-blue-500" use:tippy="{blueVerifiedHover}">
+              <IconVerified />
+            </span>
+          {:else if data.profile?.role == "verified"}
+            <span
+              class="icon text-emerald-500"
+              use:tippy="{emeraldVerifiedHover}">
+              <IconVerified />
+            </span>
           {/if}
         </p>
         <p
-          class="mt-1 text-center md:text-left font-semibold text-slate-950 dark:text-white sm:text-base md:text-lg">
+          class="mt-1 text-center font-semibold text-slate-950 dark:text-white sm:text-base md:text-left md:text-lg">
           {#if data.role?.name != "default"}
             <span style="color: {data.role?.color};">
               {#if data.role?.name == "nerd"}🤓
@@ -142,33 +142,35 @@
             </span>
           {/if}
         </p>
-        <h2 class="text-center md:text-left w-full mb-1 mt-4 dark:text-slate-100">
+        <h2
+          class="mb-1 mt-4 w-full text-center dark:text-slate-100 md:text-left">
           <IconTime class="mr-1 inline-block" /> <b class="mr-2">Joined: </b>we
           forgor 🦆
         </h2>
-        <h2 class="text-center md:text-left  mb-1 dark:text-slate-100">
+        <h2 class="mb-1 text-center dark:text-slate-100 md:text-left">
           <IconDL class="mr-1 inline-block" />
           <b class="mr-2">Total Downloads: </b>{data.downloads}
         </h2>
         <h2
-          class="text-center md:text-left mb-1 mt-4 text-lg font-bold dark:text-slate-100">
+          class="mb-1 mt-4 text-center text-lg font-bold dark:text-slate-100 md:text-left">
           <IconBadge class="mr-1 inline-block" /> Badges
         </h2>
         <div
-          class="flex min-h-[3rem] justify-center md:justify-start w-full space-x-3 rounded-lg bg-slate-300 p-3 dark:bg-zinc-800">
+          class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-300 p-3 dark:bg-zinc-800 md:justify-start">
           {#if data.profile?.badges?.length != 0}
             {#each data.profile?.badges ?? [] as badge}
               <img
                 alt="{badge} badge"
                 src="/badges/{badge}.png"
-                class="h-8 lg:h-12 w-8 lg:w-12 rounded-lg"
+                class="h-8 w-8 rounded-lg lg:h-12 lg:w-12"
                 use:tippy="{badges.find(index => index.name == badge)
                   ?.tippy}" />
             {/each}
           {/if}
         </div>
       </div>
-      <span class="rounded-xl w-full md:w-1/2 bg-slate-300 p-4 dark:bg-zinc-800 styled-scrollbar overflow-y-auto">
+      <span
+        class="styled-scrollbar w-full overflow-y-auto rounded-xl bg-slate-300 p-4 dark:bg-zinc-800 md:w-1/2">
         <MarkdownComponent source="{data.profile?.bio}" />
       </span>
     </div>
