@@ -169,7 +169,7 @@
 </script>
 
 <div
-  class="relative rounded-xl bg-slate-300 p-2 last:mb-0 dark:bg-slate-50/10 first:dark:bg-orange-300/10">
+  class="relative rounded-xl bg-slate-300 p-3 last:mb-0 dark:bg-slate-50/10 first:dark:bg-orange-300/10">
   <div class="flex items-center space-x-2">
     <div class="flex items-center space-x-2">
       <button
@@ -218,7 +218,7 @@
   </div>
   {#if expanded}
     <h2 class="mt-2 dark:text-white">Changelog</h2>
-    <div class="mb-2 w-full rounded-md bg-zinc-700/10 p-2 dark:bg-zinc-900/20">
+    <div class="mb-2 w-full rounded-md bg-zinc-700/10 p-3 dark:bg-zinc-900/20">
       <MarkdownComponent source="{version.description}" />
     </div>
     <h2 class="dark:text-white">Download this version:</h2>

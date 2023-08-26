@@ -32,7 +32,7 @@
 </script>
 
 <div
-  class="relative w-full items-center rounded-xl bg-slate-200 p-2 text-slate-950 dark:bg-zinc-800 dark:text-slate-100"
+  class="relative w-full items-center rounded-xl bg-slate-200 p-3 text-slate-950 dark:bg-zinc-800 dark:text-slate-100"
   bind:this="{me}">
   <div class="flex items-center">
     <a
@@ -80,17 +80,17 @@
         </div>
       {/if}
       <p
-        class="line-clamp-2 text-sm font-medium text-slate-950/40 dark:text-slate-100/40 md:text-sm">
+        class="line-clamp-3 text-sm font-medium text-slate-950/40 dark:text-slate-100/40 md:text-sm">
         {report.project.description}
       </p>
     </div>
   </div>
-  <div class="moderation relative mt-2 rounded-xl p-2">
+  <div class="moderation relative mt-2 rounded-xl p-3">
     <b>Reported by {report.reporter.username}:</b>
     <div class="moderation-hl rounded-lg px-2 py-1">
       <MarkdownComponent source="{report.message}" />
     </div>
-    <button class="absolute right-0 top-0 p-2" on:click="{remove}"
+    <button class="absolute right-0 top-0 p-3" on:click="{remove}"
       ><IconX /></button>
   </div>
 </div>

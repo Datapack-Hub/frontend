@@ -85,7 +85,7 @@
           options="{['Updated', 'Downloads']}"
           bind:selected="{sort}"
           bind:expand="{dropdownOpen}"
-          selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-2 text-left dark:text-slate-100 {dropdownOpen
+          selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-slate-100 {dropdownOpen
             ? 'rounded-tr-lg'
             : 'rounded-r-lg'}"
           on:change="{resort}" />
@@ -158,7 +158,7 @@
       <p class="mx-2 mb-2 dark:text-slate-100">Featured Projects</p>
     {/if}
     <div
-      class="mx-2 mb-4 grid grid-cols-1 gap-2 lg:grid-cols-2"
+      class="mx-2 mb-4 grid grid-cols-1 gap-3 lg:grid-cols-2"
       use:autoAnimate>
       {#each featured ?? [] as feat}
         <FeaturedProjectComponent project="{feat}" type="featured" />
@@ -182,7 +182,7 @@
           <div
             class="{layout === 'list'
               ? 'space-y-2'
-              : 'grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-3'}"
+              : 'grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3'}"
             use:autoAnimate>
             {#key dataCopy}
               {#each dataCopy as project}

@@ -155,7 +155,7 @@
       {/if}
       <p class=" font-black">Message from Datapack Hub Staff:</p>
       <p
-        class="moderation-hl prose mb-1 mt-2 rounded-xl p-2 dark:text-zinc-300">
+        class="moderation-hl prose mb-1 mt-2 rounded-xl p-3 dark:text-zinc-300">
         <MarkdownComponent source="{project?.mod_message}" />
       </p>
       <p class=" text-xs opacity-50">
@@ -184,7 +184,7 @@
     </p>
     <div class="space-y-2">
       {#if !project.icon}
-        <div class="rounded-xl bg-zinc-900 p-2">
+        <div class="rounded-xl bg-zinc-900 p-3">
           <div
             class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
             <IconIcon />
@@ -197,7 +197,7 @@
         </div>
       {/if}
       {#if project.category && project.category[0] == ""}
-        <div class="rounded-xl bg-zinc-900 p-2">
+        <div class="rounded-xl bg-zinc-900 p-3">
           <div
             class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
             <IconCategories />
@@ -209,7 +209,7 @@
           </p>
         </div>
       {/if}
-      <div class="rounded-xl bg-zinc-900 p-2">
+      <div class="rounded-xl bg-zinc-900 p-3">
         <div
           class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
           <IconDescription />
@@ -222,7 +222,7 @@
         </p>
       </div>
       {#if !project.latest_version}
-        <div class="rounded-xl bg-zinc-900 p-2">
+        <div class="rounded-xl bg-zinc-900 p-3">
           <div
             class="flex items-center space-x-2 text-lg font-semibold text-sky-500">
             <IconUpload />
@@ -235,7 +235,7 @@
           </p>
         </div>
       {/if}
-      <div class="rounded-xl bg-zinc-900 p-2">
+      <div class="rounded-xl bg-zinc-900 p-3">
         <div
           class="flex items-center space-x-2 text-lg font-semibold text-green-500">
           <IconTick />

@@ -312,7 +312,7 @@
     <button
       on:click="{sendNotif}"
       id="send_notif_btn"
-      class="rounded-md bg-dph-orange p-2 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+      class="rounded-md bg-dph-orange p-3 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
       >Send</button>
   {:else if moderationModalPage == "logout"}
     <p class=" mb-3 text-slate-950 dark:text-white">
@@ -394,7 +394,7 @@
   <button
     on:click="{sendNotif}"
     id="send_notif_btn"
-    class="rounded-md bg-dph-orange p-2 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="rounded-md bg-dph-orange p-3 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Send</button>
 </Modal>
 
@@ -438,7 +438,7 @@
   <p class=" text-slate-950 dark:text-white">
     {user?.username} has been banned for the following reason:
   </p>
-  <p class="my-2 rounded-xl bg-zinc-700 p-2 dark:text-zinc-300">
+  <p class="my-2 rounded-xl bg-zinc-700 p-3 dark:text-zinc-300">
     <MarkdownComponent source="" />
   </p>
   <p class=" text-slate-950 dark:text-white">

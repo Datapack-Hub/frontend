@@ -54,7 +54,7 @@
           {formatter.format(reply.sent * 1000)}
         </p>
         {#if $user.id == reply.author.id || $roleInfo.permissions.includes("DELETE_CONTENT")}
-          <div class="absolute right-0 p-2 text-white">
+          <div class="absolute right-0 p-3 text-white">
             <button
               role="checkbox"
               aria-checked="{expanded}"
@@ -72,7 +72,7 @@
             </button>
             {#if expanded}
               <div
-                class="absolute right-0 top-8 space-y-1 rounded-lg bg-zinc-600 p-2">
+                class="absolute right-0 top-8 space-y-1 rounded-lg bg-zinc-600 p-3">
                 <button
                   class="flex cursor-pointer items-center space-x-1 rounded-lg p-0.5 px-1 text-xs hover:bg-zinc-600"
                   on:click="{del}">

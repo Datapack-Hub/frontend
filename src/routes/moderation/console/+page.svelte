@@ -65,7 +65,7 @@
           <ul class="list-none" id="cons">{@html consoleIn}</ul>
         </div>
         <div
-          class="absolute bottom-0 right-0 flex w-full justify-around bg-black p-2">
+          class="absolute bottom-0 right-0 flex w-full justify-around bg-black p-3">
           <p class="float-left">/</p>
           <form
             action="get"

@@ -81,7 +81,7 @@
 <main
   id="main-content"
   class="flex w-full flex-col items-center bg-slate-50 px-0 transition-all dark:bg-zinc-900 md:items-start md:px-16 md:pt-32 lg:flex-row lg:px-24">
-  <div class="w-full rounded-lg p-2 lg:w-2/5 xl:w-1/3">
+  <div class="w-full rounded-lg p-3 lg:w-2/5 xl:w-1/3">
     <div
       class="mb-4 mt-16 flex w-full flex-col items-center md:mt-0 md:items-start">
       <div class="self-center">
@@ -167,7 +167,7 @@
         </h2>
       </div>
       <div
-        class="flex min-h-[3rem] w-full space-x-2 rounded-lg bg-slate-300 p-2 dark:bg-zinc-800">
+        class="flex min-h-[3rem] w-full space-x-2 rounded-lg bg-slate-300 p-3 dark:bg-zinc-800">
         {#if data.profile?.badges?.length != 0}
           {#each data.profile?.badges ?? [] as badge}
             <img
@@ -209,7 +209,7 @@
       {/if}
       <CasualLine />
     </div>
-    <div class="grid grid-cols-1 gap-2 xl:grid-cols-2">
+    <div class="grid grid-cols-1 gap-3 xl:grid-cols-2">
       {#if data.projects?.length == 0}
         <p
           class="col-span-2 mt-24 text-center text-3xl text-slate-950/40 dark:text-white/40 md:mt-48">

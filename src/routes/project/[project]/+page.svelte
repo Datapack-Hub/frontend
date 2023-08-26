@@ -393,7 +393,7 @@
 
         {#if status == "deleted"}
           <div
-            class="moderation mb-2 flex items-center rounded-xl p-2"
+            class="moderation mb-2 flex items-center rounded-xl p-3"
             bind:this="{del}">
             <p class="m-1 w-full flex-grow leading-tight dark:text-white">
               <b>This project is deleted.</b> Only staff can view the project. To
@@ -405,7 +405,7 @@
           </div>
         {:else if status == "review_queue" || status == "publish_queue"}
           <div
-            class="moderation mb-2 flex items-center rounded-xl p-2"
+            class="moderation mb-2 flex items-center rounded-xl p-3"
             bind:this="{del}">
             <p class="m-1 w-full flex-grow leading-tight dark:text-white">
               <b>This project is awaiting review.</b> A staff member will review
@@ -414,7 +414,7 @@
           </div>
         {:else if status == "disabled"}
           <div
-            class="moderation mb-2 flex items-center rounded-xl p-2"
+            class="moderation mb-2 flex items-center rounded-xl p-3"
             bind:this="{del}">
             <p class="m-1 w-full flex-grow leading-tight dark:text-white">
               <b>This project is disabled.</b> Please read the mod message, and fix
@@ -423,7 +423,7 @@
           </div>
         {/if}
         {#if activePage == "description"}
-          <div class="w-full rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
+          <div class="w-full rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
             <p class="w-full break-words leading-tight">
               <MarkdownComponent
                 source="{data.project.body}"
@@ -432,7 +432,7 @@
           </div>
         {:else if activePage == "versions"}
           <div
-            class="mb-2 items-center rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
+            class="mb-2 items-center rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
             <div class="mb-3 text-sky-300" use:autoAnimate>
               <button on:click="{() => (activePage = 'description')}"
                 ><IconBack class="inline" /> Back to description
@@ -475,7 +475,7 @@
           </div>
         {:else if activePage == "download"}
           <div class="mb-2 items-center space-y-2">
-            <div class="rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
+            <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
               <div class="mb-3 text-sky-300" use:autoAnimate>
                 <button on:click="{() => (activePage = 'description')}"
                   ><IconBack class="inline" /> Back to description
@@ -483,7 +483,7 @@
               </div>
               {#if data.versions?.length != 0}
                 <p class="dark:text-slate-100">Select a Minecraft version:</p>
-                <div class="grid-rows-auto grid grid-cols-3 gap-2">
+                <div class="grid-rows-auto grid grid-cols-3 gap-3">
                   {#each minecraftVersions.reverse() ?? [] as v}
                     {#if stitchedVersions.includes(v)}
                       {@const mcVersions = data.project?.latest_version
@@ -493,7 +493,7 @@
                         : []}
                       <button
                         data-test-btn="{v}"
-                        class="flex cursor-pointer items-center space-x-2 rounded-md bg-slate-300 p-2 transition-all hover:scale-102 dark:bg-zinc-700
+                        class="flex cursor-pointer items-center space-x-2 rounded-md bg-slate-300 p-3 transition-all hover:scale-102 dark:bg-zinc-700
                   {mcVersions.includes(v)
                           ? ' dark:text-slate-100'
                           : ' text-red-500'}"
@@ -515,7 +515,7 @@
                     {/if}
                   {/each}
                   <button
-                    class="flex cursor-pointer items-center space-x-2 rounded-md bg-zinc-600 p-2 text-white transition-all hover:scale-102"
+                    class="flex cursor-pointer items-center space-x-2 rounded-md bg-zinc-600 p-3 text-white transition-all hover:scale-102"
                     on:click="{() => (activePage = 'versions')}">
                     <div
                       class="flex flex-grow items-center space-x-2 font-bold">
@@ -540,7 +540,7 @@
               {/if}
             </div>
             {#if matches.length > 0}
-              <div class="rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
+              <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
                 <p class="MB-6 text-white">
                   Latest version for {pickedVersion}:
                 </p>
@@ -563,7 +563,7 @@
           </div>
         {:else if activePage == "comments"}
           <div class="mb-2 items-center space-y-2">
-            <div class="rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
+            <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
               <div class="space-y-2" use:autoAnimate>
                 {#if $authed}
                   <form
@@ -661,7 +661,7 @@
     Report Message
   </p>
   <textarea
-    class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-slate-300 p-2 dark:bg-zinc-700"
+    class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-slate-300 p-3 dark:bg-zinc-700"
     placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
     id="description"
     maxlength="500"
@@ -681,7 +681,7 @@
   <input
     type="number"
     required
-    class="h-8 w-full resize-none rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-zinc-700 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-slate-200 p-3 text-lg text-slate-950 dark:bg-zinc-700 dark:text-white"
     bind:value="{featureDur}"
     placeholder="i.e 1, 7, 14, 30, 365" />
   <Button classes="mt-2" click="{() => feature()}">Feature</Button>

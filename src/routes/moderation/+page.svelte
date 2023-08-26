@@ -60,7 +60,7 @@
     <div use:autoAnimate>
       {#if activePage == "publish_queue"}
         <div
-          class="space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start">
+          class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start">
           {#if data.publishQueue?.length === 0}
             <p class=" dark:text-white">
               You're all caught up! There are no projects in the publish queue.
@@ -76,7 +76,7 @@
         </div>
       {:else if activePage == "review_queue"}
         <div
-          class="space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start"
+          class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start"
           use:autoAnimate>
           {#if data.reviewQueue?.length === 0}
             <p class=" dark:text-white">
@@ -93,7 +93,7 @@
         </div>
       {:else if activePage == "reports"}
         <div
-          class="space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start">
+          class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start">
           {#if data.reports?.length === 0}
             <p class=" dark:text-white">
               You're all caught up! There are no reports in the queue.
@@ -109,15 +109,15 @@
         </div>
       {:else if activePage == "roles"}
         <div
-          class="flex flex-col space-x-2 rounded-xl bg-slate-200 p-2 py-3 text-center align-middle dark:bg-zinc-800 md:text-start">
+          class="flex flex-col space-x-2 rounded-xl bg-slate-200 p-3 py-3 text-center align-middle dark:bg-zinc-800 md:text-start">
           <h1
             class="m-2 text-center text-2xl font-bold text-slate-950 dark:text-white md:text-start">
             Site Roles
           </h1>
-          <table class="table-auto rounded-xl p-2 text-left">
-            <tr class="bg-emerald-500 p-2">
-              <th class="p-2 text-slate-950 dark:text-white">Role Name</th>
-              <th class="p-2 text-slate-950 dark:text-white">Permissions</th>
+          <table class="table-auto rounded-xl p-3 text-left">
+            <tr class="bg-emerald-500 p-3">
+              <th class="p-3 text-slate-950 dark:text-white">Role Name</th>
+              <th class="p-3 text-slate-950 dark:text-white">Permissions</th>
             </tr>
             {#each data.rolesJson ?? [] as index}
               <tr

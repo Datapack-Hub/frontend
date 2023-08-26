@@ -87,7 +87,7 @@
     <div use:autoAnimate>
       {#if activePage == "profile"}
         <div
-          class="space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start">
+          class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start">
           <div class="text-center align-middle md:text-start">
             <p class="align-middle text-slate-950 dark:text-slate-100">
               Username
@@ -120,7 +120,7 @@
         </div>
       {:else if activePage == "account"}
         <div
-          class="space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-slate-50/10 md:text-start">
+          class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start">
           <div class="text-center align-middle md:text-start">
             <p class="align-middle text-slate-950 dark:text-slate-100">
               Linked Github
@@ -131,7 +131,7 @@
               be able to log in with Github.
             </p>
             <a
-              class="flex w-fit items-center space-x-2 rounded-lg bg-black p-2 font-bold text-white"
+              class="flex w-fit items-center space-x-2 rounded-lg bg-black p-3 font-bold text-white"
               href="https://github.com/login/oauth/authorize?client_id=8a0527a3da5b002db8c9&redirect_uri=https%3A%2F%2Fdatapackhub.net%2Fsettings%2Fgithub">
               <IconGithub />
               <p>Link your Github account</p>
@@ -145,7 +145,7 @@
               be able to log in with Discord.
             </p>
             <a
-              class="flex w-fit items-center space-x-2 rounded-lg bg-[#5865F2] p-2 font-bold text-white"
+              class="flex w-fit items-center space-x-2 rounded-lg bg-[#5865F2] p-3 font-bold text-white"
               href="https://discord.com/api/oauth2/authorize?client_id=1121129295868334220&redirect_uri=https%3A%2F%2Fdatapackhub.net%2Fsettings%2Fdiscord&response_type=code&scope=identify">
               <IconDiscord />
               <p>Link your Discord account</p>

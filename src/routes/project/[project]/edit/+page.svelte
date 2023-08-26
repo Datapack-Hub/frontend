@@ -284,7 +284,7 @@
         class="mt-2 rounded-xl bg-slate-200 p-4 dark:bg-red-500/20 dark:text-slate-100">
         <p class=" font-black">Message from Datapack Hub Staff:</p>
         <p
-          class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-2 dark:text-zinc-300">
+          class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-3 dark:text-zinc-300">
           <MarkdownComponent source="{data.project?.mod_message}" />
         </p>
       </div>
@@ -323,7 +323,7 @@
     <div use:autoAnimate>
       {#if activePage == "details"}
         <div
-          class="grid grid-cols-2 gap-2 space-y-2 rounded-xl bg-slate-200 p-2 text-center align-middle dark:bg-zinc-800 md:text-start lg:grid-cols-3">
+          class="grid grid-cols-2 gap-3 space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-zinc-800 md:text-start lg:grid-cols-3">
           <div
             class="col-span-2 flex flex-col items-center justify-between space-x-0 md:flex-row md:space-x-2 xl:col-span-1">
             <div
@@ -380,7 +380,7 @@
             WIP, does not work!
           </p>
           <div
-            class="grid grid-cols-2 gap-2 col-span-2 lg:col-span-1"
+            class="grid grid-cols-2 gap-3 col-span-2 lg:col-span-1"
             use:autoAnimate>
             <div class="input cursor-pointer">
               <h1 class="flex items-center space-x-2">
@@ -412,7 +412,7 @@
                 purposes.
               </p>
             </div>
-            <div class="input cursor-pointer p-2">
+            <div class="input cursor-pointer p-3">
               <h1 class="flex items-center space-x-2">
                 <IconND />
                 <p class="font-bold">NoDeriatives</p>
@@ -422,7 +422,7 @@
                 can't distribute it.
               </p>
             </div>
-            <div class="input p-2 col-span-2 space-y-1">
+            <div class="input p-3 col-span-2 space-y-1">
               <h1 class="flex items-center space-x-2">
                 <IconEdit />
                 <p class="font-bold">Custom</p>
@@ -437,7 +437,7 @@
             Categories
           </p>
           <div
-            class="col-span-2 grid grid-cols-2 gap-2 rounded-lg md:grid-cols-3 lg:grid-cols-4">
+            class="col-span-2 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3 lg:grid-cols-4">
             {#each categories as cat}
               <ToggleBoxes
                 value="{cat}"
@@ -451,7 +451,7 @@
         </div>
         <!-- VERSIONS-->
       {:else if activePage == "versions"}
-        <div class="rounded-xl bg-slate-200 p-2 dark:bg-zinc-800">
+        <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
           <div class="w-full text-center align-middle md:text-start">
             {#if createVersion == false}
               <div class="my-2 mb-4">
@@ -529,7 +529,7 @@
                   Compatible Minecraft Versions
                 </p>
                 <div
-                  class="col-span-2 grid grid-cols-2 gap-2 rounded-lg md:grid-cols-3">
+                  class="col-span-2 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3">
                   <MultiSelect
                     options="{minecraftVersions}"
                     minSelect="{1}"
@@ -541,7 +541,7 @@
                   Dependencies
                 </p>
                 <div
-                  class="space-y-3 bg-slate-300 dark:bg-zinc-800/50 rounded-lg border-2 border-slate-400 dark:border-zinc-700 p-2 w-full md:w-2/3"
+                  class="space-y-3 bg-slate-300 dark:bg-zinc-800/50 rounded-lg border-2 border-slate-400 dark:border-zinc-700 p-3 w-full md:w-2/3"
                   use:autoAnimate>
                   {#each list(dependencies.length) as index}
                     <p class="text-slate-950 dark:text-slate-100">
@@ -549,7 +549,7 @@
                     </p>
                     <div class="flex items-center">
                       <span
-                        class="bg-slate-300 dark:bg-zinc-800 rounded-lg border-2 border-slate-400 dark:border-zinc-700 p-2 focus:border-dph-orange dark:focus:border-dph-orange outline-none focus:text-opacity-100 text-slate-950 dark:text-zinc-600 transition-all placeholder:italic placeholder:text-slate-800 dark:placeholder:text-zinc-500 w-full text-opacity-60">
+                        class="bg-slate-300 dark:bg-zinc-800 rounded-lg border-2 border-slate-400 dark:border-zinc-700 p-3 focus:border-dph-orange dark:focus:border-dph-orange outline-none focus:text-opacity-100 text-slate-950 dark:text-zinc-600 transition-all placeholder:italic placeholder:text-slate-800 dark:placeholder:text-zinc-500 w-full text-opacity-60">
                         datapackhub.net/project/<AutoAdjustableInput
                           classes="bg-slate-300 text-opacity-100 dark:bg-zinc-800 text-slate-100 outline-none"
                           on:change="{event =>

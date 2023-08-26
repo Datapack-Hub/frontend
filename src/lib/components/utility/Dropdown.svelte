@@ -40,7 +40,7 @@
       {#each options as opt, index}
         <li>
           <button
-            class="w-full cursor-pointer rounded-[4px] p-2 text-left hover:bg-dph-orange dark:text-slate-100"
+            class="w-full cursor-pointer rounded-[4px] p-3 text-left hover:bg-dph-orange dark:text-slate-100"
             on:click="{() => chooseOption(index)}">{opt}</button>
         </li>
       {/each}

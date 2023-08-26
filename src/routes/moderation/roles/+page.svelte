@@ -31,10 +31,10 @@
     </p>
     <br />
     {#await loadStuff() then}
-      <table class="w-full table-auto p-2 text-left" use:autoAnimate>
-        <tr class="bg-emerald-500 p-2">
-          <th class="p-2 text-slate-950 dark:text-white">Role Name</th>
-          <th class="p-2 text-slate-950 dark:text-white">Permissions</th>
+      <table class="w-full table-auto p-3 text-left" use:autoAnimate>
+        <tr class="bg-emerald-500 p-3">
+          <th class="p-3 text-slate-950 dark:text-white">Role Name</th>
+          <th class="p-3 text-slate-950 dark:text-white">Permissions</th>
         </tr>
         {#each rolesJson ?? [] as index}
           <tr class="odd:bg-zinc-700/5">

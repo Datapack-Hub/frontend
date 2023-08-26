@@ -12,7 +12,7 @@
 
 <div class="right-0 top-0 flex h-screen transform-gpu">
   <div
-    class="m-auto w-fit justify-self-center overflow-x-hidden rounded-xl p-2 align-middle dark:bg-zinc-800">
+    class="m-auto w-fit justify-self-center overflow-x-hidden rounded-xl p-3 align-middle dark:bg-zinc-800">
     {#if !$authed}
       <a
         href="/login"
@@ -36,13 +36,13 @@
       </p>
       <div class="grid w-fit grid-cols-2 gap-1">
         <a
-          class="flex items-center space-x-2 rounded-lg bg-black p-2 font-bold text-white"
+          class="flex items-center space-x-2 rounded-lg bg-black p-3 font-bold text-white"
           href="https://api.datapackhub.net/auth/login/github">
           <IconGithub />
           <p>Sign In with Github</p>
         </a>
         <a
-          class="flex items-center space-x-2 rounded-lg bg-[#5865F2] p-2 font-bold text-white"
+          class="flex items-center space-x-2 rounded-lg bg-[#5865F2] p-3 font-bold text-white"
           href="https://api.datapackhub.net/auth/login/discord">
           <IconDiscord />
           <p>Sign In with Discord</p>

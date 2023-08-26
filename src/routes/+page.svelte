@@ -184,7 +184,7 @@
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
-      class="mt-16 grid w-full grid-cols-1 gap-2 p-4 lg:w-3/4 lg:grid-cols-2 xl:w-2/3 2xl:w-1/2">
+      class="mt-16 grid w-full grid-cols-1 gap-3 p-4 lg:w-3/4 lg:grid-cols-2 xl:w-2/3 2xl:w-1/2">
       <div
         class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800">
         <h2
@@ -195,7 +195,7 @@
           class="fadeTextAnime my-3 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
-        <div class="mb-5 space-y-2 rounded-xl p-2 dark:bg-zinc-900">
+        <div class="mb-5 space-y-2 rounded-xl p-3 dark:bg-zinc-900">
           {#each data.random.slice(0, 2) ?? [] as rand}
             <ProjectComponent project="{rand}" />
           {/each}
@@ -213,9 +213,9 @@
           Datapack Hub automatically converts the pack version to the requested
           version, removing those pesky "Made for an older version" errors!
         </p>
-        <div class="rounded-xl bg-slate-200 p-2 dark:bg-zinc-900">
+        <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-900">
           <div
-            class="fadeTextAnime flex items-center justify-between rounded-t-md bg-slate-300 p-2 text-slate-600 opacity-0 dark:bg-zinc-800 dark:text-zinc-500">
+            class="fadeTextAnime flex items-center justify-between rounded-t-md bg-slate-300 p-3 text-slate-600 opacity-0 dark:bg-zinc-800 dark:text-zinc-500">
             <p>pack.mcmeta</p>
             <IconX />
           </div>
@@ -300,7 +300,7 @@
           making datapacks, and to be a part of the community!
         </p>
         <a
-          class="rounded-lg bg-[#5865F2] p-2 font-bold text-white"
+          class="rounded-lg bg-[#5865F2] p-3 font-bold text-white"
           href="https://discord.gg/aEXsdjjdu4">
           <img
             src="/logos/discord-white.svg"
@@ -335,9 +335,9 @@
           class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
           Datapack Hub is ran entirely by an API which anyone can access.
         </p>
-        <div class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-2">
+        <div class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-3">
           <div
-            class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-zinc-800 rounded-t-md p-2 text-slate-600 dark:text-zinc-500">
+            class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-zinc-800 rounded-t-md p-3 text-slate-600 dark:text-zinc-500">
             <div class="flex space-x-2 overflow-x-auto">
               <p class="text-green-600">GET</p>
               <span class="overflow-hidden text-ellipsis">
@@ -355,7 +355,7 @@
             class="text-slate-600 dark:text-zinc-500 font-mono mt-2 bg-slate-300 dark:bg-zinc-800 rounded-b-md overflow-clip h-80 overflow-y-auto">
             {#if apiExampleResult.length > 0}
               <pre
-                class="text-sm p-2 whitespace-pre-wrap"
+                class="text-sm p-3 whitespace-pre-wrap"
                 transition:fade="{{ duration: 300, easing: quintInOut }}">
 {apiExampleResult}
               </pre>

@@ -7,7 +7,7 @@
     ? 'https://bisecthosting.com/silabear'
     : 'https://bisecthosting.com/flynecraft'}">
   <div
-    class="mb-2 flex items-center space-x-2 rounded-xl bg-[#03ddff] p-2 text-[#0d1129] transition-all hover:scale-101 dark:bg-[#0D1129] dark:text-white">
+    class="mb-2 flex items-center space-x-2 rounded-xl bg-[#03ddff] p-3 text-[#0d1129] transition-all hover:scale-101 dark:bg-[#0D1129] dark:text-white">
     <img
       src="/logos/bh.svg"
       alt="BisectHosting Logo"

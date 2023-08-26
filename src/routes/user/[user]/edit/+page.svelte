@@ -69,14 +69,14 @@
     <div class="text-center align-middle md:text-start">
       <p class="align-middle text-slate-950 dark:text-slate-100">Username</p>
       <input
-        class="h-10 rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white"
+        class="h-10 rounded-md bg-slate-200 p-3 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white"
         value="{data.profile?.username}"
         maxlength="32"
         bind:this="{uname}" />
       <br /><br />
       <p class="align-middle text-slate-950 dark:text-slate-100">Bio</p>
       <textarea
-        class="h-96 w-4/5 resize-none rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white md:w-2/3 lg:w-1/2"
+        class="h-96 w-4/5 resize-none rounded-md bg-slate-200 p-3 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white md:w-2/3 lg:w-1/2"
         maxlength="500"
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
         bind:this="{bio}"></textarea>
@@ -92,7 +92,7 @@
           name="roleSelection"
           id="rolez"
           bind:value="{newRole}"
-          class="h-10 rounded-md bg-slate-200 p-2 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white">
+          class="h-10 rounded-md bg-slate-200 p-3 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white">
           <option value="{data.profile?.role}" selected
             >{data.profile?.role}</option>
           {#each roleNames as r}
