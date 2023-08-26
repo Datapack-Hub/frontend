@@ -1,12 +1,11 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import { fetchAuthed, removeCookie } from "$lib/globals/functions";
+  import { userSchema } from "$lib/globals/schema";
   import { authed } from "$lib/globals/stores";
   import { onMount } from "svelte";
   import Button from "../decorative/Button.svelte";
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
-  import { userSchema } from "$lib/globals/schema";
 
   let visible = false;
   let banReason: string;
