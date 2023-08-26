@@ -1,6 +1,6 @@
 # Tellraw
 
-Welcome to Tellraw, the [DatapackHub](https://datapackhub.net) frontend, powered by [SvelteKit](https://kit.svelte.dev/).
+Welcome to Tellraw, the [Datapack Hub](https://datapackhub.net) frontend, powered by [SvelteKit](https://kit.svelte.dev/).
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Datapack-Hub/site/main.yml?branch=main)

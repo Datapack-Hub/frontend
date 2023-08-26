@@ -483,7 +483,7 @@
               </div>
               {#if data.versions?.length != 0}
                 <p class="dark:text-slate-100">Select a Minecraft version:</p>
-                <div class="grid-rows-auto grid grid-cols-3 gap-3">
+                <div class="grid-auto-fit-lg grid gap-3">
                   {#each minecraftVersions.reverse() ?? [] as v}
                     {#if stitchedVersions.includes(v)}
                       {@const mcVersions = data.project?.latest_version

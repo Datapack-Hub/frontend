@@ -176,8 +176,8 @@
     <Button
       style="boring"
       click="{() => moderationModal.open()}"
-      classes="mt-4 flex w-full items-center">
-      <IconShield width="24" height="24" class="float-left mr-2" />
+      classes="mt-3 text-sm">
+      <IconShield width="16" height="16" class="inline-block mr-2" />
       Moderate {user?.username}
     </Button>
   {/await}

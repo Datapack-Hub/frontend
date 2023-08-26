@@ -184,7 +184,7 @@
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
-      class="mt-16 grid w-full grid-cols-1 gap-3 p-4 lg:w-3/4 lg:grid-cols-2 xl:w-2/3 2xl:w-1/2">
+      class="mt-16 grid w-full grid-cols-1 gap-3 p-4 lg:w-3/4 lg:grid-cols-2 xl:w-3/4">
       <div
         class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800">
         <h2
@@ -266,7 +266,7 @@
           Our amazing staff team work together to keep Datapack Hub the best and
           cleanest place to find datapacks!
         </p>
-        <div class="flex space-x-1 py-4">
+        <div class="grid-auto-fit grid gap-1 py-4 md:flex">
           {#each data.staff as staff}
             <a href="/user/{staff.username}">
               <img
