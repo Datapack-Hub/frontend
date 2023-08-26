@@ -13,7 +13,7 @@
   export let classes = "";
 
   let markdownProcessor = unified()
-    .use(remarkParse)
+    .use(remarkParse) // ignore these errors plz
     .use(remarkGFM)
     .use(remarkMentions, {
       usernameLink: (uname: string) => `https://datapackhub.net/user/${uname}`

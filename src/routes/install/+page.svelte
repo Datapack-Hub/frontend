@@ -22,26 +22,26 @@
     <div class="mb-2 flex space-x-2">
       <Button
         style="base"
-        classes="{activePage === 'new'
+        classes="dark:text-slate-100 {activePage === 'new'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'new')}">Installing to a new world</Button>
       <Button
         style="base"
-        classes="{activePage === 'existing'
+        classes="dark:text-slate-100 {activePage === 'existing'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'existing')}"
         >Installing to an existing world</Button>
       <Button
         style="base"
-        classes="{activePage === 'server'
+        classes="dark:text-slate-100 {activePage === 'server'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'server')}">Installing to a server</Button>
       <Button
         style="base"
-        classes="{activePage === 'realm'
+        classes="dark:text-slate-100 {activePage === 'realm'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'realm')}">Installing to a realm</Button>
