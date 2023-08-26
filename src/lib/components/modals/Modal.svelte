@@ -33,7 +33,7 @@
           : 'w-1/2'} justify-self-center">
         {#if title}
           <div
-            class="flex items-center rounded-t-xl bg-slate-300 p-2 dark:bg-zinc-900">
+            class="flex items-center rounded-t-xl bg-slate-300 p-3 dark:bg-zinc-900">
             <h2 class="text-lg font-bold dark:text-white">{title}</h2>
             <div class="flex-grow"></div>
             <button
@@ -42,7 +42,7 @@
           </div>
         {/if}
         <div
-          class="bg-slate-200 p-2 dark:bg-zinc-800 {title
+          class="bg-slate-200 p-3 dark:bg-zinc-800 {title
             ? 'rounded-b-xl'
             : 'rounded-xl'}">
           {#if !title}
