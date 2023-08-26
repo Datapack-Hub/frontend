@@ -105,9 +105,8 @@
           <UserModeration user="{data.profile}" />
         {/if}
       </div>
-      <div class="flex flex-col justify-between w-full md:w-2/5">
+      <div class="flex w-full flex-col justify-between md:w-2/5">
         <div>
-
           <p
             class="text-center text-4xl font-bold text-slate-950 dark:text-white md:text-left md:text-3xl lg:text-4xl">
             {data.profile?.username}
@@ -161,8 +160,8 @@
         <div>
           <h2
             class="mb-1 mt-4 w-full text-center dark:text-slate-100 md:text-left">
-            <IconTime class="mr-1 inline-block" /> <b class="mr-2">Joined: </b>we
-            forgor 🦆
+            <IconTime class="mr-1 inline-block" />
+            <b class="mr-2">Joined: </b>we forgor 🦆
           </h2>
           <h2 class="mb-1 text-center dark:text-slate-100 md:text-left">
             <IconDL class="mr-1 inline-block" />
@@ -170,7 +169,6 @@
           </h2>
         </div>
         <div>
-
           <h2
             class="mb-1 mt-4 text-center text-lg font-bold dark:text-slate-100 md:text-left">
             <IconBadge class="mr-1 inline-block" /> Badges
