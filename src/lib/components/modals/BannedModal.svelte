@@ -37,45 +37,43 @@
 </script>
 
 {#if $authed && visible}
-<div class="absolute">
-  <div
-    class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu overflow-y-auto backdrop-blur-xl backdrop-brightness-75">
+  <div class="absolute">
     <div
-      class="relative m-auto justify-self-center">
-      <div
-        class="flex items-center rounded-t-xl bg-slate-300 p-3 dark:bg-zinc-900 justify-items-stretch">
-        <span class="z-20 flex items-center justify-around">
-          <img
-            src="/logos/dph.svg"
-            alt="dph logo"
-            class="mr-1 h-8 rounded-full transition-all"
-            height="32"
-            width="32" />
-          <span
-            class="hidden text-2xl font-bold text-slate-950 transition-colors dark:text-white md:block">
-            Datapack Hub
+      class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu overflow-y-auto backdrop-blur-xl backdrop-brightness-75">
+      <div class="relative m-auto justify-self-center">
+        <div
+          class="flex items-center justify-items-stretch rounded-t-xl bg-slate-300 p-3 dark:bg-zinc-900">
+          <span class="z-20 flex items-center justify-around">
+            <img
+              src="/logos/dph.svg"
+              alt="dph logo"
+              class="mr-1 h-8 rounded-full transition-all"
+              height="32"
+              width="32" />
+            <span
+              class="hidden text-2xl font-bold text-slate-950 transition-colors dark:text-white md:block">
+              Datapack Hub
+            </span>
           </span>
-        </span>
-      </div>
-      <div
-        class="bg-slate-200 p-3 dark:bg-zinc-800 rounded-b-xl">
-        <p class="text-lg text-slate-950 dark:text-white">
-          <b>You are banned from Datapack Hub.</b> You are not able to upload, edit
-          projects, or interact with the site until your ban has expired.
-        </p>
-        <p class="text-md mt-2 text-slate-950 dark:text-white">Ban Reason:</p>
-        <p class="prose mb-2 rounded-xl bg-zinc-700 p-3 dark:text-zinc-300">
-          <MarkdownComponent source="{banReason}" />
-        </p>
-        <p class="mt-3 text-slate-950 dark:text-white">
-          <b>Your ban will expire:</b>
-          {new Date(expiry * 1000).toLocaleString()}. <br /> Until then, wait for
-          the ban to expire, and read
-          <a href="/rules" class="text-blue-500 underline">our rules</a>.
-        </p>
-        <Button classes="mt-4" click="{signOut}">Log Out</Button>
+        </div>
+        <div class="rounded-b-xl bg-slate-200 p-3 dark:bg-zinc-800">
+          <p class="text-lg text-slate-950 dark:text-white">
+            <b>You are banned from Datapack Hub.</b> You are not able to upload,
+            edit projects, or interact with the site until your ban has expired.
+          </p>
+          <p class="text-md mt-2 text-slate-950 dark:text-white">Ban Reason:</p>
+          <p class="prose mb-2 rounded-xl bg-zinc-700 p-2 dark:text-zinc-300">
+            <MarkdownComponent source="{banReason}" />
+          </p>
+          <p class="mt-3 text-slate-950 dark:text-white">
+            <b>Your ban will expire:</b>
+            {new Date(expiry * 1000).toLocaleString()}. <br /> Until then, wait
+            for the ban to expire, and read
+            <a href="/rules" class="text-blue-500 underline">our rules</a>.
+          </p>
+          <Button classes="mt-4" click="{signOut}">Log Out</Button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 {/if}
