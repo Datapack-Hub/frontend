@@ -83,6 +83,7 @@
               bind:value="{command}"
               bind:this="{commandInput}"
               id="inpt"
+              type="text"
               class="w-full border-none bg-black" />
           </form>
         </div>
