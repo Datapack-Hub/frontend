@@ -30,7 +30,7 @@
 
           let text = await response.text();
 
-          text.replace("\\n","\n")
+          text.replace("\\n", "\n");
 
           if (response.ok) {
             consoleIn += `<pre class='resp'>${text}</pre>`;
