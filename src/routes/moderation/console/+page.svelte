@@ -15,7 +15,13 @@
     consoleIn = document.querySelector("#cons")?.innerHTML ?? "";
     submitCmd = async () => {
       if (command) {
-        consoleIn = consoleIn + `<li>⫻ ${command}</li>`;
+
+        if (command.split(" ")[0] == "clear") {
+          consoleIn = `<p>Cleared the console</p>`
+          return;
+        }
+
+        consoleIn += `<li>⫻ ${command}</li>`;
         commandInput.value = "Loading...";
 
         try {
@@ -26,15 +32,15 @@
           let text = await response.text();
 
           if (response.ok) {
-            consoleIn = consoleIn + `<pre class='resp'>${text}</pre>`;
+            consoleIn += `<pre class='resp'>${text}</pre>`;
             command = "";
             return;
           }
 
-          consoleIn = consoleIn + `<li class='pb-4 text-red-500'>${text}</li>`;
+          consoleIn += `<li class='pb-4 text-red-500'>${text}</li>`;
           command = "";
         } catch (error) {
-          consoleIn = consoleIn + `<li class='resp err'>${error}</li>`;
+          consoleIn += `<li class='resp err'>${error}</li>`;
           command = "";
         }
 
