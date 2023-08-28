@@ -158,7 +158,9 @@
       <p class="mx-2 mb-2 dark:text-slate-100">Featured Projects</p>
     {/if}
     <div
-      class="mx-2 mb-4 grid grid-cols-1 gap-3 {featured.length == 1 ? "lg:grid-cols-1" : "lg:grid-cols-2"}"
+      class="mx-2 mb-4 grid grid-cols-1 gap-3 {featured.length == 1
+        ? 'lg:grid-cols-1'
+        : 'lg:grid-cols-2'}"
       use:autoAnimate>
       {#each featured ?? [] as feat}
         <FeaturedProjectComponent project="{feat}" type="featured" />
