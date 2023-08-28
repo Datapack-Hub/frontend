@@ -15,9 +15,8 @@
     consoleIn = document.querySelector("#cons")?.innerHTML ?? "";
     submitCmd = async () => {
       if (command) {
-
         if (command.split(" ")[0] == "clear") {
-          consoleIn = `<p>Cleared the console</p>`
+          consoleIn = `<p>Cleared the console</p>`;
           return;
         }
 
