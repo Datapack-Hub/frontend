@@ -111,6 +111,12 @@
       return toast("Please select at least one compatible Minecraft version!");
     }
 
+    if (v_squash) {
+      toast.warning(
+        "You have chosen to compress your pack, this may increase processing time."
+      );
+    }
+
     let versionData = {
       name: v_name,
       description: v_changelog,
