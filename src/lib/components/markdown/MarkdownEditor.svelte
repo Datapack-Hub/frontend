@@ -1,6 +1,8 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import MarkdownComponent from "./MarkdownRenderer.svelte";
+  import IconMD from "~icons/tabler/Markdown.svelte"
+  import tippy from "sveltejs-tippy"
 
   export let maxEditorLength = 1e4;
   export let classes = "";
@@ -13,6 +15,11 @@
 
   function calcRemaining() {
     remainingCharacters = maxEditorLength - content.length;
+  }
+
+  let markdownTip = {
+    content: "This input supports Markdown",
+    placement: "bottom"
   }
 
   function input() {
@@ -38,12 +45,13 @@
   </div>
 
   {#if tab === "editor"}
-    <div>
+    <div class="relative">
       <textarea
         bind:value="{content}"
         maxlength="{maxEditorLength}"
         on:input="{input}"
         class="input h-64 w-full"></textarea>
+      <a use:tippy={markdownTip} href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" class="absolute bg-slate-800/70 p-1 rounded-full dark:text-slate-100 hover:text-sky-500 dark:hover:text-sky-500 transition-colors top-4 right-4"><IconMD/></a>
       <p class="align-middle text-xs text-slate-950 dark:text-slate-100">
         {remainingCharacters} characters left
       </p>
