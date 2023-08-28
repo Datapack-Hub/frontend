@@ -266,7 +266,7 @@
           Our amazing staff team work together to keep Datapack Hub the best and
           cleanest place to find datapacks!
         </p>
-        <div class="grid-auto-fit grid gap-1 py-4 md:flex">
+        <div class="grid-auto-fit-xs grid gap-1 py-4 md:flex">
           {#each data.staff as staff}
             <a href="/user/{staff.username}">
               <img
