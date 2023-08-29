@@ -1,4 +1,4 @@
-import { serverFetch } from "$lib/globals/functions";
+import { serverFetchAuthed } from "$lib/globals/functions";
 import { projectSchema, reportSchema, roleSchema } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import { parallel } from "radash";
@@ -9,10 +9,10 @@ export const load = (async ({ cookies }) => {
     const [pq, rq, rp, r] = await parallel(
       4,
       await Promise.all([
-        serverFetch("get", "/moderation/queue/publish", cookies),
-        serverFetch("get", "/moderation/queue/review", cookies),
-        serverFetch("get", "/moderation/queue/report", cookies),
-        serverFetch("get", "/user/staff/roles", cookies)
+        serverFetchAuthed("get", "/moderation/queue/publish", cookies),
+        serverFetchAuthed("get", "/moderation/queue/review", cookies),
+        serverFetchAuthed("get", "/moderation/queue/report", cookies),
+        serverFetchAuthed("get", "/user/staff/roles", cookies)
       ]),
       async (response: Response) => {
         if (response.ok) return await response.json();

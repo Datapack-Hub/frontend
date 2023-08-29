@@ -8,19 +8,20 @@ export const authed = writable(false);
 export const consoleWarned = writable(false);
 
 /**
- * Contains all basic information about you (other than sensitive data)
+ * Contains basic information about the logged in user
  */
 export const user = writable<User>({
   id: -1,
   username: "",
   bio: "",
   profile_icon: "/logos/dph.svg",
-  role: "default" /** For role info, use the `$role` store */,
+  /** For role info, use the `$role` store */
+  role: "default",
   banned: false
 });
 
 /**
- * Contains all information about your role
+ * Contains all information about the user's role
  */
 export const roleInfo = writable<Role>({
   name: "default",
@@ -30,9 +31,14 @@ export const roleInfo = writable<Role>({
 
 /**
  * Contains all information about all roles
+ *
+ * This is initialized in +layout.ts
  */
 export const roles = writable<Role[]>([]);
 
+/**
+ * Convenience store for the window's width
+ */
 export const windowWidth = readable(1920, set => {
   if (browser) {
     set(window.innerWidth);

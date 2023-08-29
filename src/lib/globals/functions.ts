@@ -16,35 +16,43 @@ export function loadColorPref() {
 
 /**
  * Fetches data using the user's token
+ *
+ *
+ *
  * SERVER USE ONLY!
+ *
+ * If you want to use this on the client, use fetchAuthed
+ *
  *
  * @param method HTTP method to use
  * @param url
+ * @param cookies Cookies object from `LayoutServerLoad`
  * @param data JSON data in body
  * @returns an HTTP response
  */
-export async function serverFetch(
+export async function serverFetchAuthed(
   method: string,
   url: string,
   cookies: Cookies,
   data: object | undefined = undefined,
   headers: HeadersInit | undefined = undefined
 ): Promise<Response> {
-  const cookie = cookies.get("dph_token");
+  const cookie = cookies.get("dph_token"); // Cookies object from `LayoutServerLoad`, so our data loads early
 
-  // what is going on here
   const response = await fetch(`${API}${url}`, {
-    method: method,
-    body: data ? JSON.stringify(data) : undefined,
+    // Start fetching
+    method, // HTTP verb you want to use
+    body: data ? JSON.stringify(data) : undefined, // Body of fetch, always JSON because our API likes it
     headers: {
+      // Headers
       ...(cookie === undefined
         ? undefined
-        : { Authorization: `Basic ${cookie}` }),
-      ...headers
+        : { Authorization: `Basic ${cookie}` }), // Cookie exists, so add it as the auth header
+      ...headers // Include the other headers
     }
   });
 
-  if (response.status === 401) cookies.delete("dph_token");
+  if (response.status === 401) cookies.delete("dph_token"); // Remove token if invalid
 
   return response;
 }
@@ -63,35 +71,36 @@ export async function fetchAuthed(
   data: object | undefined = undefined,
   headers: HeadersInit | undefined = undefined
 ): Promise<Response> {
-  let cookie;
-  if (browser) {
-    cookie = getCookie("dph_token");
-  }
+  const cookie = browser ? getCookie("dph_token") : undefined; // cookie only exists on browser
 
-  // what is going on here
   const response = await fetch(`${API}${url}`, {
-    method: method,
-    body: data ? JSON.stringify(data) : undefined,
+    // Start fetching
+    method, // HTTP verb you want to use
+    body: data ? JSON.stringify(data) : undefined, // Body of fetch, always JSON because our API likes it
     headers: {
+      // Headers
       ...(cookie === undefined
         ? undefined
-        : { Authorization: `Basic ${cookie}` }),
-      ...headers
+        : { Authorization: `Basic ${cookie}` }), // Cookie exists, so add it as the auth header
+      ...headers // Include the other headers
     }
   });
 
-  if (response.status === 401) removeCookie("dph_token");
-  if (!response.ok) Promise.reject(response.statusText);
+  if (response.status === 401) removeCookie("dph_token"); // Expired token, so removes it ig
+  if (!response.ok) Promise.reject(response.statusText); // This single line probably added hundreds of unneeded 500 errors, but makes errors actually show up.
 
   return response;
 }
 
+/**
+ * Get cookie from browser
+ */
 const getCookie = memo((cookieName: string): string | undefined => {
-  if (!browser) return;
+  if (!browser) return; // Can't get the cookies if you can't access them
 
   const cookies = document.cookie.split(";");
 
-  if (cookies.length === 0) return;
+  if (cookies.length === 0) return; // You have no cookies :(
 
   for (const index of range(cookies.length - 1)) {
     // eslint-disable-next-line security/detect-object-injection

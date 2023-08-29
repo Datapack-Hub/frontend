@@ -128,10 +128,10 @@
           use:tippy="{{
             content:
               $user.username +
-              "<span class='items-center'><br /><button onclick=\"document.cookie = 'dph_token' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; location.replace('/')\" class='text-sky-500'>Sign Out</a></span>",
+              "<span class='items-center'><br /><a href='/?log_out=1' class='text-sky-500'>Sign Out</a></span>",
             placement: 'bottom',
-            interactive: true,
-            allowHTML: true
+            allowHTML: true,
+            interactive: true
           }}">
           <img
             src="{$user.profile_icon}{$user.profile_icon.includes('?')

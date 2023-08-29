@@ -1,10 +1,10 @@
-import { serverFetch } from "$lib/globals/functions";
+import { serverFetchAuthed } from "$lib/globals/functions";
 import { notificationSchema as notifSchema } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
 export const load = (async ({ cookies }) => {
-  const unread = await serverFetch("get", "/notifs/", cookies);
+  const unread = await serverFetchAuthed("get", "/notifs/", cookies);
 
   if (!unread.ok) {
     throw error(unread.status, {

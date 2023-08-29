@@ -5,7 +5,7 @@
   import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import UserModeration from "$lib/components/user/UserModeration.svelte";
-  import { badges } from "$lib/globals/consts";
+  import { badges } from "$lib/globals/badges";
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import { authed, roleInfo, user } from "$lib/globals/stores";
   import { title } from "radash";

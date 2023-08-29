@@ -1,10 +1,10 @@
-import { serverFetch } from "$lib/globals/functions";
+import { serverFetchAuthed } from "$lib/globals/functions";
 import { projectSchema, versionSchema, type User } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
 export const load = (async ({ params, cookies }) => {
-  const projectRequest = await serverFetch(
+  const projectRequest = await serverFetchAuthed(
     "get",
     `/projects/get/${params.project}`,
     cookies
@@ -20,7 +20,7 @@ export const load = (async ({ params, cookies }) => {
   const projectJson = await projectSchema.parseAsync(
     await projectRequest.json()
   );
-  const meRequest = await serverFetch("get", "/user/me", cookies);
+  const meRequest = await serverFetchAuthed("get", "/user/me", cookies);
 
   if (meRequest.status === 401) {
     throw error(401, {
@@ -34,7 +34,7 @@ export const load = (async ({ params, cookies }) => {
     me.id === projectJson.author.id ||
     ["admin", "moderator"].includes(me.role)
   ) {
-    const project = await serverFetch(
+    const project = await serverFetchAuthed(
       "get",
       `/versions/project/${projectJson.ID}`,
       cookies

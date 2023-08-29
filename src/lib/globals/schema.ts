@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+//
+// Zod schemas for Validation
+//
+
 export const userSchema = z.object({
   id: z.number(),
   banData: z.optional(
@@ -128,6 +132,10 @@ export const commentSchema = z.object({
     })
   )
 });
+
+//
+// Types
+//
 
 export type User = z.infer<typeof userSchema>;
 export type Project = z.infer<typeof projectSchema>;

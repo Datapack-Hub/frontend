@@ -1,6 +1,10 @@
 import { browser, dev } from "$app/environment";
 import { goto } from "$app/navigation";
-import { loadColorPref } from "$lib/globals/functions";
+import {
+  fetchAuthed,
+  loadColorPref,
+  removeCookie
+} from "$lib/globals/functions";
 import {
   authed,
   consoleWarned,
@@ -8,6 +12,7 @@ import {
   roles,
   user
 } from "$lib/globals/stores";
+import { toast } from "svelte-sonner";
 import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
 
@@ -31,6 +36,16 @@ export const load = (async ({ url, data }) => {
       document.cookie = `dph_token=${newToken}; expires=${expiry.toUTCString()}`;
 
       goto("/");
+    }
+
+    if (parameters.has("log_out")) {
+      const signal = await fetchAuthed("get", "/user/me/log_out");
+      const toastFunction = signal.ok ? toast.success : toast.error;
+      toastFunction(await signal.text());
+
+      if (signal.ok) {
+        removeCookie("dph_token");
+      }
     }
 
     if (!dev && !get(consoleWarned)) {
