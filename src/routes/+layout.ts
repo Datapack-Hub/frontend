@@ -46,6 +46,7 @@ export const load = (async ({ url, data }) => {
 
       if (signal.ok) {
         removeCookie("dph_token");
+        location.reload()
       }
     }
 
