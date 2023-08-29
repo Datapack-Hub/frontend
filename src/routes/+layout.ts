@@ -17,7 +17,8 @@ import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
 
 export const load = (async ({ url, data }) => {
-  if (data?.role && data.user) {
+
+  if (data?.role && data?.user) {
     user.set(data.user);
     if (data.role) roleInfo.set(data.role);
     authed.set(true);

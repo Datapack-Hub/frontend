@@ -128,7 +128,7 @@
           use:tippy="{{
             content:
               $user.username +
-              "<span class='items-center'><br /><a href='/?log_out=1' class='text-sky-500'>Sign Out</a></span>",
+              "<span class='items-center'><br /><a data-sveltekit-preload-data=\"tap\" href='/?log_out=1' class='text-sky-500'>Sign Out</a></span>",
             placement: 'bottom',
             allowHTML: true,
             interactive: true
