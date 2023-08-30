@@ -42,7 +42,7 @@
   let profileSettingsTip = {
     content: "Profile Settings",
     placement: "bottom"
-  }
+  };
 
   // easter egg :)
   async function play() {
@@ -87,7 +87,7 @@
   class="flex w-full flex-col items-center bg-slate-50 px-0 transition-all dark:bg-zinc-900 md:items-start md:px-16 md:pt-32 lg:flex-row lg:px-24">
   <div class="w-full rounded-lg p-3">
     <div
-      class="mb-4 flex h-auto flex-col gap-4 md:h-[19.5rem] md:flex-row lg:gap-8 relative">
+      class="relative mb-4 flex h-auto flex-col gap-4 md:h-[19.5rem] md:flex-row lg:gap-8">
       <div class="flex w-full flex-col items-center md:w-1/5">
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <img
@@ -116,9 +116,7 @@
             class="text-center text-4xl font-bold text-slate-950 dark:text-white md:text-left md:text-3xl lg:text-4xl">
             {data.profile?.username}
             {#if moderatorOrAbove(data.role)}
-              <span
-                class="icon text-dph-orange"
-                use:tippy="{staffTip}">
+              <span class="icon text-dph-orange" use:tippy="{staffTip}">
                 <IconVerified />
               </span>
             {:else if data.profile?.role == "helper"}
@@ -126,9 +124,7 @@
                 <IconVerified />
               </span>
             {:else if data.profile?.role == "verified"}
-              <span
-                class="icon text-emerald-500"
-                use:tippy="{verifiedTip}">
+              <span class="icon text-emerald-500" use:tippy="{verifiedTip}">
                 <IconVerified />
               </span>
             {/if}
@@ -150,7 +146,9 @@
             {/if}
           </p>
           {#if data.profile.id == $user.id || $roleInfo.permissions.includes("EDIT_USER")}
-            <div class="absolute right-4 top-4" use:tippy={profileSettingsTip}>
+            <div
+              class="absolute right-4 top-4"
+              use:tippy="{profileSettingsTip}">
               <IconSettings class="dark:text-slate-100" />
             </div>
           {/if}
