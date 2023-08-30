@@ -146,11 +146,12 @@
             {/if}
           </p>
           {#if data.profile.id == $user.id || $roleInfo.permissions.includes("EDIT_USER")}
-            <div
+            <a
+              href="/settings#profile"
               class="absolute right-4 top-4"
               use:tippy="{profileSettingsTip}">
               <IconSettings class="dark:text-slate-100" />
-            </div>
+            </a>
           {/if}
         </div>
         <div>
