@@ -68,7 +68,6 @@ export async function fetchAuthed(
   options:
     | {
         data?: object;
-        headers?: HeadersInit;
         fetchFunction?: FetchFunction;
       }
     | undefined = undefined
@@ -84,8 +83,7 @@ export async function fetchAuthed(
       // Headers
       ...(cookie === undefined
         ? undefined
-        : { Authorization: `Basic ${cookie}` }), // Cookie exists, so add it as the auth header
-      ...options?.headers // Include the other headers
+        : { Authorization: `Basic ${cookie}` }) // Cookie exists, so add it as the auth header
     }
   });
 

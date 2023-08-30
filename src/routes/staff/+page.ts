@@ -5,7 +5,7 @@ import type { PageLoad } from "./$types";
 
 export const load = (async ({ fetch }) => {
   const [admins, moderators, helpers] = await parallel(
-    5,
+    3,
     await Promise.all([
       fetch(`${API}/user/staff/admin`),
       fetch(`${API}/user/staff/moderator`),

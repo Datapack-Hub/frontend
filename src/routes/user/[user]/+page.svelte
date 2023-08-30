@@ -47,11 +47,11 @@
 
   async function follow() {
     followed = !followed;
-    let followreq = await fetchAuthed(
+    let followRequest = await fetchAuthed(
       "post",
       "/user/id/" + data.profile?.id + "/follow"
     );
-    if (followreq.ok) {
+    if (followRequest.ok) {
       toast.success("Done!");
     } else {
       toast.error("Something went wrong!");
