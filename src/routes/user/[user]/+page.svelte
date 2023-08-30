@@ -7,7 +7,7 @@
   import UserModeration from "$lib/components/user/UserModeration.svelte";
   import { badges } from "$lib/globals/badges";
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
-  import { authed, roleInfo, user } from "$lib/globals/stores";
+  import { roleInfo, user } from "$lib/globals/stores";
   import { title } from "radash";
   import { toast } from "svelte-sonner";
   import tippy from "sveltejs-tippy";
