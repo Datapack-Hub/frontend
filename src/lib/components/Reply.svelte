@@ -7,6 +7,7 @@
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
+  import IconEdit from "~icons/tabler/Edit.svelte";
   import MarkdownComponent from "./markdown/MarkdownRenderer.svelte";
 
   export let reply: {
@@ -25,7 +26,7 @@
     dateStyle: "short"
   });
 
-  async function del() {
+  async function deleteReply() {
     visible = false;
     const cmt = await fetchAuthed("DELETE", `/comments/id/${reply.id}`);
     if (cmt.ok) {
@@ -37,7 +38,7 @@
 </script>
 
 {#if visible}
-  <li class="relative mt-3 flex w-full space-x-1">
+  <li class="relative my-3 flex w-full space-x-2">
     <img
       src="{reply.author.profile_icon}&size=32"
       alt="{reply.author}'s profile"
@@ -55,34 +56,20 @@
         </p>
         {#if $user.id == reply.author.id || $roleInfo.permissions.includes("DELETE_CONTENT")}
           <div class="absolute right-0 p-3 text-white">
-            <button
-              role="checkbox"
-              aria-checked="{expanded}"
-              class="cursor-pointer"
-              on:click="{() => (expanded = !expanded)}">
-              {#if !expanded}
-                <IconExpand
-                  class="ml-auto"
-                  on:keypress="{() => (expanded = true)}" />
-              {:else}
-                <IconDexpand
-                  class="ml-auto"
-                  on:keypress="{() => (expanded = true)}" />
-              {/if}
-            </button>
-            {#if expanded}
+            {#if $user.id == reply.author.id || ["moderator", "admin"].includes($user.role)}
               <div
-                class="absolute right-0 top-8 space-y-1 rounded-lg bg-zinc-600 p-3">
+                class="absolute right-2 top-3 flex items-start space-x-2 p-1 text-sm text-zinc-400 opacity-0 hover:opacity-100">
                 <button
-                  class="flex cursor-pointer items-center space-x-1 rounded-lg p-0.5 px-1 text-xs hover:bg-zinc-600"
-                  on:click="{del}">
-                  <IconDelete />
-                  <p>Delete</p>
+                  class="flex items-center space-x-1"
+                  aria-label="Edit comment">
+                  <IconEdit />
                 </button>
-                <!-- <div class="flex items-center space-x-1">
-        <IconEdit />
-        <p>Edit</p>
-      </div> -->
+                <button
+                  class="flex items-center space-x-1"
+                  on:click="{deleteReply}"
+                  aria-label="Delete comment">
+                  <IconDelete />
+                </button>
               </div>
             {/if}
           </div>

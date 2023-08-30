@@ -370,6 +370,6 @@
 
 <style lang="postcss">
   .appearing-text-styles {
-    @apply absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-7xl font-bold md:left-0 md:w-full md:translate-x-0 md:text-left xl:text-8xl;
+    @apply absolute left-1/2 inline-block w-full -translate-x-1/2 overflow-y-hidden text-center text-7xl font-bold md:left-0 md:w-full md:translate-x-0 md:text-left lg:text-6xl xl:text-8xl;
   }
 </style>

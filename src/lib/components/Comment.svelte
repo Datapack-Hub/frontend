@@ -15,6 +15,7 @@
   import IconEdit from "~icons/tabler/Edit.svelte";
   import MarkdownComponent from "./markdown/MarkdownRenderer.svelte";
   import Reply from "./Reply.svelte";
+  import CasualLine from "./decorative/CasualLine.svelte";
 
   export let comment: DPHComment;
   export let project: Project;
@@ -60,7 +61,7 @@
     toast.error("There was an error.");
   }
 
-  async function deleteReply() {
+  async function deleteComment() {
     visible = false;
     const cmt = await fetchAuthed("DELETE", `/comments/id/${comment.id}`);
     if (cmt.ok) {
@@ -106,6 +107,7 @@
             <div>
               <ul class="w-full">
                 {#each sort(comment.replies, r => r.sent) ?? [] as reply}
+                  <CasualLine />
                   <Reply {reply} />
                 {/each}
               </ul>
@@ -160,7 +162,7 @@
           </button>
           <button
             class="flex items-center space-x-1"
-            on:click="{deleteReply}"
+            on:click="{deleteComment}"
             aria-label="Delete comment">
             <IconDelete />
           </button>
