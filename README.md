@@ -1,3 +1,5 @@
+![Datapack Hub Wordmark](/static/logos/Wordmark%20(orange).png)
+
 # Tellraw
 
 Welcome to Tellraw, the [Datapack Hub](https://datapackhub.net) frontend, powered by [SvelteKit](https://kit.svelte.dev/).
