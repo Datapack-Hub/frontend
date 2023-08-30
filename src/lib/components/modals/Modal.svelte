@@ -26,9 +26,7 @@
       class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu overflow-y-auto backdrop-blur-lg backdrop-brightness-75">
       <div
         in:fly="{{ x: -300, easing: quartOut }}"
-        class="relative m-auto {wide
-          ? 'w-3/4'
-          : ''} {(isSmall && !wide)
+        class="relative m-auto {wide ? 'w-3/4' : ''} {isSmall && !wide
           ? 'w-2/3'
           : 'w-1/2'} justify-self-center">
         {#if title}
