@@ -312,7 +312,7 @@
           ><IconTick /><span>Publish Project</span></button>
       {:else if data.project?.status == "live"}
         <button
-          class="button-base flex items-center space-x-1 bg-zinc-600 text-slate-950 dark:text-slate-100"
+          class="button-base flex items-center space-x-1 bg-slate-400 dark:bg-zinc-600 text-slate-950 dark:text-slate-100"
           on:click="{() => draftModal.open()}"
           ><IconDraft /><span>Draft submission</span></button>
       {/if}

@@ -613,24 +613,24 @@
     <button
       class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ===
       'delete'
-        ? 'bg-zinc-600'
-        : 'bg-zinc-900'}"
+        ? 'bg-slate-500 dark:bg-zinc-600'
+        : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'delete')}">Delete</button>
     <button
       class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ===
       'disable'
-        ? 'bg-zinc-600'
-        : 'bg-zinc-900'}"
+        ? 'bg-slate-500 dark:bg-zinc-600'
+        : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'disable')}">Disable</button>
     <button
       class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ===
       'write note'
-        ? 'bg-zinc-600'
-        : 'bg-zinc-900'}"
+        ? 'bg-slate-500 dark:bg-zinc-600'
+        : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'write note')}"
       >Write Note</button>
     <button
-      class="button-base bg-zinc-900 text-slate-950 dark:text-slate-100"
+      class="button-base bg-slate-300 dark:bg-zinc-900 text-slate-950 dark:text-slate-100"
       on:click="{() => goto('/project/' + data.project?.url + '/edit')}"
       >Edit Submission</button>
   </div>
