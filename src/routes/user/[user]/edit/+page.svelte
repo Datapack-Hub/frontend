@@ -27,7 +27,7 @@
     }
 
     toast.promise(
-      fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, request)
+      fetchAuthed("PATCH", `/user/id/${data.profile?.id}`, { data: request })
         .then(response => {
           if (!response.ok) {
             return response.text().then(txt => alert(txt));

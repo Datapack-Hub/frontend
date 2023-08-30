@@ -4,10 +4,8 @@
   import { roleInfo, roles, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
 
-  import IconExpand from "~icons/tabler/ChevronDown.svelte";
-  import IconDexpand from "~icons/tabler/ChevronUp.svelte";
-  import IconDelete from "~icons/tabler/Trash.svelte";
   import IconEdit from "~icons/tabler/Edit.svelte";
+  import IconDelete from "~icons/tabler/Trash.svelte";
   import MarkdownComponent from "./markdown/MarkdownRenderer.svelte";
 
   export let reply: {
@@ -19,7 +17,6 @@
 
   let userRole = $roles.find(v => v.name == reply.author.role);
 
-  let expanded = false;
   let visible = true;
   let formatter = Intl.DateTimeFormat("en", {
     timeStyle: "short",

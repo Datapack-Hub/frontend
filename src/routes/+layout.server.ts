@@ -1,5 +1,5 @@
 import { API } from "$lib/globals/consts";
-import { serverFetchAuthed } from "$lib/globals/functions";
+import { serverGetAuthed } from "$lib/globals/functions";
 import { roleSchema, userSchema, type Role } from "$lib/globals/schema";
 import type { LayoutServerLoad } from "./$types";
 
@@ -9,7 +9,7 @@ export const load = (async ({ cookies, fetch }) => {
   const roleResponse = await fetch(`${API}/user/staff/roles`);
   const rolesJson = await roleResponse.json();
   if (cookie) {
-    const userResponse = await serverFetchAuthed("get", "/user/me", cookies);
+    const userResponse = await serverGetAuthed("/user/me", cookies, fetch);
 
     const user = await userSchema.parseAsync(await userResponse.json());
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

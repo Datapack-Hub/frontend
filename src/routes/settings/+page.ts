@@ -5,9 +5,11 @@ import { roles } from "$lib/globals/stores";
 import { get } from "svelte/store";
 import type { PageLoad } from "./$types";
 
-export const load = (async () => {
+export const load = (async ({ fetch }) => {
   if (browser) {
-    const meResponse = await fetchAuthed("GET", "/user/me");
+    const meResponse = await fetchAuthed("GET", "/user/me", {
+      fetchFunction: fetch
+    });
     const profile = await userSchema.parseAsync(await meResponse.json());
 
     return {

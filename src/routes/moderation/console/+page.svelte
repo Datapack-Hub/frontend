@@ -25,7 +25,9 @@
 
         try {
           let response = await fetchAuthed("post", "/moderation/console", {
-            command: command
+            data: {
+              command: command
+            }
           });
 
           let text = await response.text();

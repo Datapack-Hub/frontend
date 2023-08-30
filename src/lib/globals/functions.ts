@@ -14,15 +14,17 @@ export function loadColorPref() {
   isDark.set(color !== undefined && color === "true");
 }
 
+type FetchFunction = (
+  input: RequestInfo | URL,
+  init?: RequestInit | undefined
+) => Promise<Response>;
+
 /**
  * Fetches data using the user's token
- *
- *
  *
  * SERVER USE ONLY!
  *
  * If you want to use this on the client, use fetchAuthed
- *
  *
  * @param method HTTP method to use
  * @param url
@@ -30,25 +32,20 @@ export function loadColorPref() {
  * @param data JSON data in body
  * @returns an HTTP response
  */
-export async function serverFetchAuthed(
-  method: string,
+export async function serverGetAuthed(
   url: string,
   cookies: Cookies,
-  data: object | undefined = undefined,
-  headers: HeadersInit | undefined = undefined
+  fetchFunction: FetchFunction = fetch
 ): Promise<Response> {
   const cookie = cookies.get("dph_token"); // Cookies object from `LayoutServerLoad`, so our data loads early
 
-  const response = await fetch(`${API}${url}`, {
+  const response = await fetchFunction(`${API}${url}`, {
     // Start fetching
-    method, // HTTP verb you want to use
-    body: data ? JSON.stringify(data) : undefined, // Body of fetch, always JSON because our API likes it
     headers: {
       // Headers
       ...(cookie === undefined
         ? undefined
-        : { Authorization: `Basic ${cookie}` }), // Cookie exists, so add it as the auth header
-      ...headers // Include the other headers
+        : { Authorization: `Basic ${cookie}` }) // Cookie exists, so add it as the auth header
     }
   });
 
@@ -68,21 +65,27 @@ export async function serverFetchAuthed(
 export async function fetchAuthed(
   method: string,
   url: string,
-  data: object | undefined = undefined,
-  headers: HeadersInit | undefined = undefined
+  options:
+    | {
+        data?: object;
+        headers?: HeadersInit;
+        fetchFunction?: FetchFunction;
+      }
+    | undefined = undefined
 ): Promise<Response> {
   const cookie = browser ? getCookie("dph_token") : undefined; // cookie only exists on browser
+  const fetchFunction = options?.fetchFunction || fetch;
 
-  const response = await fetch(`${API}${url}`, {
+  const response = await fetchFunction(`${API}${url}`, {
     // Start fetching
     method, // HTTP verb you want to use
-    body: data ? JSON.stringify(data) : undefined, // Body of fetch, always JSON because our API likes it
+    body: options?.data ? JSON.stringify(options.data) : undefined, // Body of fetch, always JSON because our API likes it
     headers: {
       // Headers
       ...(cookie === undefined
         ? undefined
         : { Authorization: `Basic ${cookie}` }), // Cookie exists, so add it as the auth header
-      ...headers // Include the other headers
+      ...options?.headers // Include the other headers
     }
   });
 

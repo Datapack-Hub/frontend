@@ -92,7 +92,9 @@
       "PATCH",
       "/moderation/project/" + data.project?.ID?.toString() + "/action",
       {
-        action: "publish"
+        data: {
+          action: "publish"
+        }
       }
     );
     if (p.ok) {
@@ -154,7 +156,9 @@
       fetchAuthed(
         "PATCH",
         "/moderation/project/" + data.project?.ID + "/action",
-        moderationRequestData
+        {
+          data: moderationRequestData
+        }
       ).then(response => {
         if (response.ok && action == "restore") del.remove();
       }),
@@ -175,7 +179,7 @@
       "post",
       "/projects/id/" + data.project?.ID + "/report",
       {
-        message: reportMessage
+        data: { message: reportMessage }
       }
     );
     toast.promise(promise, {
@@ -199,7 +203,7 @@
 
     toast.promise(
       fetchAuthed("post", "/projects/id/" + data.project?.ID + "/feature", {
-        expires: Number.parseInt(featureDur)
+        data: { expires: Number.parseInt(featureDur) }
       }),
       {
         success: "Featured project!",
@@ -220,7 +224,7 @@
     }
     toast.promise(
       fetchAuthed("POST", `/comments/thread/${data.project.ID}/post`, {
-        message: comment
+        data: { message: comment }
       }).then(async response => {
         if (response.ok) {
           let newComments = await fetch(

@@ -54,9 +54,11 @@
     ) as HTMLTextAreaElement;
 
     let warnResponse = await fetchAuthed("post", `/notifs/send/${user?.id}`, {
-      type: "important",
-      message: "Warning",
-      description: messageTxt.value
+      data: {
+        type: "important",
+        message: "Warning",
+        description: messageTxt.value
+      }
     });
 
     if (warnResponse.ok) {
@@ -82,9 +84,11 @@
     }
 
     let sent = await fetchAuthed("post", `/notifs/send/${user?.id}`, {
-      type: type.value,
-      message: message.value,
-      description: content.value
+      data: {
+        type: type.value,
+        message: message.value,
+        description: content.value
+      }
     });
 
     if (!sent.ok) {
@@ -108,9 +112,11 @@
     if (permanent.checked) exp = 36_500;
 
     let ban = await fetchAuthed("post", `/moderation/ban/${user?.id}`, {
-      id: user?.id,
-      expires: exp,
-      message: message.value
+      data: {
+        id: user?.id,
+        expires: exp,
+        message: message.value
+      }
     });
     if (!ban.ok) {
       toast.error(await ban.text());
@@ -146,7 +152,9 @@
 
   async function submitBadgeChanges() {
     let badgeResponse = await fetchAuthed("PATCH", `/user/badges/${user?.id}`, {
-      badges: badgeState
+      data: {
+        badges: badgeState
+      }
     });
 
     if (!badgeResponse.ok) {

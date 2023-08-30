@@ -1,5 +1,5 @@
 import { API } from "$lib/globals/consts";
-import { serverFetchAuthed } from "$lib/globals/functions";
+import { serverGetAuthed } from "$lib/globals/functions";
 import {
   commentSchema,
   projectSchema,
@@ -12,8 +12,8 @@ export const load = (async ({ params, fetch, cookies, url }) => {
   const parameters = url.searchParams;
 
   const [projectRequest, versionsRequest] = await Promise.all([
-    serverFetchAuthed("get", `/projects/get/${params.project}`, cookies),
-    serverFetchAuthed("get", `/versions/project/url/${params.project}`, cookies)
+    serverGetAuthed(`/projects/get/${params.project}`, cookies, fetch),
+    serverGetAuthed(`/versions/project/url/${params.project}`, cookies, fetch)
   ]);
 
   if ([projectRequest, versionsRequest].every(r => r.ok)) {

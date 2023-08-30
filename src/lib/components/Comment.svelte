@@ -42,8 +42,10 @@
       "POST",
       `/comments/thread/${project.ID}/post`,
       {
-        message: replyMessage,
-        parent_id: comment.id
+        data: {
+          message: replyMessage,
+          parent_id: comment.id
+        }
       }
     );
     if (commentPost.ok) {

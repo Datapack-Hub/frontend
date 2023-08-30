@@ -6,10 +6,12 @@ import { sum } from "radash";
 import { get } from "svelte/store";
 import type { PageLoad } from "./$types";
 
-export const load = (async ({ params }) => {
+export const load = (async ({ params, fetch }) => {
   const [user, projects] = await Promise.all([
-    fetchAuthed("get", `/user/${params.user}`),
-    fetchAuthed("get", `/user/${params.user}/projects`)
+    fetchAuthed("get", `/user/${params.user}`, { fetchFunction: fetch }),
+    fetchAuthed("get", `/user/${params.user}/projects`, {
+      fetchFunction: fetch
+    })
   ]);
 
   if (user.status === 404) {

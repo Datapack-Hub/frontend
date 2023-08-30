@@ -138,11 +138,9 @@
     }
 
     toast.promise(
-      fetchAuthed(
-        "POST",
-        `/versions/new/${data.project?.ID}`,
-        versionData
-      ).then(() => goto(".")),
+      fetchAuthed("POST", `/versions/new/${data.project?.ID}`, {
+        data: { ...versionData }
+      }).then(() => goto(".")),
       {
         success: "Uploaded! Refreshing...",
         error: "Something went wrong.",
@@ -200,11 +198,9 @@
       projData["icon"] = iconB64?.toString();
     }
 
-    let x = await fetchAuthed(
-      "post",
-      "/projects/edit/" + data.project?.ID,
-      projData
-    );
+    let x = await fetchAuthed("post", "/projects/edit/" + data.project?.ID, {
+      data: { ...projData }
+    });
     if (x.ok) {
       goto(".");
       toast.success("Edited project!");

@@ -6,13 +6,13 @@ import { error } from "@sveltejs/kit";
 import { get } from "svelte/store";
 import type { PageLoad } from "./$types";
 
-export const load = (async ({ params }) => {
+export const load = (async ({ params, fetch }) => {
   if (browser) {
     const defaultRole = get(roleInfo);
 
     const [user, me] = await Promise.all([
-      fetchAuthed("get", `/user/${params.user}`),
-      fetchAuthed("get", "/user/me")
+      fetchAuthed("get", `/user/${params.user}`, { fetchFunction: fetch }),
+      fetchAuthed("get", "/user/me", { fetchFunction: fetch })
     ]);
 
     const [userJson, meJson] = await Promise.all([

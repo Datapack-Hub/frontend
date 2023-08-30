@@ -47,7 +47,9 @@
     };
 
     toast.promise(
-      fetchAuthed("post", `/projects/create`, projData).then(response => {
+      fetchAuthed("post", `/projects/create`, {
+        data: projData
+      }).then(response => {
         if (response.ok) {
           goto(`/project/${projData.url.toLowerCase()}?is_new=1`);
         }

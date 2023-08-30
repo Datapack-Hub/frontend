@@ -3,7 +3,7 @@ import { goto } from "$app/navigation";
 import { fetchAuthed } from "$lib/globals/functions";
 import type { PageLoad } from "../$types";
 
-export const load = (async ({ url }) => {
+export const load = (async ({ url, fetch }) => {
   const parameters = url.searchParams;
 
   if (browser) {
@@ -14,7 +14,8 @@ export const load = (async ({ url }) => {
 
     const response = await fetchAuthed(
       "put",
-      `/auth/link/discord?code=${parameters.get("code")}`
+      `/auth/link/discord?code=${parameters.get("code")}`,
+      { fetchFunction: fetch }
     );
     if (response.ok) goto("/settings");
   }
