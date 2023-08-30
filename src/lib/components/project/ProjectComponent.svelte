@@ -8,6 +8,8 @@
   export let project: Project;
   export let showStatus = false;
 
+  let formatter = Intl.NumberFormat("en", { notation: "compact" });
+
   $: userRole = $roles.find(role => role.name === project.author.role);
   $: status = project.status ?? "unpublished";
 </script>
@@ -63,7 +65,7 @@
         {/if}
         <span>•</span>
         <span
-          >{project.downloads ?? 0}<IconDownload
+          >{formatter.format(project.downloads ?? 0)}<IconDownload
             class="ml-0.5 inline-block h-4 w-4 align-text-top" /></span>
         {#if showStatus}
           {#if ["unpublished", "draft"].includes(status)}

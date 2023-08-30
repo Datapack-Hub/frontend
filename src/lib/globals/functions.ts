@@ -125,8 +125,5 @@ export function removeCookie(name: string) {
  * @returns true or false
  */
 export const moderatorOrAbove = memo((role: Role | undefined) => {
-  return (
-    get(authed) &&
-    ["moderator", "developer", "admin"].includes(role?.name ?? "")
-  );
+  return ["moderator", "developer", "admin"].includes(role?.name ?? "");
 });
