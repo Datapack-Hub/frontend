@@ -511,7 +511,7 @@
                     {/if}
                   {/each}
                   <button
-                    class="flex cursor-pointer items-center space-x-2 rounded-md bg-slate-400 p-3 text-white transition-all hover:scale-102 dark:bg-zinc-600"
+                    class="flex cursor-pointer items-center space-x-2 rounded-md bg-slate-400 p-3 dark:text-white transition-all hover:scale-102 dark:bg-zinc-600"
                     on:click="{() => (activePage = 'versions')}">
                     <div
                       class="flex flex-grow items-center space-x-2 font-bold">
