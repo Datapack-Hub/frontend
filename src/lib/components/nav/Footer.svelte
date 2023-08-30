@@ -40,7 +40,7 @@
         <li>
           <a
             class="transition-transform hover:brightness-75"
-            href="https://discord.gg/aEXsdjjdu4">Community Discord</a>
+            href="https://discord.datapackhub.net">Community Discord</a>
         </li>
         <li>
           <a class="transition-transform hover:brightness-75" href="/staff"
@@ -55,7 +55,7 @@
         <li>
           <a
             class="transition-transform hover:brightness-75"
-            href="https://discord.gg/aEXsdjjdu4">Discord</a>
+            href="https://discord.datapackhub.net">Discord</a>
         </li>
         <li>
           <a

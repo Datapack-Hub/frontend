@@ -301,7 +301,7 @@
         </p>
         <a
           class="rounded-lg bg-[#5865F2] p-3 font-bold text-white"
-          href="https://discord.gg/aEXsdjjdu4">
+          href="https://discord.datapackhub.net">
           <img
             src="/logos/discord-white.svg"
             alt="discord logo"

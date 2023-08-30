@@ -90,7 +90,7 @@
       {#if !isSmall}
         <a
           class="rounded-full p-1 font-light transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
-          href="https://discord.gg/aEXsdjjdu4">Discord</a>
+          href="https://discord.datapackhub.net">Discord</a>
       {/if}
     </ConditionalWrapper>
     <ConditionalWrapper

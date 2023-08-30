@@ -73,7 +73,7 @@
           </p>
           <p class=" text-white"><b>In the meantime, come chat!</b></p>
           <p>
-            <a href="https://discord.gg/aEXsdjjdu4" class=" text-sky-200">
+            <a href="https://discord.datapackhub.net" class=" text-sky-200">
               - Join our Discord</a>
           </p>
           <p class="mb-5">
@@ -111,7 +111,7 @@
         </p>
         <p class="mb-2 text-white">
           Come hang out and check site status on our <a
-            href="https://discord.gg/aEXsdjjdu4"
+            href="https://discord.datapackhub.net"
             class=" text-sky-200">Discord</a
           >!
         </p>

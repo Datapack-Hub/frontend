@@ -28,7 +28,7 @@
         in:fly="{{ x: -300, easing: quartOut }}"
         class="relative m-auto {wide
           ? 'w-3/4'
-          : isSmall
+          : ''} {(isSmall && !wide)
           ? 'w-2/3'
           : 'w-1/2'} justify-self-center">
         {#if title}
