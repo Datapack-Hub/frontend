@@ -4,9 +4,9 @@
 
 Welcome to Tellraw, the [Datapack Hub](https://datapackhub.net) frontend, powered by [SvelteKit](https://kit.svelte.dev/).
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Datapack-Hub/site/main.yml?branch=main)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Datapack-Hub/site/graphs/commit-activity)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Datapack-Hub/site/main.yml?branch=main&style=for-the-badge)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/Datapack-Hub/site/graphs/commit-activity)
 
 ## Development
 
