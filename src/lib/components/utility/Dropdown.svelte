@@ -35,7 +35,7 @@
   {#if expand}
     <ul
       out:fade="{{ duration: 100, delay: 0 }}"
-      class="absolute z-30 border-2 border-zinc-700 bg-zinc-800 p-1 last:rounded-b-lg"
+      class="absolute z-30 border-2 border-slate-300 dark:border-zinc-700 bg-slate-200 dark:bg-zinc-800 p-1 last:rounded-b-lg"
       style="width: {longest[0].length + 5}ch;">
       {#each options as opt, index}
         <li>
