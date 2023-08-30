@@ -60,8 +60,6 @@
         warning: ""
       }
     );
-
-    console.log(projData);
   }
 
   function uploadIcon() {
@@ -83,6 +81,11 @@
       iconB64 = event.target?.result;
       iconImg = URL.createObjectURL(iconValue[0]);
     });
+  }
+
+  function titleHandler(event: HTMLInputElement) {
+    title = event.value;
+    slug = dash(event.value.trim());
   }
 </script>
 
@@ -126,7 +129,7 @@
             maxlength="35"
             required
             aria-required="true"
-            bind:value="{title}"
+            on:input="{event => titleHandler(event.currentTarget)}"
             class="input w-full" />
           <p class="col-span-2 mb-2 mt-4 text-slate-950 dark:text-slate-100">
             URL

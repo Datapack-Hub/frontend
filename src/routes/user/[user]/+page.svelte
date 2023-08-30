@@ -144,18 +144,20 @@
               </span>
             {/if}
           </p>
-          {#if $authed && $user.id === data.profile?.id}
-            <Button
-              style="secondary"
-              click="/settings#profile"
-              classes="mt-3 flex w-fit items-center text-sm">
-              <IconSettings
-                width="16"
-                height="16"
-                class="float-left mr-1 stroke-blue-400" />
-              Profile Settings
-            </Button>
-          {/if}
+          <div class="flex items-center justify-center md:justify-normal">
+            {#if $authed && $user.id === data.profile?.id}
+              <Button
+                style="secondary"
+                click="/settings#profile"
+                classes="mt-3 flex w-fit items-center text-sm">
+                <IconSettings
+                  width="16"
+                  height="16"
+                  class="float-left mr-1 stroke-blue-400" />
+                Profile Settings
+              </Button>
+            {/if}
+          </div>
         </div>
         <div>
           <h2
@@ -196,7 +198,7 @@
     <div class="px-3 pt-16">
       <div class="mb-4 flex items-center">
         <h1
-          class="flex-grow text-center text-xl font-bold text-slate-900 dark:text-slate-100 md:text-left">
+          class="flex-grow text-center text-base font-bold text-slate-900 dark:text-slate-100 md:text-left md:text-lg lg:text-xl">
           {data.profile?.username}'s projects
         </h1>
         {#if data.profile?.id == $user.id}
@@ -205,7 +207,7 @@
         {/if}
         <CasualLine />
       </div>
-      <div class="grid-auto-fit-2xl grid gap-3">
+      <div class="sm:grid-auto-fit-2xl grid grid-cols-1 gap-3">
         {#if data.projects?.length == 0}
           <p
             class="col-span-2 mt-24 text-center text-3xl text-slate-950/40 dark:text-white/40 md:mt-48">

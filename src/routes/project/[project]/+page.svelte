@@ -440,20 +440,12 @@
             </div>
             {#if data.versions?.length != 0}
               <div class="flex w-full items-center space-x-2 dark:text-white">
-                <p class="mr-2">Search by Minecraft version:</p>
+                <p class="mr-2 text-xs md:text-sm lg:text-base">
+                  Minecraft Version:
+                </p>
                 <MultiSelect
                   bind:selected="{selectedVersions}"
                   options="{minecraftVersions}" />
-              </div>
-              <div class="mx-3 mt-4 flex space-x-2">
-                <h2
-                  class="w-1/3 text-xl font-black text-slate-950 dark:text-white">
-                  Name
-                </h2>
-                <h2
-                  class="flex-grow text-xl font-black text-slate-950 dark:text-white">
-                  Minecraft versions
-                </h2>
               </div>
               <ul use:autoAnimate class="space-y-2">
                 {#each versionMatches ?? [] as version}

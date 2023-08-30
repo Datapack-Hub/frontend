@@ -17,14 +17,13 @@
   import IconFileFilled from "~icons/tabler/FileFilled.svelte";
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import IconRP from "~icons/tabler/Sparkles.svelte";
+  import IconDownload from "~icons/tabler/Download.svelte";
   import Button from "../decorative/Button.svelte";
 
   export let version: Version;
   export let expanded = false;
   export let mcVersion: string = "";
   export let project: Project | undefined = undefined;
-
-  console.log(project?.author.id);
 
   let properVersion = version.minecraft_versions.split(",");
   let dlModal: Modal;
@@ -180,27 +179,31 @@
         {:else}
           <IconFileFilled />
         {/if}
-        <h2>{version.name}</h2>
+        <h2 class="md:text-md text-sm lg:text-lg">{version.name}</h2>
       </button>
-      <h3 class="text-base font-thin italic text-slate-950 dark:text-white">
+      <h3
+        class="text-xs font-thin italic text-slate-950 dark:text-white md:text-sm lg:text-base">
         {version.version_code}
       </h3>
     </div>
     {#if !mcVersion}
-      <h3 class="flex flex-grow space-x-1 text-slate-950 dark:text-white">
+      <ul
+        class="hidden gap-1 text-slate-950 dark:text-white md:flex md:flex-grow">
         {#each properVersion as mcv}
-          <button
-            class="rounded-md bg-dph-orange p-1 px-2"
-            on:click="{() =>
-              download(
-                version.primary_download,
-                mcv,
-                version.resource_pack_download !== undefined
-              )}">
-            {mcv}
-          </button>
+          <li>
+            <button
+              class="rounded-md bg-dph-orange p-1 px-2 text-xs"
+              on:click="{() =>
+                download(
+                  version.primary_download,
+                  mcv,
+                  version.resource_pack_download !== undefined
+                )}">
+              {mcv}
+            </button>
+          </li>
         {/each}
-      </h3>
+      </ul>
     {/if}
     {#if !expanded && !mcVersion}
       {#if project?.author.id == $user.id}
@@ -208,12 +211,13 @@
           on:click="{() => {
             deleteVersion();
           }}"
-          class="text-red-500">Delete</button>
+          class="text-xs text-red-500 md:text-sm lg:text-base">Delete</button>
       {/if}
       <Button
+        classes="text-xs md:text-sm lg:text-base"
         click="{() => {
           openDownloadModal();
-        }}">Download</Button>
+        }}"><IconDownload /></Button>
     {/if}
   </div>
   {#if expanded}
@@ -263,7 +267,7 @@
       <IconInfo />
     </div>
   </div>
-  <div class="my-2 flex space-x-2 text-slate-950 dark:text-white">
+  <div class="grid-auto-lg my-2 grid gap-2 text-slate-950 dark:text-white">
     {#each version?.minecraft_versions.split(",") ?? [] as mcv}
       <Button
         wait="{true}"
