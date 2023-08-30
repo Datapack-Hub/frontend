@@ -630,7 +630,7 @@
       on:click="{() => (moderationModalPage = 'write note')}"
       >Write Note</button>
     <button
-      class="button-base bg-slate-300 dark:bg-zinc-900 text-slate-950 dark:text-slate-100"
+      class="button-base bg-slate-300 text-slate-950 dark:bg-zinc-900 dark:text-slate-100"
       on:click="{() => goto('/project/' + data.project?.url + '/edit')}"
       >Edit Submission</button>
   </div>
