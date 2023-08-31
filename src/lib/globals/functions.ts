@@ -10,7 +10,8 @@ import { isDark } from "./stores";
  */
 export function loadColorPref() {
   const color = localStorage.getItem("dp_colorPref");
-  isDark.set(color !== undefined && color === "true");
+  if (color == undefined) return;
+  isDark.set(color == "true");
 }
 
 type FetchFunction = (
