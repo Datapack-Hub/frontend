@@ -61,13 +61,10 @@
 
 <svelte:window bind:scrollY />
 
-<Modal title="Sign In or Sign Up" bind:this={signInModal} width="small">
+<Modal title="Sign In or Sign Up" bind:this="{signInModal}" width="small">
   <div class="flex align-middle">
-    <div class="w-1/5 flex flex-col justify-around">
-      <img
-        src="/logos/dph.svg"
-        alt="logo"
-        class="self-center w-3/4 mr-2" />
+    <div class="flex w-1/5 flex-col justify-around">
+      <img src="/logos/dph.svg" alt="logo" class="mr-2 w-3/4 self-center" />
     </div>
     <div>
       <p class="dark:text-white">Welcome to Datapack Hub!</p>
@@ -76,21 +73,21 @@
       </p>
       <div class="grid w-full grid-cols-2 gap-2">
         <a
-          class="flex items-center text-center space-x-2 rounded-lg bg-black p-3 font-bold text-white"
+          class="flex items-center space-x-2 rounded-lg bg-black p-3 text-center font-bold text-white"
           href="https://api.datapackhub.net/auth/login/github">
           <img
-          src="/logos/github-white.svg"
-          alt="logo"
-          class="self-center h-6" />
+            src="/logos/github-white.svg"
+            alt="logo"
+            class="h-6 self-center" />
           <p>Log In with Github</p>
         </a>
         <a
           class="flex items-center space-x-2 rounded-lg bg-[#5865F2] p-3 font-bold text-white"
           href="https://api.datapackhub.net/auth/login/discord">
           <img
-          src="/logos/discord-white.svg"
-          alt="logo"
-          class="self-center h-5" />
+            src="/logos/discord-white.svg"
+            alt="logo"
+            class="h-5 self-center" />
           <p>Log In with Discord</p>
         </a>
       </div>
@@ -101,7 +98,6 @@
       </p>
     </div>
   </div>
-
 </Modal>
 
 <header class="fixed z-50 w-full {isSmall ? 'bottom-0' : 'top-0'}">
@@ -143,31 +139,31 @@
       wrapCondition="{!isSmall}"
       classes="flex items-center justify-end space-x-4">
       {#if $authed}
-      <a
-        aria-label="New project"
-        href="/projects/new"
-        class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
-        use:tippy="{newHoverMessage}"><IconPlus width="24" height="24" /></a>
-      <a
-        href="/notifications"
-        class="z-20 rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
-        aria-label="Notifications page"
-        use:tippy="{notificationHoverMessage}">
-        {#if unreadNotifications}
-          <IconUnread height="24" width="24" />
-        {:else}
-          <IconRead height="24" width="24" />
+        <a
+          aria-label="New project"
+          href="/projects/new"
+          class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
+          use:tippy="{newHoverMessage}"><IconPlus width="24" height="24" /></a>
+        <a
+          href="/notifications"
+          class="z-20 rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
+          aria-label="Notifications page"
+          use:tippy="{notificationHoverMessage}">
+          {#if unreadNotifications}
+            <IconUnread height="24" width="24" />
+          {:else}
+            <IconRead height="24" width="24" />
+          {/if}
+        </a>
+        {#if !isSmall}
+          {#if $authed && moderatorOrAbove($roleInfo)}
+            <a
+              href="/moderation"
+              class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
+              use:tippy="{moderationHoverMessage}"
+              ><IconShield width="24" height="24" /></a>
+          {/if}
         {/if}
-      </a>
-      {#if !isSmall}
-        {#if $authed && moderatorOrAbove($roleInfo)}
-          <a
-            href="/moderation"
-            class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
-            use:tippy="{moderationHoverMessage}"
-            ><IconShield width="24" height="24" /></a>
-        {/if}
-      {/if}
       {/if}
       <ColorSchemeSelector />
       {#if $authed}
@@ -194,7 +190,9 @@
             style="outline-color:{$roleInfo.color ?? '#eab308'};" />
         </a>
       {:else}
-        <a id="sign_in" on:click="{signInModal.open}" class="button-primary"> Sign in </a>
+        <a id="sign_in" on:click="{signInModal.open}" class="button-primary">
+          Sign in
+        </a>
       {/if}
     </ConditionalWrapper>
   </nav>

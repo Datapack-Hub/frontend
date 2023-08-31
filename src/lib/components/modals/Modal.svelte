@@ -26,7 +26,12 @@
       class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu overflow-y-auto backdrop-blur-lg backdrop-brightness-75">
       <div
         in:fly="{{ x: -300, easing: quartOut }}"
-        class="relative m-auto {width == "wide" ? 'w-3/4' : ""} {width == "small" ? 'w-fit' : ""} {width == "normal" ? 'w-1/2' : ""} {isSmall ? 'w-5/6' : ""} justify-self-center">
+        class="relative m-auto {width == 'wide' ? 'w-3/4' : ''} {width ==
+        'small'
+          ? 'w-fit'
+          : ''} {width == 'normal' ? 'w-1/2' : ''} {isSmall
+          ? 'w-5/6'
+          : ''} justify-self-center">
         {#if title}
           <div
             class="flex items-center rounded-t-xl bg-slate-300 p-3 dark:bg-zinc-900">
