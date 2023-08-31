@@ -57,23 +57,52 @@
       <Footer />
     {:else}
       <div class="fixed left-0 top-0 flex h-screen w-screen bg-zinc-900">
-        <div class="flex justify-around relative m-auto justify-self-center align-middle">
-          <div class="w-4/5 md:w-2/3 lg:w-3/4 space-y-2">
-            <div class="rounded-xl bg-zinc-800 p-3 shadow-md shadow-black/25  flex space-x-3">
+        <div
+          class="relative m-auto flex justify-around justify-self-center align-middle">
+          <div class="w-4/5 space-y-2 md:w-2/3 lg:w-3/4">
+            <div
+              class="flex space-x-3 rounded-xl bg-zinc-800 p-3 shadow-md shadow-black/25">
               <img src="/logos/dph.svg" class="w-1/4" />
               <div>
-                <h1 class="text-3xl dark:text-white font-bold mb-1">Welcome to Datapack Hub!</h1>
-                <p class="text-slate-200 mb-1">Datapack Hub started in January 2022 as a PMC group for datapack developers to come together, forming a community around Minecraft Datapacks, Resource Packs, and more. Now, we’re a fast-growing community with over 500 followers, and we’re working on even more epic stuff. We strive to be the friendliest and best datapacking community out there. Thanks for checking us out!
-                <p class="text-slate-200 mt-2">Our website is still in development. In the meantime, come join our community!
+                <h1 class="mb-1 text-3xl font-bold dark:text-white">
+                  Welcome to Datapack Hub!
+                </h1>
+                <p class="mb-1 text-slate-200">
+                  Datapack Hub started in January 2022 as a PMC group for
+                  datapack developers to come together, forming a community
+                  around Minecraft Datapacks, Resource Packs, and more. Now,
+                  we’re a fast-growing community with over 500 followers, and
+                  we’re working on even more epic stuff. We strive to be the
+                  friendliest and best datapacking community out there. Thanks
+                  for checking us out!
                 </p>
-                <ul class="list-disc list-inside">
-                  <li><a href="https://discord.datapackhub.net" class="text-blue-400 font-semibold">Join our Discord (the main part of our project)</a></li>
-                  <li><a href="https://discord.datapackhub.net" class="text-blue-400">Follow our Planet Minecraft group</a></li>
+                <p class="mt-2 text-slate-200">
+                  Our website is still in development. In the meantime, come
+                  join our community!
+                </p>
+                <ul class="list-inside list-disc">
+                  <li>
+                    <a
+                      href="https://discord.datapackhub.net"
+                      class="font-semibold text-blue-400"
+                      >Join our Discord (the main part of our project)</a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://discord.datapackhub.net"
+                      class="text-blue-400"
+                      >Follow our Planet Minecraft group</a>
+                  </li>
                 </ul>
               </div>
             </div>
-            <div class="rounded-xl bg-red-800 p-3 shadow-md shadow-black/25 flex space-x-3">
-              <p class="dark:text-white"><b>The Datapack Hub Website is coming in Autumn. </b>If you are part of the website's closed beta and aren't meant to be seeing this page, please sign in again.</p>
+            <div
+              class="flex space-x-3 rounded-xl bg-red-800 p-3 shadow-md shadow-black/25">
+              <p class="dark:text-white">
+                <b>The Datapack Hub Website is coming in Autumn. </b>If you are
+                part of the website's closed beta and aren't meant to be seeing
+                this page, please sign in again.
+              </p>
             </div>
           </div>
         </div>
