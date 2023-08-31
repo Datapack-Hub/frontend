@@ -179,7 +179,7 @@
 
 {#if user && ["admin", "moderator", "helper"].includes($roleInfo.name)}
   {#await loadData()}
-    <p class="text-slate-950 dark:text-white">Loading...</p>
+    <p class="text-slate-950 dark:text-white h-9">Loading...</p>
   {:then}
     <Button
       style="boring"
