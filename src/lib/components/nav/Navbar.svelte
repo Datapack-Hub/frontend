@@ -13,7 +13,6 @@
   import Modal from "../modals/Modal.svelte";
   import ConditionalWrapper from "../utility/ConditionalWrapper.svelte";
 
-
   let signInModal: Modal;
 
   let scrollY: number;
@@ -187,7 +186,10 @@
             style="outline-color:{$roleInfo.color ?? '#eab308'};" />
         </a>
       {:else}
-        <button id="sign_in" on:click="{signInModal.open}" class="button-primary">
+        <button
+          id="sign_in"
+          on:click="{signInModal.open}"
+          class="button-primary">
           Sign in
         </button>
       {/if}
