@@ -80,23 +80,20 @@
       </a>
       <a
         href="/projects"
+        aria-label="Explore datapacks"
         class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange">
-        {#if isSmall}
-          <IconCompass width="24" height="24" />
-        {:else}
-          <span class="font-light">Explore</span>
-        {/if}
+        <IconCompass width="24" height="24" class="block md:hidden" />
+        <span class="hidden font-light md:block">Explore</span>
       </a>
-      {#if !isSmall}
-        <a
-          class="rounded-full p-1 font-light transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
-          href="https://discord.datapackhub.net">Discord</a>
-      {/if}
+      <a
+        class="hidden rounded-full p-1 font-light transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:block md:hover:bg-transparent md:hover:text-dph-orange"
+        href="https://discord.datapackhub.net">Discord</a>
     </ConditionalWrapper>
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
       classes="flex items-center justify-end space-x-4">
       <a
+        aria-label="New project"
         href="/projects/new"
         class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
         use:tippy="{newHoverMessage}"><IconPlus width="24" height="24" /></a>

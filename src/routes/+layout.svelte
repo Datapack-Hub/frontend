@@ -32,10 +32,14 @@
 <svelte:head>
   {#if authed && !["helper", "moderator", "admin", "beta access", "verified"].includes($user.role)}
     <title>Coming Fall 2023?</title>
+    <meta
+      name="description"
+      content="The Datapack Hub website is coming very soon! In the meantime, come chat!
+    https://discord.datapackhub.net
+    https://planetminecraft.com/group/daily_datapackers" />
   {/if}
 </svelte:head>
 
-<!-- {#await pageLoad() then} -->
 <div class="{$isDark ? 'dark' : ''} font-brand">
   {#if !maintenance || $user.role == "admin"}
     {#if dev || ($authed && ["admin", "moderator", "helper", "beta access", "verified", "nerd"].includes($user.role))}

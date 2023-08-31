@@ -28,7 +28,6 @@
           alt="{project.title} icon"
           width="80"
           height="80"
-          loading="lazy"
           class="aspect-square w-20 rounded-lg bg-cover" />
       {:else}
         <IconNoPhoto width="48" height="48" />
@@ -41,7 +40,7 @@
         {project.title}
       </a>
       <div
-        class="mt-1 flex items-center gap-1 text-sm text-slate-950/40 dark:text-slate-100">
+        class="mt-1 flex items-center gap-1 text-sm text-slate-700 dark:text-slate-100">
         <img
           src="{project.author.profile_icon}&size=32"
           alt="{project.author.username}'s profile"
@@ -82,7 +81,7 @@
         {/if}
       </div>
       <p
-        class="max-w-1/2 mt-2 line-clamp-1 text-xs font-medium text-slate-950/40 dark:text-slate-100/40">
+        class="max-w-1/2 mt-2 line-clamp-1 text-xs font-medium text-slate-700 dark:text-slate-100/40">
         {project.description}
       </p>
     </div>

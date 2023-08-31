@@ -256,17 +256,10 @@
 
 <svelte:head>
   <title>{data.project?.title} | Datapack Hub</title>
-
   <meta property="title" content="{data.project?.title}" />
-  <meta
-    property="description"
-    content="{data.project?.description ?? 'No Description'}" />
-
+  <meta property="description" content="{data.project?.description}" />
   <meta property="og:title" content="{data.project?.title} | Datapack Hub" />
-  <meta
-    property="og:description"
-    content="{data.project?.description ?? 'No Description'}" />
-
+  <meta property="og:description" content="{data.project?.description}" />
   <meta name="og:image" content="{data.project?.icon}" />
   <meta name="og:image:secure_url" content="{data.project?.icon}" />
   <meta name="og:image:width" content="120" />
@@ -275,7 +268,7 @@
 
 <main
   id="main-content"
-  class=" bg-slate-50 px-0 pb-64 transition-all dark:bg-zinc-900 sm:px-8 md:px-16 lg:px-24">
+  class="bg-slate-50 px-0 pb-64 transition-all dark:bg-zinc-900 sm:px-8 md:px-16 lg:px-24">
   <div class="md:pt-20"></div>
   <div class="flex w-full flex-col px-4 lg:flex-row">
     {#if data.project && data.versions}
