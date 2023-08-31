@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { afterNavigate, goto } from "$app/navigation";
+  import { goto } from "$app/navigation";
   import Button from "$lib/components/decorative/Button.svelte";
   import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
@@ -7,9 +7,8 @@
   import { fetchAuthed } from "$lib/globals/functions";
   import { authed, user } from "$lib/globals/stores";
   import { dash } from "radash";
-  import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
-  import { writable, type Writable } from "svelte/store";
+  import { writable } from "svelte/store";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
 
   let iconB64: string | ArrayBuffer | null | undefined;
@@ -19,15 +18,7 @@
   let description: string;
   let body: string;
   let slug: string;
-  let category: Writable<string[]> = writable([]);
-
-  onMount(() => {
-    $category = [];
-  });
-
-  afterNavigate(() => {
-    $category = [];
-  });
+  $: category = writable([]);
 
   function maxCategoriesReached() {
     toast.error("Max Categories Reached");

@@ -2,7 +2,7 @@
   import type { PageData } from "./$types";
 
   import { browser } from "$app/environment";
-  import { afterNavigate, goto } from "$app/navigation";
+  import { goto } from "$app/navigation";
 
   import Button from "$lib/components/decorative/Button.svelte";
   import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
@@ -17,15 +17,14 @@
 
   import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
-  import { onMount } from "svelte";
   import { MultiSelect } from "svelte-multiselect";
-  import { writable, type Writable } from "svelte/store";
+  import { writable } from "svelte/store";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconDraft from "~icons/tabler/FileOff.svelte";
+  import IconUpload from "~icons/tabler/FileUpload.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import IconX from "~icons/tabler/X.svelte";
-  import IconUpload from "~icons/tabler/FileUpload.svelte";
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -46,20 +45,12 @@
   let iconB64: string | ArrayBuffer | null | undefined;
   let iconImg: string;
 
-  let category: Writable<string[]> = writable([]);
+  $: category = writable([]);
 
   let v_changelog = "";
 
   // let dependencies: Project[] = [];
   // let dependencyNames: string[] = [""];
-
-  onMount(() => {
-    $category = [];
-  });
-
-  afterNavigate(() => {
-    $category = [];
-  });
 
   function maxCategoriesReached() {
     toast.error("Max Categories Reached");

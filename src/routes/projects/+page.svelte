@@ -179,9 +179,9 @@
             : "s"}
         {/if}
       </h2>
-      <ul class="mx-2 mt-2 space-y-2" use:autoAnimate>
+      <div class="mx-2 mt-2 space-y-2" use:autoAnimate>
         {#key layout}
-          <div
+          <ul
             class="{layout === 'list'
               ? 'space-y-2'
               : 'grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3'}"
@@ -194,9 +194,9 @@
                 <!-- {/if} -->
               {/each}
             {/key}
-          </div>
+          </ul>
         {/key}
-      </ul>
+      </div>
     {/if}
   </div>
   <div class="py-16"></div>
