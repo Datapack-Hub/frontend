@@ -11,6 +11,13 @@
   import IconShield from "~icons/tabler/Shield.svelte";
   import ColorSchemeSelector from "../ColorSchemeSelector.svelte";
   import ConditionalWrapper from "../utility/ConditionalWrapper.svelte";
+  import Modal from "../modals/Modal.svelte";
+
+  import IconGithub from "~icons/tabler/BrandGithub.svelte";
+  import IconDiscord from "~icons/tabler/BrandDiscord.svelte";
+  import { onMount } from "svelte";
+
+  let signInModal: Modal;
 
   let scrollY: number;
 
@@ -54,6 +61,49 @@
 
 <svelte:window bind:scrollY />
 
+<Modal title="Sign In or Sign Up" bind:this={signInModal} width="small">
+  <div class="flex align-middle">
+    <div class="w-1/5 flex flex-col justify-around">
+      <img
+        src="/logos/dph.svg"
+        alt="logo"
+        class="self-center w-3/4 mr-2" />
+    </div>
+    <div>
+      <p class="dark:text-white">Welcome to Datapack Hub!</p>
+      <p class="mb-2 text-sm dark:text-neutral-400">
+        If you haven't made an account, one will be made for you.
+      </p>
+      <div class="grid w-full grid-cols-2 gap-2">
+        <a
+          class="flex items-center text-center space-x-2 rounded-lg bg-black p-3 font-bold text-white"
+          href="https://api.datapackhub.net/auth/login/github">
+          <img
+          src="/logos/github-white.svg"
+          alt="logo"
+          class="self-center h-6" />
+          <p>Log In with Github</p>
+        </a>
+        <a
+          class="flex items-center space-x-2 rounded-lg bg-[#5865F2] p-3 font-bold text-white"
+          href="https://api.datapackhub.net/auth/login/discord">
+          <img
+          src="/logos/discord-white.svg"
+          alt="logo"
+          class="self-center h-5" />
+          <p>Log In with Discord</p>
+        </a>
+      </div>
+      <p class="mt-2 text-sm dark:text-neutral-300">
+        By using Datapack Hub, you agree to our <a
+          href="/privacy"
+          class="text-blue-500">privacy policy</a>
+      </p>
+    </div>
+  </div>
+
+</Modal>
+
 <header class="fixed z-50 w-full {isSmall ? 'bottom-0' : 'top-0'}">
   <a
     href="#main-content"
@@ -92,6 +142,7 @@
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
       classes="flex items-center justify-end space-x-4">
+      {#if $authed}
       <a
         aria-label="New project"
         href="/projects/new"
@@ -116,6 +167,7 @@
             use:tippy="{moderationHoverMessage}"
             ><IconShield width="24" height="24" /></a>
         {/if}
+      {/if}
       {/if}
       <ColorSchemeSelector />
       {#if $authed}
@@ -142,7 +194,7 @@
             style="outline-color:{$roleInfo.color ?? '#eab308'};" />
         </a>
       {:else}
-        <a id="sign_in" href="/login" class="button-primary"> Sign in </a>
+        <a id="sign_in" on:click="{signInModal.open}" class="button-primary"> Sign in </a>
       {/if}
     </ConditionalWrapper>
   </nav>

@@ -193,7 +193,7 @@
 
 <Modal
   bind:this="{moderationModal}"
-  wide="{true}"
+  width="wide"
   title="{'Moderate ' + user?.username}">
   <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
   <UserCard person="{user}" role="{$roles.find(v => user?.role == v.name)}" />
