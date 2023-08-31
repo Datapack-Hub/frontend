@@ -10,12 +10,9 @@
   import IconPlus from "~icons/tabler/Plus.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
   import ColorSchemeSelector from "../ColorSchemeSelector.svelte";
-  import ConditionalWrapper from "../utility/ConditionalWrapper.svelte";
   import Modal from "../modals/Modal.svelte";
+  import ConditionalWrapper from "../utility/ConditionalWrapper.svelte";
 
-  import IconGithub from "~icons/tabler/BrandGithub.svelte";
-  import IconDiscord from "~icons/tabler/BrandDiscord.svelte";
-  import { onMount } from "svelte";
 
   let signInModal: Modal;
 
@@ -190,9 +187,9 @@
             style="outline-color:{$roleInfo.color ?? '#eab308'};" />
         </a>
       {:else}
-        <a id="sign_in" on:click="{signInModal.open}" class="button-primary">
+        <button id="sign_in" on:click="{signInModal.open}" class="button-primary">
           Sign in
-        </a>
+        </button>
       {/if}
     </ConditionalWrapper>
   </nav>

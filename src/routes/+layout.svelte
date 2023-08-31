@@ -62,7 +62,7 @@
           <div class="w-4/5 space-y-2 md:w-2/3 lg:w-3/4">
             <div
               class="flex space-x-3 rounded-xl bg-zinc-800 p-3 shadow-md shadow-black/25">
-              <img src="/logos/dph.svg" class="w-1/4" />
+              <img alt="Datapack Hub logo" src="/logos/dph.svg" class="w-1/4" />
               <div>
                 <h1 class="mb-1 text-3xl font-bold dark:text-white">
                   Welcome to Datapack Hub!
@@ -71,8 +71,8 @@
                   Datapack Hub started in January 2022 as a PMC group for
                   datapack developers to come together, forming a community
                   around Minecraft Datapacks, Resource Packs, and more. Now,
-                  we’re a fast-growing community with over 500 followers, and
-                  we’re working on even more epic stuff. We strive to be the
+                  we're a fast-growing community with over 500 followers, and
+                  we're working on even more epic stuff. We strive to be the
                   friendliest and best datapacking community out there. Thanks
                   for checking us out!
                 </p>
