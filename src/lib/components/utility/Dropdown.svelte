@@ -27,7 +27,7 @@
     on:click="{() => (expand = !expand)}"
     style="width: {longest[0].length + 5}ch;">{selected}</button>
   <button
-    aria-label="{expand ? "Open" : "Close"} dropdown"
+    aria-label="{expand ? 'Open' : 'Close'} dropdown"
     class="absolute right-2 top-1/2 -translate-y-1/2 text-sm dark:text-slate-100 {expand
       ? 'rotate-180'
       : 'rotate-0'} transition-transform"
