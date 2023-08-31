@@ -120,6 +120,7 @@
       <ColorSchemeSelector />
       {#if $authed}
         <a
+          class="py-2"
           aria-label="Your profile"
           href="/user/{$user.username}"
           use:tippy="{{
