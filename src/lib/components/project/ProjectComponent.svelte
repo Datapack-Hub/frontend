@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Project } from "$lib/globals/schema";
   import { roles } from "$lib/globals/stores";
-  import { last, title } from "radash";
+  import { title } from "radash";
   import IconDownload from "~icons/tabler/Download.svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
 
@@ -75,7 +75,8 @@
           {project.author.username}
         </a>
         {#if project.latest_version}
-          {@const mc_vers = project.latest_version.minecraft_versions.split(",")}
+          {@const mc_vers =
+            project.latest_version.minecraft_versions.split(",")}
           <span>•</span>
           <span>
             {#if mc_vers.length != 1}
