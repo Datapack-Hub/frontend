@@ -162,9 +162,9 @@
         ? 'lg:grid-cols-1'
         : 'lg:grid-cols-2'}"
       use:autoAnimate>
-      <!-- {#each featured ?? [] as feat}
+      {#each featured ?? [] as feat}
         <FeaturedProjectComponent project="{feat}" type="featured" />
-      {/each} -->
+      {/each}
     </div>
     {#if !dataCopy || dataCopy.length === 0}
       <h2 class=" text-slate-950 dark:text-white">No results found</h2>

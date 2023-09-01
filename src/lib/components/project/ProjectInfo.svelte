@@ -64,7 +64,7 @@
     class="mb-2 rounded-xl border-slate-200 bg-slate-200 p-4 dark:bg-zinc-800">
     <div class="items-top flex max-w-fit space-x-2">
       {#if project?.icon}
-      <img
+        <img
           src="{project?.icon}"
           alt="{project?.title} icon"
           style="view-transition-name: project-{project.ID}-icon;"
