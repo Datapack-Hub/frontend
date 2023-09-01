@@ -19,7 +19,10 @@
   // let apiExampleResult = "";
   let featuredProjects: { type: FeaturedProjectType; project: Project }[] = [];
 
-  featuredProjects = data.featured.map(project => ({ type: "featured", project }));
+  featuredProjects = data.featured.map(project => ({
+    type: "featured",
+    project
+  }));
 
   for (let index = 0; index < 4 - featuredProjects.length; index++) {
     featuredProjects.push({ type: "random", project: data.random[index] });
@@ -261,7 +264,7 @@
               <img
                 src="{staff.profile_icon}&size=64"
                 alt="{staff.username}'s profile"
-                title={staff.username}
+                title="{staff.username}"
                 loading="lazy"
                 width="48"
                 height="48"
