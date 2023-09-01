@@ -32,7 +32,7 @@ export const load = (async ({ url, data }) => {
       const newToken = parameters.get("token");
       const expiry = new Date();
 
-      expiry.setTime(Date.now() + (1000 * 60 * 60 * 24 * 30));
+      expiry.setTime(Date.now() + 1000 * 60 * 60 * 24 * 30);
       document.cookie = `dph_token=${newToken}; expires=${expiry.toUTCString()}`;
 
       goto("/");
