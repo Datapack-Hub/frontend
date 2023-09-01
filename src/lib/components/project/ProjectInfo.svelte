@@ -64,9 +64,10 @@
     class="mb-2 rounded-xl border-slate-200 bg-slate-200 p-4 dark:bg-zinc-800">
     <div class="items-top flex max-w-fit space-x-2">
       {#if project?.icon}
-        <img
+      <img
           src="{project?.icon}"
           alt="{project?.title} icon"
+          style="view-transition-name: project-{project.ID}-icon;"
           class="aspect-square h-16 w-16 rounded-lg bg-cover"
           width="64"
           height="64" />
@@ -78,7 +79,8 @@
       {/if}
       <div>
         <h1
-          class="flex items-center text-3xl font-bold text-slate-950 dark:text-white">
+          style="view-transition-name: project-{project.ID}-title;"
+          class="project-info flex items-center text-3xl font-bold text-slate-950 dark:text-white">
           {project?.title}
         </h1>
         <div class="mt-1 flex min-w-fit items-center space-x-1">
@@ -87,11 +89,13 @@
             class="flex items-center space-x-1">
             <img
               src="{project.author?.profile_icon}&size=32"
-              class="max-h-5 rounded-full"
               alt="{project.author?.username}'s profile picture"
-              width="20"
-              height="20" />
+              class="max-h-6 rounded-full"
+              width="24"
+              height="24"
+              style="view-transition-name: project-{project.ID}-pfp;" />
             <span
+              style="view-transition-name: project-{project.ID}-author;"
               class="text-xs text-slate-950 transition-all hover:underline dark:text-white xl:text-sm">
               {project.author?.username}
             </span>

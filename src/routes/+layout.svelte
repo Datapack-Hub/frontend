@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onNavigate } from "$app/navigation";
   import "../app.postcss";
   import "../fonts.postcss";
 
@@ -13,6 +14,17 @@
   import { Toaster } from "svelte-sonner";
 
   const maintenance = false;
+
+  onNavigate(navigation => {
+    if (!document.startViewTransition) return;
+
+    return new Promise(resolve => {
+      document.startViewTransition(async () => {
+        resolve();
+        await navigation.complete;
+      });
+    });
+  });
 
   NProgress.configure({
     // Full list: https://github.com/rstacruz/nprogress#configuration
