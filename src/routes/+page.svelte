@@ -2,14 +2,10 @@
   import Button from "$lib/components/decorative/Button.svelte";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
-  import type { FeaturedProjectTypes } from "$lib/globals/consts";
+  import type { FeaturedProjectTypes as FeaturedProjectType } from "$lib/globals/consts";
   import type { Project } from "$lib/globals/schema";
-  import { roles } from "$lib/globals/stores";
-  import autoAnimate from "@formkit/auto-animate";
   import anime from "animejs";
-  import { title } from "radash";
   import { onMount } from "svelte";
-  import tippy from "sveltejs-tippy";
   import IconArrow from "~icons/tabler/ArrowBigRightLinesFilled.svelte";
   import IconFile from "~icons/tabler/FileZip.svelte";
   import IconX from "~icons/tabler/X.svelte";
@@ -21,14 +17,12 @@
   let visible = false;
   // let apiExampleUser = "silabear";
   // let apiExampleResult = "";
-  let frontPageProjects: { type: FeaturedProjectTypes; project: Project }[] =
-    [];
+  let featuredProjects: { type: FeaturedProjectType; project: Project }[] = [];
 
-  for (const project of data.featured)
-    frontPageProjects.push({ type: "featured", project });
+  featuredProjects = data.featured.map(project => ({ type: "featured", project }));
 
-  for (let index = 0; index < 4 - frontPageProjects.length; index++) {
-    frontPageProjects.push({ type: "random", project: data.random[index] });
+  for (let index = 0; index < 4 - featuredProjects.length; index++) {
+    featuredProjects.push({ type: "random", project: data.random[index] });
   }
 
   onMount(async () => {
@@ -102,12 +96,6 @@
 
     for (const element of fadingTextElements) intersect.observe(element);
   });
-
-  // async function apiExampleRun() {
-  //   let exampleResponse = await fetch(API + "/user/" + apiExampleUser);
-  //   let exampleJson = await exampleResponse.json();
-  //   apiExampleResult = JSON.stringify(exampleJson, undefined, 2);
-  // }
 </script>
 
 <svelte:head>
@@ -163,8 +151,8 @@
         class=" mt-6 text-center text-2xl font-medium text-slate-950 dark:text-slate-100">
         Featured Projects
       </h3>
-      <div use:autoAnimate class="space-y-3">
-        {#each frontPageProjects as proj}
+      <div class="space-y-3">
+        {#each featuredProjects as proj}
           <FeaturedProjectComponent
             project="{proj.project}"
             animationsAllowed="{false}"
@@ -273,14 +261,7 @@
               <img
                 src="{staff.profile_icon}&size=64"
                 alt="{staff.username}'s profile"
-                use:tippy="{{
-                  content: `${staff.username}<br /><span style='color: ${
-                    $roles.find(v => v.name == staff.role)?.color
-                  }; font-weight:600'>● ${title(staff.role)}</span>`,
-                  placement: 'bottom',
-                  interactive: true,
-                  allowHTML: true
-                }}"
+                title={staff.username}
                 loading="lazy"
                 width="48"
                 height="48"

@@ -11,7 +11,7 @@ futureDate.setTime(futureDate.getTime() + (24*60*60*1000))
 export default defineConfig({
   // example
   scanner: {
-    throttle: true
+    // throttle: true
   },
   puppeteerClusterOptions: {
     maxConcurrency: 4

@@ -42,14 +42,12 @@
 </script>
 
 <svelte:head>
-  {#if authed && !["helper", "moderator", "admin", "beta access", "verified"].includes($user.role)}
-    <title>Coming Fall 2023?</title>
-    <meta
-      name="description"
-      content="The Datapack Hub website is coming very soon! In the meantime, come chat!
-    https://discord.datapackhub.net
-    https://planetminecraft.com/group/daily_datapackers" />
-  {/if}
+  <title>Coming Fall 2023?</title>
+  <meta
+    name="description"
+    content="The Datapack Hub website is coming very soon! In the meantime, come chat!
+  https://discord.datapackhub.net
+  https://planetminecraft.com/group/daily_datapackers" />
 </svelte:head>
 
 <div class="{$isDark ? 'dark' : ''} font-brand">
