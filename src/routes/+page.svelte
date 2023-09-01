@@ -167,6 +167,7 @@
         {#each frontPageProjects as proj}
           <FeaturedProjectComponent
             project="{proj.project}"
+            animationsAllowed="{false}"
             type="{proj.type}" />
         {/each}
       </div>
@@ -196,8 +197,8 @@
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
         <div class="mb-5 space-y-2 rounded-xl p-3 dark:bg-zinc-900">
-          {#each data.random.slice(0, 2) ?? [] as rand}
-            <ProjectComponent project="{rand}" />
+          {#each data.random.slice(2, 4) ?? [] as rand}
+            <ProjectComponent project="{rand}" animationsAllowed="{false}" />
           {/each}
         </div>
         <Button click="/projects">Find your next favourite datapack</Button>
@@ -321,8 +322,11 @@
           class="fadeTextAnime my-4 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
           Our staff regularly feature cool projects to reach a wider audience!
         </p>
-        {#each data.random.splice(0, 1) as randProj}
-          <FeaturedProjectComponent project="{randProj}" type="featured" />
+        {#each data.random.splice(4, 1) as randProj}
+          <FeaturedProjectComponent
+            project="{randProj}"
+            type="featured"
+            animationsAllowed="{false}" />
         {/each}
       </div>
       <!-- <div

@@ -88,7 +88,7 @@ export async function fetchAuthed(
   });
 
   if (response.status === 401) removeCookie("dph_token"); // Expired token, so removes it ig
-  if (!response.ok) Promise.reject(response.statusText); // This single line probably added hundreds of unneeded 500 errors, but makes errors actually show up.
+  // if (!response.ok) Promise.reject(response.statusText); // This single line probably added hundreds of unneeded 500 errors, but makes errors actually show up.
 
   return response;
 }
