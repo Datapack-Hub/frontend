@@ -88,7 +88,7 @@
             href="/user/{project.author?.username}"
             class="flex items-center space-x-1">
             <img
-              src="{project.author?.profile_icon}&size=32"
+              src="{project.author?.profile_icon}&size=64"
               alt="{project.author?.username}'s profile picture"
               class="max-h-6 rounded-full"
               width="24"
