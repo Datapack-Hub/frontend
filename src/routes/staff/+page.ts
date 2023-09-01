@@ -3,6 +3,8 @@ import { userSchema } from "$lib/globals/schema.js";
 import { parallel } from "radash";
 import type { PageLoad } from "./$types";
 
+export const prerender = true;
+
 export const load = (async ({ fetch }) => {
   const [admins, moderators, helpers] = await parallel(
     3,
