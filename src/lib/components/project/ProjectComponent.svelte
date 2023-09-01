@@ -75,7 +75,8 @@
           {project.author.username}
         </a>
         {#if project.latest_version}
-          {@const mc_vers = project.latest_version.minecraft_versions.split(",")}
+          {@const mc_vers =
+            project.latest_version.minecraft_versions.split(",")}
           <span>•</span>
           <span>
             {#if mc_vers.length != 1}
