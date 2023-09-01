@@ -75,9 +75,14 @@
           {project.author.username}
         </a>
         {#if project.latest_version}
+          {@const mc_vers = project.latest_version.minecraft_versions.split(",")}
           <span>•</span>
           <span>
-            {last(project.latest_version.minecraft_versions.split(","))}
+            {#if mc_vers.length != 1}
+              {mc_vers[0]}-{mc_vers.at(-1)}
+            {:else}
+              {mc_vers[0]}
+            {/if}
           </span>
         {:else}
           <span>•</span>
@@ -108,9 +113,3 @@
     </div>
   </div>
 </div>
-
-<!-- <style>
-  .project-component {
-    view-transition-name: project-info;
-  }
-</style> -->
