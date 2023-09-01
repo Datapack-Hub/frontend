@@ -56,9 +56,9 @@
 
 <div class="mr-4 h-fit w-full flex-col lg:w-2/5 xl:w-1/3" use:autoAnimate>
   <div class="my-3 mb-4 text-sky-300" use:autoAnimate>
-    <a href="/projects">
-      <IconBack class="inline" /> Explore other projects
-    </a>
+    <button on:click="{() => history.back()}">
+      <IconBack class="inline" /> Go Back
+    </button>
   </div>
   <div
     class="mb-2 rounded-xl border-slate-200 bg-slate-200 p-4 dark:bg-zinc-800">
