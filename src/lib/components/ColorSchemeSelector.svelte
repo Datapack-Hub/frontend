@@ -1,5 +1,6 @@
 <script lang="ts">
   import { isDark } from "$lib/globals/stores";
+  import { toast } from "svelte-sonner";
   import { draw } from "svelte/transition";
 
   let superDarkMode = false;
@@ -18,7 +19,7 @@
   let toggle = (event?: MouseEvent) => {
     if (event?.shiftKey) {
       superDarkMode = !superDarkMode;
-      console.log("Super Dark Enabled!");
+      toast.info("Super Dark Enabled!");
       return;
     }
     $isDark = !$isDark;
@@ -135,6 +136,6 @@
     width: 100%;
     height: 100%;
     transform: translate(var(--x), var(--y));
-    background-image: radial-gradient(circle at center, transparent, #000 15%);
+    background-image: radial-gradient(circle at center, transparent, #000000ee 15%);
   }
 </style>
