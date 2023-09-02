@@ -140,10 +140,6 @@
     width: 100%;
     height: 100%;
     transform: translate(var(--x), var(--y));
-    background-image: radial-gradient(
-      circle at center,
-      transparent,
-      #000 15%
-    );
+    background-image: radial-gradient(circle at center, transparent, #000 15%);
   }
 </style>
