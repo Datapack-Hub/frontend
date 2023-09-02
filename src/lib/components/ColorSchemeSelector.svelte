@@ -19,7 +19,7 @@
   let toggle = (event?: MouseEvent) => {
     if (event?.shiftKey) {
       superDarkMode = !superDarkMode;
-      if(superDarkMode) {
+      if (superDarkMode) {
         toast.info("Super Dark Enabled!");
         return;
       }
