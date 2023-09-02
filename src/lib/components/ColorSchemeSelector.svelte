@@ -9,8 +9,10 @@
   let innerHeight = 0;
 
   function superDarkHandler(event?: MouseEvent) {
-    superDarkX = (event?.pageX ?? 0) - innerWidth;
-    superDarkY = (event?.pageY ?? 0) - innerHeight;
+    requestAnimationFrame(() => {
+      superDarkX = (event?.clientX ?? 0) - innerWidth;
+      superDarkY = (event?.clientY ?? 0) - innerHeight;
+    })
   }
 
   let toggle = (event?: MouseEvent) => {
