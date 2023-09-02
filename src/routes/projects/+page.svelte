@@ -2,11 +2,11 @@
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import { API } from "$lib/globals/consts";
-  import autoAnimate from "@formkit/auto-animate";
   import type { PageData } from "./$types";
 
   import { browser } from "$app/environment";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
+  import Dropdown from "$lib/components/utility/Dropdown.svelte";
   import { projectSchema } from "$lib/globals/schema";
   import { isDark } from "$lib/globals/stores";
   import { debounce } from "radash";
@@ -14,7 +14,6 @@
   import IconGrid from "~icons/tabler/LayoutGrid.svelte";
   import IconList from "~icons/tabler/LayoutList.svelte";
   import IconSearch from "~icons/tabler/Search.svelte";
-  import Dropdown from "$lib/components/utility/Dropdown.svelte";
 
   export let data: PageData;
 
@@ -30,7 +29,7 @@
 
   let featured = data.featured?.splice(0, 2);
 
-  let search = debounce({ delay: 300 }, async () => {
+  let search = debounce({ delay: 100 }, async () => {
     let searchResult = await fetch(
       `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}`
     );
@@ -160,8 +159,7 @@
     <div
       class="mx-2 mb-4 grid grid-cols-1 gap-3 {featured.length == 1
         ? 'lg:grid-cols-1'
-        : 'lg:grid-cols-2'}"
-      use:autoAnimate>
+        : 'lg:grid-cols-2'}">
       {#each featured ?? [] as feat}
         <FeaturedProjectComponent project="{feat}" type="featured" />
       {/each}
@@ -179,13 +177,13 @@
             : "s"}
         {/if}
       </h2>
-      <div class="mx-2 mt-2 space-y-2" use:autoAnimate>
+      <div class="mx-2 mt-2 space-y-2">
         {#key layout}
           <ul
             class="{layout === 'list'
               ? 'space-y-2'
-              : 'grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3'}"
-            use:autoAnimate>
+              : 'grid gap-3 grid-auto-fit-2xl'}"
+            >
             {#key dataCopy}
               {#each dataCopy as project}
                 <li>
