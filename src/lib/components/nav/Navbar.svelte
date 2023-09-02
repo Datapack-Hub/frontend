@@ -96,13 +96,13 @@
   </div>
 </Modal>
 
-<header class="fixed z-50 w-full {isSmall ? 'bottom-0' : 'top-0'}">
+<header class="fixed backdrop-blur transform-gpu z-50 w-full {isSmall ? 'bottom-0' : 'top-0'}">
   <a
     href="#main-content"
     class="absolute right-1/2 top-4 translate-x-1/2 translate-y-16 cursor-default select-none opacity-0 invert transition-transform focus:translate-y-0 focus:opacity-100 md:-translate-y-16"
     >Jump to Main Content</a>
   <nav
-    class="flex w-full transform-gpu items-center justify-around bg-slate-200/40 py-4 backdrop-blur transition-all will-change-transform dark:bg-zinc-800/40 md:justify-between md:px-16">
+    class="flex w-full items-center justify-around bg-slate-200/40 py-4 dark:bg-zinc-800/40 md:justify-between md:px-16">
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
       classes="flex items-center space-x-4">
