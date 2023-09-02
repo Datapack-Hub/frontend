@@ -40,7 +40,7 @@
       role="button"
       tabindex="0"
       on:mousedown="{e => toggle(e)}"
-      on:keydown="{k => k.key != "Shift" ? toggle() : undefined}"
+      on:keydown="{k => (k.key != 'Shift' ? toggle() : undefined)}"
       class="icon icon-tabler icon-tabler-moon-stars cursor-pointer"
       width="24"
       height="24"
