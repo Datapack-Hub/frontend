@@ -96,7 +96,10 @@
   </div>
 </Modal>
 
-<header class="fixed backdrop-blur transform-gpu z-50 w-full {isSmall ? 'bottom-0' : 'top-0'}">
+<header
+  class="fixed z-50 w-full transform-gpu backdrop-blur {isSmall
+    ? 'bottom-0'
+    : 'top-0'}">
   <a
     href="#main-content"
     class="absolute right-1/2 top-4 translate-x-1/2 translate-y-16 cursor-default select-none opacity-0 invert transition-transform focus:translate-y-0 focus:opacity-100 md:-translate-y-16"
