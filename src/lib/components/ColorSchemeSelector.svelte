@@ -8,13 +8,13 @@
   let innerWidth = 0;
   let innerHeight = 0;
 
-  function superDarkHandler(e?: MouseEvent) {
-    superDarkX = (e?.pageX ?? 0) - innerWidth;
-    superDarkY = (e?.pageY ?? 0) - innerHeight;
+  function superDarkHandler(event?: MouseEvent) {
+    superDarkX = (event?.pageX ?? 0) - innerWidth;
+    superDarkY = (event?.pageY ?? 0) - innerHeight;
   }
 
-  let toggle = (e?: MouseEvent) => {
-    if (e?.shiftKey) {
+  let toggle = (event?: MouseEvent) => {
+    if (event?.shiftKey) {
       superDarkMode = !superDarkMode;
       console.log("Super Dark Enabled!");
       return;
@@ -27,7 +27,7 @@
 <svelte:window
   bind:innerWidth
   bind:innerHeight
-  on:mousemove="{e => superDarkHandler(e)}" />
+  on:mousemove="{event => superDarkHandler(event)}" />
 
 <div
   class="select-none rounded-lg p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
@@ -39,8 +39,8 @@
       xmlns="http://www.w3.org/2000/svg"
       role="button"
       tabindex="0"
-      on:mousedown="{e => toggle(e)}"
-      on:keydown="{k => (k.key != 'Shift' ? toggle() : undefined)}"
+      on:mousedown="{event => toggle(event)}"
+      on:keydown="{k => (k.key == 'Shift' ? undefined : toggle())}"
       class="icon icon-tabler icon-tabler-moon-stars cursor-pointer"
       width="24"
       height="24"
@@ -70,7 +70,7 @@
       role="button"
       tabindex="0"
       xmlns="http://www.w3.org/2000/svg"
-      on:mousedown="{e => toggle(e)}"
+      on:mousedown="{event => toggle(event)}"
       on:keydown="{() => toggle()}"
       class="icon icon-tabler icon-tabler-sun-high cursor-pointer"
       width="24"
