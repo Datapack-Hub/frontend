@@ -182,8 +182,7 @@
           <ul
             class="{layout === 'list'
               ? 'space-y-2'
-              : 'grid gap-3 grid-auto-fit-2xl'}"
-            >
+              : 'grid-auto-fit-2xl grid gap-3'}">
             {#key dataCopy}
               {#each dataCopy as project}
                 <li>
