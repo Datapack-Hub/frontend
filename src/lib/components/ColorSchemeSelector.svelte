@@ -3,32 +3,33 @@
   import { draw } from "svelte/transition";
 
   let superDarkMode = false;
-  let superDarkX = 0
-  let superDarkY = 0
-  let innerWidth = 0
-  let innerHeight = 0
+  let superDarkX = 0;
+  let superDarkY = 0;
+  let innerWidth = 0;
+  let innerHeight = 0;
 
   function superDarkHandler(e?: MouseEvent) {
-    superDarkX = (e?.pageX ?? 0) - (innerWidth)
-    superDarkY = (e?.pageY ?? 0) - (innerHeight)
+    superDarkX = (e?.pageX ?? 0) - innerWidth;
+    superDarkY = (e?.pageY ?? 0) - innerHeight;
   }
 
   let toggle = (e?: MouseEvent) => {
-    if(e?.shiftKey) {
-      superDarkMode = true
-      $isDark = true
-      localStorage.setItem("dp_colorPref", (true).toString());
-      console.log("Super Dark Enabled!")
-      return
+    if (e?.shiftKey) {
+      superDarkMode = true;
+      $isDark = true;
+      localStorage.setItem("dp_colorPref", true.toString());
+      console.log("Super Dark Enabled!");
+      return;
     }
     $isDark = !$isDark;
     localStorage.setItem("dp_colorPref", $isDark.toString());
   };
-
-
 </script>
 
-<svelte:window bind:innerWidth bind:innerHeight on:mousemove="{e => superDarkHandler(e)}" />
+<svelte:window
+  bind:innerWidth
+  bind:innerHeight
+  on:mousemove="{e => superDarkHandler(e)}" />
 
 <div
   class="select-none rounded-lg p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
@@ -112,9 +113,12 @@
 </div>
 
 {#if superDarkMode}
-<section role="banner" class="super-dark-container" style="--x: {superDarkX}px; --y: {superDarkY}px;">
-  <div class="super-dark-light"></div>
-</section>
+  <section
+    role="banner"
+    class="super-dark-container"
+    style="--x: {superDarkX}px; --y: {superDarkY}px;">
+    <div class="super-dark-light"></div>
+  </section>
 {/if}
 
 <style>
