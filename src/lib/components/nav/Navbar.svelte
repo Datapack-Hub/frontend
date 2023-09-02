@@ -17,17 +17,17 @@
 
   let scrollY: number;
 
-  let notificationHoverMessage = {
+  let notificationTip = {
     content: "Notifications",
     placement: "bottom"
   };
 
-  let moderationHoverMessage = {
+  let moderationTip = {
     content: "Moderation",
     placement: "bottom"
   };
 
-  let newHoverMessage = {
+  let newProjectTip = {
     content: "Create Project",
     placement: "bottom"
   };
@@ -139,12 +139,12 @@
           aria-label="New project"
           href="/projects/new"
           class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
-          use:tippy="{newHoverMessage}"><IconPlus width="24" height="24" /></a>
+          use:tippy="{newProjectTip}"><IconPlus width="24" height="24" /></a>
         <a
           href="/notifications"
-          class="z-20 rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
+          class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
           aria-label="Notifications page"
-          use:tippy="{notificationHoverMessage}">
+          use:tippy="{notificationTip}">
           {#if unreadNotifications}
             <IconUnread height="24" width="24" />
           {:else}
@@ -156,7 +156,7 @@
             <a
               href="/moderation"
               class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
-              use:tippy="{moderationHoverMessage}"
+              use:tippy="{moderationTip}"
               ><IconShield width="24" height="24" /></a>
           {/if}
         {/if}
