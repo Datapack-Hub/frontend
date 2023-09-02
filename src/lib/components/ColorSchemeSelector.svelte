@@ -15,9 +15,7 @@
 
   let toggle = (e?: MouseEvent) => {
     if (e?.shiftKey) {
-      superDarkMode = true;
-      $isDark = true;
-      localStorage.setItem("dp_colorPref", true.toString());
+      superDarkMode = !superDarkMode;
       console.log("Super Dark Enabled!");
       return;
     }
@@ -42,7 +40,7 @@
       role="button"
       tabindex="0"
       on:mousedown="{e => toggle(e)}"
-      on:keydown="{() => toggle()}"
+      on:keydown="{k => k.key != "Shift" ? toggle() : undefined}"
       class="icon icon-tabler icon-tabler-moon-stars cursor-pointer"
       width="24"
       height="24"
