@@ -1,13 +1,34 @@
 <script lang="ts">
   import { isDark } from "$lib/globals/stores";
-  import { throttle } from "radash";
   import { draw } from "svelte/transition";
 
-  let toggle = () => {
+  let superDarkMode = false;
+  let superDarkX = 0
+  let superDarkY = 0
+  let innerWidth = 0
+  let innerHeight = 0
+
+  function superDarkHandler(e?: MouseEvent) {
+    superDarkX = (e?.pageX ?? 0) - (innerWidth)
+    superDarkY = (e?.pageY ?? 0) - (innerHeight)
+  }
+
+  let toggle = (e?: MouseEvent) => {
+    if(e?.shiftKey) {
+      superDarkMode = true
+      $isDark = true
+      localStorage.setItem("dp_colorPref", (true).toString());
+      console.log("Super Dark Enabled!")
+      return
+    }
     $isDark = !$isDark;
     localStorage.setItem("dp_colorPref", $isDark.toString());
   };
+
+
 </script>
+
+<svelte:window bind:innerWidth bind:innerHeight on:mousemove="{e => superDarkHandler(e)}" />
 
 <div
   class="select-none rounded-lg p-1 transition-all hover:bg-dph-orange/40 dark:text-slate-100 md:hover:bg-transparent md:hover:text-dph-orange"
@@ -19,8 +40,8 @@
       xmlns="http://www.w3.org/2000/svg"
       role="button"
       tabindex="0"
-      on:click="{throttle({ interval: 300 }, toggle)}"
-      on:keydown="{k => (k.key == 'T' ? toggle : undefined)}"
+      on:mousedown="{e => toggle(e)}"
+      on:keydown="{() => toggle()}"
       class="icon icon-tabler icon-tabler-moon-stars cursor-pointer"
       width="24"
       height="24"
@@ -50,8 +71,8 @@
       role="button"
       tabindex="0"
       xmlns="http://www.w3.org/2000/svg"
-      on:click="{throttle({ interval: 300 }, toggle)}"
-      on:keydown="{k => (k.key == 'T' ? toggle : undefined)}"
+      on:mousedown="{e => toggle(e)}"
+      on:keydown="{() => toggle()}"
       class="icon icon-tabler icon-tabler-sun-high cursor-pointer"
       width="24"
       height="24"
@@ -89,3 +110,27 @@
     </svg>
   {/if}
 </div>
+
+{#if superDarkMode}
+<section role="banner" class="super-dark-container" style="--x: {superDarkX}px; --y: {superDarkY}px;">
+  <div class="super-dark-light"></div>
+</section>
+{/if}
+
+<style>
+  .super-dark-container {
+    position: absolute;
+    width: 200%;
+    height: 200vh;
+    top: 0vh;
+    left: -1rem;
+    pointer-events: none;
+  }
+
+  .super-dark-light {
+    width: 100%;
+    height: 100%;
+    transform: translate(var(--x), var(--y));
+    background-image: radial-gradient(circle at center, transparent, #000 15%);
+  }
+</style>
