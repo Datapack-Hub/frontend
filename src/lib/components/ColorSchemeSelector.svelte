@@ -143,7 +143,7 @@
     background-image: radial-gradient(
       circle at center,
       transparent,
-      #000000ee 15%
+      #000 15%
     );
   }
 </style>
