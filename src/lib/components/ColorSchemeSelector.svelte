@@ -12,7 +12,7 @@
     requestAnimationFrame(() => {
       superDarkX = (event?.clientX ?? 0) - innerWidth;
       superDarkY = (event?.clientY ?? 0) - innerHeight;
-    })
+    });
   }
 
   let toggle = (event?: MouseEvent) => {
