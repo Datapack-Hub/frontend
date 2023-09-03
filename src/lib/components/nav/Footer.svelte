@@ -1,6 +1,6 @@
 <footer class="border-t border-zinc-700 bg-zinc-900 pb-20">
   <div class="mx-8 mt-16 flex items-center md:mx-16 md:mt-32">
-    <img src="logos/dph.svg" alt="Datapack Hub" class="mr-1 h-8 w-8" />
+    <img src="/logos/dph.svg" alt="Datapack Hub" class="mr-1 h-8 w-8" />
     <p class="text-xl font-bold text-white">Datapack Hub</p>
   </div>
   <p class="ml-8 mt-3 text-sm text-zinc-600 md:ml-16">
