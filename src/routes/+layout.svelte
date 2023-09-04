@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onNavigate } from "$app/navigation";
   import "../app.postcss";
   import "../fonts.postcss";
 
