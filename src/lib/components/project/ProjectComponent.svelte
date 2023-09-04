@@ -7,8 +7,6 @@
 
   export let project: Project;
   export let showStatus = false;
-  export let featured = false;
-  export let animationsAllowed = true;
 
   let formatter = Intl.NumberFormat("en", { notation: "compact" });
 

@@ -158,7 +158,6 @@
         {#each featuredProjects as proj}
           <FeaturedProjectComponent
             project="{proj.project}"
-            animationsAllowed="{false}"
             type="{proj.type}" />
         {/each}
       </div>
@@ -189,7 +188,7 @@
         </p>
         <div class="mb-5 space-y-2 rounded-xl p-3 dark:bg-zinc-900">
           {#each data.random.slice(2, 4) ?? [] as rand}
-            <ProjectComponent project="{rand}" animationsAllowed="{false}" />
+            <ProjectComponent project="{rand}" />
           {/each}
         </div>
         <Button click="/projects">Find your next favourite datapack</Button>
@@ -309,8 +308,7 @@
         {#each data.random.splice(4, 1) as randProj}
           <FeaturedProjectComponent
             project="{randProj}"
-            type="featured"
-            animationsAllowed="{false}" />
+            type="featured" />
         {/each}
       </div>
       <!-- <div

@@ -27,7 +27,7 @@ test("notifications can be removed", async ({ page }) => {
   const response = await page.waitForResponse(
     async response => {
       const parts = response.url().split("/");
-      return parts[3].includes("notifs");
+      return parts[3].includes("notifs") && response.ok();
     },
     { timeout: 3000 }
   );
@@ -43,7 +43,7 @@ test("notifications can be removed", async ({ page }) => {
     await btn.click({ timeout: 1000 });
     const response = await page.waitForResponse(
       response => {
-        return response.url().includes("/notifs/delete/");
+        return response.url().includes("/notifs/delete/") && response.ok();
       },
       { timeout: 2000 }
     );
@@ -77,7 +77,7 @@ test("notification can be sent", async ({ page }) => {
     await page.locator("#send_notif_btn").click({ timeout: 1500 });
     const response = await page.waitForResponse(
       response => {
-        return response.url().includes("/notifs/send/");
+        return response.url().includes("/notifs/send/") && response.ok();
       },
       { timeout: 1500 }
     );

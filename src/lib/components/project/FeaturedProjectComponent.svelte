@@ -9,7 +9,6 @@
 
   export let project: Project;
   export let type: "popular" | "featured" | "random" | "new" = "popular";
-  export let animationsAllowed = true;
 
   let hoverMsgs = {
     popular: {
@@ -42,7 +41,7 @@
 
 <div
   class="w-full items-center rounded-xl outline outline-{style} relative bg-slate-200 text-white dark:bg-zinc-800">
-  <ProjectComponent {project} {animationsAllowed} featured="{true}" />
+  <ProjectComponent {project} />
   <div
     class="absolute right-3 top-0 bg-{style} flex space-x-1 rounded-b-md px-2 py-0.5 text-xs"
     use:tippy="{hoverMsgs[type]}">

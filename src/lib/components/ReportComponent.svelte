@@ -32,7 +32,7 @@
 </script>
 
 <div
-  class="relative w-full items-center rounded-xl bg-slate-200 p-3 text-slate-950 dark:bg-zinc-800 dark:text-slate-100"
+  class="relative w-full items-center rounded-xl bg-slate-200 p-3 text-slate-950 dark:bg-zinc-800 dark:text-slate-100 reports"
   bind:this="{me}">
   <div class="flex items-center">
     <a
@@ -90,7 +90,7 @@
     <div class="moderation-hl rounded-lg px-2 py-1">
       <MarkdownComponent source="{report.message}" />
     </div>
-    <button class="absolute right-0 top-0 p-3" on:click="{remove}"
+    <button data-testid="remove-report-btn" class="absolute right-0 top-0 p-3" on:click="{remove}"
       ><IconX /></button>
   </div>
 </div>

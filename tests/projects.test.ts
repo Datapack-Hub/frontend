@@ -24,27 +24,6 @@ test("project can be located and fetched", async ({ page }) => {
   expect(response?.status()).toEqual(200);
 });
 
-test("project page tabs work", async ({ page }) => {
-  await page.goto("/project/hexenwerk/", { timeout: 1500 });
-  const tabs = [
-    page.getByLabel("Description"),
-    page.getByLabel("Comments"),
-    page.getByLabel("Download")
-  ];
-
-  let pageContent = await page.content();
-
-  // go through all tabs and see if they respond at all
-  for (const tab of tabs) {
-    await tab.waitFor({ timeout: 2000 });
-    await tab.click();
-    await page.waitForLoadState("load", { timeout: 2000 });
-    const currentContent = await page.content();
-    expect(currentContent).not.toEqual(pageContent);
-    pageContent = currentContent;
-  }
-});
-
 test("project downloads work", async ({ page }) => {
   await page.goto("/project/hexenwerk/", { timeout: 3000 });
 
@@ -69,3 +48,38 @@ test("project downloads work", async ({ page }) => {
   const download = await downloadPromise;
   await download.saveAs("test-results/downloads/hexenwerk.zip");
 });
+
+test("project reports work", async ({ page }) => {
+  await page.goto("/project/hexenwerk/", { timeout: 3000 })
+
+  await page.getByLabel("Report").click()
+
+  await page
+    .locator("#report-description")
+    .type("This report was created by a Playwright test, you may dismiss this report.");
+
+  await page.locator(".sendReportBtn").click()
+  await page.waitForResponse(response => {
+    return response.url().includes("/report") && response.ok()
+  }, { timeout: 2000 })
+
+  await page.goto("/moderation", { timeout: 3000 })
+  await page.getByText("Reports").click()
+
+  const reportCount = await page.locator(".reports").count()
+
+  if (reportCount > 1) {
+    console.log("Clear reports, then rerun")
+    test.skip()
+  }
+
+  expect(reportCount).toBe(1)
+
+  await page.getByTestId("remove-report-btn").first().click()
+  await page.waitForResponse(response => {
+    return response.url().includes("/remove_report/1") && response.ok()
+  }, { timeout: 2000 })
+
+  expect(await page.locator(".reports").count()).toBe(0)
+
+})

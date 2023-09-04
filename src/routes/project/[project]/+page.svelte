@@ -277,7 +277,7 @@
         project="{data.project}"
         is_new="{data.is_new == '1' ? true : false}" />
       <!--Main-->
-      <div use:autoAnimate class="mt-4 w-full lg:mt-0 lg:w-3/4">
+      <div id="project-content" use:autoAnimate class="mt-4 w-full lg:mt-0 lg:w-3/4">
         <!--Buttons-->
         <div class="mb-2 flex items-center justify-between">
           <div class="space-x-1">
@@ -652,10 +652,10 @@
   <textarea
     class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-slate-300 p-3 dark:bg-zinc-700"
     placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
-    id="description"
+    id="report-description"
     maxlength="500"
     bind:value="{reportMessage}"></textarea>
-  <Button click="{() => report()}">Report</Button>
+  <Button classes="sendReportBtn" click="{() => report()}">Report</Button>
 </Modal>
 
 <Modal bind:this="{featureModal}" title="{'Feature ' + data.project.title}">
