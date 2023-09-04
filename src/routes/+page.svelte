@@ -306,9 +306,7 @@
           Our staff regularly feature cool projects to reach a wider audience!
         </p>
         {#each data.random.splice(4, 1) as randProj}
-          <FeaturedProjectComponent
-            project="{randProj}"
-            type="featured" />
+          <FeaturedProjectComponent project="{randProj}" type="featured" />
         {/each}
       </div>
       <!-- <div

@@ -50,36 +50,43 @@ test("project downloads work", async ({ page }) => {
 });
 
 test("project reports work", async ({ page }) => {
-  await page.goto("/project/hexenwerk/", { timeout: 3000 })
+  await page.goto("/project/hexenwerk/", { timeout: 3000 });
 
-  await page.getByLabel("Report").click()
+  await page.getByLabel("Report").click();
 
   await page
     .locator("#report-description")
-    .type("This report was created by a Playwright test, you may dismiss this report.");
+    .type(
+      "This report was created by a Playwright test, you may dismiss this report."
+    );
 
-  await page.locator(".sendReportBtn").click()
-  await page.waitForResponse(response => {
-    return response.url().includes("/report") && response.ok()
-  }, { timeout: 2000 })
+  await page.locator(".sendReportBtn").click();
+  await page.waitForResponse(
+    response => {
+      return response.url().includes("/report") && response.ok();
+    },
+    { timeout: 2000 }
+  );
 
-  await page.goto("/moderation", { timeout: 3000 })
-  await page.getByText("Reports").click()
+  await page.goto("/moderation", { timeout: 3000 });
+  await page.getByText("Reports").click();
 
-  const reportCount = await page.locator(".reports").count()
+  const reportCount = await page.locator(".reports").count();
 
   if (reportCount > 1) {
-    console.log("Clear reports, then rerun")
-    test.skip()
+    console.log("Clear reports, then rerun");
+    test.skip();
   }
 
-  expect(reportCount).toBe(1)
+  expect(reportCount).toBe(1);
 
-  await page.getByTestId("remove-report-btn").first().click()
-  await page.waitForResponse(response => {
-    return response.url().includes("/remove_report/1") && response.ok()
-  }, { timeout: 2000 })
+  await page.getByTestId("remove-report-btn").first().click();
+  await page.waitForResponse(
+    response => {
+      return response.url().includes("/remove_report/1") && response.ok();
+    },
+    { timeout: 2000 }
+  );
 
-  expect(await page.locator(".reports").count()).toBe(0)
-
-})
+  expect(await page.locator(".reports").count()).toBe(0);
+});

@@ -277,7 +277,10 @@
         project="{data.project}"
         is_new="{data.is_new == '1' ? true : false}" />
       <!--Main-->
-      <div id="project-content" use:autoAnimate class="mt-4 w-full lg:mt-0 lg:w-3/4">
+      <div
+        id="project-content"
+        use:autoAnimate
+        class="mt-4 w-full lg:mt-0 lg:w-3/4">
         <!--Buttons-->
         <div class="mb-2 flex items-center justify-between">
           <div class="space-x-1">
