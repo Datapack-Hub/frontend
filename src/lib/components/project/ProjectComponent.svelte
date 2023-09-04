@@ -28,11 +28,6 @@
         <img
           src="{project.icon}"
           alt="{project.title} icon"
-          style="{animationsAllowed
-            ? `view-transition-name: ${featured ? 'featured-' : ''}project-${
-                project.ID
-              }-icon;`
-            : ''}"
           width="80"
           height="80"
           class="aspect-square w-20 rounded-lg bg-cover" />
@@ -43,11 +38,6 @@
     <div class="ml-4 w-3/4">
       <a
         href="/project/{project.url}"
-        style="{animationsAllowed
-          ? `view-transition-name: ${featured ? 'featured-' : ''}project-${
-              project.ID
-            }-title;`
-          : ''}"
         class="text-lg hover:underline md:text-xl lg:text-2xl">
         {project.title}
       </a>
@@ -56,22 +46,13 @@
         <img
           src="{project.author.profile_icon}&size=32"
           alt="{project.author.username}'s profile"
-          style="{animationsAllowed
-            ? `view-transition-name: ${featured ? 'featured-' : ''}project-${
-                project.ID
-              }-pfp;`
-            : ''}"
           class="h-4 rounded-full"
           height="16"
           width="16" />
         <a
           href="/user/{project.author.username.toLowerCase()}"
           class="block"
-          style="{animationsAllowed
-            ? `view-transition-name: ${featured ? 'featured-' : ''}project-${
-                project.ID
-              }-author; color: ${userRole?.color}`
-            : `color: ${userRole?.color}`}">
+          style="color: {userRole?.color}">
           {project.author.username}
         </a>
         {#if project.latest_version}

@@ -67,7 +67,6 @@
         <img
           src="{project?.icon}"
           alt="{project?.title} icon"
-          style="view-transition-name: project-{project.ID}-icon;"
           class="aspect-square h-16 w-16 rounded-lg bg-cover"
           width="64"
           height="64" />
@@ -79,7 +78,6 @@
       {/if}
       <div>
         <h1
-          style="view-transition-name: project-{project.ID}-title;"
           class="project-info flex items-center text-3xl font-bold text-slate-950 dark:text-white">
           {project?.title}
         </h1>
@@ -92,10 +90,8 @@
               alt="{project.author?.username}'s profile picture"
               class="max-h-6 rounded-full"
               width="24"
-              height="24"
-              style="view-transition-name: project-{project.ID}-pfp;" />
+              height="24" />
             <span
-              style="view-transition-name: project-{project.ID}-author;"
               class="text-xs text-slate-950 transition-all hover:underline dark:text-white xl:text-sm">
               {project.author?.username}
             </span>

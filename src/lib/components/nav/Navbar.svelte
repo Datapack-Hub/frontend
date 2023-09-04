@@ -199,12 +199,3 @@
     </ConditionalWrapper>
   </nav>
 </header>
-
-<style>
-  /*
-  This will throw errors because its technically experimental but looks so cool
-  */
-  header {
-    view-transition-name: header;
-  }
-</style>
