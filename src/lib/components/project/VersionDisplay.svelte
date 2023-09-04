@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
+  import { browser, dev } from "$app/environment";
   import { toast } from "svelte-sonner";
   import tippy from "sveltejs-tippy";
 
@@ -50,6 +50,11 @@
   ) {
     if (!browser || url === undefined) {
       return toast.error("Could not find file!");
+    }
+
+    // Remove if actual download behaviour needs testing
+    if(dev) {
+      toast.info("Tests are disabled on dev")
     }
 
     let zip = await fetch(url);

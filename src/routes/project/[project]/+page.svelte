@@ -63,7 +63,7 @@
   // Version filtering
   $: versionMatches =
     selectedVersions.length > 0 && data.versions !== undefined
-      ? data.versions.filter(dp =>
+      ? data.versions.filter((dp: Version) =>
           dp.minecraft_versions
             .split(",")
             .some(version => selectedVersions.includes(version))
@@ -78,7 +78,7 @@
   function pickVersions(vs: string) {
     matches = [];
     pickedVersion = vs;
-    for (const v of data.versions.filter(versions =>
+    for (const v of data.versions.filter((versions: Version) =>
       versions.minecraft_versions.split(",").includes(vs)
     )) {
       matches = [...matches, v];
