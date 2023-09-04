@@ -53,8 +53,8 @@
     }
 
     // Remove if actual download behaviour needs testing
-    if(dev) {
-      toast.info("Tests are disabled on dev")
+    if (dev) {
+      toast.info("Tests are disabled on dev");
     }
 
     let zip = await fetch(url);
