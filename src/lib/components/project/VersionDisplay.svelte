@@ -125,17 +125,17 @@
     let supportedFormats = mcMeta.pack.supported_formats;
     if (supportedFormats !== undefined) {
       if (isObject(supportedFormats)) {
-        if (mcMeta.pack.supportedFormats.max_inclusive > packFormat) return;
+        if (mcMeta.pack.supported_formats.max_inclusive > packFormat) return;
 
-        mcMeta.pack.supportedFormats.max_inclusive = packFormat;
+        mcMeta.pack.supported_formats.max_inclusive = packFormat;
       } else if (isNumber(supportedFormats)) {
         if (supportedFormats > packFormat) return;
 
-        mcMeta.pack.supportedFormats = packFormat;
+        mcMeta.pack.supported_formats = packFormat;
       } else if (isArray(supportedFormats)) {
         if (supportedFormats[1] > packFormat) return;
 
-        mcMeta.pack.supportedFormats = packFormat;
+        mcMeta.pack.supported_formats = packFormat;
       } else {
         return toast.error("Something went wrong: MCMeta is corrupt!");
       }
