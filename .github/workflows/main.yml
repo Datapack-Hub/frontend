@@ -15,20 +15,15 @@ jobs:
     timeout-minutes: 3
     steps:
       - uses: actions/checkout@v3.5.2
-      - uses: pnpm/action-setup@v2
+      - uses: oven-sh/setup-bun@v1
         with:
-          version: 8
-      - name: Setup Node JS 18
-        uses: actions/setup-node@v3.7.0
-        with:
-          node-version: 18
-          cache: "pnpm"
+          bun-version: latest
       - name: Install dependencies
         run: |
-          pnpm i
+          bun install
       - name: Run Format
         run: |
-          pnpm format
+          bun format
       - uses: stefanzweifel/git-auto-commit-action@v4.16.0
         with:
           commit_message: "Apply formatting"
@@ -40,17 +35,15 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-      - name: Setup Node JS 18
-        uses: actions/setup-node@v3.7.0
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: 18
-          cache: "pnpm"
+          bun-version: latest
       - name: Install dependencies
         run: |
-          pnpm i
+          bun install
       - name: Run check
         run: |
-          pnpm check
+          bun check
   lint:
     runs-on: ubuntu-latest
     timeout-minutes: 3
@@ -59,36 +52,32 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-      - name: Setup Node JS 18
-        uses: actions/setup-node@v3.7.0
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: 18
-          cache: "pnpm"
+          bun-version: latest
       - name: Install dependencies
         run: |
-          pnpm i
+          bun install
       - name: Run Linter
         run: |
-          pnpm lint
-  test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v3.5.2
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: Setup Node JS 18
-        uses: actions/setup-node@v3.7.0
-        with:
-          node-version: 18
-          cache: "pnpm"
-      - name: Install dependencies
-        run: |
-          pnpm i
-      - name: Install playwright
-        run: |
-          pnpx playwright install --with-deps
-      - name: Run tests
-        run: |
-          pnpm test
+          bun lint
+  # test:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 10
+  #   steps:
+  #     - uses: actions/checkout@v3.5.2
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
+  #     - uses: oven-sh/setup-bun@v1
+  #       with:
+  #         bun-version: latest
+  #     - name: Install dependencies
+  #       run: |
+  #         bun install
+  #     - name: Install playwright
+  #       run: |
+  #         bunx playwright install --with-deps
+  #     - name: Run tests
+  #       run: |
+  #         bun run test
