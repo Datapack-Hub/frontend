@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm i
-      - name: Run Rome Format
+      - name: Run Format
         run: |
           pnpm format
       - uses: stefanzweifel/git-auto-commit-action@v4.16.0
@@ -67,28 +67,28 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm i
-      - name: Run Rome Linter
+      - name: Run Linter
         run: |
           pnpm lint
-  # test:
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 10
-  #   steps:
-  #     - uses: actions/checkout@v3.5.2
-  #     - uses: pnpm/action-setup@v2
-  #       with:
-  #         version: 8
-  #     - name: Setup Node JS 18
-  #       uses: actions/setup-node@v3.7.0
-  #       with:
-  #         node-version: 18
-  #         cache: "pnpm"
-  #     - name: Install dependencies
-  #       run: |
-  #         pnpm i
-  #     - name: Install playwright
-  #       run: |
-  #         pnpx playwright install --with-deps
-  #     - name: Run tests
-  #       run: |
-  #         pnpm test
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3.5.2
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup Node JS 18
+        uses: actions/setup-node@v3.7.0
+        with:
+          node-version: 18
+          cache: "pnpm"
+      - name: Install dependencies
+        run: |
+          pnpm i
+      - name: Install playwright
+        run: |
+          pnpx playwright install --with-deps
+      - name: Run tests
+        run: |
+          pnpm test

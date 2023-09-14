@@ -2,6 +2,7 @@
 node_modules
 /build
 /.svelte-kit
+/.vscode
 /package
 /static
 /tests
@@ -15,6 +16,7 @@ node_modules
 # Ignore files for PNPM, NPM and YARN
 pnpm-lock.yaml
 package-lock.json
+bun.lockb
 yarn.lock
 
 # Configs
@@ -22,6 +24,5 @@ svelte.config.js
 unlighthouse.config.ts
 vite.config.js
 playwright.config.ts
-knip.ts
 
 /.vscode
