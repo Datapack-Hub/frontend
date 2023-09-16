@@ -18,7 +18,7 @@
   export let data: PageData;
 
   let dropdownOpen: boolean;
-  let query: string;
+  let query = "";
   let sort = "Updated";
   let searchTime = 0;
   let layout = browser
@@ -29,7 +29,7 @@
 
   let featured = data.featured?.splice(0, 2);
 
-  let search = debounce({ delay: 100 }, async () => {
+  let search = debounce({ delay: 200 }, async () => {
     let searchResult = await fetch(
       `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}`
     );
@@ -42,12 +42,13 @@
 
   async function resort() {
     let searchResult = await fetch(
-      `${API}/projects/?sort=${sort.toLowerCase()}`
+      `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}`
     );
 
-    let resultJson = await searchResult.json();
+    let sortJson = await searchResult.json();
+    searchTime = sortJson.time;
 
-    dataCopy = await projectSchema.array().parseAsync(resultJson.result);
+    dataCopy = await projectSchema.array().parseAsync(sortJson.result);
   }
 </script>
 

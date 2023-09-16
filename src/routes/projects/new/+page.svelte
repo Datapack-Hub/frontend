@@ -160,10 +160,11 @@
         >Create Project</Button>
     </div>
   {:else}
-    <p class="text-white">
-      silly billy! you forgor 💀 to sign in! make sure u sign in before you try
-      to post stuff :P
-    </p>
+    <div class="flex h-screen w-full flex-col items-center justify-center">
+      <p class="text-3xl text-white">You must be signed in to post things!</p>
+      <a href="/login" class="mt-3 text-blue-500 underline hover:text-blue-700"
+        >You can sign in here!</a>
+    </div>
   {/if}
   <div class="py-16"></div>
 </main>

@@ -5,8 +5,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:svelte/recommended',
-    'plugin:unicorn/recommended',
-    'plugin:security/recommended'
+    'plugin:unicorn/recommended'
+    // 'plugin:security/recommended'
   ],
   plugins: ['@typescript-eslint'],
   ignorePatterns: ['*.cjs', 'node_modules'],

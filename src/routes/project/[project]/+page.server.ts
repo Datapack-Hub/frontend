@@ -34,7 +34,7 @@ export const load = (async ({ params, fetch, cookies, url }) => {
       project: project,
       versions: versions,
       comments: comments,
-      is_new: parameters.get("is_new")
+      new: parameters.get("is_new")
     };
   } else if (projectRequest.status === 404) {
     throw error(404, {

@@ -131,7 +131,7 @@
         <p class="mb-2 text-white">
           Come hang out and check site status on our <a
             href="https://discord.datapackhub.net"
-            class=" text-sky-200">Discord</a
+            class=" text-blue-200">Discord</a
           >!
         </p>
         <img alt="poorly drawn maintenance screen" src="/maintenance.avif" />

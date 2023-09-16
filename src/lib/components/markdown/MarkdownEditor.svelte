@@ -54,7 +54,7 @@
       <a
         use:tippy="{markdownTip}"
         href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
-        class="absolute right-4 top-4 rounded-full bg-slate-800/70 p-1 transition-colors hover:text-sky-500 dark:text-slate-100 dark:hover:text-sky-500"
+        class="absolute right-4 top-4 rounded-full bg-slate-800/70 p-1 transition-colors hover:text-blue-500 dark:text-slate-100 dark:hover:text-blue-500"
         ><IconMD /></a>
       <p class="align-middle text-xs text-slate-950 dark:text-slate-100">
         {remainingCharacters} characters left

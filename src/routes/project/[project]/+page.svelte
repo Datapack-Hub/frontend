@@ -275,7 +275,7 @@
       <!--Project Meta-->
       <ProjectInfo
         project="{data.project}"
-        is_new="{data.is_new == '1' ? true : false}" />
+        isNew="{data.new == '1' ? true : false}" />
       <!--Main-->
       <div
         id="project-content"
@@ -433,7 +433,7 @@
         {:else if activePage == "versions"}
           <div
             class="mb-2 items-center rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
-            <div class="mb-3 text-sky-300" use:autoAnimate>
+            <div class="mb-3 text-blue-300" use:autoAnimate>
               <button on:click="{() => (activePage = 'description')}"
                 ><IconBack class="inline" /> Back to description
               </button>
@@ -468,7 +468,7 @@
         {:else if activePage == "download"}
           <div class="mb-2 items-center space-y-2">
             <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
-              <div class="mb-3 text-sky-300" use:autoAnimate>
+              <div class="mb-3 text-blue-300" use:autoAnimate>
                 <button on:click="{() => (activePage = 'description')}"
                   ><IconBack class="inline" /> Back to description
                 </button>
@@ -544,7 +544,7 @@
                     mcVersion="{pickedVersion}" />
                 </ul>
                 <p
-                  class="text-md mt-2 flex items-center space-x-1 pr-1 text-sky-400">
+                  class="text-md mt-2 flex items-center space-x-1 pr-1 text-blue-400">
                   <IconFiles />
                   <button
                     on:click="{() => (activePage = 'versions')}"
@@ -577,7 +577,7 @@
                       disabled="{commentSending}">Post</button>
                   </form>
                 {:else}
-                  <p class="mb-3 ml-1 mt-1 text-white">
+                  <p class="mb-3 rounded-lg bg-zinc-900 p-3 text-white">
                     <b>Sign in</b> to post a comment or reply
                   </p>
                 {/if}

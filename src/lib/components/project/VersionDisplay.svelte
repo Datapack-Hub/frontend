@@ -252,7 +252,7 @@
           <p>Required Resourcepack</p></Button>
       {/if}
     </div>
-    <p class="text-md mt-2 flex items-center space-x-1 pr-1 text-sky-400">
+    <p class="text-md mt-2 flex items-center space-x-1 pr-1 text-blue-400">
       <IconInfo /><a href="/install">How to install a datapack</a>
     </p>
   {/if}
@@ -302,7 +302,7 @@
     </div>
   {/if}
   <CasualLine />
-  <p class="flex items-center space-x-1 pr-1 text-sm text-sky-300">
+  <p class="flex items-center space-x-1 pr-1 text-sm text-blue-300">
     <IconInfo /><a href="/install">How to install a datapack</a>
   </p>
 </Modal>

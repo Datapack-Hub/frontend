@@ -37,8 +37,16 @@
   });
 </script>
 
+<!-- we have way too many classes -->
+<!-- tailwind is so clean ._. -->
 <div
-  class="prose-tbody:odd:bg-zinc-600 prose break-words leading-snug dark:prose-invert prose-p:my-4 prose-a:break-all prose-code:before:content-none prose-code:after:content-none prose-table:rounded-md prose-table:bg-slate-300 prose-th:p-3 prose-td:p-3 prose-img:py-3 prose-table:dark:bg-zinc-800 {classes}">
+  class="prose-tbody:odd:bg-zinc-600 prose break-words
+  leading-snug dark:prose-invert prose-a:break-all
+  prose-a:underline
+  prose-code:before:content-none prose-code:after:content-none
+  prose-table:rounded-md prose-table:bg-slate-300
+  prose-th:p-3 prose-td:p-3 prose-img:py-3
+  prose-table:dark:bg-zinc-800 {classes}">
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html html}
 </div>

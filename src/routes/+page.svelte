@@ -183,7 +183,7 @@
           <b>Easily find datapacks you'll like</b>
         </h2>
         <p
-          class="fadeTextAnime my-3 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
+          class="fadeTextAnime my-3 text-lg font-light opacity-0 dark:text-zinc-100">
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
         <div class="mb-5 space-y-2 rounded-xl p-3 dark:bg-zinc-900">
@@ -200,18 +200,18 @@
           <b>No more "made for older version"</b>
         </h2>
         <p
-          class="fadeTextAnime my-3 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
+          class="fadeTextAnime my-3 text-lg font-light opacity-0 dark:text-zinc-100">
           Datapack Hub automatically converts the pack version to the requested
           version, removing those pesky "Made for an older version" errors!
         </p>
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-900">
           <div
-            class="fadeTextAnime flex items-center justify-between rounded-t-md bg-slate-300 p-3 text-slate-600 opacity-0 dark:bg-zinc-800 dark:text-zinc-500">
+            class="fadeTextAnime dark: flex items-center justify-between rounded-t-md bg-slate-300 p-3 text-slate-600 opacity-0 dark:bg-zinc-800">
             <p>pack.mcmeta</p>
             <IconX />
           </div>
           <div
-            class="fadeTextAnime mt-2 overflow-x-auto rounded-b-md bg-slate-300 px-4 font-mono text-slate-600 opacity-0 dark:bg-zinc-800 dark:text-zinc-500">
+            class="fadeTextAnime dark: mt-2 overflow-x-auto rounded-b-md bg-slate-300 px-4 font-mono text-slate-600 opacity-0 dark:bg-zinc-800">
             <pre class="text-sm">
               <!--DO NOT INDENT!!!-->
 &lbrace;
@@ -233,7 +233,7 @@
           <b>ZIP Optimisation</b>
         </h2>
         <p
-          class="fadeTextAnime my-3 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
+          class="fadeTextAnime my-3 text-lg font-light opacity-0 dark:text-zinc-100">
           Uploaded files have the option to be optimised automatically with
           PackSquash!
         </p>
@@ -252,8 +252,7 @@
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Strong Moderation</b>
         </h2>
-        <p
-          class="mt-3 text-lg font-light text-pearl-lusta-950 dark:text-pearl-lusta-100">
+        <p class="mt-3 text-lg font-light dark:text-zinc-100">
           Our amazing staff team work together to keep Datapack Hub the best and
           cleanest place to find datapacks!
         </p>
@@ -279,7 +278,7 @@
           <b>Awesome Community</b>
         </h2>
         <p
-          class="fadeTextAnime my-4 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
+          class="fadeTextAnime my-4 text-lg font-light opacity-0 dark:text-zinc-100">
           Join our Discord server to get help with the website, support for
           making datapacks, and to be a part of the community!
         </p>
@@ -302,7 +301,7 @@
           <b>Project Featuring</b>
         </h2>
         <p
-          class="fadeTextAnime my-4 text-lg font-light text-pearl-lusta-950 opacity-0 dark:text-pearl-lusta-100">
+          class="fadeTextAnime my-4 text-lg font-light opacity-0 dark:text-zinc-100">
           Our staff regularly feature cool projects to reach a wider audience!
         </p>
         {#each data.random.splice(4, 1) as randProj}
@@ -316,18 +315,18 @@
           <b>Public API</b>
         </h2>
         <p
-          class="fadeTextAnime opacity-0 text-pearl-lusta-950 dark:text-pearl-lusta-100 text-lg my-4 font-light">
+          class="fadeTextAnime opacity-0  dark:text-zinc-100 text-lg my-4 font-light">
           Datapack Hub is ran entirely by an API which anyone can access.
         </p>
         <div class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-3">
           <div
-            class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-zinc-800 rounded-t-md p-3 text-slate-600 dark:text-zinc-500">
+            class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-zinc-800 rounded-t-md p-3 text-slate-600 dark:">
             <div class="flex space-x-2 overflow-x-auto">
               <p class="text-green-600">GET</p>
               <span class="overflow-hidden text-ellipsis">
                 https://api.datapackhub.net/user/<AutoAdjustableInput
                   on:change="{event => (apiExampleUser = event.detail)}"
-                  classes="bg-transparent text-slate-600 dark:text-zinc-500"
+                  classes="bg-transparent text-slate-600 dark:"
                   defaultValue="silabear" />
               </span>
             </div>
@@ -336,7 +335,7 @@
               on:click="{apiExampleRun}">Run</button>
           </div>
           <div
-            class="text-slate-600 dark:text-zinc-500 font-mono mt-2 bg-slate-300 dark:bg-zinc-800 rounded-b-md overflow-clip h-80 overflow-y-auto">
+            class="text-slate-600 dark: font-mono mt-2 bg-slate-300 dark:bg-zinc-800 rounded-b-md overflow-clip h-80 overflow-y-auto">
             {#if apiExampleResult.length > 0}
               <pre
                 class="text-sm p-3 whitespace-pre-wrap"

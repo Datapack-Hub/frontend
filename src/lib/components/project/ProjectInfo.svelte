@@ -27,10 +27,10 @@
 
   // Component args
   export let project: Project;
-  export let is_new: boolean;
+  export let isNew: boolean;
 
   onMount(() => {
-    if (is_new == true) nextStepsModal.open();
+    if (isNew == true) nextStepsModal.open();
   });
 
   let mm: HTMLDivElement;
@@ -55,7 +55,7 @@
 </script>
 
 <div class="mr-4 h-fit w-full flex-col lg:w-2/5 xl:w-1/3" use:autoAnimate>
-  <div class="my-3 mb-4 text-sky-300" use:autoAnimate>
+  <div class="my-3 mb-4 text-blue-300" use:autoAnimate>
     <button on:click="{() => history.back()}">
       <IconBack class="inline" /> Go Back
     </button>
@@ -224,7 +224,7 @@
       {#if !project.latest_version}
         <div class="rounded-xl bg-zinc-900 p-3">
           <div
-            class="flex items-center space-x-2 text-lg font-semibold text-sky-500">
+            class="flex items-center space-x-2 text-lg font-semibold text-blue-500">
             <IconUpload />
             <h1>Upload a version</h1>
           </div>
