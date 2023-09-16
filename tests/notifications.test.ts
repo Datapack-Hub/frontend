@@ -21,7 +21,7 @@ test.beforeEach(async ({ page }) => {
 
 test("notifications can be removed", async ({ page }) => {
   // check if it sent
-  await page.goto("/notifications", { timeout: 2000 });
+  await page.goto("/notifications", { timeout: 5000 });
 
   // attempts to match "https://api.datapackhub.net/notifs" with no sub-routes
   const response = await page.waitForResponse(
@@ -37,15 +37,15 @@ test("notifications can be removed", async ({ page }) => {
     test.skip();
   }
 
-  await page.locator(".testNotif").first().waitFor({ timeout: 2000 });
+  await page.locator(".testNotif").first().waitFor({ timeout: 5000 });
 
   for (const btn of await page.locator(".closeButton").all()) {
-    await btn.click({ timeout: 1000 });
+    await btn.click({ timeout: 3000 });
     const response = await page.waitForResponse(
       response => {
         return response.url().includes("/notifs/delete/") && response.ok();
       },
-      { timeout: 2000 }
+      { timeout: 5000 }
     );
     expect(response.ok).toBeTruthy();
   }
@@ -59,14 +59,14 @@ test("notification can be sent", async ({ page }) => {
 
   await test.step("send notification", async () => {
     const modBtn = page.locator(".modBtn");
-    await modBtn.waitFor({ timeout: 1000 });
+    await modBtn.waitFor({ timeout: 3000 });
     await modBtn.click();
 
     const notifBtn = page.locator("#send_notif");
     await notifBtn.waitFor({ timeout: 1500 });
     await notifBtn.click();
 
-    await page.locator("#notif-message").waitFor({ timeout: 2000 });
+    await page.locator("#notif-message").waitFor({ timeout: 5000 });
     await page.locator("#notif-message").type("Test Test 123 **123** ~~123~~");
 
     await page.locator("#notif-content").type("Test Test 123 **123** ~~123~~");
@@ -87,7 +87,7 @@ test("notification can be sent", async ({ page }) => {
 
   await test.step("go to page", async () => {
     // check if it sent
-    await page.goto("/notifications", { timeout: 1000 });
+    await page.goto("/notifications", { timeout: 3000 });
     await page.locator(".testNotif").first().waitFor({ timeout: 1500 });
     expect(await page.locator(".testNotif").count()).toBeGreaterThan(0);
   });

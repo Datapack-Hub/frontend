@@ -24,5 +24,8 @@ svelte.config.js
 unlighthouse.config.ts
 vite.config.js
 playwright.config.ts
+postcss.config.cjs
+tailwind.config.cjs
+.eslintrc.cjs
 
 /.vscode

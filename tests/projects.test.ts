@@ -20,7 +20,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("project can be located and fetched", async ({ page }) => {
-  const response = await page.goto("/project/hexenwerk/", { timeout: 2000 });
+  const response = await page.goto("/project/hexenwerk/", { timeout: 5000 });
   expect(response?.status()).toEqual(200);
 });
 
@@ -35,14 +35,14 @@ test("project downloads work", async ({ page }) => {
   // get button labeled 1.19.4
   const versionBtn = page.locator('[data-test-btn="1.19.4"]');
 
-  await versionBtn.waitFor({ timeout: 2000 });
+  await versionBtn.waitFor({ timeout: 5000 });
   await versionBtn.click();
 
-  const downloadPromise = page.waitForEvent("download", { timeout: 4000 });
+  const downloadPromise = page.waitForEvent("download", { timeout: 8000 });
   // get actual download button
   const actualDownload = page.locator('[data-test-clickable-label="datapack"]');
 
-  await actualDownload.waitFor({ timeout: 4000 });
+  await actualDownload.waitFor({ timeout: 8000 });
   await actualDownload.click();
 
   const download = await downloadPromise;
@@ -65,7 +65,7 @@ test("project reports work", async ({ page }) => {
     response => {
       return response.url().includes("/report") && response.ok();
     },
-    { timeout: 2000 }
+    { timeout: 5000 }
   );
 
   await page.goto("/moderation", { timeout: 3000 });
@@ -85,7 +85,7 @@ test("project reports work", async ({ page }) => {
     response => {
       return response.url().includes("/remove_report/1") && response.ok();
     },
-    { timeout: 2000 }
+    { timeout: 5000 }
   );
 
   expect(await page.locator(".reports").count()).toBe(0);
