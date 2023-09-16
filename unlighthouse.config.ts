@@ -11,10 +11,10 @@ futureDate.setTime(futureDate.getTime() + (24*60*60*1000))
 export default defineConfig({
   // example
   scanner: {
-    throttle: true
+    // throttle: true
   },
   puppeteerClusterOptions: {
-    maxConcurrency: 4
+    maxConcurrency: 2
   },
   site: 'datapackhub.net',
   urls: [ //TODO: Add a sitemap.xml
