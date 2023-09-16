@@ -1,5 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import Icons from 'unplugin-icons/vite'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 /** @type {import('vite').UserConfig} */
 const config = {
@@ -7,7 +8,8 @@ const config = {
     sveltekit(),
     Icons({
       compiler: 'svelte'
-    })
+    }),
+    ViteImageOptimizer()
   ],
   server: {
     host: "0.0.0.0"
