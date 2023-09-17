@@ -31,7 +31,8 @@
         class="pb-2 text-center text-5xl font-bold text-slate-950 dark:text-white md:text-start md:text-5xl lg:text-6xl">
         Notifications
       </h1>
-      <Button click="{deleteAll}" style="base" classes="bg-red-500 text-white">Delete All</Button>
+      <Button click="{deleteAll}" style="base" classes="bg-red-500 text-white"
+        >Delete All</Button>
     </div>
     <div use:autoAnimate>
       {#if data.notifications?.length == 0}
