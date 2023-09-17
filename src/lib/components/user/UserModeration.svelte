@@ -14,7 +14,7 @@
   import Button from "../decorative/Button.svelte";
   import UserCard from "./UserCard.svelte";
 
-  export let user: User | undefined;
+  export let user: User;
 
   let moderationModalPage = "warn";
 

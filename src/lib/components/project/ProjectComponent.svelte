@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { appendSize } from "$lib/globals/functions";
   import type { Project } from "$lib/globals/schema";
   import { roles } from "$lib/globals/stores";
   import { title } from "radash";
@@ -42,7 +43,7 @@
       <div
         class="mt-1 flex items-center gap-1 text-sm text-slate-700 dark:text-slate-100">
         <img
-          src="{project.author.profile_icon}&size=32"
+          src="{appendSize(project.author.profile_icon, 32)}"
           alt="{project.author.username}'s profile"
           class="h-4 rounded-full"
           height="16"

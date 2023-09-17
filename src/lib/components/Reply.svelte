@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fetchAuthed } from "$lib/globals/functions";
+  import { appendSize, fetchAuthed } from "$lib/globals/functions";
   import type { User } from "$lib/globals/schema";
   import { roleInfo, roles, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
@@ -37,7 +37,7 @@
 {#if visible}
   <li class="relative my-3 flex w-full space-x-2">
     <img
-      src="{reply.author.profile_icon}&size=32"
+      src="{appendSize(reply.author.profile_icon, 32)}"
       alt="{reply.author}'s profile"
       class="h-6 rounded-full"
       height="24"

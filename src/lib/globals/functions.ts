@@ -126,3 +126,15 @@ export function removeCookie(name: string) {
 export const moderatorOrAbove = memo((role: Role | undefined) => {
   return ["moderator", "developer", "admin"].includes(role?.name ?? "");
 });
+
+/**
+ * append a size parameter to an image link
+ * @param urlString url as a string
+ * @param size size of image
+ * @returns a url with the parameter appeneded
+ */
+export function appendSize(urlString: string, size: number): string {
+  const url = new URL(urlString);
+  url.searchParams.append("size", size.toString())
+  return url.toString()
+}

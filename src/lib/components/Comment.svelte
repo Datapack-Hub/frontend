@@ -1,6 +1,6 @@
 <script lang="ts">
   import { API } from "$lib/globals/consts";
-  import { fetchAuthed } from "$lib/globals/functions";
+  import { appendSize, fetchAuthed } from "$lib/globals/functions";
   import {
     commentSchema,
     type DPHComment,
@@ -80,7 +80,7 @@
     <div
       class="group relative flex w-full space-x-2 rounded-lg p-3 dark:bg-zinc-900">
       <img
-        src="{comment.author.profile_icon}&size=64"
+        src="{appendSize(comment.author.profile_icon, 64)}"
         alt="{comment.author.username}'s profile"
         class="h-12 rounded-full" />
       <div class="w-full">

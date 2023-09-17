@@ -2,17 +2,18 @@
   import type { Role, User } from "$lib/globals/schema";
   import { title } from "radash";
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
+  import { appendSize } from "$lib/globals/functions";
 
-  export let person: User | undefined;
+  export let person: User;
   export let role: Role | undefined;
 </script>
 
-<a href="/user/{person?.username.toLowerCase()}">
+<a href="/user/{person.username.toLowerCase()}">
   <div
     class="my-2 flex w-full rounded-xl bg-slate-200 p-4 transition-all hover:brightness-90 dark:bg-zinc-800">
     <img
       loading="lazy"
-      src="{person?.profile_icon}&size=128"
+      src="{appendSize(person.profile_icon, 128)}"
       alt="{person?.username}'s profile picture"
       class="float-left mr-2 h-16 w-16 rounded-full"
       width="64"

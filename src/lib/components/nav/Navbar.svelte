@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
-  import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
+  import { appendSize, fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import { authed, roleInfo, user, windowWidth } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
   import IconRead from "~icons/tabler/Bell.svelte";
@@ -179,9 +179,7 @@
             interactive: true
           }}">
           <img
-            src="{$user.profile_icon}{$user.profile_icon.includes('?')
-              ? '&'
-              : '?'}size=36"
+            src="{appendSize($user.profile_icon, 64)}"
             alt="{$user.username}'s profile picture"
             height="24"
             width="24"

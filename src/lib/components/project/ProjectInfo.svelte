@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fetchAuthed } from "$lib/globals/functions";
+  import { appendSize, fetchAuthed } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
 
@@ -86,7 +86,7 @@
             href="/user/{project.author?.username}"
             class="flex items-center space-x-1">
             <img
-              src="{project.author?.profile_icon}&size=64"
+              src="{appendSize(project.author?.profile_icon, 64)}"
               alt="{project.author?.username}'s profile picture"
               class="max-h-6 rounded-full"
               width="24"

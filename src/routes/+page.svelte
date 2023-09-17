@@ -10,6 +10,7 @@
   import IconFile from "~icons/tabler/FileZip.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import type { PageData } from "./$types";
+  import { appendSize } from "$lib/globals/functions";
 
   export let data: PageData;
 
@@ -260,7 +261,7 @@
           {#each data.staff as staff}
             <a href="/user/{staff.username}">
               <img
-                src="{staff.profile_icon}&size=64"
+                src="{appendSize(staff.profile_icon, 64)}"
                 alt="{staff.username}'s profile"
                 title="{staff.username}"
                 loading="lazy"

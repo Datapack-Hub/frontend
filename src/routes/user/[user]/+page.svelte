@@ -6,7 +6,7 @@
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import UserModeration from "$lib/components/user/UserModeration.svelte";
   import { badges } from "$lib/globals/badges";
-  import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
+  import { appendSize, fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import { roleInfo, user } from "$lib/globals/stores";
   import { title } from "radash";
   import { toast } from "svelte-sonner";
@@ -90,7 +90,7 @@
       <div class="flex w-full flex-col items-center md:w-1/5">
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <img
-          src="{data.profile?.profile_icon}&size=256"
+          src="{appendSize(data.profile?.profile_icon, 256)}"
           alt="{data.profile?.username}'s profile picture"
           on:click="{data.profile?.id == 3 ? play : undefined}"
           on:keypress="{event =>
