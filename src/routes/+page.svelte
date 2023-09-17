@@ -32,6 +32,7 @@
   onMount(async () => {
     let cyclingTextWrapper = document.querySelectorAll(".split-text .letters");
     let fadingTextElements = document.querySelectorAll(".fadeTextAnime");
+    let likesAnimations = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     for (const element of cyclingTextWrapper) {
       element.innerHTML = element.textContent!.replaceAll(
@@ -83,22 +84,31 @@
       });
 
     visible = true;
-    let intersect = new IntersectionObserver(entries => {
-      for (const [index, entry] of entries.entries()) {
-        if (entry.isIntersecting) {
-          anime({
-            autoplay: true,
-            targets: entry.target,
-            opacity: 1,
-            delay: (index + 1) * 75
-          });
-        } else {
-          anime({ autoplay: true, targets: entry.target, opacity: 0 });
+    if (likesAnimations) {
+      let intersect = new IntersectionObserver(entries => {
+        for (const [index, entry] of entries.entries()) {
+          if (entry.isIntersecting) {
+            anime({
+              autoplay: true,
+              targets: entry.target,
+              opacity: 1,
+              delay: (index + 1) * 75
+            });
+          } else {
+            anime({ autoplay: true, targets: entry.target, opacity: 0 });
+          }
         }
-      }
-    });
+      });
 
-    for (const element of fadingTextElements) intersect.observe(element);
+      for (const element of fadingTextElements) intersect.observe(element);
+    } else {
+      anime({
+        autoplay: true,
+        targets: ".fadeTextAnime",
+        opacity: 1,
+        duration: 0
+      });
+    }
   });
 </script>
 
@@ -187,7 +197,8 @@
           class="fadeTextAnime my-3 text-lg font-light opacity-0 dark:text-zinc-100">
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
-        <div class="mb-5 space-y-2 rounded-xl p-3 dark:bg-zinc-900">
+        <div
+          class="fadeTextAnime mb-5 space-y-2 rounded-xl p-3 dark:bg-zinc-900">
           {#each data.random.slice(2, 4) ?? [] as rand}
             <ProjectComponent project="{rand}" />
           {/each}
