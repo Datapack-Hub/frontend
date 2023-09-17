@@ -348,9 +348,7 @@
     This message is sent to the user as a notification. Always be professional,
     even when they are not.
   </p>
-  <p class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
-    Warn Message
-  </p>
+  <p class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">Warn Message</p>
   <textarea
     class="input h-32 w-full resize-none"
     placeholder="..."

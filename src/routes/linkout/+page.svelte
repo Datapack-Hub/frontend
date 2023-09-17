@@ -14,8 +14,7 @@
       class="mb-4 text-3xl font-bold text-zinc-950 dark:text-zinc-100 md:text-4xl lg:text-5xl">
       Stop!
     </h1>
-    <p
-      class="text-base text-zinc-950 dark:text-zinc-100 md:text-lg lg:text-xl">
+    <p class="text-base text-zinc-950 dark:text-zinc-100 md:text-lg lg:text-xl">
       You are being redirected to another page. This page may have different
       privacy policies or may be malicious. Make sure you know that the site is
       safe before continuing!

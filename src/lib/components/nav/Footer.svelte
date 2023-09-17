@@ -2,7 +2,9 @@
   class="flex h-[30rem] flex-col items-center justify-evenly border-t-2 border-slate-50 bg-slate-50 px-8 dark:border-zinc-700 dark:bg-zinc-900 md:px-16 lg:h-64 lg:flex-row lg:justify-between lg:px-24"
   id="footer">
   <div>
-    <a href="/" class="flex items-center space-x-2 hover:brightness-75 w-full lg:w-fit">
+    <a
+      href="/"
+      class="flex w-full items-center space-x-2 hover:brightness-75 lg:w-fit">
       <img
         loading="lazy"
         src="/logos/dph.svg"

@@ -34,8 +34,7 @@
         click="{() => (activePage = 'publish_queue')}">Publish Queue</Button>
       <Button
         style="base"
-        classes="text-zinc-950 dark:text-zinc-100 {activePage ===
-        'review_queue'
+        classes="text-zinc-950 dark:text-zinc-100 {activePage === 'review_queue'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'review_queue')}">Review Queue</Button>

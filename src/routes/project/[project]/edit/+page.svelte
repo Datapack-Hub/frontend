@@ -424,9 +424,7 @@
                 placeholder="https://example.com/my-custom-licence.md" />
             </div>
           </div> -->
-          <p class="col-span-3 text-zinc-950 dark:text-zinc-100">
-            Categories
-          </p>
+          <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
           <div
             class="col-span-2 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3 lg:grid-cols-4">
             {#each categories as cat}
