@@ -135,7 +135,7 @@
       {
         success: "Uploaded! Refreshing...",
         error: "Something went wrong.",
-        loading: "Uploading file...",
+        loading: "Processing file... Do not leave this page!",
         info: "",
         warning: ""
       }
@@ -196,7 +196,7 @@
       goto(".");
       toast.success("Edited project!");
     } else {
-      toast.error("oops!");
+      toast.error("Failed to upload! Contact an Admin!");
     }
   }
 
@@ -406,7 +406,7 @@
             <div class="input cursor-pointer p-3">
               <h1 class="flex items-center space-x-2">
                 <IconND />
-                <p class="font-bold">NoDeriatives</p>
+                <p class="font-bold">NoDerivatives</p>
               </h1>
               <p class="text-xs">
                 If someone remixes, transforms, or builds upon your work, they
