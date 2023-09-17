@@ -11,17 +11,17 @@
   <img src="/logos/dph.svg" alt="logo" class="w-1/4 p-12" />
   <div class="w-3/4">
     <h1
-      class="mb-4 text-3xl font-bold text-slate-950 dark:text-slate-100 md:text-4xl lg:text-5xl">
+      class="mb-4 text-3xl font-bold text-zinc-950 dark:text-zinc-100 md:text-4xl lg:text-5xl">
       Stop!
     </h1>
     <p
-      class="text-base text-slate-950 dark:text-slate-100 md:text-lg lg:text-xl">
+      class="text-base text-zinc-950 dark:text-zinc-100 md:text-lg lg:text-xl">
       You are being redirected to another page. This page may have different
       privacy policies or may be malicious. Make sure you know that the site is
       safe before continuing!
     </p>
     <p
-      class="text-sm text-slate-950/60 dark:text-slate-100/60 md:text-base lg:text-lg">
+      class="text-sm text-zinc-950/60 dark:text-zinc-100/60 md:text-base lg:text-lg">
       URL: {data.url}
     </p>
     <div class="mt-4 flex w-2/3 justify-between md:w-1/2 lg:w-2/5">

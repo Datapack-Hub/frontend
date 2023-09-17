@@ -40,13 +40,13 @@
 <!-- we have way too many classes -->
 <!-- tailwind is so clean ._. -->
 <div
-  class="prose-tbody:odd:bg-zinc-600 prose break-words
+  class="prose break-words
   leading-snug dark:prose-invert prose-a:break-all
   prose-a:underline
   prose-code:before:content-none prose-code:after:content-none
-  prose-table:rounded-md prose-table:bg-slate-300
+  prose-table:rounded-lg prose-table:bg-slate-300/40
   prose-th:p-3 prose-td:p-3 prose-img:py-3
-  prose-table:dark:bg-zinc-800 {classes}">
+  prose-table:dark:bg-zinc-700/40 {classes}">
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html html}
 </div>

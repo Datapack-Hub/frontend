@@ -28,7 +28,7 @@
     style="width: {longest[0].length + 5}ch;">{selected}</button>
   <button
     aria-label="{expand ? 'Open' : 'Close'} dropdown"
-    class="absolute right-2 top-1/2 -translate-y-1/2 text-sm dark:text-slate-100 {expand
+    class="absolute right-2 top-1/2 -translate-y-1/2 text-sm dark:text-zinc-100 {expand
       ? 'rotate-180'
       : 'rotate-0'} transition-transform"
     on:keydown="{() => (expand = !expand)}"
@@ -41,7 +41,7 @@
       {#each options as opt, index}
         <li>
           <button
-            class="w-full cursor-pointer rounded-[4px] p-3 text-left hover:bg-dph-orange dark:text-slate-100"
+            class="w-full cursor-pointer rounded-[4px] p-3 text-left hover:bg-dph-orange dark:text-zinc-100"
             on:click="{() => chooseOption(index)}">{opt}</button>
         </li>
       {/each}

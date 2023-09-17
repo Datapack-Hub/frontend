@@ -88,10 +88,10 @@
 
 <main id="main-content" class="px-4 pb-3 pt-20 sm:px-8 md:px-16 lg:px-24">
   {#if $authed}
-    <h1 class="mb-4 text-3xl font-bold text-slate-950 dark:text-slate-100">
+    <h1 class="mb-4 text-3xl font-bold text-zinc-950 dark:text-zinc-100">
       Create New Datapack
     </h1>
-    <p class="ml-3 text-slate-950 dark:text-slate-100">Logo</p>
+    <p class="ml-3 text-zinc-950 dark:text-zinc-100">Logo</p>
     <div
       class="grid grid-cols-2 gap-3 space-y-2 rounded-xl p-3 text-center align-middle md:text-start lg:grid-cols-3">
       <div
@@ -115,7 +115,7 @@
           </label>
         </div>
         <div class="w-full">
-          <p class="mb-2 text-slate-950 dark:text-slate-100">Title</p>
+          <p class="mb-2 text-zinc-950 dark:text-zinc-100">Title</p>
           <input
             type="text"
             placeholder="Super Cool Datapack"
@@ -124,7 +124,7 @@
             aria-required="true"
             on:input="{event => titleHandler(event.currentTarget)}"
             class="input w-full" />
-          <p class="col-span-2 mb-2 mt-4 text-slate-950 dark:text-slate-100">
+          <p class="col-span-2 mb-2 mt-4 text-zinc-950 dark:text-zinc-100">
             URL
           </p>
           <input
@@ -136,17 +136,17 @@
         </div>
       </div>
 
-      <p class="col-span-3 pt-3 text-slate-950 dark:text-slate-100">Summary</p>
+      <p class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">Summary</p>
       <textarea
         placeholder="A short description of your pack"
         maxlength="200"
         bind:value="{description}"
         class="input col-span-2 h-32 resize-none"></textarea>
-      <p class="col-span-3 pt-3 text-slate-950 dark:text-slate-100">
+      <p class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">
         Description
       </p>
       <MarkdownEditor bind:content="{body}" classes="col-span-2 resize-none" />
-      <p class="col-span-3 text-slate-950 dark:text-slate-100">Categories</p>
+      <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
       <div
         class="col-span-2 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3 lg:grid-cols-4">
         {#each categories as cat}

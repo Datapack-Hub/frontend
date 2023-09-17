@@ -177,7 +177,7 @@
   <div class="flex items-center space-x-2">
     <div class="flex items-center space-x-2">
       <button
-        class="flex items-center space-x-1 text-xl font-bold text-slate-950 dark:text-white"
+        class="flex items-center space-x-1 text-xl font-bold text-zinc-950 dark:text-white"
         on:click="{() => (expanded = !expanded)}">
         {#if !expanded}
           <IconFile />
@@ -187,13 +187,13 @@
         <h2 class="md:text-md text-sm lg:text-lg">{version.name}</h2>
       </button>
       <h3
-        class="text-xs font-thin italic text-slate-950 dark:text-white md:text-sm lg:text-base">
+        class="text-xs font-thin italic text-zinc-950 dark:text-white md:text-sm lg:text-base">
         {version.version_code}
       </h3>
     </div>
     {#if !mcVersion}
       <ul
-        class="hidden gap-1 text-slate-950 dark:text-white md:flex md:flex-grow">
+        class="hidden gap-1 text-zinc-950 dark:text-white md:flex md:flex-grow">
         {#each properVersion as mcv}
           <li>
             <button
@@ -259,7 +259,7 @@
 </div>
 
 <Modal bind:this="{dlModal}" title="{'Download version ' + version.name}">
-  <div class="items-middle flex items-center text-slate-950 dark:text-white">
+  <div class="items-middle flex items-center text-zinc-950 dark:text-white">
     <p class="pr-1">
       Select a valid Minecraft version below to download the datapack.
     </p>
@@ -272,7 +272,7 @@
       <IconInfo />
     </div>
   </div>
-  <div class="grid-auto-lg my-2 grid gap-2 text-slate-950 dark:text-white">
+  <div class="grid-auto-lg my-2 grid gap-2 text-zinc-950 dark:text-white">
     {#each version?.minecraft_versions.split(",") ?? [] as mcv}
       <Button
         wait="{true}"
@@ -285,14 +285,14 @@
         }}">{mcv}</Button>
     {/each}
   </div>
-  <p class="pr-1 text-xs italic text-slate-950 dark:text-white">
+  <p class="pr-1 text-xs italic text-zinc-950 dark:text-white">
     If your version is not listed above, then this datapack is not supported for
     your version.
   </p>
 
   {#if version?.resource_pack_download}
     <CasualLine />
-    <p class="pr-1 text-slate-950 dark:text-white">
+    <p class="pr-1 text-zinc-950 dark:text-white">
       This datapack also has a resource pack which you need to download!
     </p>
     <div class="my-2 flex">

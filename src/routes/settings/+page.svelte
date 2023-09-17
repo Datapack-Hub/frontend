@@ -66,19 +66,19 @@
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="my-3 pb-2 text-center text-5xl font-bold text-slate-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="my-3 pb-2 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Settings
     </h1>
     <div class="mb-2 flex space-x-2">
       <Button
         style="base"
-        classes="dark:text-slate-100 {activePage === 'profile'
+        classes="dark:text-zinc-100 {activePage === 'profile'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'profile')}">Profile</Button>
       <Button
         style="base"
-        classes="dark:text-slate-100 {activePage === 'account'
+        classes="dark:text-zinc-100 {activePage === 'account'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'account')}">Account</Button>
@@ -89,11 +89,11 @@
         <div
           class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start">
           <div class="text-center align-middle md:text-start">
-            <p class="align-middle text-slate-950 dark:text-slate-100">
+            <p class="align-middle text-zinc-950 dark:text-zinc-100">
               Username
             </p>
             <p
-              class="align-middle text-sm text-slate-950 opacity-40 dark:text-slate-100">
+              class="align-middle text-sm text-zinc-950 opacity-40 dark:text-zinc-100">
               Your username is used to view your profile, and is displayed on
               your datapacks, comments, and replies.
             </p>
@@ -102,11 +102,11 @@
               value="{data.profile?.username}"
               maxlength="32"
               bind:this="{usernameElement}" />
-            <p class="mt-6 align-middle text-slate-950 dark:text-slate-100">
+            <p class="mt-6 align-middle text-zinc-950 dark:text-zinc-100">
               Bio
             </p>
             <p
-              class="mb-2 align-middle text-sm text-slate-950 opacity-40 dark:text-slate-100">
+              class="mb-2 align-middle text-sm text-zinc-950 opacity-40 dark:text-zinc-100">
               Your bio is visible for anyone to see, don't store important
               information in it!
             </p>
@@ -122,11 +122,11 @@
         <div
           class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start">
           <div class="text-center align-middle md:text-start">
-            <p class="align-middle text-slate-950 dark:text-slate-100">
+            <p class="align-middle text-zinc-950 dark:text-zinc-100">
               Linked Github
             </p>
             <p
-              class="align-middle text-sm text-slate-950 opacity-40 dark:text-slate-100">
+              class="align-middle text-sm text-zinc-950 opacity-40 dark:text-zinc-100">
               Link your Github account to your Datapack Hub account, and you'll
               be able to log in with Github.
             </p>
@@ -136,11 +136,11 @@
               <IconGithub />
               <p>Link your Github account</p>
             </a>
-            <p class="mt-6 align-middle text-slate-950 dark:text-slate-100">
+            <p class="mt-6 align-middle text-zinc-950 dark:text-zinc-100">
               Linked Discord
             </p>
             <p
-              class="align-middle text-sm text-slate-950 opacity-40 dark:text-slate-100">
+              class="align-middle text-sm text-zinc-950 opacity-40 dark:text-zinc-100">
               Link your Discord account to your Datapack Hub account, and you'll
               be able to log in with Discord.
             </p>
@@ -150,7 +150,7 @@
               <IconDiscord />
               <p>Link your Discord account</p>
             </a>
-            <p class="mt-6 align-middle text-slate-950 dark:text-slate-100">
+            <p class="mt-6 align-middle text-zinc-950 dark:text-zinc-100">
               (If you've already linked an account, it'll be re-linked.)
             </p>
           </div>

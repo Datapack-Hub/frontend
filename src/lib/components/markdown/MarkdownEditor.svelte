@@ -32,13 +32,13 @@
   <div class="mb-3 flex items-center space-x-1">
     <button
       role="tab"
-      class="button-base text-slate-950 dark:text-slate-100 {tab === 'editor'
+      class="button-base text-zinc-950 dark:text-zinc-100 {tab === 'editor'
         ? 'bg-slate-400 dark:bg-zinc-500'
         : 'bg-slate-300 dark:bg-zinc-700'}"
       on:click="{() => (tab = 'editor')}">Edit</button>
     <button
       role="tab"
-      class="button-base text-slate-950 dark:text-slate-100 {tab === 'preview'
+      class="button-base text-zinc-950 dark:text-zinc-100 {tab === 'preview'
         ? 'bg-slate-400 dark:bg-zinc-500'
         : 'bg-slate-300 dark:bg-zinc-700'}"
       on:click="{() => (tab = 'preview')}">Preview</button>
@@ -54,9 +54,9 @@
       <a
         use:tippy="{markdownTip}"
         href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
-        class="absolute right-4 top-4 rounded-full bg-slate-800/70 p-1 transition-colors hover:text-blue-500 dark:text-slate-100 dark:hover:text-blue-500"
+        class="absolute right-4 top-4 rounded-full bg-slate-800/70 p-1 transition-colors hover:text-blue-500 dark:text-zinc-100 dark:hover:text-blue-500"
         ><IconMD /></a>
-      <p class="align-middle text-xs text-slate-950 dark:text-slate-100">
+      <p class="align-middle text-xs text-zinc-950 dark:text-zinc-100">
         {remainingCharacters} characters left
       </p>
     </div>

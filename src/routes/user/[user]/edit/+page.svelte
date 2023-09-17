@@ -62,37 +62,37 @@
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="mt-8 pb-10 text-center text-5xl font-bold text-slate-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="mt-8 pb-10 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Profile Settings for <span style="color: {data.role?.color};"
         >{data.profile?.username || "Loading..."}</span>
     </h1>
     <div class="text-center align-middle md:text-start">
-      <p class="align-middle text-slate-950 dark:text-slate-100">Username</p>
+      <p class="align-middle text-zinc-950 dark:text-zinc-100">Username</p>
       <input
-        class="h-10 rounded-md bg-slate-200 p-3 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white"
+        class="h-10 rounded-md bg-slate-200 p-3 text-lg text-zinc-950 dark:bg-zinc-800 dark:text-white"
         value="{data.profile?.username}"
         maxlength="32"
         bind:this="{uname}" />
       <br /><br />
-      <p class="align-middle text-slate-950 dark:text-slate-100">Bio</p>
+      <p class="align-middle text-zinc-950 dark:text-zinc-100">Bio</p>
       <textarea
-        class="h-96 w-4/5 resize-none rounded-md bg-slate-200 p-3 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white md:w-2/3 lg:w-1/2"
+        class="h-96 w-4/5 resize-none rounded-md bg-slate-200 p-3 text-lg text-zinc-950 dark:bg-zinc-800 dark:text-white md:w-2/3 lg:w-1/2"
         maxlength="500"
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
         bind:this="{bio}"></textarea>
       {#key 500 - bio?.value.length}
-        <p class="align-middle text-xs text-slate-950 dark:text-slate-100">
+        <p class="align-middle text-xs text-zinc-950 dark:text-zinc-100">
           {(500 - bio?.value.length).toString()} characters left
         </p>
       {/key}
       <br /><br />
       {#if $authed && $user.role == "admin"}
-        <p class="align-middle text-slate-950 dark:text-slate-100">Site Role</p>
+        <p class="align-middle text-zinc-950 dark:text-zinc-100">Site Role</p>
         <select
           name="roleSelection"
           id="rolez"
           bind:value="{newRole}"
-          class="h-10 rounded-md bg-slate-200 p-3 text-lg text-slate-950 dark:bg-zinc-800 dark:text-white">
+          class="h-10 rounded-md bg-slate-200 p-3 text-lg text-zinc-950 dark:bg-zinc-800 dark:text-white">
           <option value="{data.profile?.role}" selected
             >{data.profile?.role}</option>
           {#each roleNames as r}

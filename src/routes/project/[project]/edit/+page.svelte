@@ -269,12 +269,12 @@
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="py-8 text-center text-5xl font-bold text-slate-950 dark:text-slate-100 md:py-0 md:text-start md:text-4xl lg:text-4xl">
+      class="py-8 text-center text-5xl font-bold text-zinc-950 dark:text-zinc-100 md:py-0 md:text-start md:text-4xl lg:text-4xl">
       Edit <span class="text-dph-orange">{data.project?.title}</span>
     </h1>
     {#if data.project?.mod_message}
       <div
-        class="mt-2 rounded-xl bg-slate-200 p-4 dark:bg-red-500/20 dark:text-slate-100">
+        class="mt-2 rounded-xl bg-slate-200 p-4 dark:bg-red-500/20 dark:text-zinc-100">
         <p class=" font-black">Message from Datapack Hub Staff:</p>
         <p
           class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-3 dark:text-zinc-300">
@@ -286,29 +286,29 @@
       <button
         class="{activePage === 'details'
           ? 'bg-slate-200 dark:bg-zinc-600'
-          : 'bg-slate-300 dark:bg-zinc-800'} button-base text-slate-950 dark:text-slate-100"
+          : 'bg-slate-300 dark:bg-zinc-800'} button-base text-zinc-950 dark:text-zinc-100"
         on:click="{() => (activePage = 'details')}">Details</button>
       <div class="flex-grow">
         <button
           class="{activePage === 'versions'
             ? 'bg-slate-200 dark:bg-zinc-600'
-            : 'bg-slate-300 dark:bg-zinc-800'} button-base text-slate-950 dark:text-slate-100"
+            : 'bg-slate-300 dark:bg-zinc-800'} button-base text-zinc-950 dark:text-zinc-100"
           on:click="{() => (activePage = 'versions')}"
           >Versions ({data.versions?.length})</button>
       </div>
       {#if ["draft", "unpublished", "disabled"].includes(data.project?.status ?? "draft")}
         <button
-          class="button-base flex items-center space-x-1 bg-green-600 text-slate-950 dark:text-slate-100"
+          class="button-base flex items-center space-x-1 bg-green-600 text-zinc-950 dark:text-zinc-100"
           on:click="{() => publishModal.open()}"
           ><IconTick /><span>Publish Project</span></button>
       {:else if data.project?.status == "live"}
         <button
-          class="button-base flex items-center space-x-1 bg-slate-400 text-slate-950 dark:bg-zinc-600 dark:text-slate-100"
+          class="button-base flex items-center space-x-1 bg-slate-400 text-zinc-950 dark:bg-zinc-600 dark:text-zinc-100"
           on:click="{() => draftModal.open()}"
           ><IconDraft /><span>Draft submission</span></button>
       {/if}
       <button
-        class="button-base flex items-center space-x-1 bg-red-600 text-slate-950 dark:text-slate-100"
+        class="button-base flex items-center space-x-1 bg-red-600 text-zinc-950 dark:text-zinc-100"
         on:click="{() => deleteModal.open()}"><IconDelete /></button>
     </div>
 
@@ -339,7 +339,7 @@
               </label>
             </div>
             <div class="w-full">
-              <p class="mb-2 text-slate-950 dark:text-slate-100">Title</p>
+              <p class="mb-2 text-zinc-950 dark:text-zinc-100">Title</p>
               <input
                 type="text"
                 placeholder="Super Cool Datapack"
@@ -350,7 +350,7 @@
             </div>
           </div>
 
-          <p class="col-span-3 pt-3 text-slate-950 dark:text-slate-100">
+          <p class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">
             Summary
           </p>
           <textarea
@@ -358,16 +358,16 @@
             maxlength="200"
             bind:value="{descValue}"
             class="input col-span-2 h-32 resize-none"></textarea>
-          <p class="col-span-3 pt-3 text-slate-950 dark:text-slate-100">
+          <p class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">
             Description
           </p>
           <MarkdownEditor
             classes="col-span-2 h-64 resize-none"
             bind:content="{bodyValue}" />
-          <!-- <p class="text-slate-950 dark:text-slate-100 col-span-3 pt-3">
+          <!-- <p class="text-zinc-950 dark:text-zinc-100 col-span-3 pt-3">
             CC Licence (click to select)
           </p>
-          <p class="text-slate-950 dark:text-slate-100/20 col-span-3">
+          <p class="text-zinc-950 dark:text-zinc-100/20 col-span-3">
             WIP, does not work!
           </p>
           <div
@@ -424,7 +424,7 @@
                 placeholder="https://example.com/my-custom-licence.md" />
             </div>
           </div> -->
-          <p class="col-span-3 text-slate-950 dark:text-slate-100">
+          <p class="col-span-3 text-zinc-950 dark:text-zinc-100">
             Categories
           </p>
           <div
@@ -446,7 +446,7 @@
           <div class="w-full text-center align-middle md:text-start">
             {#if createVersion == false}
               <div class="my-2 mb-4">
-                <p class="mb-4 text-slate-950 dark:text-slate-100">
+                <p class="mb-4 text-zinc-950 dark:text-zinc-100">
                   Press the button below to upload a version of your pack, it
                   will move on automatically
                 </p>
@@ -460,9 +460,9 @@
                   accept=".zip"
                   id="zip"
                   on:input="{uploadDatapack}" />
-                <span class="align-center text-slate-950 dark:text-white"
+                <span class="align-center text-zinc-950 dark:text-white"
                   >(Supported: *.zip)</span>
-                <!-- <p class="align-middle  text-slate-950 dark:text-slate-100">No versions yet!</p> -->
+                <!-- <p class="align-middle  text-zinc-950 dark:text-zinc-100">No versions yet!</p> -->
               </div>
               <div class="space-y-2">
                 {#each data.versions ?? [] as version}
@@ -473,20 +473,20 @@
               {@const version = (Math.random() * 10).toFixed(1)}
               <div>
                 <button
-                  class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
+                  class="float-right cursor-pointer select-none font-black text-zinc-950 dark:text-white"
                   on:click="{() => (createVersion = false)}"><IconX /></button>
                 <h2
-                  class="mb-2 text-xl font-bold text-slate-950 dark:text-white">
+                  class="mb-2 text-xl font-bold text-zinc-950 dark:text-white">
                   Creating new Version
                 </h2>
 
                 <div class="flex space-x-4">
                   <p
-                    class="w-3/4 align-middle text-slate-950 dark:text-slate-100">
+                    class="w-3/4 align-middle text-zinc-950 dark:text-zinc-100">
                     Version Name
                   </p>
                   <p
-                    class="w-1/4 align-middle text-slate-950 dark:text-slate-100">
+                    class="w-1/4 align-middle text-zinc-950 dark:text-zinc-100">
                     Version Code
                   </p>
                 </div>
@@ -506,7 +506,7 @@
                 </div>
 
                 <p
-                  class="mb-2 mt-4 align-middle text-slate-950 dark:text-slate-100">
+                  class="mb-2 mt-4 align-middle text-zinc-950 dark:text-zinc-100">
                   Changelog
                 </p>
                 <MarkdownEditor
@@ -514,7 +514,7 @@
                   classes="h-36 w-full md:w-3/4" />
 
                 <p
-                  class="mb-2 mt-8 align-middle text-slate-950 dark:text-slate-100">
+                  class="mb-2 mt-8 align-middle text-zinc-950 dark:text-zinc-100">
                   Compatible Minecraft Versions
                 </p>
                 <div
@@ -526,21 +526,21 @@
                 </div>
                 <p class="mb-8"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->
-                <!-- <p class="text-slate-950 dark:text-slate-100 col-span-3">
+                <!-- <p class="text-zinc-950 dark:text-zinc-100 col-span-3">
                   Dependencies
                 </p>
                 <div
                   class="space-y-3 bg-slate-300 dark:bg-zinc-800/50 rounded-lg border-2 border-slate-400 dark:border-zinc-700 p-3 w-full md:w-2/3"
                   use:autoAnimate>
                   {#each list(dependencies.length) as index}
-                    <p class="text-slate-950 dark:text-slate-100">
+                    <p class="text-zinc-950 dark:text-zinc-100">
                       <IconLink class="inline-block" /> URL
                     </p>
                     <div class="flex items-center">
                       <span
-                        class="bg-slate-300 dark:bg-zinc-800 rounded-lg border-2 border-slate-400 dark:border-zinc-700 p-3 focus:border-dph-orange dark:focus:border-dph-orange outline-none focus:text-opacity-100 text-slate-950 dark:text-zinc-600 transition-all placeholder:italic placeholder:text-slate-800 dark:placeholder:text-zinc-500 w-full text-opacity-60">
+                        class="bg-slate-300 dark:bg-zinc-800 rounded-lg border-2 border-slate-400 dark:border-zinc-700 p-3 focus:border-dph-orange dark:focus:border-dph-orange outline-none focus:text-opacity-100 text-zinc-950 dark:text-zinc-600 transition-all placeholder:italic placeholder:text-zinc-800 dark:placeholder:text-zinc-500 w-full text-opacity-60">
                         datapackhub.net/project/<AutoAdjustableInput
-                          classes="bg-slate-300 text-opacity-100 dark:bg-zinc-800 text-slate-100 outline-none"
+                          classes="bg-slate-300 text-opacity-100 dark:bg-zinc-800 text-zinc-100 outline-none"
                           on:change="{event =>
                             dependencyHandler(event.detail, index)}" />
                       </span>
@@ -559,7 +559,7 @@
                 </div> -->
                 <label
                   for="v_rp"
-                  class="button-boring mt-4 align-middle text-slate-950 dark:text-slate-100">
+                  class="button-boring mt-4 align-middle text-zinc-950 dark:text-zinc-100">
                   <IconUpload class="inline-block align-text-top" /> Resource Pack
                   Download (optional)
                 </label>
@@ -573,7 +573,7 @@
                   <input name="squash" id="squash" type="checkbox" />
                   <label
                     for="squash"
-                    class="align-middle text-slate-950 dark:text-slate-100">
+                    class="align-middle text-zinc-950 dark:text-zinc-100">
                     Squash datapack. (Apply size and load speed optimizations)
                   </label>
                 </div>
@@ -599,7 +599,7 @@
     By publishing this project, you agree that it follows the rules.
   </p>
   <button
-    class="button-base flex items-center space-x-1 bg-green-600 text-slate-950 dark:text-slate-100"
+    class="button-base flex items-center space-x-1 bg-green-600 text-zinc-950 dark:text-zinc-100"
     on:click="{publish}"><IconTick /><span>Publish Project</span></button>
 </Modal>
 
@@ -613,7 +613,7 @@
     submission at any point.
   </p>
   <button
-    class="button-base flex items-center space-x-1 bg-zinc-600 text-slate-950 dark:text-slate-100"
+    class="button-base flex items-center space-x-1 bg-zinc-600 text-zinc-950 dark:text-zinc-100"
     on:click="{draft}"><IconDraft /><span>Draft submission</span></button>
 </Modal>
 
@@ -627,7 +627,7 @@
     contact a staff member.
   </p>
   <button
-    class="button-base flex items-center space-x-1 bg-red-600 text-slate-950 dark:text-slate-100"
+    class="button-base flex items-center space-x-1 bg-red-600 text-zinc-950 dark:text-zinc-100"
     on:click="{remove}"
     ><IconDraft /><span
       >I confirm I understand the above. Delete submission</span

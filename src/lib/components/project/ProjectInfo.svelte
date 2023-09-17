@@ -78,7 +78,7 @@
       {/if}
       <div>
         <h1
-          class="project-info flex items-center text-3xl font-bold text-slate-950 dark:text-white">
+          class="project-info flex items-center text-3xl font-bold text-zinc-950 dark:text-white">
           {project?.title}
         </h1>
         <div class="mt-1 flex min-w-fit items-center space-x-1">
@@ -92,7 +92,7 @@
               width="24"
               height="24" />
             <span
-              class="text-xs text-slate-950 transition-all hover:underline dark:text-white xl:text-sm">
+              class="text-xs text-zinc-950 transition-all hover:underline dark:text-white xl:text-sm">
               {project.author?.username}
             </span>
           </a>
@@ -101,7 +101,7 @@
     </div>
     <div>
       <h2
-        class="mt-2 text-base text-slate-950/60 transition-all dark:text-white/60">
+        class="mt-2 text-base text-zinc-950/60 transition-all dark:text-white/60">
         {project?.description}
       </h2>
       <p class="text-md my-2 flex items-center space-x-2 dark:text-white">
@@ -115,12 +115,12 @@
     </div>
     <div>
       <h1
-        class="text-md mt-2 flex items-center space-x-2 font-medium text-slate-950 dark:text-white">
+        class="text-md mt-2 flex items-center space-x-2 font-medium text-zinc-950 dark:text-white">
         <IconDL />
         <span><b>Downloads: </b>{project?.downloads ?? 0}</span>
       </h1>
       <h1
-        class="text-md mt-1 flex items-center space-x-2 font-medium text-slate-950 dark:text-white">
+        class="text-md mt-1 flex items-center space-x-2 font-medium text-zinc-950 dark:text-white">
         <IconUpdate />
         <span>
           <b>Last updated:</b>
@@ -145,12 +145,12 @@
   </div>
   {#if project?.mod_message}
     <div
-      class="moderation mt-4 rounded-xl p-4 dark:text-slate-100"
+      class="moderation mt-4 rounded-xl p-4 dark:text-zinc-100"
       id="modmsg"
       bind:this="{mm}">
       {#if status && !["disabled", "review_queue"].includes(status)}
         <button
-          class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
+          class="float-right cursor-pointer select-none font-black text-zinc-950 dark:text-white"
           on:click="{dismissModeratorMessage}"><IconCross /></button>
       {/if}
       <p class=" font-black">Message from Datapack Hub Staff:</p>

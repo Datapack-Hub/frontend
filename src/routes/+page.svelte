@@ -140,7 +140,7 @@
         </h1>
       </div>
       <h2
-        class="w-full text-center text-xl text-slate-950 dark:text-slate-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
+        class="w-full text-center text-xl text-zinc-950 dark:text-zinc-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{(data.count - 1).toString()}"
           class="font-bold text-dph-orange">
@@ -152,7 +152,7 @@
     <section
       class="mt-8 h-fit justify-between space-y-3 overflow-y-auto overflow-x-clip rounded-xl px-4 md:w-1/2">
       <h3
-        class=" mt-6 text-center text-2xl font-medium text-slate-950 dark:text-slate-100">
+        class=" mt-6 text-center text-2xl font-medium text-zinc-950 dark:text-zinc-100">
         Featured Projects
       </h3>
       <div class="space-y-3">
@@ -207,12 +207,12 @@
         </p>
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-900">
           <div
-            class="fadeTextAnime dark: flex items-center justify-between rounded-t-md bg-slate-300 p-3 text-slate-600 opacity-0 dark:bg-zinc-800">
+            class="fadeTextAnime dark: flex items-center justify-between rounded-t-md bg-slate-300 p-3 text-zinc-500 opacity-0 dark:bg-zinc-800">
             <p>pack.mcmeta</p>
             <IconX />
           </div>
           <div
-            class="fadeTextAnime dark: mt-2 overflow-x-auto rounded-b-md bg-slate-300 px-4 font-mono text-slate-600 opacity-0 dark:bg-zinc-800">
+            class="fadeTextAnime dark: mt-2 overflow-x-auto rounded-b-md bg-slate-300 px-4 font-mono text-zinc-500 opacity-0 dark:bg-zinc-800">
             <pre class="text-sm">
               <!--DO NOT INDENT!!!-->
 &lbrace;
@@ -321,22 +321,22 @@
         </p>
         <div class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-3">
           <div
-            class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-zinc-800 rounded-t-md p-3 text-slate-600 dark:">
+            class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-zinc-800 rounded-t-md p-3 text-zinc-500 dark:">
             <div class="flex space-x-2 overflow-x-auto">
               <p class="text-green-600">GET</p>
               <span class="overflow-hidden text-ellipsis">
                 https://api.datapackhub.net/user/<AutoAdjustableInput
                   on:change="{event => (apiExampleUser = event.detail)}"
-                  classes="bg-transparent text-slate-600 dark:"
+                  classes="bg-transparent text-zinc-500 dark:"
                   defaultValue="silabear" />
               </span>
             </div>
             <button
-              class="button-base text-slate-950 dark:text-slate-100 bg-green-600 text-white"
+              class="button-base text-zinc-950 dark:text-zinc-100 bg-green-600 text-white"
               on:click="{apiExampleRun}">Run</button>
           </div>
           <div
-            class="text-slate-600 dark: font-mono mt-2 bg-slate-300 dark:bg-zinc-800 rounded-b-md overflow-clip h-80 overflow-y-auto">
+            class="text-zinc-500 dark: font-mono mt-2 bg-slate-300 dark:bg-zinc-800 rounded-b-md overflow-clip h-80 overflow-y-auto">
             {#if apiExampleResult.length > 0}
               <pre
                 class="text-sm p-3 whitespace-pre-wrap"

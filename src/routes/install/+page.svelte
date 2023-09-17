@@ -16,32 +16,32 @@
   class=" bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
   <div class="w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="my-3 pb-2 text-center text-5xl font-bold text-slate-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="my-3 pb-2 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       How to install Minecraft Data Packs
     </h1>
     <div class="mb-2 flex space-x-2">
       <Button
         style="base"
-        classes="dark:text-slate-100 {activePage === 'new'
+        classes="dark:text-zinc-100 {activePage === 'new'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'new')}">Installing to a new world</Button>
       <Button
         style="base"
-        classes="dark:text-slate-100 {activePage === 'existing'
+        classes="dark:text-zinc-100 {activePage === 'existing'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'existing')}"
         >Installing to an existing world</Button>
       <Button
         style="base"
-        classes="dark:text-slate-100 {activePage === 'server'
+        classes="dark:text-zinc-100 {activePage === 'server'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'server')}">Installing to a server</Button>
       <Button
         style="base"
-        classes="dark:text-slate-100 {activePage === 'realm'
+        classes="dark:text-zinc-100 {activePage === 'realm'
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'realm')}">Installing to a realm</Button>

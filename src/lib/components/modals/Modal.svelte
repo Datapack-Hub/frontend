@@ -38,7 +38,7 @@
             <h2 class="text-lg font-bold dark:text-white">{title}</h2>
             <div class="flex-grow"></div>
             <button
-              class="cursor-pointer select-none font-black text-slate-950 dark:text-white"
+              class="cursor-pointer select-none font-black text-zinc-950 dark:text-white"
               on:click="{() => close()}"><IconClose /></button>
           </div>
         {/if}
@@ -48,7 +48,7 @@
             : 'rounded-xl'}">
           {#if !title}
             <button
-              class="float-right cursor-pointer select-none font-black text-slate-950 dark:text-white"
+              class="float-right cursor-pointer select-none font-black text-zinc-950 dark:text-white"
               on:click="{() => close()}"><IconClose /></button>
           {/if}
           <slot />

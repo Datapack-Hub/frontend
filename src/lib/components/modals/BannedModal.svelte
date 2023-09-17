@@ -50,21 +50,21 @@
               height="32"
               width="32" />
             <span
-              class="hidden text-2xl font-bold text-slate-950 transition-colors dark:text-white md:block">
+              class="hidden text-2xl font-bold text-zinc-950 transition-colors dark:text-white md:block">
               Datapack Hub
             </span>
           </span>
         </div>
         <div class="rounded-b-xl bg-slate-200 p-3 dark:bg-zinc-800">
-          <p class="text-lg text-slate-950 dark:text-white">
+          <p class="text-lg text-zinc-950 dark:text-white">
             <b>You are banned from Datapack Hub.</b> You are not able to upload,
             edit projects, or interact with the site until your ban has expired.
           </p>
-          <p class="text-md mt-2 text-slate-950 dark:text-white">Ban Reason:</p>
+          <p class="text-md mt-2 text-zinc-950 dark:text-white">Ban Reason:</p>
           <p class="prose mb-2 rounded-xl bg-zinc-700 p-2 dark:text-zinc-300">
             <MarkdownComponent source="{banReason}" />
           </p>
-          <p class="mt-3 text-slate-950 dark:text-white">
+          <p class="mt-3 text-zinc-950 dark:text-white">
             <b>Your ban will expire:</b>
             {new Date(expiry * 1000).toLocaleString()}. <br /> Until then, wait
             for the ban to expire, and read

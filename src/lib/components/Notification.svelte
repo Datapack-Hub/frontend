@@ -48,7 +48,7 @@
     </div>
     <button
       title="Dismiss"
-      class="closeButton absolute right-3.5 top-3.5 rounded-full p-0.5 text-slate-950 dark:text-white"
+      class="closeButton absolute right-3.5 top-3.5 rounded-full p-0.5 text-zinc-950 dark:text-white"
       on:click="{remove}"><IconX /></button>
   </li>
 {/if}

@@ -21,39 +21,39 @@
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
     <h1
-      class="my-3 pb-2 text-center text-5xl font-bold text-slate-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="my-3 pb-2 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Moderation Dashboard
     </h1>
     <div class="mb-2 flex space-x-2">
       <Button
         style="base"
-        classes="text-slate-950 dark:text-slate-100 {activePage ===
+        classes="text-zinc-950 dark:text-zinc-100 {activePage ===
         'publish_queue'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'publish_queue')}">Publish Queue</Button>
       <Button
         style="base"
-        classes="text-slate-950 dark:text-slate-100 {activePage ===
+        classes="text-zinc-950 dark:text-zinc-100 {activePage ===
         'review_queue'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'review_queue')}">Review Queue</Button>
       <Button
         style="base"
-        classes="text-slate-950 dark:text-slate-100 {activePage === 'reports'
+        classes="text-zinc-950 dark:text-zinc-100 {activePage === 'reports'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'reports')}">Reports</Button>
       <Button
         style="base"
-        classes="text-slate-950 dark:text-slate-100 {activePage === 'roles'
+        classes="text-zinc-950 dark:text-zinc-100 {activePage === 'roles'
           ? 'bg-slate-400 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'roles')}">Roles</Button>
       <Button
         style="base"
-        classes="bg-slate-300 text-slate-950 dark:bg-zinc-800 dark:text-slate-100"
+        classes="bg-slate-300 text-zinc-950 dark:bg-zinc-800 dark:text-zinc-100"
         click="/moderation/console">Open console</Button>
     </div>
 
@@ -111,13 +111,13 @@
         <div
           class="flex flex-col space-x-2 rounded-xl bg-slate-200 p-3 py-3 text-center align-middle dark:bg-zinc-800 md:text-start">
           <h1
-            class="m-2 text-center text-2xl font-bold text-slate-950 dark:text-white md:text-start">
+            class="m-2 text-center text-2xl font-bold text-zinc-950 dark:text-white md:text-start">
             Site Roles
           </h1>
           <table class="table-auto rounded-xl p-3 text-left">
             <tr class="bg-emerald-500 p-3">
-              <th class="p-3 text-slate-950 dark:text-white">Role Name</th>
-              <th class="p-3 text-slate-950 dark:text-white">Permissions</th>
+              <th class="p-3 text-zinc-950 dark:text-white">Role Name</th>
+              <th class="p-3 text-zinc-950 dark:text-white">Permissions</th>
             </tr>
             {#each data.rolesJson ?? [] as index}
               <tr
@@ -126,10 +126,10 @@
                 <td
                   ><p
                     style="color: {index.color};"
-                    class="text-slate-950 dark:text-white">
+                    class="text-zinc-950 dark:text-white">
                     ⬤ {title(index.name)}
                   </p></td>
-                <td class="text-slate-950 dark:text-white"
+                <td class="text-zinc-950 dark:text-white"
                   >{#if index.permissions.length > 0}{index.permissions
                       .map(p => title(p.toLowerCase()))
                       .join(", ")}{:else}None{/if}</td>

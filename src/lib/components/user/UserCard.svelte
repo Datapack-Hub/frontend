@@ -19,7 +19,7 @@
       width="64"
       height="64" />
     <div>
-      <h1 class="text-xl font-bold text-slate-950 dark:text-white">
+      <h1 class="text-xl font-bold text-zinc-950 dark:text-white">
         {person?.username}
       </h1>
       <span class="font-bold" style="color:{role?.color};">

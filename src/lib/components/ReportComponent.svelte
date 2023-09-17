@@ -32,14 +32,14 @@
 </script>
 
 <div
-  class="reports relative w-full items-center rounded-xl bg-slate-200 p-3 text-slate-950 dark:bg-zinc-800 dark:text-slate-100"
+  class="reports relative w-full items-center rounded-xl bg-slate-200 p-3 text-zinc-950 dark:bg-zinc-800 dark:text-zinc-100"
   bind:this="{me}">
   <div class="flex items-center">
     <a
       href="/project/{report.project.url}"
       class="rounded-lg {report.project.icon
         ? ''
-        : 'bg-slate-300 p-4 dark:bg-zinc-700 dark:text-slate-100'}">
+        : 'bg-slate-300 p-4 dark:bg-zinc-700 dark:text-zinc-100'}">
       {#if report.project.icon}
         <img
           loading="lazy"
@@ -59,10 +59,10 @@
         {report.project.title}
       </a>
       {#if visible}
-        <div class="text-md dark:text-slate flex space-x-2 text-slate-950/40">
+        <div class="text-md dark:text-zinc flex space-x-2 text-zinc-950/40">
           <a
             href="/user/{report.project.author.username.toLowerCase()}"
-            class="block dark:hover:text-slate-100">
+            class="block dark:hover:text-zinc-100">
             {report.project.author.username}
           </a>
           {#if report.project.latest_version}
@@ -80,7 +80,7 @@
         </div>
       {/if}
       <p
-        class="line-clamp-3 text-sm font-medium text-slate-950/40 dark:text-slate-100/40 md:text-sm">
+        class="line-clamp-3 text-sm font-medium text-zinc-950/40 dark:text-zinc-100/40 md:text-sm">
         {report.project.description}
       </p>
     </div>

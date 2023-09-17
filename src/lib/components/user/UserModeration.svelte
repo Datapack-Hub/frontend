@@ -179,7 +179,7 @@
 
 {#if user && ["admin", "moderator", "helper"].includes($roleInfo.name)}
   {#await loadData()}
-    <p class="h-9 text-slate-950 dark:text-white">Loading...</p>
+    <p class="h-9 text-zinc-950 dark:text-white">Loading...</p>
   {:then}
     <Button
       style="boring"
@@ -195,57 +195,57 @@
   bind:this="{moderationModal}"
   width="wide"
   title="{'Moderate ' + user?.username}">
-  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
+  <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">User</p>
   <UserCard person="{user}" role="{$roles.find(v => user?.role == v.name)}" />
   <div class="mb-2 min-w-fit items-center">
-    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
+    <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">
       Select Action
     </p>
     <button
-      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      class="button-base text-zinc-950 dark:text-zinc-100 {moderationModalPage ==
       'ban'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'ban')}">Ban</button>
     <button
-      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      class="button-base text-zinc-950 dark:text-zinc-100 {moderationModalPage ==
       'warn'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'warn')}">Warn</button>
     <button
       id="send_notif"
-      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      class="button-base text-zinc-950 dark:text-zinc-100 {moderationModalPage ==
       'notif'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'notif')}"
       >Send Notification</button>
     <button
-      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      class="button-base text-zinc-950 dark:text-zinc-100 {moderationModalPage ==
       'logout'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'logout')}">Log Out</button>
     <button
-      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      class="button-base text-zinc-950 dark:text-zinc-100 {moderationModalPage ==
       'badges'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'badges')}">Edit Badges</button>
     <button
-      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ==
+      class="button-base text-zinc-950 dark:text-zinc-100 {moderationModalPage ==
       'edit'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => goto(user?.username + '/edit')}">Edit User</button>
   </div>
   {#if moderationModalPage == "ban"}
-    <p class=" text-slate-950 dark:text-white">
+    <p class=" text-zinc-950 dark:text-white">
       Banning a user prevents them from interacting with the website. You can
       write a message or ban reason to be displayed when they try to log in.
     </p>
-    <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+    <p class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
       Ban Expiry (days from now)
     </p>
     <input
@@ -254,11 +254,11 @@
       class="input w-full"
       id="ban-expiry"
       placeholder="i.e 1, 7, 14, 30, 365" />
-    <label class=" text-slate-950 dark:text-slate-100">
+    <label class=" text-zinc-950 dark:text-zinc-100">
       <input type="checkbox" id="ban-permanent" on:change="{disableBan}" />
       Permanent?
     </label>
-    <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+    <p class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
       Ban Message (supports markdown)
     </p>
     <textarea
@@ -267,11 +267,11 @@
       id="ban-message"></textarea>
     <Button click="{banUser}">Ban {user?.username}</Button>
   {:else if moderationModalPage == "warn"}
-    <p class=" text-slate-950 dark:text-white">
+    <p class=" text-zinc-950 dark:text-white">
       This message is sent to the user as a notification. Always be
       professional, even when they are not.
     </p>
-    <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+    <p class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
       Warn Message
     </p>
     <textarea
@@ -280,13 +280,13 @@
       id="warn-message"></textarea>
     <Button click="{warn}">Warn {user?.username}</Button>
   {:else if moderationModalPage == "notif"}
-    <p class=" mb-3 text-slate-950 dark:text-white">
+    <p class=" mb-3 text-zinc-950 dark:text-white">
       Send an anonymous notification (unless you put your name down) to the
       user. For warnings, use the Warn button.
     </p>
     <label
       for="notif-message"
-      class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+      class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
       Notification Message
     </label>
     <input
@@ -297,7 +297,7 @@
       id="notif-message" />
     <label
       for="notif-content"
-      class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+      class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
       Notification Body
     </label>
     <textarea
@@ -308,7 +308,7 @@
       id="notif-content"></textarea>
     <label
       for="notif-type"
-      class="mt-2 align-middle text-slate-950 dark:text-slate-100">
+      class="mt-2 align-middle text-zinc-950 dark:text-zinc-100">
       Notification Type
     </label>
     <select name="notif-type" id="notif-type" class="input mb-2 w-full">
@@ -320,17 +320,17 @@
     <button
       on:click="{sendNotif}"
       id="send_notif_btn"
-      class="rounded-md bg-dph-orange p-3 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+      class="rounded-md bg-dph-orange p-3 text-base font-bold text-zinc-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
       >Send</button>
   {:else if moderationModalPage == "logout"}
-    <p class=" mb-3 text-slate-950 dark:text-white">
+    <p class=" mb-3 text-zinc-950 dark:text-white">
       This will log {user?.username} out of all their signed-in devices, and generate
       them a new token. They will need to sign in again.
     </p>
     <Button click="{logOutUser}">Log them out!</Button>
   {:else if moderationModalPage == "badges"}
     <div class="my-4">
-      <h2 class="mb-2 text-slate-950 dark:text-white">Badges</h2>
+      <h2 class="mb-2 text-zinc-950 dark:text-white">Badges</h2>
       <MultiSelect
         options="{badges.map(v => v.name)}"
         bind:selected="{badgeState}" />
@@ -340,15 +340,15 @@
 </Modal>
 
 <Modal bind:this="{warnDialog}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-zinc-950 dark:text-white">
     Warn {user?.username}
   </h1>
   <CasualLine />
-  <p class=" text-slate-950 dark:text-white">
+  <p class=" text-zinc-950 dark:text-white">
     This message is sent to the user as a notification. Always be professional,
     even when they are not.
   </p>
-  <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+  <p class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
     Warn Message
   </p>
   <textarea
@@ -359,17 +359,17 @@
 </Modal>
 
 <Modal bind:this="{notifDialog}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-zinc-950 dark:text-white">
     Notify {user?.username}
   </h1>
   <CasualLine />
-  <p class=" text-slate-950 dark:text-white">
+  <p class=" text-zinc-950 dark:text-white">
     Send an anonymous notification (unless you put your name down) to the user.
     For warnings, use the Warn button.
   </p>
   <label
     for="notif-message"
-    class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+    class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
     Notification Message
   </label>
   <input
@@ -380,7 +380,7 @@
     id="notif-message" />
   <label
     for="notif-content"
-    class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+    class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
     Notification Body
   </label>
   <textarea
@@ -390,7 +390,7 @@
     id="notif-content"></textarea>
   <label
     for="notif-type"
-    class="mt-2 align-middle text-slate-950 dark:text-slate-100">
+    class="mt-2 align-middle text-zinc-950 dark:text-zinc-100">
     Notification Type
   </label>
   <select name="notif-type" id="notif-type" class="input mb-2 w-full">
@@ -402,20 +402,20 @@
   <button
     on:click="{sendNotif}"
     id="send_notif_btn"
-    class="rounded-md bg-dph-orange p-3 text-base font-bold text-slate-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
+    class="rounded-md bg-dph-orange p-3 text-base font-bold text-zinc-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
     >Send</button>
 </Modal>
 
 <Modal bind:this="{banDialog}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-zinc-950 dark:text-white">
     Ban {user?.username}
   </h1>
   <CasualLine />
-  <p class=" text-slate-950 dark:text-white">
+  <p class=" text-zinc-950 dark:text-white">
     Banning a user prevents them from interacting with the website. You can
     write a message or ban reason to be displayed when they try to log in.
   </p>
-  <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+  <p class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
     Ban Expiry (days from now)
   </p>
   <input
@@ -424,11 +424,11 @@
     class="input w-full"
     id="ban-expiry"
     placeholder="i.e 1, 7, 14, 30, 365" />
-  <label class=" text-slate-950 dark:text-slate-100">
+  <label class=" text-zinc-950 dark:text-zinc-100">
     <input type="checkbox" id="ban-permanent" on:change="{disableBan}" />
     Permanent?
   </label>
-  <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+  <p class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
     Ban Message (supports markdown)
   </p>
   <textarea
@@ -439,28 +439,28 @@
 </Modal>
 
 <Modal bind:this="{unbanDialog}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-zinc-950 dark:text-white">
     Unban {user?.username}
   </h1>
   <CasualLine />
-  <p class=" text-slate-950 dark:text-white">
+  <p class=" text-zinc-950 dark:text-white">
     {user?.username} has been banned for the following reason:
   </p>
   <p class="my-2 rounded-xl bg-zinc-700 p-3 dark:text-zinc-300">
     <MarkdownComponent source="" />
   </p>
-  <p class=" text-slate-950 dark:text-white">
+  <p class=" text-zinc-950 dark:text-white">
     Unban them to end their ban early.
   </p>
   <Button click="{unbanUser}">Log them out!</Button>
 </Modal>
 
 <Modal bind:this="{logOutDialog}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-zinc-950 dark:text-white">
     Log {user?.username} out
   </h1>
   <CasualLine />
-  <p class=" text-slate-950 dark:text-white">
+  <p class=" text-zinc-950 dark:text-white">
     This will log {user?.username} out of all their signed-in devices, and generate
     them a new token. They will need to sign in again.
   </p>
@@ -468,12 +468,12 @@
 </Modal>
 
 <Modal bind:this="{addBadgesDialog}">
-  <h1 class=" text-xl font-bold text-slate-950 dark:text-white">
+  <h1 class=" text-xl font-bold text-zinc-950 dark:text-white">
     Edit {user?.username}'s badges
   </h1>
   <CasualLine />
   <div class="my-4">
-    <h2 class="mb-2 text-slate-950 dark:text-white">Badges</h2>
+    <h2 class="mb-2 text-zinc-950 dark:text-white">Badges</h2>
     <MultiSelect
       options="{badges.map(v => v.name)}"
       bind:selected="{badgeState}" />

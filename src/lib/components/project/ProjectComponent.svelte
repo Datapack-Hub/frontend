@@ -16,13 +16,13 @@
 </script>
 
 <div
-  class="project-component relative h-full w-full items-center rounded-xl bg-slate-200 p-3 text-slate-950 dark:bg-zinc-800 dark:text-slate-100">
+  class="project-component relative h-full w-full items-center rounded-xl bg-slate-200 p-3 text-zinc-950 dark:bg-zinc-800 dark:text-zinc-100">
   <div class="items-top flex">
     <a
       href="/project/{project.url}"
       class="rounded-lg {project.icon
         ? ''
-        : 'bg-slate-300 p-4 dark:bg-zinc-700 dark:text-slate-100'} items-start">
+        : 'bg-slate-300 p-4 dark:bg-zinc-700 dark:text-zinc-100'} items-start">
       {#if project.icon}
         <img
           src="{project.icon}"
@@ -41,7 +41,7 @@
         {project.title}
       </a>
       <div
-        class="mt-1 flex items-center gap-1 text-sm text-slate-700 dark:text-slate-100">
+        class="mt-1 flex items-center gap-1 text-sm text-zinc-700 dark:text-zinc-100">
         <img
           src="{appendSize(project.author.profile_icon, 32)}"
           alt="{project.author.username}'s profile"
@@ -88,7 +88,7 @@
         {/if}
       </div>
       <p
-        class="max-w-1/2 mt-2 line-clamp-1 text-xs font-medium text-slate-700 dark:text-slate-100/40">
+        class="max-w-1/2 mt-2 line-clamp-1 text-xs font-medium text-zinc-700 dark:text-zinc-100/40">
         {project.description}
       </p>
     </div>

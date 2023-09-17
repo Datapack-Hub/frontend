@@ -28,7 +28,7 @@
     <div
       class="flex flex-col items-center justify-between pb-6 pt-24 md:flex-row">
       <h1
-        class="pb-2 text-center text-5xl font-bold text-slate-950 dark:text-white md:text-start md:text-5xl lg:text-6xl">
+        class="pb-2 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-5xl lg:text-6xl">
         Notifications
       </h1>
       <Button click="{deleteAll}" style="base" classes="bg-red-500 text-white"
@@ -37,7 +37,7 @@
     <div use:autoAnimate>
       {#if data.notifications?.length == 0}
         <div class="flex h-96 w-full items-center justify-center">
-          <h1 class="text-xl text-slate-950 dark:text-white">
+          <h1 class="text-xl text-zinc-950 dark:text-white">
             It's feeling lonely in here...
           </h1>
         </div>

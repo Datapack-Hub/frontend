@@ -66,7 +66,7 @@
                   class="mb-1 text-center text-xl font-bold dark:text-white md:text-left md:text-2xl lg:text-3xl">
                   Welcome to Datapack Hub!
                 </h1>
-                <p class="mb-1 text-xs text-slate-200 md:text-sm lg:text-base">
+                <p class="mb-1 text-xs text-zinc-200 md:text-sm lg:text-base">
                   Datapack Hub started in January 2022 as a PMC group for
                   datapack developers to come together, forming a community
                   around Minecraft Datapacks, Resource Packs, and more. Now,
@@ -75,7 +75,7 @@
                   friendliest and best datapacking community out there. Thanks
                   for checking us out!
                 </p>
-                <p class="mt-2 text-slate-200">
+                <p class="mt-2 text-zinc-200">
                   Our website is still in development. In the meantime, come
                   join our community!
                 </p>

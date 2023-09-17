@@ -73,7 +73,7 @@
           bind:value="{query}"
           id="query"
           maxlength="75"
-          class="ml-2 bg-slate-300 text-slate-950 placeholder:text-slate-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400"
+          class="ml-2 bg-slate-300 text-zinc-950 placeholder:text-zinc-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400"
           on:input="{search}" />
       </div>
       <div class="mt-2 flex items-center sm:mt-0">
@@ -85,7 +85,7 @@
           options="{['Updated', 'Downloads']}"
           bind:selected="{sort}"
           bind:expand="{dropdownOpen}"
-          selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-slate-100 {dropdownOpen
+          selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-zinc-100 {dropdownOpen
             ? 'rounded-tr-lg'
             : 'rounded-r-lg'}"
           on:change="{resort}" />
@@ -101,7 +101,7 @@
           }}"
           class="h-8 w-8 rounded-md {layout === 'list'
             ? 'bg-dph-orange text-white'
-            : 'bg-dph-orange/25 text-slate-950 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold sm:mt-0">
+            : 'bg-dph-orange/25 text-zinc-950 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold sm:mt-0">
           <IconList /></button>
         <button
           on:click="{() => {
@@ -110,7 +110,7 @@
           }}"
           class="h-8 w-8 rounded-md {layout === 'grid'
             ? 'bg-dph-orange text-white'
-            : 'bg-dph-orange/25 text-slate-950 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0">
+            : 'bg-dph-orange/25 text-zinc-950 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0">
           <IconGrid /></button>
       </div>
       <div class="flex items-center space-x-1 sm:mt-0">
@@ -118,19 +118,19 @@
         {#if data.page - 3 >= 1}
           <a
             href="/projects?page=1"
-            class="flex h-8 w-8 content-center items-center rounded-md bg-dph-orange/25 p-1 pl-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+            class="flex h-8 w-8 content-center items-center rounded-md bg-dph-orange/25 p-1 pl-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             ><IconBTS class="" /></a>
         {/if}
         {#if data.page - 2 >= 1}
           <a
             href="/projects?page={data.page - 2}"
-            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page - 2}</a>
         {/if}
         {#if data.page - 1 >= 1}
           <a
             href="/projects?page={data.page - 1}"
-            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page - 1}</a>
         {/if}
         <a
@@ -140,13 +140,13 @@
         {#if data.page + 1 <= data.pages}
           <a
             href="/projects?page={data.page + 1}"
-            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page + 1}</a>
         {/if}
         {#if data.page + 2 <= data.pages}
           <a
             href="/projects?page={data.page + 2}"
-            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page + 2}</a>
         {/if}
       </div>
@@ -155,7 +155,7 @@
   <CasualLine />
   <div class="flex flex-col py-4">
     {#if featured.length > 0}
-      <p class="mx-2 mb-2 dark:text-slate-100">Featured Projects</p>
+      <p class="mx-2 mb-2 dark:text-zinc-100">Featured Projects</p>
     {/if}
     <div
       class="mx-2 mb-4 grid grid-cols-1 gap-3 {featured.length == 1
@@ -166,9 +166,9 @@
       {/each}
     </div>
     {#if !dataCopy || dataCopy.length === 0}
-      <h2 class=" text-slate-950 dark:text-white">No results found</h2>
+      <h2 class=" text-zinc-950 dark:text-white">No results found</h2>
     {:else}
-      <h2 class=" mx-3 text-slate-950 dark:text-white">
+      <h2 class=" mx-3 text-zinc-950 dark:text-white">
         {#if query != "" && searchTime <= 0}
           Showing {dataCopy.length} projects
         {:else}
@@ -203,19 +203,19 @@
       {#if data.page - 3 >= 1}
         <a
           href="/projects?page=1"
-          class="flex h-8 w-8 content-center items-center rounded-md bg-dph-orange/25 p-1 pl-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+          class="flex h-8 w-8 content-center items-center rounded-md bg-dph-orange/25 p-1 pl-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           ><IconBTS class="" /></a>
       {/if}
       {#if data.page - 2 >= 1}
         <a
           href="/projects?page={data.page - 2}"
-          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page - 2}</a>
       {/if}
       {#if data.page - 1 >= 1}
         <a
           href="/projects?page={data.page - 1}"
-          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page - 1}</a>
       {/if}
       <a
@@ -225,13 +225,13 @@
       {#if data.page + 1 <= data.pages}
         <a
           href="/projects?page={data.page + 1}"
-          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page + 1}</a>
       {/if}
       {#if data.page + 2 <= data.pages}
         <a
           href="/projects?page={data.page + 2}"
-          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-slate-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page + 2}</a>
       {/if}
     </div>

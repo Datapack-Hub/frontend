@@ -285,7 +285,7 @@
         <div class="mb-2 flex items-center justify-between">
           <div class="space-x-1">
             <button
-              class="button-base text-slate-950 dark:text-slate-100 {activePage ===
+              class="button-base text-zinc-950 dark:text-zinc-100 {activePage ===
               'description'
                 ? 'bg-slate-400 dark:bg-zinc-600'
                 : 'bg-slate-200 dark:bg-zinc-800'}"
@@ -295,7 +295,7 @@
               <IconDescription color="{iconColor}" class="block md:hidden" />
             </button>
             <button
-              class="button-base text-slate-950 dark:text-slate-100 {activePage ===
+              class="button-base text-zinc-950 dark:text-zinc-100 {activePage ===
               'comments'
                 ? 'bg-slate-400 dark:bg-zinc-600'
                 : 'bg-slate-200 dark:bg-zinc-800'}"
@@ -309,7 +309,7 @@
             {#if $user.id == data.project?.author.id}
               <a
                 aria-label="Edit"
-                class="button-base ml-auto flex items-center space-x-1 text-slate-950 dark:text-slate-100"
+                class="button-base ml-auto flex items-center space-x-1 text-zinc-950 dark:text-zinc-100"
                 href="/project/{data.project?.url}/edit">
                 <IconPencil /><span class="hidden md:block">Edit</span>
               </a>
@@ -317,7 +317,7 @@
             {#if $user.id != data.project?.author.id && status == "live"}
               <button
                 aria-label="Report"
-                class="button-base flex items-center space-x-1 text-slate-950 dark:text-slate-100"
+                class="button-base flex items-center space-x-1 text-zinc-950 dark:text-zinc-100"
                 on:click="{() => {
                   reportModal.open();
                 }}"><IconReport /></button>
@@ -326,13 +326,13 @@
               {#if status == "publish_queue" || status == "review_queue"}
                 <button
                   aria-label="Approve"
-                  class="button-base flex items-center space-x-1 bg-green-600 text-slate-950 dark:text-slate-100"
+                  class="button-base flex items-center space-x-1 bg-green-600 text-zinc-950 dark:text-zinc-100"
                   on:click="{approve}"
                   use:tippy="{{ content: 'Approve', placement: 'bottom' }}"
                   ><IconTick /><!--<span class="hidden md:block">Approve</span>--></button>
                 <button
                   aria-label="Request Changes"
-                  class="button-base flex items-center space-x-1 bg-yellow-600 text-slate-950 dark:text-slate-100"
+                  class="button-base flex items-center space-x-1 bg-yellow-600 text-zinc-950 dark:text-zinc-100"
                   on:click="{() => {
                     moderationModalPage = 'disable';
                     moderateModal.open();
@@ -345,7 +345,7 @@
             >--></button>
                 <button
                   aria-label="Deny"
-                  class="button-base flex items-center space-x-1 bg-red-600 text-slate-100"
+                  class="button-base flex items-center space-x-1 bg-red-600 text-zinc-100"
                   on:click="{() => {
                     moderationModalPage = 'delete';
                     moderateModal.open();
@@ -353,7 +353,7 @@
                   use:tippy="{{ content: 'Deny', placement: 'bottom' }}"
                   ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>
                 <button
-                  class="button-base space-x-1 text-slate-950 dark:text-slate-100"
+                  class="button-base space-x-1 text-zinc-950 dark:text-zinc-100"
                   aria-label="Moderate"
                   on:click="{() => {
                     moderateModal.open();
@@ -364,7 +364,7 @@
               {#if status == "live"}
                 <button
                   aria-label="Feature"
-                  class="button-base flex items-center space-x-1 text-slate-950 dark:text-slate-100"
+                  class="button-base flex items-center space-x-1 text-zinc-950 dark:text-zinc-100"
                   on:click="{() => {
                     featureModal.open();
                   }}"
@@ -378,7 +378,7 @@
             </Button>
             {#if moderatorOrAbove($roleInfo) && !(status == "publish_queue" || status == "review_queue")}
               <button
-                class="button-base space-x-1 bg-red-600 text-slate-100"
+                class="button-base space-x-1 bg-red-600 text-zinc-100"
                 aria-label="Moderate"
                 on:click="{() => {
                   moderateModal.open();
@@ -452,11 +452,11 @@
                   <VersionDisplay {version} project="{data.project}" />
                 {/each}
               </ul>
-              <p class="mx-1 mt-2 text-slate-950 dark:text-white">
+              <p class="mx-1 mt-2 text-zinc-950 dark:text-white">
                 (Showing {versionMatches?.length} versions)
               </p>
             {:else}
-              <h2 class=" text-xl text-slate-950 dark:text-white">
+              <h2 class=" text-xl text-zinc-950 dark:text-white">
                 <b>No versions yet!</b> Why not
                 <a
                   href="/project/{data.project?.url}/edit"
@@ -474,7 +474,7 @@
                 </button>
               </div>
               {#if data.versions?.length != 0}
-                <p class="dark:text-slate-100">Select a Minecraft version:</p>
+                <p class="dark:text-zinc-100">Select a Minecraft version:</p>
                 <div class="grid-auto-fit-lg grid gap-3">
                   {#each minecraftVersions.reverse() ?? [] as v}
                     {#if stitchedVersions.includes(v)}
@@ -487,7 +487,7 @@
                         data-test-btn="{v}"
                         class="flex cursor-pointer items-center space-x-2 rounded-md bg-slate-300 p-3 transition-all hover:scale-102 dark:bg-zinc-700
                   {mcVersions.includes(v)
-                          ? ' dark:text-slate-100'
+                          ? ' dark:text-zinc-100'
                           : ' text-red-500'}"
                         on:click="{() => pickVersions(v)}">
                         {#if !mcVersions.includes(v)}
@@ -521,7 +521,7 @@
                   <p>means the datapack version is outdated</p>
                 </div>
               {:else}
-                <h2 class=" text-xl text-slate-950 dark:text-white">
+                <h2 class=" text-xl text-zinc-950 dark:text-white">
                   <b>No versions yet!</b>
                   {#if data.project.author.id == $user.id}Why not
                     <a
@@ -598,39 +598,39 @@
 
 <Modal bind:this="{moderateModal}" title="{'Moderate ' + data.project.title}">
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">User</p>
+  <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">User</p>
   <UserCard
     person="{data.project.author}"
     role="{$roles.find(v => data.project.author?.role == v.name)}" />
   <div class="mb-2 min-w-fit items-center">
-    <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
+    <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">
       Select Action
     </p>
     <button
-      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ===
+      class="button-base text-zinc-950 dark:text-zinc-100 {moderationModalPage ===
       'delete'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'delete')}">Delete</button>
     <button
-      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ===
+      class="button-base text-zinc-950 dark:text-zinc-100 {moderationModalPage ===
       'disable'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'disable')}">Disable</button>
     <button
-      class="button-base text-slate-950 dark:text-slate-100 {moderationModalPage ===
+      class="button-base text-zinc-950 dark:text-zinc-100 {moderationModalPage ===
       'write note'
         ? 'bg-slate-500 dark:bg-zinc-600'
         : 'bg-slate-300 dark:bg-zinc-900'}"
       on:click="{() => (moderationModalPage = 'write note')}"
       >Write Note</button>
     <button
-      class="button-base bg-slate-300 text-slate-950 dark:bg-zinc-900 dark:text-slate-100"
+      class="button-base bg-slate-300 text-zinc-950 dark:bg-zinc-900 dark:text-zinc-100"
       on:click="{() => goto('/project/' + data.project?.url + '/edit')}"
       >Edit Submission</button>
   </div>
-  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
+  <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">
     Moderation Note
   </p>
   <textarea
@@ -645,11 +645,11 @@
 
 <Modal bind:this="{reportModal}" title="{'Report ' + data.project.title}">
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">Author</p>
+  <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">Author</p>
   <UserCard
     person="{data.project.author}"
     role="{$roles.find(v => data.project.author?.role == v.name)}" />
-  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">
+  <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">
     Report Message
   </p>
   <textarea
@@ -663,17 +663,17 @@
 
 <Modal bind:this="{featureModal}" title="{'Feature ' + data.project.title}">
   <!-- <p class=" dark:text-white mb-2">If this project breaks the rules, then please help keep the website clean by moderating it.</p> -->
-  <p class="align-middle text-lg text-slate-950 dark:text-slate-100">Author</p>
+  <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">Author</p>
   <UserCard
     person="{data.project.author}"
     role="{$roles.find(v => data.project.author?.role == v.name)}" />
-  <p class="mt-3 align-middle text-slate-950 dark:text-slate-100">
+  <p class="mt-3 align-middle text-zinc-950 dark:text-zinc-100">
     Duration of feature
   </p>
   <input
     type="number"
     required
-    class="h-8 w-full resize-none rounded-md bg-slate-200 p-3 text-lg text-slate-950 dark:bg-zinc-700 dark:text-white"
+    class="h-8 w-full resize-none rounded-md bg-slate-200 p-3 text-lg text-zinc-950 dark:bg-zinc-700 dark:text-white"
     bind:value="{featureDur}"
     placeholder="i.e 1, 7, 14, 30, 365" />
   <Button classes="mt-2" click="{() => feature()}">Feature</Button>
