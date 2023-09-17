@@ -1,7 +1,11 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
-  import { appendSize, fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
+  import {
+    appendSize,
+    fetchAuthed,
+    moderatorOrAbove
+  } from "$lib/globals/functions";
   import { authed, roleInfo, user, windowWidth } from "$lib/globals/stores";
   import tippy from "sveltejs-tippy";
   import IconRead from "~icons/tabler/Bell.svelte";

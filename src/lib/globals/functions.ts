@@ -135,6 +135,6 @@ export const moderatorOrAbove = memo((role: Role | undefined) => {
  */
 export function appendSize(urlString: string, size: number): string {
   const url = new URL(urlString);
-  url.searchParams.append("size", size.toString())
-  return url.toString()
+  url.searchParams.append("size", size.toString());
+  return url.toString();
 }

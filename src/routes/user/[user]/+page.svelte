@@ -6,7 +6,11 @@
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import UserModeration from "$lib/components/user/UserModeration.svelte";
   import { badges } from "$lib/globals/badges";
-  import { appendSize, fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
+  import {
+    appendSize,
+    fetchAuthed,
+    moderatorOrAbove
+  } from "$lib/globals/functions";
   import { roleInfo, user } from "$lib/globals/stores";
   import { title } from "radash";
   import { toast } from "svelte-sonner";
