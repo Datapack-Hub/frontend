@@ -9,6 +9,7 @@
   import IconArrow from "~icons/tabler/ArrowBigRightLinesFilled.svelte";
   import IconFile from "~icons/tabler/FileZip.svelte";
   import IconX from "~icons/tabler/X.svelte";
+  import IconDown from "~icons/tabler/ArrowDown.svelte";
   import type { PageData } from "./$types";
   import { appendSize } from "$lib/globals/functions";
 
@@ -19,6 +20,7 @@
   // let apiExampleUser = "silabear";
   // let apiExampleResult = "";
   let featuredProjects: { type: FeaturedProjectType; project: Project }[] = [];
+  let scrollY = 0
 
   featuredProjects = data.featured.map(project => ({
     type: "featured",
@@ -119,6 +121,8 @@
     content="Datapack Hub is a website to find and download Minecraft datapacks. Join our datapacking discord" />
 </svelte:head>
 
+<svelte:window bind:scrollY />
+
 <main
   id="main-content"
   class="h-full bg-slate-50 transition-all dark:bg-zinc-900">
@@ -180,7 +184,8 @@
     </section>
   </section>
   <section
-    class="flex w-full flex-col items-center justify-center bg-slate-200 py-32 dark:bg-zinc-800/20">
+    class="flex w-full flex-col items-center justify-center bg-slate-200 dark:bg-zinc-800/20">
+    <p class="mb-16 mt-8 dark:text-white {scrollY > 100 ? "opacity-0" : "opacity-100"} transition-opacity">Scroll Down! <span class="inline-block align-text-top"><IconDown/></span></p>
     <h1
       class="text-center text-4xl font-bold text-black dark:text-white lg:text-5xl xl:text-6xl">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
