@@ -20,7 +20,7 @@
   // let apiExampleUser = "silabear";
   // let apiExampleResult = "";
   let featuredProjects: { type: FeaturedProjectType; project: Project }[] = [];
-  let scrollY = 0
+  let scrollY = 0;
 
   featuredProjects = data.featured.map(project => ({
     type: "featured",
@@ -185,7 +185,12 @@
   </section>
   <section
     class="flex w-full flex-col items-center justify-center bg-slate-200 dark:bg-zinc-800/20">
-    <p class="mb-16 mt-8 dark:text-white {scrollY > 100 ? "opacity-0" : "opacity-100"} transition-opacity">Scroll Down! <span class="inline-block align-text-top"><IconDown/></span></p>
+    <p
+      class="mb-16 mt-8 dark:text-white {scrollY > 100
+        ? 'opacity-0'
+        : 'opacity-100'} transition-opacity">
+      Scroll Down! <span class="inline-block align-text-top"><IconDown /></span>
+    </p>
     <h1
       class="text-center text-4xl font-bold text-black dark:text-white lg:text-5xl xl:text-6xl">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>

@@ -42,7 +42,9 @@
 
   async function resort() {
     let searchResult = await fetch(
-      `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}&page=${data.page}`
+      `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}&page=${
+        data.page
+      }`
     );
 
     let sortJson = await searchResult.json();
