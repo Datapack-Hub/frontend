@@ -103,18 +103,18 @@
           width="128"
           class="rounded-full outline outline-2 outline-offset-4 md:h-24 md:w-24 lg:h-32 lg:w-32"
           style="outline-color:{data.role?.color};" />
-        <Button
-          style="sm"
-          classes="mt-4"
-          click="{follow}"
+        <Button style="sm" classes="mt-4" click="{follow}"
           ><IconPlus class="inline-block align-text-top" />
           {#if followed}Unfollow{:else}Follow{/if}</Button>
         {#if data.profile.id == $user.id || $roleInfo.permissions.includes("EDIT_USER")}
           <Button
-            click="{data.profile.id == $user.id ? "/settings#profile" : `/user/${data.profile.username}/edit`}"
+            click="{data.profile.id == $user.id
+              ? '/settings#profile'
+              : `/user/${data.profile.username}/edit`}"
             style="sm"
             classes="mt-2">
-            <IconSettings class="dark:text-zinc-100 inline-block align-text-top" />
+            <IconSettings
+              class="inline-block align-text-top dark:text-zinc-100" />
             Edit Profile
           </Button>
         {/if}
