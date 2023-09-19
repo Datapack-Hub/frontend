@@ -43,11 +43,6 @@
     placement: "right"
   };
 
-  let profileSettingsTip = {
-    content: "Profile Settings",
-    placement: "bottom"
-  };
-
   // easter egg :)
   async function play() {
     let audio = new Audio("/sus.mp3");
