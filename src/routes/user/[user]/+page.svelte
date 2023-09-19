@@ -105,10 +105,19 @@
           style="outline-color:{data.role?.color};" />
         <Button
           style="sm"
-          classes="mt-4 flex w-fit items-center justify-center space-x-1"
+          classes="mt-4"
           click="{follow}"
-          ><IconPlus />
+          ><IconPlus class="inline-block align-text-top" />
           {#if followed}Unfollow{:else}Follow{/if}</Button>
+        {#if data.profile.id == $user.id || $roleInfo.permissions.includes("EDIT_USER")}
+          <Button
+            click="{data.profile.id == $user.id ? "/settings#profile" : `/user/${data.profile.username}/edit`}"
+            style="sm"
+            classes="mt-2">
+            <IconSettings class="dark:text-zinc-100 inline-block align-text-top" />
+            Edit Profile
+          </Button>
+        {/if}
         {#if moderatorOrAbove($roleInfo)}
           <UserModeration user="{data.profile}" />
         {/if}
@@ -148,14 +157,6 @@
               </span>
             {/if}
           </p>
-          {#if data.profile.id == $user.id || $roleInfo.permissions.includes("EDIT_USER")}
-            <a
-              href="/settings#profile"
-              class="absolute right-4 top-4"
-              use:tippy="{profileSettingsTip}">
-              <IconSettings class="dark:text-zinc-100" />
-            </a>
-          {/if}
         </div>
         <div>
           <h2

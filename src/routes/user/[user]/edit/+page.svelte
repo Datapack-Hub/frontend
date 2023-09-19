@@ -92,7 +92,7 @@
           name="roleSelection"
           id="rolez"
           bind:value="{newRole}"
-          class="h-10 rounded-md bg-slate-200 p-3 text-lg text-zinc-950 dark:bg-zinc-800 dark:text-white">
+          class="rounded-md bg-slate-200 p-3 text-lg text-zinc-950 dark:bg-zinc-800 dark:text-white">
           <option value="{data.profile?.role}" selected
             >{data.profile?.role}</option>
           {#each roleNames as r}
