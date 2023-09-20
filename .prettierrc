@@ -1,0 +1,21 @@
+{
+  "arrowParens": "avoid",
+  "bracketSameLine": true,
+  "svelteAllowShorthand": true,
+  "semi": true,
+  "singleQuote": false,
+  "svelteStrictMode": true,
+  "svelteIndentScriptAndStyle": true,
+  "svelteSortOrder": "scripts-options-markup-styles",
+  "trailingComma": "none",
+  "tailwindConfig": "./tailwind.config.cjs",
+  "tailwindAttributes": [
+    "class",
+    "classes"
+  ],
+  "plugins": [
+    "prettier-plugin-svelte",
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-tailwindcss"
+  ]
+}

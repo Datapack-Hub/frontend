@@ -1,7 +1,10 @@
 <script lang="ts">
+  import "../../../code-colors.css"
+
   import rehypeUrls from "@jsdevtools/rehype-url-inspector";
   import rehypeSanitize from "rehype-sanitize";
   import rehypeStringify from "rehype-stringify";
+  import rehypeHighlight from "rehype-highlight";
   import remarkGFM from "remark-gfm";
   import remarkMentions from "remark-mentions";
   import remarkParse from "remark-parse";
@@ -12,7 +15,7 @@
   export let classes = "";
 
   let markdownProcessor = unified()
-    .use(remarkParse) // ignore these errors plz
+    .use(remarkParse)
     .use(remarkGFM)
     .use(remarkMentions, {
       usernameLink: (uname: string) => `https://datapackhub.net/user/${uname}`
@@ -28,6 +31,7 @@
       }
     })
     .use(rehypeSanitize)
+    .use(rehypeHighlight)
     .use(rehypeStringify);
 
   $: html = "";
