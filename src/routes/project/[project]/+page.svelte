@@ -318,9 +318,10 @@
               <button
                 aria-label="Report Project"
                 class="button-base flex items-center space-x-1 text-zinc-950 dark:text-zinc-100"
-                use:tippy={{
-                  content: 'Report Project', placement: 'bottom'
-                }}
+                use:tippy="{{
+                  content: 'Report Project',
+                  placement: 'bottom'
+                }}"
                 on:click="{() => {
                   reportModal.open();
                 }}"><IconReport /></button>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "../../../code-colors.css"
+  import "../../../code-colors.css";
 
   import rehypeUrls from "@jsdevtools/rehype-url-inspector";
   import rehypeSanitize from "rehype-sanitize";
