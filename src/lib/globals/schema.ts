@@ -30,7 +30,8 @@ export const userSchema = z.object({
     message: "Username too long"
   }),
   badges: z.array(z.string()).nullish(),
-  followed: z.oboolean()
+  followed: z.oboolean(),
+  join_date: z.onumber() // change to normal number once change pulled
 });
 
 export const versionSchema = z.object({

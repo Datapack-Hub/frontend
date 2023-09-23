@@ -25,6 +25,10 @@
   export let data: PageData;
 
   let followed = data.profile?.followed;
+  const formatter = Intl.DateTimeFormat("en", {
+    timeStyle: "short",
+    dateStyle: "short"
+  });
 
   let staffTip = {
     content: "Verified for being part of the Datapack Hub staff team.",
@@ -157,7 +161,9 @@
           <h2
             class="mb-1 mt-4 w-full text-center dark:text-zinc-100 md:text-left">
             <IconTime class="mr-1 inline-block" />
-            <b class="mr-2">Joined: </b>we forgor 🦆
+            <b class="mr-2">Joined: </b>{data.profile?.join_date ?
+              formatter.format(data.profile?.join_date) :
+              "we forgor 🦆"}
           </h2>
           <h2 class="mb-1 text-center dark:text-zinc-100 md:text-left">
             <IconDL class="mr-1 inline-block" />
