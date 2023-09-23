@@ -6,11 +6,12 @@ import type { PageLoad } from "./$types";
 export const load = (async ({ fetch, url }) => {
   const parameters = url.searchParams;
   const page = Number.parseInt(parameters.get("page") || "1");
+  const sort = parameters.get("sort") || "updated";
 
   const [projects, featured] = await parallel(
     2,
     await Promise.all([
-      fetch(`${API}/projects/?page=${page}`),
+      fetch(`${API}/projects/?page=${page}&sort=${sort}`),
       fetch(`${API}/projects/featured`)
     ]),
     async response => await response.json()
