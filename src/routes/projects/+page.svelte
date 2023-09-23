@@ -31,13 +31,14 @@
 
   let search = debounce({ delay: 200 }, async () => {
     let searchResult = await fetch(
-      `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}&page=${data.page}`
+      `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}&page=${
+        data.page
+      }`
     );
-
 
     let search = await searchResult.json();
     searchTime = search.time;
-    data.page = Number.parseInt(search.pages)
+    data.page = Number.parseInt(search.pages);
 
     dataCopy = await projectSchema.array().parseAsync(search.result);
   });
