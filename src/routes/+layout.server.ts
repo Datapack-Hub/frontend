@@ -12,7 +12,7 @@ export const load = (async ({ cookies, fetch }) => {
     const userResponse = await serverGetAuthed("/user/me", cookies, fetch);
 
     if (!userResponse.ok) {
-      cookies.delete("dph_token")
+      cookies.delete("dph_token");
       return;
     }
 
