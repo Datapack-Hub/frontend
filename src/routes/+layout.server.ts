@@ -11,6 +11,11 @@ export const load = (async ({ cookies, fetch }) => {
   if (cookie) {
     const userResponse = await serverGetAuthed("/user/me", cookies, fetch);
 
+    if (!userResponse.ok) {
+      cookies.delete("dph_token")
+      return;
+    }
+
     const user = await userSchema.parseAsync(await userResponse.json());
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const role = roleSchema
