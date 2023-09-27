@@ -10,7 +10,8 @@ export const load = (async ({ cookies, fetch, url }) => {
   const roleResponse = await fetch(`${API}/user/staff/roles`);
 
   if (!roleResponse.ok) {
-    cookies.delete("dph_token");
+    console.log(cookies.get("dph_token"), userResponse.status)
+    cookies.delete("dph_token")
     throw redirect(307, url.pathname);
   }
 
@@ -36,6 +37,7 @@ export const load = (async ({ cookies, fetch, url }) => {
     const userResponse = await serverGetAuthed("/user/me", cookies, fetch);
 
     if (!userResponse.ok) {
+      console.log(cookies.get("dph_token"), userResponse.status)
       cookies.delete("dph_token");
       throw redirect(307, url.pathname);
     }
