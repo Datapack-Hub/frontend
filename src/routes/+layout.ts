@@ -48,8 +48,8 @@ export const load = (async ({ url, data }) => {
         "font-size: 18pt;"
       );
       console.log(
-        "%c(Unless you do know what you're doing, then maybe you should join us 😁).",
-        "font-size: 6pt;"
+        "%c(Unless you DO know what you're doing, then maybe you could join us 😁).",
+        "font-size: 8pt;"
       );
       consoleWarned.set(true);
     }
