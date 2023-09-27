@@ -8,6 +8,12 @@ export const load = (async ({ cookies, fetch, url }) => {
   const cookie = cookies.get("dph_token");
 
   const roleResponse = await fetch(`${API}/user/staff/roles`);
+
+  if (!roleResponse.ok) {
+    cookies.delete("dph_token");
+    return;
+  }
+
   const rolesJson = await roleResponse.json();
 
   const parameters = url.searchParams;
