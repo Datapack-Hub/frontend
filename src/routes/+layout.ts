@@ -1,5 +1,4 @@
 import { browser, dev } from "$app/environment";
-import { goto } from "$app/navigation";
 import {
   fetchAuthed,
   loadColorPref,
@@ -27,16 +26,6 @@ export const load = (async ({ url, data }) => {
 
   if (browser) {
     const parameters = url.searchParams;
-
-    if (parameters.has("token")) {
-      const newToken = parameters.get("token");
-      const expiry = new Date();
-
-      expiry.setTime(Date.now() + 1000 * 60 * 60 * 24 * 30);
-      document.cookie = `dph_token=${newToken}; expires=${expiry.toUTCString()}`;
-
-      goto("/");
-    }
 
     if (parameters.has("log_out")) {
       const signal = await fetchAuthed("get", "/user/me/log_out");

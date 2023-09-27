@@ -1,13 +1,31 @@
 import { API } from "$lib/globals/consts";
 import { serverGetAuthed } from "$lib/globals/functions";
 import { roleSchema, userSchema, type Role } from "$lib/globals/schema";
+import { redirect } from "@sveltejs/kit";
 import type { LayoutServerLoad } from "./$types";
 
-export const load = (async ({ cookies, fetch }) => {
+export const load = (async ({ cookies, fetch, url }) => {
   const cookie = cookies.get("dph_token");
 
   const roleResponse = await fetch(`${API}/user/staff/roles`);
   const rolesJson = await roleResponse.json();
+
+  const parameters = url.searchParams;
+
+  if (parameters.has("token")) {
+    const newToken = parameters.get("token") || "";
+    const expiry = new Date();
+
+    expiry.setDate(expiry.getDate() + 30);
+    cookies.set("dph_token", newToken, {
+      expires: expiry,
+      httpOnly: false,
+      path: "/"
+    });
+
+    throw redirect(307, url.pathname);
+  }
+
   if (cookie) {
     const userResponse = await serverGetAuthed("/user/me", cookies, fetch);
 
