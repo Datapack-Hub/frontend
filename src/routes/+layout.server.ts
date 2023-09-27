@@ -11,7 +11,7 @@ export const load = (async ({ cookies, fetch, url }) => {
 
   if (!roleResponse.ok) {
     cookies.delete("dph_token");
-    return;
+    throw redirect(307, url.pathname);
   }
 
   const rolesJson = await roleResponse.json();
