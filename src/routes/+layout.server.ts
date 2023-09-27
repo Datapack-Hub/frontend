@@ -37,7 +37,7 @@ export const load = (async ({ cookies, fetch, url }) => {
 
     if (!userResponse.ok) {
       cookies.delete("dph_token");
-      return;
+      throw redirect(307, url.pathname);
     }
 
     const user = await userSchema.parseAsync(await userResponse.json());
