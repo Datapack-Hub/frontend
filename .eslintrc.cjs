@@ -5,8 +5,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:svelte/recommended',
-    'plugin:unicorn/recommended',
-    'plugin:tailwindcss/recommended',
+    'plugin:unicorn/recommended'
   ],
   plugins: ['@typescript-eslint'],
   ignorePatterns: ['*.cjs', 'node_modules'],
@@ -34,7 +33,6 @@ module.exports = {
     "unicorn/filename-case": "off",
     "unicorn/no-document-cookie": "off",
     "unicorn/prefer-top-level-await": "off",
-    "unicorn/no-useless-undefined": "off",
   },
   env: {
     browser: true,

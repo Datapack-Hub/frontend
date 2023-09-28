@@ -15,22 +15,21 @@
   },
   "devDependencies": {
     "@formkit/auto-animate": "^0.8.0",
-    "@iconify-json/tabler": "^1.1.91",
+    "@iconify-json/tabler": "^1.1.92",
     "@jsdevtools/rehype-url-inspector": "^2.0.2",
     "@playwright/test": "^1.38.1",
     "@sveltejs/adapter-cloudflare": "^2.3.3",
-    "@sveltejs/kit": "^1.25.0",
+    "@sveltejs/kit": "^1.25.1",
     "@types/animejs": "^3.1.8",
     "@types/nprogress": "^0.2.1",
-    "@typescript-eslint/eslint-plugin": "^6.7.2",
-    "@typescript-eslint/parser": "^6.7.2",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
     "animejs": "^3.2.1",
     "dotenv": "^16.3.1",
     "esbuild": "^0.19.3",
     "eslint": "^8.50.0",
     "eslint-plugin-security": "^1.7.1",
     "eslint-plugin-svelte": "^2.33.2",
-    "eslint-plugin-tailwindcss": "^3.13.0",
     "eslint-plugin-unicorn": "^48.0.1",
     "highlight.js": "^11.8.0",
     "jszip": "^3.10.1",
@@ -71,10 +70,5 @@
     "tailwindcss": "^3.3.3",
     "zod": "^3.22.2"
   },
-  "engineStrict": true,
-  "pnpm": {
-    "overrides": {
-      "xml2js@<0.5.0": ">=0.5.0"
-    }
-  }
+  "engineStrict": true
 }

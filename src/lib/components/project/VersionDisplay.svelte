@@ -23,7 +23,7 @@
   export let version: Version;
   export let expanded = false;
   export let mcVersion: string = "";
-  export let project: Project | undefined = undefined;
+  export let project: Project | undefined;
 
   let properVersion = version.minecraft_versions.split(",");
   let dlModal: Modal;
