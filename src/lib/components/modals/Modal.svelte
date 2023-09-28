@@ -7,7 +7,7 @@
   let visible = false;
 
   export let width: "small" | "normal" | "wide" = "normal";
-  export let title: string | undefined;
+  export let title: string = "";
 
   export function open() {
     visible = true;
