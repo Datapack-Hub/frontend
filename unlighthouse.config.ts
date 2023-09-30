@@ -6,7 +6,7 @@ config()
 const token = process.env.UNLIGHTHOUSE_TOKEN
 const futureDate = new Date()
 
-futureDate.setTime(futureDate.getTime() + (24*60*60*1000))
+futureDate.setDate(futureDate.getDate() + 1)
 
 export default defineConfig({
   // example
