@@ -35,7 +35,7 @@
     <img
       src="{appendSize(reply.author.profile_icon, 32)}"
       alt="{reply.author}'s profile"
-      class="h-6 mt-1 rounded-full"
+      class="mt-1 h-6 rounded-full"
       height="24"
       width="24" />
     <div>

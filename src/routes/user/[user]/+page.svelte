@@ -10,9 +10,7 @@
     appendSize,
     fetchAuthed,
     moderatorOrAbove,
-
     timeAgo
-
   } from "$lib/globals/functions";
   import { roleInfo, user } from "$lib/globals/stores";
   import { title } from "radash";
