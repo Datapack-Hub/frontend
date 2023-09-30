@@ -77,7 +77,7 @@
       <img
         src="{appendSize(comment.author.profile_icon, 64)}"
         alt="{comment.author.username}'s profile"
-        class="h-12 mt-1 rounded-full" />
+        class="mt-1 h-12 rounded-full" />
       <div class="w-full">
         <div class="flex items-baseline space-x-1">
           <a

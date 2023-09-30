@@ -139,7 +139,7 @@ export function appendSize(urlString: string, size: number): string {
   return url.toString();
 }
 
-export function timeAgo(timestamp: number, locale = 'en') {
+export function timeAgo(timestamp: number, locale = "en") {
   let value;
   const diff = (Date.now() - timestamp) / 1000;
   const minutes = Math.floor(diff / 60);
