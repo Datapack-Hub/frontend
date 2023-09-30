@@ -28,11 +28,6 @@
   export let data: PageData;
 
   let followed = data.profile?.followed;
-  const formatter = Intl.DateTimeFormat("en", {
-    timeStyle: "short",
-    dateStyle: "short"
-  });
-
   let staffTip = {
     content: "Verified for being part of the Datapack Hub staff team.",
     placement: "right"

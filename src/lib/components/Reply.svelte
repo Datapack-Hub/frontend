@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { appendSize, fetchAuthed } from "$lib/globals/functions";
+  import { appendSize, fetchAuthed, timeAgo } from "$lib/globals/functions";
   import type { User } from "$lib/globals/schema";
   import { roleInfo, roles, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
@@ -18,10 +18,6 @@
   let userRole = $roles.find(v => v.name == reply.author.role);
 
   let visible = true;
-  let formatter = Intl.DateTimeFormat("en", {
-    timeStyle: "short",
-    dateStyle: "short"
-  });
 
   async function deleteReply() {
     visible = false;
@@ -49,7 +45,7 @@
           style="color: {userRole?.color};"
           href="/user/{reply.author.username}">{reply.author.username}</a>
         <p class="text-xs dark:text-neutral-400">
-          {formatter.format(reply.sent * 1000)}
+          {timeAgo(reply.sent * 1000)}
         </p>
         {#if $user.id == reply.author.id || $roleInfo.permissions.includes("DELETE_CONTENT")}
           <div class="absolute right-0 p-3 text-white">

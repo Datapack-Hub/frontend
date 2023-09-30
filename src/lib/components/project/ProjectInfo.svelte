@@ -35,10 +35,6 @@
 
   let mm: HTMLDivElement;
   let status = project.status ?? "unpublished";
-  let formatter = Intl.DateTimeFormat("en", {
-    dateStyle: "medium",
-    timeStyle: "short"
-  });
 
   // Dismiss the mod message function
   async function dismissModeratorMessage() {
