@@ -1,21 +1,20 @@
 <script lang="ts">
   import { API } from "$lib/globals/consts";
-  import { appendSize, fetchAuthed } from "$lib/globals/functions";
+  import { appendSize, fetchAuthed, timeAgo } from "$lib/globals/functions";
   import {
     commentSchema,
     type DPHComment,
     type Project
   } from "$lib/globals/schema";
-  import { roles, user, authed } from "$lib/globals/stores";
+  import { authed, roles, user } from "$lib/globals/stores";
   import { sort } from "radash";
   import { toast } from "svelte-sonner";
   import IconExpand from "~icons/tabler/ChevronDown.svelte";
   import IconDexpand from "~icons/tabler/ChevronUp.svelte";
-  import IconDelete from "~icons/tabler/Trash.svelte";
   import IconEdit from "~icons/tabler/Edit.svelte";
-  import MarkdownComponent from "./markdown/MarkdownRenderer.svelte";
+  import IconDelete from "~icons/tabler/Trash.svelte";
   import Reply from "./Reply.svelte";
-  import CasualLine from "./decorative/CasualLine.svelte";
+  import MarkdownComponent from "./markdown/MarkdownRenderer.svelte";
 
   export let comment: DPHComment;
   export let project: Project;
@@ -26,10 +25,6 @@
   let showReplies = false;
   let wait = false;
   let visible = true;
-  let formatter = Intl.DateTimeFormat("en", {
-    timeStyle: "short",
-    dateStyle: "short"
-  });
 
   async function sendReply() {
     wait = true;
@@ -82,7 +77,7 @@
       <img
         src="{appendSize(comment.author.profile_icon, 64)}"
         alt="{comment.author.username}'s profile"
-        class="h-12 rounded-full" />
+        class="h-12 mt-1 rounded-full" />
       <div class="w-full">
         <div class="flex items-baseline space-x-1">
           <a
@@ -90,7 +85,7 @@
             style="color: {userRole?.color};"
             href="/user/{comment.author.username}">{comment.author.username}</a>
           <p class="text-xs dark:text-neutral-400">
-            {formatter.format(comment.sent * 1000)}
+            {timeAgo(comment.sent * 1000)}
           </p>
         </div>
 
@@ -109,7 +104,6 @@
             <div>
               <ul class="w-full">
                 {#each sort(comment.replies, r => r.sent) ?? [] as reply}
-                  <CasualLine />
                   <Reply {reply} />
                 {/each}
               </ul>

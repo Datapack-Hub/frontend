@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { appendSize, fetchAuthed } from "$lib/globals/functions";
+  import { appendSize, fetchAuthed, timeAgo } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
 
@@ -124,7 +124,7 @@
         <IconUpdate />
         <span>
           <b>Last updated:</b>
-          {formatter.format((project?.updated ?? 0) * 1000)}
+          {timeAgo((project?.updated ?? 0) * 1000)}
         </span>
       </h1>
 
