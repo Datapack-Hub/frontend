@@ -66,16 +66,22 @@
       }
 
       if (zipFile) {
-        let { loadAsync } = await import("jszip");
-        let zip = await loadAsync(zipFile);
-        if (
-          !zip.file("pack.mcmeta") ||
-          !zip.folder("data")
-        ) {
+        try {
+          let { loadAsync } = await import("jszip");
+          let zip = await loadAsync(zipFile);
+
+          if (
+            !zip.file("pack.mcmeta") ||
+            !zip.folder("data") ||
+            zipFile.type != "application/x-zip-compressed"
+          ) {
+            return toast.error("Malformed Datapack!");
+          }
+
+          createVersion = true;
+        } catch {
           return toast.error("Malformed Datapack!");
         }
-
-        createVersion = true;
       } else {
         return toast.error("Missing file");
       }
