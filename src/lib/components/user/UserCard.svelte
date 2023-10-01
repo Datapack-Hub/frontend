@@ -35,7 +35,7 @@
             width="18" />Datapack Hub Team
         {/if}
       </span>
-      <MarkdownComponent source="{person?.bio}" classes="{''}" />
+      <MarkdownComponent source="{person?.bio}" classes="{'line-clamp-2'}" />
     </div>
   </div>
 </a>

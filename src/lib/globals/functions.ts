@@ -123,7 +123,7 @@ export function removeCookie(name: string) {
  * @param role the role to check
  * @returns true or false
  */
-export const moderatorOrAbove = memo((role: Role | undefined) => {
+export const moderatorOrAbove = memo((role: Role | undefined): boolean => {
   return ["moderator", "developer", "admin"].includes(role?.name ?? "");
 });
 
@@ -139,8 +139,8 @@ export function appendSize(urlString: string, size: number): string {
   return url.toString();
 }
 
-export function timeAgo(timestamp: number, locale = "en") {
-  let value;
+export function timeAgo(timestamp: number, locale = "en"): string {
+  let value: string;
   const diff = (Date.now() - timestamp) / 1000;
   const minutes = Math.floor(diff / 60);
   const hours = Math.floor(minutes / 60);

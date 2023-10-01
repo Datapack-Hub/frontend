@@ -36,6 +36,15 @@
     placement: "bottom"
   };
 
+  let logoutTippy = {
+    content:
+      $user.username +
+      "<span class='items-center'><br /><a data-sveltekit-preload-data=\"tap\" href='/?log_out=1' class='text-blue-500'>Sign Out</a></span>",
+    placement: 'bottom',
+    allowHTML: true,
+    interactive: true
+  }
+
   $: unreadNotifications = false;
 
   afterNavigate(() => {
@@ -115,7 +124,7 @@
       classes="flex items-center space-x-4">
       <a
         href="/"
-        class="flex cursor-pointer items-center space-x-2 hover:brightness-75 active:brightness-50">
+        class="flex cursor-pointer items-center space-x-2 text-zinc-950 dark:text-white hover:text-dph-orange dark:hover:text-dph-orange active:brightness-75 transition-colors">
         <img
           src="/logos/dph.svg"
           alt="logo"
@@ -123,19 +132,19 @@
           height="32"
           width="32" />
         <span
-          class="hidden text-2xl font-bold text-zinc-950 dark:text-white lg:block">
+          class="hidden text-2xl font-bold lg:block">
           Datapack Hub
         </span>
       </a>
       <a
         href="/projects"
         aria-label="Explore datapacks"
-        class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange">
+        class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75">
         <IconCompass width="24" height="24" class="block md:hidden" />
         <span class="hidden font-light md:block">Explore</span>
       </a>
       <a
-        class="hidden rounded-full p-1 font-light transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:block md:hover:bg-transparent md:hover:text-dph-orange"
+        class="hidden rounded-full p-1 font-light transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:block md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
         href="https://discord.datapackhub.net">Discord</a>
     </ConditionalWrapper>
     <ConditionalWrapper
@@ -145,11 +154,11 @@
         <a
           aria-label="New project"
           href="/projects/new"
-          class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange"
+          class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
           use:tippy="{newProjectTip}"><IconPlus width="24" height="24" /></a>
         <a
           href="/notifications"
-          class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange"
+          class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
           aria-label="Notifications page"
           use:tippy="{notificationTip}">
           {#if unreadNotifications}
@@ -162,7 +171,7 @@
           {#if $authed && moderatorOrAbove($roleInfo)}
             <a
               href="/moderation"
-              class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange"
+              class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
               use:tippy="{moderationTip}"
               ><IconShield width="24" height="24" /></a>
           {/if}
@@ -174,14 +183,7 @@
           class="py-2"
           aria-label="Your profile"
           href="/user/{$user.username}"
-          use:tippy="{{
-            content:
-              $user.username +
-              "<span class='items-center'><br /><a data-sveltekit-preload-data=\"tap\" href='/?log_out=1' class='text-blue-500'>Sign Out</a></span>",
-            placement: 'bottom',
-            allowHTML: true,
-            interactive: true
-          }}">
+          use:tippy="{logoutTippy}">
           <img
             src="{appendSize($user.profile_icon, 64)}"
             alt="{$user.username}'s profile picture"
