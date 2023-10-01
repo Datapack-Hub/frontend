@@ -11,8 +11,10 @@
   import remarkRehype from "remark-rehype";
   import { unified } from "unified";
 
-  export let source: string = "";
+  export let source: string;
   export let classes = "";
+
+  $: html = "";
 
   let markdownProcessor = unified()
     .use(remarkParse)
@@ -34,9 +36,8 @@
     .use(rehypeHighlight)
     .use(rehypeStringify);
 
-  $: html = "";
 
-  markdownProcessor.process(source).then(md => {
+  $: markdownProcessor.process(source).then(md => {
     html = String(md);
   });
 </script>

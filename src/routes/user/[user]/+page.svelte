@@ -25,7 +25,8 @@
 
   export let data: PageData;
 
-  let followed = data.profile?.followed;
+  $: followed = data.profile?.followed;
+
   let staffTip = {
     content: "Verified for being part of the Datapack Hub staff team.",
     placement: "right"
