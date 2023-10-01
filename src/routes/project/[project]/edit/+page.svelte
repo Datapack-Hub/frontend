@@ -30,7 +30,7 @@
   let draftModal: Modal;
   let deleteModal: Modal;
 
-  let selected: string[] = [];
+  let supportedVersions: string[] = [];
   let zipFile: File;
   let activePage = "versions";
 
@@ -47,16 +47,14 @@
 
   $: category = writable([]);
 
-  let v_changelog = "";
+  let vChangelog = "";
+  let vName = "";
+  let vCode = "";
 
   // let dependencies: Project[] = [];
   // let dependencyNames: string[] = [""];
 
-  function maxCategoriesReached() {
-    toast.error("Max Categories Reached");
-  }
-
-  async function uploadDatapack() {
+  async function verifyDatapack() {
     if (browser) {
       let inp = document.querySelector("#zip") as HTMLInputElement;
       if (inp.files) zipFile = inp.files[0];
@@ -69,7 +67,9 @@
       if (zipFile) {
         let { loadAsync } = await import("jszip");
         let zip = await loadAsync(zipFile);
-        if (!zip.file("pack.mcmeta") || !zip.folder("data")) {
+        if (!zip.file("pack.mcmeta") ||
+            !zip.folder("data") ||
+            zipFile.type != "application/zip") {
           return toast.error("Malformed Datapack!");
         }
 
@@ -80,7 +80,7 @@
     }
   }
 
-  const toBase64 = (file: Blob) =>
+  const fileB64Encode = (file: Blob) =>
     new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -89,42 +89,40 @@
     });
 
   async function uploadVersion() {
-    let v_name = (document.querySelector("#v_name") as HTMLInputElement).value;
-    let v_code = (document.querySelector("#v_code") as HTMLInputElement).value;
-    let v_rp = document.querySelector("#v_rp") as HTMLInputElement;
-    let v_squash = document.querySelector("#squash") as HTMLInputElement;
+    let vResourcePack = document.querySelector<HTMLInputElement>("#v_rp")?.files;
+    let vSquash = document.querySelector<HTMLInputElement>("#squash")?.checked;
 
-    if (!v_name) return toast("Please make sure you give a version name!");
-    if (!v_code) return toast("Please make sure you give a version number!");
-    if (!v_changelog)
+    if (!vName) return toast("Please make sure you give a version name!");
+    if (!vCode) return toast("Please make sure you give a version number!");
+    if (!vChangelog)
       return toast("Please make sure you give a version changelog!");
-    if (selected.length === 0) {
+    if (supportedVersions.length === 0) {
       return toast("Please select at least one compatible Minecraft version!");
     }
 
-    if (v_squash) {
+    if (vSquash) {
       toast.warning(
         "You have chosen to compress your pack, this may increase processing time."
       );
     }
 
     let versionData = {
-      name: v_name,
-      description: v_changelog,
-      minecraft_versions: selected,
-      version_code: v_code,
+      name: vName,
+      description: vChangelog,
+      minecraft_versions: supportedVersions,
+      version_code: vCode,
       filename: zipFile.name,
       primary_download: "",
       resource_pack_download: "",
-      squash: v_squash.checked
+      squash: vSquash
       // dependencies // <-- uncomment to implement
     };
 
-    let dp = await toBase64(zipFile);
+    let dp = await fileB64Encode(zipFile);
     versionData.primary_download = dp;
 
-    if (v_rp.files?.length == 1) {
-      let rp = await toBase64(v_rp.files[0]);
+    if (vResourcePack?.length == 1) {
+      let rp = await fileB64Encode(vResourcePack[0]);
       versionData.resource_pack_download = rp;
     }
 
@@ -431,7 +429,7 @@
               <ToggleBoxes
                 value="{cat}"
                 selected="{category}"
-                on:fail="{maxCategoriesReached}" />
+                on:fail="{() => toast.error("Max Categories Reached")}" />
             {/each}
           </div>
           <div class="col-span-3"></div>
@@ -457,7 +455,7 @@
                   class="hidden"
                   accept=".zip"
                   id="zip"
-                  on:input="{uploadDatapack}" />
+                  on:input="{verifyDatapack}" />
                 <span class="align-center text-zinc-950 dark:text-white"
                   >(Supported: *.zip)</span>
                 <!-- <p class="align-middle  text-zinc-950 dark:text-zinc-100">No versions yet!</p> -->
@@ -494,13 +492,13 @@
                     required
                     placeholder="{data.project?.title} v{version}"
                     maxlength="50"
-                    id="v_name" />
+                    bind:value="{vName}" />
                   <input
                     required
                     class="input w-1/4"
                     placeholder="v{version}"
                     maxlength="15"
-                    id="v_code" />
+                    bind:value="{vCode}" />
                 </div>
 
                 <p
@@ -508,7 +506,7 @@
                   Changelog
                 </p>
                 <MarkdownEditor
-                  bind:content="{v_changelog}"
+                  bind:content="{vChangelog}"
                   classes="h-36 w-full md:w-3/4" />
 
                 <p
@@ -520,7 +518,7 @@
                   <MultiSelect
                     options="{minecraftVersions}"
                     minSelect="{1}"
-                    bind:selected />
+                    bind:selected={supportedVersions} />
                 </div>
                 <p class="mb-8"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->
