@@ -36,7 +36,6 @@
     .use(rehypeHighlight)
     .use(rehypeStringify);
 
-
   $: markdownProcessor.process(source).then(md => {
     html = String(md);
   });
