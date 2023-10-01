@@ -70,8 +70,7 @@
         let zip = await loadAsync(zipFile);
         if (
           !zip.file("pack.mcmeta") ||
-          !zip.folder("data") ||
-          zipFile.type != "application/zip"
+          !zip.folder("data")
         ) {
           return toast.error("Malformed Datapack!");
         }
