@@ -67,9 +67,11 @@
       if (zipFile) {
         let { loadAsync } = await import("jszip");
         let zip = await loadAsync(zipFile);
-        if (!zip.file("pack.mcmeta") ||
-            !zip.folder("data") ||
-            zipFile.type != "application/zip") {
+        if (
+          !zip.file("pack.mcmeta") ||
+          !zip.folder("data") ||
+          zipFile.type != "application/zip"
+        ) {
           return toast.error("Malformed Datapack!");
         }
 
@@ -89,7 +91,8 @@
     });
 
   async function uploadVersion() {
-    let vResourcePack = document.querySelector<HTMLInputElement>("#v_rp")?.files;
+    let vResourcePack =
+      document.querySelector<HTMLInputElement>("#v_rp")?.files;
     let vSquash = document.querySelector<HTMLInputElement>("#squash")?.checked;
 
     if (!vName) return toast("Please make sure you give a version name!");
@@ -429,7 +432,7 @@
               <ToggleBoxes
                 value="{cat}"
                 selected="{category}"
-                on:fail="{() => toast.error("Max Categories Reached")}" />
+                on:fail="{() => toast.error('Max Categories Reached')}" />
             {/each}
           </div>
           <div class="col-span-3"></div>
@@ -518,7 +521,7 @@
                   <MultiSelect
                     options="{minecraftVersions}"
                     minSelect="{1}"
-                    bind:selected={supportedVersions} />
+                    bind:selected="{supportedVersions}" />
                 </div>
                 <p class="mb-8"></p>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->
