@@ -54,6 +54,7 @@
   // let dependencies: Project[] = [];
   // let dependencyNames: string[] = [""];
 
+  // this should probably be done on the backend
   async function verifyDatapack() {
     if (browser) {
       let inp = document.querySelector("#zip") as HTMLInputElement;
@@ -90,6 +91,7 @@
       reader.addEventListener("error", () => reject);
     });
 
+  // i guess this is why validation is done on the front-end?
   async function uploadVersion() {
     let vResourcePack =
       document.querySelector<HTMLInputElement>("#v_rp")?.files;
