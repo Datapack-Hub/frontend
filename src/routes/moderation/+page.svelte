@@ -19,7 +19,7 @@
   id="main-content"
   class=" bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
   <div
-    class="pt-4 h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
+    class="h-screen w-full flex-col items-center pt-4 md:flex-row md:items-start md:pt-20">
     <h1
       class="mb-3 pb-2 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Moderation Dashboard

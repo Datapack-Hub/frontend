@@ -40,10 +40,10 @@
     content:
       $user.username +
       "<span class='items-center'><br /><a data-sveltekit-preload-data=\"tap\" href='/?log_out=1' class='text-blue-500'>Sign Out</a></span>",
-    placement: 'bottom',
+    placement: "bottom",
     allowHTML: true,
     interactive: true
-  }
+  };
 
   $: unreadNotifications = false;
 
@@ -124,17 +124,14 @@
       classes="flex items-center space-x-4">
       <a
         href="/"
-        class="flex cursor-pointer items-center space-x-2 text-zinc-950 dark:text-white hover:text-dph-orange dark:hover:text-dph-orange active:brightness-75 transition-colors">
+        class="flex cursor-pointer items-center space-x-2 text-zinc-950 transition-colors hover:text-dph-orange active:brightness-75 dark:text-white dark:hover:text-dph-orange">
         <img
           src="/logos/dph.svg"
           alt="logo"
           class="h-8 flex-shrink-0"
           height="32"
           width="32" />
-        <span
-          class="hidden text-2xl font-bold lg:block">
-          Datapack Hub
-        </span>
+        <span class="hidden text-2xl font-bold lg:block"> Datapack Hub </span>
       </a>
       <a
         href="/projects"
