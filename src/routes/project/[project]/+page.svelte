@@ -1,14 +1,14 @@
 <script lang="ts">
   import ProjectInfo from "$lib/components/project/ProjectInfo.svelte";
   import type { PageData } from "./$types";
-  // Svelte imports
+// Svelte imports
   import { goto } from "$app/navigation";
   import { API, minecraftVersions } from "$lib/globals/consts";
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import { authed, isDark, roleInfo, roles, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
-  // Component imports
+// Component imports
   import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import { commentSchema, type Version } from "$lib/globals/schema";
@@ -430,7 +430,7 @@
           <div class="w-full rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
             <p class="w-full break-words leading-tight">
               <MarkdownComponent
-                source="{data.project.body}"
+                source="{data.project.body ?? "No body specified!"}"
                 classes="prose-headings:mb-2 prose-p:my-0 prose-ul:my-3 prose-img:my-0" />
             </p>
           </div>
@@ -560,7 +560,7 @@
         {:else if activePage == "comments"}
           <div class="mb-2 items-center space-y-2">
             <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
-              <div class="space-y-2" use:autoAnimate>
+              <div class="space-y-2">
                 {#if $authed}
                   <form
                     class="flex items-center space-x-2"
