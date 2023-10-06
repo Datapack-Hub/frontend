@@ -1,7 +1,7 @@
 <script lang="ts">
-  import "../app.postcss";
-  import "../fonts.postcss";
-  import "../nprogress.css";
+  import "../styles/app.postcss";
+  import "../styles/fonts.postcss";
+  import "../styles/nprogress.css";
 
   import { dev } from "$app/environment";
   import { navigating } from "$app/stores";
