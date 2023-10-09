@@ -67,7 +67,6 @@
   }
 
   async function sendNotif() {
-
     if ([notifTitle, notifContent].some(v => v.length <= 0)) {
       toast.error("Make sure all fields are filled");
       return;
@@ -298,7 +297,11 @@
       class="mt-2 align-middle text-zinc-950 dark:text-zinc-100">
       Notification Type
     </label>
-    <select name="notif-type" id="notif-type" class="input mb-2 w-full" bind:value="{notifType}">
+    <select
+      name="notif-type"
+      id="notif-type"
+      class="input mb-2 w-full"
+      bind:value="{notifType}">
       <option value="default">Default</option>
       <option value="important">Important</option>
       <option value="announcement">Announcement</option>
