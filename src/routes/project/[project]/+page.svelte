@@ -35,6 +35,7 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import UserCard from "$lib/components/user/UserCard.svelte";
   import { sort, title } from "radash";
+  import DphButton from "$lib/components/decorative/DPHButton.svelte";
 
   export let data: PageData;
 
@@ -376,10 +377,10 @@
                 </button>
               {/if}
             {/if}
-            <Button label="Download" click="{() => (activePage = 'download')}">
-              <span class="hidden lg:block"> Download </span>
+            <DphButton click="{() => (activePage = 'download')}">
+              <span class="hidden lg:block">Download</span>
               <IconDownload class="block lg:hidden" />
-            </Button>
+            </DphButton>
             {#if moderatorOrAbove($roleInfo) && !(status == "publish_queue" || status == "review_queue")}
               <button
                 class="button-base space-x-1 bg-red-600 text-zinc-100"

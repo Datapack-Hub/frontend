@@ -173,7 +173,7 @@
             <IconBadge class="mr-1 inline-block" /> Badges
           </h2>
           <div
-            class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-300 p-3 dark:bg-zinc-800 md:justify-start">
+            class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-200 p-3 dark:bg-zinc-800 md:justify-start">
             {#if data.profile?.badges?.length != 0}
               {#each data.profile?.badges ?? [] as badge}
                 <img
@@ -188,7 +188,7 @@
         </div>
       </div>
       <span
-        class="styled-scrollbar w-full overflow-y-auto rounded-xl bg-slate-300 p-4 dark:bg-zinc-800 md:w-1/2">
+        class="styled-scrollbar w-full overflow-y-auto rounded-xl bg-slate-200 p-4 dark:bg-zinc-800 md:w-1/2">
         <MarkdownComponent source="{data.profile?.bio}" />
       </span>
     </div>
