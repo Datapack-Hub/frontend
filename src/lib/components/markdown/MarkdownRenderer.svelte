@@ -1,7 +1,7 @@
 <script lang="ts">
   import "../../../styles/code-colors.css";
 
-  import rehypeUrls from "@jsdevtools/rehype-url-inspector";
+  import RemarkLinkRewrite from "remark-link-rewrite";
   import rehypeSanitize from "rehype-sanitize";
   import rehypeStringify from "rehype-stringify";
   import rehypeHighlight from "rehype-highlight";
@@ -19,19 +19,19 @@
   let markdownProcessor = unified()
     .use(remarkParse)
     .use(remarkGFM)
+    .use(RemarkLinkRewrite, {
+      replacer: (url: string) => {
+        if (new URL(url).host !== "datapackhub.net") {
+          url =
+            "https://datapackhub.net/linkout?url=" + encodeURIComponent(url);
+        }
+        return url;
+      }
+    })
     .use(remarkMentions, {
       usernameLink: (uname: string) => `https://datapackhub.net/user/${uname}`
     })
     .use(remarkRehype)
-    .use(rehypeUrls, {
-      inspectEach({ node, url }) {
-        let properties = node.properties!;
-        properties.href =
-          node.tagName === "a" && new URL(url).host !== "datapackhub.net"
-            ? "https://datapackhub.net/linkout?url=" + encodeURIComponent(url)
-            : url;
-      }
-    })
     .use(rehypeSanitize)
     .use(rehypeHighlight)
     .use(rehypeStringify);

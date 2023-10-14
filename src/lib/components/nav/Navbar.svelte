@@ -20,6 +20,7 @@
   let signInModal: Modal;
 
   let scrollY: number;
+  let unreadNotifications = false;
 
   let notificationTip = {
     content: "Notifications",
@@ -45,7 +46,6 @@
     interactive: true
   };
 
-  $: unreadNotifications = false;
 
   afterNavigate(() => {
     if (browser && $authed) {

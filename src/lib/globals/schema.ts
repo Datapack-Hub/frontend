@@ -79,7 +79,7 @@ export const projectSchema = z.object({
 
 export const notificationSchema = z.object({
   id: z.number().nonnegative(),
-  description: z.ostring(),
+  description: z.string(),
   message: z.string().max(200, { message: "Notification message too long" }),
   read: z.number().nonnegative(),
   type: z.enum([

@@ -25,7 +25,7 @@
     project
   }));
 
-  for (let index = 0; index < 4 - featuredProjects.length; index++) {
+  for (let index = 0; index < 5 - featuredProjects.length; index++) {
     featuredProjects.push({ type: "random", project: data.random[index] });
   }
 
@@ -126,8 +126,8 @@
   class="h-full bg-slate-50 transition-all dark:bg-zinc-900">
   <div class="py-12 md:py-0"></div>
   <section
-    class="flex h-fit w-full flex-col items-center justify-start overflow-visible px-0 sm:px-4 md:h-[85vh] md:flex-row md:justify-between md:px-8 lg:px-16">
-    <div class="w-full p-4 md:w-2/5">
+    class="flex h-fit w-full flex-col items-center justify-start overflow-visible md:h-[85vh] md:flex-row md:justify-evenly">
+    <div class="w-full md:w-2/5">
       <div class="relative h-36 w-full">
         <h1
           id="indexText1"
@@ -162,7 +162,7 @@
       </h2>
     </div>
     <section
-      class="mt-8 h-fit justify-between space-y-3 overflow-y-auto overflow-x-clip rounded-xl px-4 md:w-1/2">
+      class="mt-8 h-fit justify-between space-y-3 overflow-y-auto overflow-x-clip rounded-xl px-2 md:w-1/2">
       <h3
         class=" mt-6 text-center text-2xl font-medium text-zinc-950 dark:text-zinc-100">
         Featured Projects
@@ -182,9 +182,9 @@
     </section>
   </section>
   <section
-    class="flex w-full flex-col items-center justify-center bg-slate-200 dark:bg-zinc-800/20">
+    class="flex w-full flex-col items-center justify-center bg-slate-200 py-16 dark:bg-zinc-800/20">
     <p
-      class="mb-16 mt-8 dark:text-white {scrollY > 100
+      class="fixed bottom-20 z-50 dark:text-white lg:bottom-4 {scrollY > 100
         ? 'opacity-0'
         : 'opacity-100'} transition-opacity">
       Scroll Down! <span class="inline-block align-text-top"><IconDown /></span>
@@ -217,7 +217,7 @@
         class="fadeTextAnime col-span-2 row-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
-          <b>No more "made for older version"</b>
+          <b>No more "made for an older version"</b>
         </h2>
         <p
           class="fadeTextAnime my-3 text-lg font-light opacity-0 dark:text-zinc-100">

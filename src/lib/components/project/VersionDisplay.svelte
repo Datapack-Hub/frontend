@@ -163,9 +163,7 @@
       {
         loading: "Deleting version...",
         success: "Version deleted! Refreshing...",
-        error: "Error trying to delete project.",
-        info: "",
-        warning: ""
+        error: "Error trying to delete project."
       }
     );
     invalidateAll();

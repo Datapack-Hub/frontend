@@ -143,9 +143,7 @@
       {
         success: "Uploaded! Refreshing...",
         error: "Something went wrong.",
-        loading: "Processing file... Do not leave this page!",
-        info: "",
-        warning: ""
+        loading: "Processing file... Do not leave this page!"
       }
     );
   }
