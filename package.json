@@ -9,7 +9,7 @@
     "dev": "vite dev",
     "format": "prettier --cache src --write \"./{src,tests}/**/*.{svelte,ts}\"",
     "lighthouse": "unlighthouse --config unlighthouse.config.ts",
-    "lint": "eslint . --cache --fix",
+    "lint": "eslint . --cache",
     "preview": "vite preview",
     "test": "playwright test"
   },

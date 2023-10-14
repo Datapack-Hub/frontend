@@ -9,8 +9,7 @@
   import { authed, roles, user } from "$lib/globals/stores";
   import { sort } from "radash";
   import { toast } from "svelte-sonner";
-  import IconExpand from "~icons/tabler/ChevronDown.svelte";
-  import IconDexpand from "~icons/tabler/ChevronUp.svelte";
+  import IconRetract from "~icons/tabler/ChevronUp.svelte";
   import IconEdit from "~icons/tabler/Edit.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
   import Reply from "./Reply.svelte";
@@ -95,12 +94,13 @@
             <button
               class="mt-1 flex cursor-pointer items-center space-x-1 font-bold text-blue-400"
               on:click="{() => (showReplies = true)}"
-              ><IconExpand /><span>Show Replies</span></button>
+              ><IconRetract class="rotate-180" /><span>Show Replies</span
+              ></button>
           {:else}
             <button
               class="mt-1 flex cursor-pointer items-center space-x-1 font-bold text-blue-400"
               on:click="{() => (showReplies = false)}"
-              ><IconDexpand /><span>Hide Replies</span></button>
+              ><IconRetract /><span>Hide Replies</span></button>
             <div>
               <ul class="w-full">
                 {#each sort(comment.replies, r => r.sent) ?? [] as reply}

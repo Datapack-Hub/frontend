@@ -17,8 +17,6 @@
 
   let formatter = Intl.NumberFormat("en", { notation: "compact" });
   let visible = false;
-  // let apiExampleUser = "silabear";
-  // let apiExampleResult = "";
   let featuredProjects: { type: FeaturedProjectType; project: Project }[] = [];
   let scrollY = 0;
 

@@ -167,9 +167,7 @@
         success: "Moderated project!",
         loading: "Moderating...",
         error:
-          "Uh oh, something went wrong. If this moderation is urgent, get an admin to run an SQL command.",
-        info: "",
-        warning: ""
+          "Uh oh, something went wrong. If this moderation is urgent, get an admin to run an SQL command."
       }
     );
   }
@@ -187,9 +185,7 @@
       success: "Reported project! A moderator will review your report ASAP.",
       loading: "Reporting...",
       error:
-        "Uh oh, something went wrong. In the meantime, please report this bug on our Discord.",
-      info: "",
-      warning: ""
+        "Uh oh, something went wrong. In the meantime, please report this bug on our Discord."
     });
   }
 
@@ -209,9 +205,7 @@
       {
         success: "Featured project!",
         loading: "Featuring...",
-        error: "Uh oh, something went wrong.",
-        info: "",
-        warning: ""
+        error: "Uh oh, something went wrong."
       }
     );
   }
@@ -245,9 +239,7 @@
       {
         success: "Comment posted successfully!",
         error: "Something went wrong!",
-        loading: "Posting...",
-        info: "",
-        warning: ""
+        loading: "Posting..."
       }
     );
   }

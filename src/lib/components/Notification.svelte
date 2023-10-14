@@ -6,7 +6,7 @@
   import type { Notif } from "$lib/globals/schema";
   import MarkdownComponent from "./markdown/MarkdownRenderer.svelte";
 
-  export let notification: Notif | undefined;
+  export let notification: Notif;
   let visible = true;
 
   async function remove() {
@@ -25,9 +25,7 @@
       {
         success: "Removed Notification!",
         error: "Something went wrong 😵",
-        loading: "Removing...",
-        info: "",
-        warning: ""
+        loading: "Removing..."
       }
     );
   }
@@ -44,7 +42,7 @@
           {notification?.message}
         </h1>
       </div>
-      <MarkdownComponent classes="mt-3" source="{notification?.description}" />
+      <MarkdownComponent classes="mt-3" source="{notification.description}" />
     </div>
     <button
       title="Dismiss"

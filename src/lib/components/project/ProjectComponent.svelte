@@ -55,14 +55,14 @@
           {project.author.username}
         </a>
         {#if project.latest_version}
-          {@const mc_vers =
+          {@const mcVersions =
             project.latest_version.minecraft_versions.split(",")}
           <span>•</span>
           <span>
-            {#if mc_vers.length != 1}
-              {mc_vers[0]}-{mc_vers.at(-1)}
+            {#if mcVersions.length != 1}
+              {mcVersions[0]}-{mcVersions.at(-1)}
             {:else}
-              {mc_vers[0]}
+              {mcVersions[0]}
             {/if}
           </span>
         {:else}
