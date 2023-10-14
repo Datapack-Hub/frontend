@@ -4,7 +4,7 @@
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import { isDark, roleInfo, roles, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
-// Component imports
+  // Component imports
   // Component imports
   import type { Project } from "$lib/globals/schema";
   import tippy from "sveltejs-tippy";
@@ -161,15 +161,15 @@
   }
 
   $: iconColor = $isDark ? "white" : "black";
-  $: activePage = $page.url.pathname.split("/")[3]
+  $: activePage = $page.url.pathname.split("/")[3];
 </script>
 
 <div class="mb-2 flex items-center justify-between">
   <div class="flex space-x-1">
     <a
-      class="button-base text-zinc-950 dark:text-zinc-100 {!activePage
-        ? 'bg-slate-400 dark:bg-zinc-600'
-        : 'bg-slate-200 dark:bg-zinc-800'}"
+      class="button-base text-zinc-950 dark:text-zinc-100 {activePage
+        ? 'bg-slate-200 dark:bg-zinc-800'
+        : 'bg-slate-400 dark:bg-zinc-600'}"
       href="/project/{project.url}"
       aria-label="Description">
       <span class="hidden md:block">Description</span>

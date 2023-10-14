@@ -24,7 +24,6 @@
             .some(version => selectedVersions.includes(version))
         )
       : data.versions;
-
 </script>
 
 <main
