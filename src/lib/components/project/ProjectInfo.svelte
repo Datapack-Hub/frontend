@@ -14,9 +14,6 @@
   import CasualLine from "../decorative/CasualLine.svelte";
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import Modal from "../modals/Modal.svelte";
-
-  let nextStepsModal: Modal;
-
   import IconIcon from "~icons/tabler/Polaroid.svelte";
   import IconCategories from "~icons/tabler/Cube.svelte";
   import IconUpload from "~icons/tabler/Upload.svelte";
@@ -28,6 +25,8 @@
   // Component args
   export let project: Project;
   export let isNew: boolean;
+
+  let nextStepsModal: Modal;
 
   onMount(() => {
     if (isNew == true) nextStepsModal.open();

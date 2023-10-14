@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "../../../styles/code-colors.css";
+  import "code-colors.css";
 
   import RemarkLinkRewrite from "remark-link-rewrite";
   import rehypeSanitize from "rehype-sanitize";
@@ -41,7 +41,6 @@
   });
 </script>
 
-<!-- we have way too many classes -->
 <!-- tailwind is so clean ._. -->
 <div
   class="prose break-words
