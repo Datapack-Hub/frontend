@@ -5,7 +5,7 @@
   import { authed } from "$lib/globals/stores";
   import { onMount } from "svelte";
   import Button from "../decorative/Button.svelte";
-  import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
+  import MarkdownRenderer from "../markdown/MarkdownRenderer.svelte";
 
   let visible = false;
   let banReason: string;
@@ -61,9 +61,7 @@
             edit projects, or interact with the site until your ban has expired.
           </p>
           <p class="text-md mt-2 text-zinc-950 dark:text-white">Ban Reason:</p>
-          <p class="prose mb-2 rounded-xl bg-zinc-700 p-2 dark:text-zinc-300">
-            <MarkdownComponent source="{banReason}" />
-          </p>
+          <MarkdownRenderer source="{banReason}" />
           <p class="mt-3 text-zinc-950 dark:text-white">
             <b>Your ban will expire:</b>
             {new Date(expiry * 1000).toLocaleString()}. <br /> Until then, wait

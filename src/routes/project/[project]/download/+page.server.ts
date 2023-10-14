@@ -33,8 +33,8 @@ export const load = (async ({ params, fetch, cookies, url }) => {
   ]);
 
   return {
-    project,
-    versions,
+    project: project,
+    versions: versions,
     new: parameters.get("is_new")
   };
 }) satisfies PageServerLoad;

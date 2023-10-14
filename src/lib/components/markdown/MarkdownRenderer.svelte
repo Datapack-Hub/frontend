@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "code-colors.css";
+  import "./code-colors.css";
 
   import RemarkLinkRewrite from "remark-link-rewrite";
   import rehypeSanitize from "rehype-sanitize";

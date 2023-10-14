@@ -46,7 +46,6 @@
     interactive: true
   };
 
-
   afterNavigate(() => {
     if (browser && $authed) {
       refreshNotifications().catch(error => console.error(error));
