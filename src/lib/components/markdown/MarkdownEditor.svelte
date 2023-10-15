@@ -7,6 +7,7 @@
   export let maxEditorLength = 1e4;
   export let classes = "";
   export let content = "";
+  export let name = "";
 
   let tab = "editor";
   let remainingCharacters = maxEditorLength - content.length;
@@ -48,6 +49,7 @@
     <div class="relative">
       <textarea
         bind:value="{content}"
+        name={name}
         maxlength="{maxEditorLength}"
         on:input="{input}"
         class="input h-64 w-full"></textarea>

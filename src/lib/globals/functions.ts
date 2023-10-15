@@ -67,7 +67,7 @@ export async function fetchAuthed(
   url: string,
   options:
     | {
-        data?: object;
+        data?: object | FormData;
         fetchFunction?: FetchFunction;
       }
     | undefined = undefined
@@ -75,10 +75,19 @@ export async function fetchAuthed(
   const cookie = browser ? getCookie("dph_token") : undefined; // cookie only exists on browser
   const fetchFunction = options?.fetchFunction || fetch;
 
+  let parsedData
+  if (options?.data instanceof FormData) {
+    parsedData = options.data
+  } else if (typeof options?.data == "object") {
+    parsedData = JSON.stringify(options.data)
+  } else {
+    parsedData = undefined
+  }
+
   const response = await fetchFunction(`${API}${url}`, {
     // Start fetching
     method, // HTTP verb you want to use
-    body: options?.data ? JSON.stringify(options.data) : undefined, // Body of fetch, always JSON because our API likes it
+    body: parsedData, // Body of fetch
     headers: {
       // Headers
       ...(cookie === undefined

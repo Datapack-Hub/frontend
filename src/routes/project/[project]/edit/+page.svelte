@@ -96,10 +96,11 @@
       reader.addEventListener("error", () => reject);
     });
 
-  // i guess this is why validation is done on the front-end?
-  async function uploadVersion() {
-    let vResourcePack =
-      document.querySelector<HTMLInputElement>("#v_rp")?.files;
+  type SubmitWithData = SubmitEvent & {
+      currentTarget: EventTarget & HTMLFormElement;
+  }
+  async function uploadVersion(e: SubmitWithData) {
+    let vRP = document.querySelector<HTMLInputElement>("#v_rp")?.files;
     let vSquash = document.querySelector<HTMLInputElement>("#squash")?.checked;
 
     if (!vName) return toast("Please make sure you give a version name!");
@@ -116,29 +117,29 @@
       );
     }
 
-    let versionData = {
-      name: vName,
-      description: vChangelog,
-      minecraft_versions: supportedVersions,
-      version_code: vCode,
-      filename: zipFile.name,
-      primary_download: "",
-      resource_pack_download: "",
-      squash: vSquash
-      // dependencies // <-- uncomment to implement
-    };
+    // form stuff
+    let versionFormData = new FormData(e.currentTarget)
+    let url = e.currentTarget.action
 
-    let dp = await fileB64Encode(zipFile);
-    versionData.primary_download = dp;
 
-    if (vResourcePack?.length == 1) {
-      let rp = await fileB64Encode(vResourcePack[0]);
-      versionData.resource_pack_download = rp;
-    }
+    // let versionData = {
+      //   name: vName,
+      //   description: vChangelog,
+      //   minecraft_versions: supportedVersions,
+      //   version_code: vCode,
+      //   filename: zipFile.name,
+      //   primary_download: "",
+      //   resource_pack_download: "",
+      //   squash: vSquash
+    //   // dependencies // <-- uncomment to implement
+    // };
+
+    versionFormData.append("primary_download", zipFile);
+    versionFormData.append("filename", zipFile.name);
 
     toast.promise(
-      fetchAuthed("POST", `/versions/new/${data.project?.ID}`, {
-        data: { ...versionData }
+      fetchAuthed("POST", url, {
+        data: versionFormData
       }).then(() => goto(".")),
       {
         success: "Uploaded! Refreshing...",
@@ -216,6 +217,8 @@
       let t = await pub.text();
       toast.success(t);
       goto(".");
+    } else {
+      toast.error(pub.statusText);
     }
   }
 
@@ -447,7 +450,7 @@
         <!-- VERSIONS-->
       {:else if activePage == "versions"}
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
-          <div class="w-full text-center align-middle md:text-start">
+          <div class="text-center align-middle md:text-start">
             {#if createVersion == false}
               <div class="my-2 mb-4">
                 <p class="mb-4 text-zinc-950 dark:text-zinc-100">
@@ -475,7 +478,7 @@
               </div>
             {:else}
               {@const version = (Math.random() * 10).toFixed(1)}
-              <div>
+              <form action="/versions/new/{data.project.ID}" method="post" on:submit|preventDefault="{e => uploadVersion(e)}">
                 <button
                   class="float-right cursor-pointer select-none font-black text-zinc-950 dark:text-white"
                   on:click="{() => (createVersion = false)}"><IconX /></button>
@@ -484,29 +487,29 @@
                   Creating new Version
                 </h2>
 
-                <div class="flex space-x-4">
-                  <p
-                    class="w-3/4 align-middle text-zinc-950 dark:text-zinc-100">
+                <div class="flex gap-3">
+                  <label
+                    class="w-1/2 flex flex-col align-middle text-zinc-950 dark:text-zinc-100">
                     Version Name
-                  </p>
-                  <p
-                    class="w-1/4 align-middle text-zinc-950 dark:text-zinc-100">
+                    <input
+                      class="input"
+                      name="name"
+                      required
+                      placeholder="{data.project?.title} v{version}"
+                      maxlength="50"
+                      bind:value="{vName}" />
+                  </label>
+                  <label
+                    class="w-1/4 flex flex-col align-middle text-zinc-950 dark:text-zinc-100">
                     Version Code
-                  </p>
-                </div>
-                <div class="flex space-x-2">
-                  <input
-                    class="input w-3/4"
-                    required
-                    placeholder="{data.project?.title} v{version}"
-                    maxlength="50"
-                    bind:value="{vName}" />
-                  <input
-                    required
-                    class="input w-1/4"
-                    placeholder="v{version}"
-                    maxlength="15"
-                    bind:value="{vCode}" />
+                    <input
+                      required
+                      class="input"
+                      name="version_code"
+                      placeholder="v{version}"
+                      maxlength="15"
+                      bind:value="{vCode}" />
+                  </label>
                 </div>
 
                 <p
@@ -515,20 +518,19 @@
                 </p>
                 <MarkdownEditor
                   bind:content="{vChangelog}"
+                  name="description"
                   classes="h-36 w-full md:w-3/4" />
 
                 <p
                   class="mb-2 mt-8 align-middle text-zinc-950 dark:text-zinc-100">
                   Compatible Minecraft Versions
                 </p>
-                <div
-                  class="col-span-2 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3">
-                  <MultiSelect
-                    options="{minecraftVersions}"
-                    minSelect="{1}"
-                    bind:selected="{supportedVersions}" />
-                </div>
-                <p class="mb-8"></p>
+                <MultiSelect
+                  options="{minecraftVersions}"
+                  minSelect="{1}"
+                  name="minecraft_versions"
+                  bind:selected="{supportedVersions}" />
+                <div class="mb-8"></div>
                 <!--I've been creating this for like 4 days just to realize its not even for this page-->
                 <!-- <p class="text-zinc-950 dark:text-zinc-100 col-span-3">
                   Dependencies
@@ -561,9 +563,15 @@
                     </div>
                   {/each}
                 </div> -->
+                <input name="squash" id="squash" type="checkbox" class=" align-middle h-10" />
                 <label
-                  for="v_rp"
-                  class="button-boring mt-4 align-middle text-zinc-950 dark:text-zinc-100">
+                  for="squash"
+                  class="align-middle text-zinc-950 dark:text-zinc-100">
+                  Squash datapack. (Apply size and load speed optimizations)
+                </label>
+                <label
+                  for="resource_pack_download"
+                  class="button-alt text-sm md:text-base lg:text-lg mt-4">
                   <IconUpload class="inline-block align-text-top" /> Resource Pack
                   Download (optional)
                 </label>
@@ -573,17 +581,9 @@
                   id="v_rp"
                   name="v_rp"
                   class="hidden" />
-                <div class="mb-4 mt-2">
-                  <input name="squash" id="squash" type="checkbox" />
-                  <label
-                    for="squash"
-                    class="align-middle text-zinc-950 dark:text-zinc-100">
-                    Squash datapack. (Apply size and load speed optimizations)
-                  </label>
-                </div>
-                <Button click="{uploadVersion}" wait="{true}"
-                  >Create Version</Button>
-              </div>
+                <button type="submit" class="button-primary"
+                  >Create Version</button>
+              </form>
             {/if}
           </div>
         </div>
