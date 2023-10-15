@@ -49,7 +49,7 @@
     <div class="relative">
       <textarea
         bind:value="{content}"
-        name={name}
+        {name}
         maxlength="{maxEditorLength}"
         on:input="{input}"
         class="input h-64 w-full"></textarea>

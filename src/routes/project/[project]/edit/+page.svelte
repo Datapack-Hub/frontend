@@ -88,19 +88,10 @@
     }
   }
 
-  const fileB64Encode = (file: Blob) =>
-    new Promise<string>((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.addEventListener("load", () => resolve(reader.result as string));
-      reader.addEventListener("error", () => reject);
-    });
-
   type SubmitWithData = SubmitEvent & {
-      currentTarget: EventTarget & HTMLFormElement;
-  }
-  async function uploadVersion(e: SubmitWithData) {
-    let vRP = document.querySelector<HTMLInputElement>("#v_rp")?.files;
+    currentTarget: EventTarget & HTMLFormElement;
+  };
+  async function uploadVersion(event: SubmitWithData) {
     let vSquash = document.querySelector<HTMLInputElement>("#squash")?.checked;
 
     if (!vName) return toast("Please make sure you give a version name!");
@@ -118,19 +109,18 @@
     }
 
     // form stuff
-    let versionFormData = new FormData(e.currentTarget)
-    let url = e.currentTarget.action
-
+    let versionFormData = new FormData(event.currentTarget);
+    let url = event.currentTarget.action;
 
     // let versionData = {
-      //   name: vName,
-      //   description: vChangelog,
-      //   minecraft_versions: supportedVersions,
-      //   version_code: vCode,
-      //   filename: zipFile.name,
-      //   primary_download: "",
-      //   resource_pack_download: "",
-      //   squash: vSquash
+    //   name: vName,
+    //   description: vChangelog,
+    //   minecraft_versions: supportedVersions,
+    //   version_code: vCode,
+    //   filename: zipFile.name,
+    //   primary_download: "",
+    //   resource_pack_download: "",
+    //   squash: vSquash
     //   // dependencies // <-- uncomment to implement
     // };
 
@@ -478,7 +468,10 @@
               </div>
             {:else}
               {@const version = (Math.random() * 10).toFixed(1)}
-              <form action="/versions/new/{data.project.ID}" method="post" on:submit|preventDefault="{e => uploadVersion(e)}">
+              <form
+                action="/versions/new/{data.project.ID}"
+                method="post"
+                on:submit|preventDefault="{event => uploadVersion(event)}">
                 <button
                   class="float-right cursor-pointer select-none font-black text-zinc-950 dark:text-white"
                   on:click="{() => (createVersion = false)}"><IconX /></button>
@@ -489,7 +482,7 @@
 
                 <div class="flex gap-3">
                   <label
-                    class="w-1/2 flex flex-col align-middle text-zinc-950 dark:text-zinc-100">
+                    class="flex w-1/2 flex-col align-middle text-zinc-950 dark:text-zinc-100">
                     Version Name
                     <input
                       class="input"
@@ -500,7 +493,7 @@
                       bind:value="{vName}" />
                   </label>
                   <label
-                    class="w-1/4 flex flex-col align-middle text-zinc-950 dark:text-zinc-100">
+                    class="flex w-1/4 flex-col align-middle text-zinc-950 dark:text-zinc-100">
                     Version Code
                     <input
                       required
@@ -563,7 +556,11 @@
                     </div>
                   {/each}
                 </div> -->
-                <input name="squash" id="squash" type="checkbox" class=" align-middle h-10" />
+                <input
+                  name="squash"
+                  id="squash"
+                  type="checkbox"
+                  class=" h-10 align-middle" />
                 <label
                   for="squash"
                   class="align-middle text-zinc-950 dark:text-zinc-100">
@@ -571,7 +568,7 @@
                 </label>
                 <label
                   for="resource_pack_download"
-                  class="button-alt text-sm md:text-base lg:text-lg mt-4">
+                  class="button-alt mt-4 text-sm md:text-base lg:text-lg">
                   <IconUpload class="inline-block align-text-top" /> Resource Pack
                   Download (optional)
                 </label>

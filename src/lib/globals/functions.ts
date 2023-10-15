@@ -75,13 +75,13 @@ export async function fetchAuthed(
   const cookie = browser ? getCookie("dph_token") : undefined; // cookie only exists on browser
   const fetchFunction = options?.fetchFunction || fetch;
 
-  let parsedData
+  let parsedData;
   if (options?.data instanceof FormData) {
-    parsedData = options.data
+    parsedData = options.data;
   } else if (typeof options?.data == "object") {
-    parsedData = JSON.stringify(options.data)
+    parsedData = JSON.stringify(options.data);
   } else {
-    parsedData = undefined
+    parsedData = undefined;
   }
 
   const response = await fetchFunction(`${API}${url}`, {
@@ -149,6 +149,13 @@ export function appendSize(urlString: string, size: number): string {
   return url.toString();
 }
 
+/**
+ * Formats a string to an "x y ago" string
+ *
+ * @param timestamp epoch number you want to display
+ * @param locale locale
+ * @returns a formatted "x y ago" string
+ */
 export function timeAgo(timestamp: number, locale = "en"): string {
   let value: string;
   const diff = (Date.now() - timestamp) / 1000;
