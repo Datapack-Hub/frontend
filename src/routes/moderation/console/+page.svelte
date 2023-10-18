@@ -59,7 +59,6 @@
 
 <main id="main-content" class="bg-zinc-900 px-4 transition-all">
   {#if $user.role != "default" && $authed}
-    {#if !isSmallWidth}
       <div
         class="h-screen w-full flex-col font-console text-lime-400 md:items-start md:pt-20">
         <div
@@ -90,11 +89,5 @@
           </form>
         </div>
       </div>
-    {:else}
-      <div
-        class="h-screen w-full flex-col pt-10 font-console text-lime-400 md:items-start md:pt-20">
-        <h1>Console is not available on mobile at this moment.</h1>
-      </div>
-    {/if}
   {/if}
 </main>
