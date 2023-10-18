@@ -127,7 +127,7 @@
   <div class="py-12 md:py-0"></div>
   <section
     class="flex h-fit w-full flex-col items-center justify-start overflow-visible md:h-[85vh] md:flex-row md:justify-evenly">
-    <div class="w-full md:w-2/5">
+    <div class="w-full md:w-1/2">
       <div class="relative h-36 w-full">
         <h1
           id="indexText1"
