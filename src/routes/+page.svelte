@@ -126,7 +126,7 @@
   class="h-full bg-slate-50 transition-all dark:bg-zinc-900">
   <div class="py-12 md:py-0"></div>
   <section
-    class="flex h-fit w-full flex-col items-center justify-start overflow-visible md:h-[85vh] md:flex-row md:justify-evenly px-4 md:px-8 lg:px-16">
+    class="flex h-fit w-full flex-col items-center justify-start overflow-visible px-4 md:h-[85vh] md:flex-row md:justify-evenly md:px-8 lg:px-16">
     <div class="w-full md:w-1/2">
       <div class="relative h-36 w-full">
         <h1

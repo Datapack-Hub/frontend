@@ -109,7 +109,7 @@
 </Modal>
 
 <header
-  class="fixed z-50 w-full transform-gpu backdrop-blur bottom-0 md:bottom-auto top-auto md:top-0">
+  class="fixed bottom-0 top-auto z-50 w-full transform-gpu backdrop-blur md:bottom-auto md:top-0">
   <a
     href="#main-content"
     class="absolute right-1/2 top-4 translate-x-1/2 translate-y-16 cursor-default select-none opacity-0 transition-transform focus:translate-y-0 focus:opacity-100 dark:text-white md:-translate-y-16"
