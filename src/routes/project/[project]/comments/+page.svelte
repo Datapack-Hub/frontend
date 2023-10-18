@@ -85,6 +85,7 @@
                 <input
                   class="input w-4/5"
                   required
+                  name="comment_field"
                   placeholder="Write a comment on {data.project
                     .title} (markdown supported!)"
                   bind:value="{comment}" />

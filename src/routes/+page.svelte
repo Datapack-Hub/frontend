@@ -126,7 +126,7 @@
   class="h-full bg-slate-50 transition-all dark:bg-zinc-900">
   <div class="py-12 md:py-0"></div>
   <section
-    class="flex h-fit w-full flex-col items-center justify-start overflow-visible md:h-[85vh] md:flex-row md:justify-evenly">
+    class="flex h-fit w-full flex-col items-center justify-start overflow-visible md:h-[85vh] md:flex-row md:justify-evenly px-4 md:px-8 lg:px-16">
     <div class="w-full md:w-1/2">
       <div class="relative h-36 w-full">
         <h1
@@ -152,7 +152,7 @@
         </h1>
       </div>
       <h2
-        class="w-full text-center text-xl text-zinc-950 dark:text-zinc-100 sm:text-xl md:w-auto md:text-left md:text-2xl xl:text-3xl">
+        class="text-center text-xl text-zinc-950 dark:text-zinc-100 md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{(data.count - 1).toString()}"
           class="font-bold text-dph-orange">
