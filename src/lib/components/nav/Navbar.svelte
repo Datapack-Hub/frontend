@@ -139,6 +139,11 @@
       </a>
       <a
         class="hidden rounded-full p-1 font-light transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:block md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
+        href="/tools">
+        Tools
+      </a>
+      <a
+        class="hidden rounded-full p-1 font-light transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:block md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
         href="https://discord.datapackhub.net">Discord</a>
     </ConditionalWrapper>
     <ConditionalWrapper

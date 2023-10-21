@@ -8,7 +8,7 @@
 <main
   id="main-content"
   class="flex h-screen items-center justify-between px-4 sm:px-8 md:px-16 lg:px-24">
-  <img src="/logos/dph.svg" alt="logo" class="w-1/4 p-12" />
+  <img src="/logos/dph_stop.svg" alt="logo" class="w-1/4 p-12" />
   <div class="w-3/4">
     <h1
       class="mb-4 text-3xl font-bold text-zinc-950 dark:text-zinc-100 md:text-4xl lg:text-5xl">
