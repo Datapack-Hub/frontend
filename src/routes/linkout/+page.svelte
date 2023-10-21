@@ -27,7 +27,7 @@
       class="mt-4 flex flex-col space-x-0 space-y-3 md:flex-row md:space-x-4 md:space-y-0">
       <a
         class="button-primary text-center"
-        rel="nofollow"
+        rel="nofollow noreferer"
         href="{decodeURIComponent(data.url ?? 'https://datapackhub.net')}"
         >Continue to site</a>
       <Button click="{() => history.back()}">Go Back</Button>

@@ -50,9 +50,76 @@
   let vChangelog = "";
   let vName = "";
   let vCode = "";
+  let vRPUsed = false;
 
   // let dependencies: Project[] = [];
   // let dependencyNames: string[] = [""];
+
+  function setRPUsed() {
+    vRPUsed = true;
+  }
+
+  type DragEventWithTarget = DragEvent & {
+    currentTarget: EventTarget & HTMLLabelElement;
+  };
+  async function verifyDroppedPack(event: DragEventWithTarget) {
+    if (event.dataTransfer?.items) {
+      // Use DataTransferItemList interface to access the file(s)
+      let item = [...event.dataTransfer.items][0];
+      // If dropped items aren't files, reject them
+      if (item.kind === "file") {
+        const file = item.getAsFile();
+        if (!file) {
+          return toast.error("Missing file");
+        }
+
+        if (file?.size > 5e6) {
+          toast.error("File size can't be more than 5mb!");
+          return;
+        }
+
+        if (file) {
+          try {
+            let { loadAsync } = await import("jszip");
+            let zip = await loadAsync(file);
+
+            if (
+              !zip.file("pack.mcmeta") ||
+              !zip.folder("data") ||
+              file.type != "application/x-zip-compressed"
+            ) {
+              return toast.error("Malformed Datapack!");
+            }
+
+            zipFile = file;
+            createVersion = true;
+          } catch {
+            return toast.error("Malformed Datapack!");
+          }
+        } else {
+          return toast.error("Missing file");
+        }
+      } else {
+        return toast.error("Not valid!");
+      }
+    }
+  }
+
+  async function rpDropHandler(event: DragEventWithTarget) {
+    if (event.dataTransfer?.items) {
+      // Use DataTransferItemList interface to access the file(s)
+      let item = [...event.dataTransfer.items][0];
+      // If dropped items aren't files, reject them
+      if (item.kind === "file") {
+        const file = item.getAsFile();
+        let container = new DataTransfer();
+        container.items.add(file!);
+        document.querySelector<HTMLInputElement>("#v_rp")!.files! =
+          container.files!;
+        setRPUsed();
+      }
+    }
+  }
 
   // this should probably be done on the backend
   async function verifyDatapack() {
@@ -237,25 +304,6 @@
       goto("/");
     }
   }
-
-  // function dependencyHandler(v: string, index: number) {
-  //   dependencyNames[index] = v;
-  //   if (dependencyNames.length == index) dependencyNames.push("");
-  //   dependencyNames = dependencyNames.slice(0, 4);
-  //   resolveDependency(v, index);
-  // }
-
-  // async function resolveDependency(v: string, index: number) {
-  //   let search = await fetch(`${API}/projects/search?query=${v}`);
-  //   let searchJson = await search.json();
-  //   let projects = await projectSchema.array().parseAsync(searchJson.result);
-
-  //   for (const project of projects) {
-  //     if (project.url == v) {
-  //       dependencies[index] = project;
-  //     }
-  //   }
-  // }
 </script>
 
 <svelte:head>
@@ -272,8 +320,7 @@
       Edit <span class="text-dph-orange">{data.project?.title}</span>
     </h1>
     {#if data.project?.mod_message}
-      <div
-        class="mt-2 rounded-xl bg-slate-200 p-4 dark:bg-red-500/20 dark:text-zinc-100">
+      <div class="mt-2 rounded-xl bg-red-500/20 p-4 dark:text-zinc-100">
         <p class=" font-black">Message from Datapack Hub Staff:</p>
         <p
           class="prose mb-1 mt-2 rounded-xl bg-red-500/30 p-3 dark:text-zinc-300">
@@ -363,66 +410,6 @@
           <MarkdownEditor
             classes="col-span-2 h-64 resize-none"
             bind:content="{bodyValue}" />
-          <!-- <p class="text-zinc-950 dark:text-zinc-100 col-span-3 pt-3">
-            CC Licence (click to select)
-          </p>
-          <p class="text-zinc-950 dark:text-zinc-100/20 col-span-3">
-            WIP, does not work!
-          </p>
-          <div
-            class="grid grid-cols-2 gap-3 col-span-2 lg:col-span-1"
-            use:autoAnimate>
-            <div class="input cursor-pointer">
-              <h1 class="flex items-center space-x-2">
-                <IconAttr />
-                <p class="font-bold">Attribution</p>
-              </h1>
-              <p class="text-xs">
-                If people use, redistribute, or modify your work, credit must be
-                given to you, the creator.
-              </p>
-            </div>
-            <div class="input cursor-pointer">
-              <h1 class="flex items-center space-x-2">
-                <IconSA />
-                <p class="font-bold">ShareAlike</p>
-              </h1>
-              <p class="text-xs">
-                If someone remixes, transforms, or builds upon your work, they
-                have to distribute it under the same licence.
-              </p>
-            </div>
-            <div class="input cursor-pointer">
-              <h1 class="flex items-center space-x-2">
-                <IconNC />
-                <p class="font-bold">NonCommercial</p>
-              </h1>
-              <p class="text-xs">
-                People can't use your work to make money or for other commercial
-                purposes.
-              </p>
-            </div>
-            <div class="input cursor-pointer p-3">
-              <h1 class="flex items-center space-x-2">
-                <IconND />
-                <p class="font-bold">NoDerivatives</p>
-              </h1>
-              <p class="text-xs">
-                If someone remixes, transforms, or builds upon your work, they
-                can't distribute it.
-              </p>
-            </div>
-            <div class="input p-3 col-span-2 space-y-1">
-              <h1 class="flex items-center space-x-2">
-                <IconEdit />
-                <p class="font-bold">Custom</p>
-              </h1>
-              <input
-                type="text"
-                class="input w-full"
-                placeholder="https://example.com/my-custom-licence.md" />
-            </div>
-          </div> -->
           <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
           <div
             class="col-span-2 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3 lg:grid-cols-4">
@@ -442,14 +429,19 @@
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
           <div class="text-center align-middle md:text-start">
             {#if createVersion == false}
-              <div class="my-2 mb-4">
-                <p class="mb-4 text-zinc-950 dark:text-zinc-100">
-                  Press the button below to upload a version of your pack, it
-                  will move on automatically
-                </p>
-                <label for="zip">
-                  <span class="button-primary cursor-pointer"
-                    ><IconUpload class="inline-block align-text-top" /> Upload Version</span>
+              <p
+                class="mb-8 text-2xl font-bold text-zinc-950 dark:text-zinc-100">
+                Step 1. Upload Datapack Data
+              </p>
+              <div class="my-2 flex flex-col items-center justify-center">
+                <label
+                  on:dragover|preventDefault="{() => {}}"
+                  on:drop|preventDefault="{event => verifyDroppedPack(event)}"
+                  for="zip"
+                  class="flex h-32 w-96 flex-col items-center justify-center rounded-lg border-2 border-slate-400 bg-slate-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white">
+                  <span class="cursor-pointer"
+                    ><IconUpload class="inline-block align-text-top" /> Upload Datapack</span>
+                  (Drag and Drop Supported!)
                 </label>
                 <input
                   type="file"
@@ -457,11 +449,15 @@
                   accept=".zip"
                   id="zip"
                   on:input="{verifyDatapack}" />
-                <span class="align-center text-zinc-950 dark:text-white"
-                  >(Supported: *.zip)</span>
+                <span class="align-center mt-4 text-zinc-950 dark:text-white"
+                  >(Supports: *.zip)</span>
                 <!-- <p class="align-middle  text-zinc-950 dark:text-zinc-100">No versions yet!</p> -->
+                <p class="mt-4 text-zinc-950 dark:text-zinc-100">
+                  After you upload a version of your pack, it'll move on
+                  automatically!
+                </p>
               </div>
-              <div class="space-y-2">
+              <div class="gap-2">
                 {#each data.versions ?? [] as version}
                   <VersionDisplay {version} project="{data.project}" />
                 {/each}
@@ -476,8 +472,8 @@
                   class="float-right cursor-pointer select-none font-black text-zinc-950 dark:text-white"
                   on:click="{() => (createVersion = false)}"><IconX /></button>
                 <h2
-                  class="mb-2 text-xl font-bold text-zinc-950 dark:text-white">
-                  Creating new Version
+                  class="mb-2 text-2xl font-bold text-zinc-950 dark:text-white">
+                  Step 2. Fill in your version's info
                 </h2>
 
                 <div class="flex gap-3">
@@ -568,13 +564,18 @@
                 </label>
                 <label
                   for="resource_pack_download"
-                  class="button-alt mt-4 text-sm md:text-base lg:text-lg">
-                  <IconUpload class="inline-block align-text-top" /> Resource Pack
-                  Download (optional)
+                  class="my-4 flex h-32 w-96 flex-col items-center justify-center rounded-lg border-2 border-slate-400 bg-slate-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white"
+                  on:dragover|preventDefault="{() => {}}"
+                  on:drop|preventDefault="{event => rpDropHandler(event)}">
+                  <IconUpload class="inline-block align-text-top" />
+                  {vRPUsed
+                    ? "Resource Pack (Uploaded Successfully)"
+                    : "Resource Pack (optional)"}
                 </label>
                 <input
                   type="file"
                   accept=".zip"
+                  on:input="{() => setRPUsed}"
                   id="v_rp"
                   name="v_rp"
                   class="hidden" />
@@ -638,10 +639,10 @@
 <style lang="postcss">
   :root {
     --sms-bg: theme(colors.zinc.800);
-    --sms-border: 2px solid theme(colors.zinc.200);
+    --sms-border: 2px solid theme(colors.zinc.700);
     --sms-selected-bg: theme(colors.zinc.700);
     --sms-remove-btn-hover-bg: theme(colors.orange.500);
     --sms-options-bg: theme(colors.zinc.800);
-    --sms-text-color: theme(colors.slate.100);
+    --sms-text-color: theme(colors.white);
   }
 </style>
