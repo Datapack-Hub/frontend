@@ -7,8 +7,8 @@
 
 <main
   id="main-content"
-  class="flex h-screen items-center justify-between px-4 sm:px-8 md:px-16 lg:px-24">
-  <img src="/logos/dph_stop.svg" alt="logo" class="w-1/4 p-12" />
+  class="flex h-screen flex-col md:flex-row items-center justify-center md:justify-between px-4 sm:px-8 md:px-16 lg:px-24">
+  <img src="/logos/dph_stop.svg" alt="logo" class="w-full sm:w-1/2 md:w-1/4 p-12" />
   <div class="w-3/4">
     <h1
       class="mb-4 text-3xl font-bold text-zinc-950 dark:text-zinc-100 md:text-4xl lg:text-5xl">
@@ -23,7 +23,7 @@
       class="text-sm text-zinc-950/60 dark:text-zinc-100/60 md:text-base lg:text-lg">
       URL: {data.url}
     </p>
-    <div class="mt-4 flex w-2/3 justify-between md:w-1/2 lg:w-2/5">
+    <div class="mt-4 flex flex-col space-y-1 md:flex-row w-full justify-between md:w-1/2 lg:w-2/5">
       <a
         class="button-primary"
         rel="nofollow"
