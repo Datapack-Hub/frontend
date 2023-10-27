@@ -2,7 +2,7 @@
   import Button from "$lib/components/decorative/Button.svelte";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import IconVerified from "$lib/components/decorative/IconVerified.svelte";
-  import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
+  import RawMarkdownRenderer from "$lib/components/markdown/RawMarkdownRenderer.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import UserModeration from "$lib/components/user/UserModeration.svelte";
   import { badges } from "$lib/globals/badges";
@@ -189,7 +189,7 @@
       </div>
       <span
         class="styled-scrollbar w-full overflow-y-auto rounded-xl bg-slate-200 p-4 dark:bg-zinc-800 md:w-1/2">
-        <MarkdownComponent source="{data.profile?.bio}" />
+        <RawMarkdownRenderer html="{data.profile?.bio}" />
       </span>
     </div>
     <div class="px-3 pt-16">

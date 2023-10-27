@@ -102,7 +102,7 @@
       <p class="text-md my-2 flex items-center space-x-2 dark:text-white">
         <IconCube />
         <span class="font-bold">Categories:</span>
-        <span>{project.category?.join(", ")}</span>
+        <span class="text-sm">{project.category?.join(", ")}</span>
       </p>
       <div class="my-3">
         <CasualLine />

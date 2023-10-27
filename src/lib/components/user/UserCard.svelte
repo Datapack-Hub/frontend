@@ -1,8 +1,8 @@
 <script lang="ts">
+  import { appendSize } from "$lib/globals/functions";
   import type { Role, User } from "$lib/globals/schema";
   import { title } from "radash";
-  import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
-  import { appendSize } from "$lib/globals/functions";
+  import RawMarkdownRenderer from "../markdown/RawMarkdownRenderer.svelte";
 
   export let person: User;
   export let role: Role | undefined;
@@ -35,7 +35,7 @@
             width="18" />Datapack Hub Team
         {/if}
       </span>
-      <MarkdownComponent source="{person?.bio}" classes="{'line-clamp-2'}" />
+      <RawMarkdownRenderer html="{person?.bio}" classes="{'line-clamp-2'}" />
     </div>
   </div>
 </a>

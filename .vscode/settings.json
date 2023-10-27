@@ -12,5 +12,6 @@
     "ostring",
     "tabler",
     "tippy"
-  ]
+  ],
+  "eslint.validate": ["javascript", "javascriptreact", "svelte"]
 }

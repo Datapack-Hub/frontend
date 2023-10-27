@@ -1,4 +1,5 @@
 import { API } from "$lib/globals/consts";
+import { processMarkdown } from "$lib/globals/markdown";
 import { userSchema } from "$lib/globals/schema.js";
 import { parallel } from "radash";
 import type { PageLoad } from "./$types";
@@ -18,7 +19,12 @@ export const load = (async ({ fetch }) => {
     }
   );
 
+  const staff = [...admins, ...moderators, ...helpers];
+  for (const member of staff) {
+    member.bio = await processMarkdown(member.bio);
+  }
+
   return {
-    staff: [...admins, ...moderators, ...helpers]
+    staff
   };
 }) satisfies PageLoad;

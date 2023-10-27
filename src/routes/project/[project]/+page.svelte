@@ -4,8 +4,8 @@
   // Svelte imports
   import autoAnimate from "@formkit/auto-animate";
   // Component imports
-  import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
 
+  import RawMarkdownRenderer from "$lib/components/markdown/RawMarkdownRenderer.svelte";
   import ProjectNav from "$lib/components/project/ProjectNav.svelte";
 
   export let data: PageData;
@@ -42,8 +42,8 @@
 
       <div class="w-full rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
         <p class="w-full break-words leading-tight">
-          <MarkdownComponent
-            source="{data.project.body ?? 'No body specified!'}"
+          <RawMarkdownRenderer
+            html="{data.project.body ?? 'No body specified!'}"
             classes="prose-headings:mb-2 prose-p:my-0 prose-ul:my-3 prose-img:my-0" />
         </p>
       </div>

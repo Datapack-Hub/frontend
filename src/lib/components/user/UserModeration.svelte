@@ -13,6 +13,7 @@
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import Button from "../decorative/Button.svelte";
   import UserCard from "./UserCard.svelte";
+  import { processMarkdown } from "$lib/globals/markdown";
 
   export let user: User;
 
@@ -38,6 +39,8 @@
     banExpiry: -1,
     banMessage: "null"
   };
+
+  processMarkdown(user.bio).then(bio => (user.bio = bio));
 
   async function loadData() {
     if (browser) {
@@ -338,7 +341,7 @@
     {user?.username} has been banned for the following reason:
   </p>
   <p class="my-2 rounded-xl bg-zinc-700 p-3 dark:text-zinc-300">
-    <MarkdownComponent source="" />
+    <MarkdownComponent source="{user.banData?.message ?? 'Ban data lost!'}" />
   </p>
   <p class=" text-sm text-zinc-950/40 dark:text-white/40">
     Unban them to end their ban early.

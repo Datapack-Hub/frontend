@@ -1,4 +1,5 @@
 import { fetchAuthed } from "$lib/globals/functions";
+import { processMarkdown } from "$lib/globals/markdown";
 import { projectSchema, userSchema } from "$lib/globals/schema";
 import { roles } from "$lib/globals/stores";
 import { error } from "@sveltejs/kit";
@@ -36,6 +37,8 @@ export const load = (async ({ params, fetch }) => {
 
   const profileRole = get(roles).find(role => role.name === profileJson.role);
   const downloads = sum(projectJson, p => p.downloads ?? 0);
+
+  profileJson.bio = await processMarkdown(profileJson.bio);
 
   return {
     profile: profileJson,

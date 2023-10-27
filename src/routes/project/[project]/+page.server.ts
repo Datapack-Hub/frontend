@@ -1,4 +1,5 @@
 import { serverGetAuthed } from "$lib/globals/functions";
+import { processMarkdown } from "$lib/globals/markdown";
 import { projectSchema, versionSchema } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
@@ -31,6 +32,9 @@ export const load = (async ({ params, fetch, cookies, url }) => {
     projectSchema.parseAsync(await projectRequest.json()),
     versionSchema.array().parseAsync(versionsJson.result)
   ]);
+
+  project.body = await processMarkdown(project.body ?? "No Body Specified!");
+  project.author.bio = await processMarkdown(project.author.bio);
 
   return {
     project,
