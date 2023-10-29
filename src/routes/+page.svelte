@@ -152,7 +152,7 @@
         </h1>
       </div>
       <h2
-        class="text-center text-xl text-zinc-950 dark:text-zinc-100 md:w-auto md:text-left md:text-2xl xl:text-3xl">
+        class="text-balance text-center text-xl text-zinc-950 dark:text-zinc-100 md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{(data.count - 1).toString()}"
           class="font-bold text-dph-orange">

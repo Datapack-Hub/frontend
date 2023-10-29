@@ -1,22 +1,30 @@
 <script lang="ts">
-  import { appendSize } from "$lib/globals/functions";
+  import { appendSize, getUserLocale, timeAgo } from "$lib/globals/functions";
   import type { Project } from "$lib/globals/schema";
   import { roles } from "$lib/globals/stores";
   import { title } from "radash";
   import IconDownload from "~icons/tabler/Download.svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
+  import IconUpdate from "~icons/tabler/Refresh.svelte";
+  import tippy from "sveltejs-tippy";
 
   export let project: Project;
   export let showStatus = false;
 
-  let formatter = Intl.NumberFormat("en", { notation: "compact" });
+  let numberFormatter = Intl.NumberFormat(getUserLocale(), {
+    notation: "compact"
+  });
+  let dateFormatter = Intl.DateTimeFormat(getUserLocale(), {
+    dateStyle: "full",
+    timeStyle: "long"
+  });
 
   $: userRole = $roles.find(role => role.name === project.author.role);
   $: status = project.status ?? "unpublished";
 </script>
 
 <div
-  class="project-component relative h-full w-full items-center rounded-xl bg-slate-200 p-3 text-zinc-950 dark:bg-zinc-800 dark:text-zinc-100">
+  class="relative h-full w-full items-center rounded-xl bg-slate-200 p-3 text-zinc-950 dark:bg-zinc-800 dark:text-zinc-100">
   <div class="items-top flex">
     <a
       href="/project/{project.url}"
@@ -37,7 +45,7 @@
     <div class="ml-4 w-3/4">
       <a
         href="/project/{project.url}"
-        class="text-lg hover:underline md:text-xl lg:text-2xl">
+        class="text-lg hover:underline md:text-xl">
         {project.title}
       </a>
       <div
@@ -59,11 +67,7 @@
             project.latest_version.minecraft_versions.split(",")}
           <span>•</span>
           <span>
-            {#if mcVersions.length != 1}
-              {mcVersions[0]}-{mcVersions.at(-1)}
-            {:else}
-              {mcVersions[0]}
-            {/if}
+            {mcVersions[0]}
           </span>
         {:else}
           <span>•</span>
@@ -71,7 +75,7 @@
         {/if}
         <span>•</span>
         <span
-          >{formatter.format(project.downloads ?? 0)}<IconDownload
+          >{numberFormatter.format(project.downloads ?? 0)}<IconDownload
             class="ml-0.5 inline-block h-4 w-4 align-text-top" /></span>
         {#if showStatus}
           {#if ["unpublished", "draft"].includes(status)}
@@ -88,8 +92,17 @@
         {/if}
       </div>
       <p
-        class="max-w-1/2 mt-2 line-clamp-1 text-xs font-medium text-zinc-700 dark:text-zinc-100/40">
+        class="max-w-1/2 mt-1 line-clamp-1 text-xs font-medium text-zinc-700 dark:text-zinc-100/40">
         {project.description}
+      </p>
+      <p
+        class="mt-2 w-fit text-xs"
+        use:tippy="{{
+          content: dateFormatter.format((project.updated || 0) * 1000),
+          placement: 'top'
+        }}">
+        <IconUpdate class="inline-block" />
+        Updated: {timeAgo((project.updated || 0) * 1000)}
       </p>
     </div>
   </div>

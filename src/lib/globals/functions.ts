@@ -181,3 +181,7 @@ export function timeAgo(timestamp: number, locale = "en"): string {
   }
   return value;
 }
+
+export function getUserLocale() {
+  return browser && navigator ? navigator.language || "en" : "en";
+}
