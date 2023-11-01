@@ -462,7 +462,8 @@
             {:else}
               {@const version = (Math.random() * 10).toFixed(1)}
               <form
-                action="https://api.datapackhub.net/versions/new/{data.project.ID}"
+                action="https://api.datapackhub.net/versions/new/{data.project
+                  .ID}"
                 method="post"
                 on:submit|preventDefault="{event => uploadVersion(event)}">
                 <button
@@ -561,7 +562,7 @@
                 </label>
                 <label
                   for="v_rp"
-                  class="cursor-pointer my-4 flex h-32 w-96 flex-col items-center justify-center rounded-lg border-2 border-slate-400 bg-slate-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white"
+                  class="my-4 flex h-32 w-96 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-slate-400 bg-slate-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white"
                   on:dragover|preventDefault="{() => {}}"
                   on:drop|preventDefault="{event => rpDropHandler(event)}">
                   <IconUpload class="inline-block align-text-top" />

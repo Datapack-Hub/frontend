@@ -68,8 +68,8 @@ export async function fetchAuthed(
   options:
     | {
         data?: object | FormData;
-      fetchFunction?: FetchFunction;
-        useSuppliedURL?: boolean
+        fetchFunction?: FetchFunction;
+        useSuppliedURL?: boolean;
       }
     | undefined = undefined
 ): Promise<Response> {
@@ -85,9 +85,10 @@ export async function fetchAuthed(
     parsedData = undefined;
   }
 
-  let link = `${API}${url}`
+  let link = `${API}${url}`;
 
-  if (typeof options?.useSuppliedURL === "boolean" && !options?.useSuppliedURL) link = url
+  if (typeof options?.useSuppliedURL === "boolean" && !options?.useSuppliedURL)
+    link = url;
 
   const response = await fetchFunction(link, {
     // Start fetching
