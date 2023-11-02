@@ -7,7 +7,6 @@
     moderatorOrAbove
   } from "$lib/globals/functions";
   import { authed, roleInfo, user, windowWidth } from "$lib/globals/stores";
-  import tippy from "sveltejs-tippy";
   import IconRead from "~icons/tabler/Bell.svelte";
   import IconUnread from "~icons/tabler/BellRinging.svelte";
   import IconCompass from "~icons/tabler/Compass.svelte";
@@ -16,34 +15,17 @@
   import ColorSchemeSelector from "../ColorSchemeSelector.svelte";
   import Modal from "../modals/Modal.svelte";
   import ConditionalWrapper from "../utility/ConditionalWrapper.svelte";
+  import Tooltip from "../utility/Tooltip.svelte";
 
   let signInModal: Modal;
 
   let scrollY: number;
   let unreadNotifications = false;
 
-  let notificationTip = {
-    content: "Notifications",
-    placement: "bottom"
-  };
-
-  let moderationTip = {
-    content: "Moderation",
-    placement: "bottom"
-  };
-
-  let newProjectTip = {
-    content: "Create Project",
-    placement: "bottom"
-  };
-
   let logoutTippy = {
     content:
       $user.username +
-      "<span class='items-center'><br /><a data-sveltekit-preload-data=\"tap\" href='/?log_out=1' class='text-blue-500'>Sign Out</a></span>",
-    placement: "bottom",
-    allowHTML: true,
-    interactive: true
+      "<span class='items-center'><br /><a data-sveltekit-preload-data=\"tap\" href='/?log_out=1' class='text-blue-500'>Sign Out</a></span>"
   };
 
   afterNavigate(() => {
@@ -150,47 +132,55 @@
       wrapCondition="{!isSmall}"
       classes="flex items-center justify-end space-x-4">
       {#if $authed}
-        <a
-          aria-label="New project"
-          href="/projects/new"
-          class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
-          use:tippy="{newProjectTip}"><IconPlus width="24" height="24" /></a>
-        <a
-          href="/notifications"
-          class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
-          aria-label="Notifications page"
-          use:tippy="{notificationTip}">
-          {#if unreadNotifications}
-            <IconUnread height="24" width="24" />
-          {:else}
-            <IconRead height="24" width="24" />
-          {/if}
-        </a>
+        <Tooltip tooltipText="{'Create project'}" placement="{'bottom'}">
+          <a
+            aria-label="New project"
+            href="/projects/new"
+            class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75">
+            <IconPlus width="24" height="24" /></a>
+        </Tooltip>
+        <Tooltip tooltipText="{'Notifications'}" placement="{'bottom'}">
+          <a
+            href="/notifications"
+            class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
+            aria-label="Notifications page">
+            {#if unreadNotifications}
+              <IconUnread height="24" width="24" />
+            {:else}
+              <IconRead height="24" width="24" />
+            {/if}
+          </a>
+        </Tooltip>
         {#if !isSmall}
           {#if $authed && moderatorOrAbove($roleInfo)}
-            <a
-              href="/moderation"
-              class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
-              use:tippy="{moderationTip}"
-              ><IconShield width="24" height="24" /></a>
+            <Tooltip tooltipText="{'Moderation Page'}" placement="{'bottom'}">
+              <a
+                href="/moderation"
+                class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
+                ><IconShield width="24" height="24" /></a>
+            </Tooltip>
           {/if}
         {/if}
       {/if}
       <ColorSchemeSelector />
       {#if $authed}
-        <a
-          class="py-2"
-          aria-label="Your profile"
-          href="/user/{$user.username}"
-          use:tippy="{logoutTippy}">
-          <img
-            src="{appendSize($user.profile_icon, 64)}"
-            alt="{$user.username}'s profile picture"
-            height="24"
-            width="24"
-            class="ml-2 rounded-full outline outline-2 outline-offset-2 hover:brightness-75"
-            style="outline-color:{$roleInfo.color ?? '#eab308'};" />
-        </a>
+        <Tooltip
+          tooltipText="{logoutTippy.content}"
+          placement="{'bottom'}"
+          allowHTML="{true}">
+          <a
+            class="py-2"
+            aria-label="Your profile"
+            href="/user/{$user.username}">
+            <img
+              src="{appendSize($user.profile_icon, 64)}"
+              alt="{$user.username}'s profile picture"
+              height="24"
+              width="24"
+              class="ml-2 rounded-full outline outline-2 outline-offset-2 hover:brightness-75"
+              style="outline-color:{$roleInfo.color ?? '#eab308'};" />
+          </a>
+        </Tooltip>
       {:else}
         <button
           id="sign_in"

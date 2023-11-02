@@ -1,7 +1,6 @@
 <script lang="ts">
   import { browser, dev } from "$app/environment";
   import { toast } from "svelte-sonner";
-  import tippy from "sveltejs-tippy";
 
   import CasualLine from "../decorative/CasualLine.svelte";
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
@@ -13,12 +12,13 @@
   import { user } from "$lib/globals/stores";
   import { isArray, isNumber, isObject } from "radash";
   import IconZIP from "~icons/tabler/Cube.svelte";
+  import IconDownload from "~icons/tabler/Download.svelte";
   import IconFile from "~icons/tabler/File.svelte";
   import IconFileFilled from "~icons/tabler/FileFilled.svelte";
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import IconRP from "~icons/tabler/Sparkles.svelte";
-  import IconDownload from "~icons/tabler/Download.svelte";
   import Button from "../decorative/Button.svelte";
+  import Tooltip from "../utility/Tooltip.svelte";
 
   export let version: Version;
   export let expanded = false;
@@ -261,14 +261,11 @@
     <p class="pr-1">
       Select a valid Minecraft version below to download the datapack.
     </p>
-    <div
-      use:tippy="{{
-        content:
-          'The version you select here will determine what pack_format is used in pack.mcmeta',
-        placement: 'right'
-      }}">
+    <Tooltip
+      tooltipText="{'The version you select here will determine what pack_format is used in pack.mcmeta'}"
+      placement="{'right'}">
       <IconInfo />
-    </div>
+    </Tooltip>
   </div>
   <div class="grid-auto-lg my-2 grid gap-2 text-zinc-950 dark:text-white">
     {#each version?.minecraft_versions.split(",") ?? [] as mcv}

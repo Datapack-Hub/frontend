@@ -1,8 +1,13 @@
+<script>
+  export let classes = ""
+</script>
+
 <!--I didn't want to add a whole icon set for 1 icon-->
 <svg
   xmlns="http://www.w3.org/2000/svg"
   width="1em"
   height="1em"
+  class="inline-block text-lg transition-all hover:scale-125 md:text-xl lg:text-2xl {classes}"
   viewBox="0 0 24 24"
   ><path
     fill="currentColor"

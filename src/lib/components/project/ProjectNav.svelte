@@ -4,10 +4,9 @@
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import { isDark, roleInfo, roles, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
-  // Component imports
+// Component imports
   // Component imports
   import type { Project } from "$lib/globals/schema";
-  import tippy from "sveltejs-tippy";
 
   import IconDescription from "~icons/tabler/AlignLeft.svelte";
   import IconConfetti from "~icons/tabler/Award.svelte";
@@ -19,13 +18,14 @@
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconCross from "~icons/tabler/X.svelte";
 
+  import { page } from "$app/stores";
   import Button from "$lib/components/decorative/Button.svelte";
   import DphButton from "$lib/components/decorative/DPHButton.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
   import UserCard from "$lib/components/user/UserCard.svelte";
   import { title } from "radash";
   import BhAdvert from "../decorative/BHAdvert.svelte";
-  import { page } from "$app/stores";
+  import Tooltip from "../utility/Tooltip.svelte";
 
   export let project: Project;
 
@@ -196,55 +196,54 @@
       </a>
     {/if}
     {#if $user.id != project?.author.id && status == "live"}
-      <button
-        aria-label="Report Project"
-        class="button-base flex items-center space-x-1 text-zinc-950 dark:text-zinc-100"
-        use:tippy="{{
-          content: 'Report Project',
-          placement: 'bottom'
-        }}"
-        on:click="{() => {
-          reportModal.open();
-        }}"><IconReport /></button>
+      <Tooltip tooltipText="{'Report Project'}" placement="{'bottom'}">
+        <button
+          aria-label="Report Project"
+          class="button-base flex items-center space-x-1 text-zinc-950 dark:text-zinc-100"
+          on:click="{() => {
+            reportModal.open();
+          }}"><IconReport /></button>
+      </Tooltip>
     {/if}
     {#if moderatorOrAbove($roleInfo)}
       {#if status == "publish_queue" || status == "review_queue"}
-        <button
-          aria-label="Approve"
-          class="button-base flex items-center space-x-1 bg-green-600 text-zinc-950 dark:text-zinc-100"
-          on:click="{approve}"
-          use:tippy="{{ content: 'Approve', placement: 'bottom' }}"
-          ><IconTick /><!--<span class="hidden md:block">Approve</span>--></button>
-        <button
-          aria-label="Request Changes"
-          class="button-base flex items-center space-x-1 bg-yellow-600 text-zinc-950 dark:text-zinc-100"
-          on:click="{() => {
-            moderationModalPage = 'disable';
-            moderateModal.open();
-          }}"
-          use:tippy="{{
-            content: 'Request Changes',
-            placement: 'bottom'
-          }}"
-          ><IconPencil /><!--<span class="hidden md:block">Request Changes</span
-            >--></button>
-        <button
-          aria-label="Deny"
-          class="button-base flex items-center space-x-1 bg-red-600 text-zinc-100"
-          on:click="{() => {
-            moderationModalPage = 'delete';
-            moderateModal.open();
-          }}"
-          use:tippy="{{ content: 'Deny', placement: 'bottom' }}"
-          ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>
-        <button
-          class="button-base space-x-1 text-zinc-950 dark:text-zinc-100"
-          aria-label="Moderate"
-          on:click="{() => {
-            moderateModal.open();
-          }}"
-          use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
-          ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
+        <Tooltip tooltipText="{'Approve'}" placement="{'bottom'}">
+          <button
+            aria-label="Approve"
+            class="button-base flex items-center space-x-1 bg-green-600 text-zinc-950 dark:text-zinc-100"
+            on:click="{approve}"
+            ><IconTick /><!--<span class="hidden md:block">Approve</span>--></button>
+        </Tooltip>
+        <Tooltip tooltipText="{'Request Changes'}" placement="{'bottom'}">
+          <button
+            aria-label="Request Changes"
+            class="button-base flex items-center space-x-1 bg-yellow-600 text-zinc-950 dark:text-zinc-100"
+            on:click="{() => {
+              moderationModalPage = 'disable';
+              moderateModal.open();
+            }}"
+            ><IconPencil /><!--<span class="hidden md:block">Request Changes</span
+              >--></button>
+        </Tooltip>
+        <Tooltip tooltipText="{'Deny'}" placement="{'bottom'}">
+          <button
+            aria-label="Deny"
+            class="button-base flex items-center space-x-1 bg-red-600 text-zinc-100"
+            on:click="{() => {
+              moderationModalPage = 'delete';
+              moderateModal.open();
+            }}"
+            ><IconCross /><!--<span class="hidden md:block">Deny</span>--></button>
+        </Tooltip>
+        <Tooltip tooltipText="{'Moderate'}" placement="{'bottom'}">
+          <button
+            class="button-base space-x-1 text-zinc-950 dark:text-zinc-100"
+            aria-label="Moderate"
+            on:click="{() => {
+              moderateModal.open();
+            }}"
+            ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
+        </Tooltip>
       {/if}
       {#if status == "live"}
         <button
@@ -262,14 +261,15 @@
       <IconDownload class="block lg:hidden" />
     </DphButton>
     {#if moderatorOrAbove($roleInfo) && !(status == "publish_queue" || status == "review_queue")}
-      <button
-        class="button-base space-x-1 bg-red-600 text-zinc-100"
-        aria-label="Moderate"
-        on:click="{() => {
-          moderateModal.open();
-        }}"
-        use:tippy="{{ content: 'Moderate', placement: 'bottom' }}"
-        ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
+      <Tooltip tooltipText="{'Moderate'}" placement="{'bottom'}">
+        <button
+          class="button-base space-x-1 bg-red-600 text-zinc-100"
+          aria-label="Moderate"
+          on:click="{() => {
+            moderateModal.open();
+          }}"
+          ><IconShield /><!--<span class="hidden md:block">Moderate</span>--></button>
+      </Tooltip>
     {/if}
   </div>
 </div>

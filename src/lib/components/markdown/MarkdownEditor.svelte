@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import MarkdownComponent from "./MarkdownRenderer.svelte";
   import IconMD from "~icons/tabler/Markdown.svelte";
-  import tippy from "sveltejs-tippy";
+  import Tooltip from "../utility/Tooltip.svelte";
 
   export let maxEditorLength = 1e4;
   export let classes = "";
@@ -17,11 +17,6 @@
   function calcRemaining() {
     remainingCharacters = maxEditorLength - content.length;
   }
-
-  let markdownTip = {
-    content: "This input supports Markdown",
-    placement: "bottom"
-  };
 
   function input() {
     dispatch("input", content);
@@ -53,11 +48,14 @@
         maxlength="{maxEditorLength}"
         on:input="{input}"
         class="input h-64 w-full"></textarea>
-      <a
-        use:tippy="{markdownTip}"
-        href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
-        class="absolute right-4 top-4 rounded-full bg-slate-800/70 p-1 transition-colors hover:text-blue-500 dark:text-zinc-100 dark:hover:text-blue-500"
-        ><IconMD /></a>
+      <Tooltip
+        tooltipText="{'This input supports Markdown'}"
+        placement="{'bottom'}">
+        <a
+          href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
+          class="absolute right-4 top-4 rounded-full bg-slate-800/70 p-1 transition-colors hover:text-blue-500 dark:text-zinc-100 dark:hover:text-blue-500"
+          ><IconMD /></a>
+      </Tooltip>
       <p class="align-middle text-xs text-zinc-950 dark:text-zinc-100">
         {remainingCharacters} characters left
       </p>

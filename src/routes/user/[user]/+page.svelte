@@ -5,6 +5,7 @@
   import RawMarkdownRenderer from "$lib/components/markdown/RawMarkdownRenderer.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
   import UserModeration from "$lib/components/user/UserModeration.svelte";
+  import Tooltip from "$lib/components/utility/Tooltip.svelte";
   import { badges } from "$lib/globals/badges";
   import {
     appendSize,
@@ -15,7 +16,6 @@
   import { roleInfo, user } from "$lib/globals/stores";
   import { title } from "radash";
   import { toast } from "svelte-sonner";
-  import tippy from "sveltejs-tippy";
   import IconBadge from "~icons/tabler/Award.svelte";
   import IconTime from "~icons/tabler/Clock.svelte";
   import IconDL from "~icons/tabler/Download.svelte";
@@ -26,23 +26,6 @@
   export let data: PageData;
 
   $: followed = data.profile?.followed;
-
-  let staffTip = {
-    content: "Verified for being part of the Datapack Hub staff team.",
-    placement: "right"
-  };
-
-  let helperTip = {
-    content:
-      "Verified for being known for helping others with their datapacks.",
-    placement: "right"
-  };
-
-  let verifiedTip = {
-    content:
-      "Verified for their datapacks being high-quality or being active in the community.",
-    placement: "right"
-  };
 
   // easter egg :)
   async function play() {
@@ -124,17 +107,23 @@
             class="text-center text-4xl font-bold text-zinc-950 dark:text-white md:text-left md:text-3xl lg:text-4xl">
             {data.profile?.username}
             {#if moderatorOrAbove(data.role)}
-              <span class="icon text-dph-orange" use:tippy="{staffTip}">
-                <IconVerified />
-              </span>
+              <Tooltip
+                tooltipText="Verified for being part of the Datapack Hub staff team."
+                placement="{'right'}">
+                  <IconVerified classes={"icon text-dph-orange"} />
+              </Tooltip>
             {:else if data.profile?.role == "helper"}
-              <span class="icon text-blue-500" use:tippy="{helperTip}">
-                <IconVerified />
-              </span>
+              <Tooltip
+                tooltipText="Verified for being known to help with troubles."
+                placement="{'right'}">
+                  <IconVerified classes={"icon text-blue-500"} />
+              </Tooltip>
             {:else if data.profile?.role == "verified"}
-              <span class="icon text-emerald-500" use:tippy="{verifiedTip}">
-                <IconVerified />
-              </span>
+              <Tooltip
+                tooltipText="Verified for high-quality datapacks or being active in the community."
+                placement="{'right'}">
+                  <IconVerified classes={"icon text-emerald-500"} />
+              </Tooltip>
             {/if}
           </p>
           <p
@@ -176,12 +165,16 @@
             class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-200 p-3 dark:bg-zinc-800 md:justify-start">
             {#if data.profile?.badges?.length != 0}
               {#each data.profile?.badges ?? [] as badge}
-                <img
-                  alt="{badge} badge"
-                  src="/badges/{badge}.png"
-                  class="h-8 w-8 rounded-lg lg:h-12 lg:w-12"
-                  use:tippy="{badges.find(index => index.name == badge)
-                    ?.tippy}" />
+                <Tooltip
+                  allowHTML={true}
+                  tooltipText="{badges.find(index => index.name == badge)
+                    ?.tooltip || 'Badge not found, whoops!'}"
+                  placement="{'right'}">
+                  <img
+                    alt="{badge} badge"
+                    src="/badges/{badge}.png"
+                    class="h-8 w-8 rounded-lg lg:h-12 lg:w-12" />
+                </Tooltip>
               {/each}
             {/if}
           </div>
@@ -220,9 +213,3 @@
   </div>
 </main>
 <div class="py-3"></div>
-
-<style lang="postcss">
-  .icon {
-    @apply inline-block align-middle text-lg transition-all hover:scale-125 md:text-xl lg:text-2xl;
-  }
-</style>
