@@ -311,7 +311,7 @@
   id="main-content"
   class="relative bg-slate-50 px-4 transition-all dark:bg-zinc-900 sm:px-8 lg:px-16 xl:px-24">
   <div
-    class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
+    class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-32">
     <h1
       class="py-8 text-center text-5xl font-bold text-zinc-950 dark:text-zinc-100 md:py-0 md:text-start md:text-4xl lg:text-4xl">
       Edit <span class="text-dph-orange">{data.project?.title}</span>

@@ -19,7 +19,7 @@
 <main
   id="main-content"
   class="  bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
-  <div class="w-full flex-col items-center md:flex-row md:items-start md:pt-20">
+  <div class="w-full flex-col items-center md:flex-row md:items-start md:pt-32">
     <h1
       class="pb-2 pt-8 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Datapack Hub Staff

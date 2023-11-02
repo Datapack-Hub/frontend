@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fly } from "svelte/transition";
+
 </script>
 
 <svelte:head>
@@ -10,7 +10,7 @@
   id="main-content"
   class=" bg-slate-50 transition-all dark:bg-zinc-900 lg:px-16 xl:px-32">
   <div
-    class="h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-20">
+    class="h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-32">
     <h1
       class="mt-8 pb-2 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-5xl lg:text-6xl">
       Join <span class="text-dph-orange">Datapack Jam</span>

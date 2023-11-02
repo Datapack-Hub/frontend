@@ -2,7 +2,6 @@
   import BhAdvert from "$lib/components/decorative/BHAdvert.svelte";
   import Button from "$lib/components/decorative/Button.svelte";
   import autoAnimate from "@formkit/auto-animate";
-
   let activePage = "new";
 </script>
 
@@ -14,7 +13,7 @@
 <main
   id="main-content"
   class=" bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
-  <div class="w-full flex-col items-center md:flex-row md:items-start md:pt-20">
+  <div class="w-full flex-col items-center md:flex-row md:items-start md:pt-32">
     <h1
       class="my-3 pb-2 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       How to install Minecraft Data Packs

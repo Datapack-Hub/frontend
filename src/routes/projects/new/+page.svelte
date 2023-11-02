@@ -84,8 +84,9 @@
   <title>Create Project | Datapack Hub</title>
 </svelte:head>
 
-<main id="main-content" class="px-4 pb-3 pt-20 sm:px-8 md:px-16 lg:px-24">
+<main id="main-content" class="px-4 pb-3 sm:px-8 md:px-16 lg:px-24">
   {#if $authed}
+  <div class="pt-0 md:pt-32"></div>
     <h1 class="mb-4 text-3xl font-bold text-zinc-950 dark:text-zinc-100">
       Create New Datapack
     </h1>
@@ -164,5 +165,5 @@
         >You can sign in here!</a>
     </div>
   {/if}
-  <div class="py-16"></div>
+  <div class="py-24"></div>
 </main>

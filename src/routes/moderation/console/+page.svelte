@@ -58,7 +58,7 @@
 <main id="main-content" class="bg-zinc-900 px-4 transition-all">
   {#if $user.role != "default" && $authed}
     <div
-      class="h-screen w-full flex-col font-console text-lime-400 md:items-start md:pt-20">
+      class="h-screen w-full flex-col font-console text-lime-400 md:items-start md:pt-32">
       <div
         id="big"
         bind:this="{objectDiv}"

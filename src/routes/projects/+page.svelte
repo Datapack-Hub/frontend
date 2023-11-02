@@ -64,7 +64,7 @@
 
 <main
   id="main-content"
-  class="items-center pt-0 sm:px-8 md:flex-row md:items-start md:px-16 md:pt-20 lg:px-24">
+  class="items-center pt-0 sm:px-8 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
   <div
     class="flex flex-col items-center justify-center space-x-0 py-4 md:flex-row md:justify-normal md:space-x-2">
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
@@ -241,5 +241,5 @@
       {/if}
     </div>
   </div>
-  <div class="py-16"></div>
+  <div class="py-32"></div>
 </main>
