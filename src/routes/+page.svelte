@@ -174,7 +174,7 @@
             type="{proj.type}" />
         {/each}
       </div>
-      <h3 class="text-center">
+      <h3 class="pt-3 text-center">
         <Button style="hugh" classes="text-center" click="/projects"
           >Find more datapacks</Button>
       </h3>
@@ -184,7 +184,8 @@
   <section
     class="flex w-full flex-col items-center justify-center bg-slate-200 py-16 dark:bg-zinc-800/20">
     <p
-      class="fixed bottom-20 z-50 dark:text-white lg:bottom-4 {scrollY > 100
+      class="fixed bottom-20 z-50 rounded-full bg-zinc-700 px-2 py-1 shadow-lg dark:text-white lg:bottom-4 {scrollY >
+      100
         ? 'opacity-0'
         : 'opacity-100'} transition-opacity">
       Scroll Down! <span class="inline-block align-text-top"><IconDown /></span>

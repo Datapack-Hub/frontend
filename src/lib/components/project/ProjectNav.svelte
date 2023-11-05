@@ -4,7 +4,7 @@
   import { fetchAuthed, moderatorOrAbove } from "$lib/globals/functions";
   import { isDark, roleInfo, roles, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
-// Component imports
+  // Component imports
   // Component imports
   import type { Project } from "$lib/globals/schema";
 
@@ -261,9 +261,12 @@
       <IconDownload class="block lg:hidden" />
     </DphButton>
     {#if moderatorOrAbove($roleInfo) && !(status == "publish_queue" || status == "review_queue")}
-      <Tooltip tooltipText="{'Moderate'}" placement="{'bottom'}">
+      <Tooltip
+        tooltipText="{'Moderate'}"
+        placement="{'bottom'}"
+        classes="inline-block">
         <button
-          class="button-base space-x-1 bg-red-600 text-zinc-100"
+          class="button-base h-10 space-x-1 bg-red-600 text-zinc-100"
           aria-label="Moderate"
           on:click="{() => {
             moderateModal.open();

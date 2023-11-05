@@ -19,7 +19,7 @@
     timeStyle: "long"
   });
 
-  let uhh = dateFormatter.format((project.updated || 0) * 1000)
+  let uhh = dateFormatter.format((project.updated || 0) * 1000);
 
   $: userRole = $roles.find(role => role.name === project.author.role);
   $: status = project.status ?? "unpublished";
@@ -47,7 +47,7 @@
     <div class="ml-4 w-3/4">
       <a
         href="/project/{project.url}"
-        class="text-lg hover:underline md:text-xl font-semibold">
+        class="text-lg font-semibold hover:underline md:text-xl">
         {project.title}
       </a>
       <div
@@ -97,8 +97,7 @@
         class="max-w-1/2 mt-1 line-clamp-1 text-xs font-medium text-zinc-700 dark:text-zinc-100/40">
         {project.description}
       </p>
-      <Tooltip
-        tooltipText="{uhh}">
+      <Tooltip classes="inline-block" tooltipText="{uhh}">
         <p class="mt-2 w-fit text-xs">
           <IconUpdate class="inline-block" />
           Updated: {timeAgo((project.updated || 0) * 1000)}

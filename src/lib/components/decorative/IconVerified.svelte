@@ -1,5 +1,5 @@
 <script>
-  export let classes = ""
+  export let classes = "";
 </script>
 
 <!--I didn't want to add a whole icon set for 1 icon-->

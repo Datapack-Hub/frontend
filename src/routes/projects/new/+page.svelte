@@ -86,7 +86,7 @@
 
 <main id="main-content" class="px-4 pb-3 sm:px-8 md:px-16 lg:px-24">
   {#if $authed}
-  <div class="pt-0 md:pt-32"></div>
+    <div class="pt-0 md:pt-32"></div>
     <h1 class="mb-4 text-3xl font-bold text-zinc-950 dark:text-zinc-100">
       Create New Datapack
     </h1>
