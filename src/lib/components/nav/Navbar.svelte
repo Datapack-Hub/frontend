@@ -12,6 +12,9 @@
   import IconCompass from "~icons/tabler/Compass.svelte";
   import IconPlus from "~icons/tabler/Plus.svelte";
   import IconShield from "~icons/tabler/Shield.svelte";
+  import IconProfile from "~icons/tabler/User.svelte";
+  import IconGear from "~icons/tabler/Settings.svelte";
+  import IconLogOut from "~icons/tabler/Logout.svelte";
   import ColorSchemeSelector from "../ColorSchemeSelector.svelte";
   import Modal from "../modals/Modal.svelte";
   import ConditionalWrapper from "../utility/ConditionalWrapper.svelte";
@@ -21,12 +24,6 @@
 
   let scrollY: number;
   let unreadNotifications = false;
-
-  let logoutTippy = {
-    content:
-      $user.username +
-      "<span class='items-center'><br /><a data-sveltekit-preload-data=\"tap\" href='/?log_out=1' class='text-blue-500'>Sign Out</a></span>"
-  };
 
   afterNavigate(() => {
     if (browser && $authed) {
@@ -97,7 +94,7 @@
     class="absolute right-1/2 top-4 translate-x-1/2 translate-y-16 cursor-default select-none opacity-0 transition-transform focus:translate-y-0 focus:opacity-100 dark:text-white md:-translate-y-16"
     >Jump to Main Content</a>
   <nav
-    class="flex w-full items-center justify-around border-y border-zinc-600/40 bg-slate-200/40 dark:bg-zinc-800/40 md:justify-between md:px-16">
+    class="flex w-full items-center justify-around border-y border-zinc-600/40 bg-slate-200/40 dark:bg-zinc-800/40 md:justify-between md:px-16 p-4">
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
       classes="flex items-center space-x-4">
@@ -130,16 +127,16 @@
     </ConditionalWrapper>
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
-      classes="flex items-center justify-end space-x-4">
+      classes="flex items-center justify-end gap-4">
       {#if $authed}
-        <Tooltip tooltipText="{'Create project'}" placement="{'bottom'}">
-          <a
-            aria-label="New project"
-            href="/projects/new"
-            class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75">
-            <IconPlus width="24" height="24" /></a>
+      <Tooltip tooltipText="{'Create project'}" placement="{'bottom'}" classes="flex">
+        <a
+          aria-label="New project"
+          href="/projects/new"
+          class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75">
+          <IconPlus width="24" height="24" /></a>
         </Tooltip>
-        <Tooltip tooltipText="{'Notifications'}" placement="{'bottom'}">
+        <Tooltip tooltipText="{'Notifications'}" placement="{'bottom'}" classes="flex">
           <a
             href="/notifications"
             class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
@@ -153,34 +150,34 @@
         </Tooltip>
         {#if !isSmall}
           {#if $authed && moderatorOrAbove($roleInfo)}
-            <Tooltip tooltipText="{'Moderation Page'}" placement="{'bottom'}">
-              <a
-                href="/moderation"
-                class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
-                ><IconShield width="24" height="24" /></a>
+          <Tooltip tooltipText="{'Moderation Page'}" placement="{'bottom'}" classes="flex">
+            <a
+              href="/moderation"
+              class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
+              ><IconShield width="24" height="24" /></a>
             </Tooltip>
           {/if}
         {/if}
       {/if}
       <ColorSchemeSelector />
       {#if $authed}
-        <Tooltip
-          tooltipText="{logoutTippy.content}"
-          placement="{'bottom'}"
-          allowHTML="{true}">
-          <a
-            class="py-2"
-            aria-label="Your profile"
-            href="/user/{$user.username}">
-            <img
-              src="{appendSize($user.profile_icon, 64)}"
-              alt="{$user.username}'s profile picture"
-              height="24"
-              width="24"
-              class="ml-2 rounded-full outline outline-2 outline-offset-2 hover:brightness-75"
-              style="outline-color:{$roleInfo.color ?? '#eab308'};" />
-          </a>
-        </Tooltip>
+        <a
+          class="py-2 group"
+          aria-label="Your profile"
+          href="/user/{$user.username}">
+          <img
+            src="{appendSize($user.profile_icon, 64)}"
+            alt="{$user.username}'s profile picture"
+            height="24"
+            width="24"
+            class="ml-2 rounded-full outline outline-2 outline-offset-2 hover:brightness-75"
+            style="outline-color:{$roleInfo.color ?? '#eab308'};" />
+          <ul class="absolute hidden group-hover:flex dark:bg-black bg-slate-300 p-2 dark:text-white flex-col right-4 top-14">
+            <li class="p-1"><IconProfile class="inline-block align-middle mr-2"/><a href="/user/{$user.username}">Profile</a></li>
+            <li class="border-t-[1px] border-zinc-400 p-1"><IconGear class="inline-block align-middle mr-2"/><a href="/settings">Settings</a></li>
+            <li class="border-t-[1px] border-zinc-400 p-1"><IconLogOut class="inline-block align-middle mr-2"/><a data-sveltekit-preload-data="tap" href="?log_out=1">Log out</a></li>
+          </ul>
+        </a>
       {:else}
         <button
           id="sign_in"

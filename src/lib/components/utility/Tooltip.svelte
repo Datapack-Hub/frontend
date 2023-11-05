@@ -2,6 +2,7 @@
   import { offset, flip, shift, type Placement } from "svelte-floating-ui/dom";
   import { createFloatingActions, arrow } from "svelte-floating-ui";
   import { writable, type Writable } from "svelte/store";
+  import { inline } from "svelte-floating-ui/core";
 
   export let tooltipText: string;
   export let placement: Placement = "top";
@@ -16,6 +17,7 @@
     placement,
     middleware: [
       offset(6),
+      inline(),
       flip(),
       shift(),
       arrow({ element: arrowReference })
