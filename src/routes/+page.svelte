@@ -12,6 +12,7 @@
   import IconDown from "~icons/tabler/ArrowDown.svelte";
   import type { PageData } from "./$types";
   import { appendSize } from "$lib/globals/functions";
+  import Tooltip from "$lib/components/utility/Tooltip.svelte";
 
   export let data: PageData;
 
@@ -92,7 +93,7 @@
               autoplay: true,
               targets: entry.target,
               opacity: 1,
-              delay: (index + 1) * 75
+              delay: (index + 1) * 50
             });
           } else {
             anime({ autoplay: true, targets: entry.target, opacity: 0 });
@@ -126,8 +127,8 @@
   class="h-full bg-slate-50 transition-all dark:bg-zinc-900">
   <div class="py-12 md:py-0"></div>
   <section
-    class="flex h-fit w-full flex-col items-center justify-start overflow-visible px-4 md:h-[85vh] md:flex-row md:justify-evenly md:px-8 lg:px-16">
-    <div class="w-full md:w-1/2">
+    class="flex h-fit w-full flex-col items-center justify-start overflow-visible px-4 md:h-[85vh] md:flex-row md:justify-evenly lg:px-8">
+    <div class="w-full md:w-5/12">
       <div class="relative h-36 w-full">
         <h1
           id="indexText1"
@@ -195,7 +196,7 @@
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
-      class="mt-16 grid w-full grid-cols-1 gap-3 p-4 lg:w-3/4 lg:grid-cols-2 xl:w-3/4">
+      class="mt-16 grid w-full grid-cols-1 gap-3 p-4 lg:w-10/12 lg:grid-cols-2 xl:w-3/4 xl:grid-cols-3">
       <div
         class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800">
         <h2
@@ -227,18 +228,18 @@
         </p>
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-900">
           <div
-            class="fadeTextAnime dark: flex items-center justify-between rounded-t-md bg-slate-300 p-3 text-zinc-500 opacity-0 dark:bg-zinc-800">
+            class="fadeTextAnime flex items-center justify-between rounded-t-md bg-slate-300 p-3 text-zinc-500 opacity-0 dark:bg-zinc-800">
             <p>pack.mcmeta</p>
             <IconX />
           </div>
           <div
-            class="fadeTextAnime dark: mt-2 overflow-x-auto rounded-b-md bg-slate-300 px-4 font-mono text-zinc-500 opacity-0 dark:bg-zinc-800">
+            class="fadeTextAnime mt-2 overflow-x-auto rounded-b-md bg-slate-300 px-4 font-mono text-zinc-500 opacity-0 dark:bg-zinc-800">
             <pre class="text-sm">
               <!--DO NOT INDENT!!!-->
 &lbrace;
   "pack": &lbrace;
-    "pack_format": <span class="text-red-500">7</span> -&gt; <span
-                class="text-green-500">9</span
+    "pack_format": <span class="text-red-500">10</span> -&gt; <span
+                class="text-green-500">15</span
               >,
     "description": "The timmy pack!"
   &rbrace;
@@ -260,10 +261,10 @@
         </p>
         <div
           class="flex items-center justify-center rounded-xl bg-slate-200 p-4 dark:bg-zinc-900 dark:text-white">
-          <div class="relative flex items-center space-x-2">
-            <IconFile width="48" height="48" class="text-red-500" />
+          <div class="relative flex items-center gap-2">
+            118 MB <IconFile width="48" height="48" class="text-red-500" />
             <IconArrow width="24" height="24" />
-            <IconFile width="24" height="24" class="text-green-500" />
+            <IconFile width="24" height="24" class="text-green-500" /> 57 MB
           </div>
         </div>
       </div>
@@ -277,18 +278,22 @@
           Our amazing staff team work together to keep Datapack Hub the best and
           cleanest place to find datapacks!
         </p>
-        <div class="grid-auto-fit-xs grid gap-1 py-4 md:flex">
+        <div class="grid-auto-fit-xs grid gap-1 py-4">
           {#each data.staff as staff}
-            <a href="/user/{staff.username}">
-              <img
-                src="{appendSize(staff.profile_icon, 64)}"
-                alt="{staff.username}'s profile"
-                title="{staff.username}"
-                loading="lazy"
-                width="48"
-                height="48"
-                class="aspect-square h-12 rounded-md transition-all hover:scale-105 md:h-auto" />
-            </a>
+            <Tooltip tooltipText="{staff.username}" placement="top">
+              <a
+                href="/user/{staff.username}"
+                class="flex items-center justify-center">
+                <img
+                  src="{appendSize(staff.profile_icon, 64)}"
+                  alt="{staff.username}'s profile"
+                  title="{staff.username}"
+                  loading="lazy"
+                  width="48"
+                  height="48"
+                  class="aspect-square h-12 rounded-md bg-zinc-700/70 transition-all hover:scale-105 md:h-auto" />
+              </a>
+            </Tooltip>
           {/each}
         </div>
       </div>
@@ -316,7 +321,7 @@
         </a>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-auto w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 xl:col-span-2">
         <h2
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Project Featuring</b>

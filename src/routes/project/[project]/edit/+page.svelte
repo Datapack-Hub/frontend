@@ -32,7 +32,7 @@
 
   let supportedVersions: string[] = [];
   let zipFile: File;
-  let activePage = "versions";
+  let activePage = "details";
 
   export let data: PageData;
 
@@ -45,7 +45,7 @@
   let iconB64: string | ArrayBuffer | null | undefined;
   let iconImg: string;
 
-  $: category = writable([]);
+  $: category = writable(data.project.category || ([] as string[]));
 
   let vChangelog = "";
   let vName = "";
@@ -558,7 +558,7 @@
                 <label
                   for="squash"
                   class="align-middle text-zinc-950 dark:text-zinc-100">
-                  Squash datapack. (Apply size and load speed optimizations)
+                  Squash datapack (Recommended for large packs!)
                 </label>
                 <label
                   for="v_rp"

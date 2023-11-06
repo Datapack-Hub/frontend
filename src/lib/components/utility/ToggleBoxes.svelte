@@ -7,7 +7,7 @@
   export let selected: Writable<string[]>;
   export let limit = 3;
 
-  let clicked = false;
+  let clicked = $selected.includes(value);
 
   let dispatch = createEventDispatcher();
 
