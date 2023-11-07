@@ -1,9 +1,9 @@
 
-# Tellraw
+# Frontend
 
 ![Datapack Hub Wordmark](/static/logos/Wordmark%20(orange).png)
 
-Welcome to Tellraw, the [Datapack Hub](https://datapackhub.net) frontend, powered by [SvelteKit](https://kit.svelte.dev/).
+Welcome to the Datapack Hub Frontend repository, powered by [SvelteKit](https://kit.svelte.dev/).
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Datapack-Hub/site/main.yml?branch=main&style=for-the-badge)
@@ -11,7 +11,7 @@ Welcome to Tellraw, the [Datapack Hub](https://datapackhub.net) frontend, powere
 
 ## Development
 
-To start working on the Tellraw project, follow these steps:
+To start working on the frontend project, follow these steps:
 
 1. **Clone the Project:** Begin by cloning the project and installing the dependencies using your preferred package manager:
 
@@ -31,7 +31,7 @@ To start working on the Tellraw project, follow these steps:
     pnpm dev --open
     ```
 
-Feel free to explore, develop, and contribute to the Tellraw frontend!
+Feel free to explore, develop, and contribute!
 
 ## License
 
