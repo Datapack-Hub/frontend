@@ -2,7 +2,7 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import remarkGFM from "remark-gfm";
-// @ts-ignore
+// @ts-expect-error
 import RemarkLinkRewrite from "remark-link-rewrite";
 import remarkMentions from "remark-mentions";
 import remarkParse from "remark-parse";
@@ -22,7 +22,7 @@ export async function processMarkdown(source: string): Promise<string> {
         return url;
       }
     })
-    // @ts-ignore
+    // @ts-expect-error
     .use(remarkMentions, {
       usernameLink: (uname: string) => `https://datapackhub.net/user/${uname}`
     })
