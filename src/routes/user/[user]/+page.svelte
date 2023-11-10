@@ -151,7 +151,7 @@
             class="mb-1 mt-4 w-full text-center dark:text-zinc-100 md:text-left">
             <IconTime class="mr-1 inline-block" />
             <b class="mr-2">Joined: </b>{data.profile?.join_date
-              ? timeAgo(data.profile?.join_date * 1000)
+              ? timeAgo(data.profile?.join_date)
               : "we forgor 🦆"}
           </h2>
           <h2 class="mb-1 text-center dark:text-zinc-100 md:text-left">
