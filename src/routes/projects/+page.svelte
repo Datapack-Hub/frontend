@@ -29,7 +29,7 @@
   $: dataCopy = data.projects ?? [];
 
   let featured = data.featured?.splice(0, 2);
-  let parameters = $page.url.searchParams
+  let parameters = $page.url.searchParams;
 
   let search = debounce({ delay: 200 }, async () => {
     let searchResult = await fetch(
@@ -59,10 +59,10 @@
   }
 
   function genURLParameters(page: number) {
-    parameters.set("page", page.toString())
-    parameters.set("sort", sort.toLowerCase())
-    parameters.set("category", parameters.get("category") || "")
-    return parameters.toString()
+    parameters.set("page", page.toString());
+    parameters.set("sort", sort.toLowerCase());
+    parameters.set("category", parameters.get("category") || "");
+    return parameters.toString();
   }
 </script>
 

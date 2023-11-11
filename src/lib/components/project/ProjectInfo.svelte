@@ -13,7 +13,10 @@
   import IconList from "~icons/tabler/ClipboardCheck.svelte";
   import IconCategories from "~icons/tabler/Cube.svelte";
   import IconDL from "~icons/tabler/Download.svelte";
-  import { default as IconIcon, default as IconNoPhoto } from "~icons/tabler/Polaroid.svelte";
+  import {
+    default as IconIcon,
+    default as IconNoPhoto
+  } from "~icons/tabler/Polaroid.svelte";
   import IconUpdate from "~icons/tabler/Refresh.svelte";
   import IconUpload from "~icons/tabler/Upload.svelte";
   import IconCross from "~icons/tabler/X.svelte";
