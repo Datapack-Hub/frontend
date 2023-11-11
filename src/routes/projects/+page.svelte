@@ -22,7 +22,7 @@
   let sortDropdownOpen: boolean;
   let tagDropdownOpen: boolean;
   let query = "";
-  let tag = data.category || ""
+  let tag = data.category || "";
   let sort = "Updated";
   let searchTime = 0;
   let layout = browser
@@ -116,7 +116,8 @@
           class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
           Tag:
         </p>
-        <Dropdown options="{["", ...categories]}"
+        <Dropdown
+          options="{['', ...categories]}"
           bind:expand="{tagDropdownOpen}"
           bind:selected="{tag}"
           on:change="{changeTag}"
