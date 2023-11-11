@@ -41,7 +41,7 @@
       {#each options as opt, index}
         <li class="my-1">
           <button
-            class="flex w-full cursor-pointer rounded-[4px] p-1.5 text-left hover:bg-dph-orange dark:text-zinc-100 dark:hover:bg-dph-orange
+            class="h-9 flex w-full cursor-pointer rounded-[4px] p-1.5 text-left hover:bg-dph-orange dark:text-zinc-100 dark:hover:bg-dph-orange
             {selected == options[index] ? 'dark:bg-zinc-700/70' : ''}"
             on:click="{() => chooseOption(index)}">{opt}</button>
         </li>

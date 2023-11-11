@@ -105,7 +105,7 @@
         <IconCube />
         <span class="font-bold">Categories:</span>
         {#each project?.category || [] as cat}
-          <a href="/projects?category=german" class="text-sm">{cat}</a>
+          <a href="/projects?category={cat}" class="text-sm">{cat}</a>
         {/each}
       </p>
       <div class="my-3">

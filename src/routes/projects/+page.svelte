@@ -1,7 +1,7 @@
 <script lang="ts">
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
-  import { API } from "$lib/globals/consts";
+  import { API, categories } from "$lib/globals/consts";
   import type { PageData } from "./$types";
 
   import { browser } from "$app/environment";
@@ -15,11 +15,14 @@
   import IconList from "~icons/tabler/LayoutList.svelte";
   import IconSearch from "~icons/tabler/Search.svelte";
   import { page } from "$app/stores";
+  import { goto } from "$app/navigation";
 
   export let data: PageData;
 
-  let dropdownOpen: boolean;
+  let sortDropdownOpen: boolean;
+  let tagDropdownOpen: boolean;
   let query = "";
+  let tag = data.category || ""
   let sort = "Updated";
   let searchTime = 0;
   let layout = browser
@@ -34,8 +37,8 @@
   let search = debounce({ delay: 200 }, async () => {
     let searchResult = await fetch(
       `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}&page=${
-        data.page
-      }`
+        data.page > 0 ? data.page : 1
+      }${data.category ? "&category=" + data.category : ""}`
     );
 
     let search = await searchResult.json();
@@ -49,13 +52,17 @@
     let searchResult = await fetch(
       `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}&page=${
         data.page
-      }`
+      }${data.category ? "&category=" + data.category : ""}`
     );
 
     let sortJson = await searchResult.json();
     searchTime = sortJson.time;
 
     dataCopy = await projectSchema.array().parseAsync(sortJson.result);
+  }
+
+  async function changeTag() {
+    await goto("?category=" + tag);
   }
 
   function genURLParameters(page: number) {
@@ -93,16 +100,29 @@
       <div class="mt-2 flex items-center sm:mt-0">
         <p
           class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
-          Sort By:
+          Order By:
         </p>
         <Dropdown
           options="{['Updated', 'Downloads']}"
           bind:selected="{sort}"
-          bind:expand="{dropdownOpen}"
-          selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-zinc-100 {dropdownOpen
+          bind:expand="{sortDropdownOpen}"
+          selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-zinc-100 {sortDropdownOpen
             ? 'rounded-tr-lg'
             : 'rounded-r-lg'}"
           on:change="{resort}" />
+      </div>
+      <div class="mt-2 flex items-center sm:mt-0">
+        <p
+          class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
+          Tag:
+        </p>
+        <Dropdown options="{["", ...categories]}"
+          bind:expand="{tagDropdownOpen}"
+          bind:selected="{tag}"
+          on:change="{changeTag}"
+          selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-zinc-100 {tagDropdownOpen
+            ? 'rounded-tr-lg'
+            : 'rounded-r-lg'}" />
       </div>
     </div>
     <div class="mt-4 flex items-center space-x-0 md:mt-0 md:space-x-4">
