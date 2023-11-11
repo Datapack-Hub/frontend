@@ -118,3 +118,39 @@
 .text-balance {
   text-wrap: balance;
 }
+
+/* For WebKit browsers like Chrome and Safari */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: theme(colors.zinc.950);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff631acc;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ff631a;
+  border-radius: 5px;
+}
+
+/* For Firefox */
+::-moz-scrollbar {
+  width: 10px;
+}
+
+::-moz-scrollbar-thumb {
+  background-color: #ff631acc;
+  border-radius: 5px;
+}
+
+/* For Internet Explorer and Edge */
+::-ms-scrollbar {
+  width: 10px;
+}
+
+::-ms-scrollbar-thumb {
+  background-color: #ff631acc;
+  border-radius: 5px;
+}

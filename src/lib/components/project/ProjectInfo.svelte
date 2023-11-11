@@ -5,22 +5,21 @@
 
   import type { Project } from "$lib/globals/schema";
   import { title } from "radash";
+  import { onMount } from "svelte";
+  import IconDescription from "~icons/tabler/AlignLeft.svelte";
   import IconBack from "~icons/tabler/ArrowBack.svelte";
   import IconCube from "~icons/tabler/Box.svelte";
+  import IconTick from "~icons/tabler/Check.svelte";
+  import IconList from "~icons/tabler/ClipboardCheck.svelte";
+  import IconCategories from "~icons/tabler/Cube.svelte";
   import IconDL from "~icons/tabler/Download.svelte";
-  import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
+  import { default as IconIcon, default as IconNoPhoto } from "~icons/tabler/Polaroid.svelte";
   import IconUpdate from "~icons/tabler/Refresh.svelte";
+  import IconUpload from "~icons/tabler/Upload.svelte";
   import IconCross from "~icons/tabler/X.svelte";
   import CasualLine from "../decorative/CasualLine.svelte";
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import Modal from "../modals/Modal.svelte";
-  import IconIcon from "~icons/tabler/Polaroid.svelte";
-  import IconCategories from "~icons/tabler/Cube.svelte";
-  import IconUpload from "~icons/tabler/Upload.svelte";
-  import IconDescription from "~icons/tabler/AlignLeft.svelte";
-  import IconTick from "~icons/tabler/Check.svelte";
-  import IconList from "~icons/tabler/ClipboardCheck.svelte";
-  import { onMount } from "svelte";
 
   // Component args
   export let project: Project;
@@ -102,7 +101,9 @@
       <p class="text-md my-2 flex items-center space-x-2 dark:text-white">
         <IconCube />
         <span class="font-bold">Categories:</span>
-        <span class="text-sm">{project.category?.join(", ")}</span>
+        {#each project?.category || [] as cat}
+          <a href="/projects?category=german" class="text-sm">{cat}</a>
+        {/each}
       </p>
       <div class="my-3">
         <CasualLine />

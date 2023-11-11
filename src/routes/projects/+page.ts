@@ -7,11 +7,16 @@ export const load = (async ({ fetch, url }) => {
   const parameters = url.searchParams;
   const page = Number.parseInt(parameters.get("page") || "1");
   const sort = parameters.get("sort") || "updated";
+  const category = parameters.get("category");
 
   const [projects, featured] = await parallel(
     2,
     await Promise.all([
-      fetch(`${API}/projects/?page=${page}&sort=${sort}`),
+      fetch(
+        `${API}/projects/?page=${page}&sort=${sort}${
+          category ? "&category=" + category : ""
+        }`
+      ),
       fetch(`${API}/projects/featured`)
     ]),
     async response => await response.json()
@@ -31,6 +36,7 @@ export const load = (async ({ fetch, url }) => {
     projects: parsedData,
     featured: shuffle(parsedFeatured),
     pages,
-    page
+    page,
+    category
   };
 }) satisfies PageLoad;

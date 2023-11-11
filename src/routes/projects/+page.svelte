@@ -14,6 +14,7 @@
   import IconGrid from "~icons/tabler/LayoutGrid.svelte";
   import IconList from "~icons/tabler/LayoutList.svelte";
   import IconSearch from "~icons/tabler/Search.svelte";
+  import { page } from "$app/stores";
 
   export let data: PageData;
 
@@ -28,6 +29,7 @@
   $: dataCopy = data.projects ?? [];
 
   let featured = data.featured?.splice(0, 2);
+  let parameters = $page.url.searchParams
 
   let search = debounce({ delay: 200 }, async () => {
     let searchResult = await fetch(
@@ -54,6 +56,13 @@
     searchTime = sortJson.time;
 
     dataCopy = await projectSchema.array().parseAsync(sortJson.result);
+  }
+
+  function genURLParameters(page: number) {
+    parameters.set("page", page.toString())
+    parameters.set("sort", sort.toLowerCase())
+    parameters.set("category", parameters.get("category") || "")
+    return parameters.toString()
   }
 </script>
 
@@ -122,35 +131,35 @@
         <p class="mr-2 dark:text-white">Page:</p>
         {#if data.page - 3 >= 1}
           <a
-            href="/projects?page=1&sort={sort.toLowerCase()}"
+            href="/projects?{genURLParameters(1)}"
             class="flex h-8 w-8 content-center items-center rounded-md bg-dph-orange/25 p-1 pl-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             ><IconBTS class="" /></a>
         {/if}
         {#if data.page - 2 >= 1}
           <a
-            href="/projects?page={data.page - 2}&sort={sort.toLowerCase()}"
+            href="/projects?{genURLParameters(data.page - 2)}"
             class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page - 2}</a>
         {/if}
         {#if data.page - 1 >= 1}
           <a
-            href="/projects?page={data.page - 1}&sort={sort.toLowerCase()}"
+            href="/projects?{genURLParameters(data.page - 1)}"
             class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page - 1}</a>
         {/if}
         <a
-          href="/projects?page={data.page}&sort={sort.toLowerCase()}"
+          href="/projects?{genURLParameters(data.page)}"
           class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-white sm:mt-0"
           >{data.page}</a>
         {#if data.page + 1 <= data.pages}
           <a
-            href="/projects?page={data.page + 1}&sort={sort.toLowerCase()}"
+            href="/projects?{genURLParameters(data.page + 1)}"
             class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page + 1}</a>
         {/if}
         {#if data.page + 2 <= data.pages}
           <a
-            href="/projects?page={data.page + 2}&sort={sort.toLowerCase()}"
+            href="/projects?{genURLParameters(data.page + 2)}"
             class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page + 2}</a>
         {/if}
@@ -207,35 +216,35 @@
       <p class="mr-2 dark:text-white">Page:</p>
       {#if data.page - 3 >= 1}
         <a
-          href="/projects?page=1&sort={sort.toLowerCase()}"
+          href="/projects?{genURLParameters(1)}"
           class="flex h-8 w-8 content-center items-center rounded-md bg-dph-orange/25 p-1 pl-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           ><IconBTS class="" /></a>
       {/if}
       {#if data.page - 2 >= 1}
         <a
-          href="/projects?page={data.page - 2}&sort={sort.toLowerCase()}"
+          href="/projects?{genURLParameters(data.page - 2)}"
           class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page - 2}</a>
       {/if}
       {#if data.page - 1 >= 1}
         <a
-          href="/projects?page={data.page - 1}&sort={sort.toLowerCase()}"
+          href="/projects?{genURLParameters(data.page - 1)}"
           class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page - 1}</a>
       {/if}
       <a
-        href="/projects?page={data.page}&sort={sort.toLowerCase()}"
+        href="/projects?{genURLParameters(data.page)}"
         class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-white sm:mt-0"
         >{data.page}</a>
       {#if data.page + 1 <= data.pages}
         <a
-          href="/projects?page={data.page + 1}&sort={sort.toLowerCase()}"
+          href="/projects?{genURLParameters(data.page + 1)}"
           class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page + 1}</a>
       {/if}
       {#if data.page + 2 <= data.pages}
         <a
-          href="/projects?page={data.page + 2}&sort={sort.toLowerCase()}"
+          href="/projects?{genURLParameters(data.page + 2)}"
           class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page + 2}</a>
       {/if}
