@@ -15,7 +15,7 @@
   import IconProfile from "~icons/tabler/User.svelte";
   import IconGear from "~icons/tabler/Settings.svelte";
   import IconLogOut from "~icons/tabler/Logout.svelte";
-  import ColorSchemeSelector from "../ColorSchemeSelector.svelte";
+  import ColorSchemeSelector from "./ColorSchemeSelector.svelte";
   import Modal from "../modals/Modal.svelte";
   import ConditionalWrapper from "../utility/ConditionalWrapper.svelte";
   import Tooltip from "../utility/Tooltip.svelte";
