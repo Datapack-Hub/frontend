@@ -62,7 +62,7 @@
   }
 
   async function changeTag() {
-    if(tag.toLowerCase() == "all") tag = ""
+    if (tag.toLowerCase() == "all") tag = "";
     await goto("?category=" + tag);
   }
 
@@ -85,8 +85,7 @@
   <div
     class="flex flex-col items-center justify-center space-x-0 py-4 md:flex-row md:justify-normal md:space-x-2">
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
-    <div
-      class="flex flex-grow flex-col items-center md:items-start space-y-3">
+    <div class="flex flex-grow flex-col items-center space-y-3 md:items-start">
       <div
         class="input flex items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
