@@ -83,9 +83,9 @@
   id="main-content"
   class="items-center pt-0 sm:px-8 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
   <div
-    class="flex flex-col items-center justify-center space-x-0 py-4 space-y-3 xl:flex-row md:justify-normal md:space-x-2">
+    class="flex flex-col items-center justify-center space-x-0 space-y-3 py-4 md:justify-normal md:space-x-2 xl:flex-row">
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
-    <div class="flex flex-grow items-center flex-col md:flex-row gap-3">
+    <div class="flex flex-grow flex-col items-center gap-3 md:flex-row">
       <div
         class="input flex items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
@@ -97,7 +97,7 @@
           class="ml-2 bg-slate-300 text-zinc-950 placeholder:text-zinc-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400"
           on:input="{search}" />
       </div>
-      <div class="space-x-3 flex flex-col items-center sm:flex-row">
+      <div class="flex flex-col items-center space-x-3 sm:flex-row">
         <div class="mt-2 flex items-center sm:mt-0">
           <p
             class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
