@@ -8,7 +8,6 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "dev": "vite dev",
     "format": "prettier --cache src --write \"./{src,tests}/**/*.{svelte,ts}\"",
-    "lighthouse": "unlighthouse --config unlighthouse.config.ts",
     "lint": "eslint . --cache",
     "preview": "vite preview",
     "test": "playwright test"
@@ -19,7 +18,7 @@
     "@iconify-json/tabler": "^1.1.96",
     "@playwright/test": "^1.39.0",
     "@sveltejs/adapter-cloudflare": "^2.3.3",
-    "@sveltejs/kit": "^1.27.4",
+    "@sveltejs/kit": "^1.27.5",
     "@types/animejs": "^3.1.11",
     "@types/nprogress": "^0.2.3",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -49,14 +48,13 @@
     "remark-rehype": "^11.0.0",
     "sharp": "^0.32.6",
     "svelte-check": "^3.6.0",
-    "svelte-floating-ui": "^1.5.5",
+    "svelte-floating-ui": "^1.5.6",
     "svelte-preprocess": "^5.1.0",
-    "svelte-sonner": "^0.3.0",
+    "svelte-sonner": "^0.3.3",
     "svgo": "^3.0.3",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2",
     "unified": "^11.0.4",
-    "unlighthouse": "^0.10.0",
     "unplugin-icons": "^0.17.3",
     "vite": "^4.5.0",
     "vite-plugin-image-optimizer": "^1.1.7"
@@ -71,10 +69,5 @@
     "tailwindcss": "^3.3.5",
     "zod": "^3.22.4"
   },
-  "engineStrict": true,
-  "pnpm": {
-    "overrides": {
-      "xml2js@<0.5.0": ">=0.5.0"
-    }
-  }
+  "engineStrict": true
 }

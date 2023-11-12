@@ -184,15 +184,17 @@
   </section>
   <section
     class="flex w-full flex-col items-center justify-center bg-slate-200 py-16 dark:bg-zinc-800/20">
-    <p
+    <a
+      href="#bento"
       class="fixed bottom-20 z-50 rounded-full bg-zinc-700 px-2 py-1 shadow-lg dark:text-white lg:bottom-4 {scrollY >
       100
         ? 'opacity-0'
         : 'opacity-100'} transition-opacity">
       Scroll Down! <span class="inline-block align-text-top"><IconDown /></span>
-    </p>
+    </a>
     <h1
-      class="text-center text-4xl font-bold text-black dark:text-white lg:text-5xl xl:text-6xl">
+      id="bento"
+      class="text-center text-4xl font-bold text-black dark:text-white lg:text-5xl xl:text-6xl scroll-m-20">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
