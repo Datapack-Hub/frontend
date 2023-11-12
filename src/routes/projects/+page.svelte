@@ -62,6 +62,7 @@
   }
 
   async function changeTag() {
+    if(tag.toLowerCase() == "all") tag = ""
     await goto("?category=" + tag);
   }
 
@@ -85,7 +86,7 @@
     class="flex flex-col items-center justify-center space-x-0 py-4 md:flex-row md:justify-normal md:space-x-2">
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
     <div
-      class="flex flex-grow flex-col items-center space-x-0 sm:flex-row sm:space-x-4">
+      class="flex flex-grow flex-col items-center md:items-start space-y-3">
       <div
         class="input flex items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
@@ -100,7 +101,7 @@
       <div class="mt-2 flex items-center sm:mt-0">
         <p
           class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
-          Order By:
+          Order:
         </p>
         <Dropdown
           options="{['Updated', 'Downloads']}"
@@ -117,7 +118,7 @@
           Tag:
         </p>
         <Dropdown
-          options="{['', ...categories]}"
+          options="{['All', ...categories]}"
           bind:expand="{tagDropdownOpen}"
           bind:selected="{tag}"
           on:change="{changeTag}"
