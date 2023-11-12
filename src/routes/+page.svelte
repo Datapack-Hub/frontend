@@ -194,7 +194,7 @@
     </a>
     <h1
       id="bento"
-      class="text-center text-4xl font-bold text-black dark:text-white lg:text-5xl xl:text-6xl scroll-m-20">
+      class="scroll-m-20 text-center text-4xl font-bold text-black dark:text-white lg:text-5xl xl:text-6xl">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
