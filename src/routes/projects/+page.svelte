@@ -83,9 +83,9 @@
   id="main-content"
   class="items-center pt-0 sm:px-8 md:flex-row md:items-start md:px-16 md:pt-32 lg:px-24">
   <div
-    class="flex flex-col items-center justify-center space-x-0 py-4 md:flex-row md:justify-normal md:space-x-2">
+    class="flex flex-col items-center justify-center space-x-0 py-4 space-y-3 xl:flex-row md:justify-normal md:space-x-2">
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
-    <div class="flex flex-grow flex-col items-center space-y-3 md:items-start">
+    <div class="flex flex-grow items-center flex-col md:flex-row gap-3">
       <div
         class="input flex items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
@@ -97,38 +97,39 @@
           class="ml-2 bg-slate-300 text-zinc-950 placeholder:text-zinc-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400"
           on:input="{search}" />
       </div>
-      <div class="mt-2 flex items-center sm:mt-0">
-        <p
-          class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
-          Order:
-        </p>
-        <Dropdown
-          options="{['Updated', 'Downloads']}"
-          bind:selected="{sort}"
-          bind:expand="{sortDropdownOpen}"
-          selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-zinc-100 {sortDropdownOpen
-            ? 'rounded-tr-lg'
-            : 'rounded-r-lg'}"
-          on:change="{resort}" />
-      </div>
-      <div class="mt-2 flex items-center sm:mt-0">
-        <p
-          class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
-          Tag:
-        </p>
-        <Dropdown
-          options="{['All', ...categories]}"
-          bind:expand="{tagDropdownOpen}"
-          bind:selected="{tag}"
-          on:change="{changeTag}"
-          selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-zinc-100 {tagDropdownOpen
-            ? 'rounded-tr-lg'
-            : 'rounded-r-lg'}" />
+      <div class="space-x-3 flex flex-col items-center sm:flex-row">
+        <div class="mt-2 flex items-center sm:mt-0">
+          <p
+            class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
+            Order:
+          </p>
+          <Dropdown
+            options="{['Updated', 'Downloads']}"
+            bind:selected="{sort}"
+            bind:expand="{sortDropdownOpen}"
+            selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-zinc-100 {sortDropdownOpen
+              ? 'rounded-tr-lg'
+              : 'rounded-r-lg'}"
+            on:change="{resort}" />
+        </div>
+        <div class="mt-2 flex items-center sm:mt-0">
+          <p
+            class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
+            Tag:
+          </p>
+          <Dropdown
+            options="{['All', ...categories]}"
+            bind:expand="{tagDropdownOpen}"
+            bind:selected="{tag}"
+            on:change="{changeTag}"
+            selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-zinc-100 {tagDropdownOpen
+              ? 'rounded-tr-lg'
+              : 'rounded-r-lg'}" />
+        </div>
       </div>
     </div>
     <div class="mt-4 flex items-center space-x-0 md:mt-0 md:space-x-4">
       <div class="mt-2 hidden items-center space-x-1 sm:mt-0 md:flex">
-        <p class="mr-2 hidden text-center dark:text-white lg:block">Layout:</p>
         <button
           on:click="{() => {
             layout = 'list';
@@ -136,7 +137,7 @@
           }}"
           class="h-8 w-8 rounded-md {layout === 'list'
             ? 'bg-dph-orange text-white'
-            : 'bg-dph-orange/25 text-zinc-950 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold sm:mt-0">
+            : 'bg-zinc-700 text-zinc-950 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold sm:mt-0">
           <IconList /></button>
         <button
           on:click="{() => {
@@ -145,7 +146,7 @@
           }}"
           class="h-8 w-8 rounded-md {layout === 'grid'
             ? 'bg-dph-orange text-white'
-            : 'bg-dph-orange/25 text-zinc-950 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0">
+            : 'bg-zinc-700 text-zinc-950 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0">
           <IconGrid /></button>
       </div>
       <div class="flex items-center space-x-1 sm:mt-0">
@@ -153,19 +154,19 @@
         {#if data.page - 3 >= 1}
           <a
             href="/projects?{genURLParameters(1)}"
-            class="flex h-8 w-8 content-center items-center rounded-md bg-dph-orange/25 p-1 pl-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
+            class="flex h-8 w-8 content-center items-center rounded-md bg-zinc-700 p-1 pl-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             ><IconBTS class="" /></a>
         {/if}
         {#if data.page - 2 >= 1}
           <a
             href="/projects?{genURLParameters(data.page - 2)}"
-            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-zinc-700 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page - 2}</a>
         {/if}
         {#if data.page - 1 >= 1}
           <a
             href="/projects?{genURLParameters(data.page - 1)}"
-            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-zinc-700 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page - 1}</a>
         {/if}
         <a
@@ -175,13 +176,13 @@
         {#if data.page + 1 <= data.pages}
           <a
             href="/projects?{genURLParameters(data.page + 1)}"
-            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-zinc-700 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page + 1}</a>
         {/if}
         {#if data.page + 2 <= data.pages}
           <a
             href="/projects?{genURLParameters(data.page + 2)}"
-            class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
+            class="h-8 w-8 rounded-md bg-zinc-700 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
             >{data.page + 2}</a>
         {/if}
       </div>
@@ -238,19 +239,19 @@
       {#if data.page - 3 >= 1}
         <a
           href="/projects?{genURLParameters(1)}"
-          class="flex h-8 w-8 content-center items-center rounded-md bg-dph-orange/25 p-1 pl-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
+          class="flex h-8 w-8 content-center items-center rounded-md bg-zinc-700 p-1 pl-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           ><IconBTS class="" /></a>
       {/if}
       {#if data.page - 2 >= 1}
         <a
           href="/projects?{genURLParameters(data.page - 2)}"
-          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-zinc-700 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page - 2}</a>
       {/if}
       {#if data.page - 1 >= 1}
         <a
           href="/projects?{genURLParameters(data.page - 1)}"
-          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-zinc-700 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page - 1}</a>
       {/if}
       <a
@@ -260,13 +261,13 @@
       {#if data.page + 1 <= data.pages}
         <a
           href="/projects?{genURLParameters(data.page + 1)}"
-          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-zinc-700 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page + 1}</a>
       {/if}
       {#if data.page + 2 <= data.pages}
         <a
           href="/projects?{genURLParameters(data.page + 2)}"
-          class="h-8 w-8 rounded-md bg-dph-orange/25 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
+          class="h-8 w-8 rounded-md bg-zinc-700 p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0"
           >{data.page + 2}</a>
       {/if}
     </div>
