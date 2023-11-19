@@ -1,6 +1,6 @@
 import { API } from "$lib/globals/consts";
 import { serverGetAuthed } from "$lib/globals/functions";
-import { roleSchema, userSchema, type Role } from "$lib/globals/schema";
+import { type Role, roleSchema, userSchema } from "$lib/globals/schema";
 import { redirect } from "@sveltejs/kit";
 import type { LayoutServerLoad } from "./$types";
 
@@ -20,7 +20,7 @@ export const load = (async ({ cookies, fetch, url }) => {
     cookies.set("dph_token", newToken, {
       expires: expiry,
       httpOnly: false,
-      path: "/"
+      path: "/",
     });
 
     throw redirect(307, url.pathname);
@@ -29,7 +29,7 @@ export const load = (async ({ cookies, fetch, url }) => {
   if (cookie) {
     const userResponse = await serverGetAuthed("/user/me", cookies, fetch);
 
-    if (userResponse.status == 401) {
+    if (userResponse.status === 401) {
       cookies.delete("dph_token");
       throw redirect(307, url.pathname);
     }
@@ -39,15 +39,15 @@ export const load = (async ({ cookies, fetch, url }) => {
     const role = roleSchema
       .array()
       .parse(rolesJson.roles)
-      .find((v: Role) => v.name === user.role)!;
+      .find((v: Role) => v.name === user.role);
 
     return {
       user,
       role,
-      roles: rolesJson.roles
+      roles: rolesJson.roles,
     };
   }
   return {
-    roles: rolesJson.roles
+    roles: rolesJson.roles,
   };
 }) satisfies LayoutServerLoad;

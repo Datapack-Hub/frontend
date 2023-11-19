@@ -14,20 +14,20 @@ export const load = (async ({ fetch, url }) => {
     await Promise.all([
       fetch(
         `${API}/projects/?page=${page}&sort=${sort}${
-          category ? "&category=" + category : ""
-        }`
+          category ? `&category=${category}` : ""
+        }`,
       ),
-      fetch(`${API}/projects/featured`)
+      fetch(`${API}/projects/featured`),
     ]),
-    async response => await response.json()
+    async (response) => await response.json(),
   );
 
   const [parsedData, parsedFeatured] = await parallel(
     2,
     [projects.result, featured.result],
-    async json => {
+    async (json) => {
       return await projectSchema.array().parseAsync(json);
-    }
+    },
   );
 
   const pages = Number.parseInt(projects.pages);
@@ -37,6 +37,6 @@ export const load = (async ({ fetch, url }) => {
     featured: shuffle(parsedFeatured),
     pages,
     page,
-    category
+    category,
   };
 }) satisfies PageLoad;

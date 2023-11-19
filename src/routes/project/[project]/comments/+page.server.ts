@@ -11,20 +11,20 @@ export const load = (async ({ params, fetch, cookies, url }) => {
   const projectRequest = await serverGetAuthed(
     `/projects/get/${params.project}`,
     cookies,
-    fetch
+    fetch,
   );
 
-  if (projectRequest.status == 404) {
+  if (projectRequest.status === 404) {
     throw error(404, {
       message: "Project not found",
-      description: "Why not go ahead and turn the idea into a reality?"
+      description: "Why not go ahead and turn the idea into a reality?",
     });
   }
 
   if (!projectRequest.ok) {
     throw error(projectRequest.status, {
       message: "Unexpected error",
-      description: "Something unexpected happen, try again later"
+      description: "Something unexpected happen, try again later",
     });
   }
 
@@ -46,6 +46,6 @@ export const load = (async ({ params, fetch, cookies, url }) => {
   return {
     project: project,
     comments: comments,
-    new: parameters.get("is_new")
+    new: parameters.get("is_new"),
   };
 }) satisfies PageServerLoad;

@@ -12,7 +12,7 @@
   import { commentSchema } from "$lib/globals/schema";
   import { authed, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
-  import { sort } from "radash";
+  import { debounce, sort } from "radash";
 
   export let data: PageData;
 
@@ -77,7 +77,10 @@
             {#if $authed}
               <form
                 class="flex items-center space-x-2"
-                on:submit|preventDefault="{postComment}">
+                on:submit|preventDefault="{debounce(
+                  { delay: 500 },
+                  postComment
+                )}">
                 <img
                   src="{$user.profile_icon}"
                   alt="Your profile icon"

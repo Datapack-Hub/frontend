@@ -10,13 +10,13 @@ import { isDark } from "./stores";
  */
 export function loadColorPref() {
   const color = localStorage.getItem("dp_colorPref");
-  if (color == undefined) return;
-  isDark.set(color == "true");
+  if (color === undefined) return;
+  isDark.set(color === "true");
 }
 
 type FetchFunction = (
   input: RequestInfo | URL,
-  init?: RequestInit | undefined
+  init?: RequestInit | undefined,
 ) => Promise<Response>;
 
 /**
@@ -35,7 +35,7 @@ type FetchFunction = (
 export async function serverGetAuthed(
   url: string,
   cookies: Cookies,
-  fetchFunction: FetchFunction = fetch
+  fetchFunction: FetchFunction = fetch,
 ): Promise<Response> {
   const cookie = cookies.get("dph_token"); // Cookies object from `LayoutServerLoad`, so our data loads early
 
@@ -43,10 +43,8 @@ export async function serverGetAuthed(
     // Start fetching
     headers: {
       // Headers
-      ...(cookie === undefined
-        ? undefined
-        : { Authorization: `Basic ${cookie}` }) // Cookie exists, so add it as the auth header
-    }
+      ...(cookie === undefined ? undefined : { Authorization: `Basic ${cookie}` }), // Cookie exists, so add it as the auth header
+    },
   });
 
   if (response.status === 401) cookies.delete("dph_token"); // Remove token if invalid
@@ -71,7 +69,7 @@ export async function fetchAuthed(
         fetchFunction?: FetchFunction;
         useSuppliedURL?: boolean;
       }
-    | undefined = undefined
+    | undefined = undefined,
 ): Promise<Response> {
   const cookie = browser ? getCookie("dph_token") : undefined; // cookie only exists on browser
   const fetchFunction = options?.fetchFunction || fetch;
@@ -79,7 +77,7 @@ export async function fetchAuthed(
   let parsedData;
   if (options?.data instanceof FormData) {
     parsedData = options.data;
-  } else if (typeof options?.data == "object") {
+  } else if (typeof options?.data === "object") {
     parsedData = JSON.stringify(options.data);
   } else {
     parsedData = undefined;
@@ -96,10 +94,8 @@ export async function fetchAuthed(
     body: parsedData, // Body of fetch
     headers: {
       // Headers
-      ...(cookie === undefined
-        ? undefined
-        : { Authorization: `Basic ${cookie}` }) // Cookie exists, so add it as the auth header
-    }
+      ...(cookie === undefined ? undefined : { Authorization: `Basic ${cookie}` }), // Cookie exists, so add it as the auth header
+    },
   });
 
   if (response.status === 401) removeCookie("dph_token"); // Expired token, so removes it ig

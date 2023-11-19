@@ -32,7 +32,11 @@
 }
 
 .button-primary {
-  @apply button-base bg-dph-orange text-sm text-zinc-100 md:text-base lg:text-lg;
+  @apply button-base bg-dph-orange text-sm text-zinc-100 transition-opacity md:text-base lg:text-lg;
+}
+
+.button-primary:disabled {
+  @apply button-base bg-dph-orange/40 text-sm text-zinc-100 transition-opacity md:text-base lg:text-lg;
 }
 
 .button-secondary {

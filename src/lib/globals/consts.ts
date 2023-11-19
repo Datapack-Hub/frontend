@@ -1,5 +1,7 @@
+/** Shorthand for the API link */
 export const API = "https://api.datapackhub.net";
 
+/** All supported categories */
 export const categories = [
   "Adventure",
   "Cosmetics",
@@ -14,9 +16,10 @@ export const categories = [
   "Tools & Equipment",
   "Utility",
   "Vanilla+",
-  "World Generation"
+  "World Generation",
 ];
 
+/** All role names */
 export const roleNames = [
   "admin",
   "moderator",
@@ -24,9 +27,10 @@ export const roleNames = [
   "verified",
   "nerd",
   "donator",
-  "default"
+  "default",
 ];
 
+/** All Minecraft Versions */
 export const minecraftVersions = [
   "1.13",
   "1.15",
@@ -37,7 +41,7 @@ export const minecraftVersions = [
   "1.19",
   "1.19.4",
   "1.20",
-  "1.20.2"
+  "1.20.2",
 ];
 
 export type FeaturedProjectTypes =

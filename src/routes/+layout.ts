@@ -1,16 +1,6 @@
 import { browser, dev } from "$app/environment";
-import {
-  fetchAuthed,
-  loadColorPref,
-  removeCookie
-} from "$lib/globals/functions";
-import {
-  authed,
-  consoleWarned,
-  roleInfo,
-  roles,
-  user
-} from "$lib/globals/stores";
+import { fetchAuthed, loadColorPref, removeCookie } from "$lib/globals/functions";
+import { authed, consoleWarned, roleInfo, roles, user } from "$lib/globals/stores";
 import { toast } from "svelte-sonner";
 import { get } from "svelte/store";
 import type { LayoutLoad } from "./$types";
@@ -39,17 +29,14 @@ export const load = (async ({ url, data }) => {
     }
 
     if (!dev && !get(consoleWarned)) {
-      console.log(
-        "%cSTOP!",
-        "color: #ff631a; font-size: 72pt; font-weight: 800;"
-      );
+      console.log("%cSTOP!", "color: #ff631a; font-size: 72pt; font-weight: 800;");
       console.log(
         "%cPasting anything into the console could get your account stolen. Only use this if you know what you're doing!",
-        "font-size: 18pt;"
+        "font-size: 18pt;",
       );
       console.log(
         "%c(Unless you DO know what you're doing, then maybe you could join us 😁).",
-        "font-size: 8pt;"
+        "font-size: 8pt;",
       );
       consoleWarned.set(true);
     }

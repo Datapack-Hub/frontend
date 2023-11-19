@@ -12,16 +12,16 @@ export const load = (async ({ params, fetch }) => {
 
     const [user, me] = await Promise.all([
       fetchAuthed("get", `/user/${params.user}`, { fetchFunction: fetch }),
-      fetchAuthed("get", "/user/me", { fetchFunction: fetch })
+      fetchAuthed("get", "/user/me", { fetchFunction: fetch }),
     ]);
 
     const [userJson, meJson] = await Promise.all([
       userSchema.parseAsync(await user.json()),
-      userSchema.parseAsync(await me.json())
+      userSchema.parseAsync(await me.json()),
     ]);
 
-    if ([user, me].every(r => r.ok)) {
-      const profileRole = get(roles).find(v => v.name === userJson?.role);
+    if ([user, me].every((r) => r.ok)) {
+      const profileRole = get(roles).find((v) => v.name === userJson?.role);
 
       if (
         userJson.username !== meJson.username &&
@@ -29,13 +29,13 @@ export const load = (async ({ params, fetch }) => {
       ) {
         throw error(403, {
           message: "Not allowed!",
-          description: "This is not you, you can't edit their profile."
+          description: "This is not you, you can't edit their profile.",
         });
       }
 
       return {
         profile: await userSchema.parseAsync(userJson),
-        role: profileRole
+        role: profileRole,
       };
     }
   }

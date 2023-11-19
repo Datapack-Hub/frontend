@@ -32,7 +32,7 @@
       href="/project/{project.url}"
       class="rounded-lg {project.icon
         ? ''
-        : 'bg-slate-300 p-4 dark:bg-zinc-700 dark:text-zinc-100'} items-start">
+        : 'bg-slate-300 p-4 dark:bg-zinc-700 dark:text-zinc-100'} items-start pt-2">
       {#if project.icon}
         <img
           src="{project.icon}"

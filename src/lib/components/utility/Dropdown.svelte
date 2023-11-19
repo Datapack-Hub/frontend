@@ -25,6 +25,7 @@
     class="{selectedStyles}"
     on:keydown="{() => (expand = !expand)}"
     on:click="{() => (expand = !expand)}"
+    on:blur="{() => (expand = false)}"
     style="width: {longest[0].length + 5}ch;">{selected}</button>
   <button
     aria-label="{expand ? 'Open' : 'Close'} dropdown"
