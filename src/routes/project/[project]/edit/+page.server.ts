@@ -1,5 +1,5 @@
 import { serverGetAuthed } from "$lib/globals/functions";
-import { type User, projectSchema, versionSchema } from "$lib/globals/schema";
+import { projectSchema, versionSchema, type User } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 

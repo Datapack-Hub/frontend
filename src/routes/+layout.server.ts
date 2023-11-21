@@ -1,6 +1,6 @@
 import { API } from "$lib/globals/consts";
 import { serverGetAuthed } from "$lib/globals/functions";
-import { type Role, roleSchema, userSchema } from "$lib/globals/schema";
+import { roleSchema, userSchema, type Role } from "$lib/globals/schema";
 import { redirect } from "@sveltejs/kit";
 import type { LayoutServerLoad } from "./$types";
 

@@ -50,6 +50,7 @@
   let vName = "";
   let vCode = "";
   let vRPUsed = false;
+  let submitButton: HTMLButtonElement;
 
   // let dependencies: Project[] = [];
   // let dependencyNames: string[] = [""];
@@ -154,6 +155,7 @@
     currentTarget: EventTarget & HTMLFormElement;
   };
   async function uploadVersion(event: SubmitWithData) {
+    event.currentTarget.disabled = true;
     let vSquash = document.querySelector<HTMLInputElement>("#squash")?.checked;
 
     if (!vName) return toast("Please make sure you give a version name!");
@@ -551,8 +553,7 @@
                 <button
                   type="submit"
                   class="button-primary"
-                  on:click="{event => (event.currentTarget.disabled = true)}"
-                  >Create Version</button>
+                  bind:this="{submitButton}">Create Version</button>
               </form>
             {/if}
           </div>
