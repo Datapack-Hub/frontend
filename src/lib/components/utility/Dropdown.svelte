@@ -23,20 +23,18 @@
 <div class="relative w-max transition-all">
   <button
     class="{selectedStyles}"
-    on:keydown="{() => (expand = !expand)}"
+    on:keydown="{() => (expand = true)}"
     on:click="{() => (expand = !expand)}"
-    on:blur="{() => (expand = false)}"
     style="width: {longest[0].length + 5}ch;">{selected}</button>
-  <button
+  <p
     aria-label="{expand ? 'Open' : 'Close'} dropdown"
-    class="absolute right-2 top-1/2 -translate-y-1/2 text-sm dark:text-zinc-100 {expand
+    class="absolute right-2 top-1/2 -translate-y-1/2 text-sm dark:text-zinc-100 pointer-events-none {expand
       ? 'rotate-180'
-      : 'rotate-0'} transition-transform"
-    on:keydown="{() => (expand = !expand)}"
-    on:click="{() => (expand = !expand)}"><IconUp /></button>
+      : 'rotate-0'} transition-transform"><IconUp /></p>
   {#if expand}
     <ul
       out:fade="{{ duration: 100, delay: 0 }}"
+      on:pointerleave="{() => (expand = false)}"
       class="absolute z-30 border-2 border-slate-300 bg-slate-200 px-1.5 py-0.5 last:rounded-b-lg dark:border-zinc-700 dark:bg-zinc-800"
       style="width: {longest[0].length + 5}ch;">
       {#each options as opt, index}

@@ -1,8 +1,10 @@
-<div class="flex h-screen w-full flex-col items-center justify-center">
-  <h1 class="text-3xl dark:text-white">Coming Soon™</h1>
-  <h2 class="text-xl dark:text-white">
-    For now, check out <a
-      href="https://bot.datapackhub.net/"
-      class="text-blue-500 underline">our bot</a>
-  </h2>
+<div class="grid py-32 px-0 md:px-16 lg:px-24 h-screen grid-auto-fit-2xl gap-3">
+  <p class="bg-zinc-800">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique velit sequi nihil quo alias quaerat, expedita adipisci eveniet? Eum sint id dolor explicabo nisi commodi optio qui itaque dicta sapiente!</p>
+  <p class="bg-zinc-800">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique velit sequi nihil quo alias quaerat, expedita adipisci eveniet? Eum sint id dolor explicabo nisi commodi optio qui itaque dicta sapiente!</p>
+  <p class="bg-zinc-800">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique velit sequi nihil quo alias quaerat, expedita adipisci eveniet? Eum sint id dolor explicabo nisi commodi optio qui itaque dicta sapiente!</p>
+  <p class="bg-zinc-800">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique velit sequi nihil quo alias quaerat, expedita adipisci eveniet? Eum sint id dolor explicabo nisi commodi optio qui itaque dicta sapiente!</p>
+  <p class="bg-zinc-800">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique velit sequi nihil quo alias quaerat, expedita adipisci eveniet? Eum sint id dolor explicabo nisi commodi optio qui itaque dicta sapiente!</p>
+  <p class="bg-zinc-800">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique velit sequi nihil quo alias quaerat, expedita adipisci eveniet? Eum sint id dolor explicabo nisi commodi optio qui itaque dicta sapiente!</p>
+  <p class="bg-zinc-800">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique velit sequi nihil quo alias quaerat, expedita adipisci eveniet? Eum sint id dolor explicabo nisi commodi optio qui itaque dicta sapiente!</p>
+  <p class="bg-zinc-800">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique velit sequi nihil quo alias quaerat, expedita adipisci eveniet? Eum sint id dolor explicabo nisi commodi optio qui itaque dicta sapiente!</p>
 </div>

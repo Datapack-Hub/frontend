@@ -135,9 +135,7 @@
 
           if (
             !zip.file("pack.mcmeta") ||
-            !zip.folder("data") ||
-            zipFile.type != "application/x-zip-compressed"
-          ) {
+            !zip.folder("data")) {
             return toast.error("Malformed Datapack!");
           }
 
