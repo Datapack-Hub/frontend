@@ -6,7 +6,7 @@
 
   import IconEdit from "~icons/tabler/Edit.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
-  import RawMarkdownRenderer from "./markdown/RawMarkdownRenderer.svelte";
+  import MarkdownRenderer from "./markdown/MarkdownRenderer.svelte";
 
   export let reply: {
     id: number;
@@ -68,8 +68,8 @@
           </div>
         {/if}
       </div>
-      <RawMarkdownRenderer
-        html="{reply.message}"
+      <MarkdownRenderer
+        source="{reply.message}"
         classes="text-sm dark:text-neutral-200" />
     </div>
   </li>

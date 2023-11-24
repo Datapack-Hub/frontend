@@ -13,7 +13,7 @@
   import IconEdit from "~icons/tabler/Edit.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
   import Reply from "./Reply.svelte";
-  import RawMarkdownRenderer from "./markdown/RawMarkdownRenderer.svelte";
+  import MarkdownRenderer from "./markdown/MarkdownRenderer.svelte";
 
   export let comment: DPHComment;
   export let project: Project;
@@ -88,7 +88,7 @@
           </p>
         </div>
 
-        <RawMarkdownRenderer html="{comment.message}" classes="text-sm" />
+        <MarkdownRenderer source="{comment.message}" classes="text-sm" />
         {#if comment.replies.length > 0}
           {#if !showReplies}
             <button
