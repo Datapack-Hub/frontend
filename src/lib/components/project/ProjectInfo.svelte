@@ -177,77 +177,77 @@
 
 <Modal bind:this="{nextStepsModal}" title="Checklist">
   <div class="text-white">
-    <p class="mb-2">
+    <p class="text-black dark:text-white mb-2">
       Congrats! You've made a new empty project. Here's a quick checklist of
       what you should do next:
     </p>
     <div class="space-y-2">
       {#if !project.icon}
-        <div class="rounded-xl bg-zinc-900 p-3">
+        <div class="rounded-xl bg-slate-300 dark:bg-zinc-900 p-3">
           <div
             class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
             <IconIcon />
             <h1>Add an icon</h1>
           </div>
-          <p>
+          <p class="text-black dark:text-white">
             Your project icon is the first thing people will see. Make it
             simple, effective, and stand out to get people to click on it!
           </p>
         </div>
       {/if}
       {#if project.category && project.category[0] == ""}
-        <div class="rounded-xl bg-zinc-900 p-3">
+        <div class="rounded-xl bg-slate-300 dark:bg-zinc-900 p-3">
           <div
             class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
             <IconCategories />
             <h1>Select categories</h1>
           </div>
-          <p>
+          <p class="text-black dark:text-white">
             Categories help people search for your datapacks. If you add more
             categories, more people will find and download your datapack
           </p>
         </div>
       {/if}
-      <div class="rounded-xl bg-zinc-900 p-3">
+      <div class="rounded-xl bg-slate-300 dark:bg-zinc-900 p-3">
         <div
           class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
           <IconDescription />
           <h1>Add relevant details</h1>
         </div>
-        <p>
+        <p class="text-black dark:text-white">
           Unless you tell them, nobody knows how to use your datapack. Use the
           description to tell people what your datapack does, how to use it,
           etc.
         </p>
       </div>
       {#if !project.latest_version}
-        <div class="rounded-xl bg-zinc-900 p-3">
+        <div class="rounded-xl bg-slate-300 dark:bg-zinc-900 p-3">
           <div
             class="flex items-center space-x-2 text-lg font-semibold text-blue-500">
             <IconUpload />
             <h1>Upload a version</h1>
           </div>
-          <p>
+          <p class="text-black dark:text-white">
             Versions are your datapack's downloadable files. Upload a datapack
             file, select the Minecraft versions it supports, and users will be
             able to download your datapack with our smart download system.
           </p>
         </div>
       {/if}
-      <div class="rounded-xl bg-zinc-900 p-3">
+      <div class="rounded-xl bg-slate-300 dark:bg-zinc-900 p-3">
         <div
           class="flex items-center space-x-2 text-lg font-semibold text-green-500">
           <IconTick />
           <h1>Submit for approval</h1>
         </div>
-        <p>
+        <p class="text-black dark:text-white">
           Once you think your datapack is ready to be published, publish it. A
           moderator will review your datapack to make sure it follows our rules
           before going live.
         </p>
       </div>
     </div>
-    <p class="mt-2">
+    <p class="mt-2 text-black dark:text-white">
       You can view this list anytime by clicking the "Open Checklist" button on
       the project page.
     </p>
