@@ -182,7 +182,7 @@
             class="ml-2 rounded-full outline outline-2 outline-offset-2 hover:brightness-75"
             style="outline-color:{$roleInfo.color ?? '#eab308'};" />
           <ul
-            class="absolute rounded-md right-4 -top-32 md:top-14 hidden flex-col bg-slate-300 p-2 group-hover:flex dark:bg-black dark:text-white">
+            class="absolute -top-32 right-4 hidden flex-col rounded-md bg-slate-300 p-2 group-hover:flex dark:bg-black dark:text-white md:top-14">
             <li class="p-1">
               <IconProfile class="mr-2 inline-block align-middle" /><a
                 href="/user/{$user.username}">Profile</a>

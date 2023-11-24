@@ -38,7 +38,7 @@
 {#if $authed && visible}
   <div class="absolute">
     <div
-      class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu overflow-y-auto backdrop-blur-xl backdrop-brightness-75 px-8">
+      class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu overflow-y-auto px-8 backdrop-blur-xl backdrop-brightness-75">
       <div class="relative m-auto justify-self-center">
         <div
           class="flex items-center justify-items-stretch rounded-t-xl bg-slate-300 p-3 dark:bg-zinc-900">
