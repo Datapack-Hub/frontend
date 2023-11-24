@@ -4,12 +4,11 @@
   import { toast } from "svelte-sonner";
   // Component imports
 
+  import { invalidateAll } from "$app/navigation";
+  import Comment from "$lib/components/Comment.svelte";
   import ProjectInfo from "$lib/components/project/ProjectInfo.svelte";
   import ProjectNav from "$lib/components/project/ProjectNav.svelte";
-  import Comment from "$lib/components/Comment.svelte";
-  import { API } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
-  import { commentSchema } from "$lib/globals/schema";
   import { authed, user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { debounce, sort } from "radash";
@@ -31,14 +30,7 @@
         data: { message: comment }
       }).then(async response => {
         if (response.ok) {
-          let newComments = await fetch(
-            API + "/comments/thread/" + data.project.ID
-          );
-          let newCommentsJson = await newComments.json();
-          let parsedComments = await commentSchema
-            .array()
-            .parseAsync(newCommentsJson.result);
-          data.comments = parsedComments;
+          invalidateAll()
           comment = "";
           commentSending = false;
           return;
