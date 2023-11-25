@@ -22,7 +22,7 @@
   let sortDropdownOpen: boolean;
   let tagDropdownOpen: boolean;
   let query = "";
-  let tag = data.category || "";
+  let tag = data.category || "All";
   let sort = "Updated";
   let searchTime = 0;
   let layout = browser
