@@ -8,14 +8,14 @@
   let page = ""
   let expanded = false
 
-  let content: {title: string, content: string}
+  let content: {title: string | undefined, content: string}
 
   for (const v of data.content) {
     selections.push(v.title || "ERROR");
   }
 
   function change() {
-    content = data.content.find(v => page == v.title || "ERROR") || {content: "ERROR", title: "ERROR"}
+    content = data.content.find(v => page == v.title) || {title: "", content: ""}
   }
 </script>
 
