@@ -11,14 +11,17 @@ const links = [
 ];
 
 export const load = (async () => {
-  const content = []
+  const content = [];
 
   for (const link of links) {
     const file = await fetch(link);
-    content.push({ title: decodeURIComponent(link).split("/").at(-1)!, content: await file.text() });
+    content.push({
+      title: decodeURIComponent(link).split("/").at(-1),
+      content: await file.text(),
+    });
   }
 
   return {
-    content
+    content,
   };
 }) satisfies PageServerLoad;

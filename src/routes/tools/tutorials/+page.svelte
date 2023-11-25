@@ -11,11 +11,11 @@
   let content: {title: string, content: string}
 
   for (const v of data.content) {
-    selections.push(v.title);
+    selections.push(v.title || "ERROR");
   }
 
   function change() {
-    content = data.content.find(v => page == v.title)!
+    content = data.content.find(v => page == v.title || "ERROR") || {content: "ERROR", title: "ERROR"}
   }
 </script>
 
