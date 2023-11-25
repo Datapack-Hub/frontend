@@ -186,7 +186,7 @@
     class="flex w-full flex-col items-center justify-center bg-slate-200 py-16 dark:bg-zinc-800/20">
     <a
       href="#bento"
-      class="fixed bottom-20 z-50 rounded-full bg-zinc-700 px-2 py-1 shadow-lg dark:text-white lg:bottom-4 {scrollY >
+      class="fixed bottom-20 z-50 rounded-full bg-slate-300 dark:bg-zinc-700 px-2 py-1 shadow-lg dark:text-white lg:bottom-4 {scrollY >
       100
         ? 'opacity-0'
         : 'opacity-100'} transition-opacity">

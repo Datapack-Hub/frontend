@@ -3,6 +3,7 @@
   import { createFloatingActions, arrow } from "svelte-floating-ui";
   import { writable, type Writable } from "svelte/store";
   import { inline } from "svelte-floating-ui/core";
+  import { fade } from "svelte/transition";
 
   export let tooltipText: string;
   export let placement: Placement = "top";
@@ -58,6 +59,7 @@
 {#if showTooltip}
   <!--MUST be absolute!-->
   <div
+    transition:fade={{duration: 75}}
     class="absolute z-50 w-max rounded-md bg-white px-2 py-1 text-base dark:bg-black dark:text-white"
     use:floatingContent>
     {#if allowHTML}
