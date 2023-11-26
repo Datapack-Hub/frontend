@@ -10,6 +10,7 @@
   import IconFile from "~icons/tabler/FileZip.svelte";
   import IconX from "~icons/tabler/X.svelte";
   import IconDown from "~icons/tabler/ArrowDown.svelte";
+  import IconGitHub from "~icons/tabler/BrandGithubFilled.svelte";
   import type { PageData } from "./$types";
   import { appendSize } from "$lib/globals/functions";
   import Tooltip from "$lib/components/utility/Tooltip.svelte";
@@ -218,7 +219,7 @@
         <Button click="/projects">Find your next favourite datapack</Button>
       </div>
       <div
-        class="fadeTextAnime col-span-2 row-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>No more "made for an older version"</b>
@@ -297,6 +298,39 @@
               </a>
             </Tooltip>
           {/each}
+        </div>
+      </div>
+      <div
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 pb-0 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        <h2
+          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
+          <b>Open Source</b>
+        </h2>
+        <p class="mt-3 text-lg font-light dark:text-zinc-100">
+          We believe that the freedom to easily view, alter, and enhance our code allows us to work better together and be transparent about changes or policies
+        </p>
+        <div class="grid-auto-fit-xs grid gap-1 py-4">
+          <a href="https://github.com/Datapack-Hub/api" class="flex items-center justify-center gap-3 bg-black text-white button-base">
+            <img
+            src="/logos/github-white.svg"
+            alt="logo"
+            class="h-4 self-center" />
+              API Repo
+          </a>
+          <a href="https://github.com/Datapack-Hub/frontend" class="flex items-center justify-center gap-3 bg-black text-white button-base">
+            <img
+            src="/logos/github-white.svg"
+            alt="logo"
+            class="h-4 self-center" />
+              Site Repo
+          </a>
+          <a href="https://github.com/Datapack-Hub/" class="flex items-center justify-center gap-3 bg-black text-white button-base">
+            <img
+            src="/logos/github-white.svg"
+            alt="logo"
+            class="h-4 self-center" />
+              Organization
+          </a>
         </div>
       </div>
       <div

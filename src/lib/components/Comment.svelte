@@ -10,7 +10,6 @@
   import { sort } from "radash";
   import { toast } from "svelte-sonner";
   import IconRetract from "~icons/tabler/ChevronUp.svelte";
-  import IconEdit from "~icons/tabler/Edit.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
   import Reply from "./Reply.svelte";
   import RawMarkdownRenderer from "./markdown/RawMarkdownRenderer.svelte";
