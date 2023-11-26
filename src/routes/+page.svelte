@@ -309,7 +309,7 @@
         <p class="mt-3 text-lg font-light dark:text-zinc-100">
           We believe that the freedom to easily view, alter, and enhance our code allows us to work better together and be transparent about changes or policies
         </p>
-        <div class="grid-auto-fit-xs grid gap-1 py-4">
+        <div class="grid-auto-fit-2md grid gap-1 py-4">
           <a href="https://github.com/Datapack-Hub/api" class="flex items-center justify-center gap-3 bg-black text-white button-base">
             <img
             src="/logos/github-white.svg"
