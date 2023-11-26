@@ -2,18 +2,17 @@
   import Button from "$lib/components/decorative/Button.svelte";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
+  import Tooltip from "$lib/components/utility/Tooltip.svelte";
   import type { FeaturedProjectTypes as FeaturedProjectType } from "$lib/globals/consts";
+  import { appendSize } from "$lib/globals/functions";
   import type { Project } from "$lib/globals/schema";
   import anime from "animejs";
   import { onMount } from "svelte";
   import IconArrow from "~icons/tabler/ArrowBigRightLinesFilled.svelte";
+  import IconDown from "~icons/tabler/ArrowDown.svelte";
   import IconFile from "~icons/tabler/FileZip.svelte";
   import IconX from "~icons/tabler/X.svelte";
-  import IconDown from "~icons/tabler/ArrowDown.svelte";
-  import IconGitHub from "~icons/tabler/BrandGithubFilled.svelte";
   import type { PageData } from "./$types";
-  import { appendSize } from "$lib/globals/functions";
-  import Tooltip from "$lib/components/utility/Tooltip.svelte";
 
   export let data: PageData;
 
