@@ -189,12 +189,15 @@
     <p class="mb-2 align-middle text-lg text-zinc-950 dark:text-zinc-100">
       Select Action
     </p>
-    <button
-      class="button-base text-zinc-950 dark:text-zinc-100 {moderationModalPage ==
-      'ban'
-        ? 'bg-slate-500 dark:bg-zinc-600'
-        : 'bg-slate-300 dark:bg-zinc-900'}"
-      on:click="{() => (moderationModalPage = 'ban')}">Ban</button>
+    {#if !banJson.banned}
+      <button
+        class="button-base text-zinc-950 dark:text-zinc-100 active:bg-slate-500 active:dark:bg-zinc-600 bg-slate-300 dark:bg-zinc-900"
+        on:click="{() => (moderationModalPage = 'ban')}">Ban</button>
+    {:else}
+      <button
+        class="button-base text-zinc-950 dark:text-zinc-100 active:bg-slate-500 active:dark:bg-zinc-600 bg-slate-300 dark:bg-zinc-900"
+        on:click="{() => unbanDialog.open()}">Pardon</button>
+    {/if}
     <button
       class="button-base text-zinc-950 dark:text-zinc-100 {moderationModalPage ==
       'warn'
@@ -341,12 +344,12 @@
     {user?.username} has been banned for the following reason:
   </p>
   <p class="my-2 rounded-xl bg-zinc-700 p-3 dark:text-zinc-300">
-    <MarkdownComponent source="{user.banData?.message ?? 'Ban data lost!'}" />
+    <MarkdownComponent source="{banJson.banMessage ?? 'Ban data lost!'}" />
   </p>
   <p class=" text-sm text-zinc-950/40 dark:text-white/40">
     Unban them to end their ban early.
   </p>
-  <Button click="{unbanUser}">Log them out!</Button>
+  <Button click="{unbanUser}">Unban them!</Button>
 </Modal>
 
 <style lang="postcss">

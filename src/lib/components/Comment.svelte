@@ -72,7 +72,7 @@
 {#if visible}
   {#key comment}
     <div
-      class="group relative flex w-full space-x-2 rounded-lg p-3 dark:bg-zinc-900">
+      class="group relative flex w-full space-x-2 rounded-lg p-3 bg-slate-300 dark:bg-zinc-900">
       <img
         src="{appendSize(comment.author.profile_icon, 64)}"
         alt="{comment.author.username}'s profile"
@@ -154,10 +154,10 @@
       </div>
       {#if $user.id == comment.author.id || ["moderator", "admin"].includes($user.role)}
         <div
-          class="absolute right-2 top-3 flex items-start space-x-2 p-1 text-sm text-zinc-400 opacity-0 hover:opacity-100">
-          <button class="flex items-center space-x-1" aria-label="Edit comment">
+          class="absolute right-2 top-3 flex items-start space-x-2 p-1 text-sm text-zinc-400 opacity-0 group-hover:opacity-100">
+          <!-- <button class="flex items-center space-x-1" aria-label="Edit comment">
             <IconEdit />
-          </button>
+          </button> -->
           <button
             class="flex items-center space-x-1"
             on:click="{deleteComment}"
