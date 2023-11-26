@@ -63,7 +63,7 @@
 
   async function changeTag() {
     if (tag.toLowerCase() == "all") {
-      await goto("?category=")
+      await goto("?category=");
       return;
     }
     await goto("?category=" + tag);

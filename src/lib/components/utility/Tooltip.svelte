@@ -59,7 +59,7 @@
 {#if showTooltip}
   <!--MUST be absolute!-->
   <div
-    transition:fade={{duration: 75}}
+    transition:fade="{{ duration: 75 }}"
     class="absolute z-50 w-max rounded-md bg-white px-2 py-1 text-base dark:bg-black dark:text-white"
     use:floatingContent>
     {#if allowHTML}

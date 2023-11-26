@@ -30,7 +30,7 @@
         data: { message: comment }
       }).then(async response => {
         if (response.ok) {
-          invalidateAll()
+          invalidateAll();
           comment = "";
           commentSending = false;
           return;

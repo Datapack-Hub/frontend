@@ -177,13 +177,13 @@
 
 <Modal bind:this="{nextStepsModal}" title="Checklist">
   <div class="text-white">
-    <p class="text-black dark:text-white mb-2">
+    <p class="mb-2 text-black dark:text-white">
       Congrats! You've made a new empty project. Here's a quick checklist of
       what you should do next:
     </p>
     <div class="space-y-2">
       {#if !project.icon}
-        <div class="rounded-xl bg-slate-300 dark:bg-zinc-900 p-3">
+        <div class="rounded-xl bg-slate-300 p-3 dark:bg-zinc-900">
           <div
             class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
             <IconIcon />
@@ -196,7 +196,7 @@
         </div>
       {/if}
       {#if project.category && project.category[0] == ""}
-        <div class="rounded-xl bg-slate-300 dark:bg-zinc-900 p-3">
+        <div class="rounded-xl bg-slate-300 p-3 dark:bg-zinc-900">
           <div
             class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
             <IconCategories />
@@ -208,7 +208,7 @@
           </p>
         </div>
       {/if}
-      <div class="rounded-xl bg-slate-300 dark:bg-zinc-900 p-3">
+      <div class="rounded-xl bg-slate-300 p-3 dark:bg-zinc-900">
         <div
           class="flex items-center space-x-2 text-lg font-semibold text-yellow-500">
           <IconDescription />
@@ -221,7 +221,7 @@
         </p>
       </div>
       {#if !project.latest_version}
-        <div class="rounded-xl bg-slate-300 dark:bg-zinc-900 p-3">
+        <div class="rounded-xl bg-slate-300 p-3 dark:bg-zinc-900">
           <div
             class="flex items-center space-x-2 text-lg font-semibold text-blue-500">
             <IconUpload />
@@ -234,7 +234,7 @@
           </p>
         </div>
       {/if}
-      <div class="rounded-xl bg-slate-300 dark:bg-zinc-900 p-3">
+      <div class="rounded-xl bg-slate-300 p-3 dark:bg-zinc-900">
         <div
           class="flex items-center space-x-2 text-lg font-semibold text-green-500">
           <IconTick />

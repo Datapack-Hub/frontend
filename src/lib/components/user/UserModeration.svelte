@@ -191,11 +191,11 @@
     </p>
     {#if !banJson.banned}
       <button
-        class="button-base text-zinc-950 dark:text-zinc-100 active:bg-slate-500 active:dark:bg-zinc-600 bg-slate-300 dark:bg-zinc-900"
+        class="button-base bg-slate-300 text-zinc-950 active:bg-slate-500 dark:bg-zinc-900 dark:text-zinc-100 active:dark:bg-zinc-600"
         on:click="{() => (moderationModalPage = 'ban')}">Ban</button>
     {:else}
       <button
-        class="button-base text-zinc-950 dark:text-zinc-100 active:bg-slate-500 active:dark:bg-zinc-600 bg-slate-300 dark:bg-zinc-900"
+        class="button-base bg-slate-300 text-zinc-950 active:bg-slate-500 dark:bg-zinc-900 dark:text-zinc-100 active:dark:bg-zinc-600"
         on:click="{() => unbanDialog.open()}">Pardon</button>
     {/if}
     <button

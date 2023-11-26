@@ -71,7 +71,7 @@
 {#if visible}
   {#key comment}
     <div
-      class="group relative flex w-full space-x-2 rounded-lg p-3 bg-slate-300 dark:bg-zinc-900">
+      class="group relative flex w-full space-x-2 rounded-lg bg-slate-300 p-3 dark:bg-zinc-900">
       <img
         src="{appendSize(comment.author.profile_icon, 64)}"
         alt="{comment.author.username}'s profile"

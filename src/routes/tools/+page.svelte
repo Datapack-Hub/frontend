@@ -6,21 +6,17 @@
       include implementations of common troubles and systems!
     </p>
   </a>
-  <a
-    href="/tools"
-    class="rounded-lg bg-zinc-800 p-2 dark:text-white">
-    <p class="text-xl font-bold">Mailman: upload once, use everywhere! (coming soon)</p>
-    <p class="mt-3">
-      [redacted]
+  <a href="/tools" class="rounded-lg bg-zinc-800 p-2 dark:text-white">
+    <p class="text-xl font-bold">
+      Mailman: upload once, use everywhere! (coming soon)
     </p>
+    <p class="mt-3">[redacted]</p>
   </a>
-  <a
-    href="/tools"
-    class="rounded-lg bg-zinc-800 p-2 dark:text-white">
+  <a href="/tools" class="rounded-lg bg-zinc-800 p-2 dark:text-white">
     <p class="text-xl font-bold">Tellraw generator (coming soon)</p>
     <p class="mt-3">
       "Every /tellraw generator has problems, not this one!" -Silabear
-      <br>
+      <br />
       The best tellraw generator, courtesy of Datapack Hub.
     </p></a>
 </div>

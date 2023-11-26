@@ -28,9 +28,11 @@
     style="width: {longest[0].length + 5}ch;">{selected}</button>
   <p
     aria-label="{expand ? 'Open' : 'Close'} dropdown"
-    class="absolute right-2 top-1/2 -translate-y-1/2 text-sm dark:text-zinc-100 pointer-events-none {expand
+    class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-sm dark:text-zinc-100 {expand
       ? 'rotate-180'
-      : 'rotate-0'} transition-transform"><IconUp /></p>
+      : 'rotate-0'} transition-transform">
+    <IconUp />
+  </p>
   {#if expand}
     <ul
       out:fade="{{ duration: 100, delay: 0 }}"

@@ -186,7 +186,7 @@
     class="flex w-full flex-col items-center justify-center bg-slate-200 py-16 dark:bg-zinc-800/20">
     <a
       href="#bento"
-      class="fixed bottom-20 z-50 rounded-full bg-slate-300 dark:bg-zinc-700 px-2 py-1 shadow-lg dark:text-white lg:bottom-4 {scrollY >
+      class="fixed bottom-20 z-50 rounded-full bg-slate-300 px-2 py-1 shadow-lg dark:bg-zinc-700 dark:text-white lg:bottom-4 {scrollY >
       100
         ? 'opacity-0'
         : 'opacity-100'} transition-opacity">
@@ -306,29 +306,37 @@
           <b>Open Source</b>
         </h2>
         <p class="mt-3 text-lg font-light dark:text-zinc-100">
-          We believe that the freedom to easily view, alter, and enhance our code allows us to work better together and be transparent about changes or policies
+          We believe that the freedom to easily view, alter, and enhance our
+          code allows us to work better together and be transparent about
+          changes or policies
         </p>
         <div class="grid-auto-fit-2md grid gap-1 py-4">
-          <a href="https://github.com/Datapack-Hub/api" class="flex items-center justify-center gap-3 bg-black text-white button-base">
+          <a
+            href="https://github.com/Datapack-Hub/api"
+            class="button-base flex items-center justify-center gap-3 bg-black text-white">
             <img
-            src="/logos/github-white.svg"
-            alt="logo"
-            class="h-4 self-center" />
-              API Repo
+              src="/logos/github-white.svg"
+              alt="logo"
+              class="h-4 self-center" />
+            API Repo
           </a>
-          <a href="https://github.com/Datapack-Hub/frontend" class="flex items-center justify-center gap-3 bg-black text-white button-base">
+          <a
+            href="https://github.com/Datapack-Hub/frontend"
+            class="button-base flex items-center justify-center gap-3 bg-black text-white">
             <img
-            src="/logos/github-white.svg"
-            alt="logo"
-            class="h-4 self-center" />
-              Site Repo
+              src="/logos/github-white.svg"
+              alt="logo"
+              class="h-4 self-center" />
+            Site Repo
           </a>
-          <a href="https://github.com/Datapack-Hub/" class="flex items-center justify-center gap-3 bg-black text-white button-base">
+          <a
+            href="https://github.com/Datapack-Hub/"
+            class="button-base flex items-center justify-center gap-3 bg-black text-white">
             <img
-            src="/logos/github-white.svg"
-            alt="logo"
-            class="h-4 self-center" />
-              Organization
+              src="/logos/github-white.svg"
+              alt="logo"
+              class="h-4 self-center" />
+            Organization
           </a>
         </div>
       </div>
