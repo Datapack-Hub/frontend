@@ -50,15 +50,3 @@
     </div>
   </div>
 </main>
-
-<style lang="postcss">
-  :root {
-    --sms-bg: theme(colors.zinc.700);
-    --sms-border: 0px solid theme(colors.zinc.700);
-    --sms-selected-bg: theme(colors.zinc.700);
-    --sms-remove-btn-hover-bg: theme(colors.dph-orange);
-    --sms-options-bg: theme(colors.zinc.700);
-    --sms-text-color: theme(colors.white);
-    --sms-selected-bg: theme(colors.dph-orange/25);
-  }
-</style>

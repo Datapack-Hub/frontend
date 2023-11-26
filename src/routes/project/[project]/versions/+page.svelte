@@ -53,6 +53,9 @@
               Minecraft Version:
             </p>
             <MultiSelect
+              outerDivClass="!border-2 !border-slate-300 dark:!border-zinc-700"
+              liOptionClass="bg-white dark:bg-zinc-950"
+              liSelectedClass="!bg-dph-orange !text-white"
               bind:selected="{selectedVersions}"
               options="{minecraftVersions}" />
           </div>

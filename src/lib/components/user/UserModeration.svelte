@@ -328,6 +328,9 @@
     <div class="my-4">
       <h2 class="mb-2 text-zinc-950 dark:text-white">Badges</h2>
       <MultiSelect
+        outerDivClass="!border-2 !border-slate-300 dark:!border-zinc-700"
+        liOptionClass="bg-white dark:bg-zinc-950"
+        liSelectedClass="!bg-dph-orange !text-white"
         options="{badges.map(v => v.name)}"
         bind:selected="{badgeState}" />
     </div>
@@ -351,14 +354,3 @@
   </p>
   <Button click="{unbanUser}">Unban them!</Button>
 </Modal>
-
-<style lang="postcss">
-  :root {
-    --sms-bg: theme(colors.zinc.800);
-    --sms-border: 2px solid theme(colors.zinc.200);
-    --sms-selected-bg: theme(colors.zinc.700);
-    --sms-remove-btn-hover-bg: theme(colors.orange.500);
-    --sms-options-bg: theme(colors.zinc.800);
-    --sms-text-color: theme(colors.slate.100);
-  }
-</style>
