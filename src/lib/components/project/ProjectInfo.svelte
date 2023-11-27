@@ -52,7 +52,7 @@
 </script>
 
 <div class="mr-4 h-fit w-full flex-col lg:w-2/5 xl:w-1/3" use:autoAnimate>
-  <div class="my-3 mb-4 text-blue-300" use:autoAnimate>
+  <div class="my-3 mb-4 text-sky-500" use:autoAnimate>
     <button on:click="{() => history.back()}">
       <IconBack class="inline" /> Go Back
     </button>
