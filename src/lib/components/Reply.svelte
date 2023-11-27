@@ -31,7 +31,7 @@
 </script>
 
 {#if visible}
-  <li class="relative my-3 flex w-full space-x-2">
+  <li class="relative my-3 flex w-full space-x-2 group">
     <img
       src="{appendSize(reply.author.profile_icon, 32)}"
       alt="{reply.author}'s profile"
@@ -51,7 +51,7 @@
           <div class="absolute right-0 p-3 text-white">
             {#if $user.id == reply.author.id || ["moderator", "admin"].includes($user.role)}
               <div
-                class="absolute right-2 top-3 flex items-start space-x-2 p-1 text-sm text-zinc-400 opacity-0 hover:opacity-100">
+                class="absolute right-2 top-3 flex items-start space-x-2 p-1 text-sm text-zinc-400 opacity-0 group-hover:opacity-100">
                 <button
                   class="flex items-center space-x-1"
                   aria-label="Edit comment">
