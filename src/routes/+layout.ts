@@ -42,5 +42,11 @@ export const load = (async ({ url, data }) => {
     }
 
     loadColorPref();
+    return {
+      cookieNotice: localStorage.getItem("acceptedCookies") !== undefined
+    }
+  }
+  return {
+    cookieNotice: false
   }
 }) satisfies LayoutLoad;

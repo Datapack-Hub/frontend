@@ -108,7 +108,7 @@ export async function fetchAuthed(
  * Get cookie from browser
  * @param cookieName {string} name of cookie
  */
-const getCookie = memo((cookieName: string): string | undefined => {
+export const getCookie = memo((cookieName: string): string | undefined => {
   if (!browser) return; // Can't get the cookies if you can't access them
 
   const cookies = document.cookie.split(";");

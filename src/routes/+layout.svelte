@@ -1,4 +1,5 @@
 <script lang="ts">
+  import CookieConsent from "$lib/components/CookieConsent.svelte";
   import "../styles/app.postcss";
   import "../styles/fonts.postcss";
   import "../styles/nprogress.css";
@@ -12,6 +13,9 @@
   import { authed, isDark, user, windowWidth } from "$lib/globals/stores";
   import NProgress from "nprogress";
   import { Toaster } from "svelte-sonner";
+  import type { LayoutData } from "./$types";
+
+  export let data: LayoutData;
 
   const maintenance = false;
 
@@ -40,6 +44,9 @@
         <Navbar />
         <slot />
       </div>
+      {#if !data.cookieNotice}
+        <CookieConsent/>
+      {/if}
       <Toaster
         theme="{$isDark ? 'dark' : 'light'}"
         position="{$windowWidth > 768 ? 'bottom-right' : 'top-center'}"

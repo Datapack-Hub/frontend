@@ -88,7 +88,7 @@
   <div
     class="flex flex-col items-center justify-center space-x-0 space-y-3 py-4 md:justify-normal md:space-x-2 xl:flex-row">
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
-    <div class="flex flex-grow flex-col items-center gap-3 md:flex-row">
+    <div class="flex flex-grow flex-col items-center gap-3 md:flex-row mt-32 md:mt-0">
       <div
         class="input flex items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
