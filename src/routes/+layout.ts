@@ -43,10 +43,10 @@ export const load = (async ({ url, data }) => {
 
     loadColorPref();
     return {
-      cookieNotice: localStorage.getItem("acceptedCookies") !== undefined
-    }
+      cookieNotice: localStorage.getItem("acceptedCookies") !== undefined,
+    };
   }
   return {
-    cookieNotice: false
-  }
+    cookieNotice: false,
+  };
 }) satisfies LayoutLoad;

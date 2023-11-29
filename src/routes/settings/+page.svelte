@@ -6,7 +6,7 @@
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
   import type { PageData } from "./$types";
-  import { getCookie } from "$lib/globals/functions"
+  import { getCookie } from "$lib/globals/functions";
 
   import IconDiscord from "~icons/tabler/BrandDiscord.svelte";
   import IconGithub from "~icons/tabler/BrandGithub.svelte";
@@ -56,13 +56,13 @@
   }
 
   function copyToken() {
-    navigator.clipboard.writeText(getCookie("dph_token") || "TOKEN_NOT_FOUND")
-    toast.success("Copied token to clipboard!")
+    navigator.clipboard.writeText(getCookie("dph_token") || "TOKEN_NOT_FOUND");
+    toast.success("Copied token to clipboard!");
   }
 
   async function resetToken() {
-    let response = await fetchAuthed("GET", "/users/obtain_token")
-    console.log(response.headers.getSetCookie())
+    let response = await fetchAuthed("GET", "/users/obtain_token");
+    console.log(response.headers.getSetCookie());
   }
 </script>
 
@@ -166,8 +166,14 @@
             </p>
             <p class="text-zinc-950 dark:text-zinc-100">Tokens</p>
             <div class="flex items-center gap-3">
-              <button class="button-primary flex w-fit items-center gap-3" on:click="{() => copyToken()}"><IconClipboard/> Copy Token</button>
-              <button class="button-base bg-red-500 text-white flex w-fit items-center gap-3 text-lg" on:click="{() => resetToken()}"><IconReset/> Reset Token</button>
+              <button
+                class="button-primary flex w-fit items-center gap-3"
+                on:click="{() => copyToken()}"
+                ><IconClipboard /> Copy Token</button>
+              <button
+                class="button-base flex w-fit items-center gap-3 bg-red-500 text-lg text-white"
+                on:click="{() => resetToken()}"
+                ><IconReset /> Reset Token</button>
             </div>
           </div>
         </div>

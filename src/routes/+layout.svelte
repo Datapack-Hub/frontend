@@ -45,7 +45,7 @@
         <slot />
       </div>
       {#if !data.cookieNotice}
-        <CookieConsent/>
+        <CookieConsent />
       {/if}
       <Toaster
         theme="{$isDark ? 'dark' : 'light'}"

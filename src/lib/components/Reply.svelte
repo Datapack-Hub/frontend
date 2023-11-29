@@ -31,7 +31,7 @@
 </script>
 
 {#if visible}
-  <li class="relative my-3 flex w-full space-x-2 group">
+  <li class="group relative my-3 flex w-full space-x-2">
     <img
       src="{appendSize(reply.author.profile_icon, 32)}"
       alt="{reply.author}'s profile"
