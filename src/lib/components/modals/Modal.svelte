@@ -31,7 +31,7 @@
           ? 'w-fit'
           : ''} {width == 'normal' ? 'w-1/2' : ''} {isSmall
           ? 'w-5/6'
-          : ''} justify-self-center">
+          : ''} justify-self-center drop-shadow-lg">
         {#if title}
           <div
             class="flex items-center rounded-t-xl bg-slate-300 p-3 dark:bg-zinc-900">
