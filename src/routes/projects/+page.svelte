@@ -99,7 +99,7 @@
           bind:value="{query}"
           id="query"
           maxlength="35"
-          class="ml-2 bg-slate-300 w-64 lg:w-96 text-zinc-950 placeholder:text-zinc-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400"
+          class="ml-2 w-64 bg-slate-300 text-zinc-950 placeholder:text-zinc-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400 lg:w-96"
           on:input="{search}" />
       </div>
       <div class="flex flex-col items-center space-x-3 sm:flex-row">

@@ -16,11 +16,9 @@ export const load = (async ({ cookies, fetch }) => {
       ]),
       async (response: Response) => {
         if (response.ok) return await response.json();
-        else {
-          throw error(response.status, {
-            message: response.statusText,
-          });
-        }
+        throw error(response.status, {
+          message: response.statusText,
+        });
       },
     );
 
