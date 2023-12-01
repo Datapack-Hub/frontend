@@ -34,7 +34,8 @@
   let featured = data.featured?.splice(0, 2);
   let parameters = $page.url.searchParams;
 
-  let search = debounce({ delay: 200 }, async () => {
+  let search = debounce({ delay: 100 }, async () => {
+    searchTime = 0;
     let searchResult = await fetch(
       `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}&page=${
         data.page > 0 ? data.page : 1
@@ -97,8 +98,8 @@
           placeholder="Search Datapacks..."
           bind:value="{query}"
           id="query"
-          maxlength="75"
-          class="ml-2 bg-slate-300 text-zinc-950 placeholder:text-zinc-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400"
+          maxlength="35"
+          class="ml-2 bg-slate-300 w-64 lg:w-96 text-zinc-950 placeholder:text-zinc-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400"
           on:input="{search}" />
       </div>
       <div class="flex flex-col items-center space-x-3 sm:flex-row">
@@ -209,7 +210,7 @@
       <h2 class=" text-zinc-950 dark:text-white">No results found</h2>
     {:else}
       <h2 class=" mx-3 text-zinc-950 dark:text-white">
-        {#if query != "" && searchTime <= 0}
+        {#if query == "" || searchTime <= 0}
           Showing {dataCopy.length} projects
         {:else}
           Took {searchTime.toFixed(3)} seconds to find {dataCopy.length} project{dataCopy.length ==

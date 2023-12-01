@@ -9,7 +9,7 @@ import { isDark } from "./stores";
  * Loads the user's preferred color scheme from LocalStorage
  */
 export function loadColorPref() {
-  const color = localStorage.getItem("dp_colorPref");
+  const color = localStorage.getItem("dp_colorPref") || "true";
   if (color === undefined) return;
   isDark.set(color === "true");
 }

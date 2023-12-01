@@ -43,7 +43,7 @@ export const load = (async ({ url, data }) => {
 
     loadColorPref();
     return {
-      cookieNotice: localStorage.getItem("acceptedCookies") === "1",
+      cookieNotice: localStorage.getItem("acceptedCookies") !== "1",
     };
   }
   return {

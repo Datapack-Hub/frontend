@@ -44,7 +44,7 @@
         <Navbar />
         <slot />
       </div>
-      {#if !data.cookieNotice}
+      {#if data.cookieNotice}
         <CookieConsent />
       {/if}
       <Toaster

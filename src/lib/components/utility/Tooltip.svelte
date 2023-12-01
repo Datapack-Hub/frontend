@@ -50,8 +50,8 @@
 <div
   role="tooltip"
   class="{classes}"
-  on:mouseenter="{() => (showTooltip = true)}"
-  on:mouseleave="{() => (showTooltip = false)}"
+  on:pointerenter="{() => (showTooltip = true)}"
+  on:pointerleave="{() => (showTooltip = false)}"
   use:floatingReference>
   <slot />
 </div>

@@ -47,15 +47,17 @@
         {name}
         maxlength="{maxEditorLength}"
         on:input="{input}"
-        class="input h-64 w-full"></textarea>
-      <Tooltip
-        tooltipText="{'This input supports Markdown'}"
-        placement="{'bottom'}">
-        <a
-          href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
-          class="absolute right-4 top-4 rounded-full bg-slate-800/70 p-1 transition-colors hover:text-blue-500 dark:text-zinc-100 dark:hover:text-blue-500"
-          ><IconMD /></a>
-      </Tooltip>
+        class="input h-64 w-full font-mono"></textarea>
+      <a
+        href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
+        class="absolute right-8 top-8 rounded-full bg-slate-800/70 p-1 transition-colors hover:text-blue-500 dark:text-zinc-100 dark:hover:text-blue-500">
+        <Tooltip
+          tooltipText="{'This input supports Markdown'}"
+          classes="inline"
+          placement="{'bottom'}">
+          <IconMD />
+        </Tooltip>
+      </a>
       <p class="align-middle text-xs text-zinc-950 dark:text-zinc-100">
         {remainingCharacters} characters left
       </p>
