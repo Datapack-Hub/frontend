@@ -119,15 +119,15 @@
         <span class="font-light">Explore</span>
       </a>
       <div
-        class="group hidden rounded-full p-1 font-light transition-all dark:text-zinc-100 md:block md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75">
+        class="group hidden rounded-full p-1 font-light transition-all dark:text-zinc-100 md:block hover:text-dph-orange cursor-pointer">
         Tools
         <div
-          class="grid-first-small absolute -top-32 hidden gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg group-hover:grid dark:bg-zinc-950 dark:text-white md:top-12">
+          class="grid-first-small absolute -top-32 hidden gap-3 rounded-md w-max bg-slate-50 px-6 py-3 shadow-lg group-hover:grid group-active:grid dark:bg-zinc-950 dark:text-white md:top-12">
           <div class="flex items-center">
             <IconWrench class="inline-grid align-middle" />
           </div>
           <a href="https://dph.tools">
-            <p class="font-bold text-blue-400">dph.tools</p>
+            <p class="font-bold">dph.tools</p>
             <p class="text-xs">
               The hub for all sorts of command generators and tools!
             </p>
@@ -150,7 +150,8 @@
             <p class="text-xs">
               A multi-purpose Discord bot to give <br />your datapacking server
               superpowers!
-            </p></a>
+            </p>
+          </a>
         </div>
       </div>
       <a
@@ -161,7 +162,7 @@
       wrapCondition="{!isSmall}"
       classes="flex items-center justify-end gap-3">
       {#if $authed}
-        <Tooltip tooltipText="{'Explore'}" placement="bottom" classes="flex">
+        <Tooltip tooltipText="{'Explore'}" placement="bottom" classes="flex md:hidden">
           <a
             href="/projects"
             aria-label="Explore datapacks"
