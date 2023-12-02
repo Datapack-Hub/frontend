@@ -20,7 +20,7 @@ export const load = (async ({ cookies, fetch, url }) => {
     cookies.set("dph_token", newToken, {
       expires: expiry,
       httpOnly: false,
-      path: "/",
+      path: "/"
     });
 
     throw redirect(307, url.pathname);
@@ -44,10 +44,10 @@ export const load = (async ({ cookies, fetch, url }) => {
     return {
       user,
       role,
-      roles: rolesJson.roles,
+      roles: rolesJson.roles
     };
   }
   return {
-    roles: rolesJson.roles,
+    roles: rolesJson.roles
   };
 }) satisfies LayoutServerLoad;

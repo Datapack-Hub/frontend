@@ -8,15 +8,15 @@ import type { PageLoad } from "./$types";
 export const load = (async ({ fetch }) => {
   if (browser) {
     const meResponse = await fetchAuthed("GET", "/user/me", {
-      fetchFunction: fetch,
+      fetchFunction: fetch
     });
     const profile = await userSchema.parseAsync(await meResponse.json());
 
     return {
       profile,
-      role: get(roles).find((v) => {
+      role: get(roles).find(v => {
         profile.role === v.name;
-      }),
+      })
     };
   }
   return {};

@@ -14,6 +14,9 @@
   import IconShield from "~icons/tabler/Shield.svelte";
   import IconProfile from "~icons/tabler/User.svelte";
   import IconGear from "~icons/tabler/Settings.svelte";
+  import IconWrench from "~icons/tabler/Tool.svelte";
+  import IconMail from "~icons/tabler/Mail.svelte";
+  import IconRobot from "~icons/tabler/BrandDiscord.svelte";
   import IconLogOut from "~icons/tabler/Logout.svelte";
   import ColorSchemeSelector from "./ColorSchemeSelector.svelte";
   import Modal from "../modals/Modal.svelte";
@@ -112,23 +115,96 @@
       <a
         href="/projects"
         aria-label="Explore datapacks"
-        class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75">
-        <IconCompass width="24" height="24" class="block md:hidden" />
-        <span class="hidden font-light md:block">Explore</span>
+        class="hidden rounded-full p-1 font-light transition-all dark:text-zinc-100 md:block md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75">
+        <span class="font-light">Explore</span>
       </a>
-      <a
-        class="hidden rounded-full p-1 font-light transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:block md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
-        href="/tools">
+      <div
+        class="group hidden rounded-full p-1 font-light transition-all dark:text-zinc-100 md:block md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75">
         Tools
-      </a>
+        <div
+          class="grid-first-small absolute -top-32 hidden gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg group-hover:grid dark:bg-zinc-950 dark:text-white md:top-12">
+          <div class="flex items-center">
+            <IconWrench class="inline-grid align-middle" />
+          </div>
+          <a href="https://dph.tools">
+            <p class="font-bold text-blue-400">dph.tools</p>
+            <p class="text-xs">
+              The hub for all sorts of command generators and tools!
+            </p>
+          </a>
+          <div class="flex items-center">
+            <IconMail class="inline-grid align-middle" />
+          </div>
+          <a href="#mailman_link_here">
+            <p class="font-bold">Mailman</p>
+            <p class="text-xs">
+              Upload your projects to Datapack Hub, <br />Smithed and Modrinth
+              at the same time, instantly.
+            </p>
+          </a>
+          <div class="flex items-center">
+            <IconRobot class="inline-grid align-middle" />
+          </div>
+          <a href="https://bot.datapackhub.net">
+            <p class="font-bold">Datapack Helper Bot</p>
+            <p class="text-xs">
+              A multi-purpose Discord bot to give <br />your datapacking server
+              superpowers!
+            </p></a>
+        </div>
+      </div>
       <a
-        class="hidden rounded-full p-1 font-light transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:block md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
+        class="hidden rounded-full p-1 font-light transition-all dark:text-zinc-100 md:block md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75"
         href="https://discord.datapackhub.net">Discord</a>
     </ConditionalWrapper>
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
-      classes="flex items-center justify-end gap-4">
+      classes="flex items-center justify-end gap-3">
       {#if $authed}
+        <Tooltip tooltipText="{'Explore'}" placement="bottom" classes="flex">
+          <a
+            href="/projects"
+            aria-label="Explore datapacks"
+            class="rounded-full p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75">
+            <IconCompass width="24" height="24" />
+          </a></Tooltip>
+
+        <div
+          class="group rounded-full p-1 transition-all dark:text-zinc-100 md:hidden md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75"
+          >
+          <IconWrench width="24" height="24" />
+          <div
+            class="grid-first-small absolute -top-48 left-0 w-full hidden gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg group-hover:grid dark:bg-zinc-950 dark:text-white md:top-12">
+            <div class="flex items-center">
+              <IconWrench class="inline-grid align-middle" />
+            </div>
+            <a href="https://dph.tools">
+              <p class="font-bold">dph.tools</p>
+              <p class="text-xs">
+                The hub for all sorts of command generators and tools!
+              </p>
+            </a>
+            <div class="flex items-center">
+              <IconMail class="inline-grid align-middle" />
+            </div>
+            <a href="#mailman_link_here">
+              <p class="font-bold">Mailman</p>
+              <p class="text-xs">
+                Upload your projects to Datapack Hub, <br />Smithed and Modrinth
+                at the same time, instantly.
+              </p>
+            </a>
+            <div class="flex items-center">
+              <IconRobot class="inline-grid align-middle" />
+            </div>
+            <a href="https://bot.datapackhub.net">
+              <p class="font-bold">Datapack Helper Bot</p>
+              <p class="text-xs">
+                A multi-purpose Discord bot to give <br />your datapacking
+                server superpowers!
+              </p></a>
+          </div>
+        </div>
         <Tooltip
           tooltipText="{'Create project'}"
           placement="{'bottom'}"
@@ -136,7 +212,7 @@
           <a
             aria-label="New project"
             href="/projects/new"
-            class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75">
+            class="rounded-full p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75">
             <IconPlus width="24" height="24" /></a>
         </Tooltip>
         <Tooltip
@@ -145,7 +221,7 @@
           classes="flex">
           <a
             href="/notifications"
-            class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
+            class="rounded-full p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75"
             aria-label="Notifications page">
             {#if unreadNotifications}
               <IconUnread height="24" width="24" />
@@ -162,7 +238,7 @@
               classes="flex">
               <a
                 href="/moderation"
-                class="rounded-full p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange md:active:brightness-75"
+                class="rounded-full p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75"
                 ><IconShield width="24" height="24" /></a>
             </Tooltip>
           {/if}
@@ -181,22 +257,21 @@
             width="24"
             class="ml-2 rounded-full outline outline-2 outline-offset-2 hover:brightness-75"
             style="outline-color:{$roleInfo.color ?? '#eab308'};" />
-          <ul
-            class="absolute -top-32 right-4 hidden flex-col rounded-md bg-slate-300 p-2 group-hover:flex dark:bg-black dark:text-white md:top-14">
-            <li class="p-1">
-              <IconProfile class="mr-2 inline-block align-middle" /><a
-                href="/user/{$user.username}">Profile</a>
-            </li>
-            <li class="border-t-[1px] border-zinc-400 p-1">
-              <IconGear class="mr-2 inline-block align-middle" /><a
-                href="/settings">Settings</a>
-            </li>
-            <li class="border-t-[1px] border-zinc-400 p-1">
-              <IconLogOut class="mr-2 inline-block align-middle" /><a
-                data-sveltekit-preload-data="tap"
-                href="?log_out=1">Log out</a>
-            </li>
-          </ul>
+          <div
+            class="grid-first-small absolute -top-32 right-4 hidden gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg group-hover:grid dark:bg-zinc-950 dark:text-white md:top-14">
+            <div class="flex items-center">
+              <IconProfile class="inline-grid align-middle" />
+            </div>
+            <a href="/user/{$user.username}">Profile</a>
+            <div class="flex items-center">
+              <IconGear class="inline-grid align-middle" />
+            </div>
+            <a href="/settings">Settings</a>
+            <div class="flex items-center">
+              <IconLogOut class="inline-grid align-middle" />
+            </div>
+            <a data-sveltekit-preload-data="tap" href="?log_out=1">Log out</a>
+          </div>
         </a>
       {:else}
         <button

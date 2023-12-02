@@ -11,32 +11,32 @@ export const load = (async ({ params, fetch }) => {
   const [user, projects] = await Promise.all([
     fetchAuthed("get", `/user/${params.user}`, { fetchFunction: fetch }),
     fetchAuthed("get", `/user/${params.user}/projects`, {
-      fetchFunction: fetch,
-    }),
+      fetchFunction: fetch
+    })
   ]);
 
   if (user.status === 404) {
     throw error(404, {
       message: "User not found",
-      description: "You may have hallucinated their existence",
+      description: "You may have hallucinated their existence"
     });
   }
 
-  if ([user, projects].some((r) => !r.ok)) {
+  if ([user, projects].some(r => !r.ok)) {
     throw error(user.status, {
       message: "Unexpected error",
-      description: "Something unexpected happen, try again later",
+      description: "Something unexpected happen, try again later"
     });
   }
 
   const projectResponseJson = await projects.json();
   const [profileJson, projectJson] = await Promise.all([
     userSchema.parseAsync(await user.json()),
-    projectSchema.array().parseAsync(projectResponseJson.result),
+    projectSchema.array().parseAsync(projectResponseJson.result)
   ]);
 
-  const profileRole = get(roles).find((role) => role.name === profileJson.role);
-  const downloads = sum(projectJson, (p) => p.downloads ?? 0);
+  const profileRole = get(roles).find(role => role.name === profileJson.role);
+  const downloads = sum(projectJson, p => p.downloads ?? 0);
 
   profileJson.bio = await processMarkdown(profileJson.bio);
 
@@ -44,6 +44,6 @@ export const load = (async ({ params, fetch }) => {
     profile: profileJson,
     projects: projectJson,
     role: profileRole,
-    downloads: downloads,
+    downloads: downloads
   };
 }) satisfies PageLoad;

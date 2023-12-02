@@ -13,6 +13,6 @@ export const load = (async ({ data }) => {
     publishQueue: data.publishQueue,
     reviewQueue: data.reviewQueue,
     reports: data.reports,
-    rolesJson: data.rolesJson,
+    rolesJson: data.rolesJson
   };
 }) satisfies PageLoad;

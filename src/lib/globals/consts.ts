@@ -17,7 +17,7 @@ export const categories = [
   "Tools & Equipment",
   "Utility",
   "Vanilla+",
-  "World Generation",
+  "World Generation"
 ];
 
 /** All role names */
@@ -28,7 +28,7 @@ export const roleNames = [
   "verified",
   "nerd",
   "donator",
-  "default",
+  "default"
 ];
 
 /** All Minecraft Versions */
@@ -42,7 +42,7 @@ export const minecraftVersions = [
   "1.19",
   "1.19.4",
   "1.20",
-  "1.20.2",
+  "1.20.2"
 ];
 
 export type FeaturedProjectTypes =

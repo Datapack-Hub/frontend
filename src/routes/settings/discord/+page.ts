@@ -15,7 +15,7 @@ export const load = (async ({ url, fetch }) => {
     const response = await fetchAuthed(
       "put",
       `/auth/link/discord?code=${parameters.get("code")}`,
-      { fetchFunction: fetch },
+      { fetchFunction: fetch }
     );
     if (response.ok) goto("/settings");
   }

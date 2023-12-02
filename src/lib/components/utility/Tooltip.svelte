@@ -60,7 +60,7 @@
   <!--MUST be absolute!-->
   <div
     transition:fade="{{ duration: 75 }}"
-    class="absolute z-50 w-max rounded-md bg-white px-2 py-1 text-base dark:bg-black dark:text-white"
+    class="absolute z-50 w-max rounded-md bg-slate-50 px-3 py-2 text-base dark:bg-zinc-950 dark:text-white"
     use:floatingContent>
     {#if allowHTML}
       <!--eslint-disable-next-line svelte/no-at-html-tags-->
@@ -69,7 +69,7 @@
       {tooltipText}
     {/if}
     <div
-      class="absolute z-50 h-2 w-2 rotate-45 rounded-sm bg-white dark:bg-black dark:text-white"
+      class="absolute z-50 h-2 w-2 rotate-45 rounded-sm bg-slate-50 dark:bg-zinc-950 dark:text-white"
       bind:this="{$arrowReference}">
     </div>
   </div>

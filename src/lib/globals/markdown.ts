@@ -17,14 +17,16 @@ export async function processMarkdown(source: string): Promise<string> {
       replacer: (url: string) => {
         if (new URL(url).host !== "datapackhub.net") {
           // biome-ignore lint/style/noParameterAssign: this is how the plugin expects it
-          url = `https://datapackhub.net/linkout?url=${encodeURIComponent(url)}`;
+          url = `https://datapackhub.net/linkout?url=${encodeURIComponent(
+            url
+          )}`;
         }
         return url;
-      },
+      }
     })
     // @ts-expect-error types are missing
     .use(remarkMentions, {
-      usernameLink: (uname: string) => `https://datapackhub.net/user/${uname}`,
+      usernameLink: (uname: string) => `https://datapackhub.net/user/${uname}`
     })
     .use(remarkRehype)
     .use(rehypeSanitize)

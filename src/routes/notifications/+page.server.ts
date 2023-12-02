@@ -9,13 +9,13 @@ export const load = (async ({ cookies, fetch }) => {
   if (!unread.ok) {
     throw error(unread.status, {
       message: unread.statusText,
-      description: "Something went wrong",
+      description: "Something went wrong"
     });
   }
 
   const unreadJson = await unread.json();
 
   return {
-    notifications: await notifSchema.array().parseAsync(unreadJson.result),
+    notifications: await notifSchema.array().parseAsync(unreadJson.result)
   };
 }) satisfies PageServerLoad;
