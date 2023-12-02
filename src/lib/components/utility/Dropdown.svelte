@@ -20,7 +20,7 @@
   }
 </script>
 
-<div class="relative w-max transition-all">
+<div class="relative w-max transition-all" on:pointerleave="{() => (expand = false)}">
   <button
     class="{selectedStyles}"
     on:keydown="{() => (expand = true)}"
@@ -36,7 +36,6 @@
   {#if expand}
     <ul
       out:fade="{{ duration: 100, delay: 0 }}"
-      on:pointerleave="{() => (expand = false)}"
       class="absolute z-30 border-2 border-slate-300 bg-slate-200 px-1.5 py-0.5 last:rounded-b-lg dark:border-zinc-700 dark:bg-zinc-800"
       style="width: {longest[0].length + 5}ch;">
       {#each options as opt, index}
