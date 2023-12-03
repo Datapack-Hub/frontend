@@ -19,6 +19,7 @@
   import IconRP from "~icons/tabler/Sparkles.svelte";
   import Button from "../decorative/Button.svelte";
   import Tooltip from "../utility/Tooltip.svelte";
+  import { dpPackFormats } from "$lib/globals/consts";
 
   export let version: Version;
   export let expanded = false;
@@ -78,48 +79,8 @@
     let mcMeta = JSON.parse(await parsedZip.files["pack.mcmeta"].async("text"));
     let packFormat = 0;
 
-    switch (mcSemver) {
-      case "1.13-1.14.4": {
-        packFormat = 4;
-        break;
-      }
-      case "1.15-1.16.1": {
-        packFormat = 5;
-        break;
-      }
-      case "1.16.2-1.16.5": {
-        packFormat = 6;
-        break;
-      }
-      case "1.17.x": {
-        packFormat = 7;
-        break;
-      }
-      case "1.18.x": {
-        packFormat = 8;
-        break;
-      }
-      case "1.19-1.19.3": {
-        packFormat = 10;
-        break;
-      }
-      case "1.19.4": {
-        packFormat = 12;
-        break;
-      }
-      case "1.20-1.20.1": {
-        packFormat = 15;
-        break;
-      }
-      case "1.20.2": {
-        packFormat = 16;
-        break;
-      }
-      default: {
-        packFormat = 0;
-        break;
-      }
-    }
+
+    packFormat = dpPackFormats.find(v => mcSemver === v.label)?.format || 0
 
     mcMeta.pack.pack_format = packFormat;
 
@@ -196,7 +157,7 @@
         {#each properVersion as mcv}
           <li>
             <button
-              class="rounded-md border border-black/30 bg-dph-orange p-1 px-2 text-xs dark:border-white/30"
+              class="rounded-md border bg-dph-orange p-1 px-2 text-xs"
               on:click="{() =>
                 download(
                   version.primary_download,

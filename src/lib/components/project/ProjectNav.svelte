@@ -288,7 +288,7 @@
       the project, click the restore button.
     </p>
     <button
-      class="rounded-md border border-black/30 bg-dph-orange p-1 px-2 text-white dark:border-white/30"
+      class="rounded-md bg-dph-orange p-1 px-2 text-white"
       on:click="{() => moderate('restore')}">Restore</button>
   </div>
 {:else if status == "review_queue" || status == "publish_queue"}

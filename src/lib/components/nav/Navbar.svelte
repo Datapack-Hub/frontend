@@ -97,7 +97,7 @@
     class="absolute right-1/2 top-4 translate-x-1/2 translate-y-16 cursor-default select-none opacity-0 transition-transform focus:translate-y-0 focus:opacity-100 dark:text-white md:-translate-y-16"
     >Jump to Main Content</a>
   <nav
-    class="flex w-full items-center justify-around bg-slate-100 dark:bg-zinc-900 border-t-2 md:border-b-2 border-white/10 p-4 md:justify-between md:px-16">
+    class="flex w-full items-center justify-around bg-slate-100 dark:bg-zinc-900 border-t md:border-b border-black/10 dark:border-white/10 p-4 md:justify-between md:px-16">
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
       classes="flex items-center space-x-4">

@@ -316,7 +316,7 @@
     <button
       on:click="{sendNotif}"
       id="send_notif_btn"
-      class="rounded-md border border-black/30 bg-dph-orange p-3 text-base font-bold text-zinc-100 transition-all hover:scale-110 active:brightness-75 dark:border-white/30 md:text-lg lg:text-xl"
+      class="rounded-md bg-dph-orange p-3 text-base font-bold text-zinc-100 transition-all hover:scale-110 active:brightness-75 md:text-lg lg:text-xl"
       >Send</button>
   {:else if moderationModalPage == "logout"}
     <p class=" mb-3 text-sm text-zinc-950/40 dark:text-white/40">
@@ -330,7 +330,7 @@
       <MultiSelect
         outerDivClass="!border-2 !border-slate-300 dark:!border-zinc-700"
         liOptionClass="bg-white dark:bg-zinc-950"
-        liSelectedClass="!bg-dph-orange !border-2 !dark:border-white/30 !border-black/30 !text-white"
+        liSelectedClass="!bg-dph-orange !border-2   !text-white"
         options="{badges.map(v => v.name)}"
         bind:selected="{badgeState}" />
     </div>
