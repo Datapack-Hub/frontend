@@ -368,7 +368,7 @@
     Report Message
   </p>
   <textarea
-    class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-slate-300 p-3 dark:bg-zinc-700"
+    class="input-base themed-input-outline h-24 w-full resize-none rounded-md bg-slate-300 p-3 dark:bg-zinc-700 dark:text-white"
     placeholder="Write a helpful message to our moderators explaining how they broke the rules. PLEASE include evidence, especially for copyright reports"
     id="report-description"
     maxlength="500"

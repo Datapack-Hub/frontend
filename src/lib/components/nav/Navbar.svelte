@@ -123,15 +123,15 @@
         Tools
         <div
           class="grid-first-small absolute -top-32 hidden gap-3 rounded-md w-max bg-slate-50 px-6 py-3 shadow-lg group-hover:grid group-active:grid dark:bg-zinc-950 dark:text-white md:top-12">
-          <div class="flex items-center">
+          <div class="flex items-center cursor-no-drop">
             <IconWrench class="inline-grid align-middle" />
           </div>
-          <a href="https://dph.tools">
-            <p class="font-bold">dph.tools</p>
-            <p class="text-xs">
+          <div class="cursor-no-drop">
+            <p class="font-bold opacity-50">dph.tools</p>
+            <p class="text-xs opacity-50">
               The hub for all sorts of command generators and tools!
             </p>
-          </a>
+          </div>
           <div class="flex items-center">
             <IconMail class="inline-grid align-middle" />
           </div>
