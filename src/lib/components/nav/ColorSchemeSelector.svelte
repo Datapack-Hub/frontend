@@ -37,7 +37,7 @@
   on:mousemove="{event => superDarkHandler(event)}" />
 
 <div
-  class="select-none rounded-lg p-1 transition-all hover:bg-dph-orange/40 dark:text-zinc-100 md:hover:bg-transparent md:hover:text-dph-orange"
+  class="select-none rounded-lg p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent hover:text-dph-orange"
   role="checkbox"
   aria-checked="{$isDark}"
   aria-label="dark mode toggle">

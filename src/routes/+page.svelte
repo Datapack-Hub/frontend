@@ -26,7 +26,7 @@
     project
   }));
 
-  for (let index = 0; index < 5 - featuredProjects.length; index++) {
+  for (let index = 0; index < 5 - featuredProjects.length - 1; index++) {
     featuredProjects.push({ type: "random", project: data.random[index] });
   }
 
@@ -183,10 +183,10 @@
     </section>
   </section>
   <section
-    class="flex w-full flex-col items-center justify-center bg-slate-200 py-16 dark:bg-zinc-800/20">
+    class="flex w-full flex-col items-center justify-center bg-slate-100 py-16 dark:bg-zinc-800/20">
     <a
       href="#bento"
-      class="fixed bottom-32 z-50 rounded-full bg-slate-300 px-2 py-1 shadow-lg dark:bg-zinc-700 dark:text-white lg:bottom-4 {scrollY >
+      class="fixed bottom-32 z-50 rounded-full bg-slate-200 px-2 py-1 shadow-lg dark:bg-zinc-700 dark:text-white lg:bottom-4 {scrollY >
       100
         ? 'opacity-0'
         : 'opacity-100'} transition-opacity">
@@ -200,7 +200,7 @@
     <div
       class="mt-16 grid w-full grid-cols-1 gap-3 p-4 lg:w-10/12 lg:grid-cols-2 xl:w-3/4 xl:grid-cols-3">
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800">
         <h2
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Easily find datapacks you'll like</b>
@@ -210,7 +210,7 @@
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
         <div
-          class="fadeTextAnime mb-5 space-y-2 rounded-xl p-3 dark:bg-zinc-900">
+          class="fadeTextAnime mb-5 space-y-2 rounded-xl p-3 bg-slate-300 dark:bg-zinc-900">
           {#each data.random.slice(2, 4) ?? [] as rand}
             <ProjectComponent project="{rand}" />
           {/each}
@@ -218,7 +218,7 @@
         <Button click="/projects">Find your next favourite datapack</Button>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>No more "made for an older version"</b>
@@ -228,14 +228,14 @@
           Datapack Hub automatically converts the pack version to the requested
           version, removing those pesky "Made for an older version" errors!
         </p>
-        <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-900">
+        <div class="rounded-xl bg-slate-300 p-3 dark:bg-zinc-900">
           <div
-            class="fadeTextAnime flex items-center justify-between rounded-t-md bg-slate-300 p-3 text-zinc-500 opacity-0 dark:bg-zinc-800">
+            class="fadeTextAnime flex items-center justify-between rounded-t-md bg-slate-200 p-3 text-zinc-500 opacity-0 dark:bg-zinc-800">
             <p>pack.mcmeta</p>
             <IconX />
           </div>
           <div
-            class="fadeTextAnime mt-2 overflow-x-auto rounded-b-md bg-slate-300 px-4 font-mono text-zinc-500 opacity-0 dark:bg-zinc-800">
+            class="fadeTextAnime mt-2 overflow-x-auto rounded-b-md bg-slate-200 px-4 font-mono text-zinc-500 opacity-0 dark:bg-zinc-800">
             <pre class="text-sm">
               <!--DO NOT INDENT!!!-->
 &lbrace;
@@ -251,7 +251,7 @@
         </div>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>ZIP Optimisation</b>
@@ -262,7 +262,7 @@
           PackSquash!
         </p>
         <div
-          class="flex items-center justify-center rounded-xl bg-slate-200 p-4 dark:bg-zinc-900 dark:text-white">
+          class="flex items-center justify-center rounded-xl bg-slate-100 p-4 dark:bg-zinc-900 dark:text-white">
           <div class="relative flex items-center gap-2">
             118 MB <IconFile width="48" height="48" class="text-red-500" />
             <IconArrow width="24" height="24" />
@@ -271,7 +271,7 @@
         </div>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 pb-0 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 pb-0 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Strong Moderation</b>
@@ -293,14 +293,14 @@
                   loading="lazy"
                   width="48"
                   height="48"
-                  class="aspect-square h-12 rounded-md bg-zinc-700/70 transition-all hover:scale-105 md:h-auto" />
+                  class="aspect-square h-12 rounded-md bg-slate-300 dark:bg-zinc-700/70 transition-all hover:scale-105 md:h-auto" />
               </a>
             </Tooltip>
           {/each}
         </div>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 pb-0 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 pb-0 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Open Source</b>
@@ -341,7 +341,7 @@
         </div>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
         <h2
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Awesome Community</b>
@@ -364,7 +364,7 @@
         </a>
       </div>
       <div
-        class="fadeTextAnime col-auto w-full rounded-lg bg-slate-300 p-4 opacity-0 dark:bg-zinc-800 xl:col-span-2">
+        class="fadeTextAnime col-auto w-full rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800 xl:col-span-2">
         <h2
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Project Featuring</b>
@@ -378,7 +378,7 @@
         {/each}
       </div>
       <!-- <div
-        class="fadeTextAnime opacity-0 p-4 col-span-2 bg-slate-300 dark:bg-zinc-800 rounded-lg w-full">
+        class="fadeTextAnime opacity-0 p-4 col-span-2 bg-slate-200 dark:bg-zinc-800 rounded-lg w-full">
         <h2
           class="fadeTextAnime opacity-0 text-black dark:text-white text-lg lg:text-xl xl:text-2xl">
           <b>Public API</b>
@@ -389,7 +389,7 @@
         </p>
         <div class="bg-slate-200 dark:bg-zinc-900 rounded-xl p-3">
           <div
-            class="flex items-center justify-between space-x-2 bg-slate-300 dark:bg-zinc-800 rounded-t-md p-3 text-zinc-500 dark:">
+            class="flex items-center justify-between space-x-2 bg-slate-200 dark:bg-zinc-800 rounded-t-md p-3 text-zinc-500 dark:">
             <div class="flex space-x-2 overflow-x-auto">
               <p class="text-green-600">GET</p>
               <span class="overflow-hidden text-ellipsis">
@@ -404,7 +404,7 @@
               on:click="{apiExampleRun}">Run</button>
           </div>
           <div
-            class="text-zinc-500 dark: font-mono mt-2 bg-slate-300 dark:bg-zinc-800 rounded-b-md overflow-clip h-80 overflow-y-auto">
+            class="text-zinc-500 dark: font-mono mt-2 bg-slate-200 dark:bg-zinc-800 rounded-b-md overflow-clip h-80 overflow-y-auto">
             {#if apiExampleResult.length > 0}
               <pre
                 class="text-sm p-3 whitespace-pre-wrap"

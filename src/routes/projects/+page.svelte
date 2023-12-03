@@ -92,7 +92,7 @@
     <div
       class="mt-32 flex flex-grow flex-col items-center gap-3 md:mt-0 md:flex-row">
       <div
-        class="input flex items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
+        class="input h-11 flex items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
         <input
           placeholder="Search Datapacks..."
@@ -105,7 +105,7 @@
       <div class="flex flex-col items-center space-x-3 sm:flex-row">
         <div class="mt-2 flex items-center sm:mt-0">
           <p
-            class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
+            class="flex h-11 items-center rounded-l-lg bg-slate-200 px-4 text-center dark:bg-zinc-700 dark:text-white">
             Order:
           </p>
           <Dropdown
@@ -142,7 +142,7 @@
           }}"
           class="h-8 w-8 rounded-md {layout === 'list'
             ? 'bg-dph-orange text-white'
-            : 'bg-slate-300 text-zinc-950 dark:bg-zinc-700 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold sm:mt-0">
+            : 'bg-slate-300 text-zinc-950 dark:bg-zinc-700 dark:text-white'} flex cursor-pointer items-center justify-center border border-black/30 p-1 text-center font-bold dark:border-white/30 sm:mt-0">
           <IconList /></button>
         <button
           on:click="{() => {
@@ -151,7 +151,7 @@
           }}"
           class="h-8 w-8 rounded-md {layout === 'grid'
             ? 'bg-dph-orange text-white'
-            : 'bg-slate-300 text-zinc-950 dark:bg-zinc-700 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0">
+            : 'bg-slate-300 text-zinc-950 dark:bg-zinc-700 dark:text-white'} flex cursor-pointer items-center justify-center border border-black/30 p-1 text-center font-bold text-zinc-950 dark:border-white/30 dark:text-white sm:mt-0">
           <IconGrid /></button>
       </div>
       <div class="flex items-center space-x-1 sm:mt-0">
@@ -176,7 +176,7 @@
         {/if}
         <a
           href="/projects?{genURLParameters(data.page)}"
-          class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-white sm:mt-0"
+          class="h-8 w-8 rounded-md border border-black/30 bg-dph-orange p-1 text-center font-bold text-white dark:border-white/30 sm:mt-0"
           >{data.page}</a>
         {#if data.page + 1 <= data.pages}
           <a
@@ -261,7 +261,7 @@
       {/if}
       <a
         href="/projects?{genURLParameters(data.page)}"
-        class="h-8 w-8 rounded-md bg-dph-orange p-1 text-center font-bold text-white sm:mt-0"
+        class="h-8 w-8 rounded-md border border-black/30 bg-dph-orange p-1 text-center font-bold text-white dark:border-white/30 sm:mt-0"
         >{data.page}</a>
       {#if data.page + 1 <= data.pages}
         <a

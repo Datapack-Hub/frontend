@@ -123,7 +123,7 @@
                     placeholder="Leave a reply" />
                   <button
                     type="submit"
-                    class="rounded-lg bg-dph-orange p-1 px-2 text-white hover:scale-102 disabled:bg-opacity-50"
+                    class="rounded-lg border border-black/30 bg-dph-orange p-1 px-2 text-white hover:scale-102 disabled:bg-opacity-50 dark:border-white/30"
                     disabled="{wait}">Post</button>
                 </form>
               {/if}
@@ -146,7 +146,7 @@
               placeholder="Leave the first reply" />
             <button
               type="submit"
-              class="rounded-lg bg-dph-orange p-1 px-2 text-white hover:scale-102 disabled:bg-opacity-50"
+              class="rounded-lg border border-black/30 bg-dph-orange p-1 px-2 text-white hover:scale-102 disabled:bg-opacity-50 dark:border-white/30"
               disabled="{wait}">Post</button>
           </form>
         {/if}

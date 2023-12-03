@@ -26,7 +26,7 @@
 </script>
 
 <div
-  class="relative h-full w-full items-center rounded-xl bg-slate-200 p-3 text-zinc-950 dark:bg-zinc-800 dark:text-zinc-100">
+  class="relative h-full w-full items-center rounded-xl bg-slate-200 p-3 text-zinc-950 dark:bg-zinc-800/40 dark:text-zinc-100 border border-black/20 dark:border-white/20">
   <div class="items-top flex">
     <a
       href="/project/{project.url}"

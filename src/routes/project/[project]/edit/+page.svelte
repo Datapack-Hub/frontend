@@ -516,7 +516,7 @@
                 <MultiSelect
                   outerDivClass="!border-2 !border-slate-300 dark:!border-zinc-700"
                   liOptionClass="bg-white dark:bg-zinc-950"
-                  liSelectedClass="!bg-dph-orange !text-white"
+                  liSelectedClass="!bg-dph-orange !border-2 !dark:border-white/30 !border-black/30 !text-white"
                   options="{minecraftVersions}"
                   minSelect="{1}"
                   name="minecraft_versions"

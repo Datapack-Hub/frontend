@@ -3,6 +3,7 @@
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
   import IconUp from "~icons/tabler/ChevronUp.svelte";
+  import IconCheck from "~icons/tabler/Check.svelte";
 
   export let options: string[];
   export let selected = "";
@@ -36,14 +37,19 @@
   {#if expand}
     <ul
       out:fade="{{ duration: 100, delay: 0 }}"
-      class="absolute z-30 border-2 border-slate-300 bg-slate-200 px-1.5 py-0.5 last:rounded-b-lg dark:border-zinc-700 dark:bg-zinc-800"
+      class="absolute z-30 bg-slate-200 last:rounded-b-lg dark:bg-zinc-800 border border-black/20 dark:border-white/20 gap-3"
       style="width: {longest[0].length + 5}ch;">
       {#each options as opt, index}
-        <li class="my-1">
+        <li>
           <button
-            class="flex h-9 w-full cursor-pointer rounded-[4px] p-1.5 text-left hover:bg-dph-orange dark:text-zinc-100 dark:hover:bg-dph-orange
-            {selected == options[index] ? 'dark:bg-zinc-700/70' : ''}"
-            on:click="{() => chooseOption(index)}">{opt}</button>
+            class="flex justify-between items-center h-10 w-full cursor-pointer p-3 text-left hover:bg-dph-orange dark:text-zinc-100
+            {selected == options[index] ? 'dark:bg-dph-orange/10' : ''}"
+            on:click="{() => chooseOption(index)}">
+            {opt}
+            {#if selected == options[index]}
+              <IconCheck/>
+            {/if}
+          </button>
         </li>
       {/each}
     </ul>
