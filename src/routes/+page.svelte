@@ -26,7 +26,7 @@
     project
   }));
 
-  for (let index = 0; index < 5 - featuredProjects.length - 1; index++) {
+  for (let index = 0; index < 4 - featuredProjects.length - 1; index++) {
     featuredProjects.push({ type: "random", project: data.random[index] });
   }
 
