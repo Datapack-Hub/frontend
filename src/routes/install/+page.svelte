@@ -38,12 +38,6 @@
           ? 'bg-slate-500 dark:bg-zinc-600'
           : 'bg-slate-300 dark:bg-zinc-800'}"
         click="{() => (activePage = 'server')}">Installing to a server</Button>
-      <Button
-        style="base"
-        classes="dark:text-zinc-100 {activePage === 'realm'
-          ? 'bg-slate-500 dark:bg-zinc-600'
-          : 'bg-slate-300 dark:bg-zinc-800'}"
-        click="{() => (activePage = 'realm')}">Installing to a realm</Button>
     </div>
     <div use:autoAnimate>
       {#if activePage == "new"}
