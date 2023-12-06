@@ -6,7 +6,7 @@
 
   import IconEdit from "~icons/tabler/Edit.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
-  import RawMarkdownRenderer from "./markdown/RawMarkdownRenderer.svelte";
+  import MarkdownRenderer from "./markdown/MarkdownRenderer.svelte";
 
   export let reply: {
     id: number;
@@ -51,12 +51,12 @@
           <div class="absolute right-0 p-3 text-white">
             {#if $user.id == reply.author.id || ["moderator", "admin"].includes($user.role)}
               <div
-                class="absolute right-2 top-3 flex items-start space-x-2 p-1 text-sm text-zinc-400 opacity-0 group-hover:opacity-100">
-                <button
+                class="absolute right-0 top-3 flex items-start space-x-2 p-1 text-sm text-zinc-400 opacity-0 group-hover:opacity-100">
+                <!-- <button
                   class="flex items-center space-x-1"
                   aria-label="Edit comment">
                   <IconEdit />
-                </button>
+                </button> -->
                 <button
                   class="flex items-center space-x-1"
                   on:click="{deleteReply}"
@@ -68,8 +68,8 @@
           </div>
         {/if}
       </div>
-      <RawMarkdownRenderer
-        html="{reply.message}"
+      <MarkdownRenderer
+        source="{reply.message}"
         classes="text-sm dark:text-neutral-200" />
     </div>
   </li>

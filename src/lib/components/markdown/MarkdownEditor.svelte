@@ -19,7 +19,7 @@
   }
 
   function input() {
-    dispatch("input", content);
+    dispatch("input");
     calcRemaining();
   }
 </script>
@@ -46,7 +46,7 @@
         bind:value="{content}"
         {name}
         maxlength="{maxEditorLength}"
-        on:input="{input}"
+        on:input="{() => input}"
         class="input h-64 w-full font-mono"></textarea>
       <a
         href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"

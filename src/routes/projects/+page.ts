@@ -6,7 +6,7 @@ import type { PageLoad } from "./$types";
 export const load = (async ({ fetch, url }) => {
   const parameters = url.searchParams;
   const page = Number.parseInt(parameters.get("page") || "1");
-  const sort = parameters.get("sort") || "updated";
+  const sort = parameters.get("sort") || "downloads";
   const category = parameters.get("category");
 
   const [projects, featured] = await parallel(

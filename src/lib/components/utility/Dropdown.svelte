@@ -21,7 +21,7 @@
   }
 </script>
 
-<div class="relative w-max transition-all" on:pointerleave="{() => (expand = false)}">
+<div class="relative w-max transition-all" role="listbox" tabindex="0" on:mouseleave="{() => (expand = false)}">
   <button
     class="{selectedStyles}"
     on:keydown="{() => (expand = true)}"

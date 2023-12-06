@@ -36,9 +36,6 @@ export const load = (async ({ params, fetch, cookies, url }) => {
 
   for (const comment of comments) {
     comment.message = await processMarkdown(comment.message);
-    for (const reply of comment.replies) {
-      reply.message = await processMarkdown(reply.message);
-    }
   }
 
   project.body = await processMarkdown(project.body ?? "No Body Specified!");

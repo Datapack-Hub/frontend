@@ -23,7 +23,7 @@
   let tagDropdownOpen: boolean;
   let query = "";
   let tag = data.category || "All";
-  let sort = "Updated";
+  let sort = "Downloads";
   let searchTime = 0;
   let layout = browser
     ? localStorage.getItem("preferred_layout") || "grid"

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { appendSize, fetchAuthed, timeAgo } from "$lib/globals/functions";
+  import { appendSize, fetchAuthed, getUserLocale, timeAgo } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
 
@@ -29,6 +29,10 @@
   export let isNew: boolean;
 
   let nextStepsModal: Modal;
+
+  let numberFormatter = Intl.NumberFormat(getUserLocale(), {
+    notation: "compact"
+  });
 
   onMount(() => {
     if (isNew == true) nextStepsModal.open();
@@ -116,14 +120,14 @@
       <h1
         class="text-md mt-2 flex items-center space-x-2 font-medium text-zinc-950 dark:text-white">
         <IconDL />
-        <span><b>Downloads: </b>{project?.downloads ?? 0}</span>
+        <span><b>Downloads: </b>{numberFormatter.format(project?.downloads || 0)}</span>
       </h1>
       <h1
         class="text-md mt-1 flex items-center space-x-2 font-medium text-zinc-950 dark:text-white">
         <IconUpdate />
         <span>
           <b>Last updated:</b>
-          {timeAgo((project?.updated ?? 0) * 1000)}
+          {timeAgo((project?.updated || 0) * 1000)}
         </span>
       </h1>
 

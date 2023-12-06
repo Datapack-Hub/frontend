@@ -174,7 +174,7 @@
                   allowHTML="{true}"
                   tooltipText="{badges.find(index => index.name == badge)
                     ?.tooltip || 'Badge not found, whoops!'}"
-                  placement="{'right'}">
+                  placement="{'top'}">
                   <img
                     alt="{badge} badge"
                     src="/badges/{badge}.png"

@@ -13,6 +13,7 @@
   import IconDelete from "~icons/tabler/Trash.svelte";
   import Reply from "./Reply.svelte";
   import RawMarkdownRenderer from "./markdown/RawMarkdownRenderer.svelte";
+  import MarkdownRenderer from "./markdown/MarkdownRenderer.svelte";
 
   export let comment: DPHComment;
   export let project: Project;
@@ -23,6 +24,7 @@
   let showReplies = false;
   let wait = false;
   let visible = true;
+  let usingRawRenderer = true;
 
   async function sendReply() {
     wait = true;
@@ -43,11 +45,13 @@
     );
     if (commentPost.ok) {
       toast.success("Comment posted!");
+      usingRawRenderer = false;
       let newComment = await fetch(API + "/comments/id/" + comment.id);
       let parsedComments = await commentSchema.parseAsync(
         await newComment.json()
       );
       comment = parsedComments;
+      console.log(comment.message)
       replyMessage = "";
       wait = false;
       return;
@@ -87,7 +91,11 @@
           </p>
         </div>
 
-        <RawMarkdownRenderer html="{comment.message}" classes="text-sm" />
+        {#if usingRawRenderer}
+          <RawMarkdownRenderer html="{comment.message}" classes="text-sm" />
+        {:else}
+          <MarkdownRenderer source="{comment.message}" classes="text-sm" />
+        {/if}
         {#if comment.replies.length > 0}
           {#if !showReplies}
             <button

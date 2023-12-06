@@ -50,7 +50,7 @@
   let vName = "";
   let vCode = "";
   let vRPUsed = false;
-  let submitButton: HTMLButtonElement;
+  let submitVersionButton: HTMLButtonElement;
 
   // let dependencies: Project[] = [];
   // let dependencyNames: string[] = [""];
@@ -226,10 +226,14 @@
   async function update(target: EventTarget & HTMLButtonElement) {
     target.disabled = true;
 
-    if ((titleValue?.length ?? 0) < 4)
+    if ((titleValue?.length ?? 0) < 4) {
+      target.disabled = false
       return toast.error("Title must be at least 3 characters");
-    if ((bodyValue?.length ?? 0) < 101)
+    }
+    if ((bodyValue?.length ?? 0) < 101) {
+      target.disabled = false
       return toast.error("Body must be at least 100 characters");
+    }
 
     let projData: {
       title: string | undefined;
@@ -256,6 +260,7 @@
       goto(".");
       toast.success("Edited project!");
     } else {
+      target.disabled = false
       toast.error("Failed to upload! Contact an Admin!");
     }
   }
@@ -552,7 +557,7 @@
                 <button
                   type="submit"
                   class="button-primary"
-                  bind:this="{submitButton}">Create Version</button>
+                  bind:this="{submitVersionButton}">Create Version</button>
               </form>
             {/if}
           </div>
