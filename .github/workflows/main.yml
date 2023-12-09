@@ -9,7 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - uses: actions/checkout@v3.5.2
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+        with:
+          ref: ${{ github.head_ref }}
       - uses: pnpm/action-setup@v2
         with:
           version: 8
@@ -24,6 +27,22 @@ jobs:
       - name: Run check
         run: |
           pnpm check
+  format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Prettier Action
+        uses: creyD/prettier_action@v4.3
+        with:
+          only_changed: true
+          prettier_options: --write ./{src,tests}/**/*.{svelte,ts}
+          prettier_plugins: "prettier-plugin-svelte prettier-plugin-tailwindcss"
+
 
 permissions:
   contents: write
