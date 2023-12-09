@@ -32,7 +32,7 @@
     <ul>
       {#each data.staff ?? [] as person, index}
         {#if visible}
-          <li transition:fly="{{ y: -300, duration: 500, delay: index * 100 }}">
+          <li transition:fly="{{ y: 25, duration: 500, delay: index * 100 }}">
             <UserCard
               {person}
               role="{$roles?.find(v => person.role == v.name)}" />

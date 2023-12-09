@@ -91,13 +91,13 @@
 </Modal>
 
 <header
-  class="fixed bottom-0 top-auto z-50 w-full md:bottom-auto md:top-0 shadow-sm">
+  class="fixed bottom-0 top-auto z-50 w-full shadow-sm md:bottom-auto md:top-0">
   <a
     href="#main-content"
     class="absolute right-1/2 top-4 translate-x-1/2 translate-y-16 cursor-default select-none opacity-0 transition-transform focus:translate-y-0 focus:opacity-100 dark:text-white md:-translate-y-16"
     >Jump to Main Content</a>
   <nav
-    class="flex w-full items-center justify-around bg-slate-100 dark:bg-zinc-900 border-t md:border-b border-black/10 dark:border-white/10 p-4 md:justify-between md:px-16">
+    class="flex w-full items-center justify-around border-t border-black/10 bg-slate-100 p-4 dark:border-white/10 dark:bg-zinc-900 md:justify-between md:border-b md:px-16">
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
       classes="flex items-center space-x-4">
@@ -115,15 +115,15 @@
       <a
         href="/projects"
         aria-label="Explore datapacks"
-        class="hidden rounded-full p-1 font-light transition-all dark:text-zinc-100 md:block md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75">
+        class="hidden rounded-full p-1 font-light transition-all hover:text-dph-orange dark:text-zinc-100 md:block md:hover:bg-transparent md:active:brightness-75">
         <span class="font-light">Explore</span>
       </a>
       <div
-        class="group hidden rounded-full p-1 font-light transition-all dark:text-zinc-100 md:block hover:text-dph-orange cursor-pointer">
+        class="group hidden cursor-pointer rounded-full p-1 font-light transition-all hover:text-dph-orange dark:text-zinc-100 md:block">
         Tools
         <div
-          class="grid-first-small absolute -top-32 hidden gap-3 rounded-md w-max bg-slate-50 px-6 py-3 shadow-lg group-hover:grid group-active:grid dark:bg-zinc-950 dark:text-white md:top-12">
-          <div class="flex items-center cursor-no-drop">
+          class="grid-first-small absolute -top-32 hidden w-max gap-3 rounded-md bg-slate-50 px-6 py-3 text-black shadow-lg group-hover:grid group-active:grid dark:bg-zinc-950 dark:text-white md:top-12">
+          <div class="flex cursor-no-drop items-center">
             <IconWrench class="inline-grid align-middle" />
           </div>
           <div class="cursor-no-drop">
@@ -155,27 +155,29 @@
         </div>
       </div>
       <a
-        class="hidden rounded-full p-1 font-light transition-all dark:text-zinc-100 md:block md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75"
+        class="hidden rounded-full p-1 font-light transition-all hover:text-dph-orange dark:text-zinc-100 md:block md:hover:bg-transparent md:active:brightness-75"
         href="https://discord.datapackhub.net">Discord</a>
     </ConditionalWrapper>
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
       classes="flex items-center justify-end gap-3">
       {#if $authed}
-        <Tooltip tooltipText="{'Explore'}" placement="bottom" classes="flex md:hidden">
+        <Tooltip
+          tooltipText="{'Explore'}"
+          placement="bottom"
+          classes="flex md:hidden">
           <a
             href="/projects"
             aria-label="Explore datapacks"
-            class="rounded-full p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75">
+            class="rounded-full p-1 transition-all hover:text-dph-orange dark:text-zinc-100 md:hover:bg-transparent md:active:brightness-75">
             <IconCompass width="24" height="24" />
           </a></Tooltip>
 
         <div
-          class="group rounded-full p-1 transition-all dark:text-zinc-100 md:hidden md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75"
-          >
+          class="group rounded-full p-1 transition-all hover:text-dph-orange dark:text-zinc-100 md:hidden md:hover:bg-transparent md:active:brightness-75">
           <IconWrench width="24" height="24" />
           <div
-            class="grid-first-small absolute -top-48 left-0 w-full hidden gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg group-hover:grid dark:bg-zinc-950 dark:text-white md:top-12">
+            class="grid-first-small absolute -top-48 left-0 hidden w-full gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg group-hover:grid dark:bg-zinc-950 dark:text-white md:top-12">
             <div class="flex items-center">
               <IconWrench class="inline-grid align-middle" />
             </div>
@@ -213,7 +215,7 @@
           <a
             aria-label="New project"
             href="/projects/new"
-            class="rounded-full p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75">
+            class="rounded-full p-1 transition-all hover:text-dph-orange dark:text-zinc-100 md:hover:bg-transparent md:active:brightness-75">
             <IconPlus width="24" height="24" /></a>
         </Tooltip>
         <Tooltip
@@ -222,7 +224,7 @@
           classes="flex">
           <a
             href="/notifications"
-            class="rounded-full p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75"
+            class="rounded-full p-1 transition-all hover:text-dph-orange dark:text-zinc-100 md:hover:bg-transparent md:active:brightness-75"
             aria-label="Notifications page">
             {#if unreadNotifications}
               <IconUnread height="24" width="24" />
@@ -239,7 +241,7 @@
               classes="flex">
               <a
                 href="/moderation"
-                class="rounded-full p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent hover:text-dph-orange md:active:brightness-75"
+                class="rounded-full p-1 transition-all hover:text-dph-orange dark:text-zinc-100 md:hover:bg-transparent md:active:brightness-75"
                 ><IconShield width="24" height="24" /></a>
             </Tooltip>
           {/if}

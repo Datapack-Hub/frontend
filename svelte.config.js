@@ -1,21 +1,21 @@
-import preprocess from "svelte-preprocess";
+import { preprocessMeltUI } from "@melt-ui/pp";
 import adapter from "@sveltejs/adapter-cloudflare";
 import { vitePreprocess } from "@sveltejs/kit/vite";
-
-/** @type {import('@sveltejs/kit').Config} */
+import preprocess from "svelte-preprocess";
+import sequence from "svelte-sequential-preprocessor";
+/** @type {import('@sveltejs/kit').Config}*/
 const config = {
   // Consult https://kit.svelte.dev/docs/integrations#preprocessors
   // for more information about preprocessors
-  preprocess: [
+  preprocess: sequence([
     vitePreprocess(),
     preprocess({
-      postcss: true,
+      postcss: true
     }),
-  ],
-
+    preprocessMeltUI()
+  ]),
   kit: {
-    adapter: adapter(),
+    adapter: adapter()
   }
 };
-
 export default config;

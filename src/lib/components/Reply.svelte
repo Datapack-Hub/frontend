@@ -4,7 +4,6 @@
   import { roleInfo, roles, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
 
-  import IconEdit from "~icons/tabler/Edit.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
   import MarkdownRenderer from "./markdown/MarkdownRenderer.svelte";
 

@@ -71,7 +71,7 @@ export const projectSchema = z.object({
     "publish_queue",
     "review_queue"
   ]),
-  title: z.string().max(35),
+  title: z.string(), //.max(35),
   type: z.enum(["datapack"]),
   updated: z.number().nonnegative().optional(),
   url: z.string().regex(/[a-z-]+/)

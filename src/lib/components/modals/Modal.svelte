@@ -25,20 +25,20 @@
     <div
       class="fixed right-0 top-0 z-50 flex h-screen w-screen transform-gpu overflow-y-auto backdrop-blur-lg backdrop-brightness-75">
       <div
-        in:fly="{{ x: -300, easing: quartOut }}"
+        in:fly="{{ y: 25, easing: quartOut }}"
         class="relative m-auto {width == 'wide' ? 'w-3/4' : ''} {width ==
         'small'
           ? 'w-fit'
           : ''} {width == 'normal' ? 'w-1/2' : ''} {isSmall
           ? 'w-5/6'
-          : ''} justify-self-center drop-shadow-lg">
+          : ''} justify-self-center drop-shadow-xl">
         {#if title}
           <div
             class="flex items-center rounded-t-xl bg-slate-300 p-3 dark:bg-zinc-900">
             <h2 class="text-lg font-bold dark:text-white">{title}</h2>
             <div class="flex-grow"></div>
             <button
-              class="cursor-pointer select-none font-black text-zinc-950 dark:text-white"
+              class="cursor-pointer select-none dark:text-white"
               on:click="{() => close()}"><IconClose /></button>
           </div>
         {/if}
@@ -48,7 +48,7 @@
             : 'rounded-xl'}">
           {#if !title}
             <button
-              class="float-right cursor-pointer select-none font-black text-zinc-950 dark:text-white"
+              class="float-right cursor-pointer select-none dark:text-white"
               on:click="{() => close()}"><IconClose /></button>
           {/if}
           <slot />

@@ -5,25 +5,25 @@
   import type { PageData } from "./$types";
 
   import { browser } from "$app/environment";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
-  import Dropdown from "$lib/components/utility/Dropdown.svelte";
+  import Select from "$lib/components/utility/Select.svelte";
   import { projectSchema } from "$lib/globals/schema";
   import { isDark } from "$lib/globals/stores";
   import { debounce } from "radash";
+  import { readable } from "svelte/store";
   import IconBTS from "~icons/tabler/ArrowBigLeftLine.svelte";
   import IconGrid from "~icons/tabler/LayoutGrid.svelte";
   import IconList from "~icons/tabler/LayoutList.svelte";
   import IconSearch from "~icons/tabler/Search.svelte";
-  import { page } from "$app/stores";
-  import { goto } from "$app/navigation";
+  import type { ListboxOption } from "@melt-ui/svelte/dist/builders/listbox/types";
 
   export let data: PageData;
 
-  let sortDropdownOpen: boolean;
-  let tagDropdownOpen: boolean;
   let query = "";
-  let tag = data.category || "All";
-  let sort = "Downloads";
+  let tag = readable(data.category || "All");
+  let sort = readable("Downloads");
   let searchTime = 0;
   let layout = browser
     ? localStorage.getItem("preferred_layout") || "grid"
@@ -37,7 +37,7 @@
   let search = debounce({ delay: 100 }, async () => {
     searchTime = 0;
     let searchResult = await fetch(
-      `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}&page=${
+      `${API}/projects/search?query=${query}&sort=${$sort.toLowerCase()}&page=${
         data.page > 0 ? data.page : 1
       }${data.category ? "&category=" + data.category : ""}`
     );
@@ -49,9 +49,10 @@
     dataCopy = await projectSchema.array().parseAsync(search.result);
   });
 
-  async function resort() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async function resort(event: CustomEvent<any>) {
     let searchResult = await fetch(
-      `${API}/projects/search?query=${query}&sort=${sort.toLowerCase()}&page=${
+      `${API}/projects/search?query=${query}&sort=${event.detail.label.toLowerCase()}&page=${
         data.page
       }${data.category ? "&category=" + data.category : ""}`
     );
@@ -62,17 +63,27 @@
     dataCopy = await projectSchema.array().parseAsync(sortJson.result);
   }
 
-  async function changeTag() {
-    if (tag.toLowerCase() == "all") {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async function changeTag(event: CustomEvent<ListboxOption[]>) {
+    if (
+      event.detail
+        .map((v: ListboxOption) => v.label!.toLowerCase())
+        .includes("All")
+    ) {
       await goto("?category=");
       return;
     }
-    await goto("?category=" + tag);
+    await goto(
+      "?category=" +
+        event.detail
+          .map((v: ListboxOption) => v.label!.toLowerCase())
+          .toString()
+    );
   }
 
   function genURLParameters(page: number) {
     parameters.set("page", page.toString());
-    parameters.set("sort", sort.toLowerCase());
+    parameters.set("sort", $sort.toLowerCase());
     parameters.set("category", parameters.get("category") || "");
     return parameters.toString();
   }
@@ -104,32 +115,21 @@
       </div>
       <div class="flex flex-col items-center space-x-3 sm:flex-row">
         <div class="mt-2 flex items-center sm:mt-0">
-          <p
-            class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
-            Order:
-          </p>
-          <Dropdown
+          <Select
+            emptyString="Select a Sort"
+            label="Sort"
             options="{['Updated', 'Downloads']}"
             bind:selected="{sort}"
-            bind:expand="{sortDropdownOpen}"
-            selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-zinc-100 {sortDropdownOpen
-              ? 'rounded-tr-lg'
-              : 'rounded-r-lg'}"
             on:change="{resort}" />
         </div>
         <div class="mt-2 flex items-center sm:mt-0">
-          <p
-            class="flex h-11 items-center rounded-l-lg bg-slate-300 px-4 text-center dark:bg-zinc-700 dark:text-white">
-            Tag:
-          </p>
-          <Dropdown
+          <Select
+            emptyString="Select Categories"
+            label="Tag"
+            multi="{true}"
             options="{['All', ...categories]}"
-            bind:expand="{tagDropdownOpen}"
             bind:selected="{tag}"
-            on:change="{changeTag}"
-            selectedStyles="h-11 bg-slate-200 dark:bg-zinc-800 p-3 text-left dark:text-zinc-100 {tagDropdownOpen
-              ? 'rounded-tr-lg'
-              : 'rounded-r-lg'}" />
+            on:change="{changeTag}" />
         </div>
       </div>
     </div>

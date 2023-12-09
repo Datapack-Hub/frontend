@@ -210,7 +210,7 @@
           Easily discover amazing datapacks with our intuitive Explore page!
         </p>
         <div
-          class="fadeTextAnime mb-5 space-y-2 rounded-xl p-3 bg-slate-300 dark:bg-zinc-900">
+          class="fadeTextAnime mb-5 space-y-2 rounded-xl bg-slate-300 p-3 dark:bg-zinc-900">
           {#each data.random.slice(2, 4) ?? [] as rand}
             <ProjectComponent project="{rand}" />
           {/each}
@@ -293,7 +293,7 @@
                   loading="lazy"
                   width="48"
                   height="48"
-                  class="aspect-square h-12 rounded-md bg-slate-300 dark:bg-zinc-700/70 transition-all hover:scale-105 md:h-auto" />
+                  class="aspect-square h-12 rounded-md bg-slate-300 transition-all hover:scale-105 dark:bg-zinc-700/70 md:h-auto" />
               </a>
             </Tooltip>
           {/each}

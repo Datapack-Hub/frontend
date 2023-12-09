@@ -227,11 +227,11 @@
     target.disabled = true;
 
     if ((titleValue?.length ?? 0) < 4) {
-      target.disabled = false
+      target.disabled = false;
       return toast.error("Title must be at least 3 characters");
     }
     if ((bodyValue?.length ?? 0) < 101) {
-      target.disabled = false
+      target.disabled = false;
       return toast.error("Body must be at least 100 characters");
     }
 
@@ -260,7 +260,7 @@
       goto(".");
       toast.success("Edited project!");
     } else {
-      target.disabled = false
+      target.disabled = false;
       toast.error("Failed to upload! Contact an Admin!");
     }
   }

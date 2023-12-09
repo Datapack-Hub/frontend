@@ -13,9 +13,8 @@
   import { authed, isDark, user, windowWidth } from "$lib/globals/stores";
   import NProgress from "nprogress";
   import { Toaster } from "svelte-sonner";
-  import type { LayoutData } from "./$types";
 
-  export let data: LayoutData;
+  export let data;
 
   const maintenance = false;
 
@@ -34,7 +33,7 @@
   }
 </script>
 
-<div class="{$isDark ? 'dark' : ''} font-brand">
+<div class="font-brand {$isDark ? 'dark' : ''}">
   {#if !maintenance || $user.role == "admin"}
     {#if dev || ($authed && ["admin", "moderator", "helper", "beta access", "verified", "nerd"].includes($user.role))}
       <div class="min-h-screen bg-slate-50 transition-all dark:bg-zinc-900">

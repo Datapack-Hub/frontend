@@ -79,8 +79,7 @@
     let mcMeta = JSON.parse(await parsedZip.files["pack.mcmeta"].async("text"));
     let packFormat = 0;
 
-
-    packFormat = dpPackFormats.find(v => mcSemver === v.label)?.format || 0
+    packFormat = dpPackFormats.find(v => mcSemver === v.label)?.format || 0;
 
     mcMeta.pack.pack_format = packFormat;
 

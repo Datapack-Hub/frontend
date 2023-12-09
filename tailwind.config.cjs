@@ -10,13 +10,13 @@ const config = {
         console: ["Space Mono", "monospace"]
       },
       colors: {
-        "dph-orange": "#ff631a",
+        "dph-orange": "#ff631a"
       },
       scale: {
-        '101': '1.01',
-        '102': '1.02',
+        101: "1.01",
+        102: "1.02"
       }
-    },
+    }
   },
 
   safelist: [
@@ -29,10 +29,11 @@ const config = {
     "text-green-500",
     "text-red-500",
     "text-yellow-500",
-    "text-zinc-500"
+    "text-zinc-500",
+    "dark:bg-zinc-800"
   ],
 
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require("@tailwindcss/typography")]
 };
 
 module.exports = config;
