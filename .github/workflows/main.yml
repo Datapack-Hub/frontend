@@ -36,6 +36,17 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup Node
+        uses: actions/setup-node@v3.7.0
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - name: Install dependencies
+        run: |
+          pnpm i
       - name: Prettier Action
         uses: creyD/prettier_action@v4.3
         with:
