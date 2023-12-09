@@ -65,21 +65,20 @@
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async function changeTag(event: CustomEvent<ListboxOption[]>) {
-    if (
-      event.detail
-        .map((v: ListboxOption) => v.label!.toLowerCase())
-        .includes("all")
-    ) {
-      
-      await goto("?category=");
-      return;
-    }
     await goto(
       "?category=" +
         event.detail
           .map((v: ListboxOption) => v.label!.toLowerCase())
           .toString()
     );
+    if (
+      event.detail
+        .map((v: ListboxOption) => v.label!.toLowerCase())
+        .includes("all")
+    ) {
+      await goto("?category=");
+      return;
+    }
   }
 
   function genURLParameters(page: number) {
