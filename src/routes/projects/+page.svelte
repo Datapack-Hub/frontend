@@ -70,7 +70,6 @@
         .map((v: ListboxOption) => v.label!.toLowerCase())
         .includes("all")
     ) {
-      
       await goto("?category=");
       return;
     }
