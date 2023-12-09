@@ -68,8 +68,9 @@
     if (
       event.detail
         .map((v: ListboxOption) => v.label!.toLowerCase())
-        .includes("All")
+        .includes("all")
     ) {
+      
       await goto("?category=");
       return;
     }

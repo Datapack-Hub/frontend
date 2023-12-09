@@ -51,6 +51,7 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           only_changed: true
+          same_commit: true
           prettier_options: --config .prettierrc --write ./{src,tests}/**/*.{svelte,ts}
 
 
