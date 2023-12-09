@@ -147,3 +147,5 @@ dist
 /playwright/.cache/
 
 /.dccache
+
+/bin

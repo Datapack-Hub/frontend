@@ -40,8 +40,7 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           only_changed: true
-          prettier_options: --write ./{src,tests}/**/*.{svelte,ts}
-          prettier_plugins: "prettier-plugin-svelte prettier-plugin-tailwindcss"
+          prettier_options: --config .prettierrc --write ./{src,tests}/**/*.{svelte,ts}
 
 
 permissions:
