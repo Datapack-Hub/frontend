@@ -1,7 +1,7 @@
 /** Shorthand for the API link */
 // http://localhost:5000
 // https://api.datapackhub.net
-export const API = "http://localhost:5000";
+export const API = "https://api.datapackhub.net";
 
 /** All supported categories */
 export const categories = [
