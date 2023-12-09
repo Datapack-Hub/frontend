@@ -147,7 +147,7 @@ export const moderatorOrAbove = memo((role: Role | undefined): boolean => {
  * append a size parameter to an image link
  * @param urlString url as a string
  * @param size size of image
- * @returns a url with the parameter appeneded
+ * @returns a url with the parameter appended
  */
 export function appendSize(urlString: string, size: number): string {
   const url = new URL(urlString);
