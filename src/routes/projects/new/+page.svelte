@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { goto } from "$app/navigation";
+  import { beforeNavigate, goto } from "$app/navigation";
   import Button from "$lib/components/decorative/Button.svelte";
   import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
@@ -18,11 +18,18 @@
   let description: string;
   let body: string;
   let slug: string;
+  let dirty = false;
   $: category = writable([]);
 
   function maxCategoriesReached() {
     toast.error("Max Categories Reached");
   }
+
+  beforeNavigate(({ cancel }) => {
+    if (dirty && !confirm('Are you sure you want to leave this page? You have unsaved changes that will be lost.')) {
+        cancel();
+      }
+  });
 
   async function create() {
     let projData = {
@@ -42,6 +49,7 @@
         data: projData
       }).then(response => {
         if (response.ok) {
+          dirty = false;
           goto(`/project/${projData.url.toLowerCase()}?is_new=1`);
         }
       }),
@@ -54,6 +62,7 @@
   }
 
   function uploadIcon() {
+    dirty = true
     if (iconValue[0].size > 256_000) {
       return toast.error("Icon must be less than 256kb");
     }
@@ -75,6 +84,7 @@
   }
 
   function titleHandler(event: HTMLInputElement) {
+    dirty = true
     title = event.value;
     slug = dash(event.value.trim());
   }
@@ -117,6 +127,7 @@
           <p class="mb-2 text-zinc-950 dark:text-zinc-100">Title</p>
           <input
             type="text"
+            on:change="{() => dirty = true}"
             placeholder="Super Cool Datapack"
             maxlength="35"
             required
@@ -128,6 +139,7 @@
           </p>
           <input
             type="text"
+            on:change="{() => dirty = true}"
             placeholder="slug-for-your-pack"
             maxlength="35"
             bind:value="{slug}"
@@ -139,12 +151,13 @@
       <textarea
         placeholder="A short description of your pack"
         maxlength="200"
+        on:change="{() => dirty = true}"
         bind:value="{description}"
         class="input col-span-2 h-32 resize-none"></textarea>
       <p class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">
         Description
       </p>
-      <MarkdownEditor bind:content="{body}" classes="col-span-2 resize-none" />
+      <MarkdownEditor on:input="{() => dirty = true}" bind:content="{body}" classes="col-span-2 resize-none" />
       <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
       <div
         class="col-span-2 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3 lg:grid-cols-4">

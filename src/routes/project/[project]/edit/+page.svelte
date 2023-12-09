@@ -2,7 +2,7 @@
   import type { PageData } from "./$types";
 
   import { browser } from "$app/environment";
-  import { goto } from "$app/navigation";
+  import { beforeNavigate, goto } from "$app/navigation";
 
   import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
@@ -51,18 +51,32 @@
   let vCode = "";
   let vRPUsed = false;
   let submitVersionButton: HTMLButtonElement;
+  let dirty = false;
 
   // let dependencies: Project[] = [];
   // let dependencyNames: string[] = [""];
 
   function setRPUsed() {
+    dirty = true;
     vRPUsed = true;
   }
+
+  beforeNavigate(({ cancel }) => {
+    if (
+      dirty &&
+      !confirm(
+        "Are you sure you want to leave this page? You have unsaved changes that will be lost."
+      )
+    ) {
+      cancel();
+    }
+  });
 
   type DragEventWithTarget = DragEvent & {
     currentTarget: EventTarget & HTMLLabelElement;
   };
   async function verifyDroppedPack(event: DragEventWithTarget) {
+    dirty = true;
     if (event.dataTransfer?.items) {
       // Use DataTransferItemList interface to access the file(s)
       let item = [...event.dataTransfer.items][0];
@@ -102,6 +116,7 @@
   }
 
   async function rpDropHandler(event: DragEventWithTarget) {
+    dirty = true;
     if (event.dataTransfer?.items) {
       // Use DataTransferItemList interface to access the file(s)
       let item = [...event.dataTransfer.items][0];
@@ -119,6 +134,7 @@
 
   // this should probably be done on the backend
   async function verifyDatapack() {
+    dirty = true;
     if (browser) {
       let inp = document.querySelector("#zip") as HTMLInputElement;
       if (inp.files) zipFile = inp.files[0];
@@ -191,7 +207,10 @@
       fetchAuthed("POST", url, {
         data: versionFormData,
         useSuppliedURL: false
-      }).then(() => goto(".")),
+      }).then(() => {
+        dirty = false;
+        goto(".");
+      }),
       {
         success: "Uploaded! Refreshing...",
         error: "Something went wrong.",
@@ -201,6 +220,7 @@
   }
 
   function uploadIcon() {
+    dirty = true;
     if (iconValue[0].size > 256_000) {
       return toast.error("Icon must be less than 256kb");
     }
@@ -257,6 +277,7 @@
       data: { ...projData }
     });
     if (x.ok) {
+      dirty = false;
       goto(".");
       toast.success("Edited project!");
     } else {
@@ -391,6 +412,7 @@
                 type="text"
                 placeholder="Super Cool Datapack"
                 maxlength="35"
+                on:change="{() => (dirty = true)}"
                 bind:value="{titleValue}"
                 required
                 class="input w-full" />
@@ -403,6 +425,7 @@
           <textarea
             placeholder="A short description of your pack"
             maxlength="200"
+            on:change="{() => (dirty = true)}"
             bind:value="{descValue}"
             class="input col-span-2 h-32 resize-none"></textarea>
           <p class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">
@@ -410,6 +433,7 @@
           </p>
           <MarkdownEditor
             classes="col-span-2 h-64 resize-none"
+            on:input="{() => (dirty = true)}"
             bind:content="{bodyValue}" />
           <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
           <div
@@ -489,6 +513,7 @@
                       name="name"
                       required
                       placeholder="{data.project?.title} v{version}"
+                      on:change="{() => (dirty = true)}"
                       maxlength="50"
                       bind:value="{vName}" />
                   </label>
@@ -498,6 +523,7 @@
                     <input
                       required
                       class="input"
+                      on:change="{() => (dirty = true)}"
                       name="version_code"
                       placeholder="v{version}"
                       maxlength="15"
@@ -510,6 +536,7 @@
                   Changelog
                 </p>
                 <MarkdownEditor
+                  on:input="{() => (dirty = true)}"
                   bind:content="{vChangelog}"
                   name="description"
                   classes="h-36 w-full md:w-3/4" />
