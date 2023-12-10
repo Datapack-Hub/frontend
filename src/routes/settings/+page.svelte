@@ -119,7 +119,7 @@
 
     <div use:melt="{$content('profile')}">
       <div
-        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start">
+        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-zinc-800 md:text-start">
         <div class="text-center align-middle md:text-start">
           <p class="align-middle text-zinc-950 dark:text-zinc-100">Username</p>
           <p
@@ -150,7 +150,7 @@
 
     <div use:melt="{$content('account')}">
       <div
-        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 md:text-start">
+        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-zinc-800 md:text-start">
         <div class="text-center align-middle md:text-start">
           <p class="align-middle text-zinc-950 dark:text-zinc-100">
             Linked Github

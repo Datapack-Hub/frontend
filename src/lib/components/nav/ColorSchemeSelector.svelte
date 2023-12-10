@@ -2,6 +2,7 @@
   import { isDark } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
   import { draw } from "svelte/transition";
+  import { createToggle, melt } from "@melt-ui/svelte";
 
   let superDarkMode = false;
   let superDarkX = 0;
@@ -9,12 +10,22 @@
   let innerWidth = 0;
   let innerHeight = 0;
 
-  function superDarkHandler(event?: MouseEvent) {
+  function superDarkHandler(event?: PointerEvent) {
     requestAnimationFrame(() => {
       superDarkX = (event?.clientX ?? 0) - innerWidth;
       superDarkY = (event?.clientY ?? 0) - innerHeight;
     });
   }
+
+  const {
+    elements: { root }
+  } = createToggle({
+    onPressedChange: value => {
+      toggle()
+      return value.next
+    },
+    defaultPressed: false
+  });
 
   let toggle = (event?: MouseEvent) => {
     if (event?.shiftKey) {
@@ -34,20 +45,15 @@
 <svelte:window
   bind:innerWidth
   bind:innerHeight
-  on:mousemove="{event => superDarkHandler(event)}" />
+  on:pointermove="{event => superDarkHandler(event)}" />
 
-<div
+<button
+  use:melt="{$root}"
   class="select-none rounded-lg p-1 transition-all hover:text-dph-orange dark:text-zinc-100 md:hover:bg-transparent"
-  role="checkbox"
-  aria-checked="{$isDark}"
   aria-label="dark mode toggle">
   {#if $isDark}
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      role="button"
-      tabindex="0"
-      on:click="{event => toggle(event)}"
-      on:keydown="{event => (event.key == 'Tab' ? undefined : toggle())}"
       class="cursor-pointer"
       width="24"
       height="24"
@@ -72,13 +78,9 @@
       ></path>
       <path d="M19 11h2m-1 -1v2"></path>
     </svg>
-  {:else}
+    {:else}
     <svg
-      role="button"
-      tabindex="0"
       xmlns="http://www.w3.org/2000/svg"
-      on:click="{event => toggle(event)}"
-      on:keydown="{event => (event.key == 'Tab' ? undefined : toggle())}"
       class="cursor-pointer"
       width="24"
       height="24"
@@ -114,8 +116,8 @@
       <path in:draw="{{ duration: 500, speed: 5 }}" d="M20 12h2"></path>
       <path in:draw="{{ duration: 500, speed: 5 }}" d="M12 20v2"></path>
     </svg>
-  {/if}
-</div>
+    {/if}
+</button>
 
 {#if superDarkMode}
   <section
