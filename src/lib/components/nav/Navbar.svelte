@@ -190,7 +190,7 @@
             <div class="flex items-center">
               <IconMail class="inline-grid align-middle" />
             </div>
-            <a href="#mailman_link_here">
+            <a href="https://mailman.datapackhub.net">
               <p class="font-bold">Mailman</p>
               <p class="text-xs">
                 Upload your projects to Datapack Hub, <br />Smithed and Modrinth
