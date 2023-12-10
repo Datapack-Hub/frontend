@@ -21,8 +21,8 @@
     elements: { root }
   } = createToggle({
     onPressedChange: value => {
-      toggle()
-      return value.next
+      toggle();
+      return value.next;
     },
     defaultPressed: false
   });
@@ -78,7 +78,7 @@
       ></path>
       <path d="M19 11h2m-1 -1v2"></path>
     </svg>
-    {:else}
+  {:else}
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="cursor-pointer"
@@ -116,7 +116,7 @@
       <path in:draw="{{ duration: 500, speed: 5 }}" d="M20 12h2"></path>
       <path in:draw="{{ duration: 500, speed: 5 }}" d="M12 20v2"></path>
     </svg>
-    {/if}
+  {/if}
 </button>
 
 {#if superDarkMode}

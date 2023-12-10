@@ -122,7 +122,7 @@
         class="group hidden cursor-pointer rounded-full p-1 font-light transition-all hover:text-dph-orange dark:text-zinc-100 md:block">
         Tools
         <div
-          class="text-start grid-first-small absolute -top-32 hidden w-max gap-3 rounded-md bg-slate-50 px-6 py-3 text-black shadow-lg group-hover:grid group-focus:grid group-active:grid dark:bg-zinc-950 dark:text-white md:top-12">
+          class="grid-first-small absolute -top-32 hidden w-max gap-3 rounded-md bg-slate-50 px-6 py-3 text-start text-black shadow-lg group-hover:grid group-focus:grid group-active:grid dark:bg-zinc-950 dark:text-white md:top-12">
           <div class="flex cursor-no-drop items-center">
             <IconWrench class="inline-grid align-middle" />
           </div>

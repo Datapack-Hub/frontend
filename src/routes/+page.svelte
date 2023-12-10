@@ -26,7 +26,7 @@
     project
   }));
 
-  let length = featuredProjects.length - 1
+  let length = featuredProjects.length - 1;
   for (let index = 0; index < 2 - length; index++) {
     featuredProjects.push({ type: "random", project: data.random[index] });
   }
@@ -128,7 +128,7 @@
   class="h-full bg-slate-50 transition-all dark:bg-zinc-900">
   <div class="py-12 md:py-0"></div>
   <section
-    class="flex h-fit w-full flex-col items-center justify-start overflow-visible px-4 md:h-[85vh] md:flex-row md:justify-evenly lg:px-8 thing">
+    class="thing flex h-fit w-full flex-col items-center justify-start overflow-visible px-4 md:h-[85vh] md:flex-row md:justify-evenly lg:px-8">
     <div class="w-full md:w-5/12">
       <div class="relative h-36 w-full">
         <h1
@@ -184,7 +184,7 @@
     </section>
   </section>
   <section
-    class="flex w-full flex-col items-center justify-center bg-slate-100 py-16 border-t dark:border-zinc-800 border-slate-300 dark:bg-zinc-800/20">
+    class="flex w-full flex-col items-center justify-center border-t border-slate-300 bg-slate-100 py-16 dark:border-zinc-800 dark:bg-zinc-800/20">
     <a
       href="#bento"
       class="fixed bottom-32 z-50 rounded-full bg-slate-200 px-2 py-1 shadow-lg dark:bg-zinc-700 dark:text-white lg:bottom-4 {scrollY >
