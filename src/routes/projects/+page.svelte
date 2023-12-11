@@ -118,6 +118,7 @@
           <Select
             emptyString="Select a Sort"
             label="Sort"
+            defaultOption="Downloads"
             options="{['Updated', 'Downloads']}"
             bind:selected="{sort}"
             on:change="{resort}" />

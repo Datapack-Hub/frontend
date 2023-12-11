@@ -10,6 +10,8 @@
   export let label = "";
   export let emptyString: string;
   export let multi = false;
+  // eslint-disable-next-line unicorn/no-useless-undefined
+  export let defaultOption: string | undefined = undefined;
 
   const dispatch = createEventDispatcher();
 
@@ -23,6 +25,10 @@
       placement: "bottom",
       fitViewport: true,
       sameWidth: true
+    },
+    defaultSelected: {
+      value: defaultOption,
+      label: defaultOption
     },
     multiple: multi,
     onSelectedChange: s => {
