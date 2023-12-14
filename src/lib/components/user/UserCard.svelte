@@ -18,7 +18,7 @@
       class="float-left mr-2 h-16 w-16 rounded-full"
       width="64"
       height="64" />
-    <div>
+    <div class="max-w-[calc(100%-4.5rem)]">
       <h1 class="text-xl font-bold text-zinc-950 dark:text-white">
         {person?.username}
       </h1>
