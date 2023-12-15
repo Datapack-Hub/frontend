@@ -30,7 +30,7 @@ export const load = (async ({ cookies, fetch, url }) => {
     const userResponse = await serverGetAuthed("/user/me", cookies, fetch);
 
     if (userResponse.status === 401) {
-      cookies.delete("dph_token", {path: "/"});
+      cookies.delete("dph_token", { path: "/" });
       redirect(307, url.pathname);
     }
 
