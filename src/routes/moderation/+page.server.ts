@@ -16,7 +16,7 @@ export const load = (async ({ cookies, fetch }) => {
       ]),
       async (response: Response) => {
         if (response.ok) return await response.json();
-        throw error(response.status, {
+        error(response.status, {
           message: response.statusText
         });
       }
@@ -30,7 +30,7 @@ export const load = (async ({ cookies, fetch }) => {
     };
   } catch (error_) {
     for (const error2 of (error_ as AggregateError).errors) {
-      throw error(error2.status, error2.body);
+      error(error2.status, error2.body);
     }
   }
 }) satisfies PageServerLoad;

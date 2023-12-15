@@ -11,7 +11,7 @@ export const load = (async ({ params, cookies, fetch }) => {
   );
 
   if (projectRequest.status === 404) {
-    throw error(404, {
+    error(404, {
       message: "Silly boy!",
       description: "Doesn't exist, nerd!"
     });
@@ -23,7 +23,7 @@ export const load = (async ({ params, cookies, fetch }) => {
   const meRequest = await serverGetAuthed("/user/me", cookies, fetch);
 
   if (meRequest.status === 401) {
-    throw error(401, {
+    error(401, {
       message: "Please sign in.",
       description: "If you are signed in, then our server must be down. Sorry!"
     });
@@ -50,7 +50,7 @@ export const load = (async ({ params, cookies, fetch }) => {
     };
   }
 
-  throw error(403, {
+  error(403, {
     message: "Not your project.",
     description: "Only the owner can edit this."
   });

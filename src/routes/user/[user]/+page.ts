@@ -16,14 +16,14 @@ export const load = (async ({ params, fetch }) => {
   ]);
 
   if (user.status === 404) {
-    throw error(404, {
+    error(404, {
       message: "User not found",
       description: "You may have hallucinated their existence"
     });
   }
 
   if ([user, projects].some(r => !r.ok)) {
-    throw error(user.status, {
+    error(user.status, {
       message: "Unexpected error",
       description: "Something unexpected happen, try again later"
     });

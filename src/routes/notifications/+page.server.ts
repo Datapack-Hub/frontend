@@ -7,7 +7,7 @@ export const load = (async ({ cookies, fetch }) => {
   const unread = await serverGetAuthed("/notifs/", cookies, fetch);
 
   if (!unread.ok) {
-    throw error(unread.status, {
+    error(unread.status, {
       message: unread.statusText,
       description: "Something went wrong"
     });

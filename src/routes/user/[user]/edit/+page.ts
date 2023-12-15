@@ -27,7 +27,7 @@ export const load = (async ({ params, fetch }) => {
         userJson.username !== meJson.username &&
         !defaultRole.permissions.includes("EDIT_USER")
       ) {
-        throw error(403, {
+        error(403, {
           message: "Not allowed!",
           description: "This is not you, you can't edit their profile."
         });

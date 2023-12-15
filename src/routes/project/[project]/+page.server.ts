@@ -13,14 +13,14 @@ export const load = (async ({ params, fetch, cookies, url }) => {
   ]);
 
   if ([projectRequest.status, versionsRequest.status].includes(404)) {
-    throw error(404, {
+    error(404, {
       message: "Project not found",
       description: "Why not go ahead and turn the idea into a reality?"
     });
   }
 
   if ([projectRequest, versionsRequest].some(request => !request.ok)) {
-    throw error(projectRequest.status, {
+    error(projectRequest.status, {
       message: "Unexpected error",
       description: "Something unexpected happen, try again later"
     });

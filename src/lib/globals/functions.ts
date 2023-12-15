@@ -49,7 +49,7 @@ export async function serverGetAuthed(
     }
   });
 
-  if (response.status === 401) cookies.delete("dph_token"); // Remove token if invalid
+  if (response.status === 401) cookies.delete("dph_token", { path: "/" }); // Remove token if invalid
 
   return response;
 }

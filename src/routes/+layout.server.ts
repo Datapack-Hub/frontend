@@ -23,15 +23,15 @@ export const load = (async ({ cookies, fetch, url }) => {
       path: "/"
     });
 
-    throw redirect(307, url.pathname);
+    redirect(307, url.pathname);
   }
 
   if (cookie) {
     const userResponse = await serverGetAuthed("/user/me", cookies, fetch);
 
     if (userResponse.status === 401) {
-      cookies.delete("dph_token");
-      throw redirect(307, url.pathname);
+      cookies.delete("dph_token", {path: "/"});
+      redirect(307, url.pathname);
     }
 
     const user = await userSchema.parseAsync(await userResponse.json());
