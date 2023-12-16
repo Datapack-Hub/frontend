@@ -149,17 +149,22 @@ export const moderatorOrAbove = memo((role: Role | undefined): boolean => {
  * @param size size of image
  * @returns a url with the parameter appended
  */
-export function appendSize(urlString: string | undefined, size: number): string | undefined {
-  if(!urlString) return urlString
+export function appendSize(
+  urlString: string | undefined,
+  size: number
+): string | undefined {
+  if (!urlString) return urlString;
   const url = new URL(urlString);
   url.searchParams.append("size", size.toString());
   return url.toString();
 }
 
 export function getAuthor(authorId: number) {
-  return fetch(`${API}/users/${authorId}`).then(result => result.json()).then(result => {
-    return userSchema.parseAsync(result)
-  })
+  return fetch(`${API}/users/${authorId}`)
+    .then(result => result.json())
+    .then(result => {
+      return userSchema.parseAsync(result);
+    });
 }
 
 /**

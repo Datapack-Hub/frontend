@@ -1,6 +1,11 @@
 <script lang="ts">
   import { appendSize, getUserLocale, timeAgo } from "$lib/globals/functions";
-  import { userSchema, type Project, type Role, type User } from "$lib/globals/schema";
+  import {
+    userSchema,
+    type Project,
+    type Role,
+    type User
+  } from "$lib/globals/schema";
   import { roles } from "$lib/globals/stores";
   import { title } from "radash";
   import IconDownload from "~icons/tabler/Download.svelte";
@@ -22,16 +27,16 @@
   });
 
   let uhh = dateFormatter.format((project.updated || 0) * 1000);
-  let userRole: Role
-  let status = "unpublished"
-  let author: User
+  let userRole: Role;
+  let status = "unpublished";
+  let author: User;
 
   onMount(async () => {
-    const result = await fetch(`${API}/users/${project.authorId}`)
-    author = userSchema.parse(await result.json())
-    console.log(author)
-    $roles.find(role => role.name === author.role)
-  })
+    const result = await fetch(`${API}/users/${project.authorId}`);
+    author = userSchema.parse(await result.json());
+    console.log(author);
+    $roles.find(role => role.name === author.role);
+  });
 </script>
 
 <div

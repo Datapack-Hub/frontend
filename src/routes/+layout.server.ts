@@ -33,7 +33,7 @@ export const load = (async ({ cookies, fetch, url }) => {
       cookies.delete("dph_token", { path: "/" });
       redirect(307, url.pathname);
     }
-    
+
     const user = await userSchema.parseAsync(await userResponse.json());
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const role = roleSchema
