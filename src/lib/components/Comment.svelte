@@ -51,7 +51,6 @@
         await newComment.json()
       );
       comment = parsedComments;
-      console.log(comment.message);
       replyMessage = "";
       wait = false;
       return;

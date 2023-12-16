@@ -254,7 +254,7 @@
           aria-label="Your profile"
           href="/user/{$user.username}">
           <img
-            src="{appendSize($user.profile_icon, 64)}"
+            src="{appendSize($user.icon, 64)}"
             alt="{$user.username}'s profile picture"
             height="24"
             width="24"

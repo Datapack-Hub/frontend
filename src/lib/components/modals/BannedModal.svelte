@@ -13,7 +13,7 @@
 
   onMount(async () => {
     if (browser) {
-      let me = await fetchAuthed("get", "/user/me");
+      let me = await fetchAuthed("get", "/users/me");
 
       if (me.ok) {
         let meJson = await userSchema.parseAsync(await me.json());

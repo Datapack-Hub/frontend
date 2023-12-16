@@ -59,7 +59,7 @@
       <div class="mb-2 items-center space-y-2">
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
           <div class="mb-3 text-blue-300">
-            <a href="/project/{data.project.url}"
+            <a href="/project/{data.project.slug}"
               ><IconBack class="inline" /> Back to description
             </a>
           </div>
@@ -96,7 +96,7 @@
               {/each}
               <a
                 class="flex cursor-pointer items-center space-x-2 rounded-md bg-slate-400 p-3 transition-all hover:scale-102 dark:bg-zinc-600 dark:text-white"
-                href="/project/{data.project.url}/versions">
+                href="/project/{data.project.slug}/versions">
                 <div class="flex flex-grow items-center space-x-2 font-bold">
                   <p>Show All Versions</p>
                 </div>
@@ -136,7 +136,7 @@
               class="text-md mt-2 flex items-center space-x-1 pr-1 text-blue-400">
               <IconFiles />
               <a
-                href="/project/{data.project.url}/versions"
+                href="/project/{data.project.slug}/versions"
                 class="cursor-pointer">Show Version History</a>
             </p>
           </div>

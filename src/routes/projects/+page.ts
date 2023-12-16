@@ -13,7 +13,7 @@ export const load = (async ({ fetch, url }) => {
     2,
     await Promise.all([
       fetch(
-        `${API}/projects/?page=${page}&sort=${sort}${
+        `${API}/projects?page=${page}&sort=${sort}${
           category ? `&category=${category}` : ""
         }`
       ),
@@ -24,7 +24,7 @@ export const load = (async ({ fetch, url }) => {
 
   const [parsedData, parsedFeatured] = await parallel(
     2,
-    [projects.result, featured.result],
+    [projects.projects, featured],
     async json => {
       return await projectSchema.array().parseAsync(json);
     }

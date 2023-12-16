@@ -20,7 +20,7 @@ export const load = (async ({ params, cookies, fetch }) => {
   const projectJson = await projectSchema.parseAsync(
     await projectRequest.json()
   );
-  const meRequest = await serverGetAuthed("/user/me", cookies, fetch);
+  const meRequest = await serverGetAuthed("/users/me", cookies, fetch);
 
   if (meRequest.status === 401) {
     error(401, {

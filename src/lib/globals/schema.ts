@@ -16,7 +16,7 @@ export const userSchema = z.object({
   bio: z.string().max(500, {
     message: "Bio too long"
   }),
-  profile_icon: z.string().url(),
+  icon: z.string().url(),
   role: z.enum([
     "admin",
     "moderator",
@@ -29,9 +29,9 @@ export const userSchema = z.object({
   username: z.string().max(32, {
     message: "Username too long"
   }),
-  badges: z.array(z.string()).nullish(),
+  badges: z.array(z.string()).optional(),
   followed: z.oboolean(),
-  join_date: z.onumber() // change to normal number once change pulled
+  joinDate: z.onumber() // change to normal number once change pulled
 });
 
 export const versionSchema = z.object({
@@ -46,14 +46,14 @@ export const versionSchema = z.object({
 });
 
 export const projectSchema = z.object({
-  ID: z.number(),
-  author: z.object(userSchema.shape),
-  body: z.string().max(1e4, { message: "Body too long" }).optional(),
+  id: z.number(),
+  authorId: z.number(),
+  description: z.string().max(1e4, { message: "Body too long" }).optional(),
   category: z.optional(z.array(z.string())),
   // dependencies: z.array(z.string()).nullish(),
-  description: z.string().max(200, { message: "Description too long" }),
+  summary: z.string().max(200, { message: "Description too long" }),
   downloads: z.onumber(),
-  icon: z.string().url().nullish(),
+  icon: z.string().url().nullable(),
   latest_version: z.optional(
     versionSchema.omit({
       primary_download: true,
@@ -72,9 +72,8 @@ export const projectSchema = z.object({
     "review_queue"
   ]),
   title: z.string(), //.max(35),
-  type: z.enum(["datapack"]),
   updated: z.number().nonnegative().optional(),
-  url: z.string().regex(/[a-z-]+/)
+  slug: z.string().regex(/[a-z-]+/)
 });
 
 export const notificationSchema = z.object({
@@ -101,15 +100,7 @@ export const roleSchema = z.object({
     })
     .nullish(),
   verified: z.boolean(),
-  permissions: z.array(
-    z.enum([
-      "BAN_USER",
-      "WARN_USER",
-      "EDIT_USER",
-      "DELETE_CONTENT",
-      "USE_CONSOLE"
-    ])
-  )
+  permissions: z.string().array()
 });
 
 export const reportSchema = z.object({

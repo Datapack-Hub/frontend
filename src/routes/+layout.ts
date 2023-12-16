@@ -28,7 +28,7 @@ export const load = (async ({ url, data }) => {
     const parameters = url.searchParams;
 
     if (parameters.has("log_out")) {
-      const signal = await fetchAuthed("get", "/user/me/log_out");
+      const signal = await fetchAuthed("get", "/users/me/log_out");
       const toastFunction = signal.ok ? toast.success : toast.error;
       toastFunction(await signal.text());
 

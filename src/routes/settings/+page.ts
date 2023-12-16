@@ -7,7 +7,7 @@ import type { PageLoad } from "./$types";
 
 export const load = (async ({ fetch }) => {
   if (browser) {
-    const meResponse = await fetchAuthed("GET", "/user/me", {
+    const meResponse = await fetchAuthed("GET", "/users/me", {
       fetchFunction: fetch
     });
     const profile = await userSchema.parseAsync(await meResponse.json());

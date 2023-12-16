@@ -170,7 +170,7 @@
       class="button-base text-zinc-950 dark:text-zinc-100 {activePage
         ? 'bg-slate-200 dark:bg-zinc-800'
         : 'bg-slate-400 dark:bg-zinc-600'}"
-      href="/project/{project.url}"
+      href="/project/{project.slug}"
       aria-label="Description">
       <span class="hidden md:block">Description</span>
       <IconDescription color="{iconColor}" class="block md:hidden" />
@@ -180,7 +180,7 @@
       'comments'
         ? 'bg-slate-400 dark:bg-zinc-600'
         : 'bg-slate-200 dark:bg-zinc-800'}"
-      href="/project/{project.url}/comments"
+      href="/project/{project.slug}/comments"
       aria-label="Comments">
       <span class="hidden md:block">Comments</span>
       <IconMessage color="{iconColor}" class="block md:hidden" />
@@ -256,7 +256,7 @@
         </button>
       {/if}
     {/if}
-    <DphButton click="/project/{project.url}/download">
+    <DphButton click="/project/{project.slug}/download">
       <span class="hidden lg:block">Download</span>
       <IconDownload class="block lg:hidden" />
     </DphButton>

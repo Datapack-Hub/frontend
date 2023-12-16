@@ -43,7 +43,7 @@
       <div
         class="mb-2 items-center rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
         <div class="mb-3 text-blue-300" use:autoAnimate>
-          <a href="/project/{data.project.url}"
+          <a href="/project/{data.project.slug}"
             ><IconBack class="inline" /> Back to description
           </a>
         </div>

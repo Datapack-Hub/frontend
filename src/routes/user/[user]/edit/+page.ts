@@ -12,7 +12,7 @@ export const load = (async ({ params, fetch }) => {
 
     const [user, me] = await Promise.all([
       fetchAuthed("get", `/user/${params.user}`, { fetchFunction: fetch }),
-      fetchAuthed("get", "/user/me", { fetchFunction: fetch })
+      fetchAuthed("get", "/users/me", { fetchFunction: fetch })
     ]);
 
     const [userJson, meJson] = await Promise.all([

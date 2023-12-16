@@ -36,7 +36,7 @@
   bind:this="{me}">
   <div class="flex items-center">
     <a
-      href="/project/{report.project.url}"
+      href="/project/{report.project.slug}"
       class="rounded-lg {report.project.icon
         ? ''
         : 'bg-slate-300 p-4 dark:bg-zinc-700 dark:text-zinc-100'}">
@@ -54,7 +54,7 @@
     </a>
     <div class="ml-4 w-2/3">
       <a
-        href="/project/{report.project.url}"
+        href="/project/{report.project.slug}"
         class=" text-lg hover:underline md:text-xl lg:text-2xl">
         {report.project.title}
       </a>
