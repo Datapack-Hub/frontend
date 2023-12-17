@@ -60,22 +60,22 @@
   }
 </script>
 
-<div class="mr-4 h-fit w-full flex-col lg:w-2/5 xl:w-1/3" use:autoAnimate>
+<div class="mr-4 h-fit w-full" use:autoAnimate>
   <div class="my-3 mb-4 text-sky-500" use:autoAnimate>
     <button on:click="{() => history.back()}">
       <IconBack class="inline" /> Go Back
     </button>
   </div>
   <div
-    class="mb-2 rounded-xl border-slate-200 bg-slate-200 p-4 dark:bg-zinc-800">
-    <div class="items-top flex max-w-fit space-x-2">
+    class="mb-2 rounded-xl">
+    <div class="items-top flex max-w-fit space-x-3">
       {#if project?.icon}
         <img
           src="{project?.icon}"
           alt="{project?.title} icon"
-          class="aspect-square h-16 w-16 rounded-lg bg-cover"
-          width="64"
-          height="64" />
+          class="aspect-square h-24 w-24 rounded-lg bg-cover"
+          width="72"
+          height="72" />
       {:else}
         <div
           class="h-16 w-16 rounded-xl bg-slate-300 p-4 dark:bg-zinc-700 dark:text-white">
@@ -87,7 +87,7 @@
           class="project-info flex items-center text-3xl font-bold text-zinc-950 dark:text-white">
           {project?.title}
         </h1>
-        <div class="mt-1 flex min-w-fit items-center space-x-1">
+        <div class="mt-1 flex min-w-fit items-center space-x-3">
           <a
             href="/user/{project.author?.username}"
             class="flex items-center space-x-1">
@@ -102,57 +102,26 @@
               {project.author?.username}
             </span>
           </a>
+          <p class="dark:text-white">•</p>
+          <p class="text-md flex items-center space-x-2 dark:text-white">
+            {#each project?.category || [] as cat}
+              <a href="/projects?category={cat}" class="text-sm">{cat}</a>
+            {/each}
+          </p>
+          <p class="dark:text-white">•</p>
+          <span class="dark:text-white flex items-center space-x-1">
+            <IconDL />
+            <p>{project.downloads}</p>
+          </span>
+
         </div>
-      </div>
-    </div>
-    <div>
-      <h2
+        <h2
         class="mt-2 text-base text-zinc-950/60 transition-all dark:text-white/60">
         {project?.description}
       </h2>
-      <p class="text-md my-2 flex items-center space-x-2 dark:text-white">
-        <IconCube />
-        <span class="font-bold">Categories:</span>
-        {#each project?.category || [] as cat}
-          <a href="/projects?category={cat}" class="text-sm">{cat}</a>
-        {/each}
-      </p>
-      <div class="my-3">
-        <CasualLine />
       </div>
     </div>
-    <div>
-      <h1
-        class="text-md mt-2 flex items-center space-x-2 font-medium text-zinc-950 dark:text-white">
-        <IconDL />
-        <span
-          ><b>Downloads: </b>{numberFormatter.format(
-            project?.downloads || 0
-          )}</span>
-      </h1>
-      <h1
-        class="text-md mt-1 flex items-center space-x-2 font-medium text-zinc-950 dark:text-white">
-        <IconUpdate />
-        <span>
-          <b>Last updated:</b>
-          {timeAgo((project?.updated || 0) * 1000)}
-        </span>
-      </h1>
 
-      <div class="mt-2">
-        {#if ["unpublished", "draft"].includes(status)}
-          <span class="text-zinc-400">•</span>
-          <span class="mt-2 font-bold text-zinc-400">{title(status)}</span>
-        {:else if ["disabled"].includes(status)}
-          <span class="text-red-400">•</span>
-          <span class="mt-2 font-bold text-red-400"
-            >{title(status.replaceAll("_", " "))}</span>
-        {:else if ["review_queue", "publish_queue"].includes(status)}
-          <span class="text-yellow-600">•</span>
-          <span class="pt-2 font-bold text-yellow-600">In Queue</span>
-        {/if}
-      </div>
-    </div>
   </div>
   {#if project?.mod_message}
     <div
@@ -182,8 +151,6 @@
       <IconList />
       <span class="">Open checklist</span>
     </button>
-  {:else}
-    <p class="text-zinc-600">Project ID: {project?.ID}</p>
   {/if}
 </div>
 

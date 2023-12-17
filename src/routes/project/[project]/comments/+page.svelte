@@ -50,7 +50,7 @@
   id="main-content"
   class="bg-slate-50 px-0 pb-64 transition-all dark:bg-zinc-900 sm:px-8 md:px-16 lg:px-24">
   <div class="md:pt-32"></div>
-  <div class="flex w-full flex-col px-4 lg:flex-row">
+  <div class="flex w-full flex-col px-4">
     <!--Project Meta-->
     <ProjectInfo
       project="{data.project}"
@@ -59,7 +59,7 @@
     <div
       id="project-content"
       use:autoAnimate
-      class="mt-4 w-full lg:mt-0 lg:w-3/4">
+      class="mt-4 w-full">
       <!--Buttons-->
       <ProjectNav project="{data.project}" />
 
