@@ -29,7 +29,7 @@
   <div
     class="fixed z-50 {$windowWidth > 768
       ? 'bottom-0'
-      : 'top-0'} left-0 grid w-full grid-cols-2 rounded-lg bg-white p-3 dark:bg-black">
+      : 'top-0'} m-2 grid w-full grid-cols-2 rounded-lg bg-white p-3 dark:bg-black">
     <div>
       <p class="text-base font-bold dark:text-white md:text-lg lg:text-xl">
         Hey there, we've got some news—we use cookies on our site.

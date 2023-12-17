@@ -164,8 +164,13 @@
   $: activePage = $page.url.pathname.split("/")[3];
 </script>
 
+<div class="mb-4">
+  <BhAdvert />
+</div>
+
+
 <div class="mb-2 flex items-center justify-between">
-  <div class="flex space-x-1">
+  <div class="flex space-x-2">
     <a
       class="button-base text-zinc-950 dark:text-zinc-100 {activePage
         ? 'bg-slate-200 dark:bg-zinc-800'
@@ -276,8 +281,6 @@
     {/if}
   </div>
 </div>
-
-<BhAdvert />
 
 {#if status == "deleted"}
   <div
