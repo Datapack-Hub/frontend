@@ -66,8 +66,7 @@
       <IconBack class="inline" /> Go Back
     </button>
   </div>
-  <div
-    class="mb-2 rounded-xl">
+  <div class="mb-2 rounded-xl">
     <div class="items-top flex max-w-fit space-x-3">
       {#if project?.icon}
         <img
@@ -109,19 +108,17 @@
             {/each}
           </p>
           <p class="dark:text-white">•</p>
-          <span class="dark:text-white flex items-center space-x-1">
+          <span class="flex items-center space-x-1 dark:text-white">
             <IconDL />
             <p>{project.downloads}</p>
           </span>
-
         </div>
         <h2
-        class="mt-2 text-base text-zinc-950/60 transition-all dark:text-white/60">
-        {project?.description}
-      </h2>
+          class="mt-2 text-base text-zinc-950/60 transition-all dark:text-white/60">
+          {project?.description}
+        </h2>
       </div>
     </div>
-
   </div>
   {#if project?.mod_message}
     <div

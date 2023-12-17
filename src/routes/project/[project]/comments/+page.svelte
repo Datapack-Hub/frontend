@@ -56,10 +56,7 @@
       project="{data.project}"
       isNew="{data.new == '1' ? true : false}" />
     <!--Main-->
-    <div
-      id="project-content"
-      use:autoAnimate
-      class="mt-4 w-full">
+    <div id="project-content" use:autoAnimate class="mt-4 w-full">
       <!--Buttons-->
       <ProjectNav project="{data.project}" />
 
