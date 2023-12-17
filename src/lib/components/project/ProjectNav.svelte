@@ -168,7 +168,6 @@
   <BhAdvert />
 </div>
 
-
 <div class="mb-2 flex items-center justify-between">
   <div class="flex space-x-2">
     <a
