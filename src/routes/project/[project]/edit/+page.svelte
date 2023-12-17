@@ -456,13 +456,14 @@
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
           <div class="text-center align-middle md:text-start">
             {#if createVersion == false}
-              <div class="flex items-center space-x-2 text-white mb-2">
+              <div class="mb-2 flex items-center space-x-2 text-white">
                 <label
                   on:dragover|preventDefault="{() => {}}"
                   on:drop|preventDefault="{event => verifyDroppedPack(event)}"
                   for="zip"
-                  class="bg-orange-500 rounded-xl p-2 text-white flex">
-                  <span class="cursor-pointer"><IconUpload class="inline-block align-text-top" /> Upload Version</span>
+                  class="flex rounded-xl bg-orange-500 p-2 text-white">
+                  <span class="cursor-pointer"
+                    ><IconUpload class="inline-block align-text-top" /> Upload Version</span>
                 </label>
                 <input
                   type="file"
