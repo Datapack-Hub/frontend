@@ -456,19 +456,13 @@
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
           <div class="text-center align-middle md:text-start">
             {#if createVersion == false}
-              <p
-                class="mb-8 text-2xl font-bold text-zinc-950 dark:text-zinc-100">
-                Step 1. Upload Datapack Data
-              </p>
-              <div class="my-2 flex flex-col items-center justify-center">
+              <div class="flex items-center space-x-2 text-white mb-2">
                 <label
                   on:dragover|preventDefault="{() => {}}"
                   on:drop|preventDefault="{event => verifyDroppedPack(event)}"
                   for="zip"
-                  class="flex h-32 w-96 flex-col items-center justify-center rounded-lg border-2 border-slate-400 bg-slate-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white">
-                  <span class="cursor-pointer"
-                    ><IconUpload class="inline-block align-text-top" /> Upload Datapack</span>
-                  (Drag and Drop Supported!)
+                  class="bg-orange-500 rounded-xl p-2 text-white flex">
+                  <span class="cursor-pointer"><IconUpload class="inline-block align-text-top" /> Upload Version</span>
                 </label>
                 <input
                   type="file"
@@ -476,15 +470,9 @@
                   accept=".zip"
                   id="zip"
                   on:input="{verifyDatapack}" />
-                <span class="align-center mt-4 text-zinc-950 dark:text-white"
-                  >(Supports: *.zip)</span>
-                <!-- <p class="align-middle  text-zinc-950 dark:text-zinc-100">No versions yet!</p> -->
-                <p class="mt-4 text-zinc-950 dark:text-zinc-100">
-                  After you upload a version of your pack, it'll move on
-                  automatically!
-                </p>
+                <p>or drag a ZIP anywhere onto this page</p>
               </div>
-              <div class="gap-2">
+              <div class="space-y-2">
                 {#each data.versions ?? [] as version}
                   <VersionDisplay {version} project="{data.project}" />
                 {/each}
@@ -501,7 +489,7 @@
                   on:click="{() => (createVersion = false)}"><IconX /></button>
                 <h2
                   class="mb-2 text-2xl font-bold text-zinc-950 dark:text-white">
-                  Step 2. Fill in your version's info
+                  Version Details
                 </h2>
 
                 <div class="flex gap-3">
