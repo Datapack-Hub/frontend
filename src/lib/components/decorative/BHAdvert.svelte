@@ -8,8 +8,8 @@
     ? 'https://bisecthosting.com/silabear'
     : 'https://bisecthosting.com/flynecraft'}">
   <div
-    class="flex items-center rounded-xl bg-[#03ddff] dark:bg-[#0D1129] p-3 text-[#0d1129] transition-all  dark:text-white">
-    <div class="flex-grow flex items-center space-x-2">
+    class="flex items-center rounded-xl bg-[#03ddff] p-3 text-[#0d1129] transition-all dark:bg-[#0D1129] dark:text-white">
+    <div class="flex flex-grow items-center space-x-2">
       <img
         src="/logos/bh.svg"
         alt="BisectHosting Logo"
@@ -17,8 +17,8 @@
         width="24"
         height="24" />
       <p class="text-sm text-black dark:text-white">
-        Want to play Minecraft with friends? <b><u>Bisect Hosting</u></b> is the official
-        recommended Minecraft server host of Datapack Hub!
+        Want to play Minecraft with friends? <b><u>Bisect Hosting</u></b> is the
+        official recommended Minecraft server host of Datapack Hub!
       </p>
     </div>
     <IconX />
