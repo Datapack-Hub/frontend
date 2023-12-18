@@ -101,7 +101,7 @@
     class="flex flex-col items-center justify-center space-x-0 space-y-3 py-4 md:justify-normal md:space-x-2 xl:flex-row">
     <!-- <p class="dark:text-white text-center font-bold mr-2 text-xl">Datapacks</p> -->
     <div
-      class="mt-32 flex flex-grow flex-col items-center gap-3 md:mt-0 md:flex-row">
+      class="mt-8 flex flex-grow flex-col items-center gap-3 md:mt-0 md:flex-row">
       <div
         class="input flex h-11 items-center rounded-full px-2 py-1 focus-within:border-dph-orange">
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
@@ -113,7 +113,7 @@
           class="ml-2 w-64 bg-slate-300 text-zinc-950 placeholder:text-zinc-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400 lg:w-96"
           on:input="{search}" />
       </div>
-      <div class="flex flex-col items-center space-x-3 sm:flex-row">
+      <div class="flex flex-col items-center space-x-0 md:space-x-3 sm:flex-row">
         <div class="mt-2 flex items-center sm:mt-0">
           <Select
             emptyString="Select a Sort"

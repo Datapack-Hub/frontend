@@ -9,7 +9,7 @@ export const badges = [
     name: "contributor",
     description: "Developers and Contributors",
     tooltip:
-      "<b>Contributor</b><br />Helped in the development of the site, whether that is through GitHub or development tasks."
+      "<b>Contributor</b><br />Helped develop the site through GitHub or other development tasks."
   },
   {
     name: "downloads-1000",

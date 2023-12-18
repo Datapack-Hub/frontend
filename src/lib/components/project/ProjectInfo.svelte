@@ -2,30 +2,26 @@
   import {
     appendSize,
     fetchAuthed,
-    getUserLocale,
-    timeAgo
+    getUserLocale
   } from "$lib/globals/functions";
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
 
   import type { Project } from "$lib/globals/schema";
-  import { title } from "radash";
   import { onMount } from "svelte";
   import IconDescription from "~icons/tabler/AlignLeft.svelte";
   import IconBack from "~icons/tabler/ArrowBack.svelte";
-  import IconCube from "~icons/tabler/Box.svelte";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconList from "~icons/tabler/ClipboardCheck.svelte";
   import IconCategories from "~icons/tabler/Cube.svelte";
   import IconDL from "~icons/tabler/Download.svelte";
+  import { confetti } from "@neoconfetti/svelte";
   import {
     default as IconIcon,
     default as IconNoPhoto
   } from "~icons/tabler/Polaroid.svelte";
-  import IconUpdate from "~icons/tabler/Refresh.svelte";
   import IconUpload from "~icons/tabler/Upload.svelte";
   import IconCross from "~icons/tabler/X.svelte";
-  import CasualLine from "../decorative/CasualLine.svelte";
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import Modal from "../modals/Modal.svelte";
 
@@ -67,7 +63,7 @@
     </button>
   </div>
   <div class="mb-2 rounded-xl">
-    <div class="items-top flex max-w-fit space-x-3">
+    <div class="flex max-w-fit flex-col space-x-0 md:flex-row md:space-x-3">
       {#if project?.icon}
         <img
           src="{project?.icon}"
@@ -83,7 +79,7 @@
       {/if}
       <div>
         <h1
-          class="project-info flex items-center text-3xl font-bold text-zinc-950 dark:text-white">
+          class="project-info mt-3 flex items-center text-3xl font-bold text-zinc-950 dark:text-white md:mt-0">
           {project?.title}
         </h1>
         <div class="mt-1 flex min-w-fit items-center space-x-3">
@@ -97,20 +93,23 @@
               width="24"
               height="24" />
             <span
-              class="text-xs text-zinc-950 transition-all hover:underline dark:text-white xl:text-sm">
+              class="text-sm text-zinc-950 transition-all hover:underline dark:text-white">
               {project.author?.username}
             </span>
           </a>
-          <p class="dark:text-white">•</p>
-          <p class="text-md flex items-center space-x-2 dark:text-white">
+          <p class="dark:text-white hidden md:block">•</p>
+          <div
+            class="hidden md:flex items-center space-x-2 dark:text-white">
             {#each project?.category || [] as cat}
-              <a href="/projects?category={cat}" class="text-sm">{cat}</a>
+              <a
+                href="/projects?category={encodeURIComponent(cat)}"
+                class="text-xs">{cat}</a>
             {/each}
-          </p>
+          </div>
           <p class="dark:text-white">•</p>
-          <span class="flex items-center space-x-1 dark:text-white">
+          <span class="flex items-center space-x-1 text-sm dark:text-white">
             <IconDL />
-            <p>{project.downloads}</p>
+            <p>{numberFormatter.format(project.downloads ?? 0)}</p>
           </span>
         </div>
         <h2
@@ -118,6 +117,13 @@
           {project?.description}
         </h2>
       </div>
+    </div>
+    <div class="mt-3 flex items-center space-x-2 dark:text-white md:hidden">
+      {#each project?.category || [] as cat}
+        <a href="/projects?category={encodeURIComponent(cat)}" class="text-sm"
+          >{cat}</a>
+        <p class="last:hidden dark:text-white">•</p>
+      {/each}
     </div>
   </div>
   {#if project?.mod_message}
@@ -153,6 +159,7 @@
 
 <Modal bind:this="{nextStepsModal}" title="Checklist">
   <div class="text-white">
+    <div class="left-1/2" use:confetti></div>
     <p class="mb-2 text-black dark:text-white">
       Congrats! You've made a new empty project. Here's a quick checklist of
       what you should do next:

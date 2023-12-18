@@ -195,7 +195,7 @@
     </a>
     <h1
       id="bento"
-      class="scroll-m-20 text-center text-4xl font-bold text-black dark:text-white lg:text-5xl xl:text-6xl">
+      class="scroll-m-20 text-center text-4xl font-bold text-black dark:text-white lg:text-5xl xl:text-6xl px-4">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
@@ -365,7 +365,7 @@
         </a>
       </div>
       <div
-        class="fadeTextAnime col-auto w-full rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800 xl:col-span-2">
+        class="fadeTextAnime col-span-2 w-full lg:col-span-1 rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800 xl:col-span-2">
         <h2
           class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
           <b>Project Featuring</b>

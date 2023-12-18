@@ -29,13 +29,12 @@
   let scrollY: number;
   let unreadNotifications = false;
 
-  let url: string = $page.url;
+  $: url = $page.url;
 
   afterNavigate(() => {
     if (browser && $authed) {
       refreshNotifications().catch(error => console.error(error));
     }
-    url = $page.url;
   });
 
   async function refreshNotifications() {
@@ -108,7 +107,7 @@
       <a
         href="/"
         class="flex cursor-pointer items-center space-x-2 text-zinc-950 transition-colors hover:text-dph-orange active:brightness-75 dark:text-white dark:hover:text-dph-orange">
-        {#if !url.toString().toLowerCase().endsWith("silabear")}
+        {#if !url.pathname.toLowerCase().includes("silabear")}
           <img
             src="/logos/dph.svg"
             alt="logo"
@@ -169,18 +168,16 @@
     <ConditionalWrapper
       wrapCondition="{!isSmall}"
       classes="flex items-center justify-end gap-3">
-      {#if $authed}
-        <Tooltip
-          tooltipText="{'Explore'}"
-          placement="bottom"
-          classes="flex md:hidden">
-          <a
-            href="/projects"
-            aria-label="Explore datapacks"
-            class="rounded-full p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent md:active:brightness-75">
-            <IconCompass width="24" height="24" />
-          </a></Tooltip>
-
+      <Tooltip
+        tooltipText="{'Explore'}"
+        placement="bottom"
+        classes="flex md:hidden">
+        <a
+          href="/projects"
+          aria-label="Explore datapacks"
+          class="rounded-full p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent md:active:brightness-75">
+          <IconCompass width="24" height="24" />
+        </a></Tooltip>
         <div
           class="group rounded-full p-1 dark:text-zinc-100 md:hidden md:hover:bg-transparent md:active:brightness-75">
           <IconWrench width="24" height="24" />
@@ -216,6 +213,8 @@
               </p></a>
           </div>
         </div>
+      {#if $authed}
+
         <Tooltip
           tooltipText="{'Create project'}"
           placement="{'bottom'}"

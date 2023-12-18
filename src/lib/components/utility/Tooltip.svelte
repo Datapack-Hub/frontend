@@ -60,7 +60,7 @@
   <!--MUST be absolute!-->
   <div
     transition:fade="{{ duration: 100 }}"
-    class="absolute z-50 w-max rounded-md bg-slate-50 px-3 py-2 text-sm dark:bg-zinc-950 dark:text-white"
+    class="absolute z-50 rounded-md bg-slate-50 px-3 py-2 text-sm dark:bg-zinc-950 dark:text-white"
     use:floatingContent>
     {#if allowHTML}
       <!--eslint-disable-next-line svelte/no-at-html-tags-->
