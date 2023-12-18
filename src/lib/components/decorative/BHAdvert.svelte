@@ -1,6 +1,5 @@
 <script>
   import { random } from "radash";
-  import IconX from "~icons/tabler/X.svelte";
 </script>
 
 <a
@@ -21,6 +20,5 @@
         official recommended Minecraft server host of Datapack Hub!
       </p>
     </div>
-    <IconX />
   </div>
 </a>

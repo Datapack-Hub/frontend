@@ -127,7 +127,7 @@
             <IconWrench class="inline-grid align-middle" />
           </div>
           <div class="cursor-no-drop">
-            <p class="font-bold opacity-50">dph.tools</p>
+            <p class="font-bold opacity-50">Datapack Toolkit</p>
             <p class="text-xs opacity-50">
               The hub for all sorts of command generators and tools!
             </p>
