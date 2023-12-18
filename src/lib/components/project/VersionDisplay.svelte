@@ -156,7 +156,7 @@
         {#each properVersion as mcv}
           <li>
             <button
-              class="rounded-md border bg-dph-orange p-1 px-2 text-xs"
+              class="rounded-md bg-dph-orange p-1 px-2 text-xs"
               on:click="{() =>
                 download(
                   version.primary_download,
