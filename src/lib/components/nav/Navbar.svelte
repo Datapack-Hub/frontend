@@ -1,6 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
+  import { page } from '$app/stores';
   import {
     appendSize,
     fetchAuthed,
@@ -28,10 +29,13 @@
   let scrollY: number;
   let unreadNotifications = false;
 
+  let url: string = $page.url
+
   afterNavigate(() => {
     if (browser && $authed) {
       refreshNotifications().catch(error => console.error(error));
     }
+    url = $page.url
   });
 
   async function refreshNotifications() {
@@ -104,12 +108,16 @@
       <a
         href="/"
         class="flex cursor-pointer items-center space-x-2 text-zinc-950 transition-colors hover:text-dph-orange active:brightness-75 dark:text-white dark:hover:text-dph-orange">
+        {#if !url.toString().toLowerCase().endsWith("silabear")}
         <img
           src="/logos/dph.svg"
           alt="logo"
           class="h-8 flex-shrink-0"
           height="32"
           width="32" />
+        {:else}
+        <p class="text-2xl">🚟</p>
+        {/if}
         <span class="hidden text-2xl font-bold lg:block"> Datapack Hub </span>
       </a>
       <a
