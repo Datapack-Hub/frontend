@@ -2,6 +2,7 @@
   import { isDark } from "$lib/globals/stores";
   import { createSelect, melt } from "@melt-ui/svelte";
   import { createEventDispatcher } from "svelte";
+  import type { Readable } from "svelte/store";
   import { fade } from "svelte/transition";
   import IconCheck from "~icons/tabler/Check.svelte";
   import IconUp from "~icons/tabler/ChevronDown.svelte";
@@ -37,7 +38,7 @@
     }
   });
 
-  export const selected = selectedLabel;
+  export const selected: Readable<string | string[]> = selectedLabel;
 </script>
 
 <div class="flex flex-col gap-1">

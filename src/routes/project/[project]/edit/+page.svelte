@@ -16,8 +16,8 @@
 
   import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
-  import { MultiSelect } from "svelte-multiselect";
-  import { writable } from "svelte/store";
+  import Select from "$lib/components/utility/Select.svelte";
+  import { writable, type Readable, readable } from "svelte/store";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconDraft from "~icons/tabler/FileOff.svelte";
   import IconUpload from "~icons/tabler/FileUpload.svelte";
@@ -29,7 +29,7 @@
   let draftModal: Modal;
   let deleteModal: Modal;
 
-  let supportedVersions: string[] = [];
+  let supportedVersions: Readable<string> = readable();
   let zipFile: File;
   let activePage = "details";
 
@@ -174,7 +174,7 @@
     if (!vCode) return toast("Please make sure you give a version number!");
     if (!vChangelog)
       return toast("Please make sure you give a version changelog!");
-    if (supportedVersions.length === 0) {
+    if ($supportedVersions.length === 0) {
       return toast("Please select at least one compatible Minecraft version!");
     }
 
@@ -202,6 +202,14 @@
 
     versionFormData.append("primary_download", zipFile);
     versionFormData.append("filename", zipFile.name);
+    versionFormData.append(
+      "minecraft_versions",
+      JSON.stringify($supportedVersions.split(",").map(s => s.trim()))
+    );
+
+    if (!vRPUsed) {
+      versionFormData.delete("v_rp");
+    }
 
     toast.promise(
       fetchAuthed("POST", url, {
@@ -534,13 +542,10 @@
                   class="mb-2 mt-8 align-middle text-zinc-950 dark:text-zinc-100">
                   Compatible Minecraft Versions
                 </p>
-                <MultiSelect
-                  outerDivClass="!border-2 !border-slate-300 dark:!border-zinc-700"
-                  liOptionClass="bg-white dark:bg-zinc-950"
-                  liSelectedClass="!bg-dph-orange !border-2   !text-white"
+                <Select
+                  emptyString="{'Select Supported Minecraft Versions'}"
+                  multi="{true}"
                   options="{minecraftVersions}"
-                  minSelect="{1}"
-                  name="minecraft_versions"
                   bind:selected="{supportedVersions}" />
                 <div class="mb-8"></div>
                 <input
