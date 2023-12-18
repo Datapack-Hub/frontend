@@ -97,9 +97,8 @@
               {project.author?.username}
             </span>
           </a>
-          <p class="dark:text-white hidden md:block">•</p>
-          <div
-            class="hidden md:flex items-center space-x-2 dark:text-white">
+          <p class="hidden dark:text-white md:block">•</p>
+          <div class="hidden items-center space-x-2 dark:text-white md:flex">
             {#each project?.category || [] as cat}
               <a
                 href="/projects?category={encodeURIComponent(cat)}"

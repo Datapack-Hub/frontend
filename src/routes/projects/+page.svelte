@@ -113,7 +113,8 @@
           class="ml-2 w-64 bg-slate-300 text-zinc-950 placeholder:text-zinc-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400 lg:w-96"
           on:input="{search}" />
       </div>
-      <div class="flex flex-col items-center space-x-0 md:space-x-3 sm:flex-row">
+      <div
+        class="flex flex-col items-center space-x-0 sm:flex-row md:space-x-3">
         <div class="mt-2 flex items-center sm:mt-0">
           <Select
             emptyString="Select a Sort"

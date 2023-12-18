@@ -178,43 +178,42 @@
           class="rounded-full p-1 transition-all dark:text-zinc-100 md:hover:bg-transparent md:active:brightness-75">
           <IconCompass width="24" height="24" />
         </a></Tooltip>
+      <div
+        class="group rounded-full p-1 dark:text-zinc-100 md:hidden md:hover:bg-transparent md:active:brightness-75">
+        <IconWrench width="24" height="24" />
         <div
-          class="group rounded-full p-1 dark:text-zinc-100 md:hidden md:hover:bg-transparent md:active:brightness-75">
-          <IconWrench width="24" height="24" />
-          <div
-            class="grid-first-small absolute -top-48 left-0 hidden w-full gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg group-hover:grid group-focus:grid dark:bg-zinc-950 dark:text-white md:top-12">
-            <div class="flex items-center">
-              <IconWrench class="inline-grid align-middle" />
-            </div>
-            <a href="https://dph.tools">
-              <p class="font-bold">dph.tools</p>
-              <p class="text-xs">
-                The hub for all sorts of command generators and tools!
-              </p>
-            </a>
-            <div class="flex items-center">
-              <IconMail class="inline-grid align-middle" />
-            </div>
-            <a href="https://mailman.datapackhub.net">
-              <p class="font-bold">Mailman</p>
-              <p class="text-xs">
-                Upload your projects to Datapack Hub, <br />Smithed and Modrinth
-                at the same time, instantly.
-              </p>
-            </a>
-            <div class="flex items-center">
-              <IconRobot class="inline-grid align-middle" />
-            </div>
-            <a href="https://bot.datapackhub.net">
-              <p class="font-bold">Datapack Helper Bot</p>
-              <p class="text-xs">
-                A multi-purpose Discord bot to give <br />your datapacking
-                server superpowers!
-              </p></a>
+          class="grid-first-small absolute -top-48 left-0 hidden w-full gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg group-hover:grid group-focus:grid dark:bg-zinc-950 dark:text-white md:top-12">
+          <div class="flex items-center">
+            <IconWrench class="inline-grid align-middle" />
           </div>
+          <a href="https://dph.tools">
+            <p class="font-bold">dph.tools</p>
+            <p class="text-xs">
+              The hub for all sorts of command generators and tools!
+            </p>
+          </a>
+          <div class="flex items-center">
+            <IconMail class="inline-grid align-middle" />
+          </div>
+          <a href="https://mailman.datapackhub.net">
+            <p class="font-bold">Mailman</p>
+            <p class="text-xs">
+              Upload your projects to Datapack Hub, <br />Smithed and Modrinth
+              at the same time, instantly.
+            </p>
+          </a>
+          <div class="flex items-center">
+            <IconRobot class="inline-grid align-middle" />
+          </div>
+          <a href="https://bot.datapackhub.net">
+            <p class="font-bold">Datapack Helper Bot</p>
+            <p class="text-xs">
+              A multi-purpose Discord bot to give <br />your datapacking server
+              superpowers!
+            </p></a>
         </div>
+      </div>
       {#if $authed}
-
         <Tooltip
           tooltipText="{'Create project'}"
           placement="{'bottom'}"
