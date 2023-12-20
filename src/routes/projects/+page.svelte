@@ -17,7 +17,6 @@
   import IconGrid from "~icons/tabler/LayoutGrid.svelte";
   import IconList from "~icons/tabler/LayoutList.svelte";
   import IconSearch from "~icons/tabler/Search.svelte";
-  import type { ListboxOption } from "@melt-ui/svelte/dist/builders/listbox/types";
 
   export let data: PageData;
 
@@ -65,18 +64,11 @@
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async function changeTag(event: CustomEvent<ListboxOption[]>) {
+  async function changeTag(event: CustomEvent<any[]>) {
     await goto(
-      "?category=" +
-        event.detail
-          .map((v: ListboxOption) => v.label!.toLowerCase())
-          .toString()
+      "?category=" + event.detail.map(v => v.label!.toLowerCase()).toString()
     );
-    if (
-      event.detail
-        .map((v: ListboxOption) => v.label!.toLowerCase())
-        .includes("all")
-    ) {
+    if (event.detail.map(v => v.label!.toLowerCase()).includes("all")) {
       await goto("?category=");
       return;
     }
