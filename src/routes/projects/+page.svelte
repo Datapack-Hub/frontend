@@ -45,7 +45,7 @@
     let search = await searchResult.json();
     searchTime = search.time;
     data.pages = Number.parseInt(search.pages);
-    data.page = Math.max(Math.min(data.page, data.pages), 1)
+    data.page = Math.max(Math.min(data.page, data.pages), 1);
 
     dataCopy = await projectSchema.array().parseAsync(search.result);
   });
