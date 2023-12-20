@@ -5,14 +5,12 @@
   import type { PageData } from "./$types";
 
   import { browser } from "$app/environment";
-  import { goto } from "$app/navigation";
   import { page } from "$app/stores";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import Select from "$lib/components/utility/Select.svelte";
   import { projectSchema } from "$lib/globals/schema";
   import { isDark } from "$lib/globals/stores";
   import { debounce } from "radash";
-  import { readable } from "svelte/store";
   import IconBTS from "~icons/tabler/ArrowBigLeftLine.svelte";
   import IconGrid from "~icons/tabler/LayoutGrid.svelte";
   import IconList from "~icons/tabler/LayoutList.svelte";
@@ -20,9 +18,6 @@
 
   export let data: PageData;
 
-  let query = "";
-  let tag = readable(data.category || "All");
-  let sort = readable("Downloads");
   let searchTime = 0;
   let layout = browser
     ? localStorage.getItem("preferred_layout") || "grid"
@@ -33,51 +28,49 @@
   let featured = data.featured?.splice(0, 2);
   let parameters = $page.url.searchParams;
 
-  let search = debounce({ delay: 100 }, async () => {
+  const updateContent = async () => {
     searchTime = 0;
-    let searchResult = await fetch(
-      `${API}/projects/search?query=${query}&sort=${$sort.toLowerCase()}&page=${
-        data.page > 0 ? data.page : 1
-      }${data.category ? "&category=" + data.category : ""}`
+    let result = await fetch(
+      `${API}/projects/search?query=${data.query}&sort=${data.sort.toLowerCase()}&page=${
+        data.page
+      }${data.category !== "All" ? "&category=" + encodeURIComponent(data.category) : ""}`
     );
-
-    let search = await searchResult.json();
-    searchTime = search.time;
-    data.pages = Number.parseInt(search.pages);
+    let r = await result.json();
+    data.pages = r.pages;
     data.page = Math.max(Math.min(data.page, data.pages), 1);
+    data.count = r.count;
+    dataCopy = await projectSchema.array().parseAsync(r.result);
+    searchTime = r.time;
+    history.pushState(
+      {},
+      "",
+      `?page=${data.page}&query=${data.query}&sort=${data.sort}${data.category !== "All" ? "&category=" + encodeURIComponent(data.category) : ""}`
+    );
+  };
 
-    dataCopy = await projectSchema.array().parseAsync(search.result);
+  let search = debounce({ delay: 100 }, async () => {
+    await updateContent();
   });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async function resort(event: CustomEvent<any>) {
-    let searchResult = await fetch(
-      `${API}/projects/search?query=${query}&sort=${event.detail.label.toLowerCase()}&page=${
-        data.page
-      }${data.category ? "&category=" + data.category : ""}`
-    );
-
-    let sortJson = await searchResult.json();
-    searchTime = sortJson.time;
-
-    dataCopy = await projectSchema.array().parseAsync(sortJson.result);
+    data.sort = event.detail.label;
+    await updateContent();
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async function changeTag(event: CustomEvent<any[]>) {
-    await goto(
-      "?category=" + event.detail.map(v => v.label!.toLowerCase()).toString()
-    );
-    if (event.detail.map(v => v.label!.toLowerCase()).includes("all")) {
-      await goto("?category=");
-      return;
-    }
+  async function changeTag(event: CustomEvent<any>) {
+    // const categories = event.detail.map((v: ListboxOption) => v.label!);
+    const categories = [event.detail.label!]; //TODO: change this back to multisupport once the api is capable
+    data.category = categories.join(", ");
+    await updateContent();
   }
 
   function genURLParameters(page: number) {
     parameters.set("page", page.toString());
-    parameters.set("sort", $sort.toLowerCase());
-    parameters.set("category", parameters.get("category") || "");
+    parameters.set("sort", data.sort);
+    parameters.set("category", data.category || "");
+    parameters.set("query", data.query);
     return parameters.toString();
   }
 </script>
@@ -100,7 +93,7 @@
         <IconSearch color="{$isDark ? 'white' : 'black'}" on:click="{search}" />
         <input
           placeholder="Search Datapacks..."
-          bind:value="{query}"
+          bind:value="{data.query}"
           id="query"
           maxlength="35"
           class="ml-2 w-64 bg-slate-300 text-zinc-950 placeholder:text-zinc-600 focus:outline-none lg:w-96 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400"
@@ -112,18 +105,17 @@
           <Select
             emptyString="Select a Sort"
             label="Sort"
-            defaultOption="Downloads"
+            defaultOption={data.sort}
             options="{['Updated', 'Downloads']}"
-            bind:selected="{sort}"
             on:change="{resort}" />
         </div>
         <div class="mt-2 flex items-center sm:mt-0">
           <Select
             emptyString="Select Categories"
             label="Tag"
-            multi="{true}"
+            multi={false}
             options="{['All', ...categories]}"
-            bind:selected="{tag}"
+            defaultOption={data.category}
             on:change="{changeTag}" />
         </div>
       </div>
@@ -201,14 +193,14 @@
         <FeaturedProjectComponent project="{feat}" type="featured" />
       {/each}
     </div>
-    {#if !dataCopy || dataCopy.length === 0}
+    {#if data.count === 0}
       <h2 class=" text-zinc-950 dark:text-white">No results found</h2>
     {:else}
       <h2 class=" mx-3 text-zinc-950 dark:text-white">
-        {#if query == "" || searchTime <= 0}
-          Showing {dataCopy.length} projects
+        {#if data.query == "" || searchTime <= 0}
+          Showing {data.count} projects
         {:else}
-          Took {searchTime.toFixed(3)} seconds to find {dataCopy.length} project{dataCopy.length ==
+          Took {searchTime.toFixed(3)} seconds to find {data.count} project{data.count ==
           1
             ? ""
             : "s"}

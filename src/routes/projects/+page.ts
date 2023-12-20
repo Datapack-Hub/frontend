@@ -6,15 +6,16 @@ import type { PageLoad } from "./$types";
 export const load = (async ({ fetch, url }) => {
   const parameters = url.searchParams;
   const page = Number.parseInt(parameters.get("page") || "1");
-  const sort = parameters.get("sort") || "downloads";
-  const category = parameters.get("category");
+  const sort = parameters.get("sort") || "Downloads";
+  const category = parameters.get("category") || "All";
+  const query = parameters.get("query") || "";
 
   const [projects, featured] = await parallel(
     2,
     await Promise.all([
       fetch(
-        `${API}/projects/search?page=${page}&sort=${sort}${
-          category ? `&category=${category}` : ""
+        `${API}/projects/search?page=${page}&query=${query}&sort=${sort.toLowerCase()}${
+          category !== "All" ? `&category=${encodeURIComponent(category)}` : ""
         }`
       ),
       fetch(`${API}/projects/featured`)
@@ -30,13 +31,17 @@ export const load = (async ({ fetch, url }) => {
     }
   );
 
-  const pages = Number.parseInt(projects.pages);
+  const pages = projects.pages;
+  const count = projects.count;
 
   return {
     projects: parsedData,
     featured: shuffle(parsedFeatured),
     pages,
-    page,
-    category
+    page: Math.max(Math.min(page, pages), 1),
+    category,
+    count,
+    query,
+    sort,
   };
 }) satisfies PageLoad;
