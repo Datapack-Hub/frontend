@@ -31,9 +31,13 @@
   const updateContent = async () => {
     searchTime = 0;
     let result = await fetch(
-      `${API}/projects/search?query=${data.query}&sort=${data.sort.toLowerCase()}&page=${
-        data.page
-      }${data.category !== "All" ? "&category=" + encodeURIComponent(data.category) : ""}`
+      `${API}/projects/search?query=${
+        data.query
+      }&sort=${data.sort.toLowerCase()}&page=${data.page}${
+        data.category !== "All"
+          ? "&category=" + encodeURIComponent(data.category)
+          : ""
+      }`
     );
     let r = await result.json();
     data.pages = r.pages;
@@ -44,7 +48,11 @@
     history.pushState(
       {},
       "",
-      `?page=${data.page}&query=${data.query}&sort=${data.sort}${data.category !== "All" ? "&category=" + encodeURIComponent(data.category) : ""}`
+      `?page=${data.page}&query=${data.query}&sort=${data.sort}${
+        data.category !== "All"
+          ? "&category=" + encodeURIComponent(data.category)
+          : ""
+      }`
     );
   };
 
@@ -105,7 +113,7 @@
           <Select
             emptyString="Select a Sort"
             label="Sort"
-            defaultOption={data.sort}
+            defaultOption="{data.sort}"
             options="{['Updated', 'Downloads']}"
             on:change="{resort}" />
         </div>
@@ -113,9 +121,9 @@
           <Select
             emptyString="Select Categories"
             label="Tag"
-            multi={false}
+            multi="{false}"
             options="{['All', ...categories]}"
-            defaultOption={data.category}
+            defaultOption="{data.category}"
             on:change="{changeTag}" />
         </div>
       </div>

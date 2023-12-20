@@ -42,6 +42,6 @@ export const load = (async ({ fetch, url }) => {
     category,
     count,
     query,
-    sort,
+    sort
   };
 }) satisfies PageLoad;
