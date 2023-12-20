@@ -49,7 +49,7 @@ jobs:
       - name: Prettier Action
         uses: creyD/prettier_action@v4.3
         with:
-          commit_message: "LMAO bro's code was so bad the bot had to fix it 💀"
+          commit_message: "Code formatted!"
           prettier_options: --config .prettierrc --write ./{src,tests}/**/*.{svelte,ts}
 
 
