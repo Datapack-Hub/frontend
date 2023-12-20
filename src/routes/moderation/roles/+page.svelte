@@ -20,10 +20,10 @@
 
 <main
   id="main-content"
-  class=" bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
+  class=" bg-slate-50 px-4 transition-all lg:px-32 xl:px-64 dark:bg-zinc-900">
   <div class="h-screen w-full flex-col md:flex-row md:items-start md:pt-5">
     <h1
-      class="mt-8 pb-2 text-center text-3xl font-bold text-zinc-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="mt-8 pb-2 text-center text-3xl font-bold text-zinc-950 md:text-start md:text-4xl lg:text-5xl dark:text-white">
       Site Roles
     </h1>
     <p class=" text-zinc-950 dark:text-white">

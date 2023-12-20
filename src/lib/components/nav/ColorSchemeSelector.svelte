@@ -49,7 +49,7 @@
 
 <button
   use:melt="{$root}"
-  class="select-none rounded-lg p-1 transition-all hover:text-dph-orange dark:text-zinc-100 md:hover:bg-transparent"
+  class="select-none rounded-lg p-1 transition-all hover:text-dph-orange md:hover:bg-transparent dark:text-zinc-100"
   aria-label="dark mode toggle">
   {#if $isDark}
     <svg

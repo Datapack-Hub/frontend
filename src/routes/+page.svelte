@@ -154,7 +154,7 @@
         </h1>
       </div>
       <h2
-        class="text-balance text-center text-xl text-zinc-950 dark:text-zinc-100 md:w-auto md:text-left md:text-2xl xl:text-3xl">
+        class="text-balance text-center text-xl text-zinc-950 md:w-auto md:text-left md:text-2xl xl:text-3xl dark:text-zinc-100">
         Over <span
           title="{(data.count - 1).toString()}"
           class="font-bold text-dph-orange">
@@ -187,7 +187,7 @@
     class="flex w-full flex-col items-center justify-center border-t border-slate-300 bg-slate-100 py-16 dark:border-zinc-800 dark:bg-zinc-800/20">
     <a
       href="#bento"
-      class="fixed bottom-32 z-50 rounded-full bg-slate-200 px-2 py-1 shadow-lg dark:bg-zinc-700 dark:text-white lg:bottom-4 {scrollY >
+      class="fixed bottom-32 z-50 rounded-full bg-slate-200 px-2 py-1 shadow-lg lg:bottom-4 dark:bg-zinc-700 dark:text-white {scrollY >
       100
         ? 'opacity-0'
         : 'opacity-100'} transition-opacity">
@@ -195,7 +195,7 @@
     </a>
     <h1
       id="bento"
-      class="scroll-m-20 px-4 text-center text-4xl font-bold text-black dark:text-white lg:text-5xl xl:text-6xl">
+      class="scroll-m-20 px-4 text-center text-4xl font-bold text-black lg:text-5xl xl:text-6xl dark:text-white">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
     <div
@@ -203,7 +203,7 @@
       <div
         class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800">
         <h2
-          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 lg:text-xl xl:text-2xl dark:text-white">
           <b>Easily find datapacks you'll like</b>
         </h2>
         <p
@@ -219,9 +219,9 @@
         <Button click="/projects">Find your next favourite datapack</Button>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 lg:col-auto dark:bg-zinc-800">
         <h2
-          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 lg:text-xl xl:text-2xl dark:text-white">
           <b>No more "made for an older version"</b>
         </h2>
         <p
@@ -252,9 +252,9 @@
         </div>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 lg:col-auto dark:bg-zinc-800">
         <h2
-          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 lg:text-xl xl:text-2xl dark:text-white">
           <b>ZIP Optimisation</b>
         </h2>
         <p
@@ -272,9 +272,9 @@
         </div>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 pb-0 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 pb-0 opacity-0 lg:col-auto dark:bg-zinc-800">
         <h2
-          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 lg:text-xl xl:text-2xl dark:text-white">
           <b>Strong Moderation</b>
         </h2>
         <p class="mt-3 text-lg font-light dark:text-zinc-100">
@@ -294,16 +294,16 @@
                   loading="lazy"
                   width="48"
                   height="48"
-                  class="aspect-square h-12 rounded-md bg-slate-300 transition-all hover:scale-105 dark:bg-zinc-700/70 md:h-auto" />
+                  class="aspect-square h-12 rounded-md bg-slate-300 transition-all hover:scale-105 md:h-auto dark:bg-zinc-700/70" />
               </a>
             </Tooltip>
           {/each}
         </div>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 pb-0 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 pb-0 opacity-0 lg:col-auto dark:bg-zinc-800">
         <h2
-          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 lg:text-xl xl:text-2xl dark:text-white">
           <b>Open Source</b>
         </h2>
         <p class="mt-3 text-lg font-light dark:text-zinc-100">
@@ -342,9 +342,9 @@
         </div>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800 lg:col-auto">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 lg:col-auto dark:bg-zinc-800">
         <h2
-          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 lg:text-xl xl:text-2xl dark:text-white">
           <b>Awesome Community</b>
         </h2>
         <p
@@ -365,9 +365,9 @@
         </a>
       </div>
       <div
-        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 dark:bg-zinc-800 lg:col-span-1 xl:col-span-2">
+        class="fadeTextAnime col-span-2 w-full rounded-lg bg-slate-200 p-4 opacity-0 lg:col-span-1 xl:col-span-2 dark:bg-zinc-800">
         <h2
-          class="fadeTextAnime text-lg text-black opacity-0 dark:text-white lg:text-xl xl:text-2xl">
+          class="fadeTextAnime text-lg text-black opacity-0 lg:text-xl xl:text-2xl dark:text-white">
           <b>Project Featuring</b>
         </h2>
         <p

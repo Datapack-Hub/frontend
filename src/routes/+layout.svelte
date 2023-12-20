@@ -61,7 +61,7 @@
               <img alt="Datapack Hub logo" src="/logos/dph.svg" class="w-1/4" />
               <div>
                 <h1
-                  class="mb-1 text-center text-xl font-bold dark:text-white md:text-left md:text-2xl lg:text-3xl">
+                  class="mb-1 text-center text-xl font-bold md:text-left md:text-2xl lg:text-3xl dark:text-white">
                   Welcome to Datapack Hub!
                 </h1>
                 <p class="mb-1 text-xs text-zinc-200 md:text-sm lg:text-base">
@@ -95,7 +95,7 @@
             </div>
             <div
               class="flex space-x-3 rounded-xl bg-red-800 p-3 shadow-md shadow-black/25">
-              <p class="text-xs dark:text-white md:text-sm lg:text-base">
+              <p class="text-xs md:text-sm lg:text-base dark:text-white">
                 <b>The Datapack Hub Website is coming in Autumn. </b>If you are
                 part of the website's closed beta and aren't meant to be seeing
                 this page, please sign in again.

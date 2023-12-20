@@ -30,10 +30,10 @@
 
 <main
   id="main-content"
-  class=" bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
+  class=" bg-slate-50 px-4 transition-all lg:px-32 xl:px-64 dark:bg-zinc-900">
   <div class="w-full flex-col items-center md:flex-row md:items-start md:pt-32">
     <h1
-      class="my-3 pb-2 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="my-3 pb-2 text-center text-5xl font-bold text-zinc-950 md:text-start md:text-4xl lg:text-5xl dark:text-white">
       How to install Minecraft Data Packs
     </h1>
     <div
@@ -59,7 +59,7 @@
 
     <div use:melt="{$content('new')}">
       <div
-        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 dark:text-white md:text-start">
+        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start dark:bg-slate-50/10 dark:text-white">
         <p>
           <b>1. Go to the Create New World screen.</b> Make sure you're using the
           Minecraft Java edition and that you have the right version selected. Enable
@@ -100,7 +100,7 @@
 
     <div use:melt="{$content('existing')}">
       <div
-        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 dark:text-white md:text-start">
+        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start dark:bg-slate-50/10 dark:text-white">
         <p class="font-bold">1. Find your world, and hit Edit</p>
         <img
           src="https://cdn.discordapp.com/attachments/723984082853298297/1125493410279727144/image.png"
@@ -142,7 +142,7 @@
 
     <div use:melt="{$content('server')}">
       <div
-        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 dark:text-white md:text-start">
+        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start dark:bg-slate-50/10 dark:text-white">
         <BhAdvert />
         <p class="font-bold text-red-500">
           Note - some datapacks won't be compatible with server software such as
@@ -189,7 +189,7 @@
 
     <div use:melt="{$content('realm')}">
       <div
-        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-slate-50/10 dark:text-white md:text-start">
+        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start dark:bg-slate-50/10 dark:text-white">
         <p class="font-bold">1. Download the world from your realm</p>
       </div>
     </div>

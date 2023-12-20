@@ -111,7 +111,7 @@
       <div
         class="col-span-2 flex flex-col items-center justify-between space-x-0 md:flex-row md:space-x-2">
         <div
-          class="aspect-square h-full w-1/3 cursor-pointer justify-center rounded-xl bg-slate-300 transition-all hover:brightness-75 dark:bg-zinc-700 dark:text-white md:w-auto">
+          class="aspect-square h-full w-1/3 cursor-pointer justify-center rounded-xl bg-slate-300 transition-all hover:brightness-75 md:w-auto dark:bg-zinc-700 dark:text-white">
           <label class="flex h-full w-full items-center justify-center">
             <img
               src="{iconImg}"

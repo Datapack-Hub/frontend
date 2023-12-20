@@ -80,7 +80,7 @@
         </div>
       {/if}
       <p
-        class="line-clamp-3 text-sm font-medium text-zinc-950/40 dark:text-zinc-100/40 md:text-sm">
+        class="line-clamp-3 text-sm font-medium text-zinc-950/40 md:text-sm dark:text-zinc-100/40">
         {report.project.description}
       </p>
     </div>

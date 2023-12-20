@@ -23,12 +23,12 @@
 
 <main
   id="main-content"
-  class="h-full bg-slate-50 px-4 transition-all dark:bg-zinc-900 sm:px-8 md:px-16 lg:px-24">
+  class="h-full bg-slate-50 px-4 transition-all sm:px-8 md:px-16 lg:px-24 dark:bg-zinc-900">
   <div class="pt-0 md:pt-32"></div>
   <div class="flex-col items-center md:flex-row md:items-start">
     <div class="flex flex-col items-center justify-between pb-6 md:flex-row">
       <h1
-        class="pb-2 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-5xl lg:text-6xl">
+        class="pb-2 text-center text-5xl font-bold text-zinc-950 md:text-start md:text-5xl lg:text-6xl dark:text-white">
         Notifications
       </h1>
       <Button click="{deleteAll}" style="base" classes="bg-red-500 text-white"

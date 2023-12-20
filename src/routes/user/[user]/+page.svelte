@@ -67,7 +67,7 @@
 
 <main
   id="main-content"
-  class="flex w-full flex-col items-center bg-slate-50 px-0 transition-all dark:bg-zinc-900 md:items-start md:px-16 md:pt-32 lg:flex-row lg:px-24">
+  class="flex w-full flex-col items-center bg-slate-50 px-0 transition-all md:items-start md:px-16 md:pt-32 lg:flex-row lg:px-24 dark:bg-zinc-900">
   <div class="w-full rounded-lg p-3">
     <div class="relative mb-4 flex h-auto flex-col gap-4 md:flex-row lg:gap-8">
       <div class="flex w-full flex-col items-center md:w-1/5">
@@ -106,7 +106,7 @@
       <div class="flex w-full flex-col justify-between md:w-2/5">
         <div>
           <p
-            class="text-center text-4xl font-bold text-zinc-950 dark:text-white md:text-left md:text-3xl lg:text-4xl">
+            class="text-center text-4xl font-bold text-zinc-950 md:text-left md:text-3xl lg:text-4xl dark:text-white">
             {data.profile?.username}
             {#if moderatorOrAbove(data.role)}
               <Tooltip
@@ -132,7 +132,7 @@
             {/if}
           </p>
           <p
-            class="mt-1 text-center font-semibold text-zinc-950 dark:text-white sm:text-base md:text-left md:text-lg">
+            class="mt-1 text-center font-semibold text-zinc-950 sm:text-base md:text-left md:text-lg dark:text-white">
             {#if data.role?.name != "default"}
               <span style="color: {data.role?.color};">
                 {#if data.role?.name == "nerd"}🤓
@@ -150,24 +150,24 @@
         </div>
         <div>
           <h2
-            class="mb-1 mt-4 w-full text-center dark:text-zinc-100 md:text-left">
+            class="mb-1 mt-4 w-full text-center md:text-left dark:text-zinc-100">
             <IconTime class="mr-1 inline-block" />
             <b class="mr-2">Joined: </b>{data.profile?.join_date
               ? timeAgo(data.profile?.join_date)
               : "we forgor 🦆"}
           </h2>
-          <h2 class="mb-1 text-center dark:text-zinc-100 md:text-left">
+          <h2 class="mb-1 text-center md:text-left dark:text-zinc-100">
             <IconDL class="mr-1 inline-block" />
             <b class="mr-2">Total Downloads: </b>{data.downloads}
           </h2>
         </div>
         <div>
           <h2
-            class="mb-1 mt-4 text-center text-lg font-bold dark:text-zinc-100 md:text-left">
+            class="mb-1 mt-4 text-center text-lg font-bold md:text-left dark:text-zinc-100">
             <IconBadge class="mr-1 inline-block" /> Badges
           </h2>
           <div
-            class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-200 p-3 dark:bg-zinc-800 md:justify-start">
+            class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-200 p-3 md:justify-start dark:bg-zinc-800">
             {#if data.profile?.badges?.length != 0}
               {#each data.profile?.badges ?? [] as badge}
                 <Tooltip
@@ -186,14 +186,14 @@
         </div>
       </div>
       <span
-        class="styled-scrollbar w-full overflow-y-auto rounded-xl bg-slate-200 p-4 dark:bg-zinc-800 md:w-1/2">
+        class="styled-scrollbar w-full overflow-y-auto rounded-xl bg-slate-200 p-4 md:w-1/2 dark:bg-zinc-800">
         <RawMarkdownRenderer html="{data.profile?.bio}" />
       </span>
     </div>
     <div class="px-3 pt-16">
       <div class="mb-4 flex items-center">
         <h1
-          class="flex-grow text-center text-base font-bold text-zinc-900 dark:text-zinc-100 md:text-left md:text-lg lg:text-xl">
+          class="flex-grow text-center text-base font-bold text-zinc-900 md:text-left md:text-lg lg:text-xl dark:text-zinc-100">
           {data.profile?.username}'s projects
         </h1>
         {#if data.profile?.id == $user.id}
@@ -205,7 +205,7 @@
       <div class="sm:grid-auto-fit-2xl grid grid-cols-1 gap-3">
         {#if data.projects?.length == 0}
           <p
-            class="col-span-2 mt-24 text-center text-3xl text-zinc-950/40 dark:text-white/40 md:mt-48">
+            class="col-span-2 mt-24 text-center text-3xl text-zinc-950/40 md:mt-48 dark:text-white/40">
             No projects here...
           </p>
         {:else}

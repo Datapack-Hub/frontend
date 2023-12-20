@@ -79,7 +79,7 @@
       {/if}
       <div>
         <h1
-          class="project-info mt-3 flex items-center text-3xl font-bold text-zinc-950 dark:text-white md:mt-0">
+          class="project-info mt-3 flex items-center text-3xl font-bold text-zinc-950 md:mt-0 dark:text-white">
           {project?.title}
         </h1>
         <div class="mt-1 flex min-w-fit items-center space-x-3">
@@ -97,8 +97,8 @@
               {project.author?.username}
             </span>
           </a>
-          <p class="hidden dark:text-white md:block">•</p>
-          <div class="hidden items-center space-x-2 dark:text-white md:flex">
+          <p class="hidden md:block dark:text-white">•</p>
+          <div class="hidden items-center space-x-2 md:flex dark:text-white">
             {#each project?.category || [] as cat}
               <a
                 href="/projects?category={encodeURIComponent(cat)}"
@@ -117,7 +117,7 @@
         </h2>
       </div>
     </div>
-    <div class="mt-3 flex items-center space-x-2 dark:text-white md:hidden">
+    <div class="mt-3 flex items-center space-x-2 md:hidden dark:text-white">
       {#each project?.category || [] as cat}
         <a href="/projects?category={encodeURIComponent(cat)}" class="text-sm"
           >{cat}</a>

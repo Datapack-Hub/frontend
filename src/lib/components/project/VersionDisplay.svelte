@@ -146,13 +146,13 @@
         <h2 class="md:text-md text-sm lg:text-lg">{version.name}</h2>
       </button>
       <h3
-        class="text-xs font-thin italic text-zinc-950 dark:text-white md:text-sm lg:text-base">
+        class="text-xs font-thin italic text-zinc-950 md:text-sm lg:text-base dark:text-white">
         {version.version_code}
       </h3>
     </div>
     {#if !mcVersion}
       <ul
-        class="hidden gap-1 text-zinc-950 dark:text-white md:flex md:flex-grow">
+        class="hidden gap-1 text-zinc-950 md:flex md:flex-grow dark:text-white">
         {#each properVersion as mcv}
           <li>
             <button

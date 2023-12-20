@@ -56,11 +56,11 @@
 
 <main
   id="main-content"
-  class=" bg-slate-50 px-0 transition-all dark:bg-zinc-900 md:px-16 lg:px-32 xl:px-64">
+  class=" bg-slate-50 px-0 transition-all md:px-16 lg:px-32 xl:px-64 dark:bg-zinc-900">
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-32">
     <h1
-      class="mt-8 pb-10 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
+      class="mt-8 pb-10 text-center text-5xl font-bold text-zinc-950 md:text-start md:text-4xl lg:text-5xl dark:text-white">
       Profile Settings for <span style="color: {data.role?.color};"
         >{data.profile?.username || "Loading..."}</span>
     </h1>
@@ -74,7 +74,7 @@
       <br /><br />
       <p class="align-middle text-zinc-950 dark:text-zinc-100">Bio</p>
       <textarea
-        class="h-96 w-4/5 resize-none rounded-md bg-slate-200 p-3 text-lg text-zinc-950 dark:bg-zinc-800 dark:text-white md:w-2/3 lg:w-1/2"
+        class="h-96 w-4/5 resize-none rounded-md bg-slate-200 p-3 text-lg text-zinc-950 md:w-2/3 lg:w-1/2 dark:bg-zinc-800 dark:text-white"
         maxlength="500"
         value="{data.profile?.bio.replaceAll('\\n', '\n')}"
         bind:this="{bio}"></textarea>
