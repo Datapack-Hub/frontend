@@ -349,11 +349,11 @@
         </h2>
         <p
           class="fadeTextAnime my-4 text-lg font-light opacity-0 dark:text-zinc-100">
-          Join our Discord to get support with
-          making datapacks, and to be a part of the community!
+          Join our Discord to get support with making datapacks, and to be a
+          part of the community!
         </p>
         <a
-          class="rounded-lg bg-[#5865F2] p-3 my-3 font-bold text-white"
+          class="my-3 rounded-lg bg-[#5865F2] p-3 font-bold text-white"
           href="https://discord.datapackhub.net">
           <img
             src="/logos/discord-white.svg"

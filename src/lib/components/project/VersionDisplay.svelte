@@ -136,8 +136,7 @@
     <div class="flex items-center space-x-2 dark:text-white">
       <IconFile />
       <h2 class="md:text-md text-sm lg:text-lg">{version.name}</h2>
-      <h3
-        class="text-xs font-thin italic md:text-sm lg:text-base">
+      <h3 class="text-xs font-thin italic md:text-sm lg:text-base">
         {version.version_code}
       </h3>
     </div>
