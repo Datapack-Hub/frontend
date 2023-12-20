@@ -13,7 +13,7 @@ export const load = (async ({ fetch, url }) => {
     2,
     await Promise.all([
       fetch(
-        `${API}/projects/?page=${page}&sort=${sort}${
+        `${API}/projects/search?page=${page}&sort=${sort}${
           category ? `&category=${category}` : ""
         }`
       ),
