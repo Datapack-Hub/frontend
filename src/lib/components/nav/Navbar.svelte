@@ -182,7 +182,7 @@
         class="group rounded-full p-1 md:hidden md:hover:bg-transparent md:active:brightness-75 dark:text-zinc-100">
         <IconWrench width="24" height="24" />
         <div
-          class="grid-first-small absolute -top-48 left-0 hidden w-full gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg group-hover:grid group-focus:grid md:top-12 dark:bg-zinc-950 dark:text-white">
+          class="grid-first-small absolute -top-48 left-0 hidden w-full gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg transition-all group-hover:grid group-focus:grid md:top-12 dark:bg-zinc-950 dark:text-white">
           <div class="flex items-center">
             <IconWrench class="inline-grid align-middle" />
           </div>
@@ -267,7 +267,7 @@
             class="ml-2 rounded-full outline outline-2 outline-offset-2 hover:brightness-75"
             style="outline-color:{$roleInfo.color ?? '#eab308'};" />
           <div
-            class="grid-first-small absolute -top-32 right-4 hidden gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg group-hover:grid md:top-14 dark:bg-zinc-950 dark:text-white">
+            class="grid-first-small absolute -top-32 right-4 hidden gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg transition-all group-hover:grid md:top-14 dark:bg-zinc-950 dark:text-white">
             <div class="flex items-center">
               <IconProfile class="inline-grid align-middle" />
             </div>

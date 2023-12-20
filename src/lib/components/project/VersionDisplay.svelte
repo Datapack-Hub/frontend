@@ -6,7 +6,7 @@
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import Modal from "../modals/Modal.svelte";
 
-  import { invalidateAll } from "$app/navigation";
+  import { dpPackFormats } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
   import type { Project, Version } from "$lib/globals/schema";
   import { user } from "$lib/globals/stores";
@@ -19,7 +19,6 @@
   import IconRP from "~icons/tabler/Sparkles.svelte";
   import Button from "../decorative/Button.svelte";
   import Tooltip from "../utility/Tooltip.svelte";
-  import { dpPackFormats } from "$lib/globals/consts";
 
   export let version: Version;
   export let expanded = false;
@@ -127,26 +126,18 @@
         error: "Error trying to delete project."
       }
     );
-    invalidateAll();
+    location.reload();
   }
 </script>
 
 <div
-  class="relative rounded-xl bg-slate-300 p-3 last:mb-0 dark:bg-slate-50/10 first:dark:bg-orange-300/10">
+  class="relative rounded-xl bg-slate-300 p-3 last:mb-0 dark:bg-slate-50/10 first:dark:bg-dph-orange/10">
   <div class="flex items-center space-x-2">
-    <div class="flex items-center space-x-2">
-      <button
-        class="flex items-center space-x-1 text-xl font-bold text-zinc-950 dark:text-white"
-        on:click="{() => (expanded = !expanded)}">
-        {#if !expanded}
-          <IconFile />
-        {:else}
-          <IconFileFilled />
-        {/if}
-        <h2 class="md:text-md text-sm lg:text-lg">{version.name}</h2>
-      </button>
+    <div class="flex items-center space-x-2 dark:text-white">
+      <IconFile />
+      <h2 class="md:text-md text-sm lg:text-lg">{version.name}</h2>
       <h3
-        class="text-xs font-thin italic text-zinc-950 md:text-sm lg:text-base dark:text-white">
+        class="text-xs font-thin italic md:text-sm lg:text-base">
         {version.version_code}
       </h3>
     </div>
@@ -184,37 +175,35 @@
         }}"><IconDownload /></Button>
     {/if}
   </div>
-  {#if expanded}
-    <h2 class="mt-2 dark:text-white">Changelog</h2>
-    <div class="mb-2 w-full rounded-md bg-zinc-700/10 p-3 dark:bg-zinc-900/20">
-      <MarkdownComponent source="{version.description}" />
-    </div>
-    <h2 class="dark:text-white">Download this version:</h2>
-    <div class="flex max-w-fit flex-col">
+  <h2 class="mt-3 dark:text-white">Changelog</h2>
+  <div class="my-3 w-full rounded-md bg-zinc-700/10 p-3 dark:bg-zinc-900/20">
+    <MarkdownComponent source="{version.description}" />
+  </div>
+  <h2 class="dark:text-white">Download this version:</h2>
+  <div class="flex max-w-fit flex-col">
+    <Button
+      click="{() => {
+        openDownloadModal('datapack');
+      }}"
+      classes="flex items-center space-x-2"
+      ><IconZIP />
+      <span data-test-clickable-label="datapack">Datapack</span>
+      {#if mcVersion}
+        <span>(for {mcVersion})</span>{/if}</Button>
+    {#if version.resource_pack_download}
       <Button
         click="{() => {
-          openDownloadModal('datapack');
+          openDownloadModal('resourcepack');
         }}"
-        classes="flex items-center space-x-2"
-        ><IconZIP />
-        <span data-test-clickable-label="datapack">Datapack</span>
-        {#if mcVersion}
-          <span>(for {mcVersion})</span>{/if}</Button>
-      {#if version.resource_pack_download}
-        <Button
-          click="{() => {
-            openDownloadModal('resourcepack');
-          }}"
-          style="alt"
-          classes="mt-2 flex items-center space-x-2"
-          ><IconRP />
-          <p>Required Resourcepack</p></Button>
-      {/if}
-    </div>
-    <p class="text-md mt-2 flex items-center space-x-1 pr-1 text-blue-400">
-      <IconInfo /><a href="/install">How to install a datapack</a>
-    </p>
-  {/if}
+        style="alt"
+        classes="mt-2 flex items-center space-x-2"
+        ><IconRP />
+        <p>Required Resourcepack</p></Button>
+    {/if}
+  </div>
+  <p class="text-md mt-2 flex items-center space-x-1 pr-1 text-blue-400">
+    <IconInfo /><a href="/install">How to install a datapack</a>
+  </p>
 </div>
 
 <Modal bind:this="{dlModal}" title="{'Download version ' + version.name}">

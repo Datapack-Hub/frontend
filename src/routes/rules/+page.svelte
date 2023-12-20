@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
+  import RawMarkdownRenderer from "$lib/components/markdown/RawMarkdownRenderer.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;
@@ -14,6 +14,6 @@
   id="main-content"
   class="bg-slate-50 px-4 transition-all lg:px-32 xl:px-64 dark:bg-zinc-900">
   <div class="pt-32"></div>
-  <MarkdownComponent source="{data.rules}" />
+  <RawMarkdownRenderer html="{data.rules}" />
   <div class="pb-64"></div>
 </main>

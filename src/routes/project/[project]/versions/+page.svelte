@@ -1,29 +1,32 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
   import ProjectInfo from "$lib/components/project/ProjectInfo.svelte";
   import ProjectNav from "$lib/components/project/ProjectNav.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
+  import Select from "$lib/components/utility/Select.svelte";
   import { minecraftVersions } from "$lib/globals/consts";
   import type { Version } from "$lib/globals/schema";
   import autoAnimate from "@formkit/auto-animate";
-  import { MultiSelect } from "svelte-multiselect";
+  import { readable } from "svelte/store";
   import IconBack from "~icons/tabler/ArrowBack.svelte";
+  import type { PageData } from "./$types";
 
   export let data: PageData;
 
   // Local vars
 
-  let selectedVersions: string[] = [];
+  let selectedVersions = readable("");
+
+  $: console.log($selectedVersions.split(", "));
 
   // Version filtering
   $: versionMatches =
-    selectedVersions.length > 0 && data.versions !== undefined
-      ? data.versions.filter((dp: Version) =>
+    $selectedVersions.split(", ").at(0) == ""
+      ? data.versions
+      : data.versions.filter((dp: Version) =>
           dp.minecraft_versions
             .split(",")
-            .some(version => selectedVersions.includes(version))
-        )
-      : data.versions;
+            .some(version => $selectedVersions.split(", ").includes(version))
+        );
 </script>
 
 <main
@@ -48,14 +51,10 @@
           </a>
         </div>
         {#if data.versions?.length != 0}
-          <div class="flex w-full items-center space-x-2 dark:text-white">
-            <p class="mr-2 text-xs md:text-sm lg:text-base">
-              Minecraft Version:
-            </p>
-            <MultiSelect
-              outerDivClass="!border-2 !border-slate-300 dark:!border-zinc-700"
-              liOptionClass="bg-white dark:bg-zinc-950"
-              liSelectedClass="!bg-dph-orange !border-2   !text-white"
+          <div class="mb-3 rounded-lg bg-zinc-900 p-3 dark:text-white">
+            <Select
+              emptyString="{'Filter by Minecraft Versions'}"
+              multi="{true}"
               bind:selected="{selectedVersions}"
               options="{minecraftVersions}" />
           </div>

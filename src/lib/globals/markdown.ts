@@ -16,7 +16,6 @@ export async function processMarkdown(source: string): Promise<string> {
     .use(RemarkLinkRewrite, {
       replacer: (url: string) => {
         if (new URL(url).host !== "datapackhub.net") {
-          // biome-ignore lint/style/noParameterAssign: this is how the plugin expects it
           url = `https://datapackhub.net/linkout?url=${encodeURIComponent(
             url
           )}`;

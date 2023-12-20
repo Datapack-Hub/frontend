@@ -97,7 +97,7 @@
       Settings
     </h1>
     <div
-      class="mb-2 flex w-max space-x-2 rounded-full bg-slate-200 p-2 dark:bg-zinc-800"
+      class="mb-2 flex w-max space-x-2 rounded-lg bg-slate-200 p-2 dark:bg-zinc-800"
       use:melt="{$root}">
       <div use:melt="{$list}">
         {#each triggers as triggerItem}

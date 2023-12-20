@@ -15,6 +15,7 @@
   import IconGrid from "~icons/tabler/LayoutGrid.svelte";
   import IconList from "~icons/tabler/LayoutList.svelte";
   import IconSearch from "~icons/tabler/Search.svelte";
+  import { pushState } from "$app/navigation";
 
   export let data: PageData;
 
@@ -34,9 +35,9 @@
       `${API}/projects/search?query=${
         data.query
       }&sort=${data.sort.toLowerCase()}&page=${data.page}${
-        data.category !== "All"
-          ? "&category=" + encodeURIComponent(data.category)
-          : ""
+        data.category === "All"
+          ? ""
+          : "&category=" + encodeURIComponent(data.category)
       }`
     );
     let r = await result.json();
@@ -45,18 +46,17 @@
     data.count = r.count;
     dataCopy = await projectSchema.array().parseAsync(r.result);
     searchTime = r.time;
-    history.pushState(
-      {},
+    pushState(
       "",
       `?page=${data.page}&query=${data.query}&sort=${data.sort}${
-        data.category !== "All"
-          ? "&category=" + encodeURIComponent(data.category)
-          : ""
+        data.category === "All"
+          ? ""
+          : "&category=" + encodeURIComponent(data.category)
       }`
     );
   };
 
-  let search = debounce({ delay: 100 }, async () => {
+  let search = debounce({ delay: 200 }, async () => {
     await updateContent();
   });
 

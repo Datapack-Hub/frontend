@@ -15,7 +15,7 @@ export const load = (async ({ fetch, url }) => {
     await Promise.all([
       fetch(
         `${API}/projects/search?page=${page}&query=${query}&sort=${sort.toLowerCase()}${
-          category !== "All" ? `&category=${encodeURIComponent(category)}` : ""
+          category === "All" ? "" : `&category=${encodeURIComponent(category)}`
         }`
       ),
       fetch(`${API}/projects/featured`)

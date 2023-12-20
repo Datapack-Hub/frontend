@@ -469,7 +469,7 @@
                   on:dragover|preventDefault="{() => {}}"
                   on:drop|preventDefault="{event => verifyDroppedPack(event)}"
                   for="zip"
-                  class="flex rounded-xl bg-orange-500 p-2 text-white">
+                  class="flex rounded-xl bg-dph-orange p-2 text-white">
                   <span class="cursor-pointer"
                     ><IconUpload class="inline-block align-text-top" /> Upload Version</span>
                 </label>

@@ -7,6 +7,7 @@
   import { quartInOut } from "svelte/easing";
   import { crossfade } from "svelte/transition";
   import type { PageData } from "./$types";
+  import IconTerminal from "~icons/tabler/Terminal.svelte";
 
   export let data: PageData;
 
@@ -43,25 +44,31 @@
       class="mb-3 pb-2 text-center text-5xl font-bold text-zinc-950 md:text-start md:text-4xl lg:text-5xl dark:text-white">
       Moderation Dashboard
     </h1>
-    <div
-      class="mb-2 flex w-max space-x-2 rounded-full bg-slate-200 p-2 dark:bg-zinc-800"
-      use:melt="{$root}">
-      <div use:melt="{$list}">
-        {#each triggers as triggerItem}
-          <button
-            class="relative border-r border-slate-400 px-2 last:border-r-0 dark:border-zinc-600 dark:text-white"
-            use:melt="{$trigger(triggerItem.id)}">
-            {triggerItem.title}
-            {#if $value === triggerItem.id}
-              <div
-                in:send="{{ key: 'trigger' }}"
-                out:receive="{{ key: 'trigger' }}"
-                class="absolute -bottom-1 left-1/2 h-1 w-6 -translate-x-1/2 rounded-full bg-slate-400 dark:bg-zinc-400">
-              </div>
-            {/if}
-          </button>
-        {/each}
+    <div class="mb-2 flex space-x-3">
+      <div
+        class="flex w-max space-x-2 rounded-lg bg-slate-200 p-2 dark:bg-zinc-800"
+        use:melt="{$root}">
+        <div use:melt="{$list}">
+          {#each triggers as triggerItem}
+            <button
+              class="relative border-r border-slate-400 px-2 last:border-r-0 dark:border-zinc-600 dark:text-white"
+              use:melt="{$trigger(triggerItem.id)}">
+              {triggerItem.title}
+              {#if $value === triggerItem.id}
+                <div
+                  in:send="{{ key: 'trigger' }}"
+                  out:receive="{{ key: 'trigger' }}"
+                  class="absolute -bottom-1 left-1/2 h-1 w-6 -translate-x-1/2 rounded-full bg-slate-400 dark:bg-zinc-400">
+                </div>
+              {/if}
+            </button>
+          {/each}
+        </div>
       </div>
+      <a
+        href="/moderation/console"
+        class="relative rounded-lg border-slate-400 bg-slate-200 p-2 dark:border-zinc-600 dark:bg-zinc-800 dark:text-white"
+        ><IconTerminal /></a>
     </div>
 
     <div use:melt="{$content('pq')}">

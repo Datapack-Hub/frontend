@@ -186,7 +186,7 @@
   <section
     class="flex w-full flex-col items-center justify-center border-t border-slate-300 bg-slate-100 py-16 dark:border-zinc-800 dark:bg-zinc-800/20">
     <a
-      href="#bento"
+      href="#features"
       class="fixed bottom-32 z-50 rounded-full bg-slate-200 px-2 py-1 shadow-lg lg:bottom-4 dark:bg-zinc-700 dark:text-white {scrollY >
       100
         ? 'opacity-0'
@@ -194,7 +194,7 @@
       Scroll Down! <span class="inline-block align-text-top"><IconDown /></span>
     </a>
     <h1
-      id="bento"
+      id="features"
       class="scroll-m-20 px-4 text-center text-4xl font-bold text-black lg:text-5xl xl:text-6xl dark:text-white">
       The Go-To Platform for <span class="text-dph-orange">Datapacks</span>
     </h1>
@@ -349,11 +349,11 @@
         </h2>
         <p
           class="fadeTextAnime my-4 text-lg font-light opacity-0 dark:text-zinc-100">
-          Join our Discord server to get help with the website, support for
+          Join our Discord to get support with
           making datapacks, and to be a part of the community!
         </p>
         <a
-          class="rounded-lg bg-[#5865F2] p-3 font-bold text-white"
+          class="rounded-lg bg-[#5865F2] p-3 my-3 font-bold text-white"
           href="https://discord.datapackhub.net">
           <img
             src="/logos/discord-white.svg"

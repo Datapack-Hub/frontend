@@ -1,3 +1,4 @@
+import { processMarkdown } from "$lib/globals/markdown";
 import type { PageLoad } from "./$types";
 
 export const load = (async ({ fetch }) => {
@@ -6,7 +7,7 @@ export const load = (async ({ fetch }) => {
   );
   if (response.ok) {
     return {
-      policy: await response.text()
+      policy: await processMarkdown(await response.text())
     };
   }
   return {
