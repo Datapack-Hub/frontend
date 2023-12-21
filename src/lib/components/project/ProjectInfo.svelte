@@ -102,7 +102,7 @@
             {#each project?.category || [] as cat}
               <a
                 href="/projects?category={encodeURIComponent(cat)}"
-                class="flex space-x-1 rounded-md bg-slate-300 dark:bg-zinc-700 px-2 py-1 text-xs"
+                class="flex space-x-1 rounded-md bg-slate-300 px-2 py-1 text-xs dark:bg-zinc-700"
                 ><p>{cat}</p></a>
             {/each}
           </div>
@@ -122,7 +122,7 @@
       {#each project?.category || [] as cat}
         <a
           href="/projects?category={encodeURIComponent(cat)}"
-          class="flex space-x-1 rounded-md bg-slate-300 dark:bg-zinc-700 px-2 py-1 text-xs"
+          class="flex space-x-1 rounded-md bg-slate-300 px-2 py-1 text-xs dark:bg-zinc-700"
           ><IconCategories class=" align-text-top" /><span>
             {cat}
           </span>
