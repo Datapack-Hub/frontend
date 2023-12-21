@@ -80,14 +80,13 @@
             event.key == 'Enter' && data.profile?.id == 3 ? play : undefined}"
           height="128"
           width="128"
-          class="rounded-full outline outline-2 outline-offset-4 md:h-24 md:w-24 lg:h-32 lg:w-32"
-          style="outline-color:{data.role?.color};" />
+          class="rounded-full md:h-24 md:w-24 lg:h-32 lg:w-32" />
         {#if data.profile.id != $user.id}
           <Button style="sm" classes="mt-4" click="{follow}"
             ><IconPlus class="inline-block align-text-top" />
             {#if followed}Unfollow{:else}Follow{/if}</Button>
         {/if}
-        {#if data.profile.id == $user.id || $roleInfo.permissions.includes("EDIT_USER")}
+        {#if data.profile.id == $user.id}
           <Button
             click="{data.profile.id == $user.id
               ? '/settings#profile'

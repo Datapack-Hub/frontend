@@ -256,16 +256,15 @@
       <ColorSchemeSelector />
       {#if $authed}
         <a
-          class="group py-2"
+          class="group py-1"
           aria-label="Your profile"
           href="/user/{$user.username}">
           <img
             src="{appendSize($user.profile_icon, 64)}"
             alt="{$user.username}'s profile picture"
-            height="24"
-            width="24"
-            class="ml-2 rounded-full outline outline-2 outline-offset-2 hover:brightness-75"
-            style="outline-color:{$roleInfo.color ?? '#eab308'};" />
+            height="32"
+            width="32"
+            class="ml-2 rounded-full hover:brightness-75" />
           <div
             class="grid-first-small absolute -top-32 right-4 hidden gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg transition-all group-hover:grid md:top-14 dark:bg-zinc-950 dark:text-white">
             <div class="flex items-center">
