@@ -63,19 +63,19 @@ dependencies:
 devDependencies:
   '@melt-ui/pp':
     specifier: ^0.2.0
-    version: 0.2.0(@melt-ui/svelte@0.66.1)(svelte@4.2.8)
+    version: 0.2.0(@melt-ui/svelte@0.66.2)(svelte@4.2.8)
   '@melt-ui/svelte':
-    specifier: ^0.66.1
-    version: 0.66.1(svelte@4.2.8)
+    specifier: ^0.66.2
+    version: 0.66.2(svelte@4.2.8)
   '@playwright/test':
     specifier: ^1.40.1
     version: 1.40.1
   '@sveltejs/adapter-cloudflare':
     specifier: ^3.0.1
-    version: 3.0.1(@sveltejs/kit@2.0.4)
+    version: 3.0.1(@sveltejs/kit@2.0.5)
   '@sveltejs/kit':
-    specifier: ^2.0.4
-    version: 2.0.4(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.10)
+    specifier: ^2.0.5
+    version: 2.0.5(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.10)
   '@sveltejs/vite-plugin-svelte':
     specifier: ^3.0.1
     version: 3.0.1(svelte@4.2.8)(vite@5.0.10)
@@ -570,20 +570,20 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@melt-ui/pp@0.2.0(@melt-ui/svelte@0.66.1)(svelte@4.2.8):
+  /@melt-ui/pp@0.2.0(@melt-ui/svelte@0.66.2)(svelte@4.2.8):
     resolution: {integrity: sha512-wrJPtE/Jf+lj7CmLLKMkzsU3msLJNgHgqcdnafnl2er8UqfdqR0B4FMk7DRLx1ooUDI9wddiXuvXKS3jyqVQGA==}
     engines: {pnpm: '>=8.6.3'}
     peerDependencies:
       '@melt-ui/svelte': '>= 0.29.0'
       svelte: ^3.55.0 || ^4.0.0 || ^5.0.0-next.1
     dependencies:
-      '@melt-ui/svelte': 0.66.1(svelte@4.2.8)
+      '@melt-ui/svelte': 0.66.2(svelte@4.2.8)
       estree-walker: 3.0.3
       svelte: 4.2.8
     dev: true
 
-  /@melt-ui/svelte@0.66.1(svelte@4.2.8):
-    resolution: {integrity: sha512-S0PzK94xK0QdXxwonTmT8rJhzL+8u0RWHTNFmqIqu/eTSVoLz0ZYMRHbGTJ6IbR/cLAxCRFuBIyWkH83LvdaKw==}
+  /@melt-ui/svelte@0.66.2(svelte@4.2.8):
+    resolution: {integrity: sha512-ufIhgOYP11A/G3AvW+2Qw74UGudMBJQ2wK+sETpU51VkC63/5D2sctKgXzGl0OUEJBlPHku6LRSry9rIeAVkNw==}
     peerDependencies:
       svelte: '>=3 <5'
     dependencies:
@@ -782,19 +782,19 @@ packages:
     dev: true
     optional: true
 
-  /@sveltejs/adapter-cloudflare@3.0.1(@sveltejs/kit@2.0.4):
+  /@sveltejs/adapter-cloudflare@3.0.1(@sveltejs/kit@2.0.5):
     resolution: {integrity: sha512-yhncGexWlDE3DAd6N/wsuel7BFwgBGWkvTG8iMAEaE/dHSEEUEUXOFK4IMKtPZWFuIkXmyfLxOSD8A8Kzv7ppg==}
     peerDependencies:
       '@sveltejs/kit': ^2.0.0
     dependencies:
       '@cloudflare/workers-types': 4.20231218.0
-      '@sveltejs/kit': 2.0.4(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.10)
+      '@sveltejs/kit': 2.0.5(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.10)
       esbuild: 0.19.10
       worktop: 0.8.0-next.15
     dev: true
 
-  /@sveltejs/kit@2.0.4(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.10):
-    resolution: {integrity: sha512-pqUOo1Slp2fybNjTouF7qgeN815hO2boRCNO1Z7/XtXu5IPNg9OSwI485qmQ0GUU2v2NmA0XZciFHGrgzOixyw==}
+  /@sveltejs/kit@2.0.5(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.10):
+    resolution: {integrity: sha512-KRNt+d0bhoaJmgJmEi542ePGPDGwmjXpXggxESE7BYIAPO3UnvbD3LFYTBTc16kA8HoQyQPcrhWYaflmODcl4Q==}
     engines: {node: '>=18.13'}
     hasBin: true
     requiresBuild: true
@@ -810,7 +810,7 @@ packages:
       esm-env: 1.0.0
       kleur: 4.1.5
       magic-string: 0.30.5
-      mrmime: 1.0.1
+      mrmime: 2.0.0
       sade: 1.8.1
       set-cookie-parser: 2.6.0
       sirv: 2.0.4
@@ -1648,7 +1648,7 @@ packages:
       human-signals: 5.0.0
       is-stream: 3.0.0
       merge-stream: 2.0.0
-      npm-run-path: 5.1.0
+      npm-run-path: 5.2.0
       onetime: 6.0.0
       signal-exit: 4.1.0
       strip-final-newline: 3.0.0
@@ -2857,8 +2857,8 @@ packages:
       path-key: 3.1.1
     dev: true
 
-  /npm-run-path@5.1.0:
-    resolution: {integrity: sha512-sJOdmRGrY2sjNTRMbSvluQqg+8X7ZK61yvzBEIDhz4f8z1TZFYABsqjjCBd/0PUNE9M6QDgHJXQkGUEm7Q+l9Q==}
+  /npm-run-path@5.2.0:
+    resolution: {integrity: sha512-W4/tgAXFqFA0iL7fk0+uQ3g7wkL8xJmx3XdK0VGb4cHW//eZTtKGvFBBoRKVTpY7n6ze4NL9ly7rgXcHufqXKg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       path-key: 4.0.0
