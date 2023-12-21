@@ -14,7 +14,6 @@
   import IconZIP from "~icons/tabler/Cube.svelte";
   import IconDownload from "~icons/tabler/Download.svelte";
   import IconFile from "~icons/tabler/File.svelte";
-  import IconFileFilled from "~icons/tabler/FileFilled.svelte";
   import IconInfo from "~icons/tabler/HelpCircle.svelte";
   import IconRP from "~icons/tabler/Sparkles.svelte";
   import Button from "../decorative/Button.svelte";

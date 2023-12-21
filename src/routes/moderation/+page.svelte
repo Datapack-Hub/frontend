@@ -7,7 +7,6 @@
   import { quartInOut } from "svelte/easing";
   import { crossfade } from "svelte/transition";
   import type { PageData } from "./$types";
-  import IconTerminal from "~icons/tabler/Terminal.svelte";
 
   export let data: PageData;
 
@@ -47,7 +46,7 @@
     <div
       class="mb-2 flex w-max space-x-2 rounded-full bg-slate-200 p-2 dark:bg-zinc-800"
       use:melt="{$root}">
-      <div use:melt="{$list}" clas="flex-grow">
+      <div use:melt="{$list}" class="flex-grow">
         {#each triggers as triggerItem}
           <button
             class="relative border-r border-slate-400 px-2 last:border-r-0 dark:border-zinc-600 dark:text-white"
@@ -63,7 +62,7 @@
           </button>
         {/each}
       </div>
-      <a href="/moderation/console">Open Console</a>
+      <a href="/moderation/console" class="dark:text-white">Open Console</a>
     </div>
 
     <div use:melt="{$content('pq')}">
