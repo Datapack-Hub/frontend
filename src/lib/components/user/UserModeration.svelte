@@ -167,11 +167,11 @@
 
 {#if user && ["admin", "moderator", "helper"].includes($roleInfo.name)}
   {#await loadData()}
-  <button
-    class="modBtn mt-2 text-sm h-9 text-zinc-950 button-base bg-slate-200 dark:bg-zinc-600 dark:text-zinc-100 opacity-50">
-    <IconShield width="16" height="16" class="mr-2 inline-block" />
-    Moderate {user?.username}
-  </button>
+    <button
+      class="modBtn button-base mt-2 h-9 bg-slate-200 text-sm text-zinc-950 opacity-50 dark:bg-zinc-600 dark:text-zinc-100">
+      <IconShield width="16" height="16" class="mr-2 inline-block" />
+      Moderate {user?.username}
+    </button>
   {:then}
     <Button
       style="boring"

@@ -102,7 +102,8 @@
             {#each project?.category || [] as cat}
               <a
                 href="/projects?category={encodeURIComponent(cat)}"
-                class="text-xs px-2 py-1 rounded-md bg-zinc-700 flex space-x-1"><p>{cat}</p></a>
+                class="flex space-x-1 rounded-md bg-zinc-700 px-2 py-1 text-xs"
+                ><p>{cat}</p></a>
             {/each}
           </div>
           <p class="dark:text-white">•</p>
