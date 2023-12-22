@@ -1,7 +1,7 @@
 import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
-import rehypeRaw from "rehype-raw";
 import remarkGFM from "remark-gfm";
 // @ts-expect-error this doesn't have any types
 import RemarkLinkRewrite from "remark-link-rewrite";
