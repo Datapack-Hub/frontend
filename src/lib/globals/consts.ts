@@ -9,7 +9,6 @@ export const categories = [
   "Cosmetics",
   "Cursed",
   "Challenge",
-  "German",
   "Items & Blocks",
   "Magic",
   "Minecraft, but",
