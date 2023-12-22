@@ -35,21 +35,21 @@
 
 <div class="font-brand {$isDark ? 'dark' : ''}">
   {#if !maintenance || $user.role == "admin"}
-      <div class="min-h-screen bg-slate-50 transition-all dark:bg-zinc-900">
-        {#if $user.banned}
-          <BannedModal />
-        {/if}
-        <Navbar />
-        <slot />
-      </div>
-      {#if data.cookieNotice}
-        <CookieConsent />
+    <div class="min-h-screen bg-slate-50 transition-all dark:bg-zinc-900">
+      {#if $user.banned}
+        <BannedModal />
       {/if}
-      <Toaster
-        theme="{$isDark ? 'dark' : 'light'}"
-        position="{$windowWidth > 768 ? 'bottom-right' : 'top-center'}"
-        richColors />
-      <Footer />
+      <Navbar />
+      <slot />
+    </div>
+    {#if data.cookieNotice}
+      <CookieConsent />
+    {/if}
+    <Toaster
+      theme="{$isDark ? 'dark' : 'light'}"
+      position="{$windowWidth > 768 ? 'bottom-right' : 'top-center'}"
+      richColors />
+    <Footer />
   {:else}
     <div
       class="fixed left-0 top-0 flex h-screen w-screen bg-zinc-900 align-middle">
