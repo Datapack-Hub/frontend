@@ -43,7 +43,8 @@ export const minecraftVersions = [
   "1.19",
   "1.19.4",
   "1.20",
-  "1.20.2"
+  "1.20.2",
+  "1.20.4"
 ];
 
 export const dpPackFormats = [
@@ -57,7 +58,8 @@ export const dpPackFormats = [
   { format: 12, label: "1.19.4" },
   { format: 15, label: "1.20" },
   { format: 18, label: "1.20.2" },
-  { format: 26, label: "1.20.3-pre1" }
+  { format: 26, label: "1.20.3-pre1" },
+  { format: 26, label: "1.20.4" }
 ];
 
 export type FeaturedProjectTypes =
