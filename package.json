@@ -67,6 +67,7 @@
     "nprogress": "^0.2.0",
     "oxlint": "^0.0.21",
     "postcss": "^8.4.32",
+    "rehype-raw": "^7.0.0",
     "svelte": "^4.2.8",
     "svelte-floating-ui": "^1.5.8",
     "svelte-multiselect": "^10.2.0",
