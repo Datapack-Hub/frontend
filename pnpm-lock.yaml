@@ -44,6 +44,9 @@ dependencies:
   postcss:
     specifier: ^8.4.32
     version: 8.4.32
+  rehype-raw:
+    specifier: ^7.0.0
+    version: 7.0.0
   svelte:
     specifier: ^4.2.8
     version: 4.2.8
@@ -3376,6 +3379,14 @@ packages:
       unist-util-visit: 5.0.0
       vfile: 6.0.1
     dev: true
+
+  /rehype-raw@7.0.0:
+    resolution: {integrity: sha512-/aE8hCfKlQeA8LmyeyQvQF3eBiLRGNlfBJEvWH7ivp9sBqs7TNqBL5X3v157rM4IFETqDnIOO+z5M/biZbo9Ww==}
+    dependencies:
+      '@types/hast': 3.0.3
+      hast-util-raw: 9.0.1
+      vfile: 6.0.1
+    dev: false
 
   /rehype-sanitize@6.0.0:
     resolution: {integrity: sha512-CsnhKNsyI8Tub6L4sm5ZFsme4puGfc6pYylvXo1AeqaGbjOYyzNv3qZPwvs0oMJ39eryyeOdmxwUIo94IpEhqg==}

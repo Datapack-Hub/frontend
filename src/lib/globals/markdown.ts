@@ -1,6 +1,7 @@
 import rehypeHighlight from "rehype-highlight";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
+import rehypeRaw from "rehype-raw";
 import remarkGFM from "remark-gfm";
 // @ts-expect-error this doesn't have any types
 import RemarkLinkRewrite from "remark-link-rewrite";
@@ -27,7 +28,8 @@ export async function processMarkdown(source: string): Promise<string> {
     .use(remarkMentions, {
       usernameLink: (uname: string) => `https://datapackhub.net/user/${uname}`
     })
-    .use(remarkRehype)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
     .use(rehypeSanitize)
     .use(rehypeHighlight)
     .use(rehypeStringify);
