@@ -111,21 +111,21 @@
               <Tooltip
                 tooltipText="Verified for being part of the Datapack Hub staff team."
                 classes="inline-block"
-                placement="{'right'}">
+                placement="{'bottom'}">
                 <IconVerified classes="{'icon text-dph-orange'}" />
               </Tooltip>
             {:else if data.profile?.role == "helper"}
               <Tooltip
                 tooltipText="Verified for being known to help with troubles."
                 classes="inline-block"
-                placement="{'right'}">
+                placement="{'bottom'}">
                 <IconVerified classes="{'icon text-blue-500'}" />
               </Tooltip>
             {:else if data.profile?.role == "verified"}
               <Tooltip
                 tooltipText="Verified for high-quality datapacks or being active in the community."
                 classes="inline-block"
-                placement="{'right'}">
+                placement="{'bottom'}">
                 <IconVerified classes="{'icon text-emerald-500'}" />
               </Tooltip>
             {/if}

@@ -23,11 +23,14 @@
   import Modal from "../modals/Modal.svelte";
   import ConditionalWrapper from "../utility/ConditionalWrapper.svelte";
   import Tooltip from "../utility/Tooltip.svelte";
+  import { fade } from "svelte/transition";
 
   let signInModal: Modal;
 
   let scrollY: number;
   let unreadNotifications = false;
+  let showToolsPanel = false;
+  let showUserPanel = false;
 
   $: url = $page.url;
 
@@ -179,23 +182,28 @@
           <IconCompass width="24" height="24" />
         </a></Tooltip>
       <div
-        class="group rounded-full p-1 md:hidden md:hover:bg-transparent md:active:brightness-75 dark:text-zinc-100">
+        role="tooltip"
+        on:mouseenter="{() => showToolsPanel = true}"
+        on:mouseleave="{() => showToolsPanel = false}"
+        class="rounded-full p-1 md:hidden md:hover:bg-transparent md:active:brightness-75 dark:text-zinc-100">
         <IconWrench width="24" height="24" />
+        {#if showToolsPanel}
         <div
-          class="grid-first-small absolute -top-48 left-0 hidden w-full gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg transition-all group-hover:grid group-focus:grid md:top-12 dark:bg-zinc-950 dark:text-white">
+          transition:fade="{{ duration: 100 }}"
+          class="grid-first-small absolute -top-48 left-0 w-full gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg transition-all grid md:top-12 dark:bg-zinc-950 dark:text-white">
           <div class="flex items-center">
-            <IconWrench class="inline-grid align-middle" />
+            <IconWrench class="inline-grid align-middle opacity-50" />
           </div>
-          <a href="https://dph.tools">
-            <p class="font-bold">dph.tools</p>
-            <p class="text-xs">
+          <a on:click="{() => showToolsPanel = false}" inert aria-disabled="true" href="https://dph.tools" class="cursor-not-allowed">
+            <p class="font-bold opacity-50">dph.tools</p>
+            <p class="text-xs opacity-50">
               The hub for all sorts of command generators and tools!
             </p>
           </a>
           <div class="flex items-center">
             <IconMail class="inline-grid align-middle" />
           </div>
-          <a href="https://mailman.datapackhub.net">
+          <a on:click="{() => showToolsPanel = false}" href="https://mailman.datapackhub.net">
             <p class="font-bold">Mailman</p>
             <p class="text-xs">
               Upload your projects to Datapack Hub, <br />Smithed and Modrinth
@@ -205,13 +213,14 @@
           <div class="flex items-center">
             <IconRobot class="inline-grid align-middle" />
           </div>
-          <a href="https://bot.datapackhub.net">
+          <a on:click="{() => showToolsPanel = false}" href="https://bot.datapackhub.net">
             <p class="font-bold">Datapack Helper Bot</p>
             <p class="text-xs">
               A multi-purpose Discord bot to give <br />your datapacking server
               superpowers!
             </p></a>
         </div>
+        {/if}
       </div>
       {#if $authed}
         <Tooltip
@@ -256,6 +265,8 @@
       <ColorSchemeSelector />
       {#if $authed}
         <a
+          on:mouseenter="{() => showUserPanel = true}"
+          on:mouseleave="{() => showUserPanel = false}"
           class="group py-1"
           aria-label="Your profile"
           href="/user/{$user.username}">
@@ -265,21 +276,24 @@
             height="32"
             width="32"
             class="ml-2 rounded-full hover:brightness-75" />
-          <div
-            class="grid-first-small absolute -top-32 right-4 hidden gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg transition-all group-hover:grid md:top-14 dark:bg-zinc-950 dark:text-white">
-            <div class="flex items-center">
-              <IconProfile class="inline-grid align-middle" />
+          {#if showUserPanel}
+            <div
+              transition:fade="{{ duration: 100 }}"
+              class="grid-first-small absolute -top-32 right-4 gap-3 rounded-md bg-slate-50 px-6 py-3 grid shadow-lg transition-all md:top-14 dark:bg-zinc-950 dark:text-white">
+              <button class="flex items-center" on:click="{() => showUserPanel = false}">
+                <IconProfile class="inline-grid align-middle" />
+              </button>
+              <a href="/user/{$user.username}" on:click="{() => showUserPanel = false}">Profile</a>
+              <button class="flex items-center" on:click="{() => showUserPanel = false}">
+                <IconGear class="inline-grid align-middle" />
+              </button>
+              <a href="/settings" on:click="{() => showUserPanel = false}">Settings</a>
+              <button class="flex items-center" on:click="{() => showUserPanel = false}">
+                <IconLogOut class="inline-grid align-middle" />
+              </button>
+              <a data-sveltekit-preload-data="tap" on:click="{() => showUserPanel = false}" href="?log_out=1">Log out</a>
             </div>
-            <a href="/user/{$user.username}">Profile</a>
-            <div class="flex items-center">
-              <IconGear class="inline-grid align-middle" />
-            </div>
-            <a href="/settings">Settings</a>
-            <div class="flex items-center">
-              <IconLogOut class="inline-grid align-middle" />
-            </div>
-            <a data-sveltekit-preload-data="tap" href="?log_out=1">Log out</a>
-          </div>
+          {/if}
         </a>
       {:else}
         <button

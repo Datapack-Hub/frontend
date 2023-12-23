@@ -12,6 +12,8 @@
   export let emptyString: string;
   export let multi = false;
   // eslint-disable-next-line unicorn/no-useless-undefined
+  export let name: string | undefined = undefined;
+  // eslint-disable-next-line unicorn/no-useless-undefined
   export let defaultOption: string | undefined = undefined;
 
   const dispatch = createEventDispatcher();
@@ -32,6 +34,7 @@
       label: defaultOption
     },
     multiple: multi,
+    name: name,
     onSelectedChange: s => {
       dispatch("change", s.next);
       return s.next;
@@ -48,6 +51,7 @@
       >{label}</label>
   {/if}
   <button
+    type="button"
     class="flex h-10 min-w-[220px] items-center justify-between rounded-lg bg-slate-200 px-3 py-2 text-black
   shadow transition-opacity hover:opacity-90 dark:bg-zinc-800 dark:text-white"
     use:melt="{$trigger}"

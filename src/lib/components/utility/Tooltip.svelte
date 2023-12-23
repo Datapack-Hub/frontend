@@ -52,6 +52,8 @@
   class="{classes}"
   on:pointerenter="{() => (showTooltip = true)}"
   on:pointerleave="{() => (showTooltip = false)}"
+  on:touchstart="{() => (showTooltip = true)}"
+  on:touchend="{() => (showTooltip = false)}"
   use:floatingReference>
   <slot />
 </div>

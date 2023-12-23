@@ -11,7 +11,7 @@ export const categories = [
   "Challenge",
   "Items & Blocks",
   "Magic",
-  "Minecraft, but",
+  "Minecraft but",
   "Miscellaneous",
   "Quality of Life",
   "Recipe",

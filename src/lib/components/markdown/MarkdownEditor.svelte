@@ -10,7 +10,7 @@
   export let name = "";
 
   let tab = "editor";
-  let remainingCharacters = maxEditorLength - content.length;
+  $: remainingCharacters = maxEditorLength - content.length;
 
   let dispatch = createEventDispatcher();
 

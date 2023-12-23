@@ -1,73 +1,23 @@
 <script lang="ts">
-  import { beforeNavigate, goto } from "$app/navigation";
-  import Button from "$lib/components/decorative/Button.svelte";
   import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
-  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
+  import Select from "$lib/components/utility/Select.svelte";
   import { categories } from "$lib/globals/consts";
-  import { fetchAuthed } from "$lib/globals/functions";
-  import { authed, user } from "$lib/globals/stores";
+  import { authed } from "$lib/globals/stores";
   import { dash } from "radash";
   import { toast } from "svelte-sonner";
-  import { writable } from "svelte/store";
+  import { readable, type Readable } from "svelte/store";
+  import { superForm } from "sveltekit-superforms/client";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
+  import type { PageData } from "./$types";
 
-  let iconB64: string | ArrayBuffer | null | undefined;
+  export let data: PageData;
   let iconValue: FileList;
   let iconImg: string;
-  let title: string;
-  let description: string;
   let body: string;
-  let slug: string;
-  let dirty = false;
-  $: category = writable([]);
-
-  function maxCategoriesReached() {
-    toast.error("Max Categories Reached");
-  }
-
-  beforeNavigate(({ cancel }) => {
-    if (
-      dirty &&
-      !confirm(
-        "Are you sure you want to leave this page? You have unsaved changes that will be lost."
-      )
-    ) {
-      cancel();
-    }
-  });
-
-  async function create() {
-    let projData = {
-      icon: iconB64?.toString(),
-      type: "datapack",
-      url: slug.length === 0 ? dash(title.trim()) : dash(slug),
-      title: title,
-      description: description,
-      body: body,
-      category: $category,
-      author: $user,
-      status: "draft"
-    };
-
-    toast.promise(
-      fetchAuthed("post", `/projects/create`, {
-        data: projData
-      }).then(response => {
-        if (response.ok) {
-          dirty = false;
-          goto(`/project/${projData.url.toLowerCase()}?is_new=1`);
-        }
-      }),
-      {
-        success: "Created project! Redirecting...",
-        loading: "Creating project...",
-        error: "Something went wrong!"
-      }
-    );
-  }
+  let category: Readable<string> = readable("");
+  let { form, errors, constraints } = superForm(data.form);
 
   function uploadIcon() {
-    dirty = true;
     if (iconValue[0].size > 256_000) {
       return toast.error("Icon must be less than 256kb");
     }
@@ -83,15 +33,18 @@
     let reader = new FileReader();
     reader.readAsDataURL(iconValue[0]);
     reader.addEventListener("load", event => {
-      iconB64 = event.target?.result;
+      $form.icon = event.target?.result?.toString();
       iconImg = URL.createObjectURL(iconValue[0]);
     });
   }
 
+
+  $: {
+    $form.category = $category.split(", ")
+  }
+
   function titleHandler(event: HTMLInputElement) {
-    dirty = true;
-    title = event.value;
-    slug = dash(event.value.trim());
+    $form.url = dash(event.value.trim());
   }
 </script>
 
@@ -102,17 +55,23 @@
 <main id="main-content" class="px-4 pb-3 sm:px-8 md:px-16 lg:px-24">
   {#if $authed}
     <div class="pt-0 md:pt-32"></div>
-    <h1 class="mb-4 text-3xl font-bold text-zinc-950 dark:text-zinc-100">
+    <h1 class="mb-4 text-3xl text-center md:text-left font-bold text-zinc-950 dark:text-zinc-100">
       Create New Datapack
     </h1>
-    <p class="ml-3 text-zinc-950 dark:text-zinc-100">Logo</p>
-    <div
+    <p
+      class="ml-0 text-center text-zinc-950 md:ml-3 md:text-left dark:text-zinc-100">
+      Icon
+    </p>
+    <form
+      method="POST"
       class="grid grid-cols-2 gap-3 space-y-2 rounded-xl p-3 text-center align-middle md:text-start lg:grid-cols-3">
       <div
         class="col-span-2 flex flex-col items-center justify-between space-x-0 md:flex-row md:space-x-2">
         <div
           class="aspect-square h-full w-1/3 cursor-pointer justify-center rounded-xl bg-slate-300 transition-all hover:brightness-75 md:w-auto dark:bg-zinc-700 dark:text-white">
-          <label class="flex h-full w-full items-center justify-center">
+          <label
+            for="icon"
+            class="flex h-full w-full items-center justify-center">
             <img
               src="{iconImg}"
               alt="Your Icon"
@@ -123,62 +82,74 @@
               bind:files="{iconValue}"
               on:change="{uploadIcon}"
               type="file"
+              name="icon"
               accept="image/*"
               class="hidden" />
             <IconNoIcon class="h-1/2 w-1/2 {iconValue ? 'hidden' : 'block'}" />
           </label>
         </div>
         <div class="w-full">
-          <p class="mb-2 text-zinc-950 dark:text-zinc-100">Title</p>
+          <label for="title" class="mb-2 text-zinc-950 dark:text-zinc-100"
+            >Title</label>
           <input
+            name="title"
             type="text"
-            on:change="{() => (dirty = true)}"
+            aria-invalid="{$errors.title ? 'true' : undefined}"
             placeholder="Super Cool Datapack"
-            maxlength="35"
-            required
-            aria-required="true"
+            bind:value="{$form.title}"
+            {...$constraints.title}
             on:input="{event => titleHandler(event.currentTarget)}"
             class="input w-full" />
-          <p class="col-span-2 mb-2 mt-4 text-zinc-950 dark:text-zinc-100">
+          {#if $errors.title}<span class="invalid">{$errors.title}</span>{/if}
+          <label
+            for="url"
+            class="col-span-2 mb-2 mt-4 text-zinc-950 dark:text-zinc-100">
             URL
-          </p>
+          </label>
           <input
+            name="url"
             type="text"
-            on:change="{() => (dirty = true)}"
+            aria-invalid="{$errors.url ? 'true' : undefined}"
             placeholder="slug-for-your-pack"
-            maxlength="35"
-            bind:value="{slug}"
+            bind:value="{$form.url}"
+            {...$constraints.url}
             class="input w-full" />
+          {#if $errors.url}<span class="invalid">{$errors.url}</span>{/if}
         </div>
       </div>
 
-      <p class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">Summary</p>
+      <label
+        for="description"
+        class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">Summary</label>
       <textarea
+        name="description"
         placeholder="A short description of your pack"
         maxlength="200"
-        on:change="{() => (dirty = true)}"
-        bind:value="{description}"
+        bind:value="{$form.description}"
+        {...$constraints.description}
         class="input col-span-2 h-32 resize-none"></textarea>
-      <p class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">
-        Description
-      </p>
+      {#if $errors.description}<span class="invalid">{$errors.description}</span
+        >{/if}
+      <p class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">Body</p>
       <MarkdownEditor
-        on:input="{() => (dirty = true)}"
         bind:content="{body}"
+        name="body"
         classes="col-span-2 resize-none" />
+      {#if $errors.body}<span class="invalid">{$errors.body}</span>{/if}
       <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
       <div
-        class="col-span-2 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3 lg:grid-cols-4">
-        {#each categories as cat}
-          <ToggleBoxes
-            value="{cat}"
-            selected="{category}"
-            on:fail="{maxCategoriesReached}" />
-        {/each}
+        class="col-span-2">
+        <Select
+          emptyString="{'Categories'}"
+          multi="{true}"
+          name="category"
+          bind:selected="{category}"
+          options="{categories}" />
+          {#if $errors.category}<span class="invalid">{$errors.category._errors}</span>{/if}
       </div>
-      <Button classes="col-span-3 mt-4 w-fit" click="{create}" wait="{true}"
-        >Create Project</Button>
-    </div>
+      <button type="submit" class="button-primary col-span-3 mt-4 w-fit"
+        >Create Project</button>
+    </form>
   {:else}
     <div class="flex h-screen w-full flex-col items-center justify-center">
       <p class="text-3xl text-white">You must be signed in to post things!</p>
@@ -188,3 +159,9 @@
   {/if}
   <div class="py-24"></div>
 </main>
+
+<style lang="postcss">
+  .invalid {
+    color: red;
+  }
+</style>

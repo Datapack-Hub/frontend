@@ -187,7 +187,7 @@
     class="flex w-full flex-col items-center justify-center border-t border-slate-300 bg-slate-100 py-16 dark:border-zinc-800 dark:bg-zinc-800/20">
     <a
       href="#features"
-      class="fixed bottom-32 z-50 rounded-full bg-slate-200 px-2 py-1 shadow-lg lg:bottom-4 dark:bg-zinc-700 dark:text-white {scrollY >
+      class="fixed bottom-24 z-50 rounded-full bg-slate-200 px-2 py-1 shadow-lg lg:bottom-4 dark:bg-zinc-700 dark:text-white {scrollY >
       100
         ? 'opacity-0'
         : 'opacity-100'} transition-opacity">
