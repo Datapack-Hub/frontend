@@ -1,7 +1,6 @@
-// @ts-expect-error this doesn't have any types
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
-import rehypeStarryNight from "rehype-starry-night";
+import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
 import remarkGFM from "remark-gfm";
 // @ts-expect-error this doesn't have any types
@@ -32,7 +31,7 @@ export async function processMarkdown(source: string): Promise<string> {
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeSanitize)
-    .use(rehypeStarryNight)
+    .use(rehypeHighlight)
     .use(rehypeStringify);
 
   return markdownProcessor.process(source).then(String);
