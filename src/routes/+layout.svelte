@@ -4,13 +4,12 @@
   import "../styles/fonts.postcss";
   import "../styles/nprogress.css";
 
-  import { dev } from "$app/environment";
   import { navigating } from "$app/stores";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import BannedModal from "$lib/components/modals/BannedModal.svelte";
   import Footer from "$lib/components/nav/Footer.svelte";
   import Navbar from "$lib/components/nav/Navbar.svelte";
-  import { authed, isDark, user, windowWidth } from "$lib/globals/stores";
+  import { isDark, user, windowWidth } from "$lib/globals/stores";
   import NProgress from "nprogress";
   import { Toaster } from "svelte-sonner";
 

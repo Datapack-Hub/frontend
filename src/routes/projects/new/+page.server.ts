@@ -1,5 +1,5 @@
-import { API } from "$lib/globals/consts";
-import { fail } from "@sveltejs/kit";
+import { API, categories } from "$lib/globals/consts";
+import { fail, redirect } from "@sveltejs/kit";
 import { superValidate } from "sveltekit-superforms/server";
 import { z } from "zod";
 import type { PageServerLoad } from "./$types";
@@ -13,7 +13,10 @@ const newProjectSchema = z.object({
   title: z.string().max(35),
   description: z.string().min(3).max(100),
   body: z.string().min(100).max(10_000),
-  category: z.string()
+  category: z.string().refine(value => {
+    const elements = value.split(",").map(element => element.trim());
+    return elements.every(element => categories.includes(element));
+  })
 });
 
 export const load = (async event => {
@@ -25,13 +28,14 @@ export const load = (async event => {
 export const actions = {
   default: async ({ request, cookies, fetch }) => {
     const form = await superValidate(request, newProjectSchema);
-    console.log("POST", form);
 
     if (!form.valid) {
+      console.log("Error:", form)
       return fail(400, { form });
     }
 
     const data = form.data;
+
 
     const projData = {
       icon: data.icon,
@@ -51,6 +55,11 @@ export const actions = {
         Authorization: "Basic " + cookies.get("dph_token")
       }
     });
+
+    if (result.ok) {
+      redirect(307, "/project/" + data.url)
+    }
+
 
     return { form };
   }

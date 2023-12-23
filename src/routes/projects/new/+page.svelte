@@ -14,8 +14,7 @@
   let iconValue: FileList;
   let iconImg: string;
   let body: string;
-  let category: Readable<string> = readable("");
-  let { form, errors, constraints } = superForm(data.form);
+  let { form, errors, constraints, enhance } = superForm(data.form);
 
   function uploadIcon() {
     if (iconValue[0].size > 256_000) {
@@ -36,10 +35,6 @@
       $form.icon = event.target?.result?.toString();
       iconImg = URL.createObjectURL(iconValue[0]);
     });
-  }
-
-  $: {
-    $form.category = $category.split(", ");
   }
 
   function titleHandler(event: HTMLInputElement) {
@@ -64,6 +59,8 @@
     </p>
     <form
       method="POST"
+      enctype="multipart/form-data"
+      use:enhance
       class="grid grid-cols-2 gap-3 space-y-2 rounded-xl p-3 text-center align-middle md:text-start lg:grid-cols-3">
       <div
         class="col-span-2 flex flex-col items-center justify-between space-x-0 md:flex-row md:space-x-2">
@@ -142,10 +139,9 @@
           emptyString="{'Categories'}"
           multi="{true}"
           name="category"
-          bind:selected="{category}"
           options="{categories}" />
         {#if $errors.category}<span class="invalid"
-            >{$errors.category._errors}</span
+            >{$errors.category}</span
           >{/if}
       </div>
       <button type="submit" class="button-primary col-span-3 mt-4 w-fit"
