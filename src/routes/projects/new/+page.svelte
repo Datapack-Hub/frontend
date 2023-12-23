@@ -5,7 +5,6 @@
   import { authed } from "$lib/globals/stores";
   import { dash } from "radash";
   import { toast } from "svelte-sonner";
-  import { readable, type Readable } from "svelte/store";
   import { superForm } from "sveltekit-superforms/client";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import type { PageData } from "./$types";
@@ -132,7 +131,8 @@
         bind:content="{body}"
         name="body"
         classes="col-span-2 resize-none" />
-      {#if $errors.body}<span class="invalid col-span-2">{$errors.body}</span>{/if}
+      {#if $errors.body}<span class="invalid col-span-2">{$errors.body}</span
+        >{/if}
       <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
       <div class="col-span-2">
         <Select
