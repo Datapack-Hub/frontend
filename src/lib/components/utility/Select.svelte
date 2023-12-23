@@ -45,7 +45,7 @@
 </script>
 
 <div class="flex flex-col gap-1">
-  <input type="text" use:melt="{$hiddenInput}">
+  <input type="text" use:melt="{$hiddenInput}" />
   {#if label === ""}
     <!-- svelte-ignore a11y-label-has-associated-control -->
     <label class="block text-black dark:text-white" use:melt="{$meltLabel}"

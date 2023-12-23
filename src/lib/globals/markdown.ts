@@ -1,7 +1,7 @@
 // @ts-expect-error this doesn't have any types
-import rehypeStarryNight from "rehype-starry-night";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
+import rehypeStarryNight from "rehype-starry-night";
 import rehypeStringify from "rehype-stringify";
 import remarkGFM from "remark-gfm";
 // @ts-expect-error this doesn't have any types

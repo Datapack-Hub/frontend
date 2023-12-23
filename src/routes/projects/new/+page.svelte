@@ -140,8 +140,7 @@
           multi="{true}"
           name="category"
           options="{categories}" />
-        {#if $errors.category}<span class="invalid"
-            >{$errors.category}</span
+        {#if $errors.category}<span class="invalid">{$errors.category}</span
           >{/if}
       </div>
       <button type="submit" class="button-primary col-span-3 mt-4 w-fit"

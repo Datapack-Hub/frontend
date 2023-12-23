@@ -30,12 +30,11 @@ export const actions = {
     const form = await superValidate(request, newProjectSchema);
 
     if (!form.valid) {
-      console.log("Error:", form)
+      console.log("Error:", form);
       return fail(400, { form });
     }
 
     const data = form.data;
-
 
     const projData = {
       icon: data.icon,
@@ -57,9 +56,8 @@ export const actions = {
     });
 
     if (result.ok) {
-      redirect(307, "/project/" + data.url)
+      redirect(307, "/project/" + data.url);
     }
-
 
     return { form };
   }
