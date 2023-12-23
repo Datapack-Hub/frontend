@@ -51,7 +51,8 @@
           </a>
         </div>
         {#if data.versions?.length != 0}
-          <div class="mb-3 rounded-lg bg-slate-100 dark:bg-zinc-900 p-3 dark:text-white">
+          <div
+            class="mb-3 rounded-lg bg-slate-100 p-3 dark:bg-zinc-900 dark:text-white">
             <Select
               emptyString="{'Filter by Minecraft Versions'}"
               multi="{true}"

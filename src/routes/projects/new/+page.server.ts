@@ -1,4 +1,4 @@
-import { API, categories } from "$lib/globals/consts";
+import { API } from "$lib/globals/consts";
 import { fail } from "@sveltejs/kit";
 import { superValidate } from "sveltekit-superforms/server";
 import { z } from "zod";
@@ -16,12 +16,11 @@ const newProjectSchema = z.object({
   category: z.string()
 });
 
-export const load = (async (event) => {
+export const load = (async event => {
   const form = await superValidate(event, newProjectSchema);
 
-  return { form }
+  return { form };
 }) satisfies PageServerLoad;
-
 
 export const actions = {
   default: async ({ request, cookies, fetch }) => {
@@ -32,7 +31,7 @@ export const actions = {
       return fail(400, { form });
     }
 
-    const data = form.data
+    const data = form.data;
 
     const projData = {
       icon: data.icon,
@@ -49,11 +48,9 @@ export const actions = {
       method: "POST",
       body: JSON.stringify(projData),
       headers: {
-        "Authorization": "Basic " + cookies.get("dph_token")
+        Authorization: "Basic " + cookies.get("dph_token")
       }
     });
-
-    
 
     return { form };
   }

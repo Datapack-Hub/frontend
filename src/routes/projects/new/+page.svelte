@@ -38,9 +38,8 @@
     });
   }
 
-
   $: {
-    $form.category = $category.split(", ")
+    $form.category = $category.split(", ");
   }
 
   function titleHandler(event: HTMLInputElement) {
@@ -55,7 +54,8 @@
 <main id="main-content" class="px-4 pb-3 sm:px-8 md:px-16 lg:px-24">
   {#if $authed}
     <div class="pt-0 md:pt-32"></div>
-    <h1 class="mb-4 text-3xl text-center md:text-left font-bold text-zinc-950 dark:text-zinc-100">
+    <h1
+      class="mb-4 text-center text-3xl font-bold text-zinc-950 md:text-left dark:text-zinc-100">
       Create New Datapack
     </h1>
     <p
@@ -137,15 +137,16 @@
         classes="col-span-2 resize-none" />
       {#if $errors.body}<span class="invalid">{$errors.body}</span>{/if}
       <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
-      <div
-        class="col-span-2">
+      <div class="col-span-2">
         <Select
           emptyString="{'Categories'}"
           multi="{true}"
           name="category"
           bind:selected="{category}"
           options="{categories}" />
-          {#if $errors.category}<span class="invalid">{$errors.category._errors}</span>{/if}
+        {#if $errors.category}<span class="invalid"
+            >{$errors.category._errors}</span
+          >{/if}
       </div>
       <button type="submit" class="button-primary col-span-3 mt-4 w-fit"
         >Create Project</button>
