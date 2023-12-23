@@ -34,7 +34,6 @@ export const load = (async ({ params, fetch, cookies, url }) => {
   ]);
 
   project.body = await processMarkdown(project.body ?? "No Body Specified!");
-  project.author.bio = await processMarkdown(project.author.bio);
 
   return {
     project,
