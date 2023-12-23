@@ -21,7 +21,6 @@
     elements: { root }
   } = createToggle({
     onPressedChange: value => {
-      toggle();
       return value.next;
     },
     defaultPressed: false
@@ -49,6 +48,7 @@
 
 <button
   use:melt="{$root}"
+  on:click="{event => toggle(event)}"
   class="select-none rounded-lg p-1 transition-all hover:text-dph-orange md:hover:bg-transparent dark:text-zinc-100"
   aria-label="dark mode toggle">
   {#if $isDark}
