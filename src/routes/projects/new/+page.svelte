@@ -132,7 +132,7 @@
         bind:content="{body}"
         name="body"
         classes="col-span-2 resize-none" />
-      {#if $errors.body}<span class="invalid">{$errors.body}</span>{/if}
+      {#if $errors.body}<span class="invalid col-span-2">{$errors.body}</span>{/if}
       <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
       <div class="col-span-2">
         <Select
