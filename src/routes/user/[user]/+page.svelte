@@ -166,7 +166,7 @@
             <IconBadge class="mr-1 inline-block" /> Badges
           </h2>
           <div
-            class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-200 p-3 md:justify-start dark:text-zinc-300 dark:bg-zinc-800">
+            class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-200 p-3 md:justify-start dark:bg-zinc-800 dark:text-zinc-300">
             {#if data.profile && data.profile.badges && data.profile?.badges?.length != 0}
               {#each data.profile?.badges ?? [] as badge}
                 <Tooltip
