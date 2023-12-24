@@ -166,8 +166,8 @@
             <IconBadge class="mr-1 inline-block" /> Badges
           </h2>
           <div
-            class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-200 p-3 md:justify-start dark:bg-zinc-800">
-            {#if data.profile?.badges?.length != 0}
+            class="flex min-h-[3rem] w-full justify-center space-x-3 rounded-lg bg-slate-200 p-3 md:justify-start dark:text-zinc-300 dark:bg-zinc-800">
+            {#if data.profile && data.profile.badges && data.profile?.badges?.length != 0}
               {#each data.profile?.badges ?? [] as badge}
                 <Tooltip
                   allowHTML="{true}"
@@ -180,6 +180,8 @@
                     class="h-8 w-8 rounded-lg lg:h-12 lg:w-12" />
                 </Tooltip>
               {/each}
+            {:else}
+              Whoops, nothing here...
             {/if}
           </div>
         </div>
