@@ -1,11 +1,11 @@
-name: Code quality
+name: Code Quality
 
 on:
   push:
   pull_request:
 
 jobs:
-  check:
+  lint:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
@@ -24,9 +24,9 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm i
-      - name: Run check
+      - name: Run Lint
         run: |
-          pnpm check
+          pnpm lint:all
   format:
     runs-on: ubuntu-latest
     timeout-minutes: 3
@@ -51,7 +51,6 @@ jobs:
         with:
           commit_message: "yo code so ugly the bot had to fix it 💀"
           prettier_options: --config .prettierrc --write ./{src,tests}/**/*.{svelte,ts}
-
 
 permissions:
   contents: write
