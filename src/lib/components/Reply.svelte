@@ -69,7 +69,7 @@
       </div>
       <MarkdownRenderer
         source="{reply.message}"
-        classes="text-sm dark:text-neutral-200 prose-sm" />
+        classes="prose-sm text-sm dark:text-neutral-200" />
     </div>
   </li>
 {/if}
