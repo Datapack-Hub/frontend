@@ -15,6 +15,7 @@
   import IconAlert from "~icons/tabler/AlertHexagon.svelte";
   import IconFiles from "~icons/tabler/Files.svelte";
   import autoAnimate from "@formkit/auto-animate";
+  import { tick } from "svelte";
 
   export let data: PageData;
 
@@ -39,6 +40,9 @@
     }
     if (matches?.length == 0)
       return toast.info("The latest version doesn't support " + vs);
+    tick().then(() => {
+      document.querySelector("#download-content")?.scrollIntoView();
+    });
   }
 </script>
 
@@ -120,7 +124,8 @@
         </div>
         {#if matches.length > 0}
           <div
-            class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800"
+            id="download-content"
+            class="scroll-mt-20 rounded-xl bg-slate-200 p-3 dark:bg-zinc-800"
             use:autoAnimate>
             <p class="MB-6 text-white">
               Latest version for {pickedVersion}:

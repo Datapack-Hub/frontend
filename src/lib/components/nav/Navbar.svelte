@@ -233,7 +233,7 @@
       </div>
       {#if $authed}
         <Tooltip
-          tooltipText="{'Create project'}"
+          tooltipText="{'Create Project'}"
           placement="{'bottom'}"
           classes="flex">
           <a
@@ -271,7 +271,12 @@
           {/if}
         {/if}
       {/if}
-      <ColorSchemeSelector />
+      <Tooltip
+        tooltipText="{'Switch Theme'}"
+        placement="{'bottom'}"
+        classes="flex">
+        <ColorSchemeSelector />
+      </Tooltip>
       {#if $authed}
         <a
           on:mouseenter="{() => (showUserPanel = true)}"
