@@ -41,7 +41,7 @@
         <p class="w-full break-words leading-tight">
           <RawMarkdownRenderer
             html="{data.project.body ?? 'No body specified!'}"
-            classes="prose-headings:mb-2 prose-p:my-0 prose-ul:my-3 prose-img:my-0" />
+            classes="prose-headings:mb-3 prose-img:my-0" />
         </p>
       </div>
     </div>

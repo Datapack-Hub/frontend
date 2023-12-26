@@ -294,26 +294,29 @@
             <div
               transition:fade="{{ duration: 100 }}"
               class="grid-first-small absolute -top-32 right-4 grid gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg transition-all md:top-14 dark:bg-zinc-950 dark:text-white">
-              <button
+              <a
+                href="/user/{$user.username}"
                 class="flex items-center"
                 on:click="{() => (showUserPanel = false)}">
                 <IconProfile class="inline-grid align-middle" />
-              </button>
+              </a>
               <a
                 href="/user/{$user.username}"
                 on:click="{() => (showUserPanel = false)}">Profile</a>
-              <button
+              <a
+                href="/settings"
                 class="flex items-center"
                 on:click="{() => (showUserPanel = false)}">
                 <IconGear class="inline-grid align-middle" />
-              </button>
+              </a>
               <a href="/settings" on:click="{() => (showUserPanel = false)}"
                 >Settings</a>
-              <button
-                class="flex items-center"
+              <a
+                data-sveltekit-preload-data="tap"
+                href="?log_out=1"
                 on:click="{() => (showUserPanel = false)}">
                 <IconLogOut class="inline-grid align-middle" />
-              </button>
+              </a>
               <a
                 data-sveltekit-preload-data="tap"
                 on:click="{() => (showUserPanel = false)}"

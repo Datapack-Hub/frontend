@@ -6,7 +6,7 @@
 <!-- tailwind is so clean ._. -->
 <div
   class="prose break-words
-  dark:prose-invert prose-p:my-3
+  dark:prose-invert
   prose-a:break-all
   prose-a:underline
   prose-blockquote:border-slate-300

@@ -75,13 +75,13 @@
 {#if visible}
   {#key comment}
     <div
-      class="group relative flex w-full space-x-2 rounded-lg bg-slate-300 p-3 dark:bg-zinc-900">
+      class="group relative flex w-full space-x-4 rounded-lg bg-slate-300 p-3 dark:bg-zinc-900">
       <img
         src="{appendSize(comment.author.profile_icon, 64)}"
         alt="{comment.author.username}'s profile"
         class="mt-1 h-12 rounded-full" />
       <div class="w-full">
-        <div class="flex items-baseline space-x-1">
+        <div class="flex items-baseline space-x-2">
           <a
             class="font-bold hover:underline"
             style="color: {userRole?.color};"
