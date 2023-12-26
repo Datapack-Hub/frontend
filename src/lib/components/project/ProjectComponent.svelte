@@ -65,8 +65,9 @@
           {project.author.username}
         </a>
         {#if project.latest_version}
-          {@const mcVersions =
-            project.latest_version.minecraft_versions.split(",").sort()}
+          {@const mcVersions = project.latest_version.minecraft_versions
+            .split(",")
+            .sort()}
           <span>•</span>
           <span>
             {mcVersions.at(-1)}
