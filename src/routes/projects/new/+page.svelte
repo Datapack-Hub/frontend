@@ -68,26 +68,28 @@
           <label
             for="icon"
             class="flex h-full w-full items-center justify-center">
+            <IconNoIcon class="h-1/2 w-1/2 {iconValue ? 'hidden' : 'block'}" />
             <img
               src="{iconImg}"
               alt="Your Icon"
-              class="aspect-square h-full w-full overflow-clip rounded-xl {iconValue
+              class="aspect-square h-min w-min overflow-clip rounded-xl {iconValue
                 ? 'block'
                 : 'hidden'}" />
-            <input
-              bind:files="{iconValue}"
-              on:change="{uploadIcon}"
-              type="file"
-              name="icon"
-              accept="image/*"
-              class="hidden" />
-            <IconNoIcon class="h-1/2 w-1/2 {iconValue ? 'hidden' : 'block'}" />
           </label>
+          <input
+            bind:files="{iconValue}"
+            on:change="{uploadIcon}"
+            type="file"
+            id="icon"
+            name="icon"
+            accept="image/*"
+            hidden />
         </div>
         <div class="w-full">
           <label for="title" class="mb-2 text-zinc-950 dark:text-zinc-100"
             >Title</label>
           <input
+            id="title"
             name="title"
             type="text"
             aria-invalid="{$errors.title ? 'true' : undefined}"
@@ -103,6 +105,7 @@
             URL
           </label>
           <input
+            id="url"
             name="url"
             type="text"
             aria-invalid="{$errors.url ? 'true' : undefined}"
@@ -118,6 +121,7 @@
         for="description"
         class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">Summary</label>
       <textarea
+        id="description"
         name="description"
         placeholder="A short description of your pack"
         maxlength="200"
