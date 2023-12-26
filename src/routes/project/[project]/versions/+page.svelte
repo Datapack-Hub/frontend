@@ -16,8 +16,6 @@
 
   let selectedVersions = readable("");
 
-  $: console.log($selectedVersions.split(", "));
-
   // Version filtering
   $: versionMatches =
     $selectedVersions.split(", ").at(0) == ""

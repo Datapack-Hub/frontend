@@ -19,7 +19,7 @@
     timeStyle: "long"
   });
 
-  let uhh = dateFormatter.format((project.updated || 0) * 1000);
+  let updated = dateFormatter.format((project.updated || 0) * 1000);
 
   $: userRole = $roles.find(role => role.name === project.author.role);
   $: status = project.status ?? "unpublished";
@@ -66,10 +66,10 @@
         </a>
         {#if project.latest_version}
           {@const mcVersions =
-            project.latest_version.minecraft_versions.split(",")}
+            project.latest_version.minecraft_versions.split(",").sort()}
           <span>•</span>
           <span>
-            {mcVersions[0]}
+            {mcVersions.at(-1)}
           </span>
         {:else}
           <span>•</span>
@@ -97,7 +97,7 @@
         class="max-w-1/2 mt-1 line-clamp-1 text-xs font-medium text-zinc-700 dark:text-zinc-100/40">
         {project.description}
       </p>
-      <Tooltip classes="inline-block" tooltipText="{uhh}">
+      <Tooltip classes="inline-block" tooltipText="{updated}">
         <p class="mt-2 w-fit text-xs">
           <IconUpdate class="inline-block" />
           Updated: {timeAgo((project.updated || 0) * 1000)}

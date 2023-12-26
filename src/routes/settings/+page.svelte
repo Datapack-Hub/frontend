@@ -77,8 +77,8 @@
   }
 
   async function resetToken() {
-    let response = await fetchAuthed("GET", "/users/obtain_token");
-    console.log(response.headers.getSetCookie());
+    await fetchAuthed("GET", "/users/obtain_token");
+    // console.log(response.headers.getSetCookie());
   }
 </script>
 
