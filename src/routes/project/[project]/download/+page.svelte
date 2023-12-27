@@ -15,7 +15,7 @@
   import IconFiles from "~icons/tabler/Files.svelte";
   import autoAnimate from "@formkit/auto-animate";
   import { tick } from "svelte";
-  import { dpvDictAll } from "$lib/globals/versions";
+  import { dpvDictAll, versionMatches } from "$lib/globals/versions";
 
   export let data: PageData;
 
@@ -33,13 +33,11 @@
   function pickVersions(vs: string) {
     matches = [];
     pickedVersion = vs;
-    for (const v of data.versions.filter((versions: Version) =>
-      versions.minecraft_versions.split(",").includes(vs)
-    )) {
+    for (const v of data.versions.filter((versions: Version) => versionMatches(vs, versions.minecraft_versions))) {
       matches = [...matches, v];
     }
     if (matches?.length == 0)
-      return toast.info("The latest version doesn't support " + vs);
+      return toast.info("The latest version doesn't support " + dpvDictAll[vs]);
     tick().then(() => {
       document.querySelector("#download-content")?.scrollIntoView();
     });
@@ -71,24 +69,22 @@
             <p class="dark:text-zinc-100">Select a Minecraft version:</p>
             <div class="grid-auto-fit-lg grid gap-3">
               {#each Object.keys(dpvDictAll).reverse() ?? [] as v}
-                {#if stitchedVersions.includes(v)}
-                  {@const mcVersions = data.project?.latest_version
-                    ? data.project.latest_version.minecraft_versions.split(",")
-                    : []}
+                {#if versionMatches(v, stitchedVersions)}
+                  {@const mcVersions = data.project?.latest_version?.minecraft_versions ?? ""}
                   <button
                     data-test-btn="{v}"
                     class="flex cursor-pointer items-center space-x-2 rounded-md bg-slate-300 p-3 transition-all hover:scale-102 dark:bg-zinc-700
-                  {mcVersions.includes(v)
+                  {versionMatches(v, mcVersions)
                       ? ' dark:text-zinc-100'
                       : ' text-red-500'}"
                     on:click="{() => pickVersions(v)}">
-                    {#if !mcVersions.includes(v)}
+                    {#if !versionMatches(v, mcVersions)}
                       <IconAlert />
                     {/if}
                     <div
                       class="flex flex-grow items-center space-x-2 font-bold">
                       <p>{dpvDictAll[v] ?? v}</p>
-                      {#if mcVersions.includes(v)}
+                      {#if versionMatches(v, mcVersions)}
                         <p class="font-thin italic">
                           {data.project.latest_version?.version_code}
                         </p>

@@ -185,7 +185,7 @@
       ><IconZIP />
       <span data-test-clickable-label="datapack">Datapack</span>
       {#if mcVersion}
-        <span>(for {mcVersion})</span>{/if}</Button>
+        <span>(for {dpvDictAll[mcVersion]})</span>{/if}</Button>
     {#if version.resource_pack_download}
       <Button
         click="{() => {

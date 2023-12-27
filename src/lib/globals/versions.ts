@@ -51,4 +51,14 @@ export const getDataPackVersion = (version: string): string => {
     throw new Error(`Unknown version ${version}`);
 };
 
+export const versionMatches = (version: string, versions: string): boolean => { // this is only nessecary to make old versions work
+    const versionsArray = versions.split(",").map(s => s.trim());
+    if (version === "26") {
+        return versionsArray.includes("1.20.3") || versionsArray.includes("1.20.4") || versionsArray.includes("26");
+    } else if (version === "18") {
+        return versionsArray.includes("1.20.2") || versionsArray.includes("18");
+    }
+    return versionsArray.includes(version) || versionsArray.find(s => s.substring(0, 4) === dpvDictAll[version].substring(0, 4)) !== undefined;
+};
+
 export { dpvDict, dpvDictAll };
