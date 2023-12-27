@@ -121,9 +121,11 @@
       <div
         class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start dark:bg-zinc-800">
         <div class="text-center align-middle md:text-start">
-          <p class="align-middle text-zinc-950 dark:text-zinc-100 text-lg">Username</p>
+          <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">
+            Username
+          </p>
           <p
-            class="align-middle text-zinc-950 opacity-40 dark:text-zinc-100 text-balance">
+            class="text-balance align-middle text-zinc-950 opacity-40 dark:text-zinc-100">
             Your username is used to view your profile, and is displayed on your
             datapacks, comments, and replies.
           </p>
@@ -132,9 +134,11 @@
             value="{data.profile?.username}"
             maxlength="32"
             bind:this="{usernameElement}" />
-          <p class="mt-6 align-middle text-zinc-950 dark:text-zinc-100 text-lg">Bio</p>
+          <p class="mt-6 align-middle text-lg text-zinc-950 dark:text-zinc-100">
+            Bio
+          </p>
           <p
-            class="mb-2 align-middle text-zinc-950 opacity-40 dark:text-zinc-100 text-balance">
+            class="mb-2 text-balance align-middle text-zinc-950 opacity-40 dark:text-zinc-100">
             Your bio is visible for anyone to see, don't store important
             information in it!
           </p>
@@ -152,12 +156,13 @@
       <div
         class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start dark:bg-zinc-800">
         <div class="text-center align-middle md:text-start">
-          <p class="align-middle text-zinc-950 dark:text-zinc-100 text-lg">
+          <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">
             Linked Github
           </p>
           <p
-            class="align-middle text-zinc-950 opacity-40 dark:text-zinc-100 text-balance">
-            By linking your GitHub, you can use it to log in to your account in the future.
+            class="text-balance align-middle text-zinc-950 opacity-40 dark:text-zinc-100">
+            By linking your GitHub, you can use it to log in to your account in
+            the future.
           </p>
           <a
             class="flex w-fit items-center space-x-2 rounded-lg bg-black p-3 font-bold text-white"
@@ -165,12 +170,13 @@
             <IconGithub />
             <p>Link your Github account</p>
           </a>
-          <p class="mt-6 align-middle text-zinc-950 dark:text-zinc-100 text-lg">
+          <p class="mt-6 align-middle text-lg text-zinc-950 dark:text-zinc-100">
             Linked Discord
           </p>
           <p
-            class="align-middle text-zinc-950 opacity-40 dark:text-zinc-100 text-balance">
-            By linking your Discord, you can use it to log in to your account in the future.
+            class="text-balance align-middle text-zinc-950 opacity-40 dark:text-zinc-100">
+            By linking your Discord, you can use it to log in to your account in
+            the future.
           </p>
           <a
             class="flex w-fit items-center space-x-2 rounded-lg bg-[#5865F2] p-3 font-bold text-white"
@@ -178,7 +184,8 @@
             <IconDiscord />
             <p>Link your Discord account</p>
           </a>
-          <p class="my-6 align-middle text-zinc-950 dark:text-zinc-100 text-balance">
+          <p
+            class="my-6 text-balance align-middle text-zinc-950 dark:text-zinc-100">
             (If you've already linked an account, it'll be re-linked.)
           </p>
           <p class="text-zinc-950 dark:text-zinc-100">Tokens</p>
