@@ -7,7 +7,6 @@
   import ProjectInfo from "$lib/components/project/ProjectInfo.svelte";
   import ProjectNav from "$lib/components/project/ProjectNav.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
-  import { minecraftVersions } from "$lib/globals/consts";
   import type { Version } from "$lib/globals/schema";
   import { user } from "$lib/globals/stores";
   import IconBack from "~icons/tabler/ArrowBack.svelte";
@@ -16,6 +15,7 @@
   import IconFiles from "~icons/tabler/Files.svelte";
   import autoAnimate from "@formkit/auto-animate";
   import { tick } from "svelte";
+  import { dpvDictAll } from "$lib/globals/versions";
 
   export let data: PageData;
 
@@ -70,7 +70,7 @@
           {#if data.versions?.length != 0}
             <p class="dark:text-zinc-100">Select a Minecraft version:</p>
             <div class="grid-auto-fit-lg grid gap-3">
-              {#each minecraftVersions.reverse() ?? [] as v}
+              {#each Object.keys(dpvDictAll).reverse() ?? [] as v}
                 {#if stitchedVersions.includes(v)}
                   {@const mcVersions = data.project?.latest_version
                     ? data.project.latest_version.minecraft_versions.split(",")
@@ -87,7 +87,7 @@
                     {/if}
                     <div
                       class="flex flex-grow items-center space-x-2 font-bold">
-                      <p>{v}</p>
+                      <p>{dpvDictAll[v]}</p>
                       {#if mcVersions.includes(v)}
                         <p class="font-thin italic">
                           {data.project.latest_version?.version_code}

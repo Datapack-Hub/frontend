@@ -24,7 +24,7 @@
   import IconDelete from "~icons/tabler/Trash.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import IconX from "~icons/tabler/X.svelte";
-  import { dpvDict, dpvDictSnapshot, getDataPackVersion } from "$lib/globals/versions";
+  import { dpvDict, dpvDictAll, getDataPackVersion } from "$lib/globals/versions";
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -556,7 +556,7 @@
                 <Select
                   emptyString="{'Select Supported Minecraft Versions'}"
                   multi="{true}"
-                  options="{Object.values(showSnapshot ? dpvDictSnapshot : dpvDict).reverse()}"
+                  options="{Object.values(showSnapshot ? dpvDictAll : dpvDict).reverse()}"
                   bind:selected="{supportedVersions}" />
                 <input
                   name="showSnapshot"

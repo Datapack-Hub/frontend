@@ -3,18 +3,19 @@
   import ProjectNav from "$lib/components/project/ProjectNav.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import Select from "$lib/components/utility/Select.svelte";
-  import { minecraftVersions } from "$lib/globals/consts";
   import type { Version } from "$lib/globals/schema";
   import autoAnimate from "@formkit/auto-animate";
   import { readable } from "svelte/store";
   import IconBack from "~icons/tabler/ArrowBack.svelte";
   import type { PageData } from "./$types";
+  import { dpvDict, dpvDictAll } from "$lib/globals/versions";
 
   export let data: PageData;
 
   // Local vars
 
   let selectedVersions = readable("");
+  let showSnapshot = false;
 
   // Version filtering
   $: versionMatches =
@@ -23,7 +24,7 @@
       : data.versions.filter((dp: Version) =>
           dp.minecraft_versions
             .split(",")
-            .some(version => $selectedVersions.split(", ").includes(version))
+            .some(version => $selectedVersions.split(", ").includes(dpvDictAll[version]))
         );
 </script>
 
@@ -55,7 +56,18 @@
               emptyString="{'Filter by Minecraft Versions'}"
               multi="{true}"
               bind:selected="{selectedVersions}"
-              options="{minecraftVersions}" />
+              options="{Object.values(showSnapshot ? dpvDictAll : dpvDict).reverse()}" />
+            <input
+              name="showSnapshot"
+              id="showSnapshot"
+              type="checkbox"
+              bind:checked="{showSnapshot}"
+              class=" h-10 align-middle" />
+            <label
+              for="showSnapshot"
+              class="align-middle text-zinc-950 dark:text-zinc-100">
+              Show Snapshot Versions
+            </label>
           </div>
           <ul use:autoAnimate class="space-y-2">
             {#each versionMatches ?? [] as version}

@@ -32,35 +32,6 @@ export const roleNames = [
   "default"
 ];
 
-/** All Minecraft Versions */
-export const minecraftVersions = [
-  "1.13",
-  "1.15",
-  "1.16.2",
-  "1.17.x",
-  "1.18",
-  "1.18.2",
-  "1.19",
-  "1.19.4",
-  "1.20",
-  "1.20.2",
-  "1.20.3"
-];
-
-export const dpPackFormats = [
-  { format: 4, label: "1.13" },
-  { format: 5, label: "1.15" },
-  { format: 6, label: "1.16.2" },
-  { format: 7, label: "1.17" },
-  { format: 8, label: "1.18" },
-  { format: 9, label: "1.18.2" },
-  { format: 10, label: "1.19" },
-  { format: 12, label: "1.19.4" },
-  { format: 15, label: "1.20" },
-  { format: 18, label: "1.20.2" },
-  { format: 26, label: "1.20.3" }
-];
-
 export type FeaturedProjectTypes =
   | "random"
   | "featured"
