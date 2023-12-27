@@ -41,4 +41,13 @@ for (let i = minecraftVersionData[0].data_pack_version; i > 0; i--) {
     }
 }
 
+export const getDataPackVersion = (version: string): string => {
+    for (const dpv in dpvDictSnapshot) {
+        if (dpvDict[dpv] === version || dpvDictSnapshot[dpv] === version) {
+            return dpv;
+        }
+    }
+    throw new Error(`Unknown version ${version}`);
+};
+
 export { dpvDict, dpvDictSnapshot };
