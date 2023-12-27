@@ -281,7 +281,7 @@
         <a
           on:mouseenter="{() => (showUserPanel = true)}"
           on:mouseleave="{() => (showUserPanel = false)}"
-          class="group py-1"
+          class="group"
           aria-label="Your profile"
           href="/user/{$user.username}">
           <img
@@ -289,7 +289,7 @@
             alt="{$user.username}'s profile picture"
             height="32"
             width="32"
-            class="ml-2 rounded-full hover:brightness-75" />
+            class="rounded-full hover:brightness-75" />
           {#if showUserPanel}
             <div
               transition:fade="{{ duration: 100 }}"
