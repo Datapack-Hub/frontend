@@ -75,7 +75,7 @@
     }
 
     let mcMeta = JSON.parse(await parsedZip.files["pack.mcmeta"].async("text"));
-    let packFormat = parseInt(version);
+    let packFormat = Number.parseInt(version);
 
     mcMeta.pack.pack_format = packFormat;
 

@@ -22,9 +22,9 @@ const dpvDict: { [dataPackVersion: string]: string } = {};
 const dpvDictAll: { [dataPackVersion: string]: string } = {};
 
 let lastStable: string = "newest";
-for (let i = minecraftVersionData[0].data_pack_version; i > 0; i--) {
+for (let index = minecraftVersionData[0].data_pack_version; index > 0; index--) {
   const mcVs: MinecraftVersion[] = minecraftVersionData.filter(
-    (version: MinecraftVersion) => version.data_pack_version === i
+    (version: MinecraftVersion) => version.data_pack_version === index
   );
   if (mcVs.length === 0) {
     continue;
@@ -33,21 +33,21 @@ for (let i = minecraftVersionData[0].data_pack_version; i > 0; i--) {
     (version: MinecraftVersion) => version.stable
   );
   if (stableMcVs.length === 1) {
-    dpvDict[i] = stableMcVs[0].id;
-    dpvDictAll[i] = stableMcVs[0].id;
+    dpvDict[index] = stableMcVs[0].id;
+    dpvDictAll[index] = stableMcVs[0].id;
     lastStable = stableMcVs[0].id;
   } else if (stableMcVs.length > 1) {
-    dpvDict[i] = `${stableMcVs[stableMcVs.length - 1].id} - ${
+    dpvDict[index] = `${stableMcVs.at(-1)?.id} - ${
       stableMcVs[0].id
     }`;
-    dpvDictAll[i] = `${stableMcVs[stableMcVs.length - 1].id} - ${
+    dpvDictAll[index] = `${stableMcVs.at(-1)?.id} - ${
       stableMcVs[0].id
     }`;
     lastStable = stableMcVs[0].id;
   } else if (mcVs.length === 1) {
-    dpvDictAll[i] = mcVs[0].id + " (" + lastStable + ")";
+    dpvDictAll[index] = mcVs[0].id + " (" + lastStable + ")";
   } else if (mcVs.length > 1) {
-    dpvDictAll[i] = `${mcVs[mcVs.length - 1].id} - ${
+    dpvDictAll[index] = `${mcVs.at(-1)?.id} - ${
       mcVs[0].id
     } (${lastStable})`;
   }
@@ -76,9 +76,9 @@ export const versionMatches = (version: string, versions: string): boolean => {
   }
   return (
     versionsArray.includes(version) ||
-    versionsArray.find(
-      s => s.substring(0, 4) === dpvDictAll[version].substring(0, 4)
-    ) !== undefined
+    versionsArray.some(
+      s => s.slice(0, 4) === dpvDictAll[version].slice(0, 4)
+    )
   );
 };
 
