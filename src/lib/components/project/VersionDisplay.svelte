@@ -6,7 +6,6 @@
   import MarkdownComponent from "../markdown/MarkdownRenderer.svelte";
   import Modal from "../modals/Modal.svelte";
 
-  import { dpPackFormats } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
   import type { Project, Version } from "$lib/globals/schema";
   import { user } from "$lib/globals/stores";
@@ -18,6 +17,7 @@
   import IconRP from "~icons/tabler/Sparkles.svelte";
   import Button from "../decorative/Button.svelte";
   import Tooltip from "../utility/Tooltip.svelte";
+  import { dpvDictAll } from "$lib/globals/versions";
 
   export let version: Version;
   export let expanded = false;
@@ -44,7 +44,7 @@
 
   async function download(
     url: string | undefined,
-    mcSemver: string,
+    version: string,
     rp: boolean
   ) {
     if (!browser || url === undefined) {
@@ -75,9 +75,7 @@
     }
 
     let mcMeta = JSON.parse(await parsedZip.files["pack.mcmeta"].async("text"));
-    let packFormat = 0;
-
-    packFormat = dpPackFormats.find(v => mcSemver === v.label)?.format || 0;
+    let packFormat = parseInt(version);
 
     mcMeta.pack.pack_format = packFormat;
 
@@ -141,18 +139,18 @@
     </div>
     {#if !mcVersion}
       <ul
-        class="hidden gap-1 text-zinc-950 md:flex md:flex-grow dark:text-white">
+        class="hidden gap-1 text-zinc-950 md:flex md:flex-wrap dark:text-white">
         {#each properVersion as mcv}
           <li>
             <button
-              class="rounded-md bg-dph-orange p-1 px-2 text-xs"
+              class="rounded-md bg-dph-orange p-1 px-2 text-xs truncate"
               on:click="{() =>
                 download(
                   version.primary_download,
                   mcv,
                   version.resource_pack_download !== undefined
                 )}">
-              {mcv}
+              {dpvDictAll[mcv] ?? mcv}
             </button>
           </li>
         {/each}
@@ -187,7 +185,7 @@
       ><IconZIP />
       <span data-test-clickable-label="datapack">Datapack</span>
       {#if mcVersion}
-        <span>(for {mcVersion})</span>{/if}</Button>
+        <span>(for {dpvDictAll[mcVersion]})</span>{/if}</Button>
     {#if version.resource_pack_download}
       <Button
         click="{() => {
@@ -225,7 +223,7 @@
             mcv,
             version?.resource_pack_download ? true : false
           );
-        }}">{mcv}</Button>
+        }}">{dpvDictAll[mcv] ?? mcv}</Button>
     {/each}
   </div>
   <p class="pr-1 text-xs italic text-zinc-950 dark:text-white">

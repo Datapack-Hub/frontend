@@ -7,6 +7,7 @@
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconUpdate from "~icons/tabler/Refresh.svelte";
   import Tooltip from "../utility/Tooltip.svelte";
+  import { dpvDictAll } from "$lib/globals/versions";
 
   export let project: Project;
   export let showStatus = false;
@@ -70,7 +71,7 @@
             .sort()}
           <span>•</span>
           <span>
-            {mcVersions.at(-1)}
+            {dpvDictAll[mcVersions[mcVersions.length - 1]] ?? mcVersions[mcVersions.length - 1]}
           </span>
         {:else}
           <span>•</span>

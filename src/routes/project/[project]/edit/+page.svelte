@@ -8,7 +8,7 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 
-  import { categories, minecraftVersions } from "$lib/globals/consts";
+  import { categories } from "$lib/globals/consts";
   import { fetchAuthed } from "$lib/globals/functions";
 
   import autoAnimate from "@formkit/auto-animate";
@@ -24,11 +24,13 @@
   import IconDelete from "~icons/tabler/Trash.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import IconX from "~icons/tabler/X.svelte";
+  import { dpvDict, dpvDictAll, getDataPackVersion } from "$lib/globals/versions";
 
   let publishModal: Modal;
   let draftModal: Modal;
   let deleteModal: Modal;
 
+  let showSnapshot: boolean = false;
   let supportedVersions: Readable<string> = readable();
   let zipFile: File;
   let activePage = "details";
@@ -204,8 +206,17 @@
     versionFormData.append("filename", zipFile.name);
     versionFormData.append(
       "minecraft_versions",
-      JSON.stringify($supportedVersions.split(",").map(s => s.trim()))
+      JSON.stringify(
+        [...new Set(
+          $supportedVersions
+            .split(",")
+            .map(s => s.trim())
+            .map(s => getDataPackVersion(s))
+        )]
+      )
     );
+
+    versionFormData.delete("showSnapshot");
 
     if (!vRPUsed) {
       versionFormData.delete("v_rp");
@@ -545,8 +556,19 @@
                 <Select
                   emptyString="{'Select Supported Minecraft Versions'}"
                   multi="{true}"
-                  options="{minecraftVersions}"
+                  options="{Object.values(showSnapshot ? dpvDictAll : dpvDict).reverse()}"
                   bind:selected="{supportedVersions}" />
+                <input
+                  name="showSnapshot"
+                  id="showSnapshot"
+                  type="checkbox"
+                  bind:checked="{showSnapshot}"
+                  class=" h-10 align-middle" />
+                <label
+                  for="showSnapshot"
+                  class="align-middle text-zinc-950 dark:text-zinc-100">
+                  Show Snapshot Versions
+                </label>
                 <div class="mb-8"></div>
                 <input
                   name="squash"
