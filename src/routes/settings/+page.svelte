@@ -93,7 +93,7 @@
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-32">
     <h1
-      class="my-3 pb-2 text-center text-5xl font-bold text-zinc-950 md:text-start md:text-4xl lg:text-5xl dark:text-white">
+      class="py-6 text-center text-5xl font-bold text-zinc-950 md:text-start md:text-4xl lg:text-5xl dark:text-white">
       Settings
     </h1>
     <div
@@ -121,9 +121,9 @@
       <div
         class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start dark:bg-zinc-800">
         <div class="text-center align-middle md:text-start">
-          <p class="align-middle text-zinc-950 dark:text-zinc-100">Username</p>
+          <p class="align-middle text-zinc-950 dark:text-zinc-100 text-lg">Username</p>
           <p
-            class="align-middle text-sm text-zinc-950 opacity-40 dark:text-zinc-100">
+            class="align-middle text-zinc-950 opacity-40 dark:text-zinc-100 text-balance">
             Your username is used to view your profile, and is displayed on your
             datapacks, comments, and replies.
           </p>
@@ -132,9 +132,9 @@
             value="{data.profile?.username}"
             maxlength="32"
             bind:this="{usernameElement}" />
-          <p class="mt-6 align-middle text-zinc-950 dark:text-zinc-100">Bio</p>
+          <p class="mt-6 align-middle text-zinc-950 dark:text-zinc-100 text-lg">Bio</p>
           <p
-            class="mb-2 align-middle text-sm text-zinc-950 opacity-40 dark:text-zinc-100">
+            class="mb-2 align-middle text-zinc-950 opacity-40 dark:text-zinc-100 text-balance">
             Your bio is visible for anyone to see, don't store important
             information in it!
           </p>
@@ -152,13 +152,12 @@
       <div
         class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start dark:bg-zinc-800">
         <div class="text-center align-middle md:text-start">
-          <p class="align-middle text-zinc-950 dark:text-zinc-100">
+          <p class="align-middle text-zinc-950 dark:text-zinc-100 text-lg">
             Linked Github
           </p>
           <p
-            class="align-middle text-sm text-zinc-950 opacity-40 dark:text-zinc-100">
-            Link your Github account to your Datapack Hub account, and you'll be
-            able to log in with Github.
+            class="align-middle text-zinc-950 opacity-40 dark:text-zinc-100 text-balance">
+            By linking your GitHub, you can use it to log in to your account in the future.
           </p>
           <a
             class="flex w-fit items-center space-x-2 rounded-lg bg-black p-3 font-bold text-white"
@@ -166,13 +165,12 @@
             <IconGithub />
             <p>Link your Github account</p>
           </a>
-          <p class="mt-6 align-middle text-zinc-950 dark:text-zinc-100">
+          <p class="mt-6 align-middle text-zinc-950 dark:text-zinc-100 text-lg">
             Linked Discord
           </p>
           <p
-            class="align-middle text-sm text-zinc-950 opacity-40 dark:text-zinc-100">
-            Link your Discord account to your Datapack Hub account, and you'll
-            be able to log in with Discord.
+            class="align-middle text-zinc-950 opacity-40 dark:text-zinc-100 text-balance">
+            By linking your Discord, you can use it to log in to your account in the future.
           </p>
           <a
             class="flex w-fit items-center space-x-2 rounded-lg bg-[#5865F2] p-3 font-bold text-white"
@@ -180,7 +178,7 @@
             <IconDiscord />
             <p>Link your Discord account</p>
           </a>
-          <p class="my-6 align-middle text-zinc-950 dark:text-zinc-100">
+          <p class="my-6 align-middle text-zinc-950 dark:text-zinc-100 text-balance">
             (If you've already linked an account, it'll be re-linked.)
           </p>
           <p class="text-zinc-950 dark:text-zinc-100">Tokens</p>
@@ -190,7 +188,7 @@
               on:click="{() => copyToken()}"
               ><IconClipboard /> Copy Token</button>
             <button
-              class="button-base flex w-fit items-center gap-3 bg-red-500 text-lg text-white"
+              class="button-base flex w-fit items-center gap-3 bg-red-500 text-white"
               on:click="{() => resetToken()}"><IconReset /> Reset Token</button>
           </div>
         </div>
