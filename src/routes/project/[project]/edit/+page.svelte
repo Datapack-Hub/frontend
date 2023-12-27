@@ -24,7 +24,11 @@
   import IconDelete from "~icons/tabler/Trash.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import IconX from "~icons/tabler/X.svelte";
-  import { dpvDict, dpvDictAll, getDataPackVersion } from "$lib/globals/versions";
+  import {
+    dpvDict,
+    dpvDictAll,
+    getDataPackVersion
+  } from "$lib/globals/versions";
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -206,14 +210,14 @@
     versionFormData.append("filename", zipFile.name);
     versionFormData.append(
       "minecraft_versions",
-      JSON.stringify(
-        [...new Set(
+      JSON.stringify([
+        ...new Set(
           $supportedVersions
             .split(",")
             .map(s => s.trim())
             .map(s => getDataPackVersion(s))
-        )]
-      )
+        )
+      ])
     );
 
     versionFormData.delete("showSnapshot");
@@ -556,7 +560,9 @@
                 <Select
                   emptyString="{'Select Supported Minecraft Versions'}"
                   multi="{true}"
-                  options="{Object.values(showSnapshot ? dpvDictAll : dpvDict).reverse()}"
+                  options="{Object.values(
+                    showSnapshot ? dpvDictAll : dpvDict
+                  ).reverse()}"
                   bind:selected="{supportedVersions}" />
                 <input
                   name="showSnapshot"

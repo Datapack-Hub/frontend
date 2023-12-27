@@ -33,7 +33,9 @@
   function pickVersions(vs: string) {
     matches = [];
     pickedVersion = vs;
-    for (const v of data.versions.filter((versions: Version) => versionMatches(vs, versions.minecraft_versions))) {
+    for (const v of data.versions.filter((versions: Version) =>
+      versionMatches(vs, versions.minecraft_versions)
+    )) {
       matches = [...matches, v];
     }
     if (matches?.length == 0)
@@ -70,7 +72,8 @@
             <div class="grid-auto-fit-lg grid gap-3">
               {#each Object.keys(dpvDictAll).reverse() ?? [] as v}
                 {#if versionMatches(v, stitchedVersions)}
-                  {@const mcVersions = data.project?.latest_version?.minecraft_versions ?? ""}
+                  {@const mcVersions =
+                    data.project?.latest_version?.minecraft_versions ?? ""}
                   <button
                     data-test-btn="{v}"
                     class="flex cursor-pointer items-center space-x-2 rounded-md bg-slate-300 p-3 transition-all hover:scale-102 dark:bg-zinc-700

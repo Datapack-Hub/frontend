@@ -71,7 +71,8 @@
             .sort()}
           <span>•</span>
           <span>
-            {dpvDictAll[mcVersions[mcVersions.length - 1]] ?? mcVersions[mcVersions.length - 1]}
+            {dpvDictAll[mcVersions[mcVersions.length - 1]] ??
+              mcVersions[mcVersions.length - 1]}
           </span>
         {:else}
           <span>•</span>

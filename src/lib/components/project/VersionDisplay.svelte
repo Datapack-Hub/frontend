@@ -143,7 +143,7 @@
         {#each properVersion as mcv}
           <li>
             <button
-              class="rounded-md bg-dph-orange p-1 px-2 text-xs truncate"
+              class="truncate rounded-md bg-dph-orange p-1 px-2 text-xs"
               on:click="{() =>
                 download(
                   version.primary_download,

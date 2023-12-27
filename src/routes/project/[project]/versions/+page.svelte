@@ -24,7 +24,9 @@
       : data.versions.filter((dp: Version) =>
           dp.minecraft_versions
             .split(",")
-            .some(version => $selectedVersions.split(", ").includes(dpvDictAll[version]))
+            .some(version =>
+              $selectedVersions.split(", ").includes(dpvDictAll[version])
+            )
         );
 </script>
 
@@ -56,7 +58,9 @@
               emptyString="{'Filter by Minecraft Versions'}"
               multi="{true}"
               bind:selected="{selectedVersions}"
-              options="{Object.values(showSnapshot ? dpvDictAll : dpvDict).reverse()}" />
+              options="{Object.values(
+                showSnapshot ? dpvDictAll : dpvDict
+              ).reverse()}" />
             <input
               name="showSnapshot"
               id="showSnapshot"
