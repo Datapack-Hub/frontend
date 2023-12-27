@@ -71,8 +71,7 @@
             .sort()}
           <span>•</span>
           <span>
-            {dpvDictAll[mcVersions.at(-1)] ??
-              mcVersions.at(-1)}
+            {dpvDictAll[mcVersions.at(-1)] ?? mcVersions.at(-1)}
           </span>
         {:else}
           <span>•</span>

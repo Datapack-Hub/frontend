@@ -22,7 +22,11 @@ const dpvDict: { [dataPackVersion: string]: string } = {};
 const dpvDictAll: { [dataPackVersion: string]: string } = {};
 
 let lastStable: string = "newest";
-for (let index = minecraftVersionData[0].data_pack_version; index > 0; index--) {
+for (
+  let index = minecraftVersionData[0].data_pack_version;
+  index > 0;
+  index--
+) {
   const mcVs: MinecraftVersion[] = minecraftVersionData.filter(
     (version: MinecraftVersion) => version.data_pack_version === index
   );
@@ -37,19 +41,13 @@ for (let index = minecraftVersionData[0].data_pack_version; index > 0; index--) 
     dpvDictAll[index] = stableMcVs[0].id;
     lastStable = stableMcVs[0].id;
   } else if (stableMcVs.length > 1) {
-    dpvDict[index] = `${stableMcVs.at(-1)?.id} - ${
-      stableMcVs[0].id
-    }`;
-    dpvDictAll[index] = `${stableMcVs.at(-1)?.id} - ${
-      stableMcVs[0].id
-    }`;
+    dpvDict[index] = `${stableMcVs.at(-1)?.id} - ${stableMcVs[0].id}`;
+    dpvDictAll[index] = `${stableMcVs.at(-1)?.id} - ${stableMcVs[0].id}`;
     lastStable = stableMcVs[0].id;
   } else if (mcVs.length === 1) {
     dpvDictAll[index] = mcVs[0].id + " (" + lastStable + ")";
   } else if (mcVs.length > 1) {
-    dpvDictAll[index] = `${mcVs.at(-1)?.id} - ${
-      mcVs[0].id
-    } (${lastStable})`;
+    dpvDictAll[index] = `${mcVs.at(-1)?.id} - ${mcVs[0].id} (${lastStable})`;
   }
 }
 
@@ -76,9 +74,7 @@ export const versionMatches = (version: string, versions: string): boolean => {
   }
   return (
     versionsArray.includes(version) ||
-    versionsArray.some(
-      s => s.slice(0, 4) === dpvDictAll[version].slice(0, 4)
-    )
+    versionsArray.some(s => s.slice(0, 4) === dpvDictAll[version].slice(0, 4))
   );
 };
 
