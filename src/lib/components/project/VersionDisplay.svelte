@@ -150,7 +150,7 @@
                   mcv,
                   version.resource_pack_download !== undefined
                 )}">
-              {dpvDictAll[mcv]}
+              {dpvDictAll[mcv] ?? mcv}
             </button>
           </li>
         {/each}
@@ -223,7 +223,7 @@
             mcv,
             version?.resource_pack_download ? true : false
           );
-        }}">{dpvDictAll[mcv]}</Button>
+        }}">{dpvDictAll[mcv] ?? mcv}</Button>
     {/each}
   </div>
   <p class="pr-1 text-xs italic text-zinc-950 dark:text-white">

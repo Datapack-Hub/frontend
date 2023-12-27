@@ -87,7 +87,7 @@
                     {/if}
                     <div
                       class="flex flex-grow items-center space-x-2 font-bold">
-                      <p>{dpvDictAll[v]}</p>
+                      <p>{dpvDictAll[v] ?? v}</p>
                       {#if mcVersions.includes(v)}
                         <p class="font-thin italic">
                           {data.project.latest_version?.version_code}
