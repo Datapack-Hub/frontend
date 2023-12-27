@@ -139,11 +139,11 @@
     </div>
     {#if !mcVersion}
       <ul
-        class="hidden gap-1 text-zinc-950 md:flex md:flex-grow dark:text-white">
+        class="hidden gap-1 text-zinc-950 md:flex md:flex-wrap dark:text-white">
         {#each properVersion as mcv}
           <li>
             <button
-              class="rounded-md bg-dph-orange p-1 px-2 text-xs"
+              class="rounded-md bg-dph-orange p-1 px-2 text-xs truncate"
               on:click="{() =>
                 download(
                   version.primary_download,
