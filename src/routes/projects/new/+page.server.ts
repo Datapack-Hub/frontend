@@ -18,8 +18,8 @@ const newProjectSchema = z.object({
     .max(10_000, { message: "Body too long!" }),
   category: z.string().refine(value => {
     const elements = value.split(",").map(element => element.trim());
-    return elements.every(element => categories.includes(element));
-  })
+    return elements.every(element => categories.includes(element)) && elements.length < 4;
+  }, { message: "Invalid Categories, you must have at least 1 category and at most 3 categories" })
 });
 
 export const load = (async event => {
@@ -46,7 +46,7 @@ export const actions = {
       title: data.title,
       description: data.description,
       body: data.body,
-      category: data.category.split(", ").slice(0, 2),
+      category: data.category,
       status: "draft"
     };
 
