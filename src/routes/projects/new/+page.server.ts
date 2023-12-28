@@ -16,10 +16,19 @@ const newProjectSchema = z.object({
     .string()
     .min(100, { message: "Body must contain at least 100 characters" })
     .max(10_000, { message: "Body too long!" }),
-  category: z.string().refine(value => {
-    const elements = value.split(",").map(element => element.trim());
-    return elements.every(element => categories.includes(element)) && elements.length < 4;
-  }, { message: "Invalid Categories, you must have at least 1 category and at most 3 categories" })
+  category: z.string().refine(
+    value => {
+      const elements = value.split(",").map(element => element.trim());
+      return (
+        elements.every(element => categories.includes(element)) &&
+        elements.length < 4
+      );
+    },
+    {
+      message:
+        "Invalid Categories, you must have at least 1 category and at most 3 categories"
+    }
+  )
 });
 
 export const load = (async event => {
