@@ -32,7 +32,7 @@
   }
 </script>
 
-<div class="font-brand {$isDark ? 'dark' : ''}">
+<div id="#layout" class="font-brand {$isDark ? 'dark' : ''}">
   {#if !maintenance || $user.role == "admin"}
     <div class="min-h-screen bg-slate-50 transition-all dark:bg-zinc-900">
       {#if $user.banned}

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import "./code-colors.css";
   import { processMarkdown } from "$lib/globals/markdown";
   import RawMarkdownRenderer from "./RawMarkdownRenderer.svelte";
 

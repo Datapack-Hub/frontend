@@ -1,9 +1,10 @@
 const tailwindcss = require('tailwindcss');
 
 const config = {
-  plugins: [
-    tailwindcss(),
-  ],
+  plugins: {
+    'tailwindcss/nesting': {},
+    tailwindcss: {},
+  },
 };
 
 module.exports = config;
