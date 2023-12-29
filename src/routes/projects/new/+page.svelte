@@ -1,6 +1,6 @@
 <script lang="ts">
   import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
-  import Select from "$lib/components/utility/Select.svelte";
+  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import { categories } from "$lib/globals/consts";
   import { authed } from "$lib/globals/stores";
   import { dash } from "radash";
@@ -139,11 +139,10 @@
         >{/if}
       <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
       <div class="col-span-2">
-        <Select
-          emptyString="{'Categories'}"
-          multi="{true}"
-          name="category"
-          options="{categories}" />
+        <ToggleBoxes
+          options="{categories}"
+          bind:selected="{$form.category}"
+          name="category" />
         {#if $errors.category}<span class="invalid">{$errors.category}</span
           >{/if}
       </div>

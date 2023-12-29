@@ -15,20 +15,20 @@
   import { toast } from "svelte-sonner";
 
   import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
-  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
   import Select from "$lib/components/utility/Select.svelte";
-  import { writable, type Readable, readable } from "svelte/store";
+  import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
+  import {
+    dpvDict,
+    dpvDictAll,
+    getDataPackVersion
+  } from "$lib/globals/versions";
+  import { readable, type Readable } from "svelte/store";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconDraft from "~icons/tabler/FileOff.svelte";
   import IconUpload from "~icons/tabler/FileUpload.svelte";
   import IconDelete from "~icons/tabler/Trash.svelte";
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import IconX from "~icons/tabler/X.svelte";
-  import {
-    dpvDict,
-    dpvDictAll,
-    getDataPackVersion
-  } from "$lib/globals/versions";
 
   let publishModal: Modal;
   let draftModal: Modal;
@@ -50,7 +50,8 @@
   let iconB64: string | ArrayBuffer | null | undefined;
   let iconImg: string;
 
-  $: category = writable(data.project.category || ([] as string[]));
+  let category = data.project.category?.toString() || "";
+  $: console.log(category);
 
   let vChangelog = "";
   let vName = "";
@@ -288,7 +289,8 @@
       title: titleValue,
       description: descValue,
       body: bodyValue,
-      category: $category.length === 0 ? data.project?.category : $category,
+      category:
+        category.length === 0 ? data.project?.category : category.split(","),
       icon: iconB64
     };
 
@@ -460,13 +462,11 @@
             bind:content="{bodyValue}" />
           <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
           <div
-            class="col-span-2 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3 lg:grid-cols-4">
-            {#each categories as cat}
-              <ToggleBoxes
-                value="{cat}"
-                selected="{category}"
-                on:fail="{() => toast.error('Max Categories Reached')}" />
-            {/each}
+            class="col-span-4 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3 lg:grid-cols-4">
+            <ToggleBoxes
+              debug="{true}"
+              options="{categories}"
+              bind:selected="{category}" />
           </div>
           <div class="col-span-3"></div>
           <button

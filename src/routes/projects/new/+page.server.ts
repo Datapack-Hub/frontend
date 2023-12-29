@@ -1,6 +1,6 @@
 import { API, categories } from "$lib/globals/consts";
 import { fail, redirect } from "@sveltejs/kit";
-import { superValidate } from "sveltekit-superforms/server";
+import { setError, superValidate } from "sveltekit-superforms/server";
 import { z } from "zod";
 import type { PageServerLoad } from "./$types";
 
@@ -55,7 +55,7 @@ export const actions = {
       title: data.title,
       description: data.description,
       body: data.body,
-      category: data.category,
+      category: data.category.split(","),
       status: "draft"
     };
 
@@ -69,8 +69,8 @@ export const actions = {
 
     if (result.ok) {
       redirect(307, "/project/" + data.url);
+    } else {
+      return setError(form, await result.text());
     }
-
-    return { form };
   }
 };
