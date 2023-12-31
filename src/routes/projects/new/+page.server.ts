@@ -8,7 +8,9 @@ const newProjectSchema = z.object({
   icon: z.ostring(),
   url: z
     .string()
-    .regex(/^[1-9a-z]+(-[1-9a-z]+)*$/, { message: "Slug can only contain alphanumeric characters and hyphens!"})
+    .regex(/^[1-9a-z]+(-[1-9a-z]+)*$/, {
+      message: "Slug can only contain alphanumeric characters and hyphens!"
+    })
     .max(35, { message: "Slug too long!" }),
   title: z.string().max(35, { message: "Title too long!" }),
   description: z.string().min(3).max(100, { message: "Summary too long!" }),

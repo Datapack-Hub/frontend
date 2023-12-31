@@ -37,7 +37,7 @@
   }
 
   function titleHandler(event: HTMLInputElement) {
-    $form.url = dash(event.value.trim()).replaceAll(/[^\da-z\-]/gi, '');
+    $form.url = dash(event.value.trim()).replaceAll(/[^\da-z\-]/gi, "");
   }
 </script>
 
