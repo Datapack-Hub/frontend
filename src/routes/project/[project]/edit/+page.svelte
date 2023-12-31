@@ -491,7 +491,7 @@
                   accept=".zip"
                   id="zip"
                   on:input="{verifyDatapack}" />
-                <p>or drag a ZIP anywhere onto this page</p>
+                <p class="text-black dark:text-white">or drag a ZIP anywhere onto this page</p>
               </div>
               <div class="space-y-2">
                 {#each data.versions ?? [] as version}

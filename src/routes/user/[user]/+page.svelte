@@ -3,7 +3,7 @@
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import IconVerified from "$lib/components/decorative/IconVerified.svelte";
   import RawMarkdownRenderer from "$lib/components/markdown/RawMarkdownRenderer.svelte";
-  import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
+  import ProjectComponent from "$lib/components/project/ProjectCard.svelte";
   import UserModeration from "$lib/components/user/UserModeration.svelte";
   import Tooltip from "$lib/components/utility/Tooltip.svelte";
   import { badges } from "$lib/globals/badges";

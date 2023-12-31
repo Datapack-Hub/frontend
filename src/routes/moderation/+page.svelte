@@ -1,6 +1,6 @@
 <script lang="ts">
   import ReportComponent from "$lib/components/ReportComponent.svelte";
-  import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
+  import ProjectComponent from "$lib/components/project/ProjectCard.svelte";
   import autoAnimate from "@formkit/auto-animate";
   import { createTabs, melt } from "@melt-ui/svelte";
   import { title } from "radash";

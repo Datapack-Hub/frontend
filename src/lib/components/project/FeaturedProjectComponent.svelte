@@ -4,7 +4,7 @@
   import IconFeatured from "~icons/tabler/Trophy.svelte";
 
   import type { Project } from "$lib/globals/schema";
-  import ProjectComponent from "./ProjectComponent.svelte";
+  import ProjectComponent from "./ProjectCard.svelte";
 
   export let project: Project;
   export let type: "popular" | "featured" | "random" | "new" = "popular";

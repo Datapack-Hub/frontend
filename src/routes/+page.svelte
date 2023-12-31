@@ -1,7 +1,7 @@
 <script lang="ts">
   import Button from "$lib/components/decorative/Button.svelte";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
-  import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
+  import ProjectComponent from "$lib/components/project/ProjectCard.svelte";
   import Tooltip from "$lib/components/utility/Tooltip.svelte";
   import type { FeaturedProjectTypes as FeaturedProjectType } from "$lib/globals/consts";
   import { appendSize } from "$lib/globals/functions";

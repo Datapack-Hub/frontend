@@ -37,7 +37,7 @@
   }
 
   function titleHandler(event: HTMLInputElement) {
-    $form.url = dash(event.value.trim());
+    $form.url = dash(event.value.trim()).replaceAll(/[^\da-z\-]/gi, '');
   }
 </script>
 
@@ -111,7 +111,6 @@
             aria-invalid="{$errors.url ? 'true' : undefined}"
             placeholder="slug-for-your-pack"
             bind:value="{$form.url}"
-            {...$constraints.url}
             class="input w-full" />
           {#if $errors.url}<span class="invalid">{$errors.url}</span>{/if}
         </div>

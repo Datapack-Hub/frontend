@@ -1,6 +1,6 @@
 <script lang="ts">
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
-  import ProjectComponent from "$lib/components/project/ProjectComponent.svelte";
+  import ProjectComponent from "$lib/components/project/ProjectCard.svelte";
   import { API, categories } from "$lib/globals/consts";
   import type { PageData } from "./$types";
 
