@@ -128,7 +128,6 @@ pre code.hljs {
   /* purposely ignored */
 }
 
-
 :is(:where(.dark)) {
   /*!
     Theme: GitHub Dark
