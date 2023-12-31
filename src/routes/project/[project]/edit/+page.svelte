@@ -464,7 +464,6 @@
           <div
             class="col-span-4 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3 lg:grid-cols-4">
             <ToggleBoxes
-              debug="{true}"
               options="{categories}"
               bind:selected="{category}" />
           </div>
