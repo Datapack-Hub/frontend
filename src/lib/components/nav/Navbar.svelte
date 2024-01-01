@@ -293,7 +293,7 @@
           {#if showUserPanel}
             <div
               transition:fade="{{ duration: 100 }}"
-              class="grid-first-small absolute -top-32 right-4 grid gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg transition-all md:top-14 dark:bg-zinc-950 dark:text-white">
+              class="grid-first-small absolute -top-32 right-4 grid gap-3 rounded-md bg-slate-50 px-6 py-3 shadow-lg transition-all md:top-12 dark:bg-zinc-950 dark:text-white">
               <a
                 href="/user/{$user.username}"
                 class="flex items-center"
