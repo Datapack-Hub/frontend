@@ -19,7 +19,7 @@
     </a>
     <p
       class="mt-4 text-center text-sm font-light text-zinc-950/50 lg:text-left dark:text-white/25">
-      Copyright © 2023 Datapack Hub<br />Not an official Minecraft product. Not
+      Copyright © 2024 Datapack Hub<br />Not an official Minecraft product. Not
       approved by or associated with Mojang Studios
     </p>
   </div>
