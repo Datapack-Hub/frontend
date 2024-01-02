@@ -83,7 +83,7 @@
         <div class="flex items-baseline space-x-2">
           <a
             class="font-bold hover:underline"
-            style="color: {userRole?.color || "#777"};"
+            style="color: {userRole?.color || '#777'};"
             href="/user/{comment.author.username}">{comment.author.username}</a>
           <p class="text-xs dark:text-neutral-400">
             {timeAgo(comment.sent * 1000)}
