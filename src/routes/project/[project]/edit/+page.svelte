@@ -369,7 +369,8 @@
               </label>
             </div>
             <div class="w-full">
-              <label for="title" class="mb-2 text-zinc-950 dark:text-zinc-100">Title</label>
+              <label for="title" class="mb-2 text-zinc-950 dark:text-zinc-100"
+                >Title</label>
               <input
                 id="title"
                 name="title"
@@ -381,7 +382,9 @@
             </div>
           </div>
 
-          <label for="description" class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">
+          <label
+            for="description"
+            class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">
             Summary
           </label>
           <textarea
@@ -398,14 +401,18 @@
             classes="col-span-2 h-64 resize-none"
             name="body"
             bind:content="{$form.body}" />
-          {#if $errors.body}<span class="text-red-500">{$errors.body}</span>{/if}
+          {#if $errors.body}<span class="text-red-500">{$errors.body}</span
+            >{/if}
           <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
-          <ToggleBoxes options="{categories}" name="category" bind:selected="{category}" />
-          {#if $errors.category}<span class="text-red-500">{$errors.category}</span>{/if}
+          <ToggleBoxes
+            options="{categories}"
+            name="category"
+            bind:selected="{category}" />
+          {#if $errors.category}<span class="text-red-500"
+              >{$errors.category}</span
+            >{/if}
           <div class="col-span-3"></div>
-          <button
-            type="submit"
-            class="button-primary col-span-3 mt-4 w-fit"
+          <button type="submit" class="button-primary col-span-3 mt-4 w-fit"
             >Update Project</button>
         </form>
         <!-- VERSIONS-->

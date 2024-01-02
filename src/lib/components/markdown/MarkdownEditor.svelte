@@ -65,13 +65,13 @@
         {remainingCharacters} characters left
       </p>
     </div>
+  {:else if disabledEditor}
+    <p class="text-zinc-950 dark:text-zinc-100">
+      Disabled for security issues!
+    </p>
   {:else}
-    {#if disabledEditor}
-      <p class="text-zinc-950 dark:text-zinc-100">Disabled for security issues!</p>
-    {:else}
-      <div class="input w-full">
-        <MarkdownComponent source="{content}" />
-      </div>
-    {/if}
+    <div class="input w-full">
+      <MarkdownComponent source="{content}" />
+    </div>
   {/if}
 </div>
