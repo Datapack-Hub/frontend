@@ -129,7 +129,7 @@ export const actions = {
     };
 
     const result = await fetch(`${API}/projects/edit/${project.ID}`, {
-      method: "PATCH",
+      method: "POST",
       body: JSON.stringify(projData),
       headers: {
         Authorization: "Basic " + cookies.get("dph_token")
