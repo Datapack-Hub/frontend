@@ -2,7 +2,7 @@
   import type { PageData } from "./$types";
 
   import { browser } from "$app/environment";
-  import { beforeNavigate, goto } from "$app/navigation";
+  import { goto } from "$app/navigation";
 
   import MarkdownComponent from "$lib/components/markdown/MarkdownRenderer.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
@@ -23,6 +23,7 @@
     getDataPackVersion
   } from "$lib/globals/versions";
   import { readable, type Readable } from "svelte/store";
+  import { superForm } from "sveltekit-superforms/client";
   import IconTick from "~icons/tabler/Check.svelte";
   import IconDraft from "~icons/tabler/FileOff.svelte";
   import IconUpload from "~icons/tabler/FileUpload.svelte";
@@ -30,6 +31,9 @@
   import IconNoIcon from "~icons/tabler/Upload.svelte";
   import IconX from "~icons/tabler/X.svelte";
 
+  export let data: PageData;
+
+  let { form, errors, constraints, enhance } = superForm(data.form);
   let publishModal: Modal;
   let draftModal: Modal;
   let deleteModal: Modal;
@@ -39,51 +43,30 @@
   let zipFile: File;
   let activePage = "details";
 
-  export let data: PageData;
-
   let createVersion = false;
 
-  let titleValue = data.project?.title;
-  let descValue = data.project?.description;
-  let bodyValue = data.project?.body;
   let iconValue: FileList;
-  let iconB64: string | ArrayBuffer | null | undefined;
   let iconImg: string;
 
   let category = data.project.category?.toString() || "";
-  $: console.log(category);
 
   let vChangelog = "";
   let vName = "";
   let vCode = "";
   let vRPUsed = false;
   let submitVersionButton: HTMLButtonElement;
-  let dirty = false;
 
   // let dependencies: Project[] = [];
   // let dependencyNames: string[] = [""];
 
   function setRPUsed() {
-    dirty = true;
     vRPUsed = true;
   }
-
-  beforeNavigate(({ cancel }) => {
-    if (
-      dirty &&
-      !confirm(
-        "Are you sure you want to leave this page? You have unsaved changes that will be lost."
-      )
-    ) {
-      cancel();
-    }
-  });
 
   type DragEventWithTarget = DragEvent & {
     currentTarget: EventTarget & HTMLLabelElement;
   };
   async function verifyDroppedPack(event: DragEventWithTarget) {
-    dirty = true;
     if (event.dataTransfer?.items) {
       // Use DataTransferItemList interface to access the file(s)
       let item = [...event.dataTransfer.items][0];
@@ -123,7 +106,6 @@
   }
 
   async function rpDropHandler(event: DragEventWithTarget) {
-    dirty = true;
     if (event.dataTransfer?.items) {
       // Use DataTransferItemList interface to access the file(s)
       let item = [...event.dataTransfer.items][0];
@@ -141,7 +123,6 @@
 
   // this should probably be done on the backend
   async function verifyDatapack() {
-    dirty = true;
     if (browser) {
       let inp = document.querySelector("#zip") as HTMLInputElement;
       if (inp.files) zipFile = inp.files[0];
@@ -232,7 +213,6 @@
         data: versionFormData,
         useSuppliedURL: false
       }).then(() => {
-        dirty = false;
         goto(".");
       }),
       {
@@ -244,7 +224,6 @@
   }
 
   function uploadIcon() {
-    dirty = true;
     if (iconValue[0].size > 256_000) {
       return toast.error("Icon must be less than 256kb");
     }
@@ -262,53 +241,9 @@
     reader.readAsDataURL(iconValue[0]);
 
     reader.addEventListener("load", event => {
-      iconB64 = event.target?.result;
+      $form.icon = event.target?.result?.toString();
       iconImg = URL.createObjectURL(iconValue[0]);
     });
-  }
-
-  async function update(target: EventTarget & HTMLButtonElement) {
-    target.disabled = true;
-
-    if ((titleValue?.length ?? 0) < 4) {
-      target.disabled = false;
-      return toast.error("Title must be at least 3 characters");
-    }
-    if ((bodyValue?.length ?? 0) < 101) {
-      target.disabled = false;
-      return toast.error("Body must be at least 100 characters");
-    }
-
-    let projData: {
-      title: string | undefined;
-      description: string | undefined | null;
-      body: string | undefined;
-      category: string[] | undefined;
-      icon?: string | ArrayBuffer | null | undefined;
-    } = {
-      title: titleValue,
-      description: descValue,
-      body: bodyValue,
-      category:
-        category.length === 0 ? data.project?.category : category.split(","),
-      icon: iconB64
-    };
-
-    if (iconB64) {
-      projData["icon"] = iconB64?.toString();
-    }
-
-    let x = await fetchAuthed("post", "/projects/edit/" + data.project?.ID, {
-      data: { ...projData }
-    });
-    if (x.ok) {
-      dirty = false;
-      goto(".");
-      toast.success("Edited project!");
-    } else {
-      target.disabled = false;
-      toast.error("Failed to upload! Contact an Admin!");
-    }
   }
 
   async function publish() {
@@ -408,7 +343,9 @@
     <!-- DETAILS-->
     <div use:autoAnimate>
       {#if activePage == "details"}
-        <div
+        <form
+          method="POST"
+          use:enhance
           class="grid grid-cols-2 gap-3 space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start lg:grid-cols-3 dark:bg-zinc-800">
           <div
             class="col-span-2 flex flex-col items-center justify-between space-x-0 md:flex-row md:space-x-2 xl:col-span-1">
@@ -432,45 +369,45 @@
               </label>
             </div>
             <div class="w-full">
-              <p class="mb-2 text-zinc-950 dark:text-zinc-100">Title</p>
+              <label for="title" class="mb-2 text-zinc-950 dark:text-zinc-100">Title</label>
               <input
+                id="title"
+                name="title"
                 type="text"
                 placeholder="Super Cool Datapack"
-                maxlength="35"
-                on:change="{() => (dirty = true)}"
-                bind:value="{titleValue}"
-                required
+                {...$constraints.title}
+                bind:value="{$form.title}"
                 class="input w-full" />
             </div>
           </div>
 
-          <p class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">
+          <label for="description" class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">
             Summary
-          </p>
+          </label>
           <textarea
+            id="description"
+            name="description"
             placeholder="A short description of your pack"
-            maxlength="200"
-            on:change="{() => (dirty = true)}"
-            bind:value="{descValue}"
+            {...$constraints.description}
+            bind:value="{$form.description}"
             class="input col-span-2 h-32 resize-none"></textarea>
           <p class="col-span-3 pt-3 text-zinc-950 dark:text-zinc-100">
             Description
           </p>
           <MarkdownEditor
             classes="col-span-2 h-64 resize-none"
-            on:input="{() => (dirty = true)}"
-            bind:content="{bodyValue}" />
+            name="body"
+            bind:content="{$form.body}" />
+          {#if $errors.body}<span class="text-red-500">{$errors.body}</span>{/if}
           <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
-          <div
-            class="col-span-4 grid grid-cols-2 gap-3 rounded-lg md:grid-cols-3 lg:grid-cols-4">
-            <ToggleBoxes options="{categories}" bind:selected="{category}" />
-          </div>
+          <ToggleBoxes options="{categories}" name="category" bind:selected="{category}" />
+          {#if $errors.category}<span class="text-red-500">{$errors.category}</span>{/if}
           <div class="col-span-3"></div>
           <button
+            type="submit"
             class="button-primary col-span-3 mt-4 w-fit"
-            on:click="{event => update(event.currentTarget)}"
             >Update Project</button>
-        </div>
+        </form>
         <!-- VERSIONS-->
       {:else if activePage == "versions"}
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
@@ -524,7 +461,6 @@
                       name="name"
                       required
                       placeholder="{data.project?.title} v{version}"
-                      on:change="{() => (dirty = true)}"
                       maxlength="50"
                       bind:value="{vName}" />
                   </label>
@@ -534,7 +470,6 @@
                     <input
                       required
                       class="input"
-                      on:change="{() => (dirty = true)}"
                       name="version_code"
                       placeholder="v{version}"
                       maxlength="15"
@@ -547,7 +482,6 @@
                   Changelog
                 </p>
                 <MarkdownEditor
-                  on:input="{() => (dirty = true)}"
                   bind:content="{vChangelog}"
                   name="description"
                   classes="h-36 w-full md:w-3/4" />

@@ -1,13 +1,42 @@
+import { API, categories } from "$lib/globals/consts";
 import { serverGetAuthed } from "$lib/globals/functions";
+import { processMarkdown } from "$lib/globals/markdown";
 import { projectSchema, versionSchema, type User } from "$lib/globals/schema";
-import { error } from "@sveltejs/kit";
+import { error, fail, redirect } from "@sveltejs/kit";
+import { parse } from "node-html-parser";
+import { setError, superValidate } from "sveltekit-superforms/server";
+import { z } from "zod";
 import type { PageServerLoad } from "./$types";
+import { imageMeta } from "image-meta"
 
-export const load = (async ({ params, cookies, fetch }) => {
+const editProjectSchema = z.object({
+  icon: z.ostring(),
+  title: z.string().max(35, { message: "Title too long!" }),
+  description: z.string().min(3).max(200, { message: "Summary too long!" }),
+  body: z
+    .string()
+    .min(100, { message: "Body must contain at least 100 characters" })
+    .max(10_000, { message: "Body too long!" }),
+  category: z.string().refine(
+    value => {
+      const elements = value.split(",").map(element => element.trim());
+      return (
+        elements.every(element => categories.includes(element)) &&
+        elements.length < 4
+      );
+    },
+    {
+      message:
+        "Invalid Categories, you must have at least 1 category and at most 3 categories"
+    }
+  )
+});
+
+export const load = (async event => {
   const projectRequest = await serverGetAuthed(
-    `/projects/get/${params.project}`,
-    cookies,
-    fetch
+    `/projects/get/${event.params.project}`,
+    event.cookies,
+    event.fetch
   );
 
   if (projectRequest.status === 404) {
@@ -20,7 +49,9 @@ export const load = (async ({ params, cookies, fetch }) => {
   const projectJson = await projectSchema.parseAsync(
     await projectRequest.json()
   );
-  const meRequest = await serverGetAuthed("/user/me", cookies, fetch);
+  // @ts-expect-error I don't feel like picking out the relevant stuff
+  const form = await superValidate(projectJson, editProjectSchema);
+  const meRequest = await serverGetAuthed("/user/me", event.cookies, fetch);
 
   if (meRequest.status === 401) {
     error(401, {
@@ -36,8 +67,8 @@ export const load = (async ({ params, cookies, fetch }) => {
   ) {
     const project = await serverGetAuthed(
       `/versions/project/${projectJson.ID}`,
-      cookies,
-      fetch
+      event.cookies,
+      event.fetch
     );
 
     const projectResultJson = await project.json();
@@ -46,7 +77,8 @@ export const load = (async ({ params, cookies, fetch }) => {
       .parseAsync(projectResultJson.result);
     return {
       project: projectJson,
-      versions: versionsRequest
+      versions: versionsRequest,
+      form
     };
   }
 
@@ -55,3 +87,62 @@ export const load = (async ({ params, cookies, fetch }) => {
     description: "Only the owner can edit this."
   });
 }) satisfies PageServerLoad;
+
+export const actions = {
+  default: async ({ request, cookies, fetch, url }) => {
+    const form = await superValidate(request, editProjectSchema);
+    const projectRequest = await serverGetAuthed(
+      `/projects/get/${url.pathname.split("/")[2]}`,
+      cookies,
+      fetch
+    );
+    const project = projectSchema.parse(await projectRequest.json());
+
+    if (!form.valid) {
+      console.log("Error:", form);
+      return fail(400, { form });
+    }
+
+    const data = form.data;
+
+    // const mdBody = await processMarkdown(data.body);
+    // const imgs = parse(mdBody).querySelectorAll("img");
+
+    // // i am very sleep deprived
+    // for (const imgElement of imgs) {
+    //   const imgReqs = await fetch(
+    //     imgElement.getAttribute("src")!.toString()
+    //   );
+    //   const imgBlob = Buffer.from(await imgReqs.arrayBuffer());
+    //   const imgMeta = imageMeta(imgBlob)
+    //   console.log(imgMeta)
+
+    //   data.body = data.body.replaceAll(
+    //     imgElement.getAttribute("src")!.toString(),
+    //     "data:image/" + imgMeta.type + ";base64," + imgBlob.toString("base64")
+    //   );
+    // }
+
+    const projData = {
+      icon: data.icon,
+      title: data.title,
+      description: data.description,
+      body: data.body,
+      category: data.category.split(",")
+    };
+
+    const result = await fetch(`${API}/projects/edit/${project.ID}`, {
+      method: "PATCH",
+      body: JSON.stringify(projData),
+      headers: {
+        Authorization: "Basic " + cookies.get("dph_token")
+      }
+    });
+
+    if (result.ok) {
+      redirect(307, "/project/" + project.url);
+    } else {
+      return setError(form, await result.text());
+    }
+  }
+};

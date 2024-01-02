@@ -8,6 +8,7 @@
   export let classes = "";
   export let content = "";
   export let name = "";
+  export let disabledEditor = false;
 
   let tab = "editor";
   $: remainingCharacters = maxEditorLength - content.length;
@@ -27,12 +28,14 @@
 <div class="{classes} h-fit">
   <div class="mb-3 flex items-center space-x-1">
     <button
+      type="button"
       role="tab"
       class="button-base text-zinc-950 dark:text-zinc-100 {tab === 'editor'
         ? 'bg-slate-400 dark:bg-zinc-500'
         : 'bg-slate-300 dark:bg-zinc-700'}"
       on:click="{() => (tab = 'editor')}">Edit</button>
     <button
+      type="button"
       role="tab"
       class="button-base text-zinc-950 dark:text-zinc-100 {tab === 'preview'
         ? 'bg-slate-400 dark:bg-zinc-500'
@@ -63,8 +66,12 @@
       </p>
     </div>
   {:else}
-    <div class="input w-full">
-      <MarkdownComponent source="{content}" />
-    </div>
+    {#if disabledEditor}
+      <p class="text-zinc-950 dark:text-zinc-100">Disabled for security issues!</p>
+    {:else}
+      <div class="input w-full">
+        <MarkdownComponent source="{content}" />
+      </div>
+    {/if}
   {/if}
 </div>

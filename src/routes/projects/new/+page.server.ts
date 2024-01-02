@@ -13,7 +13,7 @@ const newProjectSchema = z.object({
     })
     .max(35, { message: "Slug too long!" }),
   title: z.string().max(35, { message: "Title too long!" }),
-  description: z.string().min(3).max(100, { message: "Summary too long!" }),
+  description: z.string().min(3).max(200, { message: "Summary too long!" }),
   body: z
     .string()
     .min(100, { message: "Body must contain at least 100 characters" })
