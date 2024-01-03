@@ -84,12 +84,22 @@ export const load = (async event => {
   });
 }) satisfies PageServerLoad;
 
+function bufferToBase64(buffer: ArrayBuffer) {
+    let binary = "";
+    const bytes = new Uint8Array(buffer);
+    const length_ = bytes.byteLength;
+    for (let index = 0; index < length_; index++) {
+      binary += String.fromCodePoint(bytes[index]);
+    }
+    return btoa(binary);
+}
+
 async function blobToB64(buffer: Blob) {
   return (
     "data:" +
     buffer.type +
     ";base64," +
-    Buffer.from(await buffer.arrayBuffer()).toString("base64")
+    bufferToBase64(await buffer.arrayBuffer())
   );
 }
 
