@@ -85,17 +85,17 @@ export const load = (async event => {
 }) satisfies PageServerLoad;
 
 async function blobToB64(buffer: Blob) {
-    return (
-      "data:" +
-      buffer.type +
-      ";base64," +
-      Buffer.from(await buffer.arrayBuffer()).toString("base64")
-    );
+  return (
+    "data:" +
+    buffer.type +
+    ";base64," +
+    Buffer.from(await buffer.arrayBuffer()).toString("base64")
+  );
 }
 
 export const actions = {
   default: async ({ request, cookies, fetch, url }) => {
-    const formData = await request.formData()
+    const formData = await request.formData();
     const form = await superValidate(formData, editProjectSchema);
     const projectRequest = await serverGetAuthed(
       `/projects/get/${url.pathname.split("/")[2]}`,
@@ -112,10 +112,10 @@ export const actions = {
     // icon handling
     const data = form.data;
     const formDataIcon = formData.get("icon");
-    let icon: string | undefined
+    let icon: string | undefined;
 
     if (formDataIcon instanceof File) {
-      icon = await blobToB64(formDataIcon)
+      icon = await blobToB64(formDataIcon);
     }
 
     // TODO: fix this URGENTLY
@@ -145,7 +145,6 @@ export const actions = {
       category: data.category.split(",")
     };
 
-
     const result = await fetch(`${API}/projects/edit/${project.ID}`, {
       method: "POST",
       body: JSON.stringify(projData),
@@ -158,7 +157,7 @@ export const actions = {
       redirect(307, "/project/" + project.url);
     } else {
       const error = await result.text();
-      console.error(error)
+      console.error(error);
       return setError(form, error);
     }
   }
