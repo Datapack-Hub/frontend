@@ -228,11 +228,7 @@
       return toast.error("Icon must be less than 256kb");
     }
 
-    if (
-      !["png", "jpg", "webp", "gif", "avif"].includes(
-        iconValue[0].name.split(".").at(-1)?.toLowerCase() ?? "null"
-      )
-    ) {
+    if (!iconValue[0].type.startsWith("image/")) {
       return toast.error("Unsupported file type");
     }
 
@@ -240,8 +236,7 @@
 
     reader.readAsDataURL(iconValue[0]);
 
-    reader.addEventListener("load", event => {
-      $form.icon = event.target?.result?.toString();
+    reader.addEventListener("load", () => {
       iconImg = URL.createObjectURL(iconValue[0]);
     });
   }
@@ -345,6 +340,7 @@
       {#if activePage == "details"}
         <form
           method="POST"
+          enctype="multipart/form-data"
           use:enhance
           class="grid grid-cols-2 gap-3 space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start lg:grid-cols-3 dark:bg-zinc-800">
           <div
@@ -361,6 +357,8 @@
                 <input
                   bind:files="{iconValue}"
                   on:change="{uploadIcon}"
+                  name="icon"
+                  id="icon"
                   type="file"
                   accept="image/*"
                   class="hidden" />
@@ -381,6 +379,8 @@
                 class="input w-full" />
             </div>
           </div>
+          {#if $errors.icon}<span class="text-red-500">{$errors.icon}</span
+            >{/if}
 
           <label
             for="description"

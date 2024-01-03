@@ -39,19 +39,36 @@ export const load = (async event => {
   return { form };
 }) satisfies PageServerLoad;
 
+async function blobToB64(buffer: Blob) {
+  return (
+    "data:" +
+    buffer.type +
+    ";base64," +
+    Buffer.from(await buffer.arrayBuffer()).toString("base64")
+  );
+}
+
 export const actions = {
   default: async ({ request, cookies, fetch }) => {
-    const form = await superValidate(request, newProjectSchema);
+    const formData = await request.formData();
+    const form = await superValidate(formData, newProjectSchema);
 
     if (!form.valid) {
       console.log("Error:", form);
       return fail(400, { form });
     }
 
+    // icon handling
     const data = form.data;
+    const formDataIcon = formData.get("icon");
+    let icon: string | undefined;
+
+    if (formDataIcon instanceof File) {
+      icon = await blobToB64(formDataIcon);
+    }
 
     const projData = {
-      icon: data.icon,
+      icon,
       type: "datapack",
       url: data.url,
       title: data.title,

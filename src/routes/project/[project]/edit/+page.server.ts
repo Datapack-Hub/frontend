@@ -7,7 +7,6 @@ import { z } from "zod";
 import type { PageServerLoad } from "./$types";
 
 const editProjectSchema = z.object({
-  icon: z.ostring(),
   title: z.string().max(35, { message: "Title too long!" }),
   description: z.string().min(3).max(200, { message: "Summary too long!" }),
   body: z
@@ -85,9 +84,19 @@ export const load = (async event => {
   });
 }) satisfies PageServerLoad;
 
+async function blobToB64(buffer: Blob) {
+    return (
+      "data:" +
+      buffer.type +
+      ";base64," +
+      Buffer.from(await buffer.arrayBuffer()).toString("base64")
+    );
+}
+
 export const actions = {
   default: async ({ request, cookies, fetch, url }) => {
-    const form = await superValidate(request, editProjectSchema);
+    const formData = await request.formData()
+    const form = await superValidate(formData, editProjectSchema);
     const projectRequest = await serverGetAuthed(
       `/projects/get/${url.pathname.split("/")[2]}`,
       cookies,
@@ -100,8 +109,16 @@ export const actions = {
       return fail(400, { form });
     }
 
+    // icon handling
     const data = form.data;
+    const formDataIcon = formData.get("icon");
+    let icon: string | undefined
 
+    if (formDataIcon instanceof File) {
+      icon = await blobToB64(formDataIcon)
+    }
+
+    // TODO: fix this URGENTLY
     // const mdBody = await processMarkdown(data.body);
     // const imgs = parse(mdBody).querySelectorAll("img");
 
@@ -121,12 +138,13 @@ export const actions = {
     // }
 
     const projData = {
-      icon: data.icon,
+      icon,
       title: data.title,
       description: data.description,
       body: data.body,
       category: data.category.split(",")
     };
+
 
     const result = await fetch(`${API}/projects/edit/${project.ID}`, {
       method: "POST",
@@ -139,7 +157,9 @@ export const actions = {
     if (result.ok) {
       redirect(307, "/project/" + project.url);
     } else {
-      return setError(form, await result.text());
+      const error = await result.text();
+      console.error(error)
+      return setError(form, error);
     }
   }
 };
