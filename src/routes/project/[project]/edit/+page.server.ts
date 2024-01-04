@@ -125,7 +125,6 @@ export const actions = {
     let icon: string | undefined;
 
     if (formDataIcon instanceof File) {
-
       if (formDataIcon.size > 256_000) {
         return setError(form, "Icon must be less than 256kb");
       }
