@@ -187,7 +187,7 @@
         </div>
       </div>
       <span
-        class="styled-scrollbar w-full rounded-xl bg-slate-200 p-4 dark:bg-zinc-800 md:w-1/2 max-h-72 overflow-y-auto">
+        class="styled-scrollbar max-h-72 w-full overflow-y-auto rounded-xl bg-slate-200 p-4 dark:bg-zinc-800 md:w-1/2">
         <RawMarkdownRenderer html="{data.profile?.bio}" />
       </span>
     </div>
