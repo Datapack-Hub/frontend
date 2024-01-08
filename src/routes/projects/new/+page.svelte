@@ -37,7 +37,7 @@
   }
 
   function titleHandler(event: HTMLInputElement) {
-    $form.url = dash(event.value.trim()).replaceAll(/[^\da-z\-]/gi, "");
+    $form.url = dash(event.value.trim()).replaceAll(/[^\da-z-]/gi, "");
   }
 </script>
 
@@ -49,11 +49,11 @@
   {#if $authed}
     <div class="pt-0 md:pt-32"></div>
     <h1
-      class="mb-4 text-center text-3xl font-bold text-zinc-950 md:text-left dark:text-zinc-100">
+      class="mb-4 text-center text-3xl font-bold text-zinc-950 dark:text-zinc-100 md:text-left">
       Create New Datapack
     </h1>
     <p
-      class="ml-0 text-center text-zinc-950 md:ml-3 md:text-left dark:text-zinc-100">
+      class="ml-0 text-center text-zinc-950 dark:text-zinc-100 md:ml-3 md:text-left">
       Icon
     </p>
     <form
@@ -64,7 +64,7 @@
       <div
         class="col-span-2 flex flex-col items-center justify-between space-x-0 md:flex-row md:space-x-2">
         <div
-          class="aspect-square h-full w-1/3 cursor-pointer justify-center rounded-xl bg-slate-300 transition-all hover:brightness-75 md:w-auto dark:bg-zinc-700 dark:text-white">
+          class="aspect-square h-full w-1/3 cursor-pointer justify-center rounded-xl bg-slate-300 transition-all hover:brightness-75 dark:bg-zinc-700 dark:text-white md:w-auto">
           <label
             for="icon"
             class="flex h-full w-full items-center justify-center">

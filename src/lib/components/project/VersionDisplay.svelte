@@ -139,7 +139,7 @@
     </div>
     {#if !mcVersion}
       <ul
-        class="hidden gap-1 text-zinc-950 md:flex md:flex-wrap dark:text-white">
+        class="hidden gap-1 text-zinc-950 dark:text-white md:flex md:flex-wrap">
         {#each properVersion as mcv}
           <li>
             <button

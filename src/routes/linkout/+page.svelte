@@ -11,16 +11,16 @@
   <img src="/logos/dph_stop.svg" alt="logo" class="w-48" />
   <div class="w-full md:w-2/3">
     <h1
-      class="mb-4 text-4xl font-bold text-zinc-950 md:text-4xl lg:text-5xl dark:text-zinc-100">
+      class="mb-4 text-4xl font-bold text-zinc-950 dark:text-zinc-100 md:text-4xl lg:text-5xl">
       Stop!
     </h1>
-    <p class="text-base text-zinc-950 md:text-lg lg:text-xl dark:text-zinc-100">
+    <p class="text-base text-zinc-950 dark:text-zinc-100 md:text-lg lg:text-xl">
       You are being redirected to another page. This page may have different
       privacy policies or may be malicious. Make sure you know that the site is
       safe before continuing!
     </p>
     <p
-      class="mt-2 text-sm text-zinc-950/60 md:text-base lg:text-lg dark:text-zinc-100/60">
+      class="mt-2 text-sm text-zinc-950/60 dark:text-zinc-100/60 md:text-base lg:text-lg">
       URL: {data.url}
     </p>
     <div

@@ -126,7 +126,7 @@
                     type="text"
                     required
                     name="reply_msg"
-                    class="w-1/2 rounded-md p-1 px-2 text-sm focus:transition-all md:w-full md:text-base dark:bg-zinc-800 dark:text-white"
+                    class="w-1/2 rounded-md p-1 px-2 text-sm focus:transition-all dark:bg-zinc-800 dark:text-white md:w-full md:text-base"
                     placeholder="Leave a reply" />
                   <button
                     type="submit"
@@ -149,7 +149,7 @@
               type="text"
               required
               name="reply_msg"
-              class="w-1/2 rounded-md p-1 px-2 text-sm focus:transition-all md:w-full md:text-base dark:bg-zinc-800 dark:text-white"
+              class="w-1/2 rounded-md p-1 px-2 text-sm focus:transition-all dark:bg-zinc-800 dark:text-white md:w-full md:text-base"
               placeholder="Leave the first reply" />
             <button
               type="submit"

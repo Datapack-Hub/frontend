@@ -12,7 +12,7 @@
 
 <main
   id="main-content"
-  class="bg-slate-50 px-4 transition-all lg:px-32 xl:px-64 dark:bg-zinc-900">
+  class="bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
   <div class="pt-32"></div>
   <RawMarkdownRenderer html="{data.policy}" />
   <div class="pb-10"></div>

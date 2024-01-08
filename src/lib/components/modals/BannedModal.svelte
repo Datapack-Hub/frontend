@@ -50,7 +50,7 @@
               height="32"
               width="32" />
             <span
-              class="hidden text-2xl font-bold text-zinc-950 transition-colors md:block dark:text-white">
+              class="hidden text-2xl font-bold text-zinc-950 transition-colors dark:text-white md:block">
               Datapack Hub
             </span>
           </span>

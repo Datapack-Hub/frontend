@@ -24,7 +24,7 @@
           height="32"
           width="32" />
         <span
-          class="hidden text-2xl font-bold text-zinc-950 transition-colors hover:text-neutral-700 active:text-neutral-600 md:block dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500">
+          class="hidden text-2xl font-bold text-zinc-950 transition-colors hover:text-neutral-700 active:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:active:text-neutral-500 md:block">
           Sign In
         </span>
       </a>

@@ -289,11 +289,11 @@
 
 <main
   id="main-content"
-  class="relative bg-slate-50 px-4 transition-all sm:px-8 lg:px-16 xl:px-24 dark:bg-zinc-900">
+  class="relative bg-slate-50 px-4 transition-all dark:bg-zinc-900 sm:px-8 lg:px-16 xl:px-24">
   <div
     class="min-h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-32">
     <h1
-      class="py-8 text-center text-5xl font-bold text-zinc-950 md:py-0 md:text-start md:text-4xl lg:text-4xl dark:text-zinc-100">
+      class="py-8 text-center text-5xl font-bold text-zinc-950 dark:text-zinc-100 md:py-0 md:text-start md:text-4xl lg:text-4xl">
       Edit <span class="text-dph-orange">{data.project?.title}</span>
     </h1>
     {#if data.project?.mod_message}
@@ -342,11 +342,11 @@
           method="POST"
           enctype="multipart/form-data"
           use:enhance
-          class="grid grid-cols-2 gap-3 space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start lg:grid-cols-3 dark:bg-zinc-800">
+          class="grid grid-cols-2 gap-3 space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-zinc-800 md:text-start lg:grid-cols-3">
           <div
             class="col-span-2 flex flex-col items-center justify-between space-x-0 md:flex-row md:space-x-2 xl:col-span-1">
             <div
-              class="aspect-square h-full w-1/3 justify-center rounded-xl bg-slate-300 md:w-auto dark:bg-zinc-700 dark:text-white">
+              class="aspect-square h-full w-1/3 justify-center rounded-xl bg-slate-300 dark:bg-zinc-700 dark:text-white md:w-auto">
               <label class="flex h-full w-full items-center justify-center">
                 <img
                   src="{iconImg}"

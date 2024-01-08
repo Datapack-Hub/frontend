@@ -104,7 +104,7 @@
           bind:value="{data.query}"
           id="query"
           maxlength="35"
-          class="ml-2 w-64 bg-slate-300 text-zinc-950 placeholder:text-zinc-600 focus:outline-none lg:w-96 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400"
+          class="ml-2 w-64 bg-slate-300 text-zinc-950 placeholder:text-zinc-600 focus:outline-none dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400 lg:w-96"
           on:input="{search}" />
       </div>
       <div
@@ -146,7 +146,7 @@
           }}"
           class="h-8 w-8 rounded-md {layout === 'grid'
             ? 'bg-dph-orange text-white'
-            : 'bg-slate-300 text-zinc-950 dark:bg-zinc-700 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-zinc-950 sm:mt-0 dark:text-white">
+            : 'bg-slate-300 text-zinc-950 dark:bg-zinc-700 dark:text-white'} flex cursor-pointer items-center justify-center p-1 text-center font-bold text-zinc-950 dark:text-white sm:mt-0">
           <IconGrid /></button>
       </div>
       <div class="flex items-center space-x-1 sm:mt-0">
@@ -154,19 +154,19 @@
         {#if data.page - 3 >= 1}
           <a
             href="/projects?{genURLParameters(1)}"
-            class="flex h-8 w-8 content-center items-center rounded-md bg-slate-300 p-1 pl-1 text-center font-bold text-zinc-950 sm:mt-0 dark:bg-zinc-700 dark:text-white"
+            class="flex h-8 w-8 content-center items-center rounded-md bg-slate-300 p-1 pl-1 text-center font-bold text-zinc-950 dark:bg-zinc-700 dark:text-white sm:mt-0"
             ><IconBTS class="" /></a>
         {/if}
         {#if data.page - 2 >= 1}
           <a
             href="/projects?{genURLParameters(data.page - 2)}"
-            class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 sm:mt-0 dark:bg-zinc-700 dark:text-white"
+            class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 dark:bg-zinc-700 dark:text-white sm:mt-0"
             >{data.page - 2}</a>
         {/if}
         {#if data.page - 1 >= 1}
           <a
             href="/projects?{genURLParameters(data.page - 1)}"
-            class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 sm:mt-0 dark:bg-zinc-700 dark:text-white"
+            class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 dark:bg-zinc-700 dark:text-white sm:mt-0"
             >{data.page - 1}</a>
         {/if}
         <a
@@ -176,13 +176,13 @@
         {#if data.page + 1 <= data.pages}
           <a
             href="/projects?{genURLParameters(data.page + 1)}"
-            class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 sm:mt-0 dark:bg-zinc-700 dark:text-white"
+            class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 dark:bg-zinc-700 dark:text-white sm:mt-0"
             >{data.page + 1}</a>
         {/if}
         {#if data.page + 2 <= data.pages}
           <a
             href="/projects?{genURLParameters(data.page + 2)}"
-            class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 sm:mt-0 dark:bg-zinc-700 dark:text-white"
+            class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 dark:bg-zinc-700 dark:text-white sm:mt-0"
             >{data.page + 2}</a>
         {/if}
       </div>
@@ -239,19 +239,19 @@
       {#if data.page - 3 >= 1}
         <a
           href="/projects?{genURLParameters(1)}"
-          class="flex h-8 w-8 content-center items-center rounded-md bg-slate-300 p-1 pl-1 text-center font-bold text-zinc-950 sm:mt-0 dark:bg-zinc-700 dark:text-white"
+          class="flex h-8 w-8 content-center items-center rounded-md bg-slate-300 p-1 pl-1 text-center font-bold text-zinc-950 dark:bg-zinc-700 dark:text-white sm:mt-0"
           ><IconBTS class="" /></a>
       {/if}
       {#if data.page - 2 >= 1}
         <a
           href="/projects?{genURLParameters(data.page - 2)}"
-          class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 sm:mt-0 dark:bg-zinc-700 dark:text-white"
+          class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 dark:bg-zinc-700 dark:text-white sm:mt-0"
           >{data.page - 2}</a>
       {/if}
       {#if data.page - 1 >= 1}
         <a
           href="/projects?{genURLParameters(data.page - 1)}"
-          class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 sm:mt-0 dark:bg-zinc-700 dark:text-white"
+          class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 dark:bg-zinc-700 dark:text-white sm:mt-0"
           >{data.page - 1}</a>
       {/if}
       <a
@@ -261,13 +261,13 @@
       {#if data.page + 1 <= data.pages}
         <a
           href="/projects?{genURLParameters(data.page + 1)}"
-          class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 sm:mt-0 dark:bg-zinc-700 dark:text-white"
+          class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 dark:bg-zinc-700 dark:text-white sm:mt-0"
           >{data.page + 1}</a>
       {/if}
       {#if data.page + 2 <= data.pages}
         <a
           href="/projects?{genURLParameters(data.page + 2)}"
-          class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 sm:mt-0 dark:bg-zinc-700 dark:text-white"
+          class="h-8 w-8 rounded-md bg-slate-300 p-1 text-center font-bold text-zinc-950 dark:bg-zinc-700 dark:text-white sm:mt-0"
           >{data.page + 2}</a>
       {/if}
     </div>

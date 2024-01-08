@@ -89,11 +89,11 @@
 
 <main
   id="main-content"
-  class=" bg-slate-50 px-4 transition-all lg:px-32 xl:px-64 dark:bg-zinc-900">
+  class=" bg-slate-50 px-4 transition-all dark:bg-zinc-900 lg:px-32 xl:px-64">
   <div
     class=" h-screen w-full flex-col items-center md:flex-row md:items-start md:pt-32">
     <h1
-      class="py-6 text-center text-5xl font-bold text-zinc-950 md:text-start md:text-4xl lg:text-5xl dark:text-white">
+      class="py-6 text-center text-5xl font-bold text-zinc-950 dark:text-white md:text-start md:text-4xl lg:text-5xl">
       Settings
     </h1>
     <div
@@ -119,7 +119,7 @@
 
     <div use:melt="{$content('profile')}">
       <div
-        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start dark:bg-zinc-800">
+        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-zinc-800 md:text-start">
         <div class="text-center align-middle md:text-start">
           <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">
             Username
@@ -154,7 +154,7 @@
 
     <div use:melt="{$content('account')}">
       <div
-        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle md:text-start dark:bg-zinc-800">
+        class="space-y-2 rounded-xl bg-slate-200 p-3 text-center align-middle dark:bg-zinc-800 md:text-start">
         <div class="text-center align-middle md:text-start">
           <p class="align-middle text-lg text-zinc-950 dark:text-zinc-100">
             Linked Github
