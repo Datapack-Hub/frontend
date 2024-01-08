@@ -102,7 +102,7 @@
           <UserModeration user="{data.profile}" />
         {/if}
       </div>
-      <div class="flex w-full flex-col justify-between md:w-2/5">
+      <div class="md:w-2/5">
         <div>
           <p
             class="text-center text-4xl font-bold text-zinc-950 dark:text-white md:text-left md:text-3xl lg:text-4xl">
@@ -149,7 +149,7 @@
         </div>
         <div>
           <h2
-            class="mb-1 mt-4 w-full text-center dark:text-zinc-100 md:text-left">
+            class="mb-1 mt-6 w-full text-center dark:text-zinc-100 md:text-left">
             <IconTime class="mr-1 inline-block" />
             <b class="mr-2">Joined: </b>{data.profile?.join_date
               ? timeAgo(data.profile?.join_date)
@@ -162,7 +162,7 @@
         </div>
         <div>
           <h2
-            class="mb-1 mt-4 text-center text-lg font-bold dark:text-zinc-100 md:text-left">
+            class="mb-1 mt-6 text-center text-lg font-bold dark:text-zinc-100 md:text-left">
             <IconBadge class="mr-1 inline-block" /> Badges
           </h2>
           <div
