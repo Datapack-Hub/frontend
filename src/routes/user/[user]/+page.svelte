@@ -102,7 +102,7 @@
           <UserModeration user="{data.profile}" />
         {/if}
       </div>
-      <div class="md:w-2/5">
+      <div class="flex w-full flex-col justify-between md:w-2/5">
         <div>
           <p
             class="text-center text-4xl font-bold text-zinc-950 dark:text-white md:text-left md:text-3xl lg:text-4xl">
@@ -187,7 +187,7 @@
         </div>
       </div>
       <span
-        class="styled-scrollbar w-full overflow-y-auto rounded-xl bg-slate-200 p-4 dark:bg-zinc-800 md:w-1/2">
+        class="styled-scrollbar w-full rounded-xl bg-slate-200 p-4 dark:bg-zinc-800 md:w-1/2 max-h-72 overflow-y-auto">
         <RawMarkdownRenderer html="{data.profile?.bio}" />
       </span>
     </div>
