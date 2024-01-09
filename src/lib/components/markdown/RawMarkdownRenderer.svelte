@@ -19,6 +19,8 @@
   prose-pre:p-3 prose-table:rounded-lg prose-table:bg-slate-300/40 prose-th:p-3 prose-td:p-3
   prose-img:py-3 prose-hr:my-12
   prose-blockquote:dark:border-zinc-600 dark:prose-code:bg-zinc-950 dark:prose-pre:bg-zinc-950
+  prose-code:text-black
+  dark:prose-code:text-white
   prose-table:dark:bg-zinc-700/40 {classes} {$isDark ? 'dark' : ''}">
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html html}
