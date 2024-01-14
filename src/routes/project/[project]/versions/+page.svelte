@@ -4,11 +4,10 @@
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import Select from "$lib/components/utility/Select.svelte";
   import type { Version } from "$lib/globals/schema";
+  import { dpvDict, dpvDictAll } from "$lib/globals/versions";
   import autoAnimate from "@formkit/auto-animate";
   import { readable } from "svelte/store";
-  import IconBack from "~icons/tabler/ArrowBack.svelte";
   import type { PageData } from "./$types";
-  import { dpvDict, dpvDictAll } from "$lib/globals/versions";
 
   export let data: PageData;
 
@@ -46,11 +45,6 @@
 
       <div
         class="mb-2 items-center rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
-        <div class="mb-3 text-blue-300" use:autoAnimate>
-          <a href="/project/{data.project.url}"
-            ><IconBack class="inline" /> Back to description
-          </a>
-        </div>
         {#if data.versions?.length != 0}
           <div
             class="mb-3 rounded-lg bg-slate-100 p-3 dark:bg-zinc-900 dark:text-white">

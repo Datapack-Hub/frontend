@@ -9,13 +9,12 @@
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import type { Version } from "$lib/globals/schema";
   import { user } from "$lib/globals/stores";
-  import IconBack from "~icons/tabler/ArrowBack.svelte";
-  import IconRight from "~icons/tabler/CaretRightFilled.svelte";
-  import IconAlert from "~icons/tabler/AlertHexagon.svelte";
-  import IconFiles from "~icons/tabler/Files.svelte";
+  import { dpvDictAll, versionMatches } from "$lib/globals/versions";
   import autoAnimate from "@formkit/auto-animate";
   import { tick } from "svelte";
-  import { dpvDictAll, versionMatches } from "$lib/globals/versions";
+  import IconAlert from "~icons/tabler/AlertHexagon.svelte";
+  import IconRight from "~icons/tabler/CaretRightFilled.svelte";
+  import IconFiles from "~icons/tabler/Files.svelte";
 
   export let data: PageData;
 
@@ -62,11 +61,6 @@
 
       <div class="mb-2 items-center space-y-2">
         <div class="rounded-xl bg-slate-200 p-3 dark:bg-zinc-800">
-          <div class="mb-3 text-blue-300">
-            <a href="/project/{data.project.url}"
-              ><IconBack class="inline" /> Back to description
-            </a>
-          </div>
           {#if data.versions?.length != 0}
             <p class="dark:text-zinc-100">Select a Minecraft version:</p>
             <div class="grid-auto-fit-lg grid gap-3">

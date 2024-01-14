@@ -42,7 +42,6 @@
         : 'bg-slate-300 dark:bg-zinc-700'}"
       on:click="{() => (tab = 'preview')}">Preview</button>
   </div>
-
   {#if tab === "editor"}
     <div class="relative">
       <textarea
