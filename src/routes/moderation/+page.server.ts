@@ -17,7 +17,8 @@ export const load = (async ({ cookies, fetch }) => {
       async (response: Response) => {
         if (response.ok) return await response.json();
         error(response.status, {
-          message: response.statusText
+          message: response.statusText,
+          description: undefined
         });
       }
     );

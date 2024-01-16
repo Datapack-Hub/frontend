@@ -9,7 +9,7 @@ export const load = (async ({ cookies, fetch }) => {
   if (!unread.ok) {
     error(unread.status, {
       message: unread.statusText,
-      description: "Something went wrong"
+      description: undefined
     });
   }
 
