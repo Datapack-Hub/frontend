@@ -1,7 +1,5 @@
 <script lang="ts">
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
-  import IconGithub from "~icons/tabler/BrandGithub.svelte";
-  import IconDiscord from "~icons/tabler/BrandDiscord.svelte";
   import { authed, user } from "$lib/globals/stores";
 </script>
 
@@ -38,13 +36,19 @@
         <a
           class="flex items-center space-x-2 rounded-lg bg-black p-3 font-bold text-white"
           href="https://api.datapackhub.net/auth/login/github">
-          <IconGithub />
+          <img
+            src="/logos/github-white.svg"
+            alt="github logo"
+            class="h-4 self-center" />
           <p>Sign In with Github</p>
         </a>
         <a
           class="flex items-center space-x-2 rounded-lg bg-[#5865F2] p-3 font-bold text-white"
           href="https://api.datapackhub.net/auth/login/discord">
-          <IconDiscord />
+          <img
+            src="/logos/discord-white.svg"
+            alt="discord logo"
+            class="h-4 self-center" />
           <p>Sign In with Discord</p>
         </a>
       </div>
