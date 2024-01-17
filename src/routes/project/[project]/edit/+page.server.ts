@@ -37,7 +37,7 @@ export const load = (async event => {
 
   if (projectRequest.status === 404) {
     error(404, {
-      message: "Project Not Found",
+      message: projectRequest.statusText,
       description: "How you tried creating a project before editing it? I heard that's a much better way of doin' things."
     });
   }
@@ -51,7 +51,7 @@ export const load = (async event => {
 
   if (meRequest.status === 401) {
     error(401, {
-      message: "Unauthorized",
+      message: meRequest.statusText,
       description: undefined
     });
   }

@@ -14,7 +14,7 @@ export const load = (async ({ params, fetch, cookies, url }) => {
 
   if ([projectRequest.status, versionsRequest.status].includes(404)) {
     error(404, {
-      message: "Project Not Found",
+      message: projectRequest.statusText,
       description: undefined
     });
   }

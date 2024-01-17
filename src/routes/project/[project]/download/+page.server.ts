@@ -14,8 +14,8 @@ export const load = (async ({ params, fetch, cookies, url }) => {
 
   if ([projectRequest.status, versionsRequest.status].includes(404)) {
     error(404, {
-      message: "Project Not Found",
-      description: "We've searched thoroughly, but found nothing except a few cobwebs. No files to download around here."
+      message: projectRequest.statusText,
+      description: "This chest seems to be empty. No files to download in here..."
     });
   }
 
