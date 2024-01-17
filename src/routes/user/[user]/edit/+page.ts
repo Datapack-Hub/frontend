@@ -28,8 +28,8 @@ export const load = (async ({ params, fetch }) => {
         !defaultRole.permissions.includes("EDIT_USER")
       ) {
         error(403, {
-          message: "Not allowed!",
-          description: "This is not you, you can't edit their profile."
+          message: "Forbidden",
+          description: "Hello there, little prankster. This is not you, you can't edit their profile."
         });
       }
 

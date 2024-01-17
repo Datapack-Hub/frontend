@@ -37,8 +37,8 @@ export const load = (async event => {
 
   if (projectRequest.status === 404) {
     error(404, {
-      message: "Silly boy!",
-      description: "Doesn't exist, nerd!"
+      message: projectRequest.statusText,
+      description: "How you tried creating a project before editing it? I heard that's a much better way of doin' things."
     });
   }
 
@@ -51,8 +51,8 @@ export const load = (async event => {
 
   if (meRequest.status === 401) {
     error(401, {
-      message: "Please sign in.",
-      description: "If you are signed in, then our server must be down. Sorry!"
+      message: meRequest.statusText,
+      description: undefined
     });
   }
 
@@ -79,8 +79,8 @@ export const load = (async event => {
   }
 
   error(403, {
-    message: "Not your project.",
-    description: "Only the owner can edit this."
+    message: "Forbidden",
+    description: "Hello there, little prankster. Only the owner can edit this project."
   });
 }) satisfies PageServerLoad;
 

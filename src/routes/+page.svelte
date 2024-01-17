@@ -118,7 +118,7 @@
   <title>Datapack Hub</title>
   <meta
     name="description"
-    content="Datapack Hub is a website to find and download Minecraft datapacks. Join our datapacking discord" />
+    content="Datapack Hub is a website to find and download Minecraft datapacks. Join our datapacking discord." />
 </svelte:head>
 
 <svelte:window bind:scrollY />
