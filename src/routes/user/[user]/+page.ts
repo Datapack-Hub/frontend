@@ -18,7 +18,8 @@ export const load = (async ({ params, fetch }) => {
   if (user.status === 404) {
     error(404, {
       message: user.statusText,
-      description: "We couldn't find that entity. You may have hallucinated their existence"
+      description:
+        "We couldn't find that entity. You may have hallucinated their existence"
     });
   }
 

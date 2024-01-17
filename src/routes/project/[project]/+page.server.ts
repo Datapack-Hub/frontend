@@ -15,7 +15,8 @@ export const load = (async ({ params, fetch, cookies, url }) => {
   if ([projectRequest.status, versionsRequest.status].includes(404)) {
     error(404, {
       message: projectRequest.statusText,
-      description: "We've searched thoroughly, but found nothing except a few cobwebs. No project around here. Why don't you go ahead and turn the idea into a reality yourself?"
+      description:
+        "We've searched thoroughly, but found nothing except a few cobwebs. No project around here. Why don't you go ahead and turn the idea into a reality yourself?"
     });
   }
 

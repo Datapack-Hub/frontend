@@ -17,7 +17,8 @@ export const load = (async ({ params, fetch, cookies, url }) => {
   if (projectRequest.status === 404) {
     error(404, {
       message: projectRequest.status,
-      description: "Welp, this is kinda awkward. You probably wanted to leave a quality comment, but sadly we couldn't find this project."
+      description:
+        "Welp, this is kinda awkward. You probably wanted to leave a quality comment, but sadly we couldn't find this project."
     });
   }
 

@@ -29,7 +29,8 @@ export const load = (async ({ params, fetch }) => {
       ) {
         error(403, {
           message: "Forbidden",
-          description: "Hello there, little prankster. This is not you, you can't edit their profile."
+          description:
+            "Hello there, little prankster. This is not you, you can't edit their profile."
         });
       }
 
