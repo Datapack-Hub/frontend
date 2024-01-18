@@ -9,7 +9,8 @@ const newProjectSchema = z.object({
   url: z
     .string()
     .regex(/^-*[1-9a-z]+(-[1-9a-z]+)*$/, {
-      message: "Slug can only contain lower case alphanumeric characters and hyphens!"
+      message:
+        "Slug can only contain lower case alphanumeric characters and hyphens!"
     })
     .regex(/^-/, {
       message: "Slug may not start with a hyphen!"
