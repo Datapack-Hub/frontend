@@ -94,7 +94,7 @@
             Home
           </a>
           <a
-            href="/explore"
+            href="/projects"
             class="button-base flex items-center justify-center gap-3 bg-[#ff631a] text-white">
             <img src="/logos/dph.svg" alt="dph logo" class="h-4 self-center" />
             Explore Projects
@@ -143,7 +143,7 @@
             Home
           </a>
           <a
-            href="/explore"
+            href="/projects"
             class="button-base flex items-center justify-center gap-3 bg-[#ff631a] text-white">
             <img src="/logos/dph.svg" alt="dph logo" class="h-4 self-center" />
             Explore Projects
