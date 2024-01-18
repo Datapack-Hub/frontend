@@ -33,7 +33,7 @@
       href="/project/{project.url}"
       class="rounded-lg {project.icon
         ? ''
-        : 'bg-slate-300 p-4 w-20 h-20 dark:bg-zinc-700 dark:text-zinc-100'} items-start">
+        : 'h-20 w-20 bg-slate-300 p-4 dark:bg-zinc-700 dark:text-zinc-100'} items-start">
       {#if project.icon}
         <img
           src="{project.icon}"
@@ -42,7 +42,7 @@
           height="80"
           class="aspect-square w-20 rounded-lg bg-cover" />
       {:else}
-        <IconNoPhoto width="48" height="48"/>
+        <IconNoPhoto width="48" height="48" />
       {/if}
     </a>
     <div class="ml-4 w-3/4">
