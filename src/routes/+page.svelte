@@ -353,7 +353,7 @@
           part of the community!
         </p>
         <a
-          class="my-3 rounded-lg bg-[#5865F2] p-3 font-bold text-white"
+          class="button-base flex items-center justify-center gap-3 bg-[#5865F2] text-white font-bold"
           href="https://discord.datapackhub.net">
           <img
             src="/logos/discord-white.svg"
