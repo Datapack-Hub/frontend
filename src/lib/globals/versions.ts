@@ -54,7 +54,7 @@ async function genStuff() {
   }
 }
 
-genStuff()
+genStuff();
 
 export const getDataPackVersion = (version: string): string => {
   for (const dpv in dpvDictAll) {
