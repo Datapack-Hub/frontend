@@ -13,43 +13,48 @@ type MinecraftVersion = {
   sha1: string;
 };
 
-const response = await fetch(
-  "https://raw.githubusercontent.com/misode/mcmeta/summary/versions/data.min.json"
-);
-const minecraftVersionData: MinecraftVersion[] = await response.json();
-
 const dpvDict: { [dataPackVersion: string]: string } = {};
 const dpvDictAll: { [dataPackVersion: string]: string } = {};
 
 let lastStable: string = "newest";
-for (
-  let index = minecraftVersionData[0].data_pack_version;
-  index > 0;
-  index--
-) {
-  const mcVs: MinecraftVersion[] = minecraftVersionData.filter(
-    (version: MinecraftVersion) => version.data_pack_version === index
+
+// this only exists because top level await support is weird
+async function genStuff() {
+  const response = await fetch(
+    "https://raw.githubusercontent.com/misode/mcmeta/summary/versions/data.min.json"
   );
-  if (mcVs.length === 0) {
-    continue;
-  }
-  const stableMcVs: MinecraftVersion[] = mcVs.filter(
-    (version: MinecraftVersion) => version.stable
-  );
-  if (stableMcVs.length === 1) {
-    dpvDict[index] = stableMcVs[0].id;
-    dpvDictAll[index] = stableMcVs[0].id;
-    lastStable = stableMcVs[0].id;
-  } else if (stableMcVs.length > 1) {
-    dpvDict[index] = `${stableMcVs.at(-1)?.id} - ${stableMcVs[0].id}`;
-    dpvDictAll[index] = `${stableMcVs.at(-1)?.id} - ${stableMcVs[0].id}`;
-    lastStable = stableMcVs[0].id;
-  } else if (mcVs.length === 1) {
-    dpvDictAll[index] = mcVs[0].id + " (" + lastStable + ")";
-  } else if (mcVs.length > 1) {
-    dpvDictAll[index] = `${mcVs.at(-1)?.id} - ${mcVs[0].id} (${lastStable})`;
+  const minecraftVersionData: MinecraftVersion[] = await response.json();
+  for (
+    let index = minecraftVersionData[0].data_pack_version;
+    index > 0;
+    index--
+  ) {
+    const mcVs: MinecraftVersion[] = minecraftVersionData.filter(
+      (version: MinecraftVersion) => version.data_pack_version === index
+    );
+    if (mcVs.length === 0) {
+      continue;
+    }
+    const stableMcVs: MinecraftVersion[] = mcVs.filter(
+      (version: MinecraftVersion) => version.stable
+    );
+    if (stableMcVs.length === 1) {
+      dpvDict[index] = stableMcVs[0].id;
+      dpvDictAll[index] = stableMcVs[0].id;
+      lastStable = stableMcVs[0].id;
+    } else if (stableMcVs.length > 1) {
+      dpvDict[index] = `${stableMcVs.at(-1)?.id} - ${stableMcVs[0].id}`;
+      dpvDictAll[index] = `${stableMcVs.at(-1)?.id} - ${stableMcVs[0].id}`;
+      lastStable = stableMcVs[0].id;
+    } else if (mcVs.length === 1) {
+      dpvDictAll[index] = mcVs[0].id + " (" + lastStable + ")";
+    } else if (mcVs.length > 1) {
+      dpvDictAll[index] = `${mcVs.at(-1)?.id} - ${mcVs[0].id} (${lastStable})`;
+    }
   }
 }
+
+genStuff()
 
 export const getDataPackVersion = (version: string): string => {
   for (const dpv in dpvDictAll) {
