@@ -16,19 +16,16 @@
   let { form, errors, constraints, enhance } = superForm(data.form);
 
   function uploadIcon() {
-    if (iconValue[0].size > 256_000) {
+     if (iconValue[0].size > 256_000) {
       return toast.error("Icon must be less than 256kb");
     }
 
-    if (
-      !["png", "jpg", "webp", "gif", "avif"].includes(
-        iconValue[0].name.split(".").at(-1)?.toLowerCase() ?? "null"
-      )
-    ) {
-      return toast.error("Unsupported file type");
+    if (!iconValue[0].type.startsWith("image/")) {
+      return toast.error("Unsupported image type, recommendations are PNG and JPG!");
     }
 
     let reader = new FileReader();
+
     reader.readAsDataURL(iconValue[0]);
     reader.addEventListener("load", event => {
       $form.icon = event.target?.result?.toString();

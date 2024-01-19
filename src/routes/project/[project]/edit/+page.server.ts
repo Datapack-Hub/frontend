@@ -7,6 +7,15 @@ import { z } from "zod";
 import type { PageServerLoad } from "./$types";
 
 const editProjectSchema = z.object({
+  icon: z.ostring().refine(
+    value => {
+      if (!value) return true;
+      if (new Blob([value]).size > 256_000) {
+        return false;
+      }
+    },
+    { message: "Image is too large!" }
+  ),
   title: z.string().max(35, { message: "Title too long!" }),
   description: z.string().min(3).max(200, { message: "Summary too long!" }),
   body: z
@@ -132,7 +141,10 @@ export const actions = {
       }
 
       if (!formDataIcon.type.startsWith("image/")) {
-        return setError(form, "Unsupported file type");
+        return setError(
+          form,
+          "Unsupported image type, recommendations are PNG and JPG!"
+        );
       }
 
       icon = await blobToB64(formDataIcon);

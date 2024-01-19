@@ -35,6 +35,11 @@ export const badges = [
     tooltip: "<b>Bug Finder</b><br />Helped find a bug in Datapack Hub"
   },
   {
+    name: "exterminator",
+    description: "Exterminator",
+    tooltip: "<b>Exterminator</b><br />Found many, many bugs"
+  },
+  {
     name: "nerd",
     description: "Nerd",
     tooltip:

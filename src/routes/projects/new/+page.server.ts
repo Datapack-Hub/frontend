@@ -5,7 +5,13 @@ import { z } from "zod";
 import type { PageServerLoad } from "./$types";
 
 const newProjectSchema = z.object({
-  icon: z.ostring(),
+  icon: z.ostring().refine(value => {
+    if(!value) return true
+    const data = atob(value)
+    if (new Blob([data]).size > 256_000) {
+      return false
+    }
+  }, {message: "Image is too large!"}),
   url: z
     .string()
     .regex(/^-*[1-9a-z]+(-[1-9a-z]+)*$/, {
@@ -84,7 +90,10 @@ export const actions = {
       }
 
       if (!formDataIcon.type.startsWith("image/")) {
-        return setError(form, "Unsupported file type");
+        return setError(
+          form,
+          "Unsupported image type, recommendations are PNG and JPG!"
+        );
       }
 
       icon = await blobToB64(formDataIcon);

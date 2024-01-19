@@ -229,14 +229,15 @@
     }
 
     if (!iconValue[0].type.startsWith("image/")) {
-      return toast.error("Unsupported file type");
+      return toast.error("Unsupported image type, recommendations are PNG and JPG!");
     }
 
     let reader = new FileReader();
 
     reader.readAsDataURL(iconValue[0]);
 
-    reader.addEventListener("load", () => {
+    reader.addEventListener("load", event => {
+      $form.icon = event.target?.result?.toString();
       iconImg = URL.createObjectURL(iconValue[0]);
     });
   }
@@ -378,9 +379,8 @@
                 bind:value="{$form.title}"
                 class="input w-full" />
             </div>
+            {#if $errors.icon}<span class="text-red-500">{$errors.icon}</span>{/if}
           </div>
-          {#if $errors.icon}<span class="text-red-500">{$errors.icon}</span
-            >{/if}
 
           <label
             for="description"
@@ -404,13 +404,13 @@
           {#if $errors.body}<span class="text-red-500">{$errors.body}</span
             >{/if}
           <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
+          {#if $errors.category}<span class="text-red-500 col-span-3"
+              >{$errors.category}</span
+            >{/if}
           <ToggleBoxes
             options="{categories}"
             name="category"
             bind:selected="{category}" />
-          {#if $errors.category}<span class="text-red-500"
-              >{$errors.category}</span
-            >{/if}
           <div class="col-span-3"></div>
           <button type="submit" class="button-primary col-span-3 mt-4 w-fit"
             >Update Project</button>

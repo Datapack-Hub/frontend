@@ -124,19 +124,32 @@
 
   async function report() {
     reportModal.close();
-    let promise = fetchAuthed(
+
+    if(reportMessage.trim().length === 0) {
+      toast.error("Must include a report message!")
+      return
+    }
+
+    toast.loading("Reporting...")
+
+    let result = await fetchAuthed(
       "post",
       "/projects/id/" + project?.ID + "/report",
       {
         data: { message: reportMessage }
       }
     );
-    toast.promise(promise, {
-      success: "Reported project! A moderator will review your report ASAP.",
-      loading: "Reporting...",
-      error:
-        "Uh oh, something went wrong. In the meantime, please report this bug on our Discord."
-    });
+    if(result.ok) {
+      toast.success("Report sent!")
+    } else {
+      if(result.status == 404) {
+        toast.error("Project does not exist!")
+      }
+
+      if(result.status == 401 || result.status == 403) {
+        toast.error("Please log in before reporting!")
+      }
+    }
   }
 
   async function feature() {
@@ -155,7 +168,7 @@
       {
         success: "Featured project!",
         loading: "Featuring...",
-        error: "Uh oh, something went wrong."
+        error: "Uh oh, something went wrong. Ask Cobble or Sila to fix :)"
       }
     );
   }

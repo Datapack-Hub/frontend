@@ -48,10 +48,6 @@
           <a class="transition-transform hover:brightness-75" href="/staff"
             >Staff Team</a>
         </li>
-        <li>
-          <a class="transition-transform hover:brightness-75" href="/staff"
-            >About us</a>
-        </li>
       </ul>
       <ul class="w-1/3 text-center text-zinc-950 dark:text-white">
         <li>

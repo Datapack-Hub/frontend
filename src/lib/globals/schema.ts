@@ -74,7 +74,7 @@ export const projectSchema = z.object({
   title: z.string(), //.max(35),
   type: z.enum(["datapack"]),
   updated: z.number().nonnegative().optional(),
-  url: z.string().regex(/[a-z-]+/)
+  url: z.string() //.regex(/^-*[1-9a-z]+(-[1-9a-z]+)*$/)
 });
 
 export const notificationSchema = z.object({

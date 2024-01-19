@@ -43,10 +43,7 @@
           class="font-bold hover:underline"
           style="color: {userRole?.color};"
           href="/user/{reply.author.username}">{reply.author.username}</a>
-        <p class="text-xs dark:text-neutral-400">
-          {timeAgo(reply.sent * 1000)}
-        </p>
-        {#if $user.id == reply.author.id || $roleInfo.permissions.includes("DELETE_CONTENT")}
+          {#if $user.id == reply.author.id || $roleInfo.permissions.includes("DELETE_CONTENT")}
           <div class="absolute right-0 p-3 text-white">
             {#if $user.id == reply.author.id || ["moderator", "admin"].includes($user.role)}
               <div
@@ -65,11 +62,14 @@
               </div>
             {/if}
           </div>
-        {/if}
-      </div>
+          {/if}
+        </div>
+      <p class="text-xs dark:text-neutral-400 mb-1">
+        {timeAgo(reply.sent * 1000)}
+      </p>
       <MarkdownRenderer
         source="{reply.message}"
-        classes="prose-sm text-sm dark:text-neutral-200" />
+        classes="prose-sm text-sm dark:text-neutral-200 max-h-96 overflow-y-auto" />
     </div>
   </li>
 {/if}
