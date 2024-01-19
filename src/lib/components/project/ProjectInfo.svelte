@@ -39,7 +39,7 @@
     if (isNew == true) nextStepsModal.open();
   });
 
-  console.log(project)
+  console.log(project);
 
   let mm: HTMLDivElement;
   let status = project.status ?? "unpublished";

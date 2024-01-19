@@ -16,12 +16,14 @@
   let { form, errors, constraints, enhance } = superForm(data.form);
 
   function uploadIcon() {
-     if (iconValue[0].size > 256_000) {
+    if (iconValue[0].size > 256_000) {
       return toast.error("Icon must be less than 256kb");
     }
 
     if (!iconValue[0].type.startsWith("image/")) {
-      return toast.error("Unsupported image type, recommendations are PNG and JPG!");
+      return toast.error(
+        "Unsupported image type, recommendations are PNG and JPG!"
+      );
     }
 
     let reader = new FileReader();

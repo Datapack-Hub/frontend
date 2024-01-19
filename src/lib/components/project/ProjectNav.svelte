@@ -125,12 +125,12 @@
   async function report() {
     reportModal.close();
 
-    if(reportMessage.trim().length === 0) {
-      toast.error("Must include a report message!")
-      return
+    if (reportMessage.trim().length === 0) {
+      toast.error("Must include a report message!");
+      return;
     }
 
-    toast.loading("Reporting...")
+    toast.loading("Reporting...");
 
     let result = await fetchAuthed(
       "post",
@@ -139,15 +139,15 @@
         data: { message: reportMessage }
       }
     );
-    if(result.ok) {
-      toast.success("Report sent!")
+    if (result.ok) {
+      toast.success("Report sent!");
     } else {
-      if(result.status == 404) {
-        toast.error("Project does not exist!")
+      if (result.status == 404) {
+        toast.error("Project does not exist!");
       }
 
-      if(result.status == 401 || result.status == 403) {
-        toast.error("Please log in before reporting!")
+      if (result.status == 401 || result.status == 403) {
+        toast.error("Please log in before reporting!");
       }
     }
   }

@@ -5,13 +5,16 @@ import { z } from "zod";
 import type { PageServerLoad } from "./$types";
 
 const newProjectSchema = z.object({
-  icon: z.ostring().refine(value => {
-    if(!value) return true
-    const data = atob(value)
-    if (new Blob([data]).size > 256_000) {
-      return false
-    }
-  }, {message: "Image is too large!"}),
+  icon: z.ostring().refine(
+    value => {
+      if (!value) return true;
+      const data = atob(value);
+      if (new Blob([data]).size > 256_000) {
+        return false;
+      }
+    },
+    { message: "Image is too large!" }
+  ),
   url: z
     .string()
     .regex(/^-*[1-9a-z]+(-[1-9a-z]+)*$/, {

@@ -229,7 +229,9 @@
     }
 
     if (!iconValue[0].type.startsWith("image/")) {
-      return toast.error("Unsupported image type, recommendations are PNG and JPG!");
+      return toast.error(
+        "Unsupported image type, recommendations are PNG and JPG!"
+      );
     }
 
     let reader = new FileReader();
@@ -379,7 +381,8 @@
                 bind:value="{$form.title}"
                 class="input w-full" />
             </div>
-            {#if $errors.icon}<span class="text-red-500">{$errors.icon}</span>{/if}
+            {#if $errors.icon}<span class="text-red-500">{$errors.icon}</span
+              >{/if}
           </div>
 
           <label
@@ -404,7 +407,7 @@
           {#if $errors.body}<span class="text-red-500">{$errors.body}</span
             >{/if}
           <p class="col-span-3 text-zinc-950 dark:text-zinc-100">Categories</p>
-          {#if $errors.category}<span class="text-red-500 col-span-3"
+          {#if $errors.category}<span class="col-span-3 text-red-500"
               >{$errors.category}</span
             >{/if}
           <ToggleBoxes

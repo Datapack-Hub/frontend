@@ -74,7 +74,7 @@
 {#if visible}
   {#key comment}
     <div
-      class="group relative flex w-full space-x-4 rounded-lg bg-slate-300 p-3 dark:bg-zinc-900 overflow-x-auto">
+      class="group relative flex w-full space-x-4 overflow-x-auto rounded-lg bg-slate-300 p-3 dark:bg-zinc-900">
       <img
         src="{appendSize(comment.author.profile_icon, 64)}"
         alt="{comment.author.username}'s profile"
@@ -85,15 +85,19 @@
             class="font-bold hover:underline"
             style="color: {userRole?.color || '#777'};"
             href="/user/{comment.author.username}">{comment.author.username}</a>
-          </div>
+        </div>
 
-        <p class="text-xs dark:text-neutral-400 mb-1">
+        <p class="mb-1 text-xs dark:text-neutral-400">
           {timeAgo(comment.sent * 1000)}
         </p>
         {#if usingRawRenderer}
-          <RawMarkdownRenderer html="{comment.message}" classes="text-sm max-h-96 overflow-y-auto" />
+          <RawMarkdownRenderer
+            html="{comment.message}"
+            classes="max-h-96 overflow-y-auto text-sm" />
         {:else}
-          <MarkdownRenderer source="{comment.message}" classes="text-sm max-h-96 overflow-y-auto" />
+          <MarkdownRenderer
+            source="{comment.message}"
+            classes="max-h-96 overflow-y-auto text-sm" />
         {/if}
         {#if comment.replies.length > 0}
           {#if !showReplies}
