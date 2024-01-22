@@ -21,7 +21,7 @@ const newProjectSchema = z.object({
       message:
         "Slug can only contain lower case alphanumeric characters and hyphens!"
     })
-    .regex(/^-/, {
+    .regex(/^[^-]/, {
       message: "Slug may not start with a hyphen!"
     })
     .min(1, { message: "Slug is empty!" })
