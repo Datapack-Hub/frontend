@@ -13,7 +13,8 @@ const editProjectSchema = z.object({
 
       const stringLength = value.length - "data:image/png;base64,".length;
 
-      const sizeInBytes = 4 * Math.ceil(stringLength / 3) * 0.562_489_633_438_381_2;
+      const sizeInBytes =
+        4 * Math.ceil(stringLength / 3) * 0.562_489_633_438_381_2;
       const sizeInKb = sizeInBytes / 1000;
       if (sizeInKb > 256) {
         return false;
