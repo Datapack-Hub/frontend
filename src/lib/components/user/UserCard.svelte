@@ -35,7 +35,7 @@
             width="18" />Datapack Hub Team
         {/if}
       </span>
-      <span class="max-h-72 line-clamp-2">
+      <span class="line-clamp-2 max-h-72">
         <RawMarkdownRenderer html="{person?.bio}" classes="{'line-clamp-2'}" />
       </span>
     </div>
