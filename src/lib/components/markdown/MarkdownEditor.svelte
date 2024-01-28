@@ -69,6 +69,7 @@
       Disabled for security issues!
     </p>
   {:else}
+    <input type="text" name="{name}" id="{name}" value="{content}" class="hidden">
     <div class="input w-full">
       <MarkdownComponent source="{content}" />
     </div>

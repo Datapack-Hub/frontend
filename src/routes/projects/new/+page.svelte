@@ -101,7 +101,7 @@
           <label
             for="url"
             class="col-span-2 mb-2 mt-4 text-zinc-950 dark:text-zinc-100">
-            URL
+            SLug
           </label>
           <input
             id="url"
@@ -111,7 +111,7 @@
             placeholder="slug-for-your-pack"
             bind:value="{$form.url}"
             class="input w-full" />
-          {#if $errors.url}<span class="invalid">{$errors.url}</span>{/if}
+          {#if $errors.url}<span class="invalid">{$errors.url.join(", ")}</span>{/if}
         </div>
       </div>
 

@@ -78,7 +78,6 @@ export const actions = {
     const form = await superValidate(formData, newProjectSchema);
 
     if (!form.valid) {
-      console.log("Error:", form);
       return fail(400, { form });
     }
 
@@ -100,6 +99,12 @@ export const actions = {
       }
 
       icon = await blobToB64(formDataIcon);
+    }
+
+    const slugCheck = await fetch(`${API}/projects/get/${data.url}`);
+
+    if (slugCheck.ok) {
+      return setError(form, "This slug is already in use!")
     }
 
     const projData = {

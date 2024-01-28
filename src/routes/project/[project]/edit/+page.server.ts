@@ -132,7 +132,6 @@ export const actions = {
     const project = projectSchema.parse(await projectRequest.json());
 
     if (!form.valid) {
-      console.log("Error:", form);
       return fail(400, { form });
     }
 
@@ -195,7 +194,6 @@ export const actions = {
       redirect(307, "/project/" + project.url);
     } else {
       const error = await result.text();
-      console.error(error);
       return setError(form, error);
     }
   }
