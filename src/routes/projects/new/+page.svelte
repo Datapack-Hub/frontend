@@ -111,7 +111,8 @@
             placeholder="slug-for-your-pack"
             bind:value="{$form.url}"
             class="input w-full" />
-          {#if $errors.url}<span class="invalid">{$errors.url.join(", ")}</span>{/if}
+          {#if $errors.url}<span class="invalid">{$errors.url.join(", ")}</span
+            >{/if}
         </div>
       </div>
 

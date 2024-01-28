@@ -104,7 +104,7 @@ export const actions = {
     const slugCheck = await fetch(`${API}/projects/get/${data.url}`);
 
     if (slugCheck.ok) {
-      return setError(form, "This slug is already in use!")
+      return setError(form, "This slug is already in use!");
     }
 
     const projData = {
