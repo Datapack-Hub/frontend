@@ -7,7 +7,7 @@
   import Modal from "../modals/Modal.svelte";
 
   import { fetchAuthed } from "$lib/globals/functions";
-  import type { Project, Version } from "$lib/globals/schema";
+  import type { Project, Version } from "$lib/globals/consts/schema";
   import { user } from "$lib/globals/stores";
   import { isArray, isNumber, isObject } from "radash";
   import IconZIP from "~icons/tabler/Cube.svelte";
@@ -17,7 +17,7 @@
   import IconRP from "~icons/tabler/Sparkles.svelte";
   import Button from "../decorative/Button.svelte";
   import Tooltip from "../utility/Tooltip.svelte";
-  import { dpvDictAll } from "$lib/globals/versions";
+  import { dpvDictAll } from "$lib/globals/consts/versions";
 
   export let version: Version;
   export let expanded = false;

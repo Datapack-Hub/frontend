@@ -7,9 +7,9 @@
   import ProjectInfo from "$lib/components/project/ProjectInfo.svelte";
   import ProjectNav from "$lib/components/project/ProjectNav.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
-  import type { Version } from "$lib/globals/schema";
+  import type { Version } from "$lib/globals/consts/schema";
   import { user } from "$lib/globals/stores";
-  import { dpvDictAll, versionMatches } from "$lib/globals/versions";
+  import { dpvDictAll, versionMatches } from "$lib/globals/consts/versions";
   import autoAnimate from "@formkit/auto-animate";
   import { tick } from "svelte";
   import IconAlert from "~icons/tabler/AlertHexagon.svelte";

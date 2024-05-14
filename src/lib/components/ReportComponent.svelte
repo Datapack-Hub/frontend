@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fetchAuthed } from "$lib/globals/functions";
-  import type { Report } from "$lib/globals/schema";
+  import type { Report } from "$lib/globals/consts/schema";
   import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";

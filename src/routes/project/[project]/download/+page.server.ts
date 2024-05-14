@@ -1,6 +1,6 @@
+import { projectSchema, versionSchema } from "$lib/globals/consts/schema";
 import { serverGetAuthed } from "$lib/globals/functions";
 import { processMarkdown } from "$lib/globals/markdown";
-import { projectSchema, versionSchema } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 

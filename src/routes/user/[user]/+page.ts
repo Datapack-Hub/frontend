@@ -1,6 +1,6 @@
+import { projectSchema, userSchema } from "$lib/globals/consts/schema";
 import { fetchAuthed } from "$lib/globals/functions";
 import { processMarkdown } from "$lib/globals/markdown";
-import { projectSchema, userSchema } from "$lib/globals/schema";
 import { roles } from "$lib/globals/stores";
 import { error } from "@sveltejs/kit";
 import { sum } from "radash";

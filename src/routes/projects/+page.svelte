@@ -1,14 +1,14 @@
 <script lang="ts">
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import ProjectComponent from "$lib/components/project/ProjectCard.svelte";
-  import { API, categories } from "$lib/globals/consts";
+  import { API, categories } from "$lib/globals/consts/consts";
   import type { PageData } from "./$types";
 
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import Select from "$lib/components/utility/Select.svelte";
-  import { projectSchema } from "$lib/globals/schema";
+  import { projectSchema } from "$lib/globals/consts/schema";
   import { isDark } from "$lib/globals/stores";
   import { debounce } from "radash";
   import IconBTS from "~icons/tabler/ArrowBigLeftLine.svelte";

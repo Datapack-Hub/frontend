@@ -1,6 +1,6 @@
 <script lang="ts">
   import { appendSize } from "$lib/globals/functions";
-  import type { Role, User } from "$lib/globals/schema";
+  import type { Role, User } from "$lib/globals/consts/schema";
   import { title } from "radash";
   import RawMarkdownRenderer from "../markdown/RawMarkdownRenderer.svelte";
 

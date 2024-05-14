@@ -1,6 +1,6 @@
 <script lang="ts">
   import { appendSize, fetchAuthed, timeAgo } from "$lib/globals/functions";
-  import type { User } from "$lib/globals/schema";
+  import type { User } from "$lib/globals/consts/schema";
   import { roleInfo, roles, user } from "$lib/globals/stores";
   import { toast } from "svelte-sonner";
 

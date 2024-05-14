@@ -1,5 +1,9 @@
+import {
+  projectSchema,
+  reportSchema,
+  roleSchema
+} from "$lib/globals/consts/schema";
 import { serverGetAuthed } from "$lib/globals/functions";
-import { projectSchema, reportSchema, roleSchema } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import { parallel } from "radash";
 import type { PageServerLoad } from "./$types";

@@ -8,7 +8,7 @@
   import Modal from "$lib/components/modals/Modal.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
 
-  import { categories } from "$lib/globals/consts";
+  import { categories } from "$lib/globals/consts/consts";
   import { fetchAuthed } from "$lib/globals/functions";
 
   import autoAnimate from "@formkit/auto-animate";
@@ -21,7 +21,7 @@
     dpvDict,
     dpvDictAll,
     getDataPackVersion
-  } from "$lib/globals/versions";
+  } from "$lib/globals/consts/versions";
   import { readable, type Readable } from "svelte/store";
   import { superForm } from "sveltekit-superforms/client";
   import IconTick from "~icons/tabler/Check.svelte";

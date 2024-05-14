@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { fetchAuthed, removeCookie } from "$lib/globals/functions";
-  import { userSchema } from "$lib/globals/schema";
+  import { userSchema } from "$lib/globals/consts/schema";
   import { authed } from "$lib/globals/stores";
   import { onMount } from "svelte";
   import Button from "../decorative/Button.svelte";

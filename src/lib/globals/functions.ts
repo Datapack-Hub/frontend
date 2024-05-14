@@ -1,8 +1,8 @@
 import { browser } from "$app/environment";
-import type { Role } from "$lib/globals/schema";
+import type { Role } from "$lib/globals/consts/schema";
 import type { Cookies } from "@sveltejs/kit";
 import { memo, range } from "radash";
-import { API } from "./consts";
+import { API } from "./consts/consts";
 import { isDark } from "./stores";
 
 /**

@@ -1,5 +1,5 @@
+import { notificationSchema as notifSchema } from "$lib/globals/consts/schema";
 import { serverGetAuthed } from "$lib/globals/functions";
-import { notificationSchema as notifSchema } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 

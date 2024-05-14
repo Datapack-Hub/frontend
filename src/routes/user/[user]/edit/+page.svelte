@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import Button from "$lib/components/decorative/Button.svelte";
-  import { roleNames } from "$lib/globals/consts";
+  import { roleNames } from "$lib/globals/consts/consts";
   import { fetchAuthed } from "$lib/globals/functions";
   import { authed, user } from "$lib/globals/stores";
   import { title } from "radash";

@@ -1,6 +1,6 @@
 import { browser } from "$app/environment";
+import { userSchema } from "$lib/globals/consts/schema";
 import { fetchAuthed } from "$lib/globals/functions";
-import { userSchema } from "$lib/globals/schema";
 import { roleInfo, roles } from "$lib/globals/stores";
 import { error } from "@sveltejs/kit";
 import { get } from "svelte/store";

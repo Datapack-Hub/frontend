@@ -1,5 +1,5 @@
 import { browser } from "$app/environment";
-import type { Role, User } from "$lib/globals/schema";
+import type { Role, User } from "$lib/globals/consts/schema";
 import { debounce } from "radash";
 import { readable, writable } from "svelte/store";
 

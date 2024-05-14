@@ -1,13 +1,13 @@
 <script lang="ts">
   import { appendSize, getUserLocale, timeAgo } from "$lib/globals/functions";
-  import type { Project } from "$lib/globals/schema";
+  import type { Project } from "$lib/globals/consts/schema";
   import { roles } from "$lib/globals/stores";
   import { title } from "radash";
   import IconDownload from "~icons/tabler/Download.svelte";
   import IconNoPhoto from "~icons/tabler/Polaroid.svelte";
   import IconUpdate from "~icons/tabler/Refresh.svelte";
   import Tooltip from "../utility/Tooltip.svelte";
-  import { dpvDictAll } from "$lib/globals/versions";
+  import { dpvDictAll } from "$lib/globals/consts/versions";
 
   export let project: Project;
   export let showStatus = false;

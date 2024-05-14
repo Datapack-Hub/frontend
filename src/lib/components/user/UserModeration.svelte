@@ -3,8 +3,8 @@
   import { goto, invalidateAll } from "$app/navigation";
   import CasualLine from "$lib/components/decorative/CasualLine.svelte";
   import Modal from "$lib/components/modals/Modal.svelte";
-  import { badges } from "$lib/globals/badges";
-  import type { User } from "$lib/globals/schema";
+  import { badges } from "$lib/globals/consts/badges";
+  import type { User } from "$lib/globals/consts/schema";
   import { roleInfo, roles } from "$lib/globals/stores";
   import { MultiSelect } from "svelte-multiselect";
   import { toast } from "svelte-sonner";

@@ -6,7 +6,7 @@
   import ProjectComponent from "$lib/components/project/ProjectCard.svelte";
   import UserModeration from "$lib/components/user/UserModeration.svelte";
   import Tooltip from "$lib/components/utility/Tooltip.svelte";
-  import { badges } from "$lib/globals/badges";
+  import { badges } from "$lib/globals/consts/badges";
   import {
     appendSize,
     fetchAuthed,

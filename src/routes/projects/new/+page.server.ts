@@ -1,4 +1,4 @@
-import { API, categories } from "$lib/globals/consts";
+import { API, categories } from "$lib/globals/consts/consts";
 import { fail, redirect } from "@sveltejs/kit";
 import { zod } from "sveltekit-superforms/adapters";
 import { setError, superValidate } from "sveltekit-superforms/server";

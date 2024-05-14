@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { API } from "$lib/globals/consts";
+  import { API } from "$lib/globals/consts/consts";
   import { appendSize, fetchAuthed, timeAgo } from "$lib/globals/functions";
   import {
     commentSchema,
     type DPHComment,
     type Project
-  } from "$lib/globals/schema";
+  } from "$lib/globals/consts/schema";
   import { authed, roles, user } from "$lib/globals/stores";
   import { sort } from "radash";
   import { toast } from "svelte-sonner";

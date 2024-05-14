@@ -3,7 +3,7 @@
   import IconTrending from "~icons/tabler/TrendingUp.svelte";
   import IconFeatured from "~icons/tabler/Trophy.svelte";
 
-  import type { Project } from "$lib/globals/schema";
+  import type { Project } from "$lib/globals/consts/schema";
   import ProjectComponent from "./ProjectCard.svelte";
 
   export let project: Project;

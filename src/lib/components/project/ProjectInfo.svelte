@@ -7,7 +7,7 @@
   import autoAnimate from "@formkit/auto-animate";
   import { toast } from "svelte-sonner";
 
-  import type { Project } from "$lib/globals/schema";
+  import type { Project } from "$lib/globals/consts/schema";
   import { onMount } from "svelte";
   import IconDescription from "~icons/tabler/AlignLeft.svelte";
   import IconBack from "~icons/tabler/ArrowBack.svelte";

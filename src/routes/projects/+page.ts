@@ -1,5 +1,5 @@
-import { API } from "$lib/globals/consts";
-import { projectSchema } from "$lib/globals/schema";
+import { API } from "$lib/globals/consts/consts";
+import { projectSchema } from "$lib/globals/consts/schema";
 import { parallel, shuffle } from "radash";
 import type { PageLoad } from "./$types";
 

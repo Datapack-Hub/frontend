@@ -3,9 +3,9 @@
   import FeaturedProjectComponent from "$lib/components/project/FeaturedProjectComponent.svelte";
   import ProjectComponent from "$lib/components/project/ProjectCard.svelte";
   import Tooltip from "$lib/components/utility/Tooltip.svelte";
-  import type { FeaturedProjectTypes as FeaturedProjectType } from "$lib/globals/consts";
+  import type { FeaturedProjectTypes as FeaturedProjectType } from "$lib/globals/consts/consts";
   import { appendSize } from "$lib/globals/functions";
-  import type { Project } from "$lib/globals/schema";
+  import type { Project } from "$lib/globals/consts/schema";
   import anime from "animejs";
   import { onMount } from "svelte";
   import IconArrow from "~icons/tabler/ArrowBigRightLinesFilled.svelte";

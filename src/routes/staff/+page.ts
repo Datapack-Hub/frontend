@@ -1,6 +1,6 @@
-import { API } from "$lib/globals/consts";
+import { API } from "$lib/globals/consts/consts";
+import { userSchema } from "$lib/globals/consts/schema.js";
 import { processMarkdown } from "$lib/globals/markdown";
-import { userSchema } from "$lib/globals/schema.js";
 import { parallel } from "radash";
 import type { PageLoad } from "./$types";
 

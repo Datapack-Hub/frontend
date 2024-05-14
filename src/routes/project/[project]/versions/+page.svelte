@@ -3,8 +3,8 @@
   import ProjectNav from "$lib/components/project/ProjectNav.svelte";
   import VersionDisplay from "$lib/components/project/VersionDisplay.svelte";
   import Select from "$lib/components/utility/Select.svelte";
-  import type { Version } from "$lib/globals/schema";
-  import { dpvDict, dpvDictAll } from "$lib/globals/versions";
+  import type { Version } from "$lib/globals/consts/schema";
+  import { dpvDict, dpvDictAll } from "$lib/globals/consts/versions";
   import autoAnimate from "@formkit/auto-animate";
   import { readable } from "svelte/store";
   import type { PageData } from "./$types";

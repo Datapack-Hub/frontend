@@ -1,7 +1,7 @@
 <script lang="ts">
   import MarkdownEditor from "$lib/components/markdown/MarkdownEditor.svelte";
   import ToggleBoxes from "$lib/components/utility/ToggleBoxes.svelte";
-  import { categories } from "$lib/globals/consts";
+  import { categories } from "$lib/globals/consts/consts";
   import { authed } from "$lib/globals/stores";
   import { dash } from "radash";
   import { toast } from "svelte-sonner";

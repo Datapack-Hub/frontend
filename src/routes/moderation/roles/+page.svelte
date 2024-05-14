@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import type { Role } from "$lib/globals/schema";
+  import type { Role } from "$lib/globals/consts/schema";
   import { user } from "$lib/globals/stores";
   import autoAnimate from "@formkit/auto-animate";
   import { title } from "radash";

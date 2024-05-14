@@ -6,7 +6,7 @@
   import { toast } from "svelte-sonner";
   // Component imports
   // Component imports
-  import type { Project } from "$lib/globals/schema";
+  import type { Project } from "$lib/globals/consts/schema";
 
   import IconDescription from "~icons/tabler/AlignLeft.svelte";
   import IconConfetti from "~icons/tabler/Award.svelte";

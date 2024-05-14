@@ -1,7 +1,7 @@
-import { API } from "$lib/globals/consts";
+import { API } from "$lib/globals/consts/consts";
+import { commentSchema, projectSchema } from "$lib/globals/consts/schema";
 import { serverGetAuthed } from "$lib/globals/functions";
 import { processMarkdown } from "$lib/globals/markdown";
-import { commentSchema, projectSchema } from "$lib/globals/schema";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 

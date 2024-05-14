@@ -1,6 +1,10 @@
-import { API, categories } from "$lib/globals/consts";
+import { API, categories } from "$lib/globals/consts/consts";
+import {
+  projectSchema,
+  versionSchema,
+  type User
+} from "$lib/globals/consts/schema";
 import { serverGetAuthed } from "$lib/globals/functions";
-import { projectSchema, versionSchema, type User } from "$lib/globals/schema";
 import { error, fail, redirect } from "@sveltejs/kit";
 import { zod } from "sveltekit-superforms/adapters";
 import { setError, superValidate } from "sveltekit-superforms/server";
@@ -156,25 +160,6 @@ export const actions = {
 
       icon = await blobToB64(formDataIcon);
     }
-
-    // TODO: fix this URGENTLY
-    // const mdBody = await processMarkdown(data.body);
-    // const imgs = parse(mdBody).querySelectorAll("img");
-
-    // // i am very sleep deprived
-    // for (const imgElement of imgs) {
-    //   const imgReqs = await fetch(
-    //     imgElement.getAttribute("src")!.toString()
-    //   );
-    //   const imgBlob = Buffer.from(await imgReqs.arrayBuffer());
-    //   const imgMeta = imageMeta(imgBlob)
-    //   console.log(imgMeta)
-
-    //   data.body = data.body.replaceAll(
-    //     imgElement.getAttribute("src")!.toString(),
-    //     "data:image/" + imgMeta.type + ";base64," + imgBlob.toString("base64")
-    //   );
-    // }
 
     const projData = {
       icon,
