@@ -80,7 +80,6 @@
             on:change="{uploadIcon}"
             type="file"
             id="icon"
-            name="icon"
             accept="image/*"
             hidden />
         </div>

@@ -5,6 +5,7 @@ import { error, fail, redirect } from "@sveltejs/kit";
 import { setError, superValidate } from "sveltekit-superforms/server";
 import { z } from "zod";
 import type { PageServerLoad } from "./$types";
+import { zod } from "sveltekit-superforms/adapters";
 
 const editProjectSchema = z.object({
   icon: z.ostring().refine(
@@ -61,8 +62,9 @@ export const load = (async event => {
   const projectJson = await projectSchema.parseAsync(
     await projectRequest.json()
   );
+
   // @ts-expect-error I don't feel like picking out the relevant stuff
-  const form = await superValidate(projectJson, editProjectSchema);
+  const form = await superValidate(projectJson, zod(editProjectSchema));
   const meRequest = await serverGetAuthed("/user/me", event.cookies, fetch);
 
   if (meRequest.status === 401) {
@@ -123,7 +125,7 @@ async function blobToB64(buffer: Blob) {
 export const actions = {
   default: async ({ request, cookies, fetch, url }) => {
     const formData = await request.formData();
-    const form = await superValidate(formData, editProjectSchema);
+    const form = await superValidate(formData, zod(editProjectSchema));
     const projectRequest = await serverGetAuthed(
       `/projects/get/${url.pathname.split("/")[2]}`,
       cookies,

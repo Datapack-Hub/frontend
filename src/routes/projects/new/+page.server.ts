@@ -1,6 +1,7 @@
 import { API, categories } from "$lib/globals/consts";
 import { fail, redirect } from "@sveltejs/kit";
 import { setError, superValidate } from "sveltekit-superforms/server";
+import { zod } from "sveltekit-superforms/adapters";
 import { z } from "zod";
 import type { PageServerLoad } from "./$types";
 
@@ -48,7 +49,7 @@ const newProjectSchema = z.object({
 });
 
 export const load = (async event => {
-  const form = await superValidate(event, newProjectSchema);
+  const form = await superValidate(event, zod(newProjectSchema));
 
   return { form };
 }) satisfies PageServerLoad;
@@ -75,7 +76,7 @@ async function blobToB64(buffer: Blob) {
 export const actions = {
   default: async ({ request, cookies, fetch }) => {
     const formData = await request.formData();
-    const form = await superValidate(formData, newProjectSchema);
+    const form = await superValidate(formData, zod(newProjectSchema));
 
     if (!form.valid) {
       return fail(400, { form });
@@ -91,7 +92,7 @@ export const actions = {
         return setError(form, "Icon must be less than 256kb");
       }
 
-      if (!formDataIcon.type.startsWith("image/")) {
+      if (formDataIcon && !formDataIcon.type.startsWith("image/")) {
         return setError(
           form,
           "Unsupported image type, recommendations are PNG and JPG!"

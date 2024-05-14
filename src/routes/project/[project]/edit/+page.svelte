@@ -360,7 +360,6 @@
                 <input
                   bind:files="{iconValue}"
                   on:change="{uploadIcon}"
-                  name="icon"
                   id="icon"
                   type="file"
                   accept="image/*"
