@@ -2,10 +2,10 @@ import { API, categories } from "$lib/globals/consts";
 import { serverGetAuthed } from "$lib/globals/functions";
 import { projectSchema, versionSchema, type User } from "$lib/globals/schema";
 import { error, fail, redirect } from "@sveltejs/kit";
+import { zod } from "sveltekit-superforms/adapters";
 import { setError, superValidate } from "sveltekit-superforms/server";
 import { z } from "zod";
 import type { PageServerLoad } from "./$types";
-import { zod } from "sveltekit-superforms/adapters";
 
 const editProjectSchema = z.object({
   icon: z.ostring().refine(
