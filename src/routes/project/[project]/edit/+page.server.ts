@@ -55,7 +55,7 @@ export const load = (async event => {
     error(404, {
       message: projectRequest.statusText,
       description:
-        "How you tried creating a project before editing it? I heard that's a much better way of doin' things."
+        "Have you tried creating a project before editing it? I heard that's a much better way of doin' things."
     });
   }
 
