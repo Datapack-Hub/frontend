@@ -126,9 +126,8 @@
 <main
   id="main-content"
   class="h-full bg-slate-50 transition-all dark:bg-zinc-900">
-  <div class="py-12 md:py-0"></div>
   <section
-    class="thing flex h-fit w-full flex-col items-center justify-start overflow-visible px-4 md:flex-row md:justify-evenly md:pb-5 md:pt-10 lg:px-8">
+    class="thing flex h-fit pb-12 w-full flex-col items-center justify-start overflow-visible px-4 md:flex-row md:justify-evenly md:pb-5 md:pt-10 lg:px-8 bg-gradient-to-br from-[#FEAD44] to-[#A10104]">
     <div class="w-full md:w-5/12">
       <div class="relative h-36 w-full">
         <h1
@@ -136,35 +135,35 @@
           class="split-text appearing-text-styles {visible
             ? 'visible'
             : 'invisible'}">
-          <span class="letters inline-block text-dph-orange">Explore</span>
+          <span class="letters inline-block text-red-800">Explore</span>
         </h1>
         <h1
           id="indexText2"
           class="split-text appearing-text-styles {visible
             ? 'visible'
             : 'invisible'}">
-          <span class="letters inline-block text-dph-orange">Create</span>
+          <span class="letters inline-block text-red-800">Create</span>
         </h1>
         <h1
           id="indexText3"
           class="split-text appearing-text-styles {visible
             ? 'visible'
             : 'invisible'}">
-          <span class="letters inline-block text-dph-orange">Play</span>
+          <span class="letters inline-block text-red-800">Play</span>
         </h1>
       </div>
       <h2
         class="text-balance text-center text-xl text-zinc-950 dark:text-zinc-100 md:w-auto md:text-left md:text-2xl xl:text-3xl">
         Over <span
           title="{(data.count - 1).toString()}"
-          class="font-bold text-dph-orange">
+          class="font-bold text-red-800">
           {formatter.format(data.count - 1)}
         </span>
         of the latest and best datapacks from creators across the globe
       </h2>
     </div>
     <section
-      class="mt-8 h-fit justify-between space-y-3 overflow-y-auto overflow-x-clip rounded-xl px-2 md:w-1/2">
+      class="mt-8 h-fit justify-between space-y-3 rounded-xl px-2 lg:px-8 md:w-1/2 bg-zinc-900">
       <h3
         class=" mt-6 text-center text-2xl font-medium text-zinc-950 dark:text-zinc-100">
         Featured Projects
@@ -180,7 +179,7 @@
         <Button style="hugh" classes="text-center" click="/projects"
           >Find more datapacks</Button>
       </h3>
-      <div class="py-12 md:py-0"></div>
+      <div class="md:py-4 py-0"></div>
     </section>
   </section>
   <section
