@@ -127,7 +127,7 @@
   id="main-content"
   class="h-full bg-slate-50 transition-all dark:bg-zinc-900">
   <section
-    class="thing flex h-fit pb-12 w-full flex-col items-center justify-start overflow-visible px-4 md:flex-row md:justify-evenly md:pb-5 md:pt-10 lg:px-8 bg-gradient-to-br from-[#FEAD44] to-[#A10104]">
+    class="thing flex h-fit w-full flex-col items-center justify-start overflow-visible bg-gradient-to-br from-[#FEAD44] to-[#A10104] px-4 pb-12 md:flex-row md:justify-evenly md:pb-5 md:pt-10 lg:px-8">
     <div class="w-full md:w-5/12">
       <div class="relative h-36 w-full">
         <h1
@@ -163,7 +163,7 @@
       </h2>
     </div>
     <section
-      class="mt-8 h-fit justify-between space-y-3 rounded-xl px-2 lg:px-8 md:w-1/2 bg-zinc-900">
+      class="mt-8 h-fit justify-between space-y-3 rounded-xl bg-zinc-900 px-2 md:w-1/2 lg:px-8">
       <h3
         class=" mt-6 text-center text-2xl font-medium text-zinc-950 dark:text-zinc-100">
         Featured Projects
@@ -179,7 +179,7 @@
         <Button style="hugh" classes="text-center" click="/projects"
           >Find more datapacks</Button>
       </h3>
-      <div class="md:py-4 py-0"></div>
+      <div class="py-0 md:py-4"></div>
     </section>
   </section>
   <section
