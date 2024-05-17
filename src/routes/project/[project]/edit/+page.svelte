@@ -381,7 +381,8 @@
                 class="input w-full" />
             </div>
           </div>
-          {#if $errors.icon}<span class="text-red-500 col-span-3">{$errors.icon}</span
+          {#if $errors.icon}<span class="col-span-3 text-red-500"
+              >{$errors.icon}</span
             >{/if}
 
           <label

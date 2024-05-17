@@ -71,7 +71,7 @@ export const load = (async event => {
   );
 
   // @ts-expect-error this project has been like this for way too long and it needs a rework
-  projectJson.category = projectJson.category?.toString()
+  projectJson.category = projectJson.category?.toString();
 
   // @ts-expect-error I don't feel like picking out the relevant stuff
   const form = await superValidate(projectJson, zod(editProjectSchema));
