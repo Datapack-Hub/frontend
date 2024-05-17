@@ -12,21 +12,24 @@ import { z } from "zod";
 import type { PageServerLoad } from "./$types";
 
 const editProjectSchema = z.object({
-  icon: z.ostring().refine(
-    value => {
-      if (!value) return true;
+  icon: z
+    .string()
+    .nullable()
+    .refine(
+      value => {
+        if (!value) return true;
 
-      const stringLength = value.length - "data:image/png;base64,".length;
+        const stringLength = value.length - "data:image/png;base64,".length;
 
-      const sizeInBytes =
-        4 * Math.ceil(stringLength / 3) * 0.562_489_633_438_381_2;
-      const sizeInKb = sizeInBytes / 1000;
-      if (sizeInKb > 256) {
-        return false;
-      }
-    },
-    { message: "Image is too large!" }
-  ),
+        const sizeInBytes =
+          4 * Math.ceil(stringLength / 3) * 0.562_489_633_438_381_2;
+        const sizeInKb = sizeInBytes / 1000;
+        if (sizeInKb > 256) {
+          return false;
+        }
+      },
+      { message: "Image is too large!" }
+    ),
   title: z.string().max(35, { message: "Title too long!" }),
   description: z.string().min(3).max(200, { message: "Summary too long!" }),
   body: z
@@ -66,6 +69,9 @@ export const load = (async event => {
   const projectJson = await projectSchema.parseAsync(
     await projectRequest.json()
   );
+
+  // @ts-expect-error this project has been like this for way too long and it needs a rework
+  projectJson.category = projectJson.category?.toString()
 
   // @ts-expect-error I don't feel like picking out the relevant stuff
   const form = await superValidate(projectJson, zod(editProjectSchema));

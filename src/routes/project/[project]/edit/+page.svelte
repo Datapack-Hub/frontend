@@ -380,9 +380,9 @@
                 bind:value="{$form.title}"
                 class="input w-full" />
             </div>
-            {#if $errors.icon}<span class="text-red-500">{$errors.icon}</span
-              >{/if}
           </div>
+          {#if $errors.icon}<span class="text-red-500 col-span-3">{$errors.icon}</span
+            >{/if}
 
           <label
             for="description"
