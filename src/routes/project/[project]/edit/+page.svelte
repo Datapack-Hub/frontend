@@ -542,7 +542,7 @@
                 <input
                   type="file"
                   accept=".zip"
-                  on:input="{() => setRPUsed}"
+                  on:input="{setRPUsed}"
                   id="v_rp"
                   name="v_rp"
                   class="hidden" />
